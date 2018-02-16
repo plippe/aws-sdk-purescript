@@ -2,7 +2,6 @@ module Aws where
 
 import Prelude
 import Data.Either (Either)
-import Data.Foreign (Foreign)
 import Data.Foreign.Class (class Decode)
 import Data.Foreign.Generic (defaultOptions, genericDecode)
 import Data.Foreign.NullOrUndefined (NullOrUndefined, unNullOrUndefined)
@@ -33,10 +32,26 @@ serviceMetadataFileRegex (ServiceMetadata serviceMetadata) = pattern where
   pattern = regex (prefix <> "-[0-9]{4}-[0-9]{2}-[0-9]{2}.normal.json") ignoreCase
 
 newtype Service = Service
-  { operations :: Foreign
-  , shapes :: Foreign
+  { operations :: StrMap ServiceOperation
+  , shapes :: StrMap ServiceShape
   }
 
 derive instance repGenericService :: Generic Service _
 instance decodeService :: Decode Service where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+
+newtype ServiceOperation = ServiceOperation
+  { name :: String
+  }
+
+derive instance repGenericServiceOperation :: Generic ServiceOperation _
+instance decodeServiceOperation :: Decode ServiceOperation where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+
+newtype ServiceShape = ServiceShape
+  { type :: String
+  }
+
+derive instance repGenericServiceShape :: Generic ServiceShape _
+instance decodeServiceShape :: Decode ServiceShape where
   decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }

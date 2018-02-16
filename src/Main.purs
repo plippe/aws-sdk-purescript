@@ -1,9 +1,10 @@
 module Main where
 
 import Prelude
-import Control.Monad.Aff (launchAff)
+import Control.Monad.Aff (Aff, launchAff)
 import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Eff.Console (log)
+import Control.Monad.Eff.Exception (EXCEPTION)
 import Control.Parallel (parTraverse)
 import Data.Array (find)
 import Data.Either (Either)
@@ -13,10 +14,10 @@ import Data.String.Regex (Regex, test)
 import Data.StrMap (values)
 import Data.Tuple (Tuple(..))
 import Node.Encoding (Encoding(..))
-import Node.FS.Aff (readdir, readTextFile)
+import Node.FS.Aff (FS, readdir, readTextFile)
 import Node.Path (FilePath, concat)
 
-import Aws (Metadata(..), ServiceMetadata, serviceMetadataFileRegex)
+import Aws (Metadata(..), ServiceMetadata, Service, serviceMetadataFileRegex)
 import Eff (liftEither, liftExcept, liftMaybe)
 
 apisMetadataFilePath = "./aws-sdk-js/apis/metadata.json" :: FilePath
@@ -33,6 +34,12 @@ serviceMetadataWithFileName fileNames (Tuple serviceMetadata pattern) = find (te
 serviceMetadataWithFilePath :: FilePath -> Tuple ServiceMetadata FilePath -> Tuple ServiceMetadata FilePath
 serviceMetadataWithFilePath path (Tuple serviceMetadata fileName) = Tuple serviceMetadata (concat [path, fileName])
 
+serviceMetadataWithService :: forall eff. Tuple ServiceMetadata String -> Aff (exception :: EXCEPTION, fs :: FS | eff) (Tuple ServiceMetadata Service)
+serviceMetadataWithService (Tuple serviceMetadata filePath) = do
+  jsonString <- readTextFile UTF8 filePath
+  service <- decodeJSON jsonString # liftExcept # liftEff
+  pure $ Tuple serviceMetadata service
+
 main = launchAff do
   apiMetadataFileContent <- readTextFile UTF8 apisMetadataFilePath
   Metadata metadata <- decodeJSON apiMetadataFileContent # liftExcept # liftEff
@@ -46,5 +53,6 @@ main = launchAff do
     # parTraverse (liftMaybe >>> liftEff)
 
   let servicesMetadataWithFilePaths = map (serviceMetadataWithFilePath apisPath) servicesMetadataWithFileName
+  servicesMetadataWithServices <- parTraverse serviceMetadataWithService servicesMetadataWithFilePaths
 
   liftEff $ log "Hello sailor!"
