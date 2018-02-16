@@ -1,9 +1,15 @@
 module Main where
 
 import Prelude
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
+import Control.Monad.Aff (launchAff)
+import Control.Monad.Eff.Class (liftEff)
+import Control.Monad.Eff.Console (log)
+import Node.Encoding (Encoding(..))
+import Node.FS.Aff (readTextFile)
+import Node.Path (FilePath)
 
-main :: forall e. Eff (console :: CONSOLE | e) Unit
-main = do
-  log "Hello sailor!"
+apisMetadataFilePath = "./aws-sdk-js/apis/metadata.json" :: FilePath
+
+main = launchAff do
+  apiMetadataFileContent <- readTextFile UTF8 apisMetadataFilePath
+  liftEff $ log "Hello sailor!"
