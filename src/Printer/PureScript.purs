@@ -49,7 +49,7 @@ function name (ServiceOperation serviceOperation) = """
             output =  unNullOrUndefined serviceOperation.output # maybe "Unit" (\(ServiceShapeName { shape }) -> shape)
             fallback = unNullOrUndefined serviceOperation.input # maybe "unit" (\_ -> "")
 
-purescriptTypes = ["String", "Int", "Number", "Boolean"]
+purescriptTypes = ["String", "Int", "Number", "Boolean"] :: Array String
 
 compatibleType :: String -> String
 compatibleType type' = safeType
