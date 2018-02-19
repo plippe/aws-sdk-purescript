@@ -42,6 +42,8 @@ instance decodeService :: Decode Service where
 
 newtype ServiceOperation = ServiceOperation
   { name :: String
+  , input :: NullOrUndefined ServiceShapeName
+  , output :: NullOrUndefined ServiceShapeName
   }
 
 derive instance repGenericServiceOperation :: Generic ServiceOperation _
@@ -50,8 +52,17 @@ instance decodeServiceOperation :: Decode ServiceOperation where
 
 newtype ServiceShape = ServiceShape
   { type :: String
+  , member :: NullOrUndefined ServiceShapeName
+  , members :: NullOrUndefined (StrMap ServiceShapeName)
+  , key :: NullOrUndefined ServiceShapeName
+  , value :: NullOrUndefined ServiceShapeName
   }
 
 derive instance repGenericServiceShape :: Generic ServiceShape _
 instance decodeServiceShape :: Decode ServiceShape where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+
+newtype ServiceShapeName = ServiceShapeName { shape :: String }
+derive instance repGenericServiceShapeName :: Generic ServiceShapeName _
+instance decodeServiceShapeName :: Decode ServiceShapeName where
   decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
