@@ -14,13 +14,20 @@ clientFilePath :: FilePath -> MetadataElement -> Service -> FilePath
 clientFilePath path (MetadataElement { name }) _ = concat [path, name <> ".purs"]
 
 client :: MetadataElement -> Service -> String
-client metadata (Service { operations, shapes }) =
-    (header metadata) <>
+client metadata (Service { operations, shapes, documentation }) =
+    (header metadata documentation) <>
     (toArrayWithKey (\name -> \serviceOperation -> function name serviceOperation) operations # joinWith "") <>
     (toArrayWithKey (\name -> \serviceShape -> record name serviceShape) shapes # joinWith "")
 
-header :: MetadataElement -> String
-header (MetadataElement { name }) = """
+comment :: String -> String
+comment str = commentPrefix <> commentedSrt
+    where
+        commentPrefix = "\n-- | "
+        commentedSrt = replaceAll (Pattern "\n") (Replacement commentPrefix) str
+
+header :: MetadataElement -> NullOrUndefined String -> String
+header (MetadataElement { name }) documentation = """
+{{documentation}}
 module Aws.{{serviceName}} where
 
 import Control.Monad.Aff (Aff)
@@ -32,9 +39,11 @@ import Aws.Service (AwsError, request)
 
 serviceName = "{{serviceName}}" :: String
 """ # replaceAll (Pattern "{{serviceName}}") (Replacement name)
+    # replace (Pattern "{{documentation}}") (Replacement $ maybe "" comment $ unNullOrUndefined documentation)
 
 function :: String -> ServiceOperation -> String
 function name (ServiceOperation serviceOperation) = """
+{{documentation}}
 {{camelCaseName}} :: forall eff. {{input}} Aff (err :: AwsError | eff) {{output}}
 {{camelCaseName}} = request serviceName "{{pascalCaseName}}" {{fallback}}
 """ # replaceAll (Pattern "{{camelCaseName}}") (Replacement camelCaseName)
@@ -42,12 +51,14 @@ function name (ServiceOperation serviceOperation) = """
     # replace (Pattern "{{input}}") (Replacement input)
     # replace (Pattern "{{output}}") (Replacement output)
     # replace (Pattern "{{fallback}}") (Replacement fallback)
+    # replace (Pattern "{{documentation}}") (Replacement documentation)
         where
             camelCaseName = (take 1 name # toLower) <> (drop 1 name)
             pascalCaseName =  name
             input = unNullOrUndefined serviceOperation.input # maybe "" (\(ServiceShapeName { shape }) -> shape <> " ->")
             output =  unNullOrUndefined serviceOperation.output # maybe "Unit" (\(ServiceShapeName { shape }) -> shape)
             fallback = unNullOrUndefined serviceOperation.input # maybe "unit" (\_ -> "")
+            documentation = unNullOrUndefined serviceOperation.documentation # maybe "" comment
 
 purescriptTypes = ["String", "Int", "Number", "Boolean"] :: Array String
 
@@ -84,10 +95,12 @@ record name serviceShape = output
             else record' type' serviceShape
 
 record' :: String -> ServiceShape -> String
-record' name serviceShape = """
+record' name serviceShape@(ServiceShape { documentation }) = """
+{{documentation}}
 newtype {{name}} = {{name}} {{type}}
 """ # replaceAll (Pattern "{{name}}") (Replacement $ name)
     # replace (Pattern "{{type}}") (Replacement $ recordType serviceShape)
+    # replace (Pattern "{{documentation}}") (Replacement $ maybe "" comment $ unNullOrUndefined documentation)
 
 recordType :: ServiceShape -> String
 recordType (ServiceShape serviceShape) = case serviceShape of
