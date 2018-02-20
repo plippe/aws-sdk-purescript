@@ -17,7 +17,7 @@ import Node.Encoding (Encoding(..))
 import Node.FS.Aff (FS, readdir, readTextFile, writeTextFile)
 import Node.Path (FilePath, concat)
 
-import Aws (Metadata(Metadata), Service, ServiceMetadata(ServiceMetadata), serviceMetadataFileRegex)
+import Aws (Metadata(Metadata), MetadataElement(MetadataElement), Service, metadataFileRegex)
 import Eff (liftEither, liftExcept, liftMaybe)
 import Printer.PureScript (client, clientFilePath)
 
@@ -26,46 +26,46 @@ apisPath = "./aws-sdk-js/apis/" :: FilePath
 
 clientsPath = "./test/AwsGenerated" :: FilePath
 
-serviceMetadataWithApiFileRegex :: ServiceMetadata -> Either String (Tuple ServiceMetadata Regex)
-serviceMetadataWithApiFileRegex serviceMetadata = serviceMetadataFileRegex serviceMetadata
-  # map (\pattern -> Tuple serviceMetadata pattern)
+metadataWithApiFileRegex :: MetadataElement -> Either String (Tuple MetadataElement Regex)
+metadataWithApiFileRegex metadata = metadataFileRegex metadata
+  # map (\pattern -> Tuple metadata pattern)
 
-serviceMetadataWithApiFileName :: Array FilePath -> Tuple ServiceMetadata Regex -> Maybe (Tuple ServiceMetadata FilePath)
-serviceMetadataWithApiFileName fileNames (Tuple serviceMetadata pattern) = find (test pattern) fileNames
-  # map (\fileName -> Tuple serviceMetadata fileName)
+metadataWithApiFileName :: Array FilePath -> Tuple MetadataElement Regex -> Maybe (Tuple MetadataElement FilePath)
+metadataWithApiFileName fileNames (Tuple metadata pattern) = find (test pattern) fileNames
+  # map (\fileName -> Tuple metadata fileName)
 
-serviceMetadataWithApiFilePath :: FilePath -> Tuple ServiceMetadata FilePath -> Tuple ServiceMetadata FilePath
-serviceMetadataWithApiFilePath path (Tuple serviceMetadata fileName) = Tuple serviceMetadata (concat [path, fileName])
+metadataWithApiFilePath :: FilePath -> Tuple MetadataElement FilePath -> Tuple MetadataElement FilePath
+metadataWithApiFilePath path (Tuple metadata fileName) = Tuple metadata (concat [path, fileName])
 
-serviceMetadataWithService :: forall eff. Tuple ServiceMetadata String -> Aff (exception :: EXCEPTION, fs :: FS | eff) (Tuple ServiceMetadata Service)
-serviceMetadataWithService (Tuple serviceMetadata filePath) = do
+metadataWithService :: forall eff. Tuple MetadataElement String -> Aff (exception :: EXCEPTION, fs :: FS | eff) (Tuple MetadataElement Service)
+metadataWithService (Tuple metadata filePath) = do
   jsonString <- readTextFile UTF8 filePath
   service <- decodeJSON jsonString # liftExcept # liftEff
-  pure $ Tuple serviceMetadata service
+  pure $ Tuple metadata service
 
-serviceMetadataWithClientFile :: forall eff. FilePath -> Tuple ServiceMetadata Service -> Aff (fs :: FS | eff) (Tuple ServiceMetadata FilePath)
-serviceMetadataWithClientFile path (Tuple serviceMetadata@(ServiceMetadata { name }) service) = do
-  let filePath = clientFilePath path serviceMetadata service
-  let file = client serviceMetadata service
+metadataWithClientFile :: forall eff. FilePath -> Tuple MetadataElement Service -> Aff (fs :: FS | eff) (Tuple MetadataElement FilePath)
+metadataWithClientFile path (Tuple metadata@(MetadataElement { name }) service) = do
+  let filePath = clientFilePath path metadata service
+  let file = client metadata service
 
   _ <- writeTextFile UTF8 filePath file
-  pure $ Tuple serviceMetadata filePath
+  pure $ Tuple metadata filePath
 
 
 main = launchAff do
   apiMetadataFileContent <- readTextFile UTF8 apisMetadataFilePath
   Metadata metadata <- decodeJSON apiMetadataFileContent # liftExcept # liftEff
-  let servicesMetadata = values metadata
+  let metadataElements = values metadata
 
-  servicesMetadataWithApiFileRegex <- map serviceMetadataWithApiFileRegex servicesMetadata
+  metadataElementsWithApiFileRegex <- map metadataWithApiFileRegex metadataElements
     # parTraverse (liftEither >>> liftEff)
 
   apiFileNames <- readdir apisPath
-  servicesMetadataWithApiFileName <- map (serviceMetadataWithApiFileName apiFileNames) servicesMetadataWithApiFileRegex
+  metadataElementsWithApiFileName <- map (metadataWithApiFileName apiFileNames) metadataElementsWithApiFileRegex
     # parTraverse (liftMaybe >>> liftEff)
 
-  let servicesMetadataWithApiFilePaths = map (serviceMetadataWithApiFilePath apisPath) servicesMetadataWithApiFileName
-  servicesMetadataWithServices <- parTraverse serviceMetadataWithService servicesMetadataWithApiFilePaths
-  servicesMetadataWithClientFiles <- parTraverse (serviceMetadataWithClientFile clientsPath) servicesMetadataWithServices
+  let metadataElementsWithApiFilePaths = map (metadataWithApiFilePath apisPath) metadataElementsWithApiFileName
+  metadataElementsWithServices <- parTraverse metadataWithService metadataElementsWithApiFilePaths
+  metadataElementsWithClientFiles <- parTraverse (metadataWithClientFile clientsPath) metadataElementsWithServices
 
   liftEff $ log "Hello sailor!"

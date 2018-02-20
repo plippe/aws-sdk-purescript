@@ -8,19 +8,19 @@ import Data.String (Pattern(Pattern), Replacement(Replacement), drop, dropWhile,
 import Data.StrMap (StrMap, toArrayWithKey)
 import Node.Path (FilePath, concat)
 
-import Aws (Service(..), ServiceMetadata(..), ServiceOperation(..), ServiceShape(..), ServiceShapeName(..))
+import Aws (Service(..), MetadataElement(..), ServiceOperation(..), ServiceShape(..), ServiceShapeName(..))
 
-clientFilePath :: FilePath -> ServiceMetadata -> Service -> FilePath
-clientFilePath path (ServiceMetadata { name }) _ = concat [path, name <> ".purs"]
+clientFilePath :: FilePath -> MetadataElement -> Service -> FilePath
+clientFilePath path (MetadataElement { name }) _ = concat [path, name <> ".purs"]
 
-client :: ServiceMetadata -> Service -> String
-client serviceMetadata (Service { operations, shapes }) =
-    (header serviceMetadata) <>
+client :: MetadataElement -> Service -> String
+client metadata (Service { operations, shapes }) =
+    (header metadata) <>
     (toArrayWithKey (\name -> \serviceOperation -> function name serviceOperation) operations # joinWith "") <>
     (toArrayWithKey (\name -> \serviceShape -> record name serviceShape) shapes # joinWith "")
 
-header :: ServiceMetadata -> String
-header (ServiceMetadata serviceMetadata) = """
+header :: MetadataElement -> String
+header (MetadataElement { name }) = """
 module Aws.{{serviceName}} where
 
 import Control.Monad.Aff (Aff)
@@ -31,7 +31,7 @@ import Data.Unit (Unit, unit)
 import Aws.Service (AwsError, request)
 
 serviceName = "{{serviceName}}" :: String
-""" # replaceAll (Pattern "{{serviceName}}") (Replacement serviceMetadata.name)
+""" # replaceAll (Pattern "{{serviceName}}") (Replacement name)
 
 function :: String -> ServiceOperation -> String
 function name (ServiceOperation serviceOperation) = """
