@@ -1,9 +1,9 @@
 module Printer.PureScript where
 
 import Prelude
-import Data.Array (elemIndex)
+import Data.Array (elem)
 import Data.Foreign.NullOrUndefined (NullOrUndefined(..), unNullOrUndefined)
-import Data.Maybe (Maybe(..), isJust, maybe)
+import Data.Maybe (Maybe(..), fromMaybe, maybe)
 import Data.String (Pattern(Pattern), Replacement(Replacement), drop, dropWhile, joinWith, replace, replaceAll, take, toLower, toUpper)
 import Data.StrMap (StrMap, toArrayWithKey)
 import Node.Path (FilePath, concat)
@@ -82,7 +82,7 @@ compatibleType type' = safeType
 
             validType -> validType
 
-        safeType = if (elemIndex typeNotJs purescriptTypes # isJust) || (type' == typeNotJs)
+        safeType = if (elem typeNotJs purescriptTypes) || (type' == typeNotJs)
             then typeNotJs
             else typeNotJs <> "'"
 
@@ -90,7 +90,7 @@ record :: String -> ServiceShape -> String
 record name serviceShape = output
     where
         type' = compatibleType name
-        output = if (elemIndex type' purescriptTypes # isJust)
+        output = if (elem type' purescriptTypes)
             then ""
             else record' type' serviceShape
 
@@ -106,7 +106,7 @@ recordType :: ServiceShape -> String
 recordType (ServiceShape serviceShape) = case serviceShape of
     { "type": "list", member: NullOrUndefined (Just (shape)) } -> recordArray shape
     { "type": "map", key: NullOrUndefined (Just key), value: NullOrUndefined (Just value) } -> recordMap key value
-    { "type": "structure", members: NullOrUndefined (Just members) } -> recordRecord members
+    { "type": "structure", members: NullOrUndefined (Just members), required: NullOrUndefined required } -> recordRecord members $ fromMaybe [] required
     { "type": type' } -> compatibleType type'
 
 recordArray :: ServiceShapeName -> String
@@ -118,12 +118,14 @@ recordMap (ServiceShapeName key) (ServiceShapeName value) = "(Map {{key}} {{valu
     # replace (Pattern "{{key}}") (Replacement $ compatibleType key.shape)
     # replace (Pattern "{{value}}") (Replacement $ compatibleType value.shape)
 
-recordRecord :: StrMap ServiceShapeName -> String
-recordRecord keyValue = " { {{properties}} } "
+recordRecord :: StrMap ServiceShapeName -> Array String -> String
+recordRecord keyValue required = "\n  { {{properties}}\n  }"
     # replace (Pattern "{{properties}}") (Replacement properties)
         where
-            property key (ServiceShapeName { shape }) = "\n \"{{name}}\" :: NullOrUndefined ({{type}}) "
+            property key (ServiceShapeName { shape }) = "\"{{name}}\" :: {{required}} ({{type}})"
                 # replace (Pattern "{{name}}") (Replacement $ compatibleType key)
                 # replace (Pattern "{{type}}") (Replacement $ compatibleType shape)
+                # replace (Pattern "{{required}}") (Replacement $ if elem key required then "" else "NullOrUndefined")
+                # replace (Pattern "  ") (Replacement " ")
 
-            properties = toArrayWithKey property keyValue # joinWith ", "
+            properties = toArrayWithKey property keyValue # joinWith "\n  , "
