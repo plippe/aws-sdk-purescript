@@ -110,16 +110,20 @@ recordType (ServiceShape serviceShape) = case serviceShape of
     { "type": type' } -> compatibleType type'
 
 recordArray :: ServiceShapeName -> String
-recordArray (ServiceShapeName { shape }) = "(Array " <> (compatibleType shape) <> ")"
+recordArray (ServiceShapeName { shape }) = "(Array {{type}})"
+    # replace (Pattern "{{type}}") (Replacement $ compatibleType shape)
 
 recordMap :: ServiceShapeName -> ServiceShapeName -> String
-recordMap (ServiceShapeName key) (ServiceShapeName value) = "(Map " <> compatibleKey <> " " <> compatibleValue <> ")"
-    where
-        compatibleKey = compatibleType key.shape
-        compatibleValue = compatibleType value.shape
+recordMap (ServiceShapeName key) (ServiceShapeName value) = "(Map {{key}} {{value}})"
+    # replace (Pattern "{{key}}") (Replacement $ compatibleType key.shape)
+    # replace (Pattern "{{value}}") (Replacement $ compatibleType value.shape)
 
 recordRecord :: StrMap ServiceShapeName -> String
-recordRecord keyValue = " { " <> properties <> " } "
-    where
-        property = (\key -> \(ServiceShapeName { shape }) -> "\"" <> (compatibleType key) <> "\" :: NullOrUndefined " <> (compatibleType shape))
-        properties = toArrayWithKey property keyValue # joinWith ", "
+recordRecord keyValue = " { {{properties}} } "
+    # replace (Pattern "{{properties}}") (Replacement properties)
+        where
+            property key (ServiceShapeName { shape }) = "\n \"{{name}}\" :: NullOrUndefined ({{type}}) "
+                # replace (Pattern "{{name}}") (Replacement $ compatibleType key)
+                # replace (Pattern "{{type}}") (Replacement $ compatibleType shape)
+
+            properties = toArrayWithKey property keyValue # joinWith ", "
