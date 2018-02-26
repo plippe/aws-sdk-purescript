@@ -1,5 +1,5 @@
 {
-  "name": "aws-sdk-purs",
+  "name": "purescript-aws-gen",
   "ignore": [
     "**/.*",
     "node_modules",

@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "purescript-aws",
   "ignore": [
     "**/.*",
     "node_modules",
