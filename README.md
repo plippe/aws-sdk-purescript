@@ -4,8 +4,9 @@
 
 ## Getting started
 
-```purescript
+```sh
 bower install purescript-aws-sdk
+npm install aws-sdk # bower package seems broken :(
 ```
 
 ## Development
