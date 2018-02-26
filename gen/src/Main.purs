@@ -24,7 +24,7 @@ import Printer.PureScript (client, clientFilePath)
 apisMetadataFilePath = "./aws-sdk-js/apis/metadata.json" :: FilePath
 apisPath = "./aws-sdk-js/apis/" :: FilePath
 
-clientsPath = "../aws/src/AWS/Generated" :: FilePath
+clientsPath = "../src/AWS/Generated" :: FilePath
 
 metadataWithApiFileRegex :: MetadataElement -> Either String (Tuple MetadataElement Regex)
 metadataWithApiFileRegex metadata = metadataFileRegex metadata
