@@ -21,5 +21,9 @@ endif
 	cd gen && make clean init build test run
 	make build test
 
+ifneq ($(shell git status --porcelain),)
+	$(error Cannot release: You have unstaged changes)
+endif
+
 	git tag -a ${VERSION} -m "v${VERSION}"
 	git push origin ${VERSION}
