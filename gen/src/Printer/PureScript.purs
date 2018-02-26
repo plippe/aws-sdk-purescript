@@ -28,14 +28,14 @@ comment str = commentPrefix <> commentedSrt
 header :: MetadataElement -> NullOrUndefined String -> String
 header (MetadataElement { name }) documentation = """
 {{documentation}}
-module Aws.{{serviceName}} where
+module AWS.{{serviceName}} where
 
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
 import Data.Unit (Unit, unit)
 
-import Aws.Service (AwsError, request)
+import AWS.Request as AWS
 
 serviceName = "{{serviceName}}" :: String
 """ # replaceAll (Pattern "{{serviceName}}") (Replacement name)
@@ -44,8 +44,8 @@ serviceName = "{{serviceName}}" :: String
 function :: String -> ServiceOperation -> String
 function name (ServiceOperation serviceOperation) = """
 {{documentation}}
-{{camelCaseName}} :: forall eff. {{input}} Aff (err :: AwsError | eff) {{output}}
-{{camelCaseName}} = request serviceName "{{pascalCaseName}}" {{fallback}}
+{{camelCaseName}} :: forall eff. {{input}} Aff (err :: AWS.RequestError | eff) {{output}}
+{{camelCaseName}} = AWS.request serviceName "{{pascalCaseName}}" {{fallback}}
 """ # replaceAll (Pattern "{{camelCaseName}}") (Replacement camelCaseName)
     # replace (Pattern "{{pascalCaseName}}") (Replacement pascalCaseName)
     # replace (Pattern "{{input}}") (Replacement input)
