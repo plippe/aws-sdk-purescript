@@ -1,7 +1,7 @@
 module Main where
 
 import Prelude
-import Control.Monad.Aff (Aff, launchAff)
+import Control.Monad.Aff (Aff, apathize, launchAff)
 import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Eff.Console (log)
 import Control.Monad.Eff.Exception (EXCEPTION)
@@ -14,7 +14,7 @@ import Data.String.Regex (Regex, test)
 import Data.StrMap (values)
 import Data.Tuple (Tuple(..))
 import Node.Encoding (Encoding(..))
-import Node.FS.Aff (FS, readdir, readTextFile, writeTextFile)
+import Node.FS.Aff (FS, mkdir, readdir, readTextFile, writeTextFile)
 import Node.Path (FilePath, concat)
 
 import Aws (Metadata(Metadata), MetadataElement(MetadataElement), Service, metadataFileRegex)
@@ -24,7 +24,7 @@ import Printer.PureScript (client, clientFilePath)
 apisMetadataFilePath = "./aws-sdk-js/apis/metadata.json" :: FilePath
 apisPath = "./aws-sdk-js/apis/" :: FilePath
 
-clientsPath = "../src/AWS/Generated" :: FilePath
+clientsPath = "../src/AWSGenerated" :: FilePath
 
 metadataWithApiFileRegex :: MetadataElement -> Either String (Tuple MetadataElement Regex)
 metadataWithApiFileRegex metadata = metadataFileRegex metadata
@@ -48,6 +48,7 @@ metadataWithClientFile path (Tuple metadata@(MetadataElement { name }) service) 
   let filePath = clientFilePath path metadata service
   let file = client metadata service
 
+  _ <- apathize $ mkdir clientsPath
   _ <- writeTextFile UTF8 filePath file
   pure $ Tuple metadata filePath
 
