@@ -12,6 +12,7 @@ test:
 
 document:
 	pulp docs
+	rm -fr docs
 	mv generated-docs docs
 
 release:
