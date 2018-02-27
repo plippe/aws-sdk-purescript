@@ -6,6 +6,7 @@ module AWS.MediaPackage where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -69,6 +70,7 @@ updateOriginEndpoint = AWS.request serviceName "UpdateOriginEndpoint"
 
 
 newtype AdMarkers = AdMarkers String
+derive instance newtypeAdMarkers :: Newtype AdMarkers _
 
 
 -- | A Channel resource configuration.
@@ -78,6 +80,7 @@ newtype Channel = Channel
   , "HlsIngest" :: NullOrUndefined (HlsIngest)
   , "Id" :: NullOrUndefined (String)
   }
+derive instance newtypeChannel :: Newtype Channel _
 
 
 -- | Configuration parameters for a new Channel.
@@ -85,6 +88,7 @@ newtype ChannelCreateParameters = ChannelCreateParameters
   { "Description" :: NullOrUndefined (String)
   , "Id" :: NullOrUndefined (String)
   }
+derive instance newtypeChannelCreateParameters :: Newtype ChannelCreateParameters _
 
 
 -- | A collection of Channel records.
@@ -92,12 +96,14 @@ newtype ChannelList = ChannelList
   { "Channels" :: NullOrUndefined (ListOfChannel)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeChannelList :: Newtype ChannelList _
 
 
 -- | Configuration parameters for updating an existing Channel.
 newtype ChannelUpdateParameters = ChannelUpdateParameters 
   { "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeChannelUpdateParameters :: Newtype ChannelUpdateParameters _
 
 
 -- | A new Channel configuration.
@@ -105,6 +111,7 @@ newtype CreateChannelRequest = CreateChannelRequest
   { "Description" :: NullOrUndefined (String)
   , "Id" :: (String)
   }
+derive instance newtypeCreateChannelRequest :: Newtype CreateChannelRequest _
 
 
 newtype CreateChannelResponse = CreateChannelResponse 
@@ -113,6 +120,7 @@ newtype CreateChannelResponse = CreateChannelResponse
   , "HlsIngest" :: NullOrUndefined (HlsIngest)
   , "Id" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateChannelResponse :: Newtype CreateChannelResponse _
 
 
 -- | Configuration parameters used to create a new OriginEndpoint.
@@ -128,6 +136,7 @@ newtype CreateOriginEndpointRequest = CreateOriginEndpointRequest
   , "TimeDelaySeconds" :: NullOrUndefined (Int)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeCreateOriginEndpointRequest :: Newtype CreateOriginEndpointRequest _
 
 
 newtype CreateOriginEndpointResponse = CreateOriginEndpointResponse 
@@ -144,6 +153,7 @@ newtype CreateOriginEndpointResponse = CreateOriginEndpointResponse
   , "Url" :: NullOrUndefined (String)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeCreateOriginEndpointResponse :: Newtype CreateOriginEndpointResponse _
 
 
 -- | A Dynamic Adaptive Streaming over HTTP (DASH) encryption configuration.
@@ -151,6 +161,7 @@ newtype DashEncryption = DashEncryption
   { "KeyRotationIntervalSeconds" :: NullOrUndefined (Int)
   , "SpekeKeyProvider" :: (SpekeKeyProvider)
   }
+derive instance newtypeDashEncryption :: Newtype DashEncryption _
 
 
 -- | A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.
@@ -164,31 +175,37 @@ newtype DashPackage = DashPackage
   , "StreamSelection" :: NullOrUndefined (StreamSelection)
   , "SuggestedPresentationDelaySeconds" :: NullOrUndefined (Int)
   }
+derive instance newtypeDashPackage :: Newtype DashPackage _
 
 
 newtype DeleteChannelRequest = DeleteChannelRequest 
   { "Id" :: (String)
   }
+derive instance newtypeDeleteChannelRequest :: Newtype DeleteChannelRequest _
 
 
 newtype DeleteChannelResponse = DeleteChannelResponse 
   { 
   }
+derive instance newtypeDeleteChannelResponse :: Newtype DeleteChannelResponse _
 
 
 newtype DeleteOriginEndpointRequest = DeleteOriginEndpointRequest 
   { "Id" :: (String)
   }
+derive instance newtypeDeleteOriginEndpointRequest :: Newtype DeleteOriginEndpointRequest _
 
 
 newtype DeleteOriginEndpointResponse = DeleteOriginEndpointResponse 
   { 
   }
+derive instance newtypeDeleteOriginEndpointResponse :: Newtype DeleteOriginEndpointResponse _
 
 
 newtype DescribeChannelRequest = DescribeChannelRequest 
   { "Id" :: (String)
   }
+derive instance newtypeDescribeChannelRequest :: Newtype DescribeChannelRequest _
 
 
 newtype DescribeChannelResponse = DescribeChannelResponse 
@@ -197,11 +214,13 @@ newtype DescribeChannelResponse = DescribeChannelResponse
   , "HlsIngest" :: NullOrUndefined (HlsIngest)
   , "Id" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeChannelResponse :: Newtype DescribeChannelResponse _
 
 
 newtype DescribeOriginEndpointRequest = DescribeOriginEndpointRequest 
   { "Id" :: (String)
   }
+derive instance newtypeDescribeOriginEndpointRequest :: Newtype DescribeOriginEndpointRequest _
 
 
 newtype DescribeOriginEndpointResponse = DescribeOriginEndpointResponse 
@@ -218,15 +237,18 @@ newtype DescribeOriginEndpointResponse = DescribeOriginEndpointResponse
   , "Url" :: NullOrUndefined (String)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeDescribeOriginEndpointResponse :: Newtype DescribeOriginEndpointResponse _
 
 
 newtype EncryptionMethod = EncryptionMethod String
+derive instance newtypeEncryptionMethod :: Newtype EncryptionMethod _
 
 
 -- | The client is not authorized to access the requested resource.
 newtype ForbiddenException = ForbiddenException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeForbiddenException :: Newtype ForbiddenException _
 
 
 -- | An HTTP Live Streaming (HLS) encryption configuration.
@@ -237,12 +259,14 @@ newtype HlsEncryption = HlsEncryption
   , "RepeatExtXKey" :: NullOrUndefined (Boolean)
   , "SpekeKeyProvider" :: (SpekeKeyProvider)
   }
+derive instance newtypeHlsEncryption :: Newtype HlsEncryption _
 
 
 -- | An HTTP Live Streaming (HLS) ingest resource configuration.
 newtype HlsIngest = HlsIngest 
   { "IngestEndpoints" :: NullOrUndefined (ListOfIngestEndpoint)
   }
+derive instance newtypeHlsIngest :: Newtype HlsIngest _
 
 
 -- | An HTTP Live Streaming (HLS) packaging configuration.
@@ -257,6 +281,7 @@ newtype HlsPackage = HlsPackage
   , "StreamSelection" :: NullOrUndefined (StreamSelection)
   , "UseAudioRenditionGroup" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeHlsPackage :: Newtype HlsPackage _
 
 
 -- | An endpoint for ingesting source content for a Channel.
@@ -265,36 +290,44 @@ newtype IngestEndpoint = IngestEndpoint
   , "Url" :: NullOrUndefined (String)
   , "Username" :: NullOrUndefined (String)
   }
+derive instance newtypeIngestEndpoint :: Newtype IngestEndpoint _
 
 
 -- | An unexpected error occurred.
 newtype InternalServerErrorException = InternalServerErrorException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalServerErrorException :: Newtype InternalServerErrorException _
 
 
 newtype ListChannelsRequest = ListChannelsRequest 
   { "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListChannelsRequest :: Newtype ListChannelsRequest _
 
 
 newtype ListChannelsResponse = ListChannelsResponse 
   { "Channels" :: NullOrUndefined (ListOfChannel)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListChannelsResponse :: Newtype ListChannelsResponse _
 
 
 newtype ListOfChannel = ListOfChannel (Array Channel)
+derive instance newtypeListOfChannel :: Newtype ListOfChannel _
 
 
 newtype ListOfIngestEndpoint = ListOfIngestEndpoint (Array IngestEndpoint)
+derive instance newtypeListOfIngestEndpoint :: Newtype ListOfIngestEndpoint _
 
 
 newtype ListOfOriginEndpoint = ListOfOriginEndpoint (Array OriginEndpoint)
+derive instance newtypeListOfOriginEndpoint :: Newtype ListOfOriginEndpoint _
 
 
 newtype ListOf__string = ListOf__string (Array String)
+derive instance newtypeListOf__string :: Newtype ListOf__string _
 
 
 newtype ListOriginEndpointsRequest = ListOriginEndpointsRequest 
@@ -302,21 +335,25 @@ newtype ListOriginEndpointsRequest = ListOriginEndpointsRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListOriginEndpointsRequest :: Newtype ListOriginEndpointsRequest _
 
 
 newtype ListOriginEndpointsResponse = ListOriginEndpointsResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "OriginEndpoints" :: NullOrUndefined (ListOfOriginEndpoint)
   }
+derive instance newtypeListOriginEndpointsResponse :: Newtype ListOriginEndpointsResponse _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 -- | A Microsoft Smooth Streaming (MSS) encryption configuration.
 newtype MssEncryption = MssEncryption 
   { "SpekeKeyProvider" :: (SpekeKeyProvider)
   }
+derive instance newtypeMssEncryption :: Newtype MssEncryption _
 
 
 -- | A Microsoft Smooth Streaming (MSS) packaging configuration.
@@ -326,12 +363,14 @@ newtype MssPackage = MssPackage
   , "SegmentDurationSeconds" :: NullOrUndefined (Int)
   , "StreamSelection" :: NullOrUndefined (StreamSelection)
   }
+derive instance newtypeMssPackage :: Newtype MssPackage _
 
 
 -- | The requested resource does not exist.
 newtype NotFoundException = NotFoundException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 -- | An OriginEndpoint resource configuration.
@@ -349,6 +388,7 @@ newtype OriginEndpoint = OriginEndpoint
   , "Url" :: NullOrUndefined (String)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeOriginEndpoint :: Newtype OriginEndpoint _
 
 
 -- | Configuration parameters for a new OriginEndpoint.
@@ -364,6 +404,7 @@ newtype OriginEndpointCreateParameters = OriginEndpointCreateParameters
   , "TimeDelaySeconds" :: NullOrUndefined (Int)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeOriginEndpointCreateParameters :: Newtype OriginEndpointCreateParameters _
 
 
 -- | A collection of OriginEndpoint records.
@@ -371,6 +412,7 @@ newtype OriginEndpointList = OriginEndpointList
   { "NextToken" :: NullOrUndefined (String)
   , "OriginEndpoints" :: NullOrUndefined (ListOfOriginEndpoint)
   }
+derive instance newtypeOriginEndpointList :: Newtype OriginEndpointList _
 
 
 -- | Configuration parameters for updating an existing OriginEndpoint.
@@ -384,17 +426,21 @@ newtype OriginEndpointUpdateParameters = OriginEndpointUpdateParameters
   , "TimeDelaySeconds" :: NullOrUndefined (Int)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeOriginEndpointUpdateParameters :: Newtype OriginEndpointUpdateParameters _
 
 
 newtype PlaylistType = PlaylistType String
+derive instance newtypePlaylistType :: Newtype PlaylistType _
 
 
 newtype Profile = Profile String
+derive instance newtypeProfile :: Newtype Profile _
 
 
 newtype RotateChannelCredentialsRequest = RotateChannelCredentialsRequest 
   { "Id" :: (String)
   }
+derive instance newtypeRotateChannelCredentialsRequest :: Newtype RotateChannelCredentialsRequest _
 
 
 newtype RotateChannelCredentialsResponse = RotateChannelCredentialsResponse 
@@ -403,12 +449,14 @@ newtype RotateChannelCredentialsResponse = RotateChannelCredentialsResponse
   , "HlsIngest" :: NullOrUndefined (HlsIngest)
   , "Id" :: NullOrUndefined (String)
   }
+derive instance newtypeRotateChannelCredentialsResponse :: Newtype RotateChannelCredentialsResponse _
 
 
 -- | An unexpected error occurred.
 newtype ServiceUnavailableException = ServiceUnavailableException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 -- | A configuration for accessing an external Secure Packager and Encoder Key Exchange (SPEKE) service that will provide encryption keys.
@@ -418,9 +466,11 @@ newtype SpekeKeyProvider = SpekeKeyProvider
   , "SystemIds" :: (ListOf__string)
   , "Url" :: (String)
   }
+derive instance newtypeSpekeKeyProvider :: Newtype SpekeKeyProvider _
 
 
 newtype StreamOrder = StreamOrder String
+derive instance newtypeStreamOrder :: Newtype StreamOrder _
 
 
 -- | A StreamSelection configuration.
@@ -429,18 +479,21 @@ newtype StreamSelection = StreamSelection
   , "MinVideoBitsPerSecond" :: NullOrUndefined (Int)
   , "StreamOrder" :: NullOrUndefined (StreamOrder)
   }
+derive instance newtypeStreamSelection :: Newtype StreamSelection _
 
 
 -- | The client has exceeded their resource or throttling limits.
 newtype TooManyRequestsException = TooManyRequestsException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | The parameters sent in the request are not valid.
 newtype UnprocessableEntityException = UnprocessableEntityException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeUnprocessableEntityException :: Newtype UnprocessableEntityException _
 
 
 -- | Configuration parameters used to update the Channel.
@@ -448,6 +501,7 @@ newtype UpdateChannelRequest = UpdateChannelRequest
   { "Description" :: NullOrUndefined (String)
   , "Id" :: (String)
   }
+derive instance newtypeUpdateChannelRequest :: Newtype UpdateChannelRequest _
 
 
 newtype UpdateChannelResponse = UpdateChannelResponse 
@@ -456,6 +510,7 @@ newtype UpdateChannelResponse = UpdateChannelResponse
   , "HlsIngest" :: NullOrUndefined (HlsIngest)
   , "Id" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateChannelResponse :: Newtype UpdateChannelResponse _
 
 
 -- | Configuration parameters used to update an existing OriginEndpoint.
@@ -470,6 +525,7 @@ newtype UpdateOriginEndpointRequest = UpdateOriginEndpointRequest
   , "TimeDelaySeconds" :: NullOrUndefined (Int)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeUpdateOriginEndpointRequest :: Newtype UpdateOriginEndpointRequest _
 
 
 newtype UpdateOriginEndpointResponse = UpdateOriginEndpointResponse 
@@ -486,3 +542,4 @@ newtype UpdateOriginEndpointResponse = UpdateOriginEndpointResponse
   , "Url" :: NullOrUndefined (String)
   , "Whitelist" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeUpdateOriginEndpointResponse :: Newtype UpdateOriginEndpointResponse _

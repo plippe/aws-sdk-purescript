@@ -6,6 +6,7 @@ module AWS.CloudWatchEvents where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -89,25 +90,30 @@ testEventPattern = AWS.request serviceName "TestEventPattern"
 
 
 newtype Action = Action String
+derive instance newtypeAction :: Newtype Action _
 
 
 newtype Arn = Arn String
+derive instance newtypeArn :: Newtype Arn _
 
 
 -- | <p>There is concurrent modification on a rule or target.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { 
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 newtype DeleteRuleRequest = DeleteRuleRequest 
   { "Name" :: (RuleName)
   }
+derive instance newtypeDeleteRuleRequest :: Newtype DeleteRuleRequest _
 
 
 newtype DescribeEventBusRequest = DescribeEventBusRequest 
   { 
   }
+derive instance newtypeDescribeEventBusRequest :: Newtype DescribeEventBusRequest _
 
 
 newtype DescribeEventBusResponse = DescribeEventBusResponse 
@@ -115,11 +121,13 @@ newtype DescribeEventBusResponse = DescribeEventBusResponse
   , "Arn" :: NullOrUndefined (String)
   , "Policy" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEventBusResponse :: Newtype DescribeEventBusResponse _
 
 
 newtype DescribeRuleRequest = DescribeRuleRequest 
   { "Name" :: (RuleName)
   }
+derive instance newtypeDescribeRuleRequest :: Newtype DescribeRuleRequest _
 
 
 newtype DescribeRuleResponse = DescribeRuleResponse 
@@ -131,11 +139,13 @@ newtype DescribeRuleResponse = DescribeRuleResponse
   , "Description" :: NullOrUndefined (RuleDescription)
   , "RoleArn" :: NullOrUndefined (RoleArn)
   }
+derive instance newtypeDescribeRuleResponse :: Newtype DescribeRuleResponse _
 
 
 newtype DisableRuleRequest = DisableRuleRequest 
   { "Name" :: (RuleName)
   }
+derive instance newtypeDisableRuleRequest :: Newtype DisableRuleRequest _
 
 
 -- | <p>The custom parameters to be used when the target is an Amazon ECS cluster.</p>
@@ -143,32 +153,41 @@ newtype EcsParameters = EcsParameters
   { "TaskDefinitionArn" :: (Arn)
   , "TaskCount" :: NullOrUndefined (LimitMin1)
   }
+derive instance newtypeEcsParameters :: Newtype EcsParameters _
 
 
 newtype EnableRuleRequest = EnableRuleRequest 
   { "Name" :: (RuleName)
   }
+derive instance newtypeEnableRuleRequest :: Newtype EnableRuleRequest _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype EventId = EventId String
+derive instance newtypeEventId :: Newtype EventId _
 
 
 newtype EventPattern = EventPattern String
+derive instance newtypeEventPattern :: Newtype EventPattern _
 
 
 newtype EventResource = EventResource String
+derive instance newtypeEventResource :: Newtype EventResource _
 
 
 newtype EventResourceList = EventResourceList (Array EventResource)
+derive instance newtypeEventResourceList :: Newtype EventResourceList _
 
 
 newtype EventTime = EventTime Number
+derive instance newtypeEventTime :: Newtype EventTime _
 
 
 -- | <p>Contains the parameters needed for you to provide custom input to a target based on one or more pieces of data extracted from the event.</p>
@@ -176,39 +195,47 @@ newtype InputTransformer = InputTransformer
   { "InputPathsMap" :: NullOrUndefined (TransformerPaths)
   , "InputTemplate" :: (TransformerInput)
   }
+derive instance newtypeInputTransformer :: Newtype InputTransformer _
 
 
 newtype InputTransformerPathKey = InputTransformerPathKey String
+derive instance newtypeInputTransformerPathKey :: Newtype InputTransformerPathKey _
 
 
 -- | <p>This exception occurs due to unexpected causes.</p>
 newtype InternalException = InternalException 
   { 
   }
+derive instance newtypeInternalException :: Newtype InternalException _
 
 
 -- | <p>The event pattern is not valid.</p>
 newtype InvalidEventPatternException = InvalidEventPatternException 
   { 
   }
+derive instance newtypeInvalidEventPatternException :: Newtype InvalidEventPatternException _
 
 
 -- | <p>This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis stream, so that you can control the shard to which the event goes. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>
 newtype KinesisParameters = KinesisParameters 
   { "PartitionKeyPath" :: (TargetPartitionKeyPath)
   }
+derive instance newtypeKinesisParameters :: Newtype KinesisParameters _
 
 
 -- | <p>You tried to create more rules or add more targets to a rule than is allowed.</p>
 newtype LimitExceededException = LimitExceededException 
   { 
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype LimitMax100 = LimitMax100 Int
+derive instance newtypeLimitMax100 :: Newtype LimitMax100 _
 
 
 newtype LimitMin1 = LimitMin1 Int
+derive instance newtypeLimitMin1 :: Newtype LimitMin1 _
 
 
 newtype ListRuleNamesByTargetRequest = ListRuleNamesByTargetRequest 
@@ -216,12 +243,14 @@ newtype ListRuleNamesByTargetRequest = ListRuleNamesByTargetRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "Limit" :: NullOrUndefined (LimitMax100)
   }
+derive instance newtypeListRuleNamesByTargetRequest :: Newtype ListRuleNamesByTargetRequest _
 
 
 newtype ListRuleNamesByTargetResponse = ListRuleNamesByTargetResponse 
   { "RuleNames" :: NullOrUndefined (RuleNameList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListRuleNamesByTargetResponse :: Newtype ListRuleNamesByTargetResponse _
 
 
 newtype ListRulesRequest = ListRulesRequest 
@@ -229,12 +258,14 @@ newtype ListRulesRequest = ListRulesRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "Limit" :: NullOrUndefined (LimitMax100)
   }
+derive instance newtypeListRulesRequest :: Newtype ListRulesRequest _
 
 
 newtype ListRulesResponse = ListRulesResponse 
   { "Rules" :: NullOrUndefined (RuleResponseList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListRulesResponse :: Newtype ListRulesResponse _
 
 
 newtype ListTargetsByRuleRequest = ListTargetsByRuleRequest 
@@ -242,29 +273,35 @@ newtype ListTargetsByRuleRequest = ListTargetsByRuleRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "Limit" :: NullOrUndefined (LimitMax100)
   }
+derive instance newtypeListTargetsByRuleRequest :: Newtype ListTargetsByRuleRequest _
 
 
 newtype ListTargetsByRuleResponse = ListTargetsByRuleResponse 
   { "Targets" :: NullOrUndefined (TargetList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListTargetsByRuleResponse :: Newtype ListTargetsByRuleResponse _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>The event bus policy is too long. For more information, see the limits.</p>
 newtype PolicyLengthExceededException = PolicyLengthExceededException 
   { 
   }
+derive instance newtypePolicyLengthExceededException :: Newtype PolicyLengthExceededException _
 
 
 newtype Principal = Principal String
+derive instance newtypePrincipal :: Newtype Principal _
 
 
 newtype PutEventsRequest = PutEventsRequest 
   { "Entries" :: (PutEventsRequestEntryList)
   }
+derive instance newtypePutEventsRequest :: Newtype PutEventsRequest _
 
 
 -- | <p>Represents an event to be submitted.</p>
@@ -275,15 +312,18 @@ newtype PutEventsRequestEntry = PutEventsRequestEntry
   , "DetailType" :: NullOrUndefined (String)
   , "Detail" :: NullOrUndefined (String)
   }
+derive instance newtypePutEventsRequestEntry :: Newtype PutEventsRequestEntry _
 
 
 newtype PutEventsRequestEntryList = PutEventsRequestEntryList (Array PutEventsRequestEntry)
+derive instance newtypePutEventsRequestEntryList :: Newtype PutEventsRequestEntryList _
 
 
 newtype PutEventsResponse = PutEventsResponse 
   { "FailedEntryCount" :: NullOrUndefined (Int)
   , "Entries" :: NullOrUndefined (PutEventsResultEntryList)
   }
+derive instance newtypePutEventsResponse :: Newtype PutEventsResponse _
 
 
 -- | <p>Represents an event that failed to be submitted.</p>
@@ -292,9 +332,11 @@ newtype PutEventsResultEntry = PutEventsResultEntry
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypePutEventsResultEntry :: Newtype PutEventsResultEntry _
 
 
 newtype PutEventsResultEntryList = PutEventsResultEntryList (Array PutEventsResultEntry)
+derive instance newtypePutEventsResultEntryList :: Newtype PutEventsResultEntryList _
 
 
 newtype PutPermissionRequest = PutPermissionRequest 
@@ -302,6 +344,7 @@ newtype PutPermissionRequest = PutPermissionRequest
   , "Principal" :: (Principal)
   , "StatementId" :: (StatementId)
   }
+derive instance newtypePutPermissionRequest :: Newtype PutPermissionRequest _
 
 
 newtype PutRuleRequest = PutRuleRequest 
@@ -312,23 +355,27 @@ newtype PutRuleRequest = PutRuleRequest
   , "Description" :: NullOrUndefined (RuleDescription)
   , "RoleArn" :: NullOrUndefined (RoleArn)
   }
+derive instance newtypePutRuleRequest :: Newtype PutRuleRequest _
 
 
 newtype PutRuleResponse = PutRuleResponse 
   { "RuleArn" :: NullOrUndefined (RuleArn)
   }
+derive instance newtypePutRuleResponse :: Newtype PutRuleResponse _
 
 
 newtype PutTargetsRequest = PutTargetsRequest 
   { "Rule" :: (RuleName)
   , "Targets" :: (TargetList)
   }
+derive instance newtypePutTargetsRequest :: Newtype PutTargetsRequest _
 
 
 newtype PutTargetsResponse = PutTargetsResponse 
   { "FailedEntryCount" :: NullOrUndefined (Int)
   , "FailedEntries" :: NullOrUndefined (PutTargetsResultEntryList)
   }
+derive instance newtypePutTargetsResponse :: Newtype PutTargetsResponse _
 
 
 -- | <p>Represents a target that failed to be added to a rule.</p>
@@ -337,26 +384,31 @@ newtype PutTargetsResultEntry = PutTargetsResultEntry
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypePutTargetsResultEntry :: Newtype PutTargetsResultEntry _
 
 
 newtype PutTargetsResultEntryList = PutTargetsResultEntryList (Array PutTargetsResultEntry)
+derive instance newtypePutTargetsResultEntryList :: Newtype PutTargetsResultEntryList _
 
 
 newtype RemovePermissionRequest = RemovePermissionRequest 
   { "StatementId" :: (StatementId)
   }
+derive instance newtypeRemovePermissionRequest :: Newtype RemovePermissionRequest _
 
 
 newtype RemoveTargetsRequest = RemoveTargetsRequest 
   { "Rule" :: (RuleName)
   , "Ids" :: (TargetIdList)
   }
+derive instance newtypeRemoveTargetsRequest :: Newtype RemoveTargetsRequest _
 
 
 newtype RemoveTargetsResponse = RemoveTargetsResponse 
   { "FailedEntryCount" :: NullOrUndefined (Int)
   , "FailedEntries" :: NullOrUndefined (RemoveTargetsResultEntryList)
   }
+derive instance newtypeRemoveTargetsResponse :: Newtype RemoveTargetsResponse _
 
 
 -- | <p>Represents a target that failed to be removed from a rule.</p>
@@ -365,18 +417,22 @@ newtype RemoveTargetsResultEntry = RemoveTargetsResultEntry
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeRemoveTargetsResultEntry :: Newtype RemoveTargetsResultEntry _
 
 
 newtype RemoveTargetsResultEntryList = RemoveTargetsResultEntryList (Array RemoveTargetsResultEntry)
+derive instance newtypeRemoveTargetsResultEntryList :: Newtype RemoveTargetsResultEntryList _
 
 
 -- | <p>An entity that you specified does not exist.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { 
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype RoleArn = RoleArn String
+derive instance newtypeRoleArn :: Newtype RoleArn _
 
 
 -- | <p>Contains information about a rule in Amazon CloudWatch Events.</p>
@@ -389,30 +445,38 @@ newtype Rule = Rule
   , "ScheduleExpression" :: NullOrUndefined (ScheduleExpression)
   , "RoleArn" :: NullOrUndefined (RoleArn)
   }
+derive instance newtypeRule :: Newtype Rule _
 
 
 newtype RuleArn = RuleArn String
+derive instance newtypeRuleArn :: Newtype RuleArn _
 
 
 newtype RuleDescription = RuleDescription String
+derive instance newtypeRuleDescription :: Newtype RuleDescription _
 
 
 newtype RuleName = RuleName String
+derive instance newtypeRuleName :: Newtype RuleName _
 
 
 newtype RuleNameList = RuleNameList (Array RuleName)
+derive instance newtypeRuleNameList :: Newtype RuleNameList _
 
 
 newtype RuleResponseList = RuleResponseList (Array Rule)
+derive instance newtypeRuleResponseList :: Newtype RuleResponseList _
 
 
 newtype RuleState = RuleState String
+derive instance newtypeRuleState :: Newtype RuleState _
 
 
 -- | <p>This parameter contains the criteria (either InstanceIds or a tag) used to specify which EC2 instances are to be sent the command. </p>
 newtype RunCommandParameters = RunCommandParameters 
   { "RunCommandTargets" :: (RunCommandTargets)
   }
+derive instance newtypeRunCommandParameters :: Newtype RunCommandParameters _
 
 
 -- | <p>Information about the EC2 instances that are to be sent the command, specified as key-value pairs. Each <code>RunCommandTarget</code> block can include only one key, but this key may specify multiple values.</p>
@@ -420,24 +484,31 @@ newtype RunCommandTarget = RunCommandTarget
   { "Key" :: (RunCommandTargetKey)
   , "Values" :: (RunCommandTargetValues)
   }
+derive instance newtypeRunCommandTarget :: Newtype RunCommandTarget _
 
 
 newtype RunCommandTargetKey = RunCommandTargetKey String
+derive instance newtypeRunCommandTargetKey :: Newtype RunCommandTargetKey _
 
 
 newtype RunCommandTargetValue = RunCommandTargetValue String
+derive instance newtypeRunCommandTargetValue :: Newtype RunCommandTargetValue _
 
 
 newtype RunCommandTargetValues = RunCommandTargetValues (Array RunCommandTargetValue)
+derive instance newtypeRunCommandTargetValues :: Newtype RunCommandTargetValues _
 
 
 newtype RunCommandTargets = RunCommandTargets (Array RunCommandTarget)
+derive instance newtypeRunCommandTargets :: Newtype RunCommandTargets _
 
 
 newtype ScheduleExpression = ScheduleExpression String
+derive instance newtypeScheduleExpression :: Newtype ScheduleExpression _
 
 
 newtype StatementId = StatementId String
+derive instance newtypeStatementId :: Newtype StatementId _
 
 
 -- | <p>Targets are the resources to be invoked when a rule is triggered. Target types include EC2 instances, AWS Lambda functions, Amazon Kinesis streams, Amazon ECS tasks, AWS Step Functions state machines, Run Command, and built-in targets.</p>
@@ -452,41 +523,53 @@ newtype Target = Target
   , "RunCommandParameters" :: NullOrUndefined (RunCommandParameters)
   , "EcsParameters" :: NullOrUndefined (EcsParameters)
   }
+derive instance newtypeTarget :: Newtype Target _
 
 
 newtype TargetArn = TargetArn String
+derive instance newtypeTargetArn :: Newtype TargetArn _
 
 
 newtype TargetId = TargetId String
+derive instance newtypeTargetId :: Newtype TargetId _
 
 
 newtype TargetIdList = TargetIdList (Array TargetId)
+derive instance newtypeTargetIdList :: Newtype TargetIdList _
 
 
 newtype TargetInput = TargetInput String
+derive instance newtypeTargetInput :: Newtype TargetInput _
 
 
 newtype TargetInputPath = TargetInputPath String
+derive instance newtypeTargetInputPath :: Newtype TargetInputPath _
 
 
 newtype TargetList = TargetList (Array Target)
+derive instance newtypeTargetList :: Newtype TargetList _
 
 
 newtype TargetPartitionKeyPath = TargetPartitionKeyPath String
+derive instance newtypeTargetPartitionKeyPath :: Newtype TargetPartitionKeyPath _
 
 
 newtype TestEventPatternRequest = TestEventPatternRequest 
   { "EventPattern" :: (EventPattern)
   , "Event" :: (String)
   }
+derive instance newtypeTestEventPatternRequest :: Newtype TestEventPatternRequest _
 
 
 newtype TestEventPatternResponse = TestEventPatternResponse 
   { "Result" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeTestEventPatternResponse :: Newtype TestEventPatternResponse _
 
 
 newtype TransformerInput = TransformerInput String
+derive instance newtypeTransformerInput :: Newtype TransformerInput _
 
 
 newtype TransformerPaths = TransformerPaths (Map InputTransformerPathKey TargetInputPath)
+derive instance newtypeTransformerPaths :: Newtype TransformerPaths _

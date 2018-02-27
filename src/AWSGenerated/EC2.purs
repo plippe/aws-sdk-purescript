@@ -6,6 +6,7 @@ module AWS.EC2 where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -1359,12 +1360,14 @@ newtype AcceptReservedInstancesExchangeQuoteRequest = AcceptReservedInstancesExc
   , "ReservedInstanceIds" :: (ReservedInstanceIdSet)
   , "TargetConfigurations" :: NullOrUndefined (TargetConfigurationRequestSet)
   }
+derive instance newtypeAcceptReservedInstancesExchangeQuoteRequest :: Newtype AcceptReservedInstancesExchangeQuoteRequest _
 
 
 -- | <p>The result of the exchange and whether it was <code>successful</code>.</p>
 newtype AcceptReservedInstancesExchangeQuoteResult = AcceptReservedInstancesExchangeQuoteResult 
   { "ExchangeId" :: NullOrUndefined (String)
   }
+derive instance newtypeAcceptReservedInstancesExchangeQuoteResult :: Newtype AcceptReservedInstancesExchangeQuoteResult _
 
 
 newtype AcceptVpcEndpointConnectionsRequest = AcceptVpcEndpointConnectionsRequest 
@@ -1372,11 +1375,13 @@ newtype AcceptVpcEndpointConnectionsRequest = AcceptVpcEndpointConnectionsReques
   , "ServiceId" :: (String)
   , "VpcEndpointIds" :: (ValueStringList)
   }
+derive instance newtypeAcceptVpcEndpointConnectionsRequest :: Newtype AcceptVpcEndpointConnectionsRequest _
 
 
 newtype AcceptVpcEndpointConnectionsResult = AcceptVpcEndpointConnectionsResult 
   { "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemSet)
   }
+derive instance newtypeAcceptVpcEndpointConnectionsResult :: Newtype AcceptVpcEndpointConnectionsResult _
 
 
 -- | <p>Contains the parameters for AcceptVpcPeeringConnection.</p>
@@ -1384,12 +1389,14 @@ newtype AcceptVpcPeeringConnectionRequest = AcceptVpcPeeringConnectionRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcPeeringConnectionId" :: NullOrUndefined (String)
   }
+derive instance newtypeAcceptVpcPeeringConnectionRequest :: Newtype AcceptVpcPeeringConnectionRequest _
 
 
 -- | <p>Contains the output of AcceptVpcPeeringConnection.</p>
 newtype AcceptVpcPeeringConnectionResult = AcceptVpcPeeringConnectionResult 
   { "VpcPeeringConnection" :: NullOrUndefined (VpcPeeringConnection)
   }
+derive instance newtypeAcceptVpcPeeringConnectionResult :: Newtype AcceptVpcPeeringConnectionResult _
 
 
 -- | <p>Describes an account attribute.</p>
@@ -1397,24 +1404,30 @@ newtype AccountAttribute = AccountAttribute
   { "AttributeName" :: NullOrUndefined (String)
   , "AttributeValues" :: NullOrUndefined (AccountAttributeValueList)
   }
+derive instance newtypeAccountAttribute :: Newtype AccountAttribute _
 
 
 newtype AccountAttributeList = AccountAttributeList (Array AccountAttribute)
+derive instance newtypeAccountAttributeList :: Newtype AccountAttributeList _
 
 
 newtype AccountAttributeName = AccountAttributeName String
+derive instance newtypeAccountAttributeName :: Newtype AccountAttributeName _
 
 
 newtype AccountAttributeNameStringList = AccountAttributeNameStringList (Array AccountAttributeName)
+derive instance newtypeAccountAttributeNameStringList :: Newtype AccountAttributeNameStringList _
 
 
 -- | <p>Describes a value of an account attribute.</p>
 newtype AccountAttributeValue = AccountAttributeValue 
   { "AttributeValue" :: NullOrUndefined (String)
   }
+derive instance newtypeAccountAttributeValue :: Newtype AccountAttributeValue _
 
 
 newtype AccountAttributeValueList = AccountAttributeValueList (Array AccountAttributeValue)
+derive instance newtypeAccountAttributeValueList :: Newtype AccountAttributeValueList _
 
 
 -- | <p>Describes a running instance in a Spot Fleet.</p>
@@ -1424,12 +1437,15 @@ newtype ActiveInstance = ActiveInstance
   , "SpotInstanceRequestId" :: NullOrUndefined (String)
   , "InstanceHealth" :: NullOrUndefined (InstanceHealthStatus)
   }
+derive instance newtypeActiveInstance :: Newtype ActiveInstance _
 
 
 newtype ActiveInstanceSet = ActiveInstanceSet (Array ActiveInstance)
+derive instance newtypeActiveInstanceSet :: Newtype ActiveInstanceSet _
 
 
 newtype ActivityStatus = ActivityStatus String
+derive instance newtypeActivityStatus :: Newtype ActivityStatus _
 
 
 -- | <p>Describes an Elastic IP address.</p>
@@ -1444,12 +1460,15 @@ newtype Address = Address
   , "PrivateIpAddress" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeAddress :: Newtype Address _
 
 
 newtype AddressList = AddressList (Array Address)
+derive instance newtypeAddressList :: Newtype AddressList _
 
 
 newtype Affinity = Affinity String
+derive instance newtypeAffinity :: Newtype Affinity _
 
 
 -- | <p>Contains the parameters for AllocateAddress.</p>
@@ -1458,6 +1477,7 @@ newtype AllocateAddressRequest = AllocateAddressRequest
   , "Address" :: NullOrUndefined (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAllocateAddressRequest :: Newtype AllocateAddressRequest _
 
 
 -- | <p>Contains the output of AllocateAddress.</p>
@@ -1466,6 +1486,7 @@ newtype AllocateAddressResult = AllocateAddressResult
   , "AllocationId" :: NullOrUndefined (String)
   , "Domain" :: NullOrUndefined (DomainType)
   }
+derive instance newtypeAllocateAddressResult :: Newtype AllocateAddressResult _
 
 
 -- | <p>Contains the parameters for AllocateHosts.</p>
@@ -1476,21 +1497,26 @@ newtype AllocateHostsRequest = AllocateHostsRequest
   , "InstanceType" :: (String)
   , "Quantity" :: (Int)
   }
+derive instance newtypeAllocateHostsRequest :: Newtype AllocateHostsRequest _
 
 
 -- | <p>Contains the output of AllocateHosts.</p>
 newtype AllocateHostsResult = AllocateHostsResult 
   { "HostIds" :: NullOrUndefined (ResponseHostIdList)
   }
+derive instance newtypeAllocateHostsResult :: Newtype AllocateHostsResult _
 
 
 newtype AllocationIdList = AllocationIdList (Array String)
+derive instance newtypeAllocationIdList :: Newtype AllocationIdList _
 
 
 newtype AllocationState = AllocationState String
+derive instance newtypeAllocationState :: Newtype AllocationState _
 
 
 newtype AllocationStrategy = AllocationStrategy String
+derive instance newtypeAllocationStrategy :: Newtype AllocationStrategy _
 
 
 -- | <p>Describes a principal.</p>
@@ -1498,12 +1524,15 @@ newtype AllowedPrincipal = AllowedPrincipal
   { "PrincipalType" :: NullOrUndefined (PrincipalType)
   , "Principal" :: NullOrUndefined (String)
   }
+derive instance newtypeAllowedPrincipal :: Newtype AllowedPrincipal _
 
 
 newtype AllowedPrincipalSet = AllowedPrincipalSet (Array AllowedPrincipal)
+derive instance newtypeAllowedPrincipalSet :: Newtype AllowedPrincipalSet _
 
 
 newtype ArchitectureValues = ArchitectureValues String
+derive instance newtypeArchitectureValues :: Newtype ArchitectureValues _
 
 
 newtype AssignIpv6AddressesRequest = AssignIpv6AddressesRequest 
@@ -1511,12 +1540,14 @@ newtype AssignIpv6AddressesRequest = AssignIpv6AddressesRequest
   , "Ipv6Addresses" :: NullOrUndefined (Ipv6AddressList)
   , "NetworkInterfaceId" :: (String)
   }
+derive instance newtypeAssignIpv6AddressesRequest :: Newtype AssignIpv6AddressesRequest _
 
 
 newtype AssignIpv6AddressesResult = AssignIpv6AddressesResult 
   { "AssignedIpv6Addresses" :: NullOrUndefined (Ipv6AddressList)
   , "NetworkInterfaceId" :: NullOrUndefined (String)
   }
+derive instance newtypeAssignIpv6AddressesResult :: Newtype AssignIpv6AddressesResult _
 
 
 -- | <p>Contains the parameters for AssignPrivateIpAddresses.</p>
@@ -1526,6 +1557,7 @@ newtype AssignPrivateIpAddressesRequest = AssignPrivateIpAddressesRequest
   , "PrivateIpAddresses" :: NullOrUndefined (PrivateIpAddressStringList)
   , "SecondaryPrivateIpAddressCount" :: NullOrUndefined (Int)
   }
+derive instance newtypeAssignPrivateIpAddressesRequest :: Newtype AssignPrivateIpAddressesRequest _
 
 
 -- | <p>Contains the parameters for AssociateAddress.</p>
@@ -1538,12 +1570,14 @@ newtype AssociateAddressRequest = AssociateAddressRequest
   , "NetworkInterfaceId" :: NullOrUndefined (String)
   , "PrivateIpAddress" :: NullOrUndefined (String)
   }
+derive instance newtypeAssociateAddressRequest :: Newtype AssociateAddressRequest _
 
 
 -- | <p>Contains the output of AssociateAddress.</p>
 newtype AssociateAddressResult = AssociateAddressResult 
   { "AssociationId" :: NullOrUndefined (String)
   }
+derive instance newtypeAssociateAddressResult :: Newtype AssociateAddressResult _
 
 
 -- | <p>Contains the parameters for AssociateDhcpOptions.</p>
@@ -1552,17 +1586,20 @@ newtype AssociateDhcpOptionsRequest = AssociateDhcpOptionsRequest
   , "VpcId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAssociateDhcpOptionsRequest :: Newtype AssociateDhcpOptionsRequest _
 
 
 newtype AssociateIamInstanceProfileRequest = AssociateIamInstanceProfileRequest 
   { "IamInstanceProfile" :: (IamInstanceProfileSpecification)
   , "InstanceId" :: (String)
   }
+derive instance newtypeAssociateIamInstanceProfileRequest :: Newtype AssociateIamInstanceProfileRequest _
 
 
 newtype AssociateIamInstanceProfileResult = AssociateIamInstanceProfileResult 
   { "IamInstanceProfileAssociation" :: NullOrUndefined (IamInstanceProfileAssociation)
   }
+derive instance newtypeAssociateIamInstanceProfileResult :: Newtype AssociateIamInstanceProfileResult _
 
 
 -- | <p>Contains the parameters for AssociateRouteTable.</p>
@@ -1571,24 +1608,28 @@ newtype AssociateRouteTableRequest = AssociateRouteTableRequest
   , "RouteTableId" :: (String)
   , "SubnetId" :: (String)
   }
+derive instance newtypeAssociateRouteTableRequest :: Newtype AssociateRouteTableRequest _
 
 
 -- | <p>Contains the output of AssociateRouteTable.</p>
 newtype AssociateRouteTableResult = AssociateRouteTableResult 
   { "AssociationId" :: NullOrUndefined (String)
   }
+derive instance newtypeAssociateRouteTableResult :: Newtype AssociateRouteTableResult _
 
 
 newtype AssociateSubnetCidrBlockRequest = AssociateSubnetCidrBlockRequest 
   { "Ipv6CidrBlock" :: (String)
   , "SubnetId" :: (String)
   }
+derive instance newtypeAssociateSubnetCidrBlockRequest :: Newtype AssociateSubnetCidrBlockRequest _
 
 
 newtype AssociateSubnetCidrBlockResult = AssociateSubnetCidrBlockResult 
   { "Ipv6CidrBlockAssociation" :: NullOrUndefined (SubnetIpv6CidrBlockAssociation)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeAssociateSubnetCidrBlockResult :: Newtype AssociateSubnetCidrBlockResult _
 
 
 newtype AssociateVpcCidrBlockRequest = AssociateVpcCidrBlockRequest 
@@ -1596,6 +1637,7 @@ newtype AssociateVpcCidrBlockRequest = AssociateVpcCidrBlockRequest
   , "CidrBlock" :: NullOrUndefined (String)
   , "VpcId" :: (String)
   }
+derive instance newtypeAssociateVpcCidrBlockRequest :: Newtype AssociateVpcCidrBlockRequest _
 
 
 newtype AssociateVpcCidrBlockResult = AssociateVpcCidrBlockResult 
@@ -1603,9 +1645,11 @@ newtype AssociateVpcCidrBlockResult = AssociateVpcCidrBlockResult
   , "CidrBlockAssociation" :: NullOrUndefined (VpcCidrBlockAssociation)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeAssociateVpcCidrBlockResult :: Newtype AssociateVpcCidrBlockResult _
 
 
 newtype AssociationIdList = AssociationIdList (Array String)
+derive instance newtypeAssociationIdList :: Newtype AssociationIdList _
 
 
 -- | <p>Contains the parameters for AttachClassicLinkVpc.</p>
@@ -1615,12 +1659,14 @@ newtype AttachClassicLinkVpcRequest = AttachClassicLinkVpcRequest
   , "InstanceId" :: (String)
   , "VpcId" :: (String)
   }
+derive instance newtypeAttachClassicLinkVpcRequest :: Newtype AttachClassicLinkVpcRequest _
 
 
 -- | <p>Contains the output of AttachClassicLinkVpc.</p>
 newtype AttachClassicLinkVpcResult = AttachClassicLinkVpcResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAttachClassicLinkVpcResult :: Newtype AttachClassicLinkVpcResult _
 
 
 -- | <p>Contains the parameters for AttachInternetGateway.</p>
@@ -1629,6 +1675,7 @@ newtype AttachInternetGatewayRequest = AttachInternetGatewayRequest
   , "InternetGatewayId" :: (String)
   , "VpcId" :: (String)
   }
+derive instance newtypeAttachInternetGatewayRequest :: Newtype AttachInternetGatewayRequest _
 
 
 -- | <p>Contains the parameters for AttachNetworkInterface.</p>
@@ -1638,12 +1685,14 @@ newtype AttachNetworkInterfaceRequest = AttachNetworkInterfaceRequest
   , "InstanceId" :: (String)
   , "NetworkInterfaceId" :: (String)
   }
+derive instance newtypeAttachNetworkInterfaceRequest :: Newtype AttachNetworkInterfaceRequest _
 
 
 -- | <p>Contains the output of AttachNetworkInterface.</p>
 newtype AttachNetworkInterfaceResult = AttachNetworkInterfaceResult 
   { "AttachmentId" :: NullOrUndefined (String)
   }
+derive instance newtypeAttachNetworkInterfaceResult :: Newtype AttachNetworkInterfaceResult _
 
 
 -- | <p>Contains the parameters for AttachVolume.</p>
@@ -1653,6 +1702,7 @@ newtype AttachVolumeRequest = AttachVolumeRequest
   , "VolumeId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAttachVolumeRequest :: Newtype AttachVolumeRequest _
 
 
 -- | <p>Contains the parameters for AttachVpnGateway.</p>
@@ -1661,27 +1711,32 @@ newtype AttachVpnGatewayRequest = AttachVpnGatewayRequest
   , "VpnGatewayId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAttachVpnGatewayRequest :: Newtype AttachVpnGatewayRequest _
 
 
 -- | <p>Contains the output of AttachVpnGateway.</p>
 newtype AttachVpnGatewayResult = AttachVpnGatewayResult 
   { "VpcAttachment" :: NullOrUndefined (VpcAttachment)
   }
+derive instance newtypeAttachVpnGatewayResult :: Newtype AttachVpnGatewayResult _
 
 
 newtype AttachmentStatus = AttachmentStatus String
+derive instance newtypeAttachmentStatus :: Newtype AttachmentStatus _
 
 
 -- | <p>Describes a value for a resource attribute that is a Boolean value.</p>
 newtype AttributeBooleanValue = AttributeBooleanValue 
   { "Value" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAttributeBooleanValue :: Newtype AttributeBooleanValue _
 
 
 -- | <p>Describes a value for a resource attribute that is a String.</p>
 newtype AttributeValue = AttributeValue 
   { "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeAttributeValue :: Newtype AttributeValue _
 
 
 -- | <p>Contains the parameters for AuthorizeSecurityGroupEgress.</p>
@@ -1696,6 +1751,7 @@ newtype AuthorizeSecurityGroupEgressRequest = AuthorizeSecurityGroupEgressReques
   , "SourceSecurityGroupName" :: NullOrUndefined (String)
   , "SourceSecurityGroupOwnerId" :: NullOrUndefined (String)
   }
+derive instance newtypeAuthorizeSecurityGroupEgressRequest :: Newtype AuthorizeSecurityGroupEgressRequest _
 
 
 -- | <p>Contains the parameters for AuthorizeSecurityGroupIngress.</p>
@@ -1711,9 +1767,11 @@ newtype AuthorizeSecurityGroupIngressRequest = AuthorizeSecurityGroupIngressRequ
   , "ToPort" :: NullOrUndefined (Int)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAuthorizeSecurityGroupIngressRequest :: Newtype AuthorizeSecurityGroupIngressRequest _
 
 
 newtype AutoPlacement = AutoPlacement String
+derive instance newtypeAutoPlacement :: Newtype AutoPlacement _
 
 
 -- | <p>Describes an Availability Zone.</p>
@@ -1723,21 +1781,26 @@ newtype AvailabilityZone = AvailabilityZone
   , "RegionName" :: NullOrUndefined (String)
   , "ZoneName" :: NullOrUndefined (String)
   }
+derive instance newtypeAvailabilityZone :: Newtype AvailabilityZone _
 
 
 newtype AvailabilityZoneList = AvailabilityZoneList (Array AvailabilityZone)
+derive instance newtypeAvailabilityZoneList :: Newtype AvailabilityZoneList _
 
 
 -- | <p>Describes a message about an Availability Zone.</p>
 newtype AvailabilityZoneMessage = AvailabilityZoneMessage 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeAvailabilityZoneMessage :: Newtype AvailabilityZoneMessage _
 
 
 newtype AvailabilityZoneMessageList = AvailabilityZoneMessageList (Array AvailabilityZoneMessage)
+derive instance newtypeAvailabilityZoneMessageList :: Newtype AvailabilityZoneMessageList _
 
 
 newtype AvailabilityZoneState = AvailabilityZoneState String
+derive instance newtypeAvailabilityZoneState :: Newtype AvailabilityZoneState _
 
 
 -- | <p>The capacity information for instances launched onto the Dedicated Host.</p>
@@ -1745,20 +1808,25 @@ newtype AvailableCapacity = AvailableCapacity
   { "AvailableInstanceCapacity" :: NullOrUndefined (AvailableInstanceCapacityList)
   , "AvailableVCpus" :: NullOrUndefined (Int)
   }
+derive instance newtypeAvailableCapacity :: Newtype AvailableCapacity _
 
 
 newtype AvailableInstanceCapacityList = AvailableInstanceCapacityList (Array InstanceCapacity)
+derive instance newtypeAvailableInstanceCapacityList :: Newtype AvailableInstanceCapacityList _
 
 
 newtype BatchState = BatchState String
+derive instance newtypeBatchState :: Newtype BatchState _
 
 
 newtype BillingProductList = BillingProductList (Array String)
+derive instance newtypeBillingProductList :: Newtype BillingProductList _
 
 
 newtype BlobAttributeValue = BlobAttributeValue 
   { "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeBlobAttributeValue :: Newtype BlobAttributeValue _
 
 
 -- | <p>Describes a block device mapping.</p>
@@ -1768,15 +1836,19 @@ newtype BlockDeviceMapping = BlockDeviceMapping
   , "Ebs" :: NullOrUndefined (EbsBlockDevice)
   , "NoDevice" :: NullOrUndefined (String)
   }
+derive instance newtypeBlockDeviceMapping :: Newtype BlockDeviceMapping _
 
 
 newtype BlockDeviceMappingList = BlockDeviceMappingList (Array BlockDeviceMapping)
+derive instance newtypeBlockDeviceMappingList :: Newtype BlockDeviceMappingList _
 
 
 newtype BlockDeviceMappingRequestList = BlockDeviceMappingRequestList (Array BlockDeviceMapping)
+derive instance newtypeBlockDeviceMappingRequestList :: Newtype BlockDeviceMappingRequestList _
 
 
 newtype BundleIdStringList = BundleIdStringList (Array String)
+derive instance newtypeBundleIdStringList :: Newtype BundleIdStringList _
 
 
 -- | <p>Contains the parameters for BundleInstance.</p>
@@ -1785,12 +1857,14 @@ newtype BundleInstanceRequest = BundleInstanceRequest
   , "Storage" :: (Storage)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeBundleInstanceRequest :: Newtype BundleInstanceRequest _
 
 
 -- | <p>Contains the output of BundleInstance.</p>
 newtype BundleInstanceResult = BundleInstanceResult 
   { "BundleTask" :: NullOrUndefined (BundleTask)
   }
+derive instance newtypeBundleInstanceResult :: Newtype BundleInstanceResult _
 
 
 -- | <p>Describes a bundle task.</p>
@@ -1804,6 +1878,7 @@ newtype BundleTask = BundleTask
   , "Storage" :: NullOrUndefined (Storage)
   , "UpdateTime" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeBundleTask :: Newtype BundleTask _
 
 
 -- | <p>Describes an error for <a>BundleInstance</a>.</p>
@@ -1811,15 +1886,19 @@ newtype BundleTaskError = BundleTaskError
   { "Code" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeBundleTaskError :: Newtype BundleTaskError _
 
 
 newtype BundleTaskList = BundleTaskList (Array BundleTask)
+derive instance newtypeBundleTaskList :: Newtype BundleTaskList _
 
 
 newtype BundleTaskState = BundleTaskState String
+derive instance newtypeBundleTaskState :: Newtype BundleTaskState _
 
 
 newtype CancelBatchErrorCode = CancelBatchErrorCode String
+derive instance newtypeCancelBatchErrorCode :: Newtype CancelBatchErrorCode _
 
 
 -- | <p>Contains the parameters for CancelBundleTask.</p>
@@ -1827,12 +1906,14 @@ newtype CancelBundleTaskRequest = CancelBundleTaskRequest
   { "BundleId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCancelBundleTaskRequest :: Newtype CancelBundleTaskRequest _
 
 
 -- | <p>Contains the output of CancelBundleTask.</p>
 newtype CancelBundleTaskResult = CancelBundleTaskResult 
   { "BundleTask" :: NullOrUndefined (BundleTask)
   }
+derive instance newtypeCancelBundleTaskResult :: Newtype CancelBundleTaskResult _
 
 
 -- | <p>Contains the parameters for CancelConversionTask.</p>
@@ -1841,12 +1922,14 @@ newtype CancelConversionRequest = CancelConversionRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "ReasonMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeCancelConversionRequest :: Newtype CancelConversionRequest _
 
 
 -- | <p>Contains the parameters for CancelExportTask.</p>
 newtype CancelExportTaskRequest = CancelExportTaskRequest 
   { "ExportTaskId" :: (String)
   }
+derive instance newtypeCancelExportTaskRequest :: Newtype CancelExportTaskRequest _
 
 
 -- | <p>Contains the parameters for CancelImportTask.</p>
@@ -1855,6 +1938,7 @@ newtype CancelImportTaskRequest = CancelImportTaskRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "ImportTaskId" :: NullOrUndefined (String)
   }
+derive instance newtypeCancelImportTaskRequest :: Newtype CancelImportTaskRequest _
 
 
 -- | <p>Contains the output for CancelImportTask.</p>
@@ -1863,18 +1947,21 @@ newtype CancelImportTaskResult = CancelImportTaskResult
   , "PreviousState" :: NullOrUndefined (String)
   , "State" :: NullOrUndefined (String)
   }
+derive instance newtypeCancelImportTaskResult :: Newtype CancelImportTaskResult _
 
 
 -- | <p>Contains the parameters for CancelReservedInstancesListing.</p>
 newtype CancelReservedInstancesListingRequest = CancelReservedInstancesListingRequest 
   { "ReservedInstancesListingId" :: (String)
   }
+derive instance newtypeCancelReservedInstancesListingRequest :: Newtype CancelReservedInstancesListingRequest _
 
 
 -- | <p>Contains the output of CancelReservedInstancesListing.</p>
 newtype CancelReservedInstancesListingResult = CancelReservedInstancesListingResult 
   { "ReservedInstancesListings" :: NullOrUndefined (ReservedInstancesListingList)
   }
+derive instance newtypeCancelReservedInstancesListingResult :: Newtype CancelReservedInstancesListingResult _
 
 
 -- | <p>Describes a Spot Fleet error.</p>
@@ -1882,6 +1969,7 @@ newtype CancelSpotFleetRequestsError = CancelSpotFleetRequestsError
   { "Code" :: (CancelBatchErrorCode)
   , "Message" :: (String)
   }
+derive instance newtypeCancelSpotFleetRequestsError :: Newtype CancelSpotFleetRequestsError _
 
 
 -- | <p>Describes a Spot Fleet request that was not successfully canceled.</p>
@@ -1889,9 +1977,11 @@ newtype CancelSpotFleetRequestsErrorItem = CancelSpotFleetRequestsErrorItem
   { "Error" :: (CancelSpotFleetRequestsError)
   , "SpotFleetRequestId" :: (String)
   }
+derive instance newtypeCancelSpotFleetRequestsErrorItem :: Newtype CancelSpotFleetRequestsErrorItem _
 
 
 newtype CancelSpotFleetRequestsErrorSet = CancelSpotFleetRequestsErrorSet (Array CancelSpotFleetRequestsErrorItem)
+derive instance newtypeCancelSpotFleetRequestsErrorSet :: Newtype CancelSpotFleetRequestsErrorSet _
 
 
 -- | <p>Contains the parameters for CancelSpotFleetRequests.</p>
@@ -1900,6 +1990,7 @@ newtype CancelSpotFleetRequestsRequest = CancelSpotFleetRequestsRequest
   , "SpotFleetRequestIds" :: (ValueStringList)
   , "TerminateInstances" :: (Boolean)
   }
+derive instance newtypeCancelSpotFleetRequestsRequest :: Newtype CancelSpotFleetRequestsRequest _
 
 
 -- | <p>Contains the output of CancelSpotFleetRequests.</p>
@@ -1907,6 +1998,7 @@ newtype CancelSpotFleetRequestsResponse = CancelSpotFleetRequestsResponse
   { "SuccessfulFleetRequests" :: NullOrUndefined (CancelSpotFleetRequestsSuccessSet)
   , "UnsuccessfulFleetRequests" :: NullOrUndefined (CancelSpotFleetRequestsErrorSet)
   }
+derive instance newtypeCancelSpotFleetRequestsResponse :: Newtype CancelSpotFleetRequestsResponse _
 
 
 -- | <p>Describes a Spot Fleet request that was successfully canceled.</p>
@@ -1915,12 +2007,15 @@ newtype CancelSpotFleetRequestsSuccessItem = CancelSpotFleetRequestsSuccessItem
   , "PreviousSpotFleetRequestState" :: (BatchState)
   , "SpotFleetRequestId" :: (String)
   }
+derive instance newtypeCancelSpotFleetRequestsSuccessItem :: Newtype CancelSpotFleetRequestsSuccessItem _
 
 
 newtype CancelSpotFleetRequestsSuccessSet = CancelSpotFleetRequestsSuccessSet (Array CancelSpotFleetRequestsSuccessItem)
+derive instance newtypeCancelSpotFleetRequestsSuccessSet :: Newtype CancelSpotFleetRequestsSuccessSet _
 
 
 newtype CancelSpotInstanceRequestState = CancelSpotInstanceRequestState String
+derive instance newtypeCancelSpotInstanceRequestState :: Newtype CancelSpotInstanceRequestState _
 
 
 -- | <p>Contains the parameters for CancelSpotInstanceRequests.</p>
@@ -1928,12 +2023,14 @@ newtype CancelSpotInstanceRequestsRequest = CancelSpotInstanceRequestsRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "SpotInstanceRequestIds" :: (SpotInstanceRequestIdList)
   }
+derive instance newtypeCancelSpotInstanceRequestsRequest :: Newtype CancelSpotInstanceRequestsRequest _
 
 
 -- | <p>Contains the output of CancelSpotInstanceRequests.</p>
 newtype CancelSpotInstanceRequestsResult = CancelSpotInstanceRequestsResult 
   { "CancelledSpotInstanceRequests" :: NullOrUndefined (CancelledSpotInstanceRequestList)
   }
+derive instance newtypeCancelSpotInstanceRequestsResult :: Newtype CancelSpotInstanceRequestsResult _
 
 
 -- | <p>Describes a request to cancel a Spot Instance.</p>
@@ -1941,18 +2038,22 @@ newtype CancelledSpotInstanceRequest = CancelledSpotInstanceRequest
   { "SpotInstanceRequestId" :: NullOrUndefined (String)
   , "State" :: NullOrUndefined (CancelSpotInstanceRequestState)
   }
+derive instance newtypeCancelledSpotInstanceRequest :: Newtype CancelledSpotInstanceRequest _
 
 
 newtype CancelledSpotInstanceRequestList = CancelledSpotInstanceRequestList (Array CancelledSpotInstanceRequest)
+derive instance newtypeCancelledSpotInstanceRequestList :: Newtype CancelledSpotInstanceRequestList _
 
 
 -- | <p>Describes an IPv4 CIDR block.</p>
 newtype CidrBlock = CidrBlock 
   { "CidrBlock" :: NullOrUndefined (String)
   }
+derive instance newtypeCidrBlock :: Newtype CidrBlock _
 
 
 newtype CidrBlockSet = CidrBlockSet (Array CidrBlock)
+derive instance newtypeCidrBlockSet :: Newtype CidrBlockSet _
 
 
 -- | <p>Describes the ClassicLink DNS support status of a VPC.</p>
@@ -1960,9 +2061,11 @@ newtype ClassicLinkDnsSupport = ClassicLinkDnsSupport
   { "ClassicLinkDnsSupported" :: NullOrUndefined (Boolean)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeClassicLinkDnsSupport :: Newtype ClassicLinkDnsSupport _
 
 
 newtype ClassicLinkDnsSupportList = ClassicLinkDnsSupportList (Array ClassicLinkDnsSupport)
+derive instance newtypeClassicLinkDnsSupportList :: Newtype ClassicLinkDnsSupportList _
 
 
 -- | <p>Describes a linked EC2-Classic instance.</p>
@@ -1972,24 +2075,29 @@ newtype ClassicLinkInstance = ClassicLinkInstance
   , "Tags" :: NullOrUndefined (TagList)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeClassicLinkInstance :: Newtype ClassicLinkInstance _
 
 
 newtype ClassicLinkInstanceList = ClassicLinkInstanceList (Array ClassicLinkInstance)
+derive instance newtypeClassicLinkInstanceList :: Newtype ClassicLinkInstanceList _
 
 
 -- | <p>Describes a Classic Load Balancer.</p>
 newtype ClassicLoadBalancer = ClassicLoadBalancer 
   { "Name" :: (String)
   }
+derive instance newtypeClassicLoadBalancer :: Newtype ClassicLoadBalancer _
 
 
 newtype ClassicLoadBalancers = ClassicLoadBalancers (Array ClassicLoadBalancer)
+derive instance newtypeClassicLoadBalancers :: Newtype ClassicLoadBalancers _
 
 
 -- | <p>Describes the Classic Load Balancers to attach to a Spot Fleet. Spot Fleet registers the running Spot Instances with these Classic Load Balancers.</p>
 newtype ClassicLoadBalancersConfig = ClassicLoadBalancersConfig 
   { "ClassicLoadBalancers" :: (ClassicLoadBalancers)
   }
+derive instance newtypeClassicLoadBalancersConfig :: Newtype ClassicLoadBalancersConfig _
 
 
 -- | <p>Describes the client-specific data.</p>
@@ -1999,6 +2107,7 @@ newtype ClientData = ClientData
   , "UploadSize" :: NullOrUndefined (Number)
   , "UploadStart" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeClientData :: Newtype ClientData _
 
 
 -- | <p>Contains the parameters for ConfirmProductInstance.</p>
@@ -2007,6 +2116,7 @@ newtype ConfirmProductInstanceRequest = ConfirmProductInstanceRequest
   , "ProductCode" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeConfirmProductInstanceRequest :: Newtype ConfirmProductInstanceRequest _
 
 
 -- | <p>Contains the output of ConfirmProductInstance.</p>
@@ -2014,6 +2124,7 @@ newtype ConfirmProductInstanceResult = ConfirmProductInstanceResult
   { "OwnerId" :: NullOrUndefined (String)
   , "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeConfirmProductInstanceResult :: Newtype ConfirmProductInstanceResult _
 
 
 -- | <p>Describes a connection notification for a VPC endpoint or VPC endpoint service.</p>
@@ -2026,21 +2137,27 @@ newtype ConnectionNotification = ConnectionNotification
   , "ConnectionEvents" :: NullOrUndefined (ValueStringList)
   , "ConnectionNotificationState" :: NullOrUndefined (ConnectionNotificationState)
   }
+derive instance newtypeConnectionNotification :: Newtype ConnectionNotification _
 
 
 newtype ConnectionNotificationSet = ConnectionNotificationSet (Array ConnectionNotification)
+derive instance newtypeConnectionNotificationSet :: Newtype ConnectionNotificationSet _
 
 
 newtype ConnectionNotificationState = ConnectionNotificationState String
+derive instance newtypeConnectionNotificationState :: Newtype ConnectionNotificationState _
 
 
 newtype ConnectionNotificationType = ConnectionNotificationType String
+derive instance newtypeConnectionNotificationType :: Newtype ConnectionNotificationType _
 
 
 newtype ContainerFormat = ContainerFormat String
+derive instance newtypeContainerFormat :: Newtype ContainerFormat _
 
 
 newtype ConversionIdStringList = ConversionIdStringList (Array String)
+derive instance newtypeConversionIdStringList :: Newtype ConversionIdStringList _
 
 
 -- | <p>Describes a conversion task.</p>
@@ -2053,9 +2170,11 @@ newtype ConversionTask = ConversionTask
   , "StatusMessage" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeConversionTask :: Newtype ConversionTask _
 
 
 newtype ConversionTaskState = ConversionTaskState String
+derive instance newtypeConversionTaskState :: Newtype ConversionTaskState _
 
 
 newtype CopyFpgaImageRequest = CopyFpgaImageRequest 
@@ -2066,11 +2185,13 @@ newtype CopyFpgaImageRequest = CopyFpgaImageRequest
   , "SourceRegion" :: (String)
   , "ClientToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCopyFpgaImageRequest :: Newtype CopyFpgaImageRequest _
 
 
 newtype CopyFpgaImageResult = CopyFpgaImageResult 
   { "FpgaImageId" :: NullOrUndefined (String)
   }
+derive instance newtypeCopyFpgaImageResult :: Newtype CopyFpgaImageResult _
 
 
 -- | <p>Contains the parameters for CopyImage.</p>
@@ -2084,12 +2205,14 @@ newtype CopyImageRequest = CopyImageRequest
   , "SourceRegion" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCopyImageRequest :: Newtype CopyImageRequest _
 
 
 -- | <p>Contains the output of CopyImage.</p>
 newtype CopyImageResult = CopyImageResult 
   { "ImageId" :: NullOrUndefined (String)
   }
+derive instance newtypeCopyImageResult :: Newtype CopyImageResult _
 
 
 -- | <p>Contains the parameters for CopySnapshot.</p>
@@ -2103,12 +2226,14 @@ newtype CopySnapshotRequest = CopySnapshotRequest
   , "SourceSnapshotId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCopySnapshotRequest :: Newtype CopySnapshotRequest _
 
 
 -- | <p>Contains the output of CopySnapshot.</p>
 newtype CopySnapshotResult = CopySnapshotResult 
   { "SnapshotId" :: NullOrUndefined (String)
   }
+derive instance newtypeCopySnapshotResult :: Newtype CopySnapshotResult _
 
 
 -- | <p>Contains the parameters for CreateCustomerGateway.</p>
@@ -2118,35 +2243,41 @@ newtype CreateCustomerGatewayRequest = CreateCustomerGatewayRequest
   , "Type" :: (GatewayType)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateCustomerGatewayRequest :: Newtype CreateCustomerGatewayRequest _
 
 
 -- | <p>Contains the output of CreateCustomerGateway.</p>
 newtype CreateCustomerGatewayResult = CreateCustomerGatewayResult 
   { "CustomerGateway" :: NullOrUndefined (CustomerGateway)
   }
+derive instance newtypeCreateCustomerGatewayResult :: Newtype CreateCustomerGatewayResult _
 
 
 newtype CreateDefaultSubnetRequest = CreateDefaultSubnetRequest 
   { "AvailabilityZone" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateDefaultSubnetRequest :: Newtype CreateDefaultSubnetRequest _
 
 
 newtype CreateDefaultSubnetResult = CreateDefaultSubnetResult 
   { "Subnet" :: NullOrUndefined (Subnet)
   }
+derive instance newtypeCreateDefaultSubnetResult :: Newtype CreateDefaultSubnetResult _
 
 
 -- | <p>Contains the parameters for CreateDefaultVpc.</p>
 newtype CreateDefaultVpcRequest = CreateDefaultVpcRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateDefaultVpcRequest :: Newtype CreateDefaultVpcRequest _
 
 
 -- | <p>Contains the output of CreateDefaultVpc.</p>
 newtype CreateDefaultVpcResult = CreateDefaultVpcResult 
   { "Vpc" :: NullOrUndefined (Vpc)
   }
+derive instance newtypeCreateDefaultVpcResult :: Newtype CreateDefaultVpcResult _
 
 
 -- | <p>Contains the parameters for CreateDhcpOptions.</p>
@@ -2154,12 +2285,14 @@ newtype CreateDhcpOptionsRequest = CreateDhcpOptionsRequest
   { "DhcpConfigurations" :: (NewDhcpConfigurationList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateDhcpOptionsRequest :: Newtype CreateDhcpOptionsRequest _
 
 
 -- | <p>Contains the output of CreateDhcpOptions.</p>
 newtype CreateDhcpOptionsResult = CreateDhcpOptionsResult 
   { "DhcpOptions" :: NullOrUndefined (DhcpOptions)
   }
+derive instance newtypeCreateDhcpOptionsResult :: Newtype CreateDhcpOptionsResult _
 
 
 newtype CreateEgressOnlyInternetGatewayRequest = CreateEgressOnlyInternetGatewayRequest 
@@ -2167,12 +2300,14 @@ newtype CreateEgressOnlyInternetGatewayRequest = CreateEgressOnlyInternetGateway
   , "DryRun" :: NullOrUndefined (Boolean)
   , "VpcId" :: (String)
   }
+derive instance newtypeCreateEgressOnlyInternetGatewayRequest :: Newtype CreateEgressOnlyInternetGatewayRequest _
 
 
 newtype CreateEgressOnlyInternetGatewayResult = CreateEgressOnlyInternetGatewayResult 
   { "ClientToken" :: NullOrUndefined (String)
   , "EgressOnlyInternetGateway" :: NullOrUndefined (EgressOnlyInternetGateway)
   }
+derive instance newtypeCreateEgressOnlyInternetGatewayResult :: Newtype CreateEgressOnlyInternetGatewayResult _
 
 
 -- | <p>Contains the parameters for CreateFlowLogs.</p>
@@ -2184,6 +2319,7 @@ newtype CreateFlowLogsRequest = CreateFlowLogsRequest
   , "ResourceType" :: (FlowLogsResourceType)
   , "TrafficType" :: (TrafficType)
   }
+derive instance newtypeCreateFlowLogsRequest :: Newtype CreateFlowLogsRequest _
 
 
 -- | <p>Contains the output of CreateFlowLogs.</p>
@@ -2192,6 +2328,7 @@ newtype CreateFlowLogsResult = CreateFlowLogsResult
   , "FlowLogIds" :: NullOrUndefined (ValueStringList)
   , "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemSet)
   }
+derive instance newtypeCreateFlowLogsResult :: Newtype CreateFlowLogsResult _
 
 
 newtype CreateFpgaImageRequest = CreateFpgaImageRequest 
@@ -2202,12 +2339,14 @@ newtype CreateFpgaImageRequest = CreateFpgaImageRequest
   , "Name" :: NullOrUndefined (String)
   , "ClientToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateFpgaImageRequest :: Newtype CreateFpgaImageRequest _
 
 
 newtype CreateFpgaImageResult = CreateFpgaImageResult 
   { "FpgaImageId" :: NullOrUndefined (String)
   , "FpgaImageGlobalId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateFpgaImageResult :: Newtype CreateFpgaImageResult _
 
 
 -- | <p>Contains the parameters for CreateImage.</p>
@@ -2219,12 +2358,14 @@ newtype CreateImageRequest = CreateImageRequest
   , "Name" :: (String)
   , "NoReboot" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateImageRequest :: Newtype CreateImageRequest _
 
 
 -- | <p>Contains the output of CreateImage.</p>
 newtype CreateImageResult = CreateImageResult 
   { "ImageId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateImageResult :: Newtype CreateImageResult _
 
 
 -- | <p>Contains the parameters for CreateInstanceExportTask.</p>
@@ -2234,24 +2375,28 @@ newtype CreateInstanceExportTaskRequest = CreateInstanceExportTaskRequest
   , "InstanceId" :: (String)
   , "TargetEnvironment" :: NullOrUndefined (ExportEnvironment)
   }
+derive instance newtypeCreateInstanceExportTaskRequest :: Newtype CreateInstanceExportTaskRequest _
 
 
 -- | <p>Contains the output for CreateInstanceExportTask.</p>
 newtype CreateInstanceExportTaskResult = CreateInstanceExportTaskResult 
   { "ExportTask" :: NullOrUndefined (ExportTask)
   }
+derive instance newtypeCreateInstanceExportTaskResult :: Newtype CreateInstanceExportTaskResult _
 
 
 -- | <p>Contains the parameters for CreateInternetGateway.</p>
 newtype CreateInternetGatewayRequest = CreateInternetGatewayRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateInternetGatewayRequest :: Newtype CreateInternetGatewayRequest _
 
 
 -- | <p>Contains the output of CreateInternetGateway.</p>
 newtype CreateInternetGatewayResult = CreateInternetGatewayResult 
   { "InternetGateway" :: NullOrUndefined (InternetGateway)
   }
+derive instance newtypeCreateInternetGatewayResult :: Newtype CreateInternetGatewayResult _
 
 
 -- | <p>Contains the parameters for CreateKeyPair.</p>
@@ -2259,6 +2404,7 @@ newtype CreateKeyPairRequest = CreateKeyPairRequest
   { "KeyName" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateKeyPairRequest :: Newtype CreateKeyPairRequest _
 
 
 newtype CreateLaunchTemplateRequest = CreateLaunchTemplateRequest 
@@ -2268,11 +2414,13 @@ newtype CreateLaunchTemplateRequest = CreateLaunchTemplateRequest
   , "VersionDescription" :: NullOrUndefined (VersionDescription)
   , "LaunchTemplateData" :: (RequestLaunchTemplateData)
   }
+derive instance newtypeCreateLaunchTemplateRequest :: Newtype CreateLaunchTemplateRequest _
 
 
 newtype CreateLaunchTemplateResult = CreateLaunchTemplateResult 
   { "LaunchTemplate" :: NullOrUndefined (LaunchTemplate)
   }
+derive instance newtypeCreateLaunchTemplateResult :: Newtype CreateLaunchTemplateResult _
 
 
 newtype CreateLaunchTemplateVersionRequest = CreateLaunchTemplateVersionRequest 
@@ -2284,11 +2432,13 @@ newtype CreateLaunchTemplateVersionRequest = CreateLaunchTemplateVersionRequest
   , "VersionDescription" :: NullOrUndefined (VersionDescription)
   , "LaunchTemplateData" :: (RequestLaunchTemplateData)
   }
+derive instance newtypeCreateLaunchTemplateVersionRequest :: Newtype CreateLaunchTemplateVersionRequest _
 
 
 newtype CreateLaunchTemplateVersionResult = CreateLaunchTemplateVersionResult 
   { "LaunchTemplateVersion" :: NullOrUndefined (LaunchTemplateVersion)
   }
+derive instance newtypeCreateLaunchTemplateVersionResult :: Newtype CreateLaunchTemplateVersionResult _
 
 
 -- | <p>Contains the parameters for CreateNatGateway.</p>
@@ -2297,6 +2447,7 @@ newtype CreateNatGatewayRequest = CreateNatGatewayRequest
   , "ClientToken" :: NullOrUndefined (String)
   , "SubnetId" :: (String)
   }
+derive instance newtypeCreateNatGatewayRequest :: Newtype CreateNatGatewayRequest _
 
 
 -- | <p>Contains the output of CreateNatGateway.</p>
@@ -2304,6 +2455,7 @@ newtype CreateNatGatewayResult = CreateNatGatewayResult
   { "ClientToken" :: NullOrUndefined (String)
   , "NatGateway" :: NullOrUndefined (NatGateway)
   }
+derive instance newtypeCreateNatGatewayResult :: Newtype CreateNatGatewayResult _
 
 
 -- | <p>Contains the parameters for CreateNetworkAclEntry.</p>
@@ -2319,6 +2471,7 @@ newtype CreateNetworkAclEntryRequest = CreateNetworkAclEntryRequest
   , "RuleAction" :: (RuleAction)
   , "RuleNumber" :: (Int)
   }
+derive instance newtypeCreateNetworkAclEntryRequest :: Newtype CreateNetworkAclEntryRequest _
 
 
 -- | <p>Contains the parameters for CreateNetworkAcl.</p>
@@ -2326,12 +2479,14 @@ newtype CreateNetworkAclRequest = CreateNetworkAclRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcId" :: (String)
   }
+derive instance newtypeCreateNetworkAclRequest :: Newtype CreateNetworkAclRequest _
 
 
 -- | <p>Contains the output of CreateNetworkAcl.</p>
 newtype CreateNetworkAclResult = CreateNetworkAclResult 
   { "NetworkAcl" :: NullOrUndefined (NetworkAcl)
   }
+derive instance newtypeCreateNetworkAclResult :: Newtype CreateNetworkAclResult _
 
 
 -- | <p>Contains the parameters for CreateNetworkInterfacePermission.</p>
@@ -2342,12 +2497,14 @@ newtype CreateNetworkInterfacePermissionRequest = CreateNetworkInterfacePermissi
   , "Permission" :: (InterfacePermissionType)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateNetworkInterfacePermissionRequest :: Newtype CreateNetworkInterfacePermissionRequest _
 
 
 -- | <p>Contains the output of CreateNetworkInterfacePermission.</p>
 newtype CreateNetworkInterfacePermissionResult = CreateNetworkInterfacePermissionResult 
   { "InterfacePermission" :: NullOrUndefined (NetworkInterfacePermission)
   }
+derive instance newtypeCreateNetworkInterfacePermissionResult :: Newtype CreateNetworkInterfacePermissionResult _
 
 
 -- | <p>Contains the parameters for CreateNetworkInterface.</p>
@@ -2362,12 +2519,14 @@ newtype CreateNetworkInterfaceRequest = CreateNetworkInterfaceRequest
   , "SecondaryPrivateIpAddressCount" :: NullOrUndefined (Int)
   , "SubnetId" :: (String)
   }
+derive instance newtypeCreateNetworkInterfaceRequest :: Newtype CreateNetworkInterfaceRequest _
 
 
 -- | <p>Contains the output of CreateNetworkInterface.</p>
 newtype CreateNetworkInterfaceResult = CreateNetworkInterfaceResult 
   { "NetworkInterface" :: NullOrUndefined (NetworkInterface)
   }
+derive instance newtypeCreateNetworkInterfaceResult :: Newtype CreateNetworkInterfaceResult _
 
 
 -- | <p>Contains the parameters for CreatePlacementGroup.</p>
@@ -2376,6 +2535,7 @@ newtype CreatePlacementGroupRequest = CreatePlacementGroupRequest
   , "GroupName" :: (String)
   , "Strategy" :: (PlacementStrategy)
   }
+derive instance newtypeCreatePlacementGroupRequest :: Newtype CreatePlacementGroupRequest _
 
 
 -- | <p>Contains the parameters for CreateReservedInstancesListing.</p>
@@ -2385,12 +2545,14 @@ newtype CreateReservedInstancesListingRequest = CreateReservedInstancesListingRe
   , "PriceSchedules" :: (PriceScheduleSpecificationList)
   , "ReservedInstancesId" :: (String)
   }
+derive instance newtypeCreateReservedInstancesListingRequest :: Newtype CreateReservedInstancesListingRequest _
 
 
 -- | <p>Contains the output of CreateReservedInstancesListing.</p>
 newtype CreateReservedInstancesListingResult = CreateReservedInstancesListingResult 
   { "ReservedInstancesListings" :: NullOrUndefined (ReservedInstancesListingList)
   }
+derive instance newtypeCreateReservedInstancesListingResult :: Newtype CreateReservedInstancesListingResult _
 
 
 -- | <p>Contains the parameters for CreateRoute.</p>
@@ -2406,12 +2568,14 @@ newtype CreateRouteRequest = CreateRouteRequest
   , "RouteTableId" :: (String)
   , "VpcPeeringConnectionId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateRouteRequest :: Newtype CreateRouteRequest _
 
 
 -- | <p>Contains the output of CreateRoute.</p>
 newtype CreateRouteResult = CreateRouteResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateRouteResult :: Newtype CreateRouteResult _
 
 
 -- | <p>Contains the parameters for CreateRouteTable.</p>
@@ -2419,12 +2583,14 @@ newtype CreateRouteTableRequest = CreateRouteTableRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcId" :: (String)
   }
+derive instance newtypeCreateRouteTableRequest :: Newtype CreateRouteTableRequest _
 
 
 -- | <p>Contains the output of CreateRouteTable.</p>
 newtype CreateRouteTableResult = CreateRouteTableResult 
   { "RouteTable" :: NullOrUndefined (RouteTable)
   }
+derive instance newtypeCreateRouteTableResult :: Newtype CreateRouteTableResult _
 
 
 -- | <p>Contains the parameters for CreateSecurityGroup.</p>
@@ -2434,12 +2600,14 @@ newtype CreateSecurityGroupRequest = CreateSecurityGroupRequest
   , "VpcId" :: NullOrUndefined (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateSecurityGroupRequest :: Newtype CreateSecurityGroupRequest _
 
 
 -- | <p>Contains the output of CreateSecurityGroup.</p>
 newtype CreateSecurityGroupResult = CreateSecurityGroupResult 
   { "GroupId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateSecurityGroupResult :: Newtype CreateSecurityGroupResult _
 
 
 -- | <p>Contains the parameters for CreateSnapshot.</p>
@@ -2449,6 +2617,7 @@ newtype CreateSnapshotRequest = CreateSnapshotRequest
   , "TagSpecifications" :: NullOrUndefined (TagSpecificationList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateSnapshotRequest :: Newtype CreateSnapshotRequest _
 
 
 -- | <p>Contains the parameters for CreateSpotDatafeedSubscription.</p>
@@ -2457,12 +2626,14 @@ newtype CreateSpotDatafeedSubscriptionRequest = CreateSpotDatafeedSubscriptionRe
   , "DryRun" :: NullOrUndefined (Boolean)
   , "Prefix" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateSpotDatafeedSubscriptionRequest :: Newtype CreateSpotDatafeedSubscriptionRequest _
 
 
 -- | <p>Contains the output of CreateSpotDatafeedSubscription.</p>
 newtype CreateSpotDatafeedSubscriptionResult = CreateSpotDatafeedSubscriptionResult 
   { "SpotDatafeedSubscription" :: NullOrUndefined (SpotDatafeedSubscription)
   }
+derive instance newtypeCreateSpotDatafeedSubscriptionResult :: Newtype CreateSpotDatafeedSubscriptionResult _
 
 
 -- | <p>Contains the parameters for CreateSubnet.</p>
@@ -2473,12 +2644,14 @@ newtype CreateSubnetRequest = CreateSubnetRequest
   , "VpcId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateSubnetRequest :: Newtype CreateSubnetRequest _
 
 
 -- | <p>Contains the output of CreateSubnet.</p>
 newtype CreateSubnetResult = CreateSubnetResult 
   { "Subnet" :: NullOrUndefined (Subnet)
   }
+derive instance newtypeCreateSubnetResult :: Newtype CreateSubnetResult _
 
 
 -- | <p>Contains the parameters for CreateTags.</p>
@@ -2487,6 +2660,7 @@ newtype CreateTagsRequest = CreateTagsRequest
   , "Resources" :: (ResourceIdList)
   , "Tags" :: (TagList)
   }
+derive instance newtypeCreateTagsRequest :: Newtype CreateTagsRequest _
 
 
 -- | <p>Describes the user or group to be added or removed from the permissions for a volume.</p>
@@ -2494,9 +2668,11 @@ newtype CreateVolumePermission = CreateVolumePermission
   { "Group" :: NullOrUndefined (PermissionGroup)
   , "UserId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVolumePermission :: Newtype CreateVolumePermission _
 
 
 newtype CreateVolumePermissionList = CreateVolumePermissionList (Array CreateVolumePermission)
+derive instance newtypeCreateVolumePermissionList :: Newtype CreateVolumePermissionList _
 
 
 -- | <p>Describes modifications to the permissions for a volume.</p>
@@ -2504,6 +2680,7 @@ newtype CreateVolumePermissionModifications = CreateVolumePermissionModification
   { "Add" :: NullOrUndefined (CreateVolumePermissionList)
   , "Remove" :: NullOrUndefined (CreateVolumePermissionList)
   }
+derive instance newtypeCreateVolumePermissionModifications :: Newtype CreateVolumePermissionModifications _
 
 
 -- | <p>Contains the parameters for CreateVolume.</p>
@@ -2518,6 +2695,7 @@ newtype CreateVolumeRequest = CreateVolumeRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "TagSpecifications" :: NullOrUndefined (TagSpecificationList)
   }
+derive instance newtypeCreateVolumeRequest :: Newtype CreateVolumeRequest _
 
 
 newtype CreateVpcEndpointConnectionNotificationRequest = CreateVpcEndpointConnectionNotificationRequest 
@@ -2528,12 +2706,14 @@ newtype CreateVpcEndpointConnectionNotificationRequest = CreateVpcEndpointConnec
   , "ConnectionEvents" :: (ValueStringList)
   , "ClientToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVpcEndpointConnectionNotificationRequest :: Newtype CreateVpcEndpointConnectionNotificationRequest _
 
 
 newtype CreateVpcEndpointConnectionNotificationResult = CreateVpcEndpointConnectionNotificationResult 
   { "ConnectionNotification" :: NullOrUndefined (ConnectionNotification)
   , "ClientToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVpcEndpointConnectionNotificationResult :: Newtype CreateVpcEndpointConnectionNotificationResult _
 
 
 -- | <p>Contains the parameters for CreateVpcEndpoint.</p>
@@ -2549,6 +2729,7 @@ newtype CreateVpcEndpointRequest = CreateVpcEndpointRequest
   , "ClientToken" :: NullOrUndefined (String)
   , "PrivateDnsEnabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateVpcEndpointRequest :: Newtype CreateVpcEndpointRequest _
 
 
 -- | <p>Contains the output of CreateVpcEndpoint.</p>
@@ -2556,6 +2737,7 @@ newtype CreateVpcEndpointResult = CreateVpcEndpointResult
   { "VpcEndpoint" :: NullOrUndefined (VpcEndpoint)
   , "ClientToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVpcEndpointResult :: Newtype CreateVpcEndpointResult _
 
 
 newtype CreateVpcEndpointServiceConfigurationRequest = CreateVpcEndpointServiceConfigurationRequest 
@@ -2564,12 +2746,14 @@ newtype CreateVpcEndpointServiceConfigurationRequest = CreateVpcEndpointServiceC
   , "NetworkLoadBalancerArns" :: (ValueStringList)
   , "ClientToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVpcEndpointServiceConfigurationRequest :: Newtype CreateVpcEndpointServiceConfigurationRequest _
 
 
 newtype CreateVpcEndpointServiceConfigurationResult = CreateVpcEndpointServiceConfigurationResult 
   { "ServiceConfiguration" :: NullOrUndefined (ServiceConfiguration)
   , "ClientToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVpcEndpointServiceConfigurationResult :: Newtype CreateVpcEndpointServiceConfigurationResult _
 
 
 -- | <p>Contains the parameters for CreateVpcPeeringConnection.</p>
@@ -2580,12 +2764,14 @@ newtype CreateVpcPeeringConnectionRequest = CreateVpcPeeringConnectionRequest
   , "VpcId" :: NullOrUndefined (String)
   , "PeerRegion" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVpcPeeringConnectionRequest :: Newtype CreateVpcPeeringConnectionRequest _
 
 
 -- | <p>Contains the output of CreateVpcPeeringConnection.</p>
 newtype CreateVpcPeeringConnectionResult = CreateVpcPeeringConnectionResult 
   { "VpcPeeringConnection" :: NullOrUndefined (VpcPeeringConnection)
   }
+derive instance newtypeCreateVpcPeeringConnectionResult :: Newtype CreateVpcPeeringConnectionResult _
 
 
 -- | <p>Contains the parameters for CreateVpc.</p>
@@ -2595,12 +2781,14 @@ newtype CreateVpcRequest = CreateVpcRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "InstanceTenancy" :: NullOrUndefined (Tenancy)
   }
+derive instance newtypeCreateVpcRequest :: Newtype CreateVpcRequest _
 
 
 -- | <p>Contains the output of CreateVpc.</p>
 newtype CreateVpcResult = CreateVpcResult 
   { "Vpc" :: NullOrUndefined (Vpc)
   }
+derive instance newtypeCreateVpcResult :: Newtype CreateVpcResult _
 
 
 -- | <p>Contains the parameters for CreateVpnConnection.</p>
@@ -2611,12 +2799,14 @@ newtype CreateVpnConnectionRequest = CreateVpnConnectionRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "Options" :: NullOrUndefined (VpnConnectionOptionsSpecification)
   }
+derive instance newtypeCreateVpnConnectionRequest :: Newtype CreateVpnConnectionRequest _
 
 
 -- | <p>Contains the output of CreateVpnConnection.</p>
 newtype CreateVpnConnectionResult = CreateVpnConnectionResult 
   { "VpnConnection" :: NullOrUndefined (VpnConnection)
   }
+derive instance newtypeCreateVpnConnectionResult :: Newtype CreateVpnConnectionResult _
 
 
 -- | <p>Contains the parameters for CreateVpnConnectionRoute.</p>
@@ -2624,6 +2814,7 @@ newtype CreateVpnConnectionRouteRequest = CreateVpnConnectionRouteRequest
   { "DestinationCidrBlock" :: (String)
   , "VpnConnectionId" :: (String)
   }
+derive instance newtypeCreateVpnConnectionRouteRequest :: Newtype CreateVpnConnectionRouteRequest _
 
 
 -- | <p>Contains the parameters for CreateVpnGateway.</p>
@@ -2633,27 +2824,32 @@ newtype CreateVpnGatewayRequest = CreateVpnGatewayRequest
   , "AmazonSideAsn" :: NullOrUndefined (Number)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateVpnGatewayRequest :: Newtype CreateVpnGatewayRequest _
 
 
 -- | <p>Contains the output of CreateVpnGateway.</p>
 newtype CreateVpnGatewayResult = CreateVpnGatewayResult 
   { "VpnGateway" :: NullOrUndefined (VpnGateway)
   }
+derive instance newtypeCreateVpnGatewayResult :: Newtype CreateVpnGatewayResult _
 
 
 -- | <p>Describes the credit option for CPU usage of a T2 instance.</p>
 newtype CreditSpecification = CreditSpecification 
   { "CpuCredits" :: NullOrUndefined (String)
   }
+derive instance newtypeCreditSpecification :: Newtype CreditSpecification _
 
 
 -- | <p>The credit option for CPU usage of a T2 instance.</p>
 newtype CreditSpecificationRequest = CreditSpecificationRequest 
   { "CpuCredits" :: (String)
   }
+derive instance newtypeCreditSpecificationRequest :: Newtype CreditSpecificationRequest _
 
 
 newtype CurrencyCodeValues = CurrencyCodeValues String
+derive instance newtypeCurrencyCodeValues :: Newtype CurrencyCodeValues _
 
 
 -- | <p>Describes a customer gateway.</p>
@@ -2665,18 +2861,23 @@ newtype CustomerGateway = CustomerGateway
   , "Type" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCustomerGateway :: Newtype CustomerGateway _
 
 
 newtype CustomerGatewayIdStringList = CustomerGatewayIdStringList (Array String)
+derive instance newtypeCustomerGatewayIdStringList :: Newtype CustomerGatewayIdStringList _
 
 
 newtype CustomerGatewayList = CustomerGatewayList (Array CustomerGateway)
+derive instance newtypeCustomerGatewayList :: Newtype CustomerGatewayList _
 
 
 newtype DatafeedSubscriptionState = DatafeedSubscriptionState String
+derive instance newtypeDatafeedSubscriptionState :: Newtype DatafeedSubscriptionState _
 
 
 newtype DateTime = DateTime Number
+derive instance newtypeDateTime :: Newtype DateTime _
 
 
 -- | <p>Contains the parameters for DeleteCustomerGateway.</p>
@@ -2684,6 +2885,7 @@ newtype DeleteCustomerGatewayRequest = DeleteCustomerGatewayRequest
   { "CustomerGatewayId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteCustomerGatewayRequest :: Newtype DeleteCustomerGatewayRequest _
 
 
 -- | <p>Contains the parameters for DeleteDhcpOptions.</p>
@@ -2691,40 +2893,47 @@ newtype DeleteDhcpOptionsRequest = DeleteDhcpOptionsRequest
   { "DhcpOptionsId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteDhcpOptionsRequest :: Newtype DeleteDhcpOptionsRequest _
 
 
 newtype DeleteEgressOnlyInternetGatewayRequest = DeleteEgressOnlyInternetGatewayRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   , "EgressOnlyInternetGatewayId" :: (EgressOnlyInternetGatewayId)
   }
+derive instance newtypeDeleteEgressOnlyInternetGatewayRequest :: Newtype DeleteEgressOnlyInternetGatewayRequest _
 
 
 newtype DeleteEgressOnlyInternetGatewayResult = DeleteEgressOnlyInternetGatewayResult 
   { "ReturnCode" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteEgressOnlyInternetGatewayResult :: Newtype DeleteEgressOnlyInternetGatewayResult _
 
 
 -- | <p>Contains the parameters for DeleteFlowLogs.</p>
 newtype DeleteFlowLogsRequest = DeleteFlowLogsRequest 
   { "FlowLogIds" :: (ValueStringList)
   }
+derive instance newtypeDeleteFlowLogsRequest :: Newtype DeleteFlowLogsRequest _
 
 
 -- | <p>Contains the output of DeleteFlowLogs.</p>
 newtype DeleteFlowLogsResult = DeleteFlowLogsResult 
   { "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemSet)
   }
+derive instance newtypeDeleteFlowLogsResult :: Newtype DeleteFlowLogsResult _
 
 
 newtype DeleteFpgaImageRequest = DeleteFpgaImageRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   , "FpgaImageId" :: (String)
   }
+derive instance newtypeDeleteFpgaImageRequest :: Newtype DeleteFpgaImageRequest _
 
 
 newtype DeleteFpgaImageResult = DeleteFpgaImageResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteFpgaImageResult :: Newtype DeleteFpgaImageResult _
 
 
 -- | <p>Contains the parameters for DeleteInternetGateway.</p>
@@ -2732,6 +2941,7 @@ newtype DeleteInternetGatewayRequest = DeleteInternetGatewayRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "InternetGatewayId" :: (String)
   }
+derive instance newtypeDeleteInternetGatewayRequest :: Newtype DeleteInternetGatewayRequest _
 
 
 -- | <p>Contains the parameters for DeleteKeyPair.</p>
@@ -2739,6 +2949,7 @@ newtype DeleteKeyPairRequest = DeleteKeyPairRequest
   { "KeyName" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteKeyPairRequest :: Newtype DeleteKeyPairRequest _
 
 
 newtype DeleteLaunchTemplateRequest = DeleteLaunchTemplateRequest 
@@ -2746,11 +2957,13 @@ newtype DeleteLaunchTemplateRequest = DeleteLaunchTemplateRequest
   , "LaunchTemplateId" :: NullOrUndefined (String)
   , "LaunchTemplateName" :: NullOrUndefined (LaunchTemplateName)
   }
+derive instance newtypeDeleteLaunchTemplateRequest :: Newtype DeleteLaunchTemplateRequest _
 
 
 newtype DeleteLaunchTemplateResult = DeleteLaunchTemplateResult 
   { "LaunchTemplate" :: NullOrUndefined (LaunchTemplate)
   }
+derive instance newtypeDeleteLaunchTemplateResult :: Newtype DeleteLaunchTemplateResult _
 
 
 newtype DeleteLaunchTemplateVersionsRequest = DeleteLaunchTemplateVersionsRequest 
@@ -2759,6 +2972,7 @@ newtype DeleteLaunchTemplateVersionsRequest = DeleteLaunchTemplateVersionsReques
   , "LaunchTemplateName" :: NullOrUndefined (LaunchTemplateName)
   , "Versions" :: (VersionStringList)
   }
+derive instance newtypeDeleteLaunchTemplateVersionsRequest :: Newtype DeleteLaunchTemplateVersionsRequest _
 
 
 -- | <p>Describes a launch template version that could not be deleted.</p>
@@ -2768,9 +2982,11 @@ newtype DeleteLaunchTemplateVersionsResponseErrorItem = DeleteLaunchTemplateVers
   , "VersionNumber" :: NullOrUndefined (Number)
   , "ResponseError" :: NullOrUndefined (ResponseError)
   }
+derive instance newtypeDeleteLaunchTemplateVersionsResponseErrorItem :: Newtype DeleteLaunchTemplateVersionsResponseErrorItem _
 
 
 newtype DeleteLaunchTemplateVersionsResponseErrorSet = DeleteLaunchTemplateVersionsResponseErrorSet (Array DeleteLaunchTemplateVersionsResponseErrorItem)
+derive instance newtypeDeleteLaunchTemplateVersionsResponseErrorSet :: Newtype DeleteLaunchTemplateVersionsResponseErrorSet _
 
 
 -- | <p>Describes a launch template version that was successfully deleted.</p>
@@ -2779,27 +2995,32 @@ newtype DeleteLaunchTemplateVersionsResponseSuccessItem = DeleteLaunchTemplateVe
   , "LaunchTemplateName" :: NullOrUndefined (String)
   , "VersionNumber" :: NullOrUndefined (Number)
   }
+derive instance newtypeDeleteLaunchTemplateVersionsResponseSuccessItem :: Newtype DeleteLaunchTemplateVersionsResponseSuccessItem _
 
 
 newtype DeleteLaunchTemplateVersionsResponseSuccessSet = DeleteLaunchTemplateVersionsResponseSuccessSet (Array DeleteLaunchTemplateVersionsResponseSuccessItem)
+derive instance newtypeDeleteLaunchTemplateVersionsResponseSuccessSet :: Newtype DeleteLaunchTemplateVersionsResponseSuccessSet _
 
 
 newtype DeleteLaunchTemplateVersionsResult = DeleteLaunchTemplateVersionsResult 
   { "SuccessfullyDeletedLaunchTemplateVersions" :: NullOrUndefined (DeleteLaunchTemplateVersionsResponseSuccessSet)
   , "UnsuccessfullyDeletedLaunchTemplateVersions" :: NullOrUndefined (DeleteLaunchTemplateVersionsResponseErrorSet)
   }
+derive instance newtypeDeleteLaunchTemplateVersionsResult :: Newtype DeleteLaunchTemplateVersionsResult _
 
 
 -- | <p>Contains the parameters for DeleteNatGateway.</p>
 newtype DeleteNatGatewayRequest = DeleteNatGatewayRequest 
   { "NatGatewayId" :: (String)
   }
+derive instance newtypeDeleteNatGatewayRequest :: Newtype DeleteNatGatewayRequest _
 
 
 -- | <p>Contains the output of DeleteNatGateway.</p>
 newtype DeleteNatGatewayResult = DeleteNatGatewayResult 
   { "NatGatewayId" :: NullOrUndefined (String)
   }
+derive instance newtypeDeleteNatGatewayResult :: Newtype DeleteNatGatewayResult _
 
 
 -- | <p>Contains the parameters for DeleteNetworkAclEntry.</p>
@@ -2809,6 +3030,7 @@ newtype DeleteNetworkAclEntryRequest = DeleteNetworkAclEntryRequest
   , "NetworkAclId" :: (String)
   , "RuleNumber" :: (Int)
   }
+derive instance newtypeDeleteNetworkAclEntryRequest :: Newtype DeleteNetworkAclEntryRequest _
 
 
 -- | <p>Contains the parameters for DeleteNetworkAcl.</p>
@@ -2816,6 +3038,7 @@ newtype DeleteNetworkAclRequest = DeleteNetworkAclRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "NetworkAclId" :: (String)
   }
+derive instance newtypeDeleteNetworkAclRequest :: Newtype DeleteNetworkAclRequest _
 
 
 -- | <p>Contains the parameters for DeleteNetworkInterfacePermission.</p>
@@ -2824,12 +3047,14 @@ newtype DeleteNetworkInterfacePermissionRequest = DeleteNetworkInterfacePermissi
   , "Force" :: NullOrUndefined (Boolean)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteNetworkInterfacePermissionRequest :: Newtype DeleteNetworkInterfacePermissionRequest _
 
 
 -- | <p>Contains the output for DeleteNetworkInterfacePermission.</p>
 newtype DeleteNetworkInterfacePermissionResult = DeleteNetworkInterfacePermissionResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteNetworkInterfacePermissionResult :: Newtype DeleteNetworkInterfacePermissionResult _
 
 
 -- | <p>Contains the parameters for DeleteNetworkInterface.</p>
@@ -2837,6 +3062,7 @@ newtype DeleteNetworkInterfaceRequest = DeleteNetworkInterfaceRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "NetworkInterfaceId" :: (String)
   }
+derive instance newtypeDeleteNetworkInterfaceRequest :: Newtype DeleteNetworkInterfaceRequest _
 
 
 -- | <p>Contains the parameters for DeletePlacementGroup.</p>
@@ -2844,6 +3070,7 @@ newtype DeletePlacementGroupRequest = DeletePlacementGroupRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "GroupName" :: (String)
   }
+derive instance newtypeDeletePlacementGroupRequest :: Newtype DeletePlacementGroupRequest _
 
 
 -- | <p>Contains the parameters for DeleteRoute.</p>
@@ -2853,6 +3080,7 @@ newtype DeleteRouteRequest = DeleteRouteRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "RouteTableId" :: (String)
   }
+derive instance newtypeDeleteRouteRequest :: Newtype DeleteRouteRequest _
 
 
 -- | <p>Contains the parameters for DeleteRouteTable.</p>
@@ -2860,6 +3088,7 @@ newtype DeleteRouteTableRequest = DeleteRouteTableRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "RouteTableId" :: (String)
   }
+derive instance newtypeDeleteRouteTableRequest :: Newtype DeleteRouteTableRequest _
 
 
 -- | <p>Contains the parameters for DeleteSecurityGroup.</p>
@@ -2868,6 +3097,7 @@ newtype DeleteSecurityGroupRequest = DeleteSecurityGroupRequest
   , "GroupName" :: NullOrUndefined (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteSecurityGroupRequest :: Newtype DeleteSecurityGroupRequest _
 
 
 -- | <p>Contains the parameters for DeleteSnapshot.</p>
@@ -2875,12 +3105,14 @@ newtype DeleteSnapshotRequest = DeleteSnapshotRequest
   { "SnapshotId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteSnapshotRequest :: Newtype DeleteSnapshotRequest _
 
 
 -- | <p>Contains the parameters for DeleteSpotDatafeedSubscription.</p>
 newtype DeleteSpotDatafeedSubscriptionRequest = DeleteSpotDatafeedSubscriptionRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteSpotDatafeedSubscriptionRequest :: Newtype DeleteSpotDatafeedSubscriptionRequest _
 
 
 -- | <p>Contains the parameters for DeleteSubnet.</p>
@@ -2888,6 +3120,7 @@ newtype DeleteSubnetRequest = DeleteSubnetRequest
   { "SubnetId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteSubnetRequest :: Newtype DeleteSubnetRequest _
 
 
 -- | <p>Contains the parameters for DeleteTags.</p>
@@ -2896,6 +3129,7 @@ newtype DeleteTagsRequest = DeleteTagsRequest
   , "Resources" :: (ResourceIdList)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeDeleteTagsRequest :: Newtype DeleteTagsRequest _
 
 
 -- | <p>Contains the parameters for DeleteVolume.</p>
@@ -2903,28 +3137,33 @@ newtype DeleteVolumeRequest = DeleteVolumeRequest
   { "VolumeId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteVolumeRequest :: Newtype DeleteVolumeRequest _
 
 
 newtype DeleteVpcEndpointConnectionNotificationsRequest = DeleteVpcEndpointConnectionNotificationsRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   , "ConnectionNotificationIds" :: (ValueStringList)
   }
+derive instance newtypeDeleteVpcEndpointConnectionNotificationsRequest :: Newtype DeleteVpcEndpointConnectionNotificationsRequest _
 
 
 newtype DeleteVpcEndpointConnectionNotificationsResult = DeleteVpcEndpointConnectionNotificationsResult 
   { "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemSet)
   }
+derive instance newtypeDeleteVpcEndpointConnectionNotificationsResult :: Newtype DeleteVpcEndpointConnectionNotificationsResult _
 
 
 newtype DeleteVpcEndpointServiceConfigurationsRequest = DeleteVpcEndpointServiceConfigurationsRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   , "ServiceIds" :: (ValueStringList)
   }
+derive instance newtypeDeleteVpcEndpointServiceConfigurationsRequest :: Newtype DeleteVpcEndpointServiceConfigurationsRequest _
 
 
 newtype DeleteVpcEndpointServiceConfigurationsResult = DeleteVpcEndpointServiceConfigurationsResult 
   { "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemSet)
   }
+derive instance newtypeDeleteVpcEndpointServiceConfigurationsResult :: Newtype DeleteVpcEndpointServiceConfigurationsResult _
 
 
 -- | <p>Contains the parameters for DeleteVpcEndpoints.</p>
@@ -2932,12 +3171,14 @@ newtype DeleteVpcEndpointsRequest = DeleteVpcEndpointsRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcEndpointIds" :: (ValueStringList)
   }
+derive instance newtypeDeleteVpcEndpointsRequest :: Newtype DeleteVpcEndpointsRequest _
 
 
 -- | <p>Contains the output of DeleteVpcEndpoints.</p>
 newtype DeleteVpcEndpointsResult = DeleteVpcEndpointsResult 
   { "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemSet)
   }
+derive instance newtypeDeleteVpcEndpointsResult :: Newtype DeleteVpcEndpointsResult _
 
 
 -- | <p>Contains the parameters for DeleteVpcPeeringConnection.</p>
@@ -2945,12 +3186,14 @@ newtype DeleteVpcPeeringConnectionRequest = DeleteVpcPeeringConnectionRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcPeeringConnectionId" :: (String)
   }
+derive instance newtypeDeleteVpcPeeringConnectionRequest :: Newtype DeleteVpcPeeringConnectionRequest _
 
 
 -- | <p>Contains the output of DeleteVpcPeeringConnection.</p>
 newtype DeleteVpcPeeringConnectionResult = DeleteVpcPeeringConnectionResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteVpcPeeringConnectionResult :: Newtype DeleteVpcPeeringConnectionResult _
 
 
 -- | <p>Contains the parameters for DeleteVpc.</p>
@@ -2958,6 +3201,7 @@ newtype DeleteVpcRequest = DeleteVpcRequest
   { "VpcId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteVpcRequest :: Newtype DeleteVpcRequest _
 
 
 -- | <p>Contains the parameters for DeleteVpnConnection.</p>
@@ -2965,6 +3209,7 @@ newtype DeleteVpnConnectionRequest = DeleteVpnConnectionRequest
   { "VpnConnectionId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteVpnConnectionRequest :: Newtype DeleteVpnConnectionRequest _
 
 
 -- | <p>Contains the parameters for DeleteVpnConnectionRoute.</p>
@@ -2972,6 +3217,7 @@ newtype DeleteVpnConnectionRouteRequest = DeleteVpnConnectionRouteRequest
   { "DestinationCidrBlock" :: (String)
   , "VpnConnectionId" :: (String)
   }
+derive instance newtypeDeleteVpnConnectionRouteRequest :: Newtype DeleteVpnConnectionRouteRequest _
 
 
 -- | <p>Contains the parameters for DeleteVpnGateway.</p>
@@ -2979,6 +3225,7 @@ newtype DeleteVpnGatewayRequest = DeleteVpnGatewayRequest
   { "VpnGatewayId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteVpnGatewayRequest :: Newtype DeleteVpnGatewayRequest _
 
 
 -- | <p>Contains the parameters for DeregisterImage.</p>
@@ -2986,6 +3233,7 @@ newtype DeregisterImageRequest = DeregisterImageRequest
   { "ImageId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeregisterImageRequest :: Newtype DeregisterImageRequest _
 
 
 -- | <p>Contains the parameters for DescribeAccountAttributes.</p>
@@ -2993,12 +3241,14 @@ newtype DescribeAccountAttributesRequest = DescribeAccountAttributesRequest
   { "AttributeNames" :: NullOrUndefined (AccountAttributeNameStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeAccountAttributesRequest :: Newtype DescribeAccountAttributesRequest _
 
 
 -- | <p>Contains the output of DescribeAccountAttributes.</p>
 newtype DescribeAccountAttributesResult = DescribeAccountAttributesResult 
   { "AccountAttributes" :: NullOrUndefined (AccountAttributeList)
   }
+derive instance newtypeDescribeAccountAttributesResult :: Newtype DescribeAccountAttributesResult _
 
 
 -- | <p>Contains the parameters for DescribeAddresses.</p>
@@ -3008,23 +3258,27 @@ newtype DescribeAddressesRequest = DescribeAddressesRequest
   , "AllocationIds" :: NullOrUndefined (AllocationIdList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeAddressesRequest :: Newtype DescribeAddressesRequest _
 
 
 -- | <p>Contains the output of DescribeAddresses.</p>
 newtype DescribeAddressesResult = DescribeAddressesResult 
   { "Addresses" :: NullOrUndefined (AddressList)
   }
+derive instance newtypeDescribeAddressesResult :: Newtype DescribeAddressesResult _
 
 
 newtype DescribeAggregateIdFormatRequest = DescribeAggregateIdFormatRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeAggregateIdFormatRequest :: Newtype DescribeAggregateIdFormatRequest _
 
 
 newtype DescribeAggregateIdFormatResult = DescribeAggregateIdFormatResult 
   { "UseLongIdsAggregated" :: NullOrUndefined (Boolean)
   , "Statuses" :: NullOrUndefined (IdFormatList)
   }
+derive instance newtypeDescribeAggregateIdFormatResult :: Newtype DescribeAggregateIdFormatResult _
 
 
 -- | <p>Contains the parameters for DescribeAvailabilityZones.</p>
@@ -3033,12 +3287,14 @@ newtype DescribeAvailabilityZonesRequest = DescribeAvailabilityZonesRequest
   , "ZoneNames" :: NullOrUndefined (ZoneNameStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeAvailabilityZonesRequest :: Newtype DescribeAvailabilityZonesRequest _
 
 
 -- | <p>Contains the output of DescribeAvailabiltyZones.</p>
 newtype DescribeAvailabilityZonesResult = DescribeAvailabilityZonesResult 
   { "AvailabilityZones" :: NullOrUndefined (AvailabilityZoneList)
   }
+derive instance newtypeDescribeAvailabilityZonesResult :: Newtype DescribeAvailabilityZonesResult _
 
 
 -- | <p>Contains the parameters for DescribeBundleTasks.</p>
@@ -3047,12 +3303,14 @@ newtype DescribeBundleTasksRequest = DescribeBundleTasksRequest
   , "Filters" :: NullOrUndefined (FilterList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeBundleTasksRequest :: Newtype DescribeBundleTasksRequest _
 
 
 -- | <p>Contains the output of DescribeBundleTasks.</p>
 newtype DescribeBundleTasksResult = DescribeBundleTasksResult 
   { "BundleTasks" :: NullOrUndefined (BundleTaskList)
   }
+derive instance newtypeDescribeBundleTasksResult :: Newtype DescribeBundleTasksResult _
 
 
 -- | <p>Contains the parameters for DescribeClassicLinkInstances.</p>
@@ -3063,6 +3321,7 @@ newtype DescribeClassicLinkInstancesRequest = DescribeClassicLinkInstancesReques
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeClassicLinkInstancesRequest :: Newtype DescribeClassicLinkInstancesRequest _
 
 
 -- | <p>Contains the output of DescribeClassicLinkInstances.</p>
@@ -3070,9 +3329,11 @@ newtype DescribeClassicLinkInstancesResult = DescribeClassicLinkInstancesResult
   { "Instances" :: NullOrUndefined (ClassicLinkInstanceList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeClassicLinkInstancesResult :: Newtype DescribeClassicLinkInstancesResult _
 
 
 newtype DescribeConversionTaskList = DescribeConversionTaskList (Array ConversionTask)
+derive instance newtypeDescribeConversionTaskList :: Newtype DescribeConversionTaskList _
 
 
 -- | <p>Contains the parameters for DescribeConversionTasks.</p>
@@ -3080,12 +3341,14 @@ newtype DescribeConversionTasksRequest = DescribeConversionTasksRequest
   { "ConversionTaskIds" :: NullOrUndefined (ConversionIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeConversionTasksRequest :: Newtype DescribeConversionTasksRequest _
 
 
 -- | <p>Contains the output for DescribeConversionTasks.</p>
 newtype DescribeConversionTasksResult = DescribeConversionTasksResult 
   { "ConversionTasks" :: NullOrUndefined (DescribeConversionTaskList)
   }
+derive instance newtypeDescribeConversionTasksResult :: Newtype DescribeConversionTasksResult _
 
 
 -- | <p>Contains the parameters for DescribeCustomerGateways.</p>
@@ -3094,12 +3357,14 @@ newtype DescribeCustomerGatewaysRequest = DescribeCustomerGatewaysRequest
   , "Filters" :: NullOrUndefined (FilterList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeCustomerGatewaysRequest :: Newtype DescribeCustomerGatewaysRequest _
 
 
 -- | <p>Contains the output of DescribeCustomerGateways.</p>
 newtype DescribeCustomerGatewaysResult = DescribeCustomerGatewaysResult 
   { "CustomerGateways" :: NullOrUndefined (CustomerGatewayList)
   }
+derive instance newtypeDescribeCustomerGatewaysResult :: Newtype DescribeCustomerGatewaysResult _
 
 
 -- | <p>Contains the parameters for DescribeDhcpOptions.</p>
@@ -3108,12 +3373,14 @@ newtype DescribeDhcpOptionsRequest = DescribeDhcpOptionsRequest
   , "Filters" :: NullOrUndefined (FilterList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeDhcpOptionsRequest :: Newtype DescribeDhcpOptionsRequest _
 
 
 -- | <p>Contains the output of DescribeDhcpOptions.</p>
 newtype DescribeDhcpOptionsResult = DescribeDhcpOptionsResult 
   { "DhcpOptions" :: NullOrUndefined (DhcpOptionsList)
   }
+derive instance newtypeDescribeDhcpOptionsResult :: Newtype DescribeDhcpOptionsResult _
 
 
 newtype DescribeEgressOnlyInternetGatewaysRequest = DescribeEgressOnlyInternetGatewaysRequest 
@@ -3122,12 +3389,14 @@ newtype DescribeEgressOnlyInternetGatewaysRequest = DescribeEgressOnlyInternetGa
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEgressOnlyInternetGatewaysRequest :: Newtype DescribeEgressOnlyInternetGatewaysRequest _
 
 
 newtype DescribeEgressOnlyInternetGatewaysResult = DescribeEgressOnlyInternetGatewaysResult 
   { "EgressOnlyInternetGateways" :: NullOrUndefined (EgressOnlyInternetGatewayList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEgressOnlyInternetGatewaysResult :: Newtype DescribeEgressOnlyInternetGatewaysResult _
 
 
 newtype DescribeElasticGpusRequest = DescribeElasticGpusRequest 
@@ -3137,6 +3406,7 @@ newtype DescribeElasticGpusRequest = DescribeElasticGpusRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeElasticGpusRequest :: Newtype DescribeElasticGpusRequest _
 
 
 newtype DescribeElasticGpusResult = DescribeElasticGpusResult 
@@ -3144,18 +3414,21 @@ newtype DescribeElasticGpusResult = DescribeElasticGpusResult
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeElasticGpusResult :: Newtype DescribeElasticGpusResult _
 
 
 -- | <p>Contains the parameters for DescribeExportTasks.</p>
 newtype DescribeExportTasksRequest = DescribeExportTasksRequest 
   { "ExportTaskIds" :: NullOrUndefined (ExportTaskIdStringList)
   }
+derive instance newtypeDescribeExportTasksRequest :: Newtype DescribeExportTasksRequest _
 
 
 -- | <p>Contains the output for DescribeExportTasks.</p>
 newtype DescribeExportTasksResult = DescribeExportTasksResult 
   { "ExportTasks" :: NullOrUndefined (ExportTaskList)
   }
+derive instance newtypeDescribeExportTasksResult :: Newtype DescribeExportTasksResult _
 
 
 -- | <p>Contains the parameters for DescribeFlowLogs.</p>
@@ -3165,6 +3438,7 @@ newtype DescribeFlowLogsRequest = DescribeFlowLogsRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeFlowLogsRequest :: Newtype DescribeFlowLogsRequest _
 
 
 -- | <p>Contains the output of DescribeFlowLogs.</p>
@@ -3172,6 +3446,7 @@ newtype DescribeFlowLogsResult = DescribeFlowLogsResult
   { "FlowLogs" :: NullOrUndefined (FlowLogSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeFlowLogsResult :: Newtype DescribeFlowLogsResult _
 
 
 newtype DescribeFpgaImageAttributeRequest = DescribeFpgaImageAttributeRequest 
@@ -3179,11 +3454,13 @@ newtype DescribeFpgaImageAttributeRequest = DescribeFpgaImageAttributeRequest
   , "FpgaImageId" :: (String)
   , "Attribute" :: (FpgaImageAttributeName)
   }
+derive instance newtypeDescribeFpgaImageAttributeRequest :: Newtype DescribeFpgaImageAttributeRequest _
 
 
 newtype DescribeFpgaImageAttributeResult = DescribeFpgaImageAttributeResult 
   { "FpgaImageAttribute" :: NullOrUndefined (FpgaImageAttribute)
   }
+derive instance newtypeDescribeFpgaImageAttributeResult :: Newtype DescribeFpgaImageAttributeResult _
 
 
 newtype DescribeFpgaImagesRequest = DescribeFpgaImagesRequest 
@@ -3194,12 +3471,14 @@ newtype DescribeFpgaImagesRequest = DescribeFpgaImagesRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeDescribeFpgaImagesRequest :: Newtype DescribeFpgaImagesRequest _
 
 
 newtype DescribeFpgaImagesResult = DescribeFpgaImagesResult 
   { "FpgaImages" :: NullOrUndefined (FpgaImageList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeFpgaImagesResult :: Newtype DescribeFpgaImagesResult _
 
 
 newtype DescribeHostReservationOfferingsRequest = DescribeHostReservationOfferingsRequest 
@@ -3210,12 +3489,14 @@ newtype DescribeHostReservationOfferingsRequest = DescribeHostReservationOfferin
   , "NextToken" :: NullOrUndefined (String)
   , "OfferingId" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeHostReservationOfferingsRequest :: Newtype DescribeHostReservationOfferingsRequest _
 
 
 newtype DescribeHostReservationOfferingsResult = DescribeHostReservationOfferingsResult 
   { "NextToken" :: NullOrUndefined (String)
   , "OfferingSet" :: NullOrUndefined (HostOfferingSet)
   }
+derive instance newtypeDescribeHostReservationOfferingsResult :: Newtype DescribeHostReservationOfferingsResult _
 
 
 newtype DescribeHostReservationsRequest = DescribeHostReservationsRequest 
@@ -3224,12 +3505,14 @@ newtype DescribeHostReservationsRequest = DescribeHostReservationsRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeHostReservationsRequest :: Newtype DescribeHostReservationsRequest _
 
 
 newtype DescribeHostReservationsResult = DescribeHostReservationsResult 
   { "HostReservationSet" :: NullOrUndefined (HostReservationSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeHostReservationsResult :: Newtype DescribeHostReservationsResult _
 
 
 -- | <p>Contains the parameters for DescribeHosts.</p>
@@ -3239,6 +3522,7 @@ newtype DescribeHostsRequest = DescribeHostsRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeHostsRequest :: Newtype DescribeHostsRequest _
 
 
 -- | <p>Contains the output of DescribeHosts.</p>
@@ -3246,6 +3530,7 @@ newtype DescribeHostsResult = DescribeHostsResult
   { "Hosts" :: NullOrUndefined (HostList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeHostsResult :: Newtype DescribeHostsResult _
 
 
 newtype DescribeIamInstanceProfileAssociationsRequest = DescribeIamInstanceProfileAssociationsRequest 
@@ -3254,24 +3539,28 @@ newtype DescribeIamInstanceProfileAssociationsRequest = DescribeIamInstanceProfi
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeIamInstanceProfileAssociationsRequest :: Newtype DescribeIamInstanceProfileAssociationsRequest _
 
 
 newtype DescribeIamInstanceProfileAssociationsResult = DescribeIamInstanceProfileAssociationsResult 
   { "IamInstanceProfileAssociations" :: NullOrUndefined (IamInstanceProfileAssociationSet)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeIamInstanceProfileAssociationsResult :: Newtype DescribeIamInstanceProfileAssociationsResult _
 
 
 -- | <p>Contains the parameters for DescribeIdFormat.</p>
 newtype DescribeIdFormatRequest = DescribeIdFormatRequest 
   { "Resource" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeIdFormatRequest :: Newtype DescribeIdFormatRequest _
 
 
 -- | <p>Contains the output of DescribeIdFormat.</p>
 newtype DescribeIdFormatResult = DescribeIdFormatResult 
   { "Statuses" :: NullOrUndefined (IdFormatList)
   }
+derive instance newtypeDescribeIdFormatResult :: Newtype DescribeIdFormatResult _
 
 
 -- | <p>Contains the parameters for DescribeIdentityIdFormat.</p>
@@ -3279,12 +3568,14 @@ newtype DescribeIdentityIdFormatRequest = DescribeIdentityIdFormatRequest
   { "PrincipalArn" :: (String)
   , "Resource" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeIdentityIdFormatRequest :: Newtype DescribeIdentityIdFormatRequest _
 
 
 -- | <p>Contains the output of DescribeIdentityIdFormat.</p>
 newtype DescribeIdentityIdFormatResult = DescribeIdentityIdFormatResult 
   { "Statuses" :: NullOrUndefined (IdFormatList)
   }
+derive instance newtypeDescribeIdentityIdFormatResult :: Newtype DescribeIdentityIdFormatResult _
 
 
 -- | <p>Contains the parameters for DescribeImageAttribute.</p>
@@ -3293,6 +3584,7 @@ newtype DescribeImageAttributeRequest = DescribeImageAttributeRequest
   , "ImageId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeImageAttributeRequest :: Newtype DescribeImageAttributeRequest _
 
 
 -- | <p>Contains the parameters for DescribeImages.</p>
@@ -3303,12 +3595,14 @@ newtype DescribeImagesRequest = DescribeImagesRequest
   , "Owners" :: NullOrUndefined (OwnerStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeImagesRequest :: Newtype DescribeImagesRequest _
 
 
 -- | <p>Contains the output of DescribeImages.</p>
 newtype DescribeImagesResult = DescribeImagesResult 
   { "Images" :: NullOrUndefined (ImageList)
   }
+derive instance newtypeDescribeImagesResult :: Newtype DescribeImagesResult _
 
 
 -- | <p>Contains the parameters for DescribeImportImageTasks.</p>
@@ -3319,6 +3613,7 @@ newtype DescribeImportImageTasksRequest = DescribeImportImageTasksRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeImportImageTasksRequest :: Newtype DescribeImportImageTasksRequest _
 
 
 -- | <p>Contains the output for DescribeImportImageTasks.</p>
@@ -3326,6 +3621,7 @@ newtype DescribeImportImageTasksResult = DescribeImportImageTasksResult
   { "ImportImageTasks" :: NullOrUndefined (ImportImageTaskList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeImportImageTasksResult :: Newtype DescribeImportImageTasksResult _
 
 
 -- | <p>Contains the parameters for DescribeImportSnapshotTasks.</p>
@@ -3336,6 +3632,7 @@ newtype DescribeImportSnapshotTasksRequest = DescribeImportSnapshotTasksRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeImportSnapshotTasksRequest :: Newtype DescribeImportSnapshotTasksRequest _
 
 
 -- | <p>Contains the output for DescribeImportSnapshotTasks.</p>
@@ -3343,6 +3640,7 @@ newtype DescribeImportSnapshotTasksResult = DescribeImportSnapshotTasksResult
   { "ImportSnapshotTasks" :: NullOrUndefined (ImportSnapshotTaskList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeImportSnapshotTasksResult :: Newtype DescribeImportSnapshotTasksResult _
 
 
 -- | <p>Contains the parameters for DescribeInstanceAttribute.</p>
@@ -3351,6 +3649,7 @@ newtype DescribeInstanceAttributeRequest = DescribeInstanceAttributeRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "InstanceId" :: (String)
   }
+derive instance newtypeDescribeInstanceAttributeRequest :: Newtype DescribeInstanceAttributeRequest _
 
 
 newtype DescribeInstanceCreditSpecificationsRequest = DescribeInstanceCreditSpecificationsRequest 
@@ -3360,12 +3659,14 @@ newtype DescribeInstanceCreditSpecificationsRequest = DescribeInstanceCreditSpec
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeInstanceCreditSpecificationsRequest :: Newtype DescribeInstanceCreditSpecificationsRequest _
 
 
 newtype DescribeInstanceCreditSpecificationsResult = DescribeInstanceCreditSpecificationsResult 
   { "InstanceCreditSpecifications" :: NullOrUndefined (InstanceCreditSpecificationList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeInstanceCreditSpecificationsResult :: Newtype DescribeInstanceCreditSpecificationsResult _
 
 
 -- | <p>Contains the parameters for DescribeInstanceStatus.</p>
@@ -3377,6 +3678,7 @@ newtype DescribeInstanceStatusRequest = DescribeInstanceStatusRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "IncludeAllInstances" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeInstanceStatusRequest :: Newtype DescribeInstanceStatusRequest _
 
 
 -- | <p>Contains the output of DescribeInstanceStatus.</p>
@@ -3384,6 +3686,7 @@ newtype DescribeInstanceStatusResult = DescribeInstanceStatusResult
   { "InstanceStatuses" :: NullOrUndefined (InstanceStatusList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeInstanceStatusResult :: Newtype DescribeInstanceStatusResult _
 
 
 -- | <p>Contains the parameters for DescribeInstances.</p>
@@ -3394,6 +3697,7 @@ newtype DescribeInstancesRequest = DescribeInstancesRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeInstancesRequest :: Newtype DescribeInstancesRequest _
 
 
 -- | <p>Contains the output of DescribeInstances.</p>
@@ -3401,6 +3705,7 @@ newtype DescribeInstancesResult = DescribeInstancesResult
   { "Reservations" :: NullOrUndefined (ReservationList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeInstancesResult :: Newtype DescribeInstancesResult _
 
 
 -- | <p>Contains the parameters for DescribeInternetGateways.</p>
@@ -3409,12 +3714,14 @@ newtype DescribeInternetGatewaysRequest = DescribeInternetGatewaysRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "InternetGatewayIds" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeDescribeInternetGatewaysRequest :: Newtype DescribeInternetGatewaysRequest _
 
 
 -- | <p>Contains the output of DescribeInternetGateways.</p>
 newtype DescribeInternetGatewaysResult = DescribeInternetGatewaysResult 
   { "InternetGateways" :: NullOrUndefined (InternetGatewayList)
   }
+derive instance newtypeDescribeInternetGatewaysResult :: Newtype DescribeInternetGatewaysResult _
 
 
 -- | <p>Contains the parameters for DescribeKeyPairs.</p>
@@ -3423,12 +3730,14 @@ newtype DescribeKeyPairsRequest = DescribeKeyPairsRequest
   , "KeyNames" :: NullOrUndefined (KeyNameStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeKeyPairsRequest :: Newtype DescribeKeyPairsRequest _
 
 
 -- | <p>Contains the output of DescribeKeyPairs.</p>
 newtype DescribeKeyPairsResult = DescribeKeyPairsResult 
   { "KeyPairs" :: NullOrUndefined (KeyPairList)
   }
+derive instance newtypeDescribeKeyPairsResult :: Newtype DescribeKeyPairsResult _
 
 
 newtype DescribeLaunchTemplateVersionsRequest = DescribeLaunchTemplateVersionsRequest 
@@ -3442,12 +3751,14 @@ newtype DescribeLaunchTemplateVersionsRequest = DescribeLaunchTemplateVersionsRe
   , "MaxResults" :: NullOrUndefined (Int)
   , "Filters" :: NullOrUndefined (FilterList)
   }
+derive instance newtypeDescribeLaunchTemplateVersionsRequest :: Newtype DescribeLaunchTemplateVersionsRequest _
 
 
 newtype DescribeLaunchTemplateVersionsResult = DescribeLaunchTemplateVersionsResult 
   { "LaunchTemplateVersions" :: NullOrUndefined (LaunchTemplateVersionSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeLaunchTemplateVersionsResult :: Newtype DescribeLaunchTemplateVersionsResult _
 
 
 newtype DescribeLaunchTemplatesRequest = DescribeLaunchTemplatesRequest 
@@ -3458,12 +3769,14 @@ newtype DescribeLaunchTemplatesRequest = DescribeLaunchTemplatesRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (Int)
   }
+derive instance newtypeDescribeLaunchTemplatesRequest :: Newtype DescribeLaunchTemplatesRequest _
 
 
 newtype DescribeLaunchTemplatesResult = DescribeLaunchTemplatesResult 
   { "LaunchTemplates" :: NullOrUndefined (LaunchTemplateSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeLaunchTemplatesResult :: Newtype DescribeLaunchTemplatesResult _
 
 
 -- | <p>Contains the parameters for DescribeMovingAddresses.</p>
@@ -3474,6 +3787,7 @@ newtype DescribeMovingAddressesRequest = DescribeMovingAddressesRequest
   , "NextToken" :: NullOrUndefined (String)
   , "PublicIps" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeDescribeMovingAddressesRequest :: Newtype DescribeMovingAddressesRequest _
 
 
 -- | <p>Contains the output of DescribeMovingAddresses.</p>
@@ -3481,6 +3795,7 @@ newtype DescribeMovingAddressesResult = DescribeMovingAddressesResult
   { "MovingAddressStatuses" :: NullOrUndefined (MovingAddressStatusSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeMovingAddressesResult :: Newtype DescribeMovingAddressesResult _
 
 
 -- | <p>Contains the parameters for DescribeNatGateways.</p>
@@ -3490,6 +3805,7 @@ newtype DescribeNatGatewaysRequest = DescribeNatGatewaysRequest
   , "NatGatewayIds" :: NullOrUndefined (ValueStringList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeNatGatewaysRequest :: Newtype DescribeNatGatewaysRequest _
 
 
 -- | <p>Contains the output of DescribeNatGateways.</p>
@@ -3497,6 +3813,7 @@ newtype DescribeNatGatewaysResult = DescribeNatGatewaysResult
   { "NatGateways" :: NullOrUndefined (NatGatewayList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeNatGatewaysResult :: Newtype DescribeNatGatewaysResult _
 
 
 -- | <p>Contains the parameters for DescribeNetworkAcls.</p>
@@ -3505,12 +3822,14 @@ newtype DescribeNetworkAclsRequest = DescribeNetworkAclsRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "NetworkAclIds" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeDescribeNetworkAclsRequest :: Newtype DescribeNetworkAclsRequest _
 
 
 -- | <p>Contains the output of DescribeNetworkAcls.</p>
 newtype DescribeNetworkAclsResult = DescribeNetworkAclsResult 
   { "NetworkAcls" :: NullOrUndefined (NetworkAclList)
   }
+derive instance newtypeDescribeNetworkAclsResult :: Newtype DescribeNetworkAclsResult _
 
 
 -- | <p>Contains the parameters for DescribeNetworkInterfaceAttribute.</p>
@@ -3519,6 +3838,7 @@ newtype DescribeNetworkInterfaceAttributeRequest = DescribeNetworkInterfaceAttri
   , "DryRun" :: NullOrUndefined (Boolean)
   , "NetworkInterfaceId" :: (String)
   }
+derive instance newtypeDescribeNetworkInterfaceAttributeRequest :: Newtype DescribeNetworkInterfaceAttributeRequest _
 
 
 -- | <p>Contains the output of DescribeNetworkInterfaceAttribute.</p>
@@ -3529,6 +3849,7 @@ newtype DescribeNetworkInterfaceAttributeResult = DescribeNetworkInterfaceAttrib
   , "NetworkInterfaceId" :: NullOrUndefined (String)
   , "SourceDestCheck" :: NullOrUndefined (AttributeBooleanValue)
   }
+derive instance newtypeDescribeNetworkInterfaceAttributeResult :: Newtype DescribeNetworkInterfaceAttributeResult _
 
 
 -- | <p>Contains the parameters for DescribeNetworkInterfacePermissions.</p>
@@ -3538,6 +3859,7 @@ newtype DescribeNetworkInterfacePermissionsRequest = DescribeNetworkInterfacePer
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (Int)
   }
+derive instance newtypeDescribeNetworkInterfacePermissionsRequest :: Newtype DescribeNetworkInterfacePermissionsRequest _
 
 
 -- | <p>Contains the output for DescribeNetworkInterfacePermissions.</p>
@@ -3545,6 +3867,7 @@ newtype DescribeNetworkInterfacePermissionsResult = DescribeNetworkInterfacePerm
   { "NetworkInterfacePermissions" :: NullOrUndefined (NetworkInterfacePermissionList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeNetworkInterfacePermissionsResult :: Newtype DescribeNetworkInterfacePermissionsResult _
 
 
 -- | <p>Contains the parameters for DescribeNetworkInterfaces.</p>
@@ -3553,12 +3876,14 @@ newtype DescribeNetworkInterfacesRequest = DescribeNetworkInterfacesRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "NetworkInterfaceIds" :: NullOrUndefined (NetworkInterfaceIdList)
   }
+derive instance newtypeDescribeNetworkInterfacesRequest :: Newtype DescribeNetworkInterfacesRequest _
 
 
 -- | <p>Contains the output of DescribeNetworkInterfaces.</p>
 newtype DescribeNetworkInterfacesResult = DescribeNetworkInterfacesResult 
   { "NetworkInterfaces" :: NullOrUndefined (NetworkInterfaceList)
   }
+derive instance newtypeDescribeNetworkInterfacesResult :: Newtype DescribeNetworkInterfacesResult _
 
 
 -- | <p>Contains the parameters for DescribePlacementGroups.</p>
@@ -3567,12 +3892,14 @@ newtype DescribePlacementGroupsRequest = DescribePlacementGroupsRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "GroupNames" :: NullOrUndefined (PlacementGroupStringList)
   }
+derive instance newtypeDescribePlacementGroupsRequest :: Newtype DescribePlacementGroupsRequest _
 
 
 -- | <p>Contains the output of DescribePlacementGroups.</p>
 newtype DescribePlacementGroupsResult = DescribePlacementGroupsResult 
   { "PlacementGroups" :: NullOrUndefined (PlacementGroupList)
   }
+derive instance newtypeDescribePlacementGroupsResult :: Newtype DescribePlacementGroupsResult _
 
 
 -- | <p>Contains the parameters for DescribePrefixLists.</p>
@@ -3583,6 +3910,7 @@ newtype DescribePrefixListsRequest = DescribePrefixListsRequest
   , "NextToken" :: NullOrUndefined (String)
   , "PrefixListIds" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeDescribePrefixListsRequest :: Newtype DescribePrefixListsRequest _
 
 
 -- | <p>Contains the output of DescribePrefixLists.</p>
@@ -3590,6 +3918,7 @@ newtype DescribePrefixListsResult = DescribePrefixListsResult
   { "NextToken" :: NullOrUndefined (String)
   , "PrefixLists" :: NullOrUndefined (PrefixListSet)
   }
+derive instance newtypeDescribePrefixListsResult :: Newtype DescribePrefixListsResult _
 
 
 newtype DescribePrincipalIdFormatRequest = DescribePrincipalIdFormatRequest 
@@ -3598,12 +3927,14 @@ newtype DescribePrincipalIdFormatRequest = DescribePrincipalIdFormatRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribePrincipalIdFormatRequest :: Newtype DescribePrincipalIdFormatRequest _
 
 
 newtype DescribePrincipalIdFormatResult = DescribePrincipalIdFormatResult 
   { "Principals" :: NullOrUndefined (PrincipalIdFormatList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribePrincipalIdFormatResult :: Newtype DescribePrincipalIdFormatResult _
 
 
 -- | <p>Contains the parameters for DescribeRegions.</p>
@@ -3612,12 +3943,14 @@ newtype DescribeRegionsRequest = DescribeRegionsRequest
   , "RegionNames" :: NullOrUndefined (RegionNameStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeRegionsRequest :: Newtype DescribeRegionsRequest _
 
 
 -- | <p>Contains the output of DescribeRegions.</p>
 newtype DescribeRegionsResult = DescribeRegionsResult 
   { "Regions" :: NullOrUndefined (RegionList)
   }
+derive instance newtypeDescribeRegionsResult :: Newtype DescribeRegionsResult _
 
 
 -- | <p>Contains the parameters for DescribeReservedInstancesListings.</p>
@@ -3626,12 +3959,14 @@ newtype DescribeReservedInstancesListingsRequest = DescribeReservedInstancesList
   , "ReservedInstancesId" :: NullOrUndefined (String)
   , "ReservedInstancesListingId" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeReservedInstancesListingsRequest :: Newtype DescribeReservedInstancesListingsRequest _
 
 
 -- | <p>Contains the output of DescribeReservedInstancesListings.</p>
 newtype DescribeReservedInstancesListingsResult = DescribeReservedInstancesListingsResult 
   { "ReservedInstancesListings" :: NullOrUndefined (ReservedInstancesListingList)
   }
+derive instance newtypeDescribeReservedInstancesListingsResult :: Newtype DescribeReservedInstancesListingsResult _
 
 
 -- | <p>Contains the parameters for DescribeReservedInstancesModifications.</p>
@@ -3640,6 +3975,7 @@ newtype DescribeReservedInstancesModificationsRequest = DescribeReservedInstance
   , "ReservedInstancesModificationIds" :: NullOrUndefined (ReservedInstancesModificationIdStringList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeReservedInstancesModificationsRequest :: Newtype DescribeReservedInstancesModificationsRequest _
 
 
 -- | <p>Contains the output of DescribeReservedInstancesModifications.</p>
@@ -3647,6 +3983,7 @@ newtype DescribeReservedInstancesModificationsResult = DescribeReservedInstances
   { "NextToken" :: NullOrUndefined (String)
   , "ReservedInstancesModifications" :: NullOrUndefined (ReservedInstancesModificationList)
   }
+derive instance newtypeDescribeReservedInstancesModificationsResult :: Newtype DescribeReservedInstancesModificationsResult _
 
 
 -- | <p>Contains the parameters for DescribeReservedInstancesOfferings.</p>
@@ -3667,6 +4004,7 @@ newtype DescribeReservedInstancesOfferingsRequest = DescribeReservedInstancesOff
   , "NextToken" :: NullOrUndefined (String)
   , "OfferingType" :: NullOrUndefined (OfferingTypeValues)
   }
+derive instance newtypeDescribeReservedInstancesOfferingsRequest :: Newtype DescribeReservedInstancesOfferingsRequest _
 
 
 -- | <p>Contains the output of DescribeReservedInstancesOfferings.</p>
@@ -3674,6 +4012,7 @@ newtype DescribeReservedInstancesOfferingsResult = DescribeReservedInstancesOffe
   { "ReservedInstancesOfferings" :: NullOrUndefined (ReservedInstancesOfferingList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeReservedInstancesOfferingsResult :: Newtype DescribeReservedInstancesOfferingsResult _
 
 
 -- | <p>Contains the parameters for DescribeReservedInstances.</p>
@@ -3684,12 +4023,14 @@ newtype DescribeReservedInstancesRequest = DescribeReservedInstancesRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "OfferingType" :: NullOrUndefined (OfferingTypeValues)
   }
+derive instance newtypeDescribeReservedInstancesRequest :: Newtype DescribeReservedInstancesRequest _
 
 
 -- | <p>Contains the output for DescribeReservedInstances.</p>
 newtype DescribeReservedInstancesResult = DescribeReservedInstancesResult 
   { "ReservedInstances" :: NullOrUndefined (ReservedInstancesList)
   }
+derive instance newtypeDescribeReservedInstancesResult :: Newtype DescribeReservedInstancesResult _
 
 
 -- | <p>Contains the parameters for DescribeRouteTables.</p>
@@ -3698,12 +4039,14 @@ newtype DescribeRouteTablesRequest = DescribeRouteTablesRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "RouteTableIds" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeDescribeRouteTablesRequest :: Newtype DescribeRouteTablesRequest _
 
 
 -- | <p>Contains the output of DescribeRouteTables.</p>
 newtype DescribeRouteTablesResult = DescribeRouteTablesResult 
   { "RouteTables" :: NullOrUndefined (RouteTableList)
   }
+derive instance newtypeDescribeRouteTablesResult :: Newtype DescribeRouteTablesResult _
 
 
 -- | <p>Contains the parameters for DescribeScheduledInstanceAvailability.</p>
@@ -3717,6 +4060,7 @@ newtype DescribeScheduledInstanceAvailabilityRequest = DescribeScheduledInstance
   , "NextToken" :: NullOrUndefined (String)
   , "Recurrence" :: (ScheduledInstanceRecurrenceRequest)
   }
+derive instance newtypeDescribeScheduledInstanceAvailabilityRequest :: Newtype DescribeScheduledInstanceAvailabilityRequest _
 
 
 -- | <p>Contains the output of DescribeScheduledInstanceAvailability.</p>
@@ -3724,6 +4068,7 @@ newtype DescribeScheduledInstanceAvailabilityResult = DescribeScheduledInstanceA
   { "NextToken" :: NullOrUndefined (String)
   , "ScheduledInstanceAvailabilitySet" :: NullOrUndefined (ScheduledInstanceAvailabilitySet)
   }
+derive instance newtypeDescribeScheduledInstanceAvailabilityResult :: Newtype DescribeScheduledInstanceAvailabilityResult _
 
 
 -- | <p>Contains the parameters for DescribeScheduledInstances.</p>
@@ -3735,6 +4080,7 @@ newtype DescribeScheduledInstancesRequest = DescribeScheduledInstancesRequest
   , "ScheduledInstanceIds" :: NullOrUndefined (ScheduledInstanceIdRequestSet)
   , "SlotStartTimeRange" :: NullOrUndefined (SlotStartTimeRangeRequest)
   }
+derive instance newtypeDescribeScheduledInstancesRequest :: Newtype DescribeScheduledInstancesRequest _
 
 
 -- | <p>Contains the output of DescribeScheduledInstances.</p>
@@ -3742,17 +4088,20 @@ newtype DescribeScheduledInstancesResult = DescribeScheduledInstancesResult
   { "NextToken" :: NullOrUndefined (String)
   , "ScheduledInstanceSet" :: NullOrUndefined (ScheduledInstanceSet)
   }
+derive instance newtypeDescribeScheduledInstancesResult :: Newtype DescribeScheduledInstancesResult _
 
 
 newtype DescribeSecurityGroupReferencesRequest = DescribeSecurityGroupReferencesRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   , "GroupId" :: (GroupIds)
   }
+derive instance newtypeDescribeSecurityGroupReferencesRequest :: Newtype DescribeSecurityGroupReferencesRequest _
 
 
 newtype DescribeSecurityGroupReferencesResult = DescribeSecurityGroupReferencesResult 
   { "SecurityGroupReferenceSet" :: NullOrUndefined (SecurityGroupReferences)
   }
+derive instance newtypeDescribeSecurityGroupReferencesResult :: Newtype DescribeSecurityGroupReferencesResult _
 
 
 -- | <p>Contains the parameters for DescribeSecurityGroups.</p>
@@ -3764,6 +4113,7 @@ newtype DescribeSecurityGroupsRequest = DescribeSecurityGroupsRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (Int)
   }
+derive instance newtypeDescribeSecurityGroupsRequest :: Newtype DescribeSecurityGroupsRequest _
 
 
 -- | <p>Contains the output of DescribeSecurityGroups.</p>
@@ -3771,6 +4121,7 @@ newtype DescribeSecurityGroupsResult = DescribeSecurityGroupsResult
   { "SecurityGroups" :: NullOrUndefined (SecurityGroupList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeSecurityGroupsResult :: Newtype DescribeSecurityGroupsResult _
 
 
 -- | <p>Contains the parameters for DescribeSnapshotAttribute.</p>
@@ -3779,6 +4130,7 @@ newtype DescribeSnapshotAttributeRequest = DescribeSnapshotAttributeRequest
   , "SnapshotId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeSnapshotAttributeRequest :: Newtype DescribeSnapshotAttributeRequest _
 
 
 -- | <p>Contains the output of DescribeSnapshotAttribute.</p>
@@ -3787,6 +4139,7 @@ newtype DescribeSnapshotAttributeResult = DescribeSnapshotAttributeResult
   , "ProductCodes" :: NullOrUndefined (ProductCodeList)
   , "SnapshotId" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeSnapshotAttributeResult :: Newtype DescribeSnapshotAttributeResult _
 
 
 -- | <p>Contains the parameters for DescribeSnapshots.</p>
@@ -3799,6 +4152,7 @@ newtype DescribeSnapshotsRequest = DescribeSnapshotsRequest
   , "SnapshotIds" :: NullOrUndefined (SnapshotIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeSnapshotsRequest :: Newtype DescribeSnapshotsRequest _
 
 
 -- | <p>Contains the output of DescribeSnapshots.</p>
@@ -3806,18 +4160,21 @@ newtype DescribeSnapshotsResult = DescribeSnapshotsResult
   { "Snapshots" :: NullOrUndefined (SnapshotList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeSnapshotsResult :: Newtype DescribeSnapshotsResult _
 
 
 -- | <p>Contains the parameters for DescribeSpotDatafeedSubscription.</p>
 newtype DescribeSpotDatafeedSubscriptionRequest = DescribeSpotDatafeedSubscriptionRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeSpotDatafeedSubscriptionRequest :: Newtype DescribeSpotDatafeedSubscriptionRequest _
 
 
 -- | <p>Contains the output of DescribeSpotDatafeedSubscription.</p>
 newtype DescribeSpotDatafeedSubscriptionResult = DescribeSpotDatafeedSubscriptionResult 
   { "SpotDatafeedSubscription" :: NullOrUndefined (SpotDatafeedSubscription)
   }
+derive instance newtypeDescribeSpotDatafeedSubscriptionResult :: Newtype DescribeSpotDatafeedSubscriptionResult _
 
 
 -- | <p>Contains the parameters for DescribeSpotFleetInstances.</p>
@@ -3827,6 +4184,7 @@ newtype DescribeSpotFleetInstancesRequest = DescribeSpotFleetInstancesRequest
   , "NextToken" :: NullOrUndefined (String)
   , "SpotFleetRequestId" :: (String)
   }
+derive instance newtypeDescribeSpotFleetInstancesRequest :: Newtype DescribeSpotFleetInstancesRequest _
 
 
 -- | <p>Contains the output of DescribeSpotFleetInstances.</p>
@@ -3835,6 +4193,7 @@ newtype DescribeSpotFleetInstancesResponse = DescribeSpotFleetInstancesResponse
   , "NextToken" :: NullOrUndefined (String)
   , "SpotFleetRequestId" :: (String)
   }
+derive instance newtypeDescribeSpotFleetInstancesResponse :: Newtype DescribeSpotFleetInstancesResponse _
 
 
 -- | <p>Contains the parameters for DescribeSpotFleetRequestHistory.</p>
@@ -3846,6 +4205,7 @@ newtype DescribeSpotFleetRequestHistoryRequest = DescribeSpotFleetRequestHistory
   , "SpotFleetRequestId" :: (String)
   , "StartTime" :: (DateTime)
   }
+derive instance newtypeDescribeSpotFleetRequestHistoryRequest :: Newtype DescribeSpotFleetRequestHistoryRequest _
 
 
 -- | <p>Contains the output of DescribeSpotFleetRequestHistory.</p>
@@ -3856,6 +4216,7 @@ newtype DescribeSpotFleetRequestHistoryResponse = DescribeSpotFleetRequestHistor
   , "SpotFleetRequestId" :: (String)
   , "StartTime" :: (DateTime)
   }
+derive instance newtypeDescribeSpotFleetRequestHistoryResponse :: Newtype DescribeSpotFleetRequestHistoryResponse _
 
 
 -- | <p>Contains the parameters for DescribeSpotFleetRequests.</p>
@@ -3865,6 +4226,7 @@ newtype DescribeSpotFleetRequestsRequest = DescribeSpotFleetRequestsRequest
   , "NextToken" :: NullOrUndefined (String)
   , "SpotFleetRequestIds" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeDescribeSpotFleetRequestsRequest :: Newtype DescribeSpotFleetRequestsRequest _
 
 
 -- | <p>Contains the output of DescribeSpotFleetRequests.</p>
@@ -3872,6 +4234,7 @@ newtype DescribeSpotFleetRequestsResponse = DescribeSpotFleetRequestsResponse
   { "NextToken" :: NullOrUndefined (String)
   , "SpotFleetRequestConfigs" :: (SpotFleetRequestConfigSet)
   }
+derive instance newtypeDescribeSpotFleetRequestsResponse :: Newtype DescribeSpotFleetRequestsResponse _
 
 
 -- | <p>Contains the parameters for DescribeSpotInstanceRequests.</p>
@@ -3880,12 +4243,14 @@ newtype DescribeSpotInstanceRequestsRequest = DescribeSpotInstanceRequestsReques
   , "DryRun" :: NullOrUndefined (Boolean)
   , "SpotInstanceRequestIds" :: NullOrUndefined (SpotInstanceRequestIdList)
   }
+derive instance newtypeDescribeSpotInstanceRequestsRequest :: Newtype DescribeSpotInstanceRequestsRequest _
 
 
 -- | <p>Contains the output of DescribeSpotInstanceRequests.</p>
 newtype DescribeSpotInstanceRequestsResult = DescribeSpotInstanceRequestsResult 
   { "SpotInstanceRequests" :: NullOrUndefined (SpotInstanceRequestList)
   }
+derive instance newtypeDescribeSpotInstanceRequestsResult :: Newtype DescribeSpotInstanceRequestsResult _
 
 
 -- | <p>Contains the parameters for DescribeSpotPriceHistory.</p>
@@ -3900,6 +4265,7 @@ newtype DescribeSpotPriceHistoryRequest = DescribeSpotPriceHistoryRequest
   , "ProductDescriptions" :: NullOrUndefined (ProductDescriptionList)
   , "StartTime" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeDescribeSpotPriceHistoryRequest :: Newtype DescribeSpotPriceHistoryRequest _
 
 
 -- | <p>Contains the output of DescribeSpotPriceHistory.</p>
@@ -3907,6 +4273,7 @@ newtype DescribeSpotPriceHistoryResult = DescribeSpotPriceHistoryResult
   { "NextToken" :: NullOrUndefined (String)
   , "SpotPriceHistory" :: NullOrUndefined (SpotPriceHistoryList)
   }
+derive instance newtypeDescribeSpotPriceHistoryResult :: Newtype DescribeSpotPriceHistoryResult _
 
 
 newtype DescribeStaleSecurityGroupsRequest = DescribeStaleSecurityGroupsRequest 
@@ -3915,12 +4282,14 @@ newtype DescribeStaleSecurityGroupsRequest = DescribeStaleSecurityGroupsRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "VpcId" :: (String)
   }
+derive instance newtypeDescribeStaleSecurityGroupsRequest :: Newtype DescribeStaleSecurityGroupsRequest _
 
 
 newtype DescribeStaleSecurityGroupsResult = DescribeStaleSecurityGroupsResult 
   { "NextToken" :: NullOrUndefined (String)
   , "StaleSecurityGroupSet" :: NullOrUndefined (StaleSecurityGroupSet)
   }
+derive instance newtypeDescribeStaleSecurityGroupsResult :: Newtype DescribeStaleSecurityGroupsResult _
 
 
 -- | <p>Contains the parameters for DescribeSubnets.</p>
@@ -3929,12 +4298,14 @@ newtype DescribeSubnetsRequest = DescribeSubnetsRequest
   , "SubnetIds" :: NullOrUndefined (SubnetIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeSubnetsRequest :: Newtype DescribeSubnetsRequest _
 
 
 -- | <p>Contains the output of DescribeSubnets.</p>
 newtype DescribeSubnetsResult = DescribeSubnetsResult 
   { "Subnets" :: NullOrUndefined (SubnetList)
   }
+derive instance newtypeDescribeSubnetsResult :: Newtype DescribeSubnetsResult _
 
 
 -- | <p>Contains the parameters for DescribeTags.</p>
@@ -3944,6 +4315,7 @@ newtype DescribeTagsRequest = DescribeTagsRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeTagsRequest :: Newtype DescribeTagsRequest _
 
 
 -- | <p>Contains the output of DescribeTags.</p>
@@ -3951,6 +4323,7 @@ newtype DescribeTagsResult = DescribeTagsResult
   { "NextToken" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagDescriptionList)
   }
+derive instance newtypeDescribeTagsResult :: Newtype DescribeTagsResult _
 
 
 -- | <p>Contains the parameters for DescribeVolumeAttribute.</p>
@@ -3959,6 +4332,7 @@ newtype DescribeVolumeAttributeRequest = DescribeVolumeAttributeRequest
   , "VolumeId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeVolumeAttributeRequest :: Newtype DescribeVolumeAttributeRequest _
 
 
 -- | <p>Contains the output of DescribeVolumeAttribute.</p>
@@ -3967,6 +4341,7 @@ newtype DescribeVolumeAttributeResult = DescribeVolumeAttributeResult
   , "ProductCodes" :: NullOrUndefined (ProductCodeList)
   , "VolumeId" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVolumeAttributeResult :: Newtype DescribeVolumeAttributeResult _
 
 
 -- | <p>Contains the parameters for DescribeVolumeStatus.</p>
@@ -3977,6 +4352,7 @@ newtype DescribeVolumeStatusRequest = DescribeVolumeStatusRequest
   , "VolumeIds" :: NullOrUndefined (VolumeIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeVolumeStatusRequest :: Newtype DescribeVolumeStatusRequest _
 
 
 -- | <p>Contains the output of DescribeVolumeStatus.</p>
@@ -3984,6 +4360,7 @@ newtype DescribeVolumeStatusResult = DescribeVolumeStatusResult
   { "NextToken" :: NullOrUndefined (String)
   , "VolumeStatuses" :: NullOrUndefined (VolumeStatusList)
   }
+derive instance newtypeDescribeVolumeStatusResult :: Newtype DescribeVolumeStatusResult _
 
 
 newtype DescribeVolumesModificationsRequest = DescribeVolumesModificationsRequest 
@@ -3993,12 +4370,14 @@ newtype DescribeVolumesModificationsRequest = DescribeVolumesModificationsReques
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (Int)
   }
+derive instance newtypeDescribeVolumesModificationsRequest :: Newtype DescribeVolumesModificationsRequest _
 
 
 newtype DescribeVolumesModificationsResult = DescribeVolumesModificationsResult 
   { "VolumesModifications" :: NullOrUndefined (VolumeModificationList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVolumesModificationsResult :: Newtype DescribeVolumesModificationsResult _
 
 
 -- | <p>Contains the parameters for DescribeVolumes.</p>
@@ -4009,6 +4388,7 @@ newtype DescribeVolumesRequest = DescribeVolumesRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVolumesRequest :: Newtype DescribeVolumesRequest _
 
 
 -- | <p>Contains the output of DescribeVolumes.</p>
@@ -4016,6 +4396,7 @@ newtype DescribeVolumesResult = DescribeVolumesResult
   { "Volumes" :: NullOrUndefined (VolumeList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVolumesResult :: Newtype DescribeVolumesResult _
 
 
 -- | <p>Contains the parameters for DescribeVpcAttribute.</p>
@@ -4024,6 +4405,7 @@ newtype DescribeVpcAttributeRequest = DescribeVpcAttributeRequest
   , "VpcId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeVpcAttributeRequest :: Newtype DescribeVpcAttributeRequest _
 
 
 -- | <p>Contains the output of DescribeVpcAttribute.</p>
@@ -4032,6 +4414,7 @@ newtype DescribeVpcAttributeResult = DescribeVpcAttributeResult
   , "EnableDnsHostnames" :: NullOrUndefined (AttributeBooleanValue)
   , "EnableDnsSupport" :: NullOrUndefined (AttributeBooleanValue)
   }
+derive instance newtypeDescribeVpcAttributeResult :: Newtype DescribeVpcAttributeResult _
 
 
 -- | <p>Contains the parameters for DescribeVpcClassicLinkDnsSupport.</p>
@@ -4040,6 +4423,7 @@ newtype DescribeVpcClassicLinkDnsSupportRequest = DescribeVpcClassicLinkDnsSuppo
   , "NextToken" :: NullOrUndefined (NextToken)
   , "VpcIds" :: NullOrUndefined (VpcClassicLinkIdList)
   }
+derive instance newtypeDescribeVpcClassicLinkDnsSupportRequest :: Newtype DescribeVpcClassicLinkDnsSupportRequest _
 
 
 -- | <p>Contains the output of DescribeVpcClassicLinkDnsSupport.</p>
@@ -4047,6 +4431,7 @@ newtype DescribeVpcClassicLinkDnsSupportResult = DescribeVpcClassicLinkDnsSuppor
   { "NextToken" :: NullOrUndefined (NextToken)
   , "Vpcs" :: NullOrUndefined (ClassicLinkDnsSupportList)
   }
+derive instance newtypeDescribeVpcClassicLinkDnsSupportResult :: Newtype DescribeVpcClassicLinkDnsSupportResult _
 
 
 -- | <p>Contains the parameters for DescribeVpcClassicLink.</p>
@@ -4055,12 +4440,14 @@ newtype DescribeVpcClassicLinkRequest = DescribeVpcClassicLinkRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "VpcIds" :: NullOrUndefined (VpcClassicLinkIdList)
   }
+derive instance newtypeDescribeVpcClassicLinkRequest :: Newtype DescribeVpcClassicLinkRequest _
 
 
 -- | <p>Contains the output of DescribeVpcClassicLink.</p>
 newtype DescribeVpcClassicLinkResult = DescribeVpcClassicLinkResult 
   { "Vpcs" :: NullOrUndefined (VpcClassicLinkList)
   }
+derive instance newtypeDescribeVpcClassicLinkResult :: Newtype DescribeVpcClassicLinkResult _
 
 
 newtype DescribeVpcEndpointConnectionNotificationsRequest = DescribeVpcEndpointConnectionNotificationsRequest 
@@ -4070,12 +4457,14 @@ newtype DescribeVpcEndpointConnectionNotificationsRequest = DescribeVpcEndpointC
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointConnectionNotificationsRequest :: Newtype DescribeVpcEndpointConnectionNotificationsRequest _
 
 
 newtype DescribeVpcEndpointConnectionNotificationsResult = DescribeVpcEndpointConnectionNotificationsResult 
   { "ConnectionNotificationSet" :: NullOrUndefined (ConnectionNotificationSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointConnectionNotificationsResult :: Newtype DescribeVpcEndpointConnectionNotificationsResult _
 
 
 newtype DescribeVpcEndpointConnectionsRequest = DescribeVpcEndpointConnectionsRequest 
@@ -4084,12 +4473,14 @@ newtype DescribeVpcEndpointConnectionsRequest = DescribeVpcEndpointConnectionsRe
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointConnectionsRequest :: Newtype DescribeVpcEndpointConnectionsRequest _
 
 
 newtype DescribeVpcEndpointConnectionsResult = DescribeVpcEndpointConnectionsResult 
   { "VpcEndpointConnections" :: NullOrUndefined (VpcEndpointConnectionSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointConnectionsResult :: Newtype DescribeVpcEndpointConnectionsResult _
 
 
 newtype DescribeVpcEndpointServiceConfigurationsRequest = DescribeVpcEndpointServiceConfigurationsRequest 
@@ -4099,12 +4490,14 @@ newtype DescribeVpcEndpointServiceConfigurationsRequest = DescribeVpcEndpointSer
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointServiceConfigurationsRequest :: Newtype DescribeVpcEndpointServiceConfigurationsRequest _
 
 
 newtype DescribeVpcEndpointServiceConfigurationsResult = DescribeVpcEndpointServiceConfigurationsResult 
   { "ServiceConfigurations" :: NullOrUndefined (ServiceConfigurationSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointServiceConfigurationsResult :: Newtype DescribeVpcEndpointServiceConfigurationsResult _
 
 
 newtype DescribeVpcEndpointServicePermissionsRequest = DescribeVpcEndpointServicePermissionsRequest 
@@ -4114,12 +4507,14 @@ newtype DescribeVpcEndpointServicePermissionsRequest = DescribeVpcEndpointServic
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointServicePermissionsRequest :: Newtype DescribeVpcEndpointServicePermissionsRequest _
 
 
 newtype DescribeVpcEndpointServicePermissionsResult = DescribeVpcEndpointServicePermissionsResult 
   { "AllowedPrincipals" :: NullOrUndefined (AllowedPrincipalSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointServicePermissionsResult :: Newtype DescribeVpcEndpointServicePermissionsResult _
 
 
 -- | <p>Contains the parameters for DescribeVpcEndpointServices.</p>
@@ -4130,6 +4525,7 @@ newtype DescribeVpcEndpointServicesRequest = DescribeVpcEndpointServicesRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointServicesRequest :: Newtype DescribeVpcEndpointServicesRequest _
 
 
 -- | <p>Contains the output of DescribeVpcEndpointServices.</p>
@@ -4138,6 +4534,7 @@ newtype DescribeVpcEndpointServicesResult = DescribeVpcEndpointServicesResult
   , "ServiceDetails" :: NullOrUndefined (ServiceDetailSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointServicesResult :: Newtype DescribeVpcEndpointServicesResult _
 
 
 -- | <p>Contains the parameters for DescribeVpcEndpoints.</p>
@@ -4148,6 +4545,7 @@ newtype DescribeVpcEndpointsRequest = DescribeVpcEndpointsRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointsRequest :: Newtype DescribeVpcEndpointsRequest _
 
 
 -- | <p>Contains the output of DescribeVpcEndpoints.</p>
@@ -4155,6 +4553,7 @@ newtype DescribeVpcEndpointsResult = DescribeVpcEndpointsResult
   { "VpcEndpoints" :: NullOrUndefined (VpcEndpointSet)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeVpcEndpointsResult :: Newtype DescribeVpcEndpointsResult _
 
 
 -- | <p>Contains the parameters for DescribeVpcPeeringConnections.</p>
@@ -4163,12 +4562,14 @@ newtype DescribeVpcPeeringConnectionsRequest = DescribeVpcPeeringConnectionsRequ
   , "DryRun" :: NullOrUndefined (Boolean)
   , "VpcPeeringConnectionIds" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeDescribeVpcPeeringConnectionsRequest :: Newtype DescribeVpcPeeringConnectionsRequest _
 
 
 -- | <p>Contains the output of DescribeVpcPeeringConnections.</p>
 newtype DescribeVpcPeeringConnectionsResult = DescribeVpcPeeringConnectionsResult 
   { "VpcPeeringConnections" :: NullOrUndefined (VpcPeeringConnectionList)
   }
+derive instance newtypeDescribeVpcPeeringConnectionsResult :: Newtype DescribeVpcPeeringConnectionsResult _
 
 
 -- | <p>Contains the parameters for DescribeVpcs.</p>
@@ -4177,12 +4578,14 @@ newtype DescribeVpcsRequest = DescribeVpcsRequest
   , "VpcIds" :: NullOrUndefined (VpcIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeVpcsRequest :: Newtype DescribeVpcsRequest _
 
 
 -- | <p>Contains the output of DescribeVpcs.</p>
 newtype DescribeVpcsResult = DescribeVpcsResult 
   { "Vpcs" :: NullOrUndefined (VpcList)
   }
+derive instance newtypeDescribeVpcsResult :: Newtype DescribeVpcsResult _
 
 
 -- | <p>Contains the parameters for DescribeVpnConnections.</p>
@@ -4191,12 +4594,14 @@ newtype DescribeVpnConnectionsRequest = DescribeVpnConnectionsRequest
   , "VpnConnectionIds" :: NullOrUndefined (VpnConnectionIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeVpnConnectionsRequest :: Newtype DescribeVpnConnectionsRequest _
 
 
 -- | <p>Contains the output of DescribeVpnConnections.</p>
 newtype DescribeVpnConnectionsResult = DescribeVpnConnectionsResult 
   { "VpnConnections" :: NullOrUndefined (VpnConnectionList)
   }
+derive instance newtypeDescribeVpnConnectionsResult :: Newtype DescribeVpnConnectionsResult _
 
 
 -- | <p>Contains the parameters for DescribeVpnGateways.</p>
@@ -4205,12 +4610,14 @@ newtype DescribeVpnGatewaysRequest = DescribeVpnGatewaysRequest
   , "VpnGatewayIds" :: NullOrUndefined (VpnGatewayIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeVpnGatewaysRequest :: Newtype DescribeVpnGatewaysRequest _
 
 
 -- | <p>Contains the output of DescribeVpnGateways.</p>
 newtype DescribeVpnGatewaysResult = DescribeVpnGatewaysResult 
   { "VpnGateways" :: NullOrUndefined (VpnGatewayList)
   }
+derive instance newtypeDescribeVpnGatewaysResult :: Newtype DescribeVpnGatewaysResult _
 
 
 -- | <p>Contains the parameters for DetachClassicLinkVpc.</p>
@@ -4219,12 +4626,14 @@ newtype DetachClassicLinkVpcRequest = DetachClassicLinkVpcRequest
   , "InstanceId" :: (String)
   , "VpcId" :: (String)
   }
+derive instance newtypeDetachClassicLinkVpcRequest :: Newtype DetachClassicLinkVpcRequest _
 
 
 -- | <p>Contains the output of DetachClassicLinkVpc.</p>
 newtype DetachClassicLinkVpcResult = DetachClassicLinkVpcResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDetachClassicLinkVpcResult :: Newtype DetachClassicLinkVpcResult _
 
 
 -- | <p>Contains the parameters for DetachInternetGateway.</p>
@@ -4233,6 +4642,7 @@ newtype DetachInternetGatewayRequest = DetachInternetGatewayRequest
   , "InternetGatewayId" :: (String)
   , "VpcId" :: (String)
   }
+derive instance newtypeDetachInternetGatewayRequest :: Newtype DetachInternetGatewayRequest _
 
 
 -- | <p>Contains the parameters for DetachNetworkInterface.</p>
@@ -4241,6 +4651,7 @@ newtype DetachNetworkInterfaceRequest = DetachNetworkInterfaceRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "Force" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDetachNetworkInterfaceRequest :: Newtype DetachNetworkInterfaceRequest _
 
 
 -- | <p>Contains the parameters for DetachVolume.</p>
@@ -4251,6 +4662,7 @@ newtype DetachVolumeRequest = DetachVolumeRequest
   , "VolumeId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDetachVolumeRequest :: Newtype DetachVolumeRequest _
 
 
 -- | <p>Contains the parameters for DetachVpnGateway.</p>
@@ -4259,9 +4671,11 @@ newtype DetachVpnGatewayRequest = DetachVpnGatewayRequest
   , "VpnGatewayId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDetachVpnGatewayRequest :: Newtype DetachVpnGatewayRequest _
 
 
 newtype DeviceType = DeviceType String
+derive instance newtypeDeviceType :: Newtype DeviceType _
 
 
 -- | <p>Describes a DHCP configuration option.</p>
@@ -4269,12 +4683,15 @@ newtype DhcpConfiguration = DhcpConfiguration
   { "Key" :: NullOrUndefined (String)
   , "Values" :: NullOrUndefined (DhcpConfigurationValueList)
   }
+derive instance newtypeDhcpConfiguration :: Newtype DhcpConfiguration _
 
 
 newtype DhcpConfigurationList = DhcpConfigurationList (Array DhcpConfiguration)
+derive instance newtypeDhcpConfigurationList :: Newtype DhcpConfigurationList _
 
 
 newtype DhcpConfigurationValueList = DhcpConfigurationValueList (Array AttributeValue)
+derive instance newtypeDhcpConfigurationValueList :: Newtype DhcpConfigurationValueList _
 
 
 -- | <p>Describes a set of DHCP options.</p>
@@ -4283,12 +4700,15 @@ newtype DhcpOptions = DhcpOptions
   , "DhcpOptionsId" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeDhcpOptions :: Newtype DhcpOptions _
 
 
 newtype DhcpOptionsIdStringList = DhcpOptionsIdStringList (Array String)
+derive instance newtypeDhcpOptionsIdStringList :: Newtype DhcpOptionsIdStringList _
 
 
 newtype DhcpOptionsList = DhcpOptionsList (Array DhcpOptions)
+derive instance newtypeDhcpOptionsList :: Newtype DhcpOptionsList _
 
 
 -- | <p>Contains the parameters for DisableVgwRoutePropagation.</p>
@@ -4296,18 +4716,21 @@ newtype DisableVgwRoutePropagationRequest = DisableVgwRoutePropagationRequest
   { "GatewayId" :: (String)
   , "RouteTableId" :: (String)
   }
+derive instance newtypeDisableVgwRoutePropagationRequest :: Newtype DisableVgwRoutePropagationRequest _
 
 
 -- | <p>Contains the parameters for DisableVpcClassicLinkDnsSupport.</p>
 newtype DisableVpcClassicLinkDnsSupportRequest = DisableVpcClassicLinkDnsSupportRequest 
   { "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeDisableVpcClassicLinkDnsSupportRequest :: Newtype DisableVpcClassicLinkDnsSupportRequest _
 
 
 -- | <p>Contains the output of DisableVpcClassicLinkDnsSupport.</p>
 newtype DisableVpcClassicLinkDnsSupportResult = DisableVpcClassicLinkDnsSupportResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDisableVpcClassicLinkDnsSupportResult :: Newtype DisableVpcClassicLinkDnsSupportResult _
 
 
 -- | <p>Contains the parameters for DisableVpcClassicLink.</p>
@@ -4315,12 +4738,14 @@ newtype DisableVpcClassicLinkRequest = DisableVpcClassicLinkRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcId" :: (String)
   }
+derive instance newtypeDisableVpcClassicLinkRequest :: Newtype DisableVpcClassicLinkRequest _
 
 
 -- | <p>Contains the output of DisableVpcClassicLink.</p>
 newtype DisableVpcClassicLinkResult = DisableVpcClassicLinkResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDisableVpcClassicLinkResult :: Newtype DisableVpcClassicLinkResult _
 
 
 -- | <p>Contains the parameters for DisassociateAddress.</p>
@@ -4329,16 +4754,19 @@ newtype DisassociateAddressRequest = DisassociateAddressRequest
   , "PublicIp" :: NullOrUndefined (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDisassociateAddressRequest :: Newtype DisassociateAddressRequest _
 
 
 newtype DisassociateIamInstanceProfileRequest = DisassociateIamInstanceProfileRequest 
   { "AssociationId" :: (String)
   }
+derive instance newtypeDisassociateIamInstanceProfileRequest :: Newtype DisassociateIamInstanceProfileRequest _
 
 
 newtype DisassociateIamInstanceProfileResult = DisassociateIamInstanceProfileResult 
   { "IamInstanceProfileAssociation" :: NullOrUndefined (IamInstanceProfileAssociation)
   }
+derive instance newtypeDisassociateIamInstanceProfileResult :: Newtype DisassociateIamInstanceProfileResult _
 
 
 -- | <p>Contains the parameters for DisassociateRouteTable.</p>
@@ -4346,22 +4774,26 @@ newtype DisassociateRouteTableRequest = DisassociateRouteTableRequest
   { "AssociationId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDisassociateRouteTableRequest :: Newtype DisassociateRouteTableRequest _
 
 
 newtype DisassociateSubnetCidrBlockRequest = DisassociateSubnetCidrBlockRequest 
   { "AssociationId" :: (String)
   }
+derive instance newtypeDisassociateSubnetCidrBlockRequest :: Newtype DisassociateSubnetCidrBlockRequest _
 
 
 newtype DisassociateSubnetCidrBlockResult = DisassociateSubnetCidrBlockResult 
   { "Ipv6CidrBlockAssociation" :: NullOrUndefined (SubnetIpv6CidrBlockAssociation)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeDisassociateSubnetCidrBlockResult :: Newtype DisassociateSubnetCidrBlockResult _
 
 
 newtype DisassociateVpcCidrBlockRequest = DisassociateVpcCidrBlockRequest 
   { "AssociationId" :: (String)
   }
+derive instance newtypeDisassociateVpcCidrBlockRequest :: Newtype DisassociateVpcCidrBlockRequest _
 
 
 newtype DisassociateVpcCidrBlockResult = DisassociateVpcCidrBlockResult 
@@ -4369,6 +4801,7 @@ newtype DisassociateVpcCidrBlockResult = DisassociateVpcCidrBlockResult
   , "CidrBlockAssociation" :: NullOrUndefined (VpcCidrBlockAssociation)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeDisassociateVpcCidrBlockResult :: Newtype DisassociateVpcCidrBlockResult _
 
 
 -- | <p>Describes a disk image.</p>
@@ -4377,6 +4810,7 @@ newtype DiskImage = DiskImage
   , "Image" :: NullOrUndefined (DiskImageDetail)
   , "Volume" :: NullOrUndefined (VolumeDetail)
   }
+derive instance newtypeDiskImage :: Newtype DiskImage _
 
 
 -- | <p>Describes a disk image.</p>
@@ -4386,6 +4820,7 @@ newtype DiskImageDescription = DiskImageDescription
   , "ImportManifestUrl" :: (String)
   , "Size" :: (Number)
   }
+derive instance newtypeDiskImageDescription :: Newtype DiskImageDescription _
 
 
 -- | <p>Describes a disk image.</p>
@@ -4394,12 +4829,15 @@ newtype DiskImageDetail = DiskImageDetail
   , "Format" :: (DiskImageFormat)
   , "ImportManifestUrl" :: (String)
   }
+derive instance newtypeDiskImageDetail :: Newtype DiskImageDetail _
 
 
 newtype DiskImageFormat = DiskImageFormat String
+derive instance newtypeDiskImageFormat :: Newtype DiskImageFormat _
 
 
 newtype DiskImageList = DiskImageList (Array DiskImage)
+derive instance newtypeDiskImageList :: Newtype DiskImageList _
 
 
 -- | <p>Describes a disk image volume.</p>
@@ -4407,6 +4845,7 @@ newtype DiskImageVolumeDescription = DiskImageVolumeDescription
   { "Id" :: (String)
   , "Size" :: NullOrUndefined (Number)
   }
+derive instance newtypeDiskImageVolumeDescription :: Newtype DiskImageVolumeDescription _
 
 
 -- | <p>Describes a DNS entry.</p>
@@ -4414,12 +4853,15 @@ newtype DnsEntry = DnsEntry
   { "DnsName" :: NullOrUndefined (String)
   , "HostedZoneId" :: NullOrUndefined (String)
   }
+derive instance newtypeDnsEntry :: Newtype DnsEntry _
 
 
 newtype DnsEntrySet = DnsEntrySet (Array DnsEntry)
+derive instance newtypeDnsEntrySet :: Newtype DnsEntrySet _
 
 
 newtype DomainType = DomainType String
+derive instance newtypeDomainType :: Newtype DomainType _
 
 
 -- | <p>Describes a block device for an EBS volume.</p>
@@ -4432,6 +4874,7 @@ newtype EbsBlockDevice = EbsBlockDevice
   , "VolumeSize" :: NullOrUndefined (Int)
   , "VolumeType" :: NullOrUndefined (VolumeType)
   }
+derive instance newtypeEbsBlockDevice :: Newtype EbsBlockDevice _
 
 
 -- | <p>Describes a parameter used to set up an EBS volume in a block device mapping.</p>
@@ -4441,6 +4884,7 @@ newtype EbsInstanceBlockDevice = EbsInstanceBlockDevice
   , "Status" :: NullOrUndefined (AttachmentStatus)
   , "VolumeId" :: NullOrUndefined (String)
   }
+derive instance newtypeEbsInstanceBlockDevice :: Newtype EbsInstanceBlockDevice _
 
 
 -- | <p>Describes information used to set up an EBS volume specified in a block device mapping.</p>
@@ -4448,6 +4892,7 @@ newtype EbsInstanceBlockDeviceSpecification = EbsInstanceBlockDeviceSpecificatio
   { "DeleteOnTermination" :: NullOrUndefined (Boolean)
   , "VolumeId" :: NullOrUndefined (String)
   }
+derive instance newtypeEbsInstanceBlockDeviceSpecification :: Newtype EbsInstanceBlockDeviceSpecification _
 
 
 -- | <p>Describes an egress-only Internet gateway.</p>
@@ -4455,15 +4900,19 @@ newtype EgressOnlyInternetGateway = EgressOnlyInternetGateway
   { "Attachments" :: NullOrUndefined (InternetGatewayAttachmentList)
   , "EgressOnlyInternetGatewayId" :: NullOrUndefined (EgressOnlyInternetGatewayId)
   }
+derive instance newtypeEgressOnlyInternetGateway :: Newtype EgressOnlyInternetGateway _
 
 
 newtype EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId String
+derive instance newtypeEgressOnlyInternetGatewayId :: Newtype EgressOnlyInternetGatewayId _
 
 
 newtype EgressOnlyInternetGatewayIdList = EgressOnlyInternetGatewayIdList (Array EgressOnlyInternetGatewayId)
+derive instance newtypeEgressOnlyInternetGatewayIdList :: Newtype EgressOnlyInternetGatewayIdList _
 
 
 newtype EgressOnlyInternetGatewayList = EgressOnlyInternetGatewayList (Array EgressOnlyInternetGateway)
+derive instance newtypeEgressOnlyInternetGatewayList :: Newtype EgressOnlyInternetGatewayList _
 
 
 -- | <p>Describes the association between an instance and an Elastic GPU.</p>
@@ -4473,48 +4922,60 @@ newtype ElasticGpuAssociation = ElasticGpuAssociation
   , "ElasticGpuAssociationState" :: NullOrUndefined (String)
   , "ElasticGpuAssociationTime" :: NullOrUndefined (String)
   }
+derive instance newtypeElasticGpuAssociation :: Newtype ElasticGpuAssociation _
 
 
 newtype ElasticGpuAssociationList = ElasticGpuAssociationList (Array ElasticGpuAssociation)
+derive instance newtypeElasticGpuAssociationList :: Newtype ElasticGpuAssociationList _
 
 
 -- | <p>Describes the status of an Elastic GPU.</p>
 newtype ElasticGpuHealth = ElasticGpuHealth 
   { "Status" :: NullOrUndefined (ElasticGpuStatus)
   }
+derive instance newtypeElasticGpuHealth :: Newtype ElasticGpuHealth _
 
 
 newtype ElasticGpuIdSet = ElasticGpuIdSet (Array String)
+derive instance newtypeElasticGpuIdSet :: Newtype ElasticGpuIdSet _
 
 
 newtype ElasticGpuSet = ElasticGpuSet (Array ElasticGpus)
+derive instance newtypeElasticGpuSet :: Newtype ElasticGpuSet _
 
 
 -- | <p>A specification for an Elastic GPU.</p>
 newtype ElasticGpuSpecification = ElasticGpuSpecification 
   { "Type" :: (String)
   }
+derive instance newtypeElasticGpuSpecification :: Newtype ElasticGpuSpecification _
 
 
 newtype ElasticGpuSpecificationList = ElasticGpuSpecificationList (Array ElasticGpuSpecification)
+derive instance newtypeElasticGpuSpecificationList :: Newtype ElasticGpuSpecificationList _
 
 
 -- | <p>Describes an elastic GPU.</p>
 newtype ElasticGpuSpecificationResponse = ElasticGpuSpecificationResponse 
   { "Type" :: NullOrUndefined (String)
   }
+derive instance newtypeElasticGpuSpecificationResponse :: Newtype ElasticGpuSpecificationResponse _
 
 
 newtype ElasticGpuSpecificationResponseList = ElasticGpuSpecificationResponseList (Array ElasticGpuSpecificationResponse)
+derive instance newtypeElasticGpuSpecificationResponseList :: Newtype ElasticGpuSpecificationResponseList _
 
 
 newtype ElasticGpuSpecifications = ElasticGpuSpecifications (Array ElasticGpuSpecification)
+derive instance newtypeElasticGpuSpecifications :: Newtype ElasticGpuSpecifications _
 
 
 newtype ElasticGpuState = ElasticGpuState String
+derive instance newtypeElasticGpuState :: Newtype ElasticGpuState _
 
 
 newtype ElasticGpuStatus = ElasticGpuStatus String
+derive instance newtypeElasticGpuStatus :: Newtype ElasticGpuStatus _
 
 
 -- | <p>Describes an Elastic GPU.</p>
@@ -4526,6 +4987,7 @@ newtype ElasticGpus = ElasticGpus
   , "ElasticGpuState" :: NullOrUndefined (ElasticGpuState)
   , "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeElasticGpus :: Newtype ElasticGpus _
 
 
 -- | <p>Contains the parameters for EnableVgwRoutePropagation.</p>
@@ -4533,6 +4995,7 @@ newtype EnableVgwRoutePropagationRequest = EnableVgwRoutePropagationRequest
   { "GatewayId" :: (String)
   , "RouteTableId" :: (String)
   }
+derive instance newtypeEnableVgwRoutePropagationRequest :: Newtype EnableVgwRoutePropagationRequest _
 
 
 -- | <p>Contains the parameters for EnableVolumeIO.</p>
@@ -4540,18 +5003,21 @@ newtype EnableVolumeIORequest = EnableVolumeIORequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VolumeId" :: (String)
   }
+derive instance newtypeEnableVolumeIORequest :: Newtype EnableVolumeIORequest _
 
 
 -- | <p>Contains the parameters for EnableVpcClassicLinkDnsSupport.</p>
 newtype EnableVpcClassicLinkDnsSupportRequest = EnableVpcClassicLinkDnsSupportRequest 
   { "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeEnableVpcClassicLinkDnsSupportRequest :: Newtype EnableVpcClassicLinkDnsSupportRequest _
 
 
 -- | <p>Contains the output of EnableVpcClassicLinkDnsSupport.</p>
 newtype EnableVpcClassicLinkDnsSupportResult = EnableVpcClassicLinkDnsSupportResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeEnableVpcClassicLinkDnsSupportResult :: Newtype EnableVpcClassicLinkDnsSupportResult _
 
 
 -- | <p>Contains the parameters for EnableVpcClassicLink.</p>
@@ -4559,15 +5025,18 @@ newtype EnableVpcClassicLinkRequest = EnableVpcClassicLinkRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcId" :: (String)
   }
+derive instance newtypeEnableVpcClassicLinkRequest :: Newtype EnableVpcClassicLinkRequest _
 
 
 -- | <p>Contains the output of EnableVpcClassicLink.</p>
 newtype EnableVpcClassicLinkResult = EnableVpcClassicLinkResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeEnableVpcClassicLinkResult :: Newtype EnableVpcClassicLinkResult _
 
 
 newtype EventCode = EventCode String
+derive instance newtypeEventCode :: Newtype EventCode _
 
 
 -- | <p>Describes a Spot Fleet event.</p>
@@ -4576,18 +5045,23 @@ newtype EventInformation = EventInformation
   , "EventSubType" :: NullOrUndefined (String)
   , "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeEventInformation :: Newtype EventInformation _
 
 
 newtype EventType = EventType String
+derive instance newtypeEventType :: Newtype EventType _
 
 
 newtype ExcessCapacityTerminationPolicy = ExcessCapacityTerminationPolicy String
+derive instance newtypeExcessCapacityTerminationPolicy :: Newtype ExcessCapacityTerminationPolicy _
 
 
 newtype ExecutableByStringList = ExecutableByStringList (Array String)
+derive instance newtypeExecutableByStringList :: Newtype ExecutableByStringList _
 
 
 newtype ExportEnvironment = ExportEnvironment String
+derive instance newtypeExportEnvironment :: Newtype ExportEnvironment _
 
 
 -- | <p>Describes an instance export task.</p>
@@ -4599,15 +5073,19 @@ newtype ExportTask = ExportTask
   , "State" :: NullOrUndefined (ExportTaskState)
   , "StatusMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeExportTask :: Newtype ExportTask _
 
 
 newtype ExportTaskIdStringList = ExportTaskIdStringList (Array String)
+derive instance newtypeExportTaskIdStringList :: Newtype ExportTaskIdStringList _
 
 
 newtype ExportTaskList = ExportTaskList (Array ExportTask)
+derive instance newtypeExportTaskList :: Newtype ExportTaskList _
 
 
 newtype ExportTaskState = ExportTaskState String
+derive instance newtypeExportTaskState :: Newtype ExportTaskState _
 
 
 -- | <p>Describes the format and location for an instance export task.</p>
@@ -4617,6 +5095,7 @@ newtype ExportToS3Task = ExportToS3Task
   , "S3Bucket" :: NullOrUndefined (String)
   , "S3Key" :: NullOrUndefined (String)
   }
+derive instance newtypeExportToS3Task :: Newtype ExportToS3Task _
 
 
 -- | <p>Describes an instance export task.</p>
@@ -4626,6 +5105,7 @@ newtype ExportToS3TaskSpecification = ExportToS3TaskSpecification
   , "S3Bucket" :: NullOrUndefined (String)
   , "S3Prefix" :: NullOrUndefined (String)
   }
+derive instance newtypeExportToS3TaskSpecification :: Newtype ExportToS3TaskSpecification _
 
 
 -- | <p>A filter name and value pair that is used to return a more specific list of results. Filters can be used to match a set of resources by various criteria, such as tags, attributes, or IDs.</p>
@@ -4633,9 +5113,11 @@ newtype Filter = Filter
   { "Name" :: NullOrUndefined (String)
   , "Values" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeFilter :: Newtype Filter _
 
 
 newtype FilterList = FilterList (Array Filter)
+derive instance newtypeFilterList :: Newtype FilterList _
 
 
 -- | <p>Describes a launch template.</p>
@@ -4644,9 +5126,11 @@ newtype FleetLaunchTemplateSpecification = FleetLaunchTemplateSpecification
   , "LaunchTemplateName" :: NullOrUndefined (LaunchTemplateName)
   , "Version" :: NullOrUndefined (String)
   }
+derive instance newtypeFleetLaunchTemplateSpecification :: Newtype FleetLaunchTemplateSpecification _
 
 
 newtype FleetType = FleetType String
+derive instance newtypeFleetType :: Newtype FleetType _
 
 
 -- | <p>Describes a flow log.</p>
@@ -4661,12 +5145,15 @@ newtype FlowLog = FlowLog
   , "ResourceId" :: NullOrUndefined (String)
   , "TrafficType" :: NullOrUndefined (TrafficType)
   }
+derive instance newtypeFlowLog :: Newtype FlowLog _
 
 
 newtype FlowLogSet = FlowLogSet (Array FlowLog)
+derive instance newtypeFlowLogSet :: Newtype FlowLogSet _
 
 
 newtype FlowLogsResourceType = FlowLogsResourceType String
+derive instance newtypeFlowLogsResourceType :: Newtype FlowLogsResourceType _
 
 
 -- | <p>Describes an Amazon FPGA image (AFI).</p>
@@ -4686,6 +5173,7 @@ newtype FpgaImage = FpgaImage
   , "Tags" :: NullOrUndefined (TagList)
   , "Public" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeFpgaImage :: Newtype FpgaImage _
 
 
 -- | <p>Describes an Amazon FPGA image (AFI) attribute.</p>
@@ -4696,15 +5184,19 @@ newtype FpgaImageAttribute = FpgaImageAttribute
   , "LoadPermissions" :: NullOrUndefined (LoadPermissionList)
   , "ProductCodes" :: NullOrUndefined (ProductCodeList)
   }
+derive instance newtypeFpgaImageAttribute :: Newtype FpgaImageAttribute _
 
 
 newtype FpgaImageAttributeName = FpgaImageAttributeName String
+derive instance newtypeFpgaImageAttributeName :: Newtype FpgaImageAttributeName _
 
 
 newtype FpgaImageIdList = FpgaImageIdList (Array String)
+derive instance newtypeFpgaImageIdList :: Newtype FpgaImageIdList _
 
 
 newtype FpgaImageList = FpgaImageList (Array FpgaImage)
+derive instance newtypeFpgaImageList :: Newtype FpgaImageList _
 
 
 -- | <p>Describes the state of the bitstream generation process for an Amazon FPGA image (AFI).</p>
@@ -4712,12 +5204,15 @@ newtype FpgaImageState = FpgaImageState
   { "Code" :: NullOrUndefined (FpgaImageStateCode)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeFpgaImageState :: Newtype FpgaImageState _
 
 
 newtype FpgaImageStateCode = FpgaImageStateCode String
+derive instance newtypeFpgaImageStateCode :: Newtype FpgaImageStateCode _
 
 
 newtype GatewayType = GatewayType String
+derive instance newtypeGatewayType :: Newtype GatewayType _
 
 
 -- | <p>Contains the parameters for GetConsoleOutput.</p>
@@ -4725,6 +5220,7 @@ newtype GetConsoleOutputRequest = GetConsoleOutputRequest
   { "InstanceId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGetConsoleOutputRequest :: Newtype GetConsoleOutputRequest _
 
 
 -- | <p>Contains the output of GetConsoleOutput.</p>
@@ -4733,6 +5229,7 @@ newtype GetConsoleOutputResult = GetConsoleOutputResult
   , "Output" :: NullOrUndefined (String)
   , "Number" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeGetConsoleOutputResult :: Newtype GetConsoleOutputResult _
 
 
 -- | <p>Contains the parameters for the request.</p>
@@ -4741,6 +5238,7 @@ newtype GetConsoleScreenshotRequest = GetConsoleScreenshotRequest
   , "InstanceId" :: (String)
   , "WakeUp" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGetConsoleScreenshotRequest :: Newtype GetConsoleScreenshotRequest _
 
 
 -- | <p>Contains the output of the request.</p>
@@ -4748,12 +5246,14 @@ newtype GetConsoleScreenshotResult = GetConsoleScreenshotResult
   { "ImageData" :: NullOrUndefined (String)
   , "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeGetConsoleScreenshotResult :: Newtype GetConsoleScreenshotResult _
 
 
 newtype GetHostReservationPurchasePreviewRequest = GetHostReservationPurchasePreviewRequest 
   { "HostIdSet" :: (RequestHostIdSet)
   , "OfferingId" :: (String)
   }
+derive instance newtypeGetHostReservationPurchasePreviewRequest :: Newtype GetHostReservationPurchasePreviewRequest _
 
 
 newtype GetHostReservationPurchasePreviewResult = GetHostReservationPurchasePreviewResult 
@@ -4762,17 +5262,20 @@ newtype GetHostReservationPurchasePreviewResult = GetHostReservationPurchasePrev
   , "TotalHourlyPrice" :: NullOrUndefined (String)
   , "TotalUpfrontPrice" :: NullOrUndefined (String)
   }
+derive instance newtypeGetHostReservationPurchasePreviewResult :: Newtype GetHostReservationPurchasePreviewResult _
 
 
 newtype GetLaunchTemplateDataRequest = GetLaunchTemplateDataRequest 
   { "DryRun" :: NullOrUndefined (Boolean)
   , "InstanceId" :: (String)
   }
+derive instance newtypeGetLaunchTemplateDataRequest :: Newtype GetLaunchTemplateDataRequest _
 
 
 newtype GetLaunchTemplateDataResult = GetLaunchTemplateDataResult 
   { "LaunchTemplateData" :: NullOrUndefined (ResponseLaunchTemplateData)
   }
+derive instance newtypeGetLaunchTemplateDataResult :: Newtype GetLaunchTemplateDataResult _
 
 
 -- | <p>Contains the parameters for GetPasswordData.</p>
@@ -4780,6 +5283,7 @@ newtype GetPasswordDataRequest = GetPasswordDataRequest
   { "InstanceId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGetPasswordDataRequest :: Newtype GetPasswordDataRequest _
 
 
 -- | <p>Contains the output of GetPasswordData.</p>
@@ -4788,6 +5292,7 @@ newtype GetPasswordDataResult = GetPasswordDataResult
   , "PasswordData" :: NullOrUndefined (String)
   , "Number" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeGetPasswordDataResult :: Newtype GetPasswordDataResult _
 
 
 -- | <p>Contains the parameters for GetReservedInstanceExchangeQuote.</p>
@@ -4796,6 +5301,7 @@ newtype GetReservedInstancesExchangeQuoteRequest = GetReservedInstancesExchangeQ
   , "ReservedInstanceIds" :: (ReservedInstanceIdSet)
   , "TargetConfigurations" :: NullOrUndefined (TargetConfigurationRequestSet)
   }
+derive instance newtypeGetReservedInstancesExchangeQuoteRequest :: Newtype GetReservedInstancesExchangeQuoteRequest _
 
 
 -- | <p>Contains the output of GetReservedInstancesExchangeQuote.</p>
@@ -4810,9 +5316,11 @@ newtype GetReservedInstancesExchangeQuoteResult = GetReservedInstancesExchangeQu
   , "TargetConfigurationValueSet" :: NullOrUndefined (TargetReservationValueSet)
   , "ValidationFailureReason" :: NullOrUndefined (String)
   }
+derive instance newtypeGetReservedInstancesExchangeQuoteResult :: Newtype GetReservedInstancesExchangeQuoteResult _
 
 
 newtype GroupIdStringList = GroupIdStringList (Array String)
+derive instance newtypeGroupIdStringList :: Newtype GroupIdStringList _
 
 
 -- | <p>Describes a security group.</p>
@@ -4820,18 +5328,23 @@ newtype GroupIdentifier = GroupIdentifier
   { "GroupName" :: NullOrUndefined (String)
   , "GroupId" :: NullOrUndefined (String)
   }
+derive instance newtypeGroupIdentifier :: Newtype GroupIdentifier _
 
 
 newtype GroupIdentifierList = GroupIdentifierList (Array GroupIdentifier)
+derive instance newtypeGroupIdentifierList :: Newtype GroupIdentifierList _
 
 
 newtype GroupIdentifierSet = GroupIdentifierSet (Array SecurityGroupIdentifier)
+derive instance newtypeGroupIdentifierSet :: Newtype GroupIdentifierSet _
 
 
 newtype GroupIds = GroupIds (Array String)
+derive instance newtypeGroupIds :: Newtype GroupIds _
 
 
 newtype GroupNameStringList = GroupNameStringList (Array String)
+derive instance newtypeGroupNameStringList :: Newtype GroupNameStringList _
 
 
 -- | <p>Describes an event in the history of the Spot Fleet request.</p>
@@ -4840,9 +5353,11 @@ newtype HistoryRecord = HistoryRecord
   , "EventType" :: (EventType)
   , "Number" :: (DateTime)
   }
+derive instance newtypeHistoryRecord :: Newtype HistoryRecord _
 
 
 newtype HistoryRecords = HistoryRecords (Array HistoryRecord)
+derive instance newtypeHistoryRecords :: Newtype HistoryRecords _
 
 
 -- | <p>Describes the properties of the Dedicated Host.</p>
@@ -4857,6 +5372,7 @@ newtype Host = Host
   , "Instances" :: NullOrUndefined (HostInstanceList)
   , "State" :: NullOrUndefined (AllocationState)
   }
+derive instance newtypeHost :: Newtype Host _
 
 
 -- | <p>Describes an instance running on a Dedicated Host.</p>
@@ -4864,12 +5380,15 @@ newtype HostInstance = HostInstance
   { "InstanceId" :: NullOrUndefined (String)
   , "InstanceType" :: NullOrUndefined (String)
   }
+derive instance newtypeHostInstance :: Newtype HostInstance _
 
 
 newtype HostInstanceList = HostInstanceList (Array HostInstance)
+derive instance newtypeHostInstanceList :: Newtype HostInstanceList _
 
 
 newtype HostList = HostList (Array Host)
+derive instance newtypeHostList :: Newtype HostList _
 
 
 -- | <p>Details about the Dedicated Host Reservation offering.</p>
@@ -4882,9 +5401,11 @@ newtype HostOffering = HostOffering
   , "PaymentOption" :: NullOrUndefined (PaymentOption)
   , "UpfrontPrice" :: NullOrUndefined (String)
   }
+derive instance newtypeHostOffering :: Newtype HostOffering _
 
 
 newtype HostOfferingSet = HostOfferingSet (Array HostOffering)
+derive instance newtypeHostOfferingSet :: Newtype HostOfferingSet _
 
 
 -- | <p>Describes properties of a Dedicated Host.</p>
@@ -4894,6 +5415,7 @@ newtype HostProperties = HostProperties
   , "Sockets" :: NullOrUndefined (Int)
   , "TotalVCpus" :: NullOrUndefined (Int)
   }
+derive instance newtypeHostProperties :: Newtype HostProperties _
 
 
 -- | <p>Details about the Dedicated Host Reservation and associated Dedicated Hosts.</p>
@@ -4912,18 +5434,23 @@ newtype HostReservation = HostReservation
   , "State" :: NullOrUndefined (ReservationState)
   , "UpfrontPrice" :: NullOrUndefined (String)
   }
+derive instance newtypeHostReservation :: Newtype HostReservation _
 
 
 newtype HostReservationIdSet = HostReservationIdSet (Array String)
+derive instance newtypeHostReservationIdSet :: Newtype HostReservationIdSet _
 
 
 newtype HostReservationSet = HostReservationSet (Array HostReservation)
+derive instance newtypeHostReservationSet :: Newtype HostReservationSet _
 
 
 newtype HostTenancy = HostTenancy String
+derive instance newtypeHostTenancy :: Newtype HostTenancy _
 
 
 newtype HypervisorType = HypervisorType String
+derive instance newtypeHypervisorType :: Newtype HypervisorType _
 
 
 -- | <p>Describes an IAM instance profile.</p>
@@ -4931,6 +5458,7 @@ newtype IamInstanceProfile = IamInstanceProfile
   { "Arn" :: NullOrUndefined (String)
   , "Id" :: NullOrUndefined (String)
   }
+derive instance newtypeIamInstanceProfile :: Newtype IamInstanceProfile _
 
 
 -- | <p>Describes an association between an IAM instance profile and an instance.</p>
@@ -4941,12 +5469,15 @@ newtype IamInstanceProfileAssociation = IamInstanceProfileAssociation
   , "State" :: NullOrUndefined (IamInstanceProfileAssociationState)
   , "Number" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeIamInstanceProfileAssociation :: Newtype IamInstanceProfileAssociation _
 
 
 newtype IamInstanceProfileAssociationSet = IamInstanceProfileAssociationSet (Array IamInstanceProfileAssociation)
+derive instance newtypeIamInstanceProfileAssociationSet :: Newtype IamInstanceProfileAssociationSet _
 
 
 newtype IamInstanceProfileAssociationState = IamInstanceProfileAssociationState String
+derive instance newtypeIamInstanceProfileAssociationState :: Newtype IamInstanceProfileAssociationState _
 
 
 -- | <p>Describes an IAM instance profile.</p>
@@ -4954,6 +5485,7 @@ newtype IamInstanceProfileSpecification = IamInstanceProfileSpecification
   { "Arn" :: NullOrUndefined (String)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeIamInstanceProfileSpecification :: Newtype IamInstanceProfileSpecification _
 
 
 -- | <p>Describes the ICMP type and code.</p>
@@ -4961,6 +5493,7 @@ newtype IcmpTypeCode = IcmpTypeCode
   { "Code" :: NullOrUndefined (Int)
   , "Type" :: NullOrUndefined (Int)
   }
+derive instance newtypeIcmpTypeCode :: Newtype IcmpTypeCode _
 
 
 -- | <p>Describes the ID format for a resource.</p>
@@ -4969,9 +5502,11 @@ newtype IdFormat = IdFormat
   , "Resource" :: NullOrUndefined (String)
   , "UseLongIds" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeIdFormat :: Newtype IdFormat _
 
 
 newtype IdFormatList = IdFormatList (Array IdFormat)
+derive instance newtypeIdFormatList :: Newtype IdFormatList _
 
 
 -- | <p>Describes an image.</p>
@@ -5001,6 +5536,7 @@ newtype Image = Image
   , "Tags" :: NullOrUndefined (TagList)
   , "VirtualizationType" :: NullOrUndefined (VirtualizationType)
   }
+derive instance newtypeImage :: Newtype Image _
 
 
 -- | <p>Describes an image attribute.</p>
@@ -5014,9 +5550,11 @@ newtype ImageAttribute = ImageAttribute
   , "RamdiskId" :: NullOrUndefined (AttributeValue)
   , "SriovNetSupport" :: NullOrUndefined (AttributeValue)
   }
+derive instance newtypeImageAttribute :: Newtype ImageAttribute _
 
 
 newtype ImageAttributeName = ImageAttributeName String
+derive instance newtypeImageAttributeName :: Newtype ImageAttributeName _
 
 
 -- | <p>Describes the disk container object for an import image task.</p>
@@ -5028,21 +5566,27 @@ newtype ImageDiskContainer = ImageDiskContainer
   , "Url" :: NullOrUndefined (String)
   , "UserBucket" :: NullOrUndefined (UserBucket)
   }
+derive instance newtypeImageDiskContainer :: Newtype ImageDiskContainer _
 
 
 newtype ImageDiskContainerList = ImageDiskContainerList (Array ImageDiskContainer)
+derive instance newtypeImageDiskContainerList :: Newtype ImageDiskContainerList _
 
 
 newtype ImageIdStringList = ImageIdStringList (Array String)
+derive instance newtypeImageIdStringList :: Newtype ImageIdStringList _
 
 
 newtype ImageList = ImageList (Array Image)
+derive instance newtypeImageList :: Newtype ImageList _
 
 
 newtype ImageState = ImageState String
+derive instance newtypeImageState :: Newtype ImageState _
 
 
 newtype ImageTypeValues = ImageTypeValues String
+derive instance newtypeImageTypeValues :: Newtype ImageTypeValues _
 
 
 -- | <p>Contains the parameters for ImportImage.</p>
@@ -5058,6 +5602,7 @@ newtype ImportImageRequest = ImportImageRequest
   , "Platform" :: NullOrUndefined (String)
   , "RoleName" :: NullOrUndefined (String)
   }
+derive instance newtypeImportImageRequest :: Newtype ImportImageRequest _
 
 
 -- | <p>Contains the output for ImportImage.</p>
@@ -5074,6 +5619,7 @@ newtype ImportImageResult = ImportImageResult
   , "Status" :: NullOrUndefined (String)
   , "StatusMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeImportImageResult :: Newtype ImportImageResult _
 
 
 -- | <p>Describes an import image task.</p>
@@ -5090,9 +5636,11 @@ newtype ImportImageTask = ImportImageTask
   , "Status" :: NullOrUndefined (String)
   , "StatusMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeImportImageTask :: Newtype ImportImageTask _
 
 
 newtype ImportImageTaskList = ImportImageTaskList (Array ImportImageTask)
+derive instance newtypeImportImageTaskList :: Newtype ImportImageTaskList _
 
 
 -- | <p>Describes the launch specification for VM import.</p>
@@ -5109,6 +5657,7 @@ newtype ImportInstanceLaunchSpecification = ImportInstanceLaunchSpecification
   , "SubnetId" :: NullOrUndefined (String)
   , "UserData" :: NullOrUndefined (UserData)
   }
+derive instance newtypeImportInstanceLaunchSpecification :: Newtype ImportInstanceLaunchSpecification _
 
 
 -- | <p>Contains the parameters for ImportInstance.</p>
@@ -5119,12 +5668,14 @@ newtype ImportInstanceRequest = ImportInstanceRequest
   , "LaunchSpecification" :: NullOrUndefined (ImportInstanceLaunchSpecification)
   , "Platform" :: (PlatformValues)
   }
+derive instance newtypeImportInstanceRequest :: Newtype ImportInstanceRequest _
 
 
 -- | <p>Contains the output for ImportInstance.</p>
 newtype ImportInstanceResult = ImportInstanceResult 
   { "ConversionTask" :: NullOrUndefined (ConversionTask)
   }
+derive instance newtypeImportInstanceResult :: Newtype ImportInstanceResult _
 
 
 -- | <p>Describes an import instance task.</p>
@@ -5134,6 +5685,7 @@ newtype ImportInstanceTaskDetails = ImportInstanceTaskDetails
   , "Platform" :: NullOrUndefined (PlatformValues)
   , "Volumes" :: (ImportInstanceVolumeDetailSet)
   }
+derive instance newtypeImportInstanceTaskDetails :: Newtype ImportInstanceTaskDetails _
 
 
 -- | <p>Describes an import volume task.</p>
@@ -5146,9 +5698,11 @@ newtype ImportInstanceVolumeDetailItem = ImportInstanceVolumeDetailItem
   , "StatusMessage" :: NullOrUndefined (String)
   , "Volume" :: (DiskImageVolumeDescription)
   }
+derive instance newtypeImportInstanceVolumeDetailItem :: Newtype ImportInstanceVolumeDetailItem _
 
 
 newtype ImportInstanceVolumeDetailSet = ImportInstanceVolumeDetailSet (Array ImportInstanceVolumeDetailItem)
+derive instance newtypeImportInstanceVolumeDetailSet :: Newtype ImportInstanceVolumeDetailSet _
 
 
 -- | <p>Contains the parameters for ImportKeyPair.</p>
@@ -5157,6 +5711,7 @@ newtype ImportKeyPairRequest = ImportKeyPairRequest
   , "KeyName" :: (String)
   , "PublicKeyMaterial" :: (String)
   }
+derive instance newtypeImportKeyPairRequest :: Newtype ImportKeyPairRequest _
 
 
 -- | <p>Contains the output of ImportKeyPair.</p>
@@ -5164,6 +5719,7 @@ newtype ImportKeyPairResult = ImportKeyPairResult
   { "KeyFingerprint" :: NullOrUndefined (String)
   , "KeyName" :: NullOrUndefined (String)
   }
+derive instance newtypeImportKeyPairResult :: Newtype ImportKeyPairResult _
 
 
 -- | <p>Contains the parameters for ImportSnapshot.</p>
@@ -5175,6 +5731,7 @@ newtype ImportSnapshotRequest = ImportSnapshotRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "RoleName" :: NullOrUndefined (String)
   }
+derive instance newtypeImportSnapshotRequest :: Newtype ImportSnapshotRequest _
 
 
 -- | <p>Contains the output for ImportSnapshot.</p>
@@ -5183,6 +5740,7 @@ newtype ImportSnapshotResult = ImportSnapshotResult
   , "ImportTaskId" :: NullOrUndefined (String)
   , "SnapshotTaskDetail" :: NullOrUndefined (SnapshotTaskDetail)
   }
+derive instance newtypeImportSnapshotResult :: Newtype ImportSnapshotResult _
 
 
 -- | <p>Describes an import snapshot task.</p>
@@ -5191,12 +5749,15 @@ newtype ImportSnapshotTask = ImportSnapshotTask
   , "ImportTaskId" :: NullOrUndefined (String)
   , "SnapshotTaskDetail" :: NullOrUndefined (SnapshotTaskDetail)
   }
+derive instance newtypeImportSnapshotTask :: Newtype ImportSnapshotTask _
 
 
 newtype ImportSnapshotTaskList = ImportSnapshotTaskList (Array ImportSnapshotTask)
+derive instance newtypeImportSnapshotTaskList :: Newtype ImportSnapshotTaskList _
 
 
 newtype ImportTaskIdList = ImportTaskIdList (Array String)
+derive instance newtypeImportTaskIdList :: Newtype ImportTaskIdList _
 
 
 -- | <p>Contains the parameters for ImportVolume.</p>
@@ -5207,12 +5768,14 @@ newtype ImportVolumeRequest = ImportVolumeRequest
   , "Image" :: (DiskImageDetail)
   , "Volume" :: (VolumeDetail)
   }
+derive instance newtypeImportVolumeRequest :: Newtype ImportVolumeRequest _
 
 
 -- | <p>Contains the output for ImportVolume.</p>
 newtype ImportVolumeResult = ImportVolumeResult 
   { "ConversionTask" :: NullOrUndefined (ConversionTask)
   }
+derive instance newtypeImportVolumeResult :: Newtype ImportVolumeResult _
 
 
 -- | <p>Describes an import volume task.</p>
@@ -5223,6 +5786,7 @@ newtype ImportVolumeTaskDetails = ImportVolumeTaskDetails
   , "Image" :: (DiskImageDescription)
   , "Volume" :: (DiskImageVolumeDescription)
   }
+derive instance newtypeImportVolumeTaskDetails :: Newtype ImportVolumeTaskDetails _
 
 
 -- | <p>Describes an instance.</p>
@@ -5267,6 +5831,7 @@ newtype Instance = Instance
   , "Tags" :: NullOrUndefined (TagList)
   , "VirtualizationType" :: NullOrUndefined (VirtualizationType)
   }
+derive instance newtypeInstance :: Newtype Instance _
 
 
 -- | <p>Describes an instance attribute.</p>
@@ -5287,9 +5852,11 @@ newtype InstanceAttribute = InstanceAttribute
   , "SriovNetSupport" :: NullOrUndefined (AttributeValue)
   , "UserData" :: NullOrUndefined (AttributeValue)
   }
+derive instance newtypeInstanceAttribute :: Newtype InstanceAttribute _
 
 
 newtype InstanceAttributeName = InstanceAttributeName String
+derive instance newtypeInstanceAttributeName :: Newtype InstanceAttributeName _
 
 
 -- | <p>Describes a block device mapping.</p>
@@ -5297,9 +5864,11 @@ newtype InstanceBlockDeviceMapping = InstanceBlockDeviceMapping
   { "DeviceName" :: NullOrUndefined (String)
   , "Ebs" :: NullOrUndefined (EbsInstanceBlockDevice)
   }
+derive instance newtypeInstanceBlockDeviceMapping :: Newtype InstanceBlockDeviceMapping _
 
 
 newtype InstanceBlockDeviceMappingList = InstanceBlockDeviceMappingList (Array InstanceBlockDeviceMapping)
+derive instance newtypeInstanceBlockDeviceMappingList :: Newtype InstanceBlockDeviceMappingList _
 
 
 -- | <p>Describes a block device mapping entry.</p>
@@ -5309,9 +5878,11 @@ newtype InstanceBlockDeviceMappingSpecification = InstanceBlockDeviceMappingSpec
   , "NoDevice" :: NullOrUndefined (String)
   , "VirtualName" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceBlockDeviceMappingSpecification :: Newtype InstanceBlockDeviceMappingSpecification _
 
 
 newtype InstanceBlockDeviceMappingSpecificationList = InstanceBlockDeviceMappingSpecificationList (Array InstanceBlockDeviceMappingSpecification)
+derive instance newtypeInstanceBlockDeviceMappingSpecificationList :: Newtype InstanceBlockDeviceMappingSpecificationList _
 
 
 -- | <p>Information about the instance type that the Dedicated Host supports.</p>
@@ -5320,6 +5891,7 @@ newtype InstanceCapacity = InstanceCapacity
   , "InstanceType" :: NullOrUndefined (String)
   , "TotalCapacity" :: NullOrUndefined (Int)
   }
+derive instance newtypeInstanceCapacity :: Newtype InstanceCapacity _
 
 
 -- | <p>Describes a Reserved Instance listing state.</p>
@@ -5327,9 +5899,11 @@ newtype InstanceCount = InstanceCount
   { "InstanceCount" :: NullOrUndefined (Int)
   , "State" :: NullOrUndefined (ListingState)
   }
+derive instance newtypeInstanceCount :: Newtype InstanceCount _
 
 
 newtype InstanceCountList = InstanceCountList (Array InstanceCount)
+derive instance newtypeInstanceCountList :: Newtype InstanceCountList _
 
 
 -- | <p>Describes the credit option for CPU usage of a T2 instance. </p>
@@ -5337,12 +5911,15 @@ newtype InstanceCreditSpecification = InstanceCreditSpecification
   { "InstanceId" :: NullOrUndefined (String)
   , "CpuCredits" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceCreditSpecification :: Newtype InstanceCreditSpecification _
 
 
 newtype InstanceCreditSpecificationList = InstanceCreditSpecificationList (Array InstanceCreditSpecification)
+derive instance newtypeInstanceCreditSpecificationList :: Newtype InstanceCreditSpecificationList _
 
 
 newtype InstanceCreditSpecificationListRequest = InstanceCreditSpecificationListRequest (Array InstanceCreditSpecificationRequest)
+derive instance newtypeInstanceCreditSpecificationListRequest :: Newtype InstanceCreditSpecificationListRequest _
 
 
 -- | <p>Describes the credit option for CPU usage of a T2 instance.</p>
@@ -5350,6 +5927,7 @@ newtype InstanceCreditSpecificationRequest = InstanceCreditSpecificationRequest
   { "InstanceId" :: NullOrUndefined (String)
   , "CpuCredits" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceCreditSpecificationRequest :: Newtype InstanceCreditSpecificationRequest _
 
 
 -- | <p>Describes an instance to export.</p>
@@ -5357,42 +5935,53 @@ newtype InstanceExportDetails = InstanceExportDetails
   { "InstanceId" :: NullOrUndefined (String)
   , "TargetEnvironment" :: NullOrUndefined (ExportEnvironment)
   }
+derive instance newtypeInstanceExportDetails :: Newtype InstanceExportDetails _
 
 
 newtype InstanceHealthStatus = InstanceHealthStatus String
+derive instance newtypeInstanceHealthStatus :: Newtype InstanceHealthStatus _
 
 
 newtype InstanceIdSet = InstanceIdSet (Array String)
+derive instance newtypeInstanceIdSet :: Newtype InstanceIdSet _
 
 
 newtype InstanceIdStringList = InstanceIdStringList (Array String)
+derive instance newtypeInstanceIdStringList :: Newtype InstanceIdStringList _
 
 
 newtype InstanceInterruptionBehavior = InstanceInterruptionBehavior String
+derive instance newtypeInstanceInterruptionBehavior :: Newtype InstanceInterruptionBehavior _
 
 
 -- | <p>Describes an IPv6 address.</p>
 newtype InstanceIpv6Address = InstanceIpv6Address 
   { "Ipv6Address" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceIpv6Address :: Newtype InstanceIpv6Address _
 
 
 newtype InstanceIpv6AddressList = InstanceIpv6AddressList (Array InstanceIpv6Address)
+derive instance newtypeInstanceIpv6AddressList :: Newtype InstanceIpv6AddressList _
 
 
 newtype InstanceIpv6AddressListRequest = InstanceIpv6AddressListRequest (Array InstanceIpv6AddressRequest)
+derive instance newtypeInstanceIpv6AddressListRequest :: Newtype InstanceIpv6AddressListRequest _
 
 
 -- | <p>Describes an IPv6 address.</p>
 newtype InstanceIpv6AddressRequest = InstanceIpv6AddressRequest 
   { "Ipv6Address" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceIpv6AddressRequest :: Newtype InstanceIpv6AddressRequest _
 
 
 newtype InstanceLifecycleType = InstanceLifecycleType String
+derive instance newtypeInstanceLifecycleType :: Newtype InstanceLifecycleType _
 
 
 newtype InstanceList = InstanceList (Array Instance)
+derive instance newtypeInstanceList :: Newtype InstanceList _
 
 
 -- | <p>Describes the market (purchasing) option for the instances.</p>
@@ -5400,6 +5989,7 @@ newtype InstanceMarketOptionsRequest = InstanceMarketOptionsRequest
   { "MarketType" :: NullOrUndefined (MarketType)
   , "SpotOptions" :: NullOrUndefined (SpotMarketOptions)
   }
+derive instance newtypeInstanceMarketOptionsRequest :: Newtype InstanceMarketOptionsRequest _
 
 
 -- | <p>Describes the monitoring of an instance.</p>
@@ -5407,9 +5997,11 @@ newtype InstanceMonitoring = InstanceMonitoring
   { "InstanceId" :: NullOrUndefined (String)
   , "Monitoring" :: NullOrUndefined (Monitoring)
   }
+derive instance newtypeInstanceMonitoring :: Newtype InstanceMonitoring _
 
 
 newtype InstanceMonitoringList = InstanceMonitoringList (Array InstanceMonitoring)
+derive instance newtypeInstanceMonitoringList :: Newtype InstanceMonitoringList _
 
 
 -- | <p>Describes a network interface.</p>
@@ -5430,6 +6022,7 @@ newtype InstanceNetworkInterface = InstanceNetworkInterface
   , "SubnetId" :: NullOrUndefined (String)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceNetworkInterface :: Newtype InstanceNetworkInterface _
 
 
 -- | <p>Describes association information for an Elastic IP address (IPv4).</p>
@@ -5438,6 +6031,7 @@ newtype InstanceNetworkInterfaceAssociation = InstanceNetworkInterfaceAssociatio
   , "PublicDnsName" :: NullOrUndefined (String)
   , "PublicIp" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceNetworkInterfaceAssociation :: Newtype InstanceNetworkInterfaceAssociation _
 
 
 -- | <p>Describes a network interface attachment.</p>
@@ -5448,9 +6042,11 @@ newtype InstanceNetworkInterfaceAttachment = InstanceNetworkInterfaceAttachment
   , "DeviceIndex" :: NullOrUndefined (Int)
   , "Status" :: NullOrUndefined (AttachmentStatus)
   }
+derive instance newtypeInstanceNetworkInterfaceAttachment :: Newtype InstanceNetworkInterfaceAttachment _
 
 
 newtype InstanceNetworkInterfaceList = InstanceNetworkInterfaceList (Array InstanceNetworkInterface)
+derive instance newtypeInstanceNetworkInterfaceList :: Newtype InstanceNetworkInterfaceList _
 
 
 -- | <p>Describes a network interface.</p>
@@ -5468,9 +6064,11 @@ newtype InstanceNetworkInterfaceSpecification = InstanceNetworkInterfaceSpecific
   , "SecondaryPrivateIpAddressCount" :: NullOrUndefined (Int)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceNetworkInterfaceSpecification :: Newtype InstanceNetworkInterfaceSpecification _
 
 
 newtype InstanceNetworkInterfaceSpecificationList = InstanceNetworkInterfaceSpecificationList (Array InstanceNetworkInterfaceSpecification)
+derive instance newtypeInstanceNetworkInterfaceSpecificationList :: Newtype InstanceNetworkInterfaceSpecificationList _
 
 
 -- | <p>Describes a private IPv4 address.</p>
@@ -5480,9 +6078,11 @@ newtype InstancePrivateIpAddress = InstancePrivateIpAddress
   , "PrivateDnsName" :: NullOrUndefined (String)
   , "PrivateIpAddress" :: NullOrUndefined (String)
   }
+derive instance newtypeInstancePrivateIpAddress :: Newtype InstancePrivateIpAddress _
 
 
 newtype InstancePrivateIpAddressList = InstancePrivateIpAddressList (Array InstancePrivateIpAddress)
+derive instance newtypeInstancePrivateIpAddressList :: Newtype InstancePrivateIpAddressList _
 
 
 -- | <p>Describes the current state of an instance.</p>
@@ -5490,6 +6090,7 @@ newtype InstanceState = InstanceState
   { "Code" :: NullOrUndefined (Int)
   , "Name" :: NullOrUndefined (InstanceStateName)
   }
+derive instance newtypeInstanceState :: Newtype InstanceState _
 
 
 -- | <p>Describes an instance state change.</p>
@@ -5498,12 +6099,15 @@ newtype InstanceStateChange = InstanceStateChange
   , "InstanceId" :: NullOrUndefined (String)
   , "PreviousState" :: NullOrUndefined (InstanceState)
   }
+derive instance newtypeInstanceStateChange :: Newtype InstanceStateChange _
 
 
 newtype InstanceStateChangeList = InstanceStateChangeList (Array InstanceStateChange)
+derive instance newtypeInstanceStateChangeList :: Newtype InstanceStateChangeList _
 
 
 newtype InstanceStateName = InstanceStateName String
+derive instance newtypeInstanceStateName :: Newtype InstanceStateName _
 
 
 -- | <p>Describes the status of an instance.</p>
@@ -5515,6 +6119,7 @@ newtype InstanceStatus = InstanceStatus
   , "InstanceStatus" :: NullOrUndefined (InstanceStatusSummary)
   , "SystemStatus" :: NullOrUndefined (InstanceStatusSummary)
   }
+derive instance newtypeInstanceStatus :: Newtype InstanceStatus _
 
 
 -- | <p>Describes the instance status.</p>
@@ -5523,9 +6128,11 @@ newtype InstanceStatusDetails = InstanceStatusDetails
   , "Name" :: NullOrUndefined (StatusName)
   , "Status" :: NullOrUndefined (StatusType)
   }
+derive instance newtypeInstanceStatusDetails :: Newtype InstanceStatusDetails _
 
 
 newtype InstanceStatusDetailsList = InstanceStatusDetailsList (Array InstanceStatusDetails)
+derive instance newtypeInstanceStatusDetailsList :: Newtype InstanceStatusDetailsList _
 
 
 -- | <p>Describes a scheduled event for an instance.</p>
@@ -5535,12 +6142,15 @@ newtype InstanceStatusEvent = InstanceStatusEvent
   , "NotAfter" :: NullOrUndefined (DateTime)
   , "NotBefore" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeInstanceStatusEvent :: Newtype InstanceStatusEvent _
 
 
 newtype InstanceStatusEventList = InstanceStatusEventList (Array InstanceStatusEvent)
+derive instance newtypeInstanceStatusEventList :: Newtype InstanceStatusEventList _
 
 
 newtype InstanceStatusList = InstanceStatusList (Array InstanceStatus)
+derive instance newtypeInstanceStatusList :: Newtype InstanceStatusList _
 
 
 -- | <p>Describes the status of an instance.</p>
@@ -5548,15 +6158,19 @@ newtype InstanceStatusSummary = InstanceStatusSummary
   { "Details" :: NullOrUndefined (InstanceStatusDetailsList)
   , "Status" :: NullOrUndefined (SummaryStatus)
   }
+derive instance newtypeInstanceStatusSummary :: Newtype InstanceStatusSummary _
 
 
 newtype InstanceType = InstanceType String
+derive instance newtypeInstanceType :: Newtype InstanceType _
 
 
 newtype InstanceTypeList = InstanceTypeList (Array InstanceType)
+derive instance newtypeInstanceTypeList :: Newtype InstanceTypeList _
 
 
 newtype InterfacePermissionType = InterfacePermissionType String
+derive instance newtypeInterfacePermissionType :: Newtype InterfacePermissionType _
 
 
 -- | <p>Describes an Internet gateway.</p>
@@ -5565,6 +6179,7 @@ newtype InternetGateway = InternetGateway
   , "InternetGatewayId" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeInternetGateway :: Newtype InternetGateway _
 
 
 -- | <p>Describes the attachment of a VPC to an Internet gateway or an egress-only Internet gateway.</p>
@@ -5572,12 +6187,15 @@ newtype InternetGatewayAttachment = InternetGatewayAttachment
   { "State" :: NullOrUndefined (AttachmentStatus)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeInternetGatewayAttachment :: Newtype InternetGatewayAttachment _
 
 
 newtype InternetGatewayAttachmentList = InternetGatewayAttachmentList (Array InternetGatewayAttachment)
+derive instance newtypeInternetGatewayAttachmentList :: Newtype InternetGatewayAttachmentList _
 
 
 newtype InternetGatewayList = InternetGatewayList (Array InternetGateway)
+derive instance newtypeInternetGatewayList :: Newtype InternetGatewayList _
 
 
 -- | <p>Describes a set of permissions for a security group rule.</p>
@@ -5590,9 +6208,11 @@ newtype IpPermission = IpPermission
   , "ToPort" :: NullOrUndefined (Int)
   , "UserIdGroupPairs" :: NullOrUndefined (UserIdGroupPairList)
   }
+derive instance newtypeIpPermission :: Newtype IpPermission _
 
 
 newtype IpPermissionList = IpPermissionList (Array IpPermission)
+derive instance newtypeIpPermissionList :: Newtype IpPermissionList _
 
 
 -- | <p>Describes an IPv4 range.</p>
@@ -5600,27 +6220,34 @@ newtype IpRange = IpRange
   { "CidrIp" :: NullOrUndefined (String)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeIpRange :: Newtype IpRange _
 
 
 newtype IpRangeList = IpRangeList (Array IpRange)
+derive instance newtypeIpRangeList :: Newtype IpRangeList _
 
 
 newtype IpRanges = IpRanges (Array String)
+derive instance newtypeIpRanges :: Newtype IpRanges _
 
 
 newtype Ipv6Address = Ipv6Address String
+derive instance newtypeIpv6Address :: Newtype Ipv6Address _
 
 
 newtype Ipv6AddressList = Ipv6AddressList (Array String)
+derive instance newtypeIpv6AddressList :: Newtype Ipv6AddressList _
 
 
 -- | <p>Describes an IPv6 CIDR block.</p>
 newtype Ipv6CidrBlock = Ipv6CidrBlock 
   { "Ipv6CidrBlock" :: NullOrUndefined (String)
   }
+derive instance newtypeIpv6CidrBlock :: Newtype Ipv6CidrBlock _
 
 
 newtype Ipv6CidrBlockSet = Ipv6CidrBlockSet (Array Ipv6CidrBlock)
+derive instance newtypeIpv6CidrBlockSet :: Newtype Ipv6CidrBlockSet _
 
 
 -- | <p>[EC2-VPC only] Describes an IPv6 range.</p>
@@ -5628,12 +6255,15 @@ newtype Ipv6Range = Ipv6Range
   { "CidrIpv6" :: NullOrUndefined (String)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeIpv6Range :: Newtype Ipv6Range _
 
 
 newtype Ipv6RangeList = Ipv6RangeList (Array Ipv6Range)
+derive instance newtypeIpv6RangeList :: Newtype Ipv6RangeList _
 
 
 newtype KeyNameStringList = KeyNameStringList (Array String)
+derive instance newtypeKeyNameStringList :: Newtype KeyNameStringList _
 
 
 -- | <p>Describes a key pair.</p>
@@ -5642,6 +6272,7 @@ newtype KeyPair = KeyPair
   , "KeyMaterial" :: NullOrUndefined (String)
   , "KeyName" :: NullOrUndefined (String)
   }
+derive instance newtypeKeyPair :: Newtype KeyPair _
 
 
 -- | <p>Describes a key pair.</p>
@@ -5649,9 +6280,11 @@ newtype KeyPairInfo = KeyPairInfo
   { "KeyFingerprint" :: NullOrUndefined (String)
   , "KeyName" :: NullOrUndefined (String)
   }
+derive instance newtypeKeyPairInfo :: Newtype KeyPairInfo _
 
 
 newtype KeyPairList = KeyPairList (Array KeyPairInfo)
+derive instance newtypeKeyPairList :: Newtype KeyPairList _
 
 
 -- | <p>Describes a launch permission.</p>
@@ -5659,9 +6292,11 @@ newtype LaunchPermission = LaunchPermission
   { "Group" :: NullOrUndefined (PermissionGroup)
   , "UserId" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchPermission :: Newtype LaunchPermission _
 
 
 newtype LaunchPermissionList = LaunchPermissionList (Array LaunchPermission)
+derive instance newtypeLaunchPermissionList :: Newtype LaunchPermissionList _
 
 
 -- | <p>Describes a launch permission modification.</p>
@@ -5669,6 +6304,7 @@ newtype LaunchPermissionModifications = LaunchPermissionModifications
   { "Add" :: NullOrUndefined (LaunchPermissionList)
   , "Remove" :: NullOrUndefined (LaunchPermissionList)
   }
+derive instance newtypeLaunchPermissionModifications :: Newtype LaunchPermissionModifications _
 
 
 -- | <p>Describes the launch specification for an instance.</p>
@@ -5689,9 +6325,11 @@ newtype LaunchSpecification = LaunchSpecification
   , "SubnetId" :: NullOrUndefined (String)
   , "Monitoring" :: NullOrUndefined (RunInstancesMonitoringEnabled)
   }
+derive instance newtypeLaunchSpecification :: Newtype LaunchSpecification _
 
 
 newtype LaunchSpecsList = LaunchSpecsList (Array SpotFleetLaunchSpecification)
+derive instance newtypeLaunchSpecsList :: Newtype LaunchSpecsList _
 
 
 -- | <p>Describes a launch template.</p>
@@ -5704,6 +6342,7 @@ newtype LaunchTemplate = LaunchTemplate
   , "LatestVersionNumber" :: NullOrUndefined (Number)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeLaunchTemplate :: Newtype LaunchTemplate _
 
 
 -- | <p>Describes a block device mapping.</p>
@@ -5713,9 +6352,11 @@ newtype LaunchTemplateBlockDeviceMapping = LaunchTemplateBlockDeviceMapping
   , "Ebs" :: NullOrUndefined (LaunchTemplateEbsBlockDevice)
   , "NoDevice" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplateBlockDeviceMapping :: Newtype LaunchTemplateBlockDeviceMapping _
 
 
 newtype LaunchTemplateBlockDeviceMappingList = LaunchTemplateBlockDeviceMappingList (Array LaunchTemplateBlockDeviceMapping)
+derive instance newtypeLaunchTemplateBlockDeviceMappingList :: Newtype LaunchTemplateBlockDeviceMappingList _
 
 
 -- | <p>Describes a block device mapping.</p>
@@ -5725,9 +6366,11 @@ newtype LaunchTemplateBlockDeviceMappingRequest = LaunchTemplateBlockDeviceMappi
   , "Ebs" :: NullOrUndefined (LaunchTemplateEbsBlockDeviceRequest)
   , "NoDevice" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplateBlockDeviceMappingRequest :: Newtype LaunchTemplateBlockDeviceMappingRequest _
 
 
 newtype LaunchTemplateBlockDeviceMappingRequestList = LaunchTemplateBlockDeviceMappingRequestList (Array LaunchTemplateBlockDeviceMappingRequest)
+derive instance newtypeLaunchTemplateBlockDeviceMappingRequestList :: Newtype LaunchTemplateBlockDeviceMappingRequestList _
 
 
 -- | <p>Describes a launch template and overrides.</p>
@@ -5735,9 +6378,11 @@ newtype LaunchTemplateConfig = LaunchTemplateConfig
   { "LaunchTemplateSpecification" :: NullOrUndefined (FleetLaunchTemplateSpecification)
   , "Overrides" :: NullOrUndefined (LaunchTemplateOverridesList)
   }
+derive instance newtypeLaunchTemplateConfig :: Newtype LaunchTemplateConfig _
 
 
 newtype LaunchTemplateConfigList = LaunchTemplateConfigList (Array LaunchTemplateConfig)
+derive instance newtypeLaunchTemplateConfigList :: Newtype LaunchTemplateConfigList _
 
 
 -- | <p>Describes a block device for an EBS volume.</p>
@@ -5750,6 +6395,7 @@ newtype LaunchTemplateEbsBlockDevice = LaunchTemplateEbsBlockDevice
   , "VolumeSize" :: NullOrUndefined (Int)
   , "VolumeType" :: NullOrUndefined (VolumeType)
   }
+derive instance newtypeLaunchTemplateEbsBlockDevice :: Newtype LaunchTemplateEbsBlockDevice _
 
 
 -- | <p>The parameters for a block device for an EBS volume.</p>
@@ -5762,9 +6408,11 @@ newtype LaunchTemplateEbsBlockDeviceRequest = LaunchTemplateEbsBlockDeviceReques
   , "VolumeSize" :: NullOrUndefined (Int)
   , "VolumeType" :: NullOrUndefined (VolumeType)
   }
+derive instance newtypeLaunchTemplateEbsBlockDeviceRequest :: Newtype LaunchTemplateEbsBlockDeviceRequest _
 
 
 newtype LaunchTemplateErrorCode = LaunchTemplateErrorCode String
+derive instance newtypeLaunchTemplateErrorCode :: Newtype LaunchTemplateErrorCode _
 
 
 -- | <p>Describes an IAM instance profile.</p>
@@ -5772,6 +6420,7 @@ newtype LaunchTemplateIamInstanceProfileSpecification = LaunchTemplateIamInstanc
   { "Arn" :: NullOrUndefined (String)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplateIamInstanceProfileSpecification :: Newtype LaunchTemplateIamInstanceProfileSpecification _
 
 
 -- | <p>An IAM instance profile.</p>
@@ -5779,6 +6428,7 @@ newtype LaunchTemplateIamInstanceProfileSpecificationRequest = LaunchTemplateIam
   { "Arn" :: NullOrUndefined (String)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplateIamInstanceProfileSpecificationRequest :: Newtype LaunchTemplateIamInstanceProfileSpecificationRequest _
 
 
 -- | <p>The market (purchasing) option for the instances.</p>
@@ -5786,6 +6436,7 @@ newtype LaunchTemplateInstanceMarketOptions = LaunchTemplateInstanceMarketOption
   { "MarketType" :: NullOrUndefined (MarketType)
   , "SpotOptions" :: NullOrUndefined (LaunchTemplateSpotMarketOptions)
   }
+derive instance newtypeLaunchTemplateInstanceMarketOptions :: Newtype LaunchTemplateInstanceMarketOptions _
 
 
 -- | <p>The market (purchasing) option for the instances.</p>
@@ -5793,6 +6444,7 @@ newtype LaunchTemplateInstanceMarketOptionsRequest = LaunchTemplateInstanceMarke
   { "MarketType" :: NullOrUndefined (MarketType)
   , "SpotOptions" :: NullOrUndefined (LaunchTemplateSpotMarketOptionsRequest)
   }
+derive instance newtypeLaunchTemplateInstanceMarketOptionsRequest :: Newtype LaunchTemplateInstanceMarketOptionsRequest _
 
 
 -- | <p>Describes a network interface.</p>
@@ -5810,9 +6462,11 @@ newtype LaunchTemplateInstanceNetworkInterfaceSpecification = LaunchTemplateInst
   , "SecondaryPrivateIpAddressCount" :: NullOrUndefined (Int)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplateInstanceNetworkInterfaceSpecification :: Newtype LaunchTemplateInstanceNetworkInterfaceSpecification _
 
 
 newtype LaunchTemplateInstanceNetworkInterfaceSpecificationList = LaunchTemplateInstanceNetworkInterfaceSpecificationList (Array LaunchTemplateInstanceNetworkInterfaceSpecification)
+derive instance newtypeLaunchTemplateInstanceNetworkInterfaceSpecificationList :: Newtype LaunchTemplateInstanceNetworkInterfaceSpecificationList _
 
 
 -- | <p>The parameters for a network interface.</p>
@@ -5830,15 +6484,19 @@ newtype LaunchTemplateInstanceNetworkInterfaceSpecificationRequest = LaunchTempl
   , "SecondaryPrivateIpAddressCount" :: NullOrUndefined (Int)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplateInstanceNetworkInterfaceSpecificationRequest :: Newtype LaunchTemplateInstanceNetworkInterfaceSpecificationRequest _
 
 
 newtype LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList = LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList (Array LaunchTemplateInstanceNetworkInterfaceSpecificationRequest)
+derive instance newtypeLaunchTemplateInstanceNetworkInterfaceSpecificationRequestList :: Newtype LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList _
 
 
 newtype LaunchTemplateName = LaunchTemplateName String
+derive instance newtypeLaunchTemplateName :: Newtype LaunchTemplateName _
 
 
 newtype LaunchTemplateNameStringList = LaunchTemplateNameStringList (Array LaunchTemplateName)
+derive instance newtypeLaunchTemplateNameStringList :: Newtype LaunchTemplateNameStringList _
 
 
 -- | <p>Describes overrides for a launch template.</p>
@@ -5849,9 +6507,11 @@ newtype LaunchTemplateOverrides = LaunchTemplateOverrides
   , "AvailabilityZone" :: NullOrUndefined (String)
   , "WeightedCapacity" :: NullOrUndefined (Number)
   }
+derive instance newtypeLaunchTemplateOverrides :: Newtype LaunchTemplateOverrides _
 
 
 newtype LaunchTemplateOverridesList = LaunchTemplateOverridesList (Array LaunchTemplateOverrides)
+derive instance newtypeLaunchTemplateOverridesList :: Newtype LaunchTemplateOverridesList _
 
 
 -- | <p>Describes the placement of an instance.</p>
@@ -5863,6 +6523,7 @@ newtype LaunchTemplatePlacement = LaunchTemplatePlacement
   , "Tenancy" :: NullOrUndefined (Tenancy)
   , "SpreadDomain" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplatePlacement :: Newtype LaunchTemplatePlacement _
 
 
 -- | <p>The placement for the instance.</p>
@@ -5874,9 +6535,11 @@ newtype LaunchTemplatePlacementRequest = LaunchTemplatePlacementRequest
   , "Tenancy" :: NullOrUndefined (Tenancy)
   , "SpreadDomain" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplatePlacementRequest :: Newtype LaunchTemplatePlacementRequest _
 
 
 newtype LaunchTemplateSet = LaunchTemplateSet (Array LaunchTemplate)
+derive instance newtypeLaunchTemplateSet :: Newtype LaunchTemplateSet _
 
 
 -- | <p>The launch template to use. You must specify either the launch template ID or launch template name in the request.</p>
@@ -5885,6 +6548,7 @@ newtype LaunchTemplateSpecification = LaunchTemplateSpecification
   , "LaunchTemplateName" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (String)
   }
+derive instance newtypeLaunchTemplateSpecification :: Newtype LaunchTemplateSpecification _
 
 
 -- | <p>The options for Spot Instances.</p>
@@ -5895,6 +6559,7 @@ newtype LaunchTemplateSpotMarketOptions = LaunchTemplateSpotMarketOptions
   , "ValidUntil" :: NullOrUndefined (DateTime)
   , "InstanceInterruptionBehavior" :: NullOrUndefined (InstanceInterruptionBehavior)
   }
+derive instance newtypeLaunchTemplateSpotMarketOptions :: Newtype LaunchTemplateSpotMarketOptions _
 
 
 -- | <p>The options for Spot Instances.</p>
@@ -5905,6 +6570,7 @@ newtype LaunchTemplateSpotMarketOptionsRequest = LaunchTemplateSpotMarketOptions
   , "ValidUntil" :: NullOrUndefined (DateTime)
   , "InstanceInterruptionBehavior" :: NullOrUndefined (InstanceInterruptionBehavior)
   }
+derive instance newtypeLaunchTemplateSpotMarketOptionsRequest :: Newtype LaunchTemplateSpotMarketOptionsRequest _
 
 
 -- | <p>The tag specification for the launch template.</p>
@@ -5912,9 +6578,11 @@ newtype LaunchTemplateTagSpecification = LaunchTemplateTagSpecification
   { "ResourceType" :: NullOrUndefined (ResourceType)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeLaunchTemplateTagSpecification :: Newtype LaunchTemplateTagSpecification _
 
 
 newtype LaunchTemplateTagSpecificationList = LaunchTemplateTagSpecificationList (Array LaunchTemplateTagSpecification)
+derive instance newtypeLaunchTemplateTagSpecificationList :: Newtype LaunchTemplateTagSpecificationList _
 
 
 -- | <p>The tags specification for the launch template.</p>
@@ -5922,9 +6590,11 @@ newtype LaunchTemplateTagSpecificationRequest = LaunchTemplateTagSpecificationRe
   { "ResourceType" :: NullOrUndefined (ResourceType)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeLaunchTemplateTagSpecificationRequest :: Newtype LaunchTemplateTagSpecificationRequest _
 
 
 newtype LaunchTemplateTagSpecificationRequestList = LaunchTemplateTagSpecificationRequestList (Array LaunchTemplateTagSpecificationRequest)
+derive instance newtypeLaunchTemplateTagSpecificationRequestList :: Newtype LaunchTemplateTagSpecificationRequestList _
 
 
 -- | <p>Describes a launch template version.</p>
@@ -5938,27 +6608,33 @@ newtype LaunchTemplateVersion = LaunchTemplateVersion
   , "DefaultVersion" :: NullOrUndefined (Boolean)
   , "LaunchTemplateData" :: NullOrUndefined (ResponseLaunchTemplateData)
   }
+derive instance newtypeLaunchTemplateVersion :: Newtype LaunchTemplateVersion _
 
 
 newtype LaunchTemplateVersionSet = LaunchTemplateVersionSet (Array LaunchTemplateVersion)
+derive instance newtypeLaunchTemplateVersionSet :: Newtype LaunchTemplateVersionSet _
 
 
 -- | <p>Describes the monitoring for the instance.</p>
 newtype LaunchTemplatesMonitoring = LaunchTemplatesMonitoring 
   { "Enabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeLaunchTemplatesMonitoring :: Newtype LaunchTemplatesMonitoring _
 
 
 -- | <p>Describes the monitoring for the instance.</p>
 newtype LaunchTemplatesMonitoringRequest = LaunchTemplatesMonitoringRequest 
   { "Enabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeLaunchTemplatesMonitoringRequest :: Newtype LaunchTemplatesMonitoringRequest _
 
 
 newtype ListingState = ListingState String
+derive instance newtypeListingState :: Newtype ListingState _
 
 
 newtype ListingStatus = ListingStatus String
+derive instance newtypeListingStatus :: Newtype ListingStatus _
 
 
 -- | <p>Describes the Classic Load Balancers and target groups to attach to a Spot Fleet request.</p>
@@ -5966,6 +6642,7 @@ newtype LoadBalancersConfig = LoadBalancersConfig
   { "ClassicLoadBalancersConfig" :: NullOrUndefined (ClassicLoadBalancersConfig)
   , "TargetGroupsConfig" :: NullOrUndefined (TargetGroupsConfig)
   }
+derive instance newtypeLoadBalancersConfig :: Newtype LoadBalancersConfig _
 
 
 -- | <p>Describes a load permission.</p>
@@ -5973,12 +6650,15 @@ newtype LoadPermission = LoadPermission
   { "UserId" :: NullOrUndefined (String)
   , "Group" :: NullOrUndefined (PermissionGroup)
   }
+derive instance newtypeLoadPermission :: Newtype LoadPermission _
 
 
 newtype LoadPermissionList = LoadPermissionList (Array LoadPermission)
+derive instance newtypeLoadPermissionList :: Newtype LoadPermissionList _
 
 
 newtype LoadPermissionListRequest = LoadPermissionListRequest (Array LoadPermissionRequest)
+derive instance newtypeLoadPermissionListRequest :: Newtype LoadPermissionListRequest _
 
 
 -- | <p>Describes modifications to the load permissions of an Amazon FPGA image (AFI).</p>
@@ -5986,6 +6666,7 @@ newtype LoadPermissionModifications = LoadPermissionModifications
   { "Add" :: NullOrUndefined (LoadPermissionListRequest)
   , "Remove" :: NullOrUndefined (LoadPermissionListRequest)
   }
+derive instance newtypeLoadPermissionModifications :: Newtype LoadPermissionModifications _
 
 
 -- | <p>Describes a load permission.</p>
@@ -5993,12 +6674,15 @@ newtype LoadPermissionRequest = LoadPermissionRequest
   { "Group" :: NullOrUndefined (PermissionGroup)
   , "UserId" :: NullOrUndefined (String)
   }
+derive instance newtypeLoadPermissionRequest :: Newtype LoadPermissionRequest _
 
 
 newtype MarketType = MarketType String
+derive instance newtypeMarketType :: Newtype MarketType _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype ModifyFpgaImageAttributeRequest = ModifyFpgaImageAttributeRequest 
@@ -6013,11 +6697,13 @@ newtype ModifyFpgaImageAttributeRequest = ModifyFpgaImageAttributeRequest
   , "Description" :: NullOrUndefined (String)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeModifyFpgaImageAttributeRequest :: Newtype ModifyFpgaImageAttributeRequest _
 
 
 newtype ModifyFpgaImageAttributeResult = ModifyFpgaImageAttributeResult 
   { "FpgaImageAttribute" :: NullOrUndefined (FpgaImageAttribute)
   }
+derive instance newtypeModifyFpgaImageAttributeResult :: Newtype ModifyFpgaImageAttributeResult _
 
 
 -- | <p>Contains the parameters for ModifyHosts.</p>
@@ -6025,6 +6711,7 @@ newtype ModifyHostsRequest = ModifyHostsRequest
   { "AutoPlacement" :: (AutoPlacement)
   , "HostIds" :: (RequestHostIdList)
   }
+derive instance newtypeModifyHostsRequest :: Newtype ModifyHostsRequest _
 
 
 -- | <p>Contains the output of ModifyHosts.</p>
@@ -6032,6 +6719,7 @@ newtype ModifyHostsResult = ModifyHostsResult
   { "Successful" :: NullOrUndefined (ResponseHostIdList)
   , "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemList)
   }
+derive instance newtypeModifyHostsResult :: Newtype ModifyHostsResult _
 
 
 -- | <p>Contains the parameters of ModifyIdFormat.</p>
@@ -6039,6 +6727,7 @@ newtype ModifyIdFormatRequest = ModifyIdFormatRequest
   { "Resource" :: (String)
   , "UseLongIds" :: (Boolean)
   }
+derive instance newtypeModifyIdFormatRequest :: Newtype ModifyIdFormatRequest _
 
 
 -- | <p>Contains the parameters of ModifyIdentityIdFormat.</p>
@@ -6047,6 +6736,7 @@ newtype ModifyIdentityIdFormatRequest = ModifyIdentityIdFormatRequest
   , "Resource" :: (String)
   , "UseLongIds" :: (Boolean)
   }
+derive instance newtypeModifyIdentityIdFormatRequest :: Newtype ModifyIdentityIdFormatRequest _
 
 
 -- | <p>Contains the parameters for ModifyImageAttribute.</p>
@@ -6062,6 +6752,7 @@ newtype ModifyImageAttributeRequest = ModifyImageAttributeRequest
   , "Value" :: NullOrUndefined (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyImageAttributeRequest :: Newtype ModifyImageAttributeRequest _
 
 
 -- | <p>Contains the parameters for ModifyInstanceAttribute.</p>
@@ -6083,6 +6774,7 @@ newtype ModifyInstanceAttributeRequest = ModifyInstanceAttributeRequest
   , "UserData" :: NullOrUndefined (BlobAttributeValue)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeModifyInstanceAttributeRequest :: Newtype ModifyInstanceAttributeRequest _
 
 
 newtype ModifyInstanceCreditSpecificationRequest = ModifyInstanceCreditSpecificationRequest 
@@ -6090,12 +6782,14 @@ newtype ModifyInstanceCreditSpecificationRequest = ModifyInstanceCreditSpecifica
   , "ClientToken" :: NullOrUndefined (String)
   , "InstanceCreditSpecifications" :: (InstanceCreditSpecificationListRequest)
   }
+derive instance newtypeModifyInstanceCreditSpecificationRequest :: Newtype ModifyInstanceCreditSpecificationRequest _
 
 
 newtype ModifyInstanceCreditSpecificationResult = ModifyInstanceCreditSpecificationResult 
   { "SuccessfulInstanceCreditSpecifications" :: NullOrUndefined (SuccessfulInstanceCreditSpecificationSet)
   , "UnsuccessfulInstanceCreditSpecifications" :: NullOrUndefined (UnsuccessfulInstanceCreditSpecificationSet)
   }
+derive instance newtypeModifyInstanceCreditSpecificationResult :: Newtype ModifyInstanceCreditSpecificationResult _
 
 
 -- | <p>Contains the parameters for ModifyInstancePlacement.</p>
@@ -6105,12 +6799,14 @@ newtype ModifyInstancePlacementRequest = ModifyInstancePlacementRequest
   , "InstanceId" :: (String)
   , "Tenancy" :: NullOrUndefined (HostTenancy)
   }
+derive instance newtypeModifyInstancePlacementRequest :: Newtype ModifyInstancePlacementRequest _
 
 
 -- | <p>Contains the output of ModifyInstancePlacement.</p>
 newtype ModifyInstancePlacementResult = ModifyInstancePlacementResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyInstancePlacementResult :: Newtype ModifyInstancePlacementResult _
 
 
 newtype ModifyLaunchTemplateRequest = ModifyLaunchTemplateRequest 
@@ -6120,11 +6816,13 @@ newtype ModifyLaunchTemplateRequest = ModifyLaunchTemplateRequest
   , "LaunchTemplateName" :: NullOrUndefined (LaunchTemplateName)
   , "DefaultVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeModifyLaunchTemplateRequest :: Newtype ModifyLaunchTemplateRequest _
 
 
 newtype ModifyLaunchTemplateResult = ModifyLaunchTemplateResult 
   { "LaunchTemplate" :: NullOrUndefined (LaunchTemplate)
   }
+derive instance newtypeModifyLaunchTemplateResult :: Newtype ModifyLaunchTemplateResult _
 
 
 -- | <p>Contains the parameters for ModifyNetworkInterfaceAttribute.</p>
@@ -6136,6 +6834,7 @@ newtype ModifyNetworkInterfaceAttributeRequest = ModifyNetworkInterfaceAttribute
   , "NetworkInterfaceId" :: (String)
   , "SourceDestCheck" :: NullOrUndefined (AttributeBooleanValue)
   }
+derive instance newtypeModifyNetworkInterfaceAttributeRequest :: Newtype ModifyNetworkInterfaceAttributeRequest _
 
 
 -- | <p>Contains the parameters for ModifyReservedInstances.</p>
@@ -6144,12 +6843,14 @@ newtype ModifyReservedInstancesRequest = ModifyReservedInstancesRequest
   , "ClientToken" :: NullOrUndefined (String)
   , "TargetConfigurations" :: (ReservedInstancesConfigurationList)
   }
+derive instance newtypeModifyReservedInstancesRequest :: Newtype ModifyReservedInstancesRequest _
 
 
 -- | <p>Contains the output of ModifyReservedInstances.</p>
 newtype ModifyReservedInstancesResult = ModifyReservedInstancesResult 
   { "ReservedInstancesModificationId" :: NullOrUndefined (String)
   }
+derive instance newtypeModifyReservedInstancesResult :: Newtype ModifyReservedInstancesResult _
 
 
 -- | <p>Contains the parameters for ModifySnapshotAttribute.</p>
@@ -6162,6 +6863,7 @@ newtype ModifySnapshotAttributeRequest = ModifySnapshotAttributeRequest
   , "UserIds" :: NullOrUndefined (UserIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifySnapshotAttributeRequest :: Newtype ModifySnapshotAttributeRequest _
 
 
 -- | <p>Contains the parameters for ModifySpotFleetRequest.</p>
@@ -6170,12 +6872,14 @@ newtype ModifySpotFleetRequestRequest = ModifySpotFleetRequestRequest
   , "SpotFleetRequestId" :: (String)
   , "TargetCapacity" :: NullOrUndefined (Int)
   }
+derive instance newtypeModifySpotFleetRequestRequest :: Newtype ModifySpotFleetRequestRequest _
 
 
 -- | <p>Contains the output of ModifySpotFleetRequest.</p>
 newtype ModifySpotFleetRequestResponse = ModifySpotFleetRequestResponse 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifySpotFleetRequestResponse :: Newtype ModifySpotFleetRequestResponse _
 
 
 -- | <p>Contains the parameters for ModifySubnetAttribute.</p>
@@ -6184,6 +6888,7 @@ newtype ModifySubnetAttributeRequest = ModifySubnetAttributeRequest
   , "MapPublicIpOnLaunch" :: NullOrUndefined (AttributeBooleanValue)
   , "SubnetId" :: (String)
   }
+derive instance newtypeModifySubnetAttributeRequest :: Newtype ModifySubnetAttributeRequest _
 
 
 -- | <p>Contains the parameters for ModifyVolumeAttribute.</p>
@@ -6192,6 +6897,7 @@ newtype ModifyVolumeAttributeRequest = ModifyVolumeAttributeRequest
   , "VolumeId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVolumeAttributeRequest :: Newtype ModifyVolumeAttributeRequest _
 
 
 newtype ModifyVolumeRequest = ModifyVolumeRequest 
@@ -6201,11 +6907,13 @@ newtype ModifyVolumeRequest = ModifyVolumeRequest
   , "VolumeType" :: NullOrUndefined (VolumeType)
   , "Iops" :: NullOrUndefined (Int)
   }
+derive instance newtypeModifyVolumeRequest :: Newtype ModifyVolumeRequest _
 
 
 newtype ModifyVolumeResult = ModifyVolumeResult 
   { "VolumeModification" :: NullOrUndefined (VolumeModification)
   }
+derive instance newtypeModifyVolumeResult :: Newtype ModifyVolumeResult _
 
 
 -- | <p>Contains the parameters for ModifyVpcAttribute.</p>
@@ -6214,6 +6922,7 @@ newtype ModifyVpcAttributeRequest = ModifyVpcAttributeRequest
   , "EnableDnsSupport" :: NullOrUndefined (AttributeBooleanValue)
   , "VpcId" :: (String)
   }
+derive instance newtypeModifyVpcAttributeRequest :: Newtype ModifyVpcAttributeRequest _
 
 
 newtype ModifyVpcEndpointConnectionNotificationRequest = ModifyVpcEndpointConnectionNotificationRequest 
@@ -6222,11 +6931,13 @@ newtype ModifyVpcEndpointConnectionNotificationRequest = ModifyVpcEndpointConnec
   , "ConnectionNotificationArn" :: NullOrUndefined (String)
   , "ConnectionEvents" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeModifyVpcEndpointConnectionNotificationRequest :: Newtype ModifyVpcEndpointConnectionNotificationRequest _
 
 
 newtype ModifyVpcEndpointConnectionNotificationResult = ModifyVpcEndpointConnectionNotificationResult 
   { "ReturnValue" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVpcEndpointConnectionNotificationResult :: Newtype ModifyVpcEndpointConnectionNotificationResult _
 
 
 -- | <p>Contains the parameters for ModifyVpcEndpoint.</p>
@@ -6243,11 +6954,13 @@ newtype ModifyVpcEndpointRequest = ModifyVpcEndpointRequest
   , "RemoveSecurityGroupIds" :: NullOrUndefined (ValueStringList)
   , "PrivateDnsEnabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVpcEndpointRequest :: Newtype ModifyVpcEndpointRequest _
 
 
 newtype ModifyVpcEndpointResult = ModifyVpcEndpointResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVpcEndpointResult :: Newtype ModifyVpcEndpointResult _
 
 
 newtype ModifyVpcEndpointServiceConfigurationRequest = ModifyVpcEndpointServiceConfigurationRequest 
@@ -6257,11 +6970,13 @@ newtype ModifyVpcEndpointServiceConfigurationRequest = ModifyVpcEndpointServiceC
   , "AddNetworkLoadBalancerArns" :: NullOrUndefined (ValueStringList)
   , "RemoveNetworkLoadBalancerArns" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeModifyVpcEndpointServiceConfigurationRequest :: Newtype ModifyVpcEndpointServiceConfigurationRequest _
 
 
 newtype ModifyVpcEndpointServiceConfigurationResult = ModifyVpcEndpointServiceConfigurationResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVpcEndpointServiceConfigurationResult :: Newtype ModifyVpcEndpointServiceConfigurationResult _
 
 
 newtype ModifyVpcEndpointServicePermissionsRequest = ModifyVpcEndpointServicePermissionsRequest 
@@ -6270,11 +6985,13 @@ newtype ModifyVpcEndpointServicePermissionsRequest = ModifyVpcEndpointServicePer
   , "AddAllowedPrincipals" :: NullOrUndefined (ValueStringList)
   , "RemoveAllowedPrincipals" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeModifyVpcEndpointServicePermissionsRequest :: Newtype ModifyVpcEndpointServicePermissionsRequest _
 
 
 newtype ModifyVpcEndpointServicePermissionsResult = ModifyVpcEndpointServicePermissionsResult 
   { "ReturnValue" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVpcEndpointServicePermissionsResult :: Newtype ModifyVpcEndpointServicePermissionsResult _
 
 
 newtype ModifyVpcPeeringConnectionOptionsRequest = ModifyVpcPeeringConnectionOptionsRequest 
@@ -6283,12 +7000,14 @@ newtype ModifyVpcPeeringConnectionOptionsRequest = ModifyVpcPeeringConnectionOpt
   , "RequesterPeeringConnectionOptions" :: NullOrUndefined (PeeringConnectionOptionsRequest)
   , "VpcPeeringConnectionId" :: (String)
   }
+derive instance newtypeModifyVpcPeeringConnectionOptionsRequest :: Newtype ModifyVpcPeeringConnectionOptionsRequest _
 
 
 newtype ModifyVpcPeeringConnectionOptionsResult = ModifyVpcPeeringConnectionOptionsResult 
   { "AccepterPeeringConnectionOptions" :: NullOrUndefined (PeeringConnectionOptions)
   , "RequesterPeeringConnectionOptions" :: NullOrUndefined (PeeringConnectionOptions)
   }
+derive instance newtypeModifyVpcPeeringConnectionOptionsResult :: Newtype ModifyVpcPeeringConnectionOptionsResult _
 
 
 -- | <p>Contains the parameters for ModifyVpcTenancy.</p>
@@ -6297,12 +7016,14 @@ newtype ModifyVpcTenancyRequest = ModifyVpcTenancyRequest
   , "InstanceTenancy" :: (VpcTenancy)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVpcTenancyRequest :: Newtype ModifyVpcTenancyRequest _
 
 
 -- | <p>Contains the output of ModifyVpcTenancy.</p>
 newtype ModifyVpcTenancyResult = ModifyVpcTenancyResult 
   { "ReturnValue" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeModifyVpcTenancyResult :: Newtype ModifyVpcTenancyResult _
 
 
 -- | <p>Contains the parameters for MonitorInstances.</p>
@@ -6310,21 +7031,25 @@ newtype MonitorInstancesRequest = MonitorInstancesRequest
   { "InstanceIds" :: (InstanceIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeMonitorInstancesRequest :: Newtype MonitorInstancesRequest _
 
 
 -- | <p>Contains the output of MonitorInstances.</p>
 newtype MonitorInstancesResult = MonitorInstancesResult 
   { "InstanceMonitorings" :: NullOrUndefined (InstanceMonitoringList)
   }
+derive instance newtypeMonitorInstancesResult :: Newtype MonitorInstancesResult _
 
 
 -- | <p>Describes the monitoring of an instance.</p>
 newtype Monitoring = Monitoring 
   { "State" :: NullOrUndefined (MonitoringState)
   }
+derive instance newtypeMonitoring :: Newtype Monitoring _
 
 
 newtype MonitoringState = MonitoringState String
+derive instance newtypeMonitoringState :: Newtype MonitoringState _
 
 
 -- | <p>Contains the parameters for MoveAddressToVpc.</p>
@@ -6332,6 +7057,7 @@ newtype MoveAddressToVpcRequest = MoveAddressToVpcRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "PublicIp" :: (String)
   }
+derive instance newtypeMoveAddressToVpcRequest :: Newtype MoveAddressToVpcRequest _
 
 
 -- | <p>Contains the output of MoveAddressToVpc.</p>
@@ -6339,9 +7065,11 @@ newtype MoveAddressToVpcResult = MoveAddressToVpcResult
   { "AllocationId" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeMoveAddressToVpcResult :: Newtype MoveAddressToVpcResult _
 
 
 newtype MoveStatus = MoveStatus String
+derive instance newtypeMoveStatus :: Newtype MoveStatus _
 
 
 -- | <p>Describes the status of a moving Elastic IP address.</p>
@@ -6349,9 +7077,11 @@ newtype MovingAddressStatus = MovingAddressStatus
   { "MoveStatus" :: NullOrUndefined (MoveStatus)
   , "PublicIp" :: NullOrUndefined (String)
   }
+derive instance newtypeMovingAddressStatus :: Newtype MovingAddressStatus _
 
 
 newtype MovingAddressStatusSet = MovingAddressStatusSet (Array MovingAddressStatus)
+derive instance newtypeMovingAddressStatusSet :: Newtype MovingAddressStatusSet _
 
 
 -- | <p>Describes a NAT gateway.</p>
@@ -6368,6 +7098,7 @@ newtype NatGateway = NatGateway
   , "VpcId" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeNatGateway :: Newtype NatGateway _
 
 
 -- | <p>Describes the IP addresses and network interface associated with a NAT gateway.</p>
@@ -6377,15 +7108,19 @@ newtype NatGatewayAddress = NatGatewayAddress
   , "PrivateIp" :: NullOrUndefined (String)
   , "PublicIp" :: NullOrUndefined (String)
   }
+derive instance newtypeNatGatewayAddress :: Newtype NatGatewayAddress _
 
 
 newtype NatGatewayAddressList = NatGatewayAddressList (Array NatGatewayAddress)
+derive instance newtypeNatGatewayAddressList :: Newtype NatGatewayAddressList _
 
 
 newtype NatGatewayList = NatGatewayList (Array NatGateway)
+derive instance newtypeNatGatewayList :: Newtype NatGatewayList _
 
 
 newtype NatGatewayState = NatGatewayState String
+derive instance newtypeNatGatewayState :: Newtype NatGatewayState _
 
 
 -- | <p>Describes a network ACL.</p>
@@ -6397,6 +7132,7 @@ newtype NetworkAcl = NetworkAcl
   , "Tags" :: NullOrUndefined (TagList)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkAcl :: Newtype NetworkAcl _
 
 
 -- | <p>Describes an association between a network ACL and a subnet.</p>
@@ -6405,9 +7141,11 @@ newtype NetworkAclAssociation = NetworkAclAssociation
   , "NetworkAclId" :: NullOrUndefined (String)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkAclAssociation :: Newtype NetworkAclAssociation _
 
 
 newtype NetworkAclAssociationList = NetworkAclAssociationList (Array NetworkAclAssociation)
+derive instance newtypeNetworkAclAssociationList :: Newtype NetworkAclAssociationList _
 
 
 -- | <p>Describes an entry in a network ACL.</p>
@@ -6421,12 +7159,15 @@ newtype NetworkAclEntry = NetworkAclEntry
   , "RuleAction" :: NullOrUndefined (RuleAction)
   , "RuleNumber" :: NullOrUndefined (Int)
   }
+derive instance newtypeNetworkAclEntry :: Newtype NetworkAclEntry _
 
 
 newtype NetworkAclEntryList = NetworkAclEntryList (Array NetworkAclEntry)
+derive instance newtypeNetworkAclEntryList :: Newtype NetworkAclEntryList _
 
 
 newtype NetworkAclList = NetworkAclList (Array NetworkAcl)
+derive instance newtypeNetworkAclList :: Newtype NetworkAclList _
 
 
 -- | <p>Describes a network interface.</p>
@@ -6452,6 +7193,7 @@ newtype NetworkInterface = NetworkInterface
   , "TagSet" :: NullOrUndefined (TagList)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkInterface :: Newtype NetworkInterface _
 
 
 -- | <p>Describes association information for an Elastic IP address (IPv4 only).</p>
@@ -6462,6 +7204,7 @@ newtype NetworkInterfaceAssociation = NetworkInterfaceAssociation
   , "PublicDnsName" :: NullOrUndefined (String)
   , "PublicIp" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkInterfaceAssociation :: Newtype NetworkInterfaceAssociation _
 
 
 -- | <p>Describes a network interface attachment.</p>
@@ -6474,6 +7217,7 @@ newtype NetworkInterfaceAttachment = NetworkInterfaceAttachment
   , "InstanceOwnerId" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (AttachmentStatus)
   }
+derive instance newtypeNetworkInterfaceAttachment :: Newtype NetworkInterfaceAttachment _
 
 
 -- | <p>Describes an attachment change.</p>
@@ -6481,24 +7225,30 @@ newtype NetworkInterfaceAttachmentChanges = NetworkInterfaceAttachmentChanges
   { "AttachmentId" :: NullOrUndefined (String)
   , "DeleteOnTermination" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeNetworkInterfaceAttachmentChanges :: Newtype NetworkInterfaceAttachmentChanges _
 
 
 newtype NetworkInterfaceAttribute = NetworkInterfaceAttribute String
+derive instance newtypeNetworkInterfaceAttribute :: Newtype NetworkInterfaceAttribute _
 
 
 newtype NetworkInterfaceIdList = NetworkInterfaceIdList (Array String)
+derive instance newtypeNetworkInterfaceIdList :: Newtype NetworkInterfaceIdList _
 
 
 -- | <p>Describes an IPv6 address associated with a network interface.</p>
 newtype NetworkInterfaceIpv6Address = NetworkInterfaceIpv6Address 
   { "Ipv6Address" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkInterfaceIpv6Address :: Newtype NetworkInterfaceIpv6Address _
 
 
 newtype NetworkInterfaceIpv6AddressesList = NetworkInterfaceIpv6AddressesList (Array NetworkInterfaceIpv6Address)
+derive instance newtypeNetworkInterfaceIpv6AddressesList :: Newtype NetworkInterfaceIpv6AddressesList _
 
 
 newtype NetworkInterfaceList = NetworkInterfaceList (Array NetworkInterface)
+derive instance newtypeNetworkInterfaceList :: Newtype NetworkInterfaceList _
 
 
 -- | <p>Describes a permission for a network interface.</p>
@@ -6510,12 +7260,15 @@ newtype NetworkInterfacePermission = NetworkInterfacePermission
   , "Permission" :: NullOrUndefined (InterfacePermissionType)
   , "PermissionState" :: NullOrUndefined (NetworkInterfacePermissionState)
   }
+derive instance newtypeNetworkInterfacePermission :: Newtype NetworkInterfacePermission _
 
 
 newtype NetworkInterfacePermissionIdList = NetworkInterfacePermissionIdList (Array String)
+derive instance newtypeNetworkInterfacePermissionIdList :: Newtype NetworkInterfacePermissionIdList _
 
 
 newtype NetworkInterfacePermissionList = NetworkInterfacePermissionList (Array NetworkInterfacePermission)
+derive instance newtypeNetworkInterfacePermissionList :: Newtype NetworkInterfacePermissionList _
 
 
 -- | <p>Describes the state of a network interface permission.</p>
@@ -6523,9 +7276,11 @@ newtype NetworkInterfacePermissionState = NetworkInterfacePermissionState
   { "State" :: NullOrUndefined (NetworkInterfacePermissionStateCode)
   , "StatusMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkInterfacePermissionState :: Newtype NetworkInterfacePermissionState _
 
 
 newtype NetworkInterfacePermissionStateCode = NetworkInterfacePermissionStateCode String
+derive instance newtypeNetworkInterfacePermissionStateCode :: Newtype NetworkInterfacePermissionStateCode _
 
 
 -- | <p>Describes the private IPv4 address of a network interface.</p>
@@ -6535,48 +7290,62 @@ newtype NetworkInterfacePrivateIpAddress = NetworkInterfacePrivateIpAddress
   , "PrivateDnsName" :: NullOrUndefined (String)
   , "PrivateIpAddress" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkInterfacePrivateIpAddress :: Newtype NetworkInterfacePrivateIpAddress _
 
 
 newtype NetworkInterfacePrivateIpAddressList = NetworkInterfacePrivateIpAddressList (Array NetworkInterfacePrivateIpAddress)
+derive instance newtypeNetworkInterfacePrivateIpAddressList :: Newtype NetworkInterfacePrivateIpAddressList _
 
 
 newtype NetworkInterfaceStatus = NetworkInterfaceStatus String
+derive instance newtypeNetworkInterfaceStatus :: Newtype NetworkInterfaceStatus _
 
 
 newtype NetworkInterfaceType = NetworkInterfaceType String
+derive instance newtypeNetworkInterfaceType :: Newtype NetworkInterfaceType _
 
 
 newtype NewDhcpConfiguration = NewDhcpConfiguration 
   { "Key" :: NullOrUndefined (String)
   , "Values" :: NullOrUndefined (ValueStringList)
   }
+derive instance newtypeNewDhcpConfiguration :: Newtype NewDhcpConfiguration _
 
 
 newtype NewDhcpConfigurationList = NewDhcpConfigurationList (Array NewDhcpConfiguration)
+derive instance newtypeNewDhcpConfigurationList :: Newtype NewDhcpConfigurationList _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 newtype OccurrenceDayRequestSet = OccurrenceDayRequestSet (Array Int)
+derive instance newtypeOccurrenceDayRequestSet :: Newtype OccurrenceDayRequestSet _
 
 
 newtype OccurrenceDaySet = OccurrenceDaySet (Array Int)
+derive instance newtypeOccurrenceDaySet :: Newtype OccurrenceDaySet _
 
 
 newtype OfferingClassType = OfferingClassType String
+derive instance newtypeOfferingClassType :: Newtype OfferingClassType _
 
 
 newtype OfferingTypeValues = OfferingTypeValues String
+derive instance newtypeOfferingTypeValues :: Newtype OfferingTypeValues _
 
 
 newtype OperationType = OperationType String
+derive instance newtypeOperationType :: Newtype OperationType _
 
 
 newtype OwnerStringList = OwnerStringList (Array String)
+derive instance newtypeOwnerStringList :: Newtype OwnerStringList _
 
 
 newtype PaymentOption = PaymentOption String
+derive instance newtypePaymentOption :: Newtype PaymentOption _
 
 
 -- | <p>Describes the data that identifies an Amazon FPGA image (AFI) on the PCI bus.</p>
@@ -6586,6 +7355,7 @@ newtype PciId = PciId
   , "SubsystemId" :: NullOrUndefined (String)
   , "SubsystemVendorId" :: NullOrUndefined (String)
   }
+derive instance newtypePciId :: Newtype PciId _
 
 
 -- | <p>Describes the VPC peering connection options.</p>
@@ -6594,6 +7364,7 @@ newtype PeeringConnectionOptions = PeeringConnectionOptions
   , "AllowEgressFromLocalClassicLinkToRemoteVpc" :: NullOrUndefined (Boolean)
   , "AllowEgressFromLocalVpcToRemoteClassicLink" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePeeringConnectionOptions :: Newtype PeeringConnectionOptions _
 
 
 -- | <p>The VPC peering connection options.</p>
@@ -6602,9 +7373,11 @@ newtype PeeringConnectionOptionsRequest = PeeringConnectionOptionsRequest
   , "AllowEgressFromLocalClassicLinkToRemoteVpc" :: NullOrUndefined (Boolean)
   , "AllowEgressFromLocalVpcToRemoteClassicLink" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePeeringConnectionOptionsRequest :: Newtype PeeringConnectionOptionsRequest _
 
 
 newtype PermissionGroup = PermissionGroup String
+derive instance newtypePermissionGroup :: Newtype PermissionGroup _
 
 
 -- | <p>Describes the placement of an instance.</p>
@@ -6616,6 +7389,7 @@ newtype Placement = Placement
   , "Tenancy" :: NullOrUndefined (Tenancy)
   , "SpreadDomain" :: NullOrUndefined (String)
   }
+derive instance newtypePlacement :: Newtype Placement _
 
 
 -- | <p>Describes a placement group.</p>
@@ -6624,21 +7398,27 @@ newtype PlacementGroup = PlacementGroup
   , "State" :: NullOrUndefined (PlacementGroupState)
   , "Strategy" :: NullOrUndefined (PlacementStrategy)
   }
+derive instance newtypePlacementGroup :: Newtype PlacementGroup _
 
 
 newtype PlacementGroupList = PlacementGroupList (Array PlacementGroup)
+derive instance newtypePlacementGroupList :: Newtype PlacementGroupList _
 
 
 newtype PlacementGroupState = PlacementGroupState String
+derive instance newtypePlacementGroupState :: Newtype PlacementGroupState _
 
 
 newtype PlacementGroupStringList = PlacementGroupStringList (Array String)
+derive instance newtypePlacementGroupStringList :: Newtype PlacementGroupStringList _
 
 
 newtype PlacementStrategy = PlacementStrategy String
+derive instance newtypePlacementStrategy :: Newtype PlacementStrategy _
 
 
 newtype PlatformValues = PlatformValues String
+derive instance newtypePlatformValues :: Newtype PlatformValues _
 
 
 -- | <p>Describes a range of ports.</p>
@@ -6646,6 +7426,7 @@ newtype PortRange = PortRange
   { "From" :: NullOrUndefined (Int)
   , "To" :: NullOrUndefined (Int)
   }
+derive instance newtypePortRange :: Newtype PortRange _
 
 
 -- | <p>Describes prefixes for AWS services.</p>
@@ -6654,6 +7435,7 @@ newtype PrefixList = PrefixList
   , "PrefixListId" :: NullOrUndefined (String)
   , "PrefixListName" :: NullOrUndefined (String)
   }
+derive instance newtypePrefixList :: Newtype PrefixList _
 
 
 -- | <p>[EC2-VPC only] The ID of the prefix.</p>
@@ -6661,15 +7443,19 @@ newtype PrefixListId = PrefixListId
   { "Description" :: NullOrUndefined (String)
   , "PrefixListId" :: NullOrUndefined (String)
   }
+derive instance newtypePrefixListId :: Newtype PrefixListId _
 
 
 newtype PrefixListIdList = PrefixListIdList (Array PrefixListId)
+derive instance newtypePrefixListIdList :: Newtype PrefixListIdList _
 
 
 newtype PrefixListIdSet = PrefixListIdSet (Array String)
+derive instance newtypePrefixListIdSet :: Newtype PrefixListIdSet _
 
 
 newtype PrefixListSet = PrefixListSet (Array PrefixList)
+derive instance newtypePrefixListSet :: Newtype PrefixListSet _
 
 
 -- | <p>Describes the price for a Reserved Instance.</p>
@@ -6679,9 +7465,11 @@ newtype PriceSchedule = PriceSchedule
   , "Price" :: NullOrUndefined (Number)
   , "Term" :: NullOrUndefined (Number)
   }
+derive instance newtypePriceSchedule :: Newtype PriceSchedule _
 
 
 newtype PriceScheduleList = PriceScheduleList (Array PriceSchedule)
+derive instance newtypePriceScheduleList :: Newtype PriceScheduleList _
 
 
 -- | <p>Describes the price for a Reserved Instance.</p>
@@ -6690,9 +7478,11 @@ newtype PriceScheduleSpecification = PriceScheduleSpecification
   , "Price" :: NullOrUndefined (Number)
   , "Term" :: NullOrUndefined (Number)
   }
+derive instance newtypePriceScheduleSpecification :: Newtype PriceScheduleSpecification _
 
 
 newtype PriceScheduleSpecificationList = PriceScheduleSpecificationList (Array PriceScheduleSpecification)
+derive instance newtypePriceScheduleSpecificationList :: Newtype PriceScheduleSpecificationList _
 
 
 -- | <p>Describes a Reserved Instance offering.</p>
@@ -6700,9 +7490,11 @@ newtype PricingDetail = PricingDetail
   { "Count" :: NullOrUndefined (Int)
   , "Price" :: NullOrUndefined (Number)
   }
+derive instance newtypePricingDetail :: Newtype PricingDetail _
 
 
 newtype PricingDetailsList = PricingDetailsList (Array PricingDetail)
+derive instance newtypePricingDetailsList :: Newtype PricingDetailsList _
 
 
 -- | <p>PrincipalIdFormat description</p>
@@ -6710,15 +7502,19 @@ newtype PrincipalIdFormat = PrincipalIdFormat
   { "Arn" :: NullOrUndefined (String)
   , "Statuses" :: NullOrUndefined (IdFormatList)
   }
+derive instance newtypePrincipalIdFormat :: Newtype PrincipalIdFormat _
 
 
 newtype PrincipalIdFormatList = PrincipalIdFormatList (Array PrincipalIdFormat)
+derive instance newtypePrincipalIdFormatList :: Newtype PrincipalIdFormatList _
 
 
 newtype PrincipalType = PrincipalType String
+derive instance newtypePrincipalType :: Newtype PrincipalType _
 
 
 newtype PrivateIpAddressConfigSet = PrivateIpAddressConfigSet (Array ScheduledInstancesPrivateIpAddressConfig)
+derive instance newtypePrivateIpAddressConfigSet :: Newtype PrivateIpAddressConfigSet _
 
 
 -- | <p>Describes a secondary private IPv4 address for a network interface.</p>
@@ -6726,12 +7522,15 @@ newtype PrivateIpAddressSpecification = PrivateIpAddressSpecification
   { "Primary" :: NullOrUndefined (Boolean)
   , "PrivateIpAddress" :: (String)
   }
+derive instance newtypePrivateIpAddressSpecification :: Newtype PrivateIpAddressSpecification _
 
 
 newtype PrivateIpAddressSpecificationList = PrivateIpAddressSpecificationList (Array PrivateIpAddressSpecification)
+derive instance newtypePrivateIpAddressSpecificationList :: Newtype PrivateIpAddressSpecificationList _
 
 
 newtype PrivateIpAddressStringList = PrivateIpAddressStringList (Array String)
+derive instance newtypePrivateIpAddressStringList :: Newtype PrivateIpAddressStringList _
 
 
 -- | <p>Describes a product code.</p>
@@ -6739,27 +7538,34 @@ newtype ProductCode = ProductCode
   { "ProductCodeId" :: NullOrUndefined (String)
   , "ProductCodeType" :: NullOrUndefined (ProductCodeValues)
   }
+derive instance newtypeProductCode :: Newtype ProductCode _
 
 
 newtype ProductCodeList = ProductCodeList (Array ProductCode)
+derive instance newtypeProductCodeList :: Newtype ProductCodeList _
 
 
 newtype ProductCodeStringList = ProductCodeStringList (Array String)
+derive instance newtypeProductCodeStringList :: Newtype ProductCodeStringList _
 
 
 newtype ProductCodeValues = ProductCodeValues String
+derive instance newtypeProductCodeValues :: Newtype ProductCodeValues _
 
 
 newtype ProductDescriptionList = ProductDescriptionList (Array String)
+derive instance newtypeProductDescriptionList :: Newtype ProductDescriptionList _
 
 
 -- | <p>Describes a virtual private gateway propagating route.</p>
 newtype PropagatingVgw = PropagatingVgw 
   { "GatewayId" :: NullOrUndefined (String)
   }
+derive instance newtypePropagatingVgw :: Newtype PropagatingVgw _
 
 
 newtype PropagatingVgwList = PropagatingVgwList (Array PropagatingVgw)
+derive instance newtypePropagatingVgwList :: Newtype PropagatingVgwList _
 
 
 -- | <p>Reserved. If you need to sustain traffic greater than the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html">documented limits</a>, contact us through the <a href="https://console.aws.amazon.com/support/home?">Support Center</a>.</p>
@@ -6770,9 +7576,11 @@ newtype ProvisionedBandwidth = ProvisionedBandwidth
   , "Requested" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeProvisionedBandwidth :: Newtype ProvisionedBandwidth _
 
 
 newtype PublicIpStringList = PublicIpStringList (Array String)
+derive instance newtypePublicIpStringList :: Newtype PublicIpStringList _
 
 
 -- | <p>Describes the result of the purchase.</p>
@@ -6786,6 +7594,7 @@ newtype Purchase = Purchase
   , "PaymentOption" :: NullOrUndefined (PaymentOption)
   , "UpfrontPrice" :: NullOrUndefined (String)
   }
+derive instance newtypePurchase :: Newtype Purchase _
 
 
 newtype PurchaseHostReservationRequest = PurchaseHostReservationRequest 
@@ -6795,6 +7604,7 @@ newtype PurchaseHostReservationRequest = PurchaseHostReservationRequest
   , "LimitPrice" :: NullOrUndefined (String)
   , "OfferingId" :: (String)
   }
+derive instance newtypePurchaseHostReservationRequest :: Newtype PurchaseHostReservationRequest _
 
 
 newtype PurchaseHostReservationResult = PurchaseHostReservationResult 
@@ -6804,6 +7614,7 @@ newtype PurchaseHostReservationResult = PurchaseHostReservationResult
   , "TotalHourlyPrice" :: NullOrUndefined (String)
   , "TotalUpfrontPrice" :: NullOrUndefined (String)
   }
+derive instance newtypePurchaseHostReservationResult :: Newtype PurchaseHostReservationResult _
 
 
 -- | <p>Describes a request to purchase Scheduled Instances.</p>
@@ -6811,9 +7622,11 @@ newtype PurchaseRequest = PurchaseRequest
   { "InstanceCount" :: (Int)
   , "PurchaseToken" :: (String)
   }
+derive instance newtypePurchaseRequest :: Newtype PurchaseRequest _
 
 
 newtype PurchaseRequestSet = PurchaseRequestSet (Array PurchaseRequest)
+derive instance newtypePurchaseRequestSet :: Newtype PurchaseRequestSet _
 
 
 -- | <p>Contains the parameters for PurchaseReservedInstancesOffering.</p>
@@ -6823,12 +7636,14 @@ newtype PurchaseReservedInstancesOfferingRequest = PurchaseReservedInstancesOffe
   , "DryRun" :: NullOrUndefined (Boolean)
   , "LimitPrice" :: NullOrUndefined (ReservedInstanceLimitPrice)
   }
+derive instance newtypePurchaseReservedInstancesOfferingRequest :: Newtype PurchaseReservedInstancesOfferingRequest _
 
 
 -- | <p>Contains the output of PurchaseReservedInstancesOffering.</p>
 newtype PurchaseReservedInstancesOfferingResult = PurchaseReservedInstancesOfferingResult 
   { "ReservedInstancesId" :: NullOrUndefined (String)
   }
+derive instance newtypePurchaseReservedInstancesOfferingResult :: Newtype PurchaseReservedInstancesOfferingResult _
 
 
 -- | <p>Contains the parameters for PurchaseScheduledInstances.</p>
@@ -6837,24 +7652,30 @@ newtype PurchaseScheduledInstancesRequest = PurchaseScheduledInstancesRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "PurchaseRequests" :: (PurchaseRequestSet)
   }
+derive instance newtypePurchaseScheduledInstancesRequest :: Newtype PurchaseScheduledInstancesRequest _
 
 
 -- | <p>Contains the output of PurchaseScheduledInstances.</p>
 newtype PurchaseScheduledInstancesResult = PurchaseScheduledInstancesResult 
   { "ScheduledInstanceSet" :: NullOrUndefined (PurchasedScheduledInstanceSet)
   }
+derive instance newtypePurchaseScheduledInstancesResult :: Newtype PurchaseScheduledInstancesResult _
 
 
 newtype PurchaseSet = PurchaseSet (Array Purchase)
+derive instance newtypePurchaseSet :: Newtype PurchaseSet _
 
 
 newtype PurchasedScheduledInstanceSet = PurchasedScheduledInstanceSet (Array ScheduledInstance)
+derive instance newtypePurchasedScheduledInstanceSet :: Newtype PurchasedScheduledInstanceSet _
 
 
 newtype RIProductDescription = RIProductDescription String
+derive instance newtypeRIProductDescription :: Newtype RIProductDescription _
 
 
 newtype ReasonCodesList = ReasonCodesList (Array ReportInstanceReasonCodes)
+derive instance newtypeReasonCodesList :: Newtype ReasonCodesList _
 
 
 -- | <p>Contains the parameters for RebootInstances.</p>
@@ -6862,6 +7683,7 @@ newtype RebootInstancesRequest = RebootInstancesRequest
   { "InstanceIds" :: (InstanceIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeRebootInstancesRequest :: Newtype RebootInstancesRequest _
 
 
 -- | <p>Describes a recurring charge.</p>
@@ -6869,12 +7691,15 @@ newtype RecurringCharge = RecurringCharge
   { "Amount" :: NullOrUndefined (Number)
   , "Frequency" :: NullOrUndefined (RecurringChargeFrequency)
   }
+derive instance newtypeRecurringCharge :: Newtype RecurringCharge _
 
 
 newtype RecurringChargeFrequency = RecurringChargeFrequency String
+derive instance newtypeRecurringChargeFrequency :: Newtype RecurringChargeFrequency _
 
 
 newtype RecurringChargesList = RecurringChargesList (Array RecurringCharge)
+derive instance newtypeRecurringChargesList :: Newtype RecurringChargesList _
 
 
 -- | <p>Describes a region.</p>
@@ -6882,12 +7707,15 @@ newtype Region = Region
   { "Endpoint" :: NullOrUndefined (String)
   , "RegionName" :: NullOrUndefined (String)
   }
+derive instance newtypeRegion :: Newtype Region _
 
 
 newtype RegionList = RegionList (Array Region)
+derive instance newtypeRegionList :: Newtype RegionList _
 
 
 newtype RegionNameStringList = RegionNameStringList (Array String)
+derive instance newtypeRegionNameStringList :: Newtype RegionNameStringList _
 
 
 -- | <p>Contains the parameters for RegisterImage.</p>
@@ -6906,12 +7734,14 @@ newtype RegisterImageRequest = RegisterImageRequest
   , "SriovNetSupport" :: NullOrUndefined (String)
   , "VirtualizationType" :: NullOrUndefined (String)
   }
+derive instance newtypeRegisterImageRequest :: Newtype RegisterImageRequest _
 
 
 -- | <p>Contains the output of RegisterImage.</p>
 newtype RegisterImageResult = RegisterImageResult 
   { "ImageId" :: NullOrUndefined (String)
   }
+derive instance newtypeRegisterImageResult :: Newtype RegisterImageResult _
 
 
 newtype RejectVpcEndpointConnectionsRequest = RejectVpcEndpointConnectionsRequest 
@@ -6919,11 +7749,13 @@ newtype RejectVpcEndpointConnectionsRequest = RejectVpcEndpointConnectionsReques
   , "ServiceId" :: (String)
   , "VpcEndpointIds" :: (ValueStringList)
   }
+derive instance newtypeRejectVpcEndpointConnectionsRequest :: Newtype RejectVpcEndpointConnectionsRequest _
 
 
 newtype RejectVpcEndpointConnectionsResult = RejectVpcEndpointConnectionsResult 
   { "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemSet)
   }
+derive instance newtypeRejectVpcEndpointConnectionsResult :: Newtype RejectVpcEndpointConnectionsResult _
 
 
 -- | <p>Contains the parameters for RejectVpcPeeringConnection.</p>
@@ -6931,12 +7763,14 @@ newtype RejectVpcPeeringConnectionRequest = RejectVpcPeeringConnectionRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "VpcPeeringConnectionId" :: (String)
   }
+derive instance newtypeRejectVpcPeeringConnectionRequest :: Newtype RejectVpcPeeringConnectionRequest _
 
 
 -- | <p>Contains the output of RejectVpcPeeringConnection.</p>
 newtype RejectVpcPeeringConnectionResult = RejectVpcPeeringConnectionResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeRejectVpcPeeringConnectionResult :: Newtype RejectVpcPeeringConnectionResult _
 
 
 -- | <p>Contains the parameters for ReleaseAddress.</p>
@@ -6945,12 +7779,14 @@ newtype ReleaseAddressRequest = ReleaseAddressRequest
   , "PublicIp" :: NullOrUndefined (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeReleaseAddressRequest :: Newtype ReleaseAddressRequest _
 
 
 -- | <p>Contains the parameters for ReleaseHosts.</p>
 newtype ReleaseHostsRequest = ReleaseHostsRequest 
   { "HostIds" :: (RequestHostIdList)
   }
+derive instance newtypeReleaseHostsRequest :: Newtype ReleaseHostsRequest _
 
 
 -- | <p>Contains the output of ReleaseHosts.</p>
@@ -6958,17 +7794,20 @@ newtype ReleaseHostsResult = ReleaseHostsResult
   { "Successful" :: NullOrUndefined (ResponseHostIdList)
   , "Unsuccessful" :: NullOrUndefined (UnsuccessfulItemList)
   }
+derive instance newtypeReleaseHostsResult :: Newtype ReleaseHostsResult _
 
 
 newtype ReplaceIamInstanceProfileAssociationRequest = ReplaceIamInstanceProfileAssociationRequest 
   { "IamInstanceProfile" :: (IamInstanceProfileSpecification)
   , "AssociationId" :: (String)
   }
+derive instance newtypeReplaceIamInstanceProfileAssociationRequest :: Newtype ReplaceIamInstanceProfileAssociationRequest _
 
 
 newtype ReplaceIamInstanceProfileAssociationResult = ReplaceIamInstanceProfileAssociationResult 
   { "IamInstanceProfileAssociation" :: NullOrUndefined (IamInstanceProfileAssociation)
   }
+derive instance newtypeReplaceIamInstanceProfileAssociationResult :: Newtype ReplaceIamInstanceProfileAssociationResult _
 
 
 -- | <p>Contains the parameters for ReplaceNetworkAclAssociation.</p>
@@ -6977,12 +7816,14 @@ newtype ReplaceNetworkAclAssociationRequest = ReplaceNetworkAclAssociationReques
   , "DryRun" :: NullOrUndefined (Boolean)
   , "NetworkAclId" :: (String)
   }
+derive instance newtypeReplaceNetworkAclAssociationRequest :: Newtype ReplaceNetworkAclAssociationRequest _
 
 
 -- | <p>Contains the output of ReplaceNetworkAclAssociation.</p>
 newtype ReplaceNetworkAclAssociationResult = ReplaceNetworkAclAssociationResult 
   { "NewAssociationId" :: NullOrUndefined (String)
   }
+derive instance newtypeReplaceNetworkAclAssociationResult :: Newtype ReplaceNetworkAclAssociationResult _
 
 
 -- | <p>Contains the parameters for ReplaceNetworkAclEntry.</p>
@@ -6998,6 +7839,7 @@ newtype ReplaceNetworkAclEntryRequest = ReplaceNetworkAclEntryRequest
   , "RuleAction" :: (RuleAction)
   , "RuleNumber" :: (Int)
   }
+derive instance newtypeReplaceNetworkAclEntryRequest :: Newtype ReplaceNetworkAclEntryRequest _
 
 
 -- | <p>Contains the parameters for ReplaceRoute.</p>
@@ -7013,6 +7855,7 @@ newtype ReplaceRouteRequest = ReplaceRouteRequest
   , "RouteTableId" :: (String)
   , "VpcPeeringConnectionId" :: NullOrUndefined (String)
   }
+derive instance newtypeReplaceRouteRequest :: Newtype ReplaceRouteRequest _
 
 
 -- | <p>Contains the parameters for ReplaceRouteTableAssociation.</p>
@@ -7021,15 +7864,18 @@ newtype ReplaceRouteTableAssociationRequest = ReplaceRouteTableAssociationReques
   , "DryRun" :: NullOrUndefined (Boolean)
   , "RouteTableId" :: (String)
   }
+derive instance newtypeReplaceRouteTableAssociationRequest :: Newtype ReplaceRouteTableAssociationRequest _
 
 
 -- | <p>Contains the output of ReplaceRouteTableAssociation.</p>
 newtype ReplaceRouteTableAssociationResult = ReplaceRouteTableAssociationResult 
   { "NewAssociationId" :: NullOrUndefined (String)
   }
+derive instance newtypeReplaceRouteTableAssociationResult :: Newtype ReplaceRouteTableAssociationResult _
 
 
 newtype ReportInstanceReasonCodes = ReportInstanceReasonCodes String
+derive instance newtypeReportInstanceReasonCodes :: Newtype ReportInstanceReasonCodes _
 
 
 -- | <p>Contains the parameters for ReportInstanceStatus.</p>
@@ -7042,15 +7888,19 @@ newtype ReportInstanceStatusRequest = ReportInstanceStatusRequest
   , "StartTime" :: NullOrUndefined (DateTime)
   , "Status" :: (ReportStatusType)
   }
+derive instance newtypeReportInstanceStatusRequest :: Newtype ReportInstanceStatusRequest _
 
 
 newtype ReportStatusType = ReportStatusType String
+derive instance newtypeReportStatusType :: Newtype ReportStatusType _
 
 
 newtype RequestHostIdList = RequestHostIdList (Array String)
+derive instance newtypeRequestHostIdList :: Newtype RequestHostIdList _
 
 
 newtype RequestHostIdSet = RequestHostIdSet (Array String)
+derive instance newtypeRequestHostIdSet :: Newtype RequestHostIdSet _
 
 
 -- | <p>The information to include in the launch template.</p>
@@ -7076,6 +7926,7 @@ newtype RequestLaunchTemplateData = RequestLaunchTemplateData
   , "InstanceMarketOptions" :: NullOrUndefined (LaunchTemplateInstanceMarketOptionsRequest)
   , "CreditSpecification" :: NullOrUndefined (CreditSpecificationRequest)
   }
+derive instance newtypeRequestLaunchTemplateData :: Newtype RequestLaunchTemplateData _
 
 
 -- | <p>Contains the parameters for RequestSpotFleet.</p>
@@ -7083,12 +7934,14 @@ newtype RequestSpotFleetRequest = RequestSpotFleetRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "SpotFleetRequestConfig" :: (SpotFleetRequestConfigData)
   }
+derive instance newtypeRequestSpotFleetRequest :: Newtype RequestSpotFleetRequest _
 
 
 -- | <p>Contains the output of RequestSpotFleet.</p>
 newtype RequestSpotFleetResponse = RequestSpotFleetResponse 
   { "SpotFleetRequestId" :: (String)
   }
+derive instance newtypeRequestSpotFleetResponse :: Newtype RequestSpotFleetResponse _
 
 
 -- | <p>Contains the parameters for RequestSpotInstances.</p>
@@ -7106,12 +7959,14 @@ newtype RequestSpotInstancesRequest = RequestSpotInstancesRequest
   , "ValidUntil" :: NullOrUndefined (DateTime)
   , "InstanceInterruptionBehavior" :: NullOrUndefined (InstanceInterruptionBehavior)
   }
+derive instance newtypeRequestSpotInstancesRequest :: Newtype RequestSpotInstancesRequest _
 
 
 -- | <p>Contains the output of RequestSpotInstances.</p>
 newtype RequestSpotInstancesResult = RequestSpotInstancesResult 
   { "SpotInstanceRequests" :: NullOrUndefined (SpotInstanceRequestList)
   }
+derive instance newtypeRequestSpotInstancesResult :: Newtype RequestSpotInstancesResult _
 
 
 -- | <p>Describes the launch specification for an instance.</p>
@@ -7133,6 +7988,7 @@ newtype RequestSpotLaunchSpecification = RequestSpotLaunchSpecification
   , "SubnetId" :: NullOrUndefined (String)
   , "UserData" :: NullOrUndefined (String)
   }
+derive instance newtypeRequestSpotLaunchSpecification :: Newtype RequestSpotLaunchSpecification _
 
 
 -- | <p>Describes a reservation.</p>
@@ -7143,12 +7999,15 @@ newtype Reservation = Reservation
   , "RequesterId" :: NullOrUndefined (String)
   , "ReservationId" :: NullOrUndefined (String)
   }
+derive instance newtypeReservation :: Newtype Reservation _
 
 
 newtype ReservationList = ReservationList (Array Reservation)
+derive instance newtypeReservationList :: Newtype ReservationList _
 
 
 newtype ReservationState = ReservationState String
+derive instance newtypeReservationState :: Newtype ReservationState _
 
 
 -- | <p>The cost associated with the Reserved Instance.</p>
@@ -7157,9 +8016,11 @@ newtype ReservationValue = ReservationValue
   , "RemainingTotalValue" :: NullOrUndefined (String)
   , "RemainingUpfrontValue" :: NullOrUndefined (String)
   }
+derive instance newtypeReservationValue :: Newtype ReservationValue _
 
 
 newtype ReservedInstanceIdSet = ReservedInstanceIdSet (Array String)
+derive instance newtypeReservedInstanceIdSet :: Newtype ReservedInstanceIdSet _
 
 
 -- | <p>Describes the limit price of a Reserved Instance offering.</p>
@@ -7167,6 +8028,7 @@ newtype ReservedInstanceLimitPrice = ReservedInstanceLimitPrice
   { "Amount" :: NullOrUndefined (Number)
   , "CurrencyCode" :: NullOrUndefined (CurrencyCodeValues)
   }
+derive instance newtypeReservedInstanceLimitPrice :: Newtype ReservedInstanceLimitPrice _
 
 
 -- | <p>The total value of the Convertible Reserved Instance.</p>
@@ -7174,12 +8036,15 @@ newtype ReservedInstanceReservationValue = ReservedInstanceReservationValue
   { "ReservationValue" :: NullOrUndefined (ReservationValue)
   , "ReservedInstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeReservedInstanceReservationValue :: Newtype ReservedInstanceReservationValue _
 
 
 newtype ReservedInstanceReservationValueSet = ReservedInstanceReservationValueSet (Array ReservedInstanceReservationValue)
+derive instance newtypeReservedInstanceReservationValueSet :: Newtype ReservedInstanceReservationValueSet _
 
 
 newtype ReservedInstanceState = ReservedInstanceState String
+derive instance newtypeReservedInstanceState :: Newtype ReservedInstanceState _
 
 
 -- | <p>Describes a Reserved Instance.</p>
@@ -7203,6 +8068,7 @@ newtype ReservedInstances = ReservedInstances
   , "Scope" :: NullOrUndefined (Scope')
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeReservedInstances :: Newtype ReservedInstances _
 
 
 -- | <p>Describes the configuration settings for the modified Reserved Instances.</p>
@@ -7213,21 +8079,26 @@ newtype ReservedInstancesConfiguration = ReservedInstancesConfiguration
   , "Platform" :: NullOrUndefined (String)
   , "Scope" :: NullOrUndefined (Scope')
   }
+derive instance newtypeReservedInstancesConfiguration :: Newtype ReservedInstancesConfiguration _
 
 
 newtype ReservedInstancesConfigurationList = ReservedInstancesConfigurationList (Array ReservedInstancesConfiguration)
+derive instance newtypeReservedInstancesConfigurationList :: Newtype ReservedInstancesConfigurationList _
 
 
 -- | <p>Describes the ID of a Reserved Instance.</p>
 newtype ReservedInstancesId = ReservedInstancesId 
   { "ReservedInstancesId" :: NullOrUndefined (String)
   }
+derive instance newtypeReservedInstancesId :: Newtype ReservedInstancesId _
 
 
 newtype ReservedInstancesIdStringList = ReservedInstancesIdStringList (Array String)
+derive instance newtypeReservedInstancesIdStringList :: Newtype ReservedInstancesIdStringList _
 
 
 newtype ReservedInstancesList = ReservedInstancesList (Array ReservedInstances)
+derive instance newtypeReservedInstancesList :: Newtype ReservedInstancesList _
 
 
 -- | <p>Describes a Reserved Instance listing.</p>
@@ -7243,9 +8114,11 @@ newtype ReservedInstancesListing = ReservedInstancesListing
   , "Tags" :: NullOrUndefined (TagList)
   , "UpdateDate" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeReservedInstancesListing :: Newtype ReservedInstancesListing _
 
 
 newtype ReservedInstancesListingList = ReservedInstancesListingList (Array ReservedInstancesListing)
+derive instance newtypeReservedInstancesListingList :: Newtype ReservedInstancesListingList _
 
 
 -- | <p>Describes a Reserved Instance modification.</p>
@@ -7260,12 +8133,15 @@ newtype ReservedInstancesModification = ReservedInstancesModification
   , "StatusMessage" :: NullOrUndefined (String)
   , "UpdateDate" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeReservedInstancesModification :: Newtype ReservedInstancesModification _
 
 
 newtype ReservedInstancesModificationIdStringList = ReservedInstancesModificationIdStringList (Array String)
+derive instance newtypeReservedInstancesModificationIdStringList :: Newtype ReservedInstancesModificationIdStringList _
 
 
 newtype ReservedInstancesModificationList = ReservedInstancesModificationList (Array ReservedInstancesModification)
+derive instance newtypeReservedInstancesModificationList :: Newtype ReservedInstancesModificationList _
 
 
 -- | <p>Describes the modification request/s.</p>
@@ -7273,9 +8149,11 @@ newtype ReservedInstancesModificationResult = ReservedInstancesModificationResul
   { "ReservedInstancesId" :: NullOrUndefined (String)
   , "TargetConfiguration" :: NullOrUndefined (ReservedInstancesConfiguration)
   }
+derive instance newtypeReservedInstancesModificationResult :: Newtype ReservedInstancesModificationResult _
 
 
 newtype ReservedInstancesModificationResultList = ReservedInstancesModificationResultList (Array ReservedInstancesModificationResult)
+derive instance newtypeReservedInstancesModificationResultList :: Newtype ReservedInstancesModificationResultList _
 
 
 -- | <p>Describes a Reserved Instance offering.</p>
@@ -7296,18 +8174,23 @@ newtype ReservedInstancesOffering = ReservedInstancesOffering
   , "RecurringCharges" :: NullOrUndefined (RecurringChargesList)
   , "Scope" :: NullOrUndefined (Scope')
   }
+derive instance newtypeReservedInstancesOffering :: Newtype ReservedInstancesOffering _
 
 
 newtype ReservedInstancesOfferingIdStringList = ReservedInstancesOfferingIdStringList (Array String)
+derive instance newtypeReservedInstancesOfferingIdStringList :: Newtype ReservedInstancesOfferingIdStringList _
 
 
 newtype ReservedInstancesOfferingList = ReservedInstancesOfferingList (Array ReservedInstancesOffering)
+derive instance newtypeReservedInstancesOfferingList :: Newtype ReservedInstancesOfferingList _
 
 
 newtype ReservedIntancesIds = ReservedIntancesIds (Array ReservedInstancesId)
+derive instance newtypeReservedIntancesIds :: Newtype ReservedIntancesIds _
 
 
 newtype ResetFpgaImageAttributeName = ResetFpgaImageAttributeName String
+derive instance newtypeResetFpgaImageAttributeName :: Newtype ResetFpgaImageAttributeName _
 
 
 newtype ResetFpgaImageAttributeRequest = ResetFpgaImageAttributeRequest 
@@ -7315,14 +8198,17 @@ newtype ResetFpgaImageAttributeRequest = ResetFpgaImageAttributeRequest
   , "FpgaImageId" :: (String)
   , "Attribute" :: NullOrUndefined (ResetFpgaImageAttributeName)
   }
+derive instance newtypeResetFpgaImageAttributeRequest :: Newtype ResetFpgaImageAttributeRequest _
 
 
 newtype ResetFpgaImageAttributeResult = ResetFpgaImageAttributeResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeResetFpgaImageAttributeResult :: Newtype ResetFpgaImageAttributeResult _
 
 
 newtype ResetImageAttributeName = ResetImageAttributeName String
+derive instance newtypeResetImageAttributeName :: Newtype ResetImageAttributeName _
 
 
 -- | <p>Contains the parameters for ResetImageAttribute.</p>
@@ -7331,6 +8217,7 @@ newtype ResetImageAttributeRequest = ResetImageAttributeRequest
   , "ImageId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeResetImageAttributeRequest :: Newtype ResetImageAttributeRequest _
 
 
 -- | <p>Contains the parameters for ResetInstanceAttribute.</p>
@@ -7339,6 +8226,7 @@ newtype ResetInstanceAttributeRequest = ResetInstanceAttributeRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "InstanceId" :: (String)
   }
+derive instance newtypeResetInstanceAttributeRequest :: Newtype ResetInstanceAttributeRequest _
 
 
 -- | <p>Contains the parameters for ResetNetworkInterfaceAttribute.</p>
@@ -7347,6 +8235,7 @@ newtype ResetNetworkInterfaceAttributeRequest = ResetNetworkInterfaceAttributeRe
   , "NetworkInterfaceId" :: (String)
   , "SourceDestCheck" :: NullOrUndefined (String)
   }
+derive instance newtypeResetNetworkInterfaceAttributeRequest :: Newtype ResetNetworkInterfaceAttributeRequest _
 
 
 -- | <p>Contains the parameters for ResetSnapshotAttribute.</p>
@@ -7355,15 +8244,19 @@ newtype ResetSnapshotAttributeRequest = ResetSnapshotAttributeRequest
   , "SnapshotId" :: (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeResetSnapshotAttributeRequest :: Newtype ResetSnapshotAttributeRequest _
 
 
 newtype ResourceIdList = ResourceIdList (Array String)
+derive instance newtypeResourceIdList :: Newtype ResourceIdList _
 
 
 newtype ResourceList = ResourceList (Array String)
+derive instance newtypeResourceList :: Newtype ResourceList _
 
 
 newtype ResourceType = ResourceType String
+derive instance newtypeResourceType :: Newtype ResourceType _
 
 
 -- | <p>Describes the error that's returned when you cannot delete a launch template version.</p>
@@ -7371,12 +8264,15 @@ newtype ResponseError = ResponseError
   { "Code" :: NullOrUndefined (LaunchTemplateErrorCode)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeResponseError :: Newtype ResponseError _
 
 
 newtype ResponseHostIdList = ResponseHostIdList (Array String)
+derive instance newtypeResponseHostIdList :: Newtype ResponseHostIdList _
 
 
 newtype ResponseHostIdSet = ResponseHostIdSet (Array String)
+derive instance newtypeResponseHostIdSet :: Newtype ResponseHostIdSet _
 
 
 -- | <p>The information for a launch template. </p>
@@ -7402,9 +8298,11 @@ newtype ResponseLaunchTemplateData = ResponseLaunchTemplateData
   , "InstanceMarketOptions" :: NullOrUndefined (LaunchTemplateInstanceMarketOptions)
   , "CreditSpecification" :: NullOrUndefined (CreditSpecification)
   }
+derive instance newtypeResponseLaunchTemplateData :: Newtype ResponseLaunchTemplateData _
 
 
 newtype RestorableByStringList = RestorableByStringList (Array String)
+derive instance newtypeRestorableByStringList :: Newtype RestorableByStringList _
 
 
 -- | <p>Contains the parameters for RestoreAddressToClassic.</p>
@@ -7412,6 +8310,7 @@ newtype RestoreAddressToClassicRequest = RestoreAddressToClassicRequest
   { "DryRun" :: NullOrUndefined (Boolean)
   , "PublicIp" :: (String)
   }
+derive instance newtypeRestoreAddressToClassicRequest :: Newtype RestoreAddressToClassicRequest _
 
 
 -- | <p>Contains the output of RestoreAddressToClassic.</p>
@@ -7419,6 +8318,7 @@ newtype RestoreAddressToClassicResult = RestoreAddressToClassicResult
   { "PublicIp" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeRestoreAddressToClassicResult :: Newtype RestoreAddressToClassicResult _
 
 
 -- | <p>Contains the parameters for RevokeSecurityGroupEgress.</p>
@@ -7433,6 +8333,7 @@ newtype RevokeSecurityGroupEgressRequest = RevokeSecurityGroupEgressRequest
   , "SourceSecurityGroupName" :: NullOrUndefined (String)
   , "SourceSecurityGroupOwnerId" :: NullOrUndefined (String)
   }
+derive instance newtypeRevokeSecurityGroupEgressRequest :: Newtype RevokeSecurityGroupEgressRequest _
 
 
 -- | <p>Contains the parameters for RevokeSecurityGroupIngress.</p>
@@ -7448,6 +8349,7 @@ newtype RevokeSecurityGroupIngressRequest = RevokeSecurityGroupIngressRequest
   , "ToPort" :: NullOrUndefined (Int)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeRevokeSecurityGroupIngressRequest :: Newtype RevokeSecurityGroupIngressRequest _
 
 
 -- | <p>Describes a route in a route table.</p>
@@ -7465,15 +8367,19 @@ newtype Route = Route
   , "State" :: NullOrUndefined (RouteState)
   , "VpcPeeringConnectionId" :: NullOrUndefined (String)
   }
+derive instance newtypeRoute :: Newtype Route _
 
 
 newtype RouteList = RouteList (Array Route)
+derive instance newtypeRouteList :: Newtype RouteList _
 
 
 newtype RouteOrigin = RouteOrigin String
+derive instance newtypeRouteOrigin :: Newtype RouteOrigin _
 
 
 newtype RouteState = RouteState String
+derive instance newtypeRouteState :: Newtype RouteState _
 
 
 -- | <p>Describes a route table.</p>
@@ -7485,6 +8391,7 @@ newtype RouteTable = RouteTable
   , "Tags" :: NullOrUndefined (TagList)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeRouteTable :: Newtype RouteTable _
 
 
 -- | <p>Describes an association between a route table and a subnet.</p>
@@ -7494,21 +8401,26 @@ newtype RouteTableAssociation = RouteTableAssociation
   , "RouteTableId" :: NullOrUndefined (String)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeRouteTableAssociation :: Newtype RouteTableAssociation _
 
 
 newtype RouteTableAssociationList = RouteTableAssociationList (Array RouteTableAssociation)
+derive instance newtypeRouteTableAssociationList :: Newtype RouteTableAssociationList _
 
 
 newtype RouteTableList = RouteTableList (Array RouteTable)
+derive instance newtypeRouteTableList :: Newtype RouteTableList _
 
 
 newtype RuleAction = RuleAction String
+derive instance newtypeRuleAction :: Newtype RuleAction _
 
 
 -- | <p>Describes the monitoring of an instance.</p>
 newtype RunInstancesMonitoringEnabled = RunInstancesMonitoringEnabled 
   { "Enabled" :: (Boolean)
   }
+derive instance newtypeRunInstancesMonitoringEnabled :: Newtype RunInstancesMonitoringEnabled _
 
 
 -- | <p>Contains the parameters for RunInstances.</p>
@@ -7544,6 +8456,7 @@ newtype RunInstancesRequest = RunInstancesRequest
   , "InstanceMarketOptions" :: NullOrUndefined (InstanceMarketOptionsRequest)
   , "CreditSpecification" :: NullOrUndefined (CreditSpecificationRequest)
   }
+derive instance newtypeRunInstancesRequest :: Newtype RunInstancesRequest _
 
 
 -- | <p>Contains the parameters for RunScheduledInstances.</p>
@@ -7554,12 +8467,14 @@ newtype RunScheduledInstancesRequest = RunScheduledInstancesRequest
   , "LaunchSpecification" :: (ScheduledInstancesLaunchSpecification)
   , "ScheduledInstanceId" :: (String)
   }
+derive instance newtypeRunScheduledInstancesRequest :: Newtype RunScheduledInstancesRequest _
 
 
 -- | <p>Contains the output of RunScheduledInstances.</p>
 newtype RunScheduledInstancesResult = RunScheduledInstancesResult 
   { "InstanceIdSet" :: NullOrUndefined (InstanceIdSet)
   }
+derive instance newtypeRunScheduledInstancesResult :: Newtype RunScheduledInstancesResult _
 
 
 -- | <p>Describes the storage parameters for S3 and S3 buckets for an instance store-backed AMI.</p>
@@ -7570,6 +8485,7 @@ newtype S3Storage = S3Storage
   , "UploadPolicy" :: NullOrUndefined (String)
   , "UploadPolicySignature" :: NullOrUndefined (String)
   }
+derive instance newtypeS3Storage :: Newtype S3Storage _
 
 
 -- | <p>Describes a Scheduled Instance.</p>
@@ -7590,6 +8506,7 @@ newtype ScheduledInstance = ScheduledInstance
   , "TermStartDate" :: NullOrUndefined (DateTime)
   , "TotalScheduledInstanceHours" :: NullOrUndefined (Int)
   }
+derive instance newtypeScheduledInstance :: Newtype ScheduledInstance _
 
 
 -- | <p>Describes a schedule that is available for your Scheduled Instances.</p>
@@ -7608,12 +8525,15 @@ newtype ScheduledInstanceAvailability = ScheduledInstanceAvailability
   , "SlotDurationInHours" :: NullOrUndefined (Int)
   , "TotalScheduledInstanceHours" :: NullOrUndefined (Int)
   }
+derive instance newtypeScheduledInstanceAvailability :: Newtype ScheduledInstanceAvailability _
 
 
 newtype ScheduledInstanceAvailabilitySet = ScheduledInstanceAvailabilitySet (Array ScheduledInstanceAvailability)
+derive instance newtypeScheduledInstanceAvailabilitySet :: Newtype ScheduledInstanceAvailabilitySet _
 
 
 newtype ScheduledInstanceIdRequestSet = ScheduledInstanceIdRequestSet (Array String)
+derive instance newtypeScheduledInstanceIdRequestSet :: Newtype ScheduledInstanceIdRequestSet _
 
 
 -- | <p>Describes the recurring schedule for a Scheduled Instance.</p>
@@ -7624,6 +8544,7 @@ newtype ScheduledInstanceRecurrence = ScheduledInstanceRecurrence
   , "OccurrenceRelativeToEnd" :: NullOrUndefined (Boolean)
   , "OccurrenceUnit" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstanceRecurrence :: Newtype ScheduledInstanceRecurrence _
 
 
 -- | <p>Describes the recurring schedule for a Scheduled Instance.</p>
@@ -7634,9 +8555,11 @@ newtype ScheduledInstanceRecurrenceRequest = ScheduledInstanceRecurrenceRequest
   , "OccurrenceRelativeToEnd" :: NullOrUndefined (Boolean)
   , "OccurrenceUnit" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstanceRecurrenceRequest :: Newtype ScheduledInstanceRecurrenceRequest _
 
 
 newtype ScheduledInstanceSet = ScheduledInstanceSet (Array ScheduledInstance)
+derive instance newtypeScheduledInstanceSet :: Newtype ScheduledInstanceSet _
 
 
 -- | <p>Describes a block device mapping for a Scheduled Instance.</p>
@@ -7646,9 +8569,11 @@ newtype ScheduledInstancesBlockDeviceMapping = ScheduledInstancesBlockDeviceMapp
   , "NoDevice" :: NullOrUndefined (String)
   , "VirtualName" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstancesBlockDeviceMapping :: Newtype ScheduledInstancesBlockDeviceMapping _
 
 
 newtype ScheduledInstancesBlockDeviceMappingSet = ScheduledInstancesBlockDeviceMappingSet (Array ScheduledInstancesBlockDeviceMapping)
+derive instance newtypeScheduledInstancesBlockDeviceMappingSet :: Newtype ScheduledInstancesBlockDeviceMappingSet _
 
 
 -- | <p>Describes an EBS volume for a Scheduled Instance.</p>
@@ -7660,6 +8585,7 @@ newtype ScheduledInstancesEbs = ScheduledInstancesEbs
   , "VolumeSize" :: NullOrUndefined (Int)
   , "VolumeType" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstancesEbs :: Newtype ScheduledInstancesEbs _
 
 
 -- | <p>Describes an IAM instance profile for a Scheduled Instance.</p>
@@ -7667,15 +8593,18 @@ newtype ScheduledInstancesIamInstanceProfile = ScheduledInstancesIamInstanceProf
   { "Arn" :: NullOrUndefined (String)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstancesIamInstanceProfile :: Newtype ScheduledInstancesIamInstanceProfile _
 
 
 -- | <p>Describes an IPv6 address.</p>
 newtype ScheduledInstancesIpv6Address = ScheduledInstancesIpv6Address 
   { "Ipv6Address" :: NullOrUndefined (Ipv6Address)
   }
+derive instance newtypeScheduledInstancesIpv6Address :: Newtype ScheduledInstancesIpv6Address _
 
 
 newtype ScheduledInstancesIpv6AddressList = ScheduledInstancesIpv6AddressList (Array ScheduledInstancesIpv6Address)
+derive instance newtypeScheduledInstancesIpv6AddressList :: Newtype ScheduledInstancesIpv6AddressList _
 
 
 -- | <p>Describes the launch specification for a Scheduled Instance.</p> <p>If you are launching the Scheduled Instance in EC2-VPC, you must specify the ID of the subnet. You can specify the subnet using either <code>SubnetId</code> or <code>NetworkInterface</code>.</p>
@@ -7695,12 +8624,14 @@ newtype ScheduledInstancesLaunchSpecification = ScheduledInstancesLaunchSpecific
   , "SubnetId" :: NullOrUndefined (String)
   , "UserData" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstancesLaunchSpecification :: Newtype ScheduledInstancesLaunchSpecification _
 
 
 -- | <p>Describes whether monitoring is enabled for a Scheduled Instance.</p>
 newtype ScheduledInstancesMonitoring = ScheduledInstancesMonitoring 
   { "Enabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeScheduledInstancesMonitoring :: Newtype ScheduledInstancesMonitoring _
 
 
 -- | <p>Describes a network interface for a Scheduled Instance.</p>
@@ -7718,9 +8649,11 @@ newtype ScheduledInstancesNetworkInterface = ScheduledInstancesNetworkInterface
   , "SecondaryPrivateIpAddressCount" :: NullOrUndefined (Int)
   , "SubnetId" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstancesNetworkInterface :: Newtype ScheduledInstancesNetworkInterface _
 
 
 newtype ScheduledInstancesNetworkInterfaceSet = ScheduledInstancesNetworkInterfaceSet (Array ScheduledInstancesNetworkInterface)
+derive instance newtypeScheduledInstancesNetworkInterfaceSet :: Newtype ScheduledInstancesNetworkInterfaceSet _
 
 
 -- | <p>Describes the placement for a Scheduled Instance.</p>
@@ -7728,6 +8661,7 @@ newtype ScheduledInstancesPlacement = ScheduledInstancesPlacement
   { "AvailabilityZone" :: NullOrUndefined (String)
   , "GroupName" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstancesPlacement :: Newtype ScheduledInstancesPlacement _
 
 
 -- | <p>Describes a private IPv4 address for a Scheduled Instance.</p>
@@ -7735,9 +8669,11 @@ newtype ScheduledInstancesPrivateIpAddressConfig = ScheduledInstancesPrivateIpAd
   { "Primary" :: NullOrUndefined (Boolean)
   , "PrivateIpAddress" :: NullOrUndefined (String)
   }
+derive instance newtypeScheduledInstancesPrivateIpAddressConfig :: Newtype ScheduledInstancesPrivateIpAddressConfig _
 
 
 newtype ScheduledInstancesSecurityGroupIdSet = ScheduledInstancesSecurityGroupIdSet (Array String)
+derive instance newtypeScheduledInstancesSecurityGroupIdSet :: Newtype ScheduledInstancesSecurityGroupIdSet _
 
 
 -- | <p>Describes a security group</p>
@@ -7751,9 +8687,11 @@ newtype SecurityGroup = SecurityGroup
   , "Tags" :: NullOrUndefined (TagList)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeSecurityGroup :: Newtype SecurityGroup _
 
 
 newtype SecurityGroupIdStringList = SecurityGroupIdStringList (Array String)
+derive instance newtypeSecurityGroupIdStringList :: Newtype SecurityGroupIdStringList _
 
 
 -- | <p>Describes a security group.</p>
@@ -7761,9 +8699,11 @@ newtype SecurityGroupIdentifier = SecurityGroupIdentifier
   { "GroupId" :: NullOrUndefined (String)
   , "GroupName" :: NullOrUndefined (String)
   }
+derive instance newtypeSecurityGroupIdentifier :: Newtype SecurityGroupIdentifier _
 
 
 newtype SecurityGroupList = SecurityGroupList (Array SecurityGroup)
+derive instance newtypeSecurityGroupList :: Newtype SecurityGroupList _
 
 
 -- | <p>Describes a VPC with a security group that references your security group.</p>
@@ -7772,12 +8712,15 @@ newtype SecurityGroupReference = SecurityGroupReference
   , "ReferencingVpcId" :: (String)
   , "VpcPeeringConnectionId" :: NullOrUndefined (String)
   }
+derive instance newtypeSecurityGroupReference :: Newtype SecurityGroupReference _
 
 
 newtype SecurityGroupReferences = SecurityGroupReferences (Array SecurityGroupReference)
+derive instance newtypeSecurityGroupReferences :: Newtype SecurityGroupReferences _
 
 
 newtype SecurityGroupStringList = SecurityGroupStringList (Array String)
+derive instance newtypeSecurityGroupStringList :: Newtype SecurityGroupStringList _
 
 
 -- | <p>Describes a service configuration for a VPC endpoint service.</p>
@@ -7792,9 +8735,11 @@ newtype ServiceConfiguration = ServiceConfiguration
   , "BaseEndpointDnsNames" :: NullOrUndefined (ValueStringList)
   , "PrivateDnsName" :: NullOrUndefined (String)
   }
+derive instance newtypeServiceConfiguration :: Newtype ServiceConfiguration _
 
 
 newtype ServiceConfigurationSet = ServiceConfigurationSet (Array ServiceConfiguration)
+derive instance newtypeServiceConfigurationSet :: Newtype ServiceConfigurationSet _
 
 
 -- | <p>Describes a VPC endpoint service.</p>
@@ -7808,27 +8753,34 @@ newtype ServiceDetail = ServiceDetail
   , "VpcEndpointPolicySupported" :: NullOrUndefined (Boolean)
   , "AcceptanceRequired" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeServiceDetail :: Newtype ServiceDetail _
 
 
 newtype ServiceDetailSet = ServiceDetailSet (Array ServiceDetail)
+derive instance newtypeServiceDetailSet :: Newtype ServiceDetailSet _
 
 
 newtype ServiceState = ServiceState String
+derive instance newtypeServiceState :: Newtype ServiceState _
 
 
 newtype ServiceType = ServiceType String
+derive instance newtypeServiceType :: Newtype ServiceType _
 
 
 -- | <p>Describes the type of service for a VPC endpoint.</p>
 newtype ServiceTypeDetail = ServiceTypeDetail 
   { "ServiceType" :: NullOrUndefined (ServiceType)
   }
+derive instance newtypeServiceTypeDetail :: Newtype ServiceTypeDetail _
 
 
 newtype ServiceTypeDetailSet = ServiceTypeDetailSet (Array ServiceTypeDetail)
+derive instance newtypeServiceTypeDetailSet :: Newtype ServiceTypeDetailSet _
 
 
 newtype ShutdownBehavior = ShutdownBehavior String
+derive instance newtypeShutdownBehavior :: Newtype ShutdownBehavior _
 
 
 -- | <p>Describes the time period for a Scheduled Instance to start its first schedule. The time period must span less than one day.</p>
@@ -7836,6 +8788,7 @@ newtype SlotDateTimeRangeRequest = SlotDateTimeRangeRequest
   { "EarliestTime" :: (DateTime)
   , "LatestTime" :: (DateTime)
   }
+derive instance newtypeSlotDateTimeRangeRequest :: Newtype SlotDateTimeRangeRequest _
 
 
 -- | <p>Describes the time period for a Scheduled Instance to start its first schedule.</p>
@@ -7843,6 +8796,7 @@ newtype SlotStartTimeRangeRequest = SlotStartTimeRangeRequest
   { "EarliestTime" :: NullOrUndefined (DateTime)
   , "LatestTime" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeSlotStartTimeRangeRequest :: Newtype SlotStartTimeRangeRequest _
 
 
 -- | <p>Describes a snapshot.</p>
@@ -7862,9 +8816,11 @@ newtype Snapshot = Snapshot
   , "OwnerAlias" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeSnapshot :: Newtype Snapshot _
 
 
 newtype SnapshotAttributeName = SnapshotAttributeName String
+derive instance newtypeSnapshotAttributeName :: Newtype SnapshotAttributeName _
 
 
 -- | <p>Describes the snapshot created from the imported disk.</p>
@@ -7880,9 +8836,11 @@ newtype SnapshotDetail = SnapshotDetail
   , "Url" :: NullOrUndefined (String)
   , "UserBucket" :: NullOrUndefined (UserBucketDetails)
   }
+derive instance newtypeSnapshotDetail :: Newtype SnapshotDetail _
 
 
 newtype SnapshotDetailList = SnapshotDetailList (Array SnapshotDetail)
+derive instance newtypeSnapshotDetailList :: Newtype SnapshotDetailList _
 
 
 -- | <p>The disk container object for the import snapshot request.</p>
@@ -7892,15 +8850,19 @@ newtype SnapshotDiskContainer = SnapshotDiskContainer
   , "Url" :: NullOrUndefined (String)
   , "UserBucket" :: NullOrUndefined (UserBucket)
   }
+derive instance newtypeSnapshotDiskContainer :: Newtype SnapshotDiskContainer _
 
 
 newtype SnapshotIdStringList = SnapshotIdStringList (Array String)
+derive instance newtypeSnapshotIdStringList :: Newtype SnapshotIdStringList _
 
 
 newtype SnapshotList = SnapshotList (Array Snapshot)
+derive instance newtypeSnapshotList :: Newtype SnapshotList _
 
 
 newtype SnapshotState = SnapshotState String
+derive instance newtypeSnapshotState :: Newtype SnapshotState _
 
 
 -- | <p>Details about the import snapshot task.</p>
@@ -7915,6 +8877,7 @@ newtype SnapshotTaskDetail = SnapshotTaskDetail
   , "Url" :: NullOrUndefined (String)
   , "UserBucket" :: NullOrUndefined (UserBucketDetails)
   }
+derive instance newtypeSnapshotTaskDetail :: Newtype SnapshotTaskDetail _
 
 
 -- | <p>Describes the data feed for a Spot Instance.</p>
@@ -7925,6 +8888,7 @@ newtype SpotDatafeedSubscription = SpotDatafeedSubscription
   , "Prefix" :: NullOrUndefined (String)
   , "State" :: NullOrUndefined (DatafeedSubscriptionState)
   }
+derive instance newtypeSpotDatafeedSubscription :: Newtype SpotDatafeedSubscription _
 
 
 -- | <p>Describes the launch specification for one or more Spot Instances.</p>
@@ -7948,12 +8912,14 @@ newtype SpotFleetLaunchSpecification = SpotFleetLaunchSpecification
   , "WeightedCapacity" :: NullOrUndefined (Number)
   , "TagSpecifications" :: NullOrUndefined (SpotFleetTagSpecificationList)
   }
+derive instance newtypeSpotFleetLaunchSpecification :: Newtype SpotFleetLaunchSpecification _
 
 
 -- | <p>Describes whether monitoring is enabled.</p>
 newtype SpotFleetMonitoring = SpotFleetMonitoring 
   { "Enabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeSpotFleetMonitoring :: Newtype SpotFleetMonitoring _
 
 
 -- | <p>Describes a Spot Fleet request.</p>
@@ -7964,6 +8930,7 @@ newtype SpotFleetRequestConfig = SpotFleetRequestConfig
   , "SpotFleetRequestId" :: (String)
   , "SpotFleetRequestState" :: (BatchState)
   }
+derive instance newtypeSpotFleetRequestConfig :: Newtype SpotFleetRequestConfig _
 
 
 -- | <p>Describes the configuration of a Spot Fleet request.</p>
@@ -7985,9 +8952,11 @@ newtype SpotFleetRequestConfigData = SpotFleetRequestConfigData
   , "InstanceInterruptionBehavior" :: NullOrUndefined (InstanceInterruptionBehavior)
   , "LoadBalancersConfig" :: NullOrUndefined (LoadBalancersConfig)
   }
+derive instance newtypeSpotFleetRequestConfigData :: Newtype SpotFleetRequestConfigData _
 
 
 newtype SpotFleetRequestConfigSet = SpotFleetRequestConfigSet (Array SpotFleetRequestConfig)
+derive instance newtypeSpotFleetRequestConfigSet :: Newtype SpotFleetRequestConfigSet _
 
 
 -- | <p>The tags for a Spot Fleet resource.</p>
@@ -7995,9 +8964,11 @@ newtype SpotFleetTagSpecification = SpotFleetTagSpecification
   { "ResourceType" :: NullOrUndefined (ResourceType)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeSpotFleetTagSpecification :: Newtype SpotFleetTagSpecification _
 
 
 newtype SpotFleetTagSpecificationList = SpotFleetTagSpecificationList (Array SpotFleetTagSpecification)
+derive instance newtypeSpotFleetTagSpecificationList :: Newtype SpotFleetTagSpecificationList _
 
 
 -- | <p>Describes a Spot Instance request.</p>
@@ -8022,15 +8993,19 @@ newtype SpotInstanceRequest = SpotInstanceRequest
   , "ValidUntil" :: NullOrUndefined (DateTime)
   , "InstanceInterruptionBehavior" :: NullOrUndefined (InstanceInterruptionBehavior)
   }
+derive instance newtypeSpotInstanceRequest :: Newtype SpotInstanceRequest _
 
 
 newtype SpotInstanceRequestIdList = SpotInstanceRequestIdList (Array String)
+derive instance newtypeSpotInstanceRequestIdList :: Newtype SpotInstanceRequestIdList _
 
 
 newtype SpotInstanceRequestList = SpotInstanceRequestList (Array SpotInstanceRequest)
+derive instance newtypeSpotInstanceRequestList :: Newtype SpotInstanceRequestList _
 
 
 newtype SpotInstanceState = SpotInstanceState String
+derive instance newtypeSpotInstanceState :: Newtype SpotInstanceState _
 
 
 -- | <p>Describes a Spot Instance state change.</p>
@@ -8038,6 +9013,7 @@ newtype SpotInstanceStateFault = SpotInstanceStateFault
   { "Code" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeSpotInstanceStateFault :: Newtype SpotInstanceStateFault _
 
 
 -- | <p>Describes the status of a Spot Instance request.</p>
@@ -8046,9 +9022,11 @@ newtype SpotInstanceStatus = SpotInstanceStatus
   , "Message" :: NullOrUndefined (String)
   , "UpdateTime" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeSpotInstanceStatus :: Newtype SpotInstanceStatus _
 
 
 newtype SpotInstanceType = SpotInstanceType String
+derive instance newtypeSpotInstanceType :: Newtype SpotInstanceType _
 
 
 -- | <p>The options for Spot Instances.</p>
@@ -8059,6 +9037,7 @@ newtype SpotMarketOptions = SpotMarketOptions
   , "ValidUntil" :: NullOrUndefined (DateTime)
   , "InstanceInterruptionBehavior" :: NullOrUndefined (InstanceInterruptionBehavior)
   }
+derive instance newtypeSpotMarketOptions :: Newtype SpotMarketOptions _
 
 
 -- | <p>Describes Spot Instance placement.</p>
@@ -8067,6 +9046,7 @@ newtype SpotPlacement = SpotPlacement
   , "GroupName" :: NullOrUndefined (String)
   , "Tenancy" :: NullOrUndefined (Tenancy)
   }
+derive instance newtypeSpotPlacement :: Newtype SpotPlacement _
 
 
 -- | <p>Describes the maximum price per hour that you are willing to pay for a Spot Instance.</p>
@@ -8077,9 +9057,11 @@ newtype SpotPrice = SpotPrice
   , "SpotPrice" :: NullOrUndefined (String)
   , "Number" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeSpotPrice :: Newtype SpotPrice _
 
 
 newtype SpotPriceHistoryList = SpotPriceHistoryList (Array SpotPrice)
+derive instance newtypeSpotPriceHistoryList :: Newtype SpotPriceHistoryList _
 
 
 -- | <p>Describes a stale rule in a security group.</p>
@@ -8091,9 +9073,11 @@ newtype StaleIpPermission = StaleIpPermission
   , "ToPort" :: NullOrUndefined (Int)
   , "UserIdGroupPairs" :: NullOrUndefined (UserIdGroupPairSet)
   }
+derive instance newtypeStaleIpPermission :: Newtype StaleIpPermission _
 
 
 newtype StaleIpPermissionSet = StaleIpPermissionSet (Array StaleIpPermission)
+derive instance newtypeStaleIpPermissionSet :: Newtype StaleIpPermissionSet _
 
 
 -- | <p>Describes a stale security group (a security group that contains stale rules).</p>
@@ -8105,9 +9089,11 @@ newtype StaleSecurityGroup = StaleSecurityGroup
   , "StaleIpPermissionsEgress" :: NullOrUndefined (StaleIpPermissionSet)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeStaleSecurityGroup :: Newtype StaleSecurityGroup _
 
 
 newtype StaleSecurityGroupSet = StaleSecurityGroupSet (Array StaleSecurityGroup)
+derive instance newtypeStaleSecurityGroupSet :: Newtype StaleSecurityGroupSet _
 
 
 -- | <p>Contains the parameters for StartInstances.</p>
@@ -8116,15 +9102,18 @@ newtype StartInstancesRequest = StartInstancesRequest
   , "AdditionalInfo" :: NullOrUndefined (String)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeStartInstancesRequest :: Newtype StartInstancesRequest _
 
 
 -- | <p>Contains the output of StartInstances.</p>
 newtype StartInstancesResult = StartInstancesResult 
   { "StartingInstances" :: NullOrUndefined (InstanceStateChangeList)
   }
+derive instance newtypeStartInstancesResult :: Newtype StartInstancesResult _
 
 
 newtype State = State String
+derive instance newtypeState :: Newtype State _
 
 
 -- | <p>Describes a state change.</p>
@@ -8132,15 +9121,19 @@ newtype StateReason = StateReason
   { "Code" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeStateReason :: Newtype StateReason _
 
 
 newtype Status = Status String
+derive instance newtypeStatus :: Newtype Status _
 
 
 newtype StatusName = StatusName String
+derive instance newtypeStatusName :: Newtype StatusName _
 
 
 newtype StatusType = StatusType String
+derive instance newtypeStatusType :: Newtype StatusType _
 
 
 -- | <p>Contains the parameters for StopInstances.</p>
@@ -8149,18 +9142,21 @@ newtype StopInstancesRequest = StopInstancesRequest
   , "DryRun" :: NullOrUndefined (Boolean)
   , "Force" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeStopInstancesRequest :: Newtype StopInstancesRequest _
 
 
 -- | <p>Contains the output of StopInstances.</p>
 newtype StopInstancesResult = StopInstancesResult 
   { "StoppingInstances" :: NullOrUndefined (InstanceStateChangeList)
   }
+derive instance newtypeStopInstancesResult :: Newtype StopInstancesResult _
 
 
 -- | <p>Describes the storage location for an instance store-backed AMI.</p>
 newtype Storage = Storage 
   { "S3" :: NullOrUndefined (S3Storage)
   }
+derive instance newtypeStorage :: Newtype Storage _
 
 
 -- | <p>Describes a storage location in Amazon S3.</p>
@@ -8168,6 +9164,7 @@ newtype StorageLocation = StorageLocation
   { "Bucket" :: NullOrUndefined (String)
   , "Key" :: NullOrUndefined (String)
   }
+derive instance newtypeStorageLocation :: Newtype StorageLocation _
 
 
 -- | <p>Describes a subnet.</p>
@@ -8184,6 +9181,7 @@ newtype Subnet = Subnet
   , "Ipv6CidrBlockAssociationSet" :: NullOrUndefined (SubnetIpv6CidrBlockAssociationSet)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeSubnet :: Newtype Subnet _
 
 
 -- | <p>Describes the state of a CIDR block.</p>
@@ -8191,12 +9189,15 @@ newtype SubnetCidrBlockState = SubnetCidrBlockState
   { "State" :: NullOrUndefined (SubnetCidrBlockStateCode)
   , "StatusMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeSubnetCidrBlockState :: Newtype SubnetCidrBlockState _
 
 
 newtype SubnetCidrBlockStateCode = SubnetCidrBlockStateCode String
+derive instance newtypeSubnetCidrBlockStateCode :: Newtype SubnetCidrBlockStateCode _
 
 
 newtype SubnetIdStringList = SubnetIdStringList (Array String)
+derive instance newtypeSubnetIdStringList :: Newtype SubnetIdStringList _
 
 
 -- | <p>Describes an IPv6 CIDR block associated with a subnet.</p>
@@ -8205,27 +9206,34 @@ newtype SubnetIpv6CidrBlockAssociation = SubnetIpv6CidrBlockAssociation
   , "Ipv6CidrBlock" :: NullOrUndefined (String)
   , "Ipv6CidrBlockState" :: NullOrUndefined (SubnetCidrBlockState)
   }
+derive instance newtypeSubnetIpv6CidrBlockAssociation :: Newtype SubnetIpv6CidrBlockAssociation _
 
 
 newtype SubnetIpv6CidrBlockAssociationSet = SubnetIpv6CidrBlockAssociationSet (Array SubnetIpv6CidrBlockAssociation)
+derive instance newtypeSubnetIpv6CidrBlockAssociationSet :: Newtype SubnetIpv6CidrBlockAssociationSet _
 
 
 newtype SubnetList = SubnetList (Array Subnet)
+derive instance newtypeSubnetList :: Newtype SubnetList _
 
 
 newtype SubnetState = SubnetState String
+derive instance newtypeSubnetState :: Newtype SubnetState _
 
 
 -- | <p>Describes the T2 instance whose credit option for CPU usage was successfully modified.</p>
 newtype SuccessfulInstanceCreditSpecificationItem = SuccessfulInstanceCreditSpecificationItem 
   { "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeSuccessfulInstanceCreditSpecificationItem :: Newtype SuccessfulInstanceCreditSpecificationItem _
 
 
 newtype SuccessfulInstanceCreditSpecificationSet = SuccessfulInstanceCreditSpecificationSet (Array SuccessfulInstanceCreditSpecificationItem)
+derive instance newtypeSuccessfulInstanceCreditSpecificationSet :: Newtype SuccessfulInstanceCreditSpecificationSet _
 
 
 newtype SummaryStatus = SummaryStatus String
+derive instance newtypeSummaryStatus :: Newtype SummaryStatus _
 
 
 -- | <p>Describes a tag.</p>
@@ -8233,6 +9241,7 @@ newtype Tag = Tag
   { "Key" :: NullOrUndefined (String)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 -- | <p>Describes a tag.</p>
@@ -8242,12 +9251,15 @@ newtype TagDescription = TagDescription
   , "ResourceType" :: NullOrUndefined (ResourceType)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeTagDescription :: Newtype TagDescription _
 
 
 newtype TagDescriptionList = TagDescriptionList (Array TagDescription)
+derive instance newtypeTagDescriptionList :: Newtype TagDescriptionList _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 -- | <p>The tags to apply to a resource when the resource is being created.</p>
@@ -8255,9 +9267,11 @@ newtype TagSpecification = TagSpecification
   { "ResourceType" :: NullOrUndefined (ResourceType)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeTagSpecification :: Newtype TagSpecification _
 
 
 newtype TagSpecificationList = TagSpecificationList (Array TagSpecification)
+derive instance newtypeTagSpecificationList :: Newtype TagSpecificationList _
 
 
 -- | <p>Information about the Convertible Reserved Instance offering.</p>
@@ -8265,6 +9279,7 @@ newtype TargetConfiguration = TargetConfiguration
   { "InstanceCount" :: NullOrUndefined (Int)
   , "OfferingId" :: NullOrUndefined (String)
   }
+derive instance newtypeTargetConfiguration :: Newtype TargetConfiguration _
 
 
 -- | <p>Details about the target configuration.</p>
@@ -8272,24 +9287,29 @@ newtype TargetConfigurationRequest = TargetConfigurationRequest
   { "InstanceCount" :: NullOrUndefined (Int)
   , "OfferingId" :: (String)
   }
+derive instance newtypeTargetConfigurationRequest :: Newtype TargetConfigurationRequest _
 
 
 newtype TargetConfigurationRequestSet = TargetConfigurationRequestSet (Array TargetConfigurationRequest)
+derive instance newtypeTargetConfigurationRequestSet :: Newtype TargetConfigurationRequestSet _
 
 
 -- | <p>Describes a load balancer target group.</p>
 newtype TargetGroup = TargetGroup 
   { "Arn" :: (String)
   }
+derive instance newtypeTargetGroup :: Newtype TargetGroup _
 
 
 newtype TargetGroups = TargetGroups (Array TargetGroup)
+derive instance newtypeTargetGroups :: Newtype TargetGroups _
 
 
 -- | <p>Describes the target groups to attach to a Spot Fleet. Spot Fleet registers the running Spot Instances with these target groups.</p>
 newtype TargetGroupsConfig = TargetGroupsConfig 
   { "TargetGroups" :: (TargetGroups)
   }
+derive instance newtypeTargetGroupsConfig :: Newtype TargetGroupsConfig _
 
 
 -- | <p>The total value of the new Convertible Reserved Instances.</p>
@@ -8297,15 +9317,19 @@ newtype TargetReservationValue = TargetReservationValue
   { "ReservationValue" :: NullOrUndefined (ReservationValue)
   , "TargetConfiguration" :: NullOrUndefined (TargetConfiguration)
   }
+derive instance newtypeTargetReservationValue :: Newtype TargetReservationValue _
 
 
 newtype TargetReservationValueSet = TargetReservationValueSet (Array TargetReservationValue)
+derive instance newtypeTargetReservationValueSet :: Newtype TargetReservationValueSet _
 
 
 newtype TelemetryStatus = TelemetryStatus String
+derive instance newtypeTelemetryStatus :: Newtype TelemetryStatus _
 
 
 newtype Tenancy = Tenancy String
+derive instance newtypeTenancy :: Newtype Tenancy _
 
 
 -- | <p>Contains the parameters for TerminateInstances.</p>
@@ -8313,30 +9337,36 @@ newtype TerminateInstancesRequest = TerminateInstancesRequest
   { "InstanceIds" :: (InstanceIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeTerminateInstancesRequest :: Newtype TerminateInstancesRequest _
 
 
 -- | <p>Contains the output of TerminateInstances.</p>
 newtype TerminateInstancesResult = TerminateInstancesResult 
   { "TerminatingInstances" :: NullOrUndefined (InstanceStateChangeList)
   }
+derive instance newtypeTerminateInstancesResult :: Newtype TerminateInstancesResult _
 
 
 newtype TrafficType = TrafficType String
+derive instance newtypeTrafficType :: Newtype TrafficType _
 
 
 newtype TunnelOptionsList = TunnelOptionsList (Array VpnTunnelOptionsSpecification)
+derive instance newtypeTunnelOptionsList :: Newtype TunnelOptionsList _
 
 
 newtype UnassignIpv6AddressesRequest = UnassignIpv6AddressesRequest 
   { "Ipv6Addresses" :: (Ipv6AddressList)
   , "NetworkInterfaceId" :: (String)
   }
+derive instance newtypeUnassignIpv6AddressesRequest :: Newtype UnassignIpv6AddressesRequest _
 
 
 newtype UnassignIpv6AddressesResult = UnassignIpv6AddressesResult 
   { "NetworkInterfaceId" :: NullOrUndefined (String)
   , "UnassignedIpv6Addresses" :: NullOrUndefined (Ipv6AddressList)
   }
+derive instance newtypeUnassignIpv6AddressesResult :: Newtype UnassignIpv6AddressesResult _
 
 
 -- | <p>Contains the parameters for UnassignPrivateIpAddresses.</p>
@@ -8344,6 +9374,7 @@ newtype UnassignPrivateIpAddressesRequest = UnassignPrivateIpAddressesRequest
   { "NetworkInterfaceId" :: (String)
   , "PrivateIpAddresses" :: (PrivateIpAddressStringList)
   }
+derive instance newtypeUnassignPrivateIpAddressesRequest :: Newtype UnassignPrivateIpAddressesRequest _
 
 
 -- | <p>Contains the parameters for UnmonitorInstances.</p>
@@ -8351,15 +9382,18 @@ newtype UnmonitorInstancesRequest = UnmonitorInstancesRequest
   { "InstanceIds" :: (InstanceIdStringList)
   , "DryRun" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUnmonitorInstancesRequest :: Newtype UnmonitorInstancesRequest _
 
 
 -- | <p>Contains the output of UnmonitorInstances.</p>
 newtype UnmonitorInstancesResult = UnmonitorInstancesResult 
   { "InstanceMonitorings" :: NullOrUndefined (InstanceMonitoringList)
   }
+derive instance newtypeUnmonitorInstancesResult :: Newtype UnmonitorInstancesResult _
 
 
 newtype UnsuccessfulInstanceCreditSpecificationErrorCode = UnsuccessfulInstanceCreditSpecificationErrorCode String
+derive instance newtypeUnsuccessfulInstanceCreditSpecificationErrorCode :: Newtype UnsuccessfulInstanceCreditSpecificationErrorCode _
 
 
 -- | <p>Describes the T2 instance whose credit option for CPU usage was not modified.</p>
@@ -8367,6 +9401,7 @@ newtype UnsuccessfulInstanceCreditSpecificationItem = UnsuccessfulInstanceCredit
   { "InstanceId" :: NullOrUndefined (String)
   , "Error" :: NullOrUndefined (UnsuccessfulInstanceCreditSpecificationItemError)
   }
+derive instance newtypeUnsuccessfulInstanceCreditSpecificationItem :: Newtype UnsuccessfulInstanceCreditSpecificationItem _
 
 
 -- | <p>Information about the error for the T2 instance whose credit option for CPU usage was not modified.</p>
@@ -8374,9 +9409,11 @@ newtype UnsuccessfulInstanceCreditSpecificationItemError = UnsuccessfulInstanceC
   { "Code" :: NullOrUndefined (UnsuccessfulInstanceCreditSpecificationErrorCode)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeUnsuccessfulInstanceCreditSpecificationItemError :: Newtype UnsuccessfulInstanceCreditSpecificationItemError _
 
 
 newtype UnsuccessfulInstanceCreditSpecificationSet = UnsuccessfulInstanceCreditSpecificationSet (Array UnsuccessfulInstanceCreditSpecificationItem)
+derive instance newtypeUnsuccessfulInstanceCreditSpecificationSet :: Newtype UnsuccessfulInstanceCreditSpecificationSet _
 
 
 -- | <p>Information about items that were not successfully processed in a batch call.</p>
@@ -8384,6 +9421,7 @@ newtype UnsuccessfulItem = UnsuccessfulItem
   { "Error" :: (UnsuccessfulItemError)
   , "ResourceId" :: NullOrUndefined (String)
   }
+derive instance newtypeUnsuccessfulItem :: Newtype UnsuccessfulItem _
 
 
 -- | <p>Information about the error that occurred. For more information about errors, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html">Error Codes</a>.</p>
@@ -8391,12 +9429,15 @@ newtype UnsuccessfulItemError = UnsuccessfulItemError
   { "Code" :: (String)
   , "Message" :: (String)
   }
+derive instance newtypeUnsuccessfulItemError :: Newtype UnsuccessfulItemError _
 
 
 newtype UnsuccessfulItemList = UnsuccessfulItemList (Array UnsuccessfulItem)
+derive instance newtypeUnsuccessfulItemList :: Newtype UnsuccessfulItemList _
 
 
 newtype UnsuccessfulItemSet = UnsuccessfulItemSet (Array UnsuccessfulItem)
+derive instance newtypeUnsuccessfulItemSet :: Newtype UnsuccessfulItemSet _
 
 
 -- | <p>Contains the parameters for UpdateSecurityGroupRuleDescriptionsEgress.</p>
@@ -8406,12 +9447,14 @@ newtype UpdateSecurityGroupRuleDescriptionsEgressRequest = UpdateSecurityGroupRu
   , "GroupName" :: NullOrUndefined (String)
   , "IpPermissions" :: (IpPermissionList)
   }
+derive instance newtypeUpdateSecurityGroupRuleDescriptionsEgressRequest :: Newtype UpdateSecurityGroupRuleDescriptionsEgressRequest _
 
 
 -- | <p>Contains the output of UpdateSecurityGroupRuleDescriptionsEgress.</p>
 newtype UpdateSecurityGroupRuleDescriptionsEgressResult = UpdateSecurityGroupRuleDescriptionsEgressResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateSecurityGroupRuleDescriptionsEgressResult :: Newtype UpdateSecurityGroupRuleDescriptionsEgressResult _
 
 
 -- | <p>Contains the parameters for UpdateSecurityGroupRuleDescriptionsIngress.</p>
@@ -8421,12 +9464,14 @@ newtype UpdateSecurityGroupRuleDescriptionsIngressRequest = UpdateSecurityGroupR
   , "GroupName" :: NullOrUndefined (String)
   , "IpPermissions" :: (IpPermissionList)
   }
+derive instance newtypeUpdateSecurityGroupRuleDescriptionsIngressRequest :: Newtype UpdateSecurityGroupRuleDescriptionsIngressRequest _
 
 
 -- | <p>Contains the output of UpdateSecurityGroupRuleDescriptionsIngress.</p>
 newtype UpdateSecurityGroupRuleDescriptionsIngressResult = UpdateSecurityGroupRuleDescriptionsIngressResult 
   { "Return" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateSecurityGroupRuleDescriptionsIngressResult :: Newtype UpdateSecurityGroupRuleDescriptionsIngressResult _
 
 
 -- | <p>Describes the S3 bucket for the disk image.</p>
@@ -8434,6 +9479,7 @@ newtype UserBucket = UserBucket
   { "S3Bucket" :: NullOrUndefined (String)
   , "S3Key" :: NullOrUndefined (String)
   }
+derive instance newtypeUserBucket :: Newtype UserBucket _
 
 
 -- | <p>Describes the S3 bucket for the disk image.</p>
@@ -8441,15 +9487,18 @@ newtype UserBucketDetails = UserBucketDetails
   { "S3Bucket" :: NullOrUndefined (String)
   , "S3Key" :: NullOrUndefined (String)
   }
+derive instance newtypeUserBucketDetails :: Newtype UserBucketDetails _
 
 
 -- | <p>Describes the user data for an instance.</p>
 newtype UserData = UserData 
   { "Data" :: NullOrUndefined (String)
   }
+derive instance newtypeUserData :: Newtype UserData _
 
 
 newtype UserGroupStringList = UserGroupStringList (Array String)
+derive instance newtypeUserGroupStringList :: Newtype UserGroupStringList _
 
 
 -- | <p>Describes a security group and AWS account ID pair.</p>
@@ -8462,24 +9511,31 @@ newtype UserIdGroupPair = UserIdGroupPair
   , "VpcId" :: NullOrUndefined (String)
   , "VpcPeeringConnectionId" :: NullOrUndefined (String)
   }
+derive instance newtypeUserIdGroupPair :: Newtype UserIdGroupPair _
 
 
 newtype UserIdGroupPairList = UserIdGroupPairList (Array UserIdGroupPair)
+derive instance newtypeUserIdGroupPairList :: Newtype UserIdGroupPairList _
 
 
 newtype UserIdGroupPairSet = UserIdGroupPairSet (Array UserIdGroupPair)
+derive instance newtypeUserIdGroupPairSet :: Newtype UserIdGroupPairSet _
 
 
 newtype UserIdStringList = UserIdStringList (Array String)
+derive instance newtypeUserIdStringList :: Newtype UserIdStringList _
 
 
 newtype ValueStringList = ValueStringList (Array String)
+derive instance newtypeValueStringList :: Newtype ValueStringList _
 
 
 newtype VersionDescription = VersionDescription String
+derive instance newtypeVersionDescription :: Newtype VersionDescription _
 
 
 newtype VersionStringList = VersionStringList (Array String)
+derive instance newtypeVersionStringList :: Newtype VersionStringList _
 
 
 -- | <p>Describes telemetry for a VPN tunnel.</p>
@@ -8490,12 +9546,15 @@ newtype VgwTelemetry = VgwTelemetry
   , "Status" :: NullOrUndefined (TelemetryStatus)
   , "StatusMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeVgwTelemetry :: Newtype VgwTelemetry _
 
 
 newtype VgwTelemetryList = VgwTelemetryList (Array VgwTelemetry)
+derive instance newtypeVgwTelemetryList :: Newtype VgwTelemetryList _
 
 
 newtype VirtualizationType = VirtualizationType String
+derive instance newtypeVirtualizationType :: Newtype VirtualizationType _
 
 
 -- | <p>Describes a volume.</p>
@@ -8513,6 +9572,7 @@ newtype Volume = Volume
   , "Tags" :: NullOrUndefined (TagList)
   , "VolumeType" :: NullOrUndefined (VolumeType)
   }
+derive instance newtypeVolume :: Newtype Volume _
 
 
 -- | <p>Describes volume attachment details.</p>
@@ -8524,27 +9584,34 @@ newtype VolumeAttachment = VolumeAttachment
   , "VolumeId" :: NullOrUndefined (String)
   , "DeleteOnTermination" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeVolumeAttachment :: Newtype VolumeAttachment _
 
 
 newtype VolumeAttachmentList = VolumeAttachmentList (Array VolumeAttachment)
+derive instance newtypeVolumeAttachmentList :: Newtype VolumeAttachmentList _
 
 
 newtype VolumeAttachmentState = VolumeAttachmentState String
+derive instance newtypeVolumeAttachmentState :: Newtype VolumeAttachmentState _
 
 
 newtype VolumeAttributeName = VolumeAttributeName String
+derive instance newtypeVolumeAttributeName :: Newtype VolumeAttributeName _
 
 
 -- | <p>Describes an EBS volume.</p>
 newtype VolumeDetail = VolumeDetail 
   { "Size" :: (Number)
   }
+derive instance newtypeVolumeDetail :: Newtype VolumeDetail _
 
 
 newtype VolumeIdStringList = VolumeIdStringList (Array String)
+derive instance newtypeVolumeIdStringList :: Newtype VolumeIdStringList _
 
 
 newtype VolumeList = VolumeList (Array Volume)
+derive instance newtypeVolumeList :: Newtype VolumeList _
 
 
 -- | <p>Describes the modification status of an EBS volume.</p> <p>If the volume has never been modified, some element values will be null.</p>
@@ -8562,15 +9629,19 @@ newtype VolumeModification = VolumeModification
   , "StartTime" :: NullOrUndefined (DateTime)
   , "EndTime" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeVolumeModification :: Newtype VolumeModification _
 
 
 newtype VolumeModificationList = VolumeModificationList (Array VolumeModification)
+derive instance newtypeVolumeModificationList :: Newtype VolumeModificationList _
 
 
 newtype VolumeModificationState = VolumeModificationState String
+derive instance newtypeVolumeModificationState :: Newtype VolumeModificationState _
 
 
 newtype VolumeState = VolumeState String
+derive instance newtypeVolumeState :: Newtype VolumeState _
 
 
 -- | <p>Describes a volume status operation code.</p>
@@ -8580,9 +9651,11 @@ newtype VolumeStatusAction = VolumeStatusAction
   , "EventId" :: NullOrUndefined (String)
   , "EventType" :: NullOrUndefined (String)
   }
+derive instance newtypeVolumeStatusAction :: Newtype VolumeStatusAction _
 
 
 newtype VolumeStatusActionsList = VolumeStatusActionsList (Array VolumeStatusAction)
+derive instance newtypeVolumeStatusActionsList :: Newtype VolumeStatusActionsList _
 
 
 -- | <p>Describes a volume status.</p>
@@ -8590,9 +9663,11 @@ newtype VolumeStatusDetails = VolumeStatusDetails
   { "Name" :: NullOrUndefined (VolumeStatusName)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeVolumeStatusDetails :: Newtype VolumeStatusDetails _
 
 
 newtype VolumeStatusDetailsList = VolumeStatusDetailsList (Array VolumeStatusDetails)
+derive instance newtypeVolumeStatusDetailsList :: Newtype VolumeStatusDetailsList _
 
 
 -- | <p>Describes a volume status event.</p>
@@ -8603,9 +9678,11 @@ newtype VolumeStatusEvent = VolumeStatusEvent
   , "NotAfter" :: NullOrUndefined (DateTime)
   , "NotBefore" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeVolumeStatusEvent :: Newtype VolumeStatusEvent _
 
 
 newtype VolumeStatusEventsList = VolumeStatusEventsList (Array VolumeStatusEvent)
+derive instance newtypeVolumeStatusEventsList :: Newtype VolumeStatusEventsList _
 
 
 -- | <p>Describes the status of a volume.</p>
@@ -8613,9 +9690,11 @@ newtype VolumeStatusInfo = VolumeStatusInfo
   { "Details" :: NullOrUndefined (VolumeStatusDetailsList)
   , "Status" :: NullOrUndefined (VolumeStatusInfoStatus)
   }
+derive instance newtypeVolumeStatusInfo :: Newtype VolumeStatusInfo _
 
 
 newtype VolumeStatusInfoStatus = VolumeStatusInfoStatus String
+derive instance newtypeVolumeStatusInfoStatus :: Newtype VolumeStatusInfoStatus _
 
 
 -- | <p>Describes the volume status.</p>
@@ -8626,15 +9705,19 @@ newtype VolumeStatusItem = VolumeStatusItem
   , "VolumeId" :: NullOrUndefined (String)
   , "VolumeStatus" :: NullOrUndefined (VolumeStatusInfo)
   }
+derive instance newtypeVolumeStatusItem :: Newtype VolumeStatusItem _
 
 
 newtype VolumeStatusList = VolumeStatusList (Array VolumeStatusItem)
+derive instance newtypeVolumeStatusList :: Newtype VolumeStatusList _
 
 
 newtype VolumeStatusName = VolumeStatusName String
+derive instance newtypeVolumeStatusName :: Newtype VolumeStatusName _
 
 
 newtype VolumeType = VolumeType String
+derive instance newtypeVolumeType :: Newtype VolumeType _
 
 
 -- | <p>Describes a VPC.</p>
@@ -8649,6 +9732,7 @@ newtype Vpc = Vpc
   , "IsDefault" :: NullOrUndefined (Boolean)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeVpc :: Newtype Vpc _
 
 
 -- | <p>Describes an attachment between a virtual private gateway and a VPC.</p>
@@ -8656,12 +9740,15 @@ newtype VpcAttachment = VpcAttachment
   { "State" :: NullOrUndefined (AttachmentStatus)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcAttachment :: Newtype VpcAttachment _
 
 
 newtype VpcAttachmentList = VpcAttachmentList (Array VpcAttachment)
+derive instance newtypeVpcAttachmentList :: Newtype VpcAttachmentList _
 
 
 newtype VpcAttributeName = VpcAttributeName String
+derive instance newtypeVpcAttributeName :: Newtype VpcAttributeName _
 
 
 -- | <p>Describes an IPv4 CIDR block associated with a VPC.</p>
@@ -8670,9 +9757,11 @@ newtype VpcCidrBlockAssociation = VpcCidrBlockAssociation
   , "CidrBlock" :: NullOrUndefined (String)
   , "CidrBlockState" :: NullOrUndefined (VpcCidrBlockState)
   }
+derive instance newtypeVpcCidrBlockAssociation :: Newtype VpcCidrBlockAssociation _
 
 
 newtype VpcCidrBlockAssociationSet = VpcCidrBlockAssociationSet (Array VpcCidrBlockAssociation)
+derive instance newtypeVpcCidrBlockAssociationSet :: Newtype VpcCidrBlockAssociationSet _
 
 
 -- | <p>Describes the state of a CIDR block.</p>
@@ -8680,9 +9769,11 @@ newtype VpcCidrBlockState = VpcCidrBlockState
   { "State" :: NullOrUndefined (VpcCidrBlockStateCode)
   , "StatusMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcCidrBlockState :: Newtype VpcCidrBlockState _
 
 
 newtype VpcCidrBlockStateCode = VpcCidrBlockStateCode String
+derive instance newtypeVpcCidrBlockStateCode :: Newtype VpcCidrBlockStateCode _
 
 
 -- | <p>Describes whether a VPC is enabled for ClassicLink.</p>
@@ -8691,12 +9782,15 @@ newtype VpcClassicLink = VpcClassicLink
   , "Tags" :: NullOrUndefined (TagList)
   , "VpcId" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcClassicLink :: Newtype VpcClassicLink _
 
 
 newtype VpcClassicLinkIdList = VpcClassicLinkIdList (Array String)
+derive instance newtypeVpcClassicLinkIdList :: Newtype VpcClassicLinkIdList _
 
 
 newtype VpcClassicLinkList = VpcClassicLinkList (Array VpcClassicLink)
+derive instance newtypeVpcClassicLinkList :: Newtype VpcClassicLinkList _
 
 
 -- | <p>Describes a VPC endpoint.</p>
@@ -8715,6 +9809,7 @@ newtype VpcEndpoint = VpcEndpoint
   , "DnsEntries" :: NullOrUndefined (DnsEntrySet)
   , "CreationTimestamp" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeVpcEndpoint :: Newtype VpcEndpoint _
 
 
 -- | <p>Describes a VPC endpoint connection to a service.</p>
@@ -8725,18 +9820,23 @@ newtype VpcEndpointConnection = VpcEndpointConnection
   , "VpcEndpointState" :: NullOrUndefined (State)
   , "CreationTimestamp" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeVpcEndpointConnection :: Newtype VpcEndpointConnection _
 
 
 newtype VpcEndpointConnectionSet = VpcEndpointConnectionSet (Array VpcEndpointConnection)
+derive instance newtypeVpcEndpointConnectionSet :: Newtype VpcEndpointConnectionSet _
 
 
 newtype VpcEndpointSet = VpcEndpointSet (Array VpcEndpoint)
+derive instance newtypeVpcEndpointSet :: Newtype VpcEndpointSet _
 
 
 newtype VpcEndpointType = VpcEndpointType String
+derive instance newtypeVpcEndpointType :: Newtype VpcEndpointType _
 
 
 newtype VpcIdStringList = VpcIdStringList (Array String)
+derive instance newtypeVpcIdStringList :: Newtype VpcIdStringList _
 
 
 -- | <p>Describes an IPv6 CIDR block associated with a VPC.</p>
@@ -8745,12 +9845,15 @@ newtype VpcIpv6CidrBlockAssociation = VpcIpv6CidrBlockAssociation
   , "Ipv6CidrBlock" :: NullOrUndefined (String)
   , "Ipv6CidrBlockState" :: NullOrUndefined (VpcCidrBlockState)
   }
+derive instance newtypeVpcIpv6CidrBlockAssociation :: Newtype VpcIpv6CidrBlockAssociation _
 
 
 newtype VpcIpv6CidrBlockAssociationSet = VpcIpv6CidrBlockAssociationSet (Array VpcIpv6CidrBlockAssociation)
+derive instance newtypeVpcIpv6CidrBlockAssociationSet :: Newtype VpcIpv6CidrBlockAssociationSet _
 
 
 newtype VpcList = VpcList (Array Vpc)
+derive instance newtypeVpcList :: Newtype VpcList _
 
 
 -- | <p>Describes a VPC peering connection.</p>
@@ -8762,9 +9865,11 @@ newtype VpcPeeringConnection = VpcPeeringConnection
   , "Tags" :: NullOrUndefined (TagList)
   , "VpcPeeringConnectionId" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcPeeringConnection :: Newtype VpcPeeringConnection _
 
 
 newtype VpcPeeringConnectionList = VpcPeeringConnectionList (Array VpcPeeringConnection)
+derive instance newtypeVpcPeeringConnectionList :: Newtype VpcPeeringConnectionList _
 
 
 -- | <p>Describes the VPC peering connection options.</p>
@@ -8773,6 +9878,7 @@ newtype VpcPeeringConnectionOptionsDescription = VpcPeeringConnectionOptionsDesc
   , "AllowEgressFromLocalClassicLinkToRemoteVpc" :: NullOrUndefined (Boolean)
   , "AllowEgressFromLocalVpcToRemoteClassicLink" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeVpcPeeringConnectionOptionsDescription :: Newtype VpcPeeringConnectionOptionsDescription _
 
 
 -- | <p>Describes the status of a VPC peering connection.</p>
@@ -8780,9 +9886,11 @@ newtype VpcPeeringConnectionStateReason = VpcPeeringConnectionStateReason
   { "Code" :: NullOrUndefined (VpcPeeringConnectionStateReasonCode)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcPeeringConnectionStateReason :: Newtype VpcPeeringConnectionStateReason _
 
 
 newtype VpcPeeringConnectionStateReasonCode = VpcPeeringConnectionStateReasonCode String
+derive instance newtypeVpcPeeringConnectionStateReasonCode :: Newtype VpcPeeringConnectionStateReasonCode _
 
 
 -- | <p>Describes a VPC in a VPC peering connection.</p>
@@ -8795,12 +9903,15 @@ newtype VpcPeeringConnectionVpcInfo = VpcPeeringConnectionVpcInfo
   , "VpcId" :: NullOrUndefined (String)
   , "Region" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcPeeringConnectionVpcInfo :: Newtype VpcPeeringConnectionVpcInfo _
 
 
 newtype VpcState = VpcState String
+derive instance newtypeVpcState :: Newtype VpcState _
 
 
 newtype VpcTenancy = VpcTenancy String
+derive instance newtypeVpcTenancy :: Newtype VpcTenancy _
 
 
 -- | <p>Describes a VPN connection.</p>
@@ -8817,18 +9928,22 @@ newtype VpnConnection = VpnConnection
   , "Tags" :: NullOrUndefined (TagList)
   , "VgwTelemetry" :: NullOrUndefined (VgwTelemetryList)
   }
+derive instance newtypeVpnConnection :: Newtype VpnConnection _
 
 
 newtype VpnConnectionIdStringList = VpnConnectionIdStringList (Array String)
+derive instance newtypeVpnConnectionIdStringList :: Newtype VpnConnectionIdStringList _
 
 
 newtype VpnConnectionList = VpnConnectionList (Array VpnConnection)
+derive instance newtypeVpnConnectionList :: Newtype VpnConnectionList _
 
 
 -- | <p>Describes VPN connection options.</p>
 newtype VpnConnectionOptions = VpnConnectionOptions 
   { "StaticRoutesOnly" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeVpnConnectionOptions :: Newtype VpnConnectionOptions _
 
 
 -- | <p>Describes VPN connection options.</p>
@@ -8836,6 +9951,7 @@ newtype VpnConnectionOptionsSpecification = VpnConnectionOptionsSpecification
   { "StaticRoutesOnly" :: NullOrUndefined (Boolean)
   , "TunnelOptions" :: NullOrUndefined (TunnelOptionsList)
   }
+derive instance newtypeVpnConnectionOptionsSpecification :: Newtype VpnConnectionOptionsSpecification _
 
 
 -- | <p>Describes a virtual private gateway.</p>
@@ -8848,15 +9964,19 @@ newtype VpnGateway = VpnGateway
   , "AmazonSideAsn" :: NullOrUndefined (Number)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeVpnGateway :: Newtype VpnGateway _
 
 
 newtype VpnGatewayIdStringList = VpnGatewayIdStringList (Array String)
+derive instance newtypeVpnGatewayIdStringList :: Newtype VpnGatewayIdStringList _
 
 
 newtype VpnGatewayList = VpnGatewayList (Array VpnGateway)
+derive instance newtypeVpnGatewayList :: Newtype VpnGatewayList _
 
 
 newtype VpnState = VpnState String
+derive instance newtypeVpnState :: Newtype VpnState _
 
 
 -- | <p>Describes a static route for a VPN connection.</p>
@@ -8865,12 +9985,15 @@ newtype VpnStaticRoute = VpnStaticRoute
   , "Source" :: NullOrUndefined (VpnStaticRouteSource)
   , "State" :: NullOrUndefined (VpnState)
   }
+derive instance newtypeVpnStaticRoute :: Newtype VpnStaticRoute _
 
 
 newtype VpnStaticRouteList = VpnStaticRouteList (Array VpnStaticRoute)
+derive instance newtypeVpnStaticRouteList :: Newtype VpnStaticRouteList _
 
 
 newtype VpnStaticRouteSource = VpnStaticRouteSource String
+derive instance newtypeVpnStaticRouteSource :: Newtype VpnStaticRouteSource _
 
 
 -- | <p>The tunnel options for a VPN connection.</p>
@@ -8878,9 +10001,12 @@ newtype VpnTunnelOptionsSpecification = VpnTunnelOptionsSpecification
   { "TunnelInsideCidr" :: NullOrUndefined (String)
   , "PreSharedKey" :: NullOrUndefined (String)
   }
+derive instance newtypeVpnTunnelOptionsSpecification :: Newtype VpnTunnelOptionsSpecification _
 
 
 newtype ZoneNameStringList = ZoneNameStringList (Array String)
+derive instance newtypeZoneNameStringList :: Newtype ZoneNameStringList _
 
 
 newtype Scope' = Scope' String
+derive instance newtypeScope' :: Newtype Scope' _

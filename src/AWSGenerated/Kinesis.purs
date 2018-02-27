@@ -6,6 +6,7 @@ module AWS.Kinesis where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -133,9 +134,11 @@ newtype AddTagsToStreamInput = AddTagsToStreamInput
   { "StreamName" :: (StreamName)
   , "Tags" :: (TagMap)
   }
+derive instance newtypeAddTagsToStreamInput :: Newtype AddTagsToStreamInput _
 
 
 newtype BooleanObject = BooleanObject Boolean
+derive instance newtypeBooleanObject :: Newtype BooleanObject _
 
 
 -- | <p>Represents the input for <code>CreateStream</code>.</p>
@@ -143,9 +146,11 @@ newtype CreateStreamInput = CreateStreamInput
   { "StreamName" :: (StreamName)
   , "ShardCount" :: (PositiveIntegerObject)
   }
+derive instance newtypeCreateStreamInput :: Newtype CreateStreamInput _
 
 
 newtype Data = Data String
+derive instance newtypeData :: Newtype Data _
 
 
 -- | <p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p>
@@ -153,23 +158,27 @@ newtype DecreaseStreamRetentionPeriodInput = DecreaseStreamRetentionPeriodInput
   { "StreamName" :: (StreamName)
   , "RetentionPeriodHours" :: (RetentionPeriodHours)
   }
+derive instance newtypeDecreaseStreamRetentionPeriodInput :: Newtype DecreaseStreamRetentionPeriodInput _
 
 
 -- | <p>Represents the input for <a>DeleteStream</a>.</p>
 newtype DeleteStreamInput = DeleteStreamInput 
   { "StreamName" :: (StreamName)
   }
+derive instance newtypeDeleteStreamInput :: Newtype DeleteStreamInput _
 
 
 newtype DescribeLimitsInput = DescribeLimitsInput 
   { 
   }
+derive instance newtypeDescribeLimitsInput :: Newtype DescribeLimitsInput _
 
 
 newtype DescribeLimitsOutput = DescribeLimitsOutput 
   { "ShardLimit" :: (ShardCountObject)
   , "OpenShardCount" :: (ShardCountObject)
   }
+derive instance newtypeDescribeLimitsOutput :: Newtype DescribeLimitsOutput _
 
 
 -- | <p>Represents the input for <code>DescribeStream</code>.</p>
@@ -178,25 +187,30 @@ newtype DescribeStreamInput = DescribeStreamInput
   , "Limit" :: NullOrUndefined (DescribeStreamInputLimit)
   , "ExclusiveStartShardId" :: NullOrUndefined (ShardId)
   }
+derive instance newtypeDescribeStreamInput :: Newtype DescribeStreamInput _
 
 
 newtype DescribeStreamInputLimit = DescribeStreamInputLimit Int
+derive instance newtypeDescribeStreamInputLimit :: Newtype DescribeStreamInputLimit _
 
 
 -- | <p>Represents the output for <code>DescribeStream</code>.</p>
 newtype DescribeStreamOutput = DescribeStreamOutput 
   { "StreamDescription" :: (StreamDescription)
   }
+derive instance newtypeDescribeStreamOutput :: Newtype DescribeStreamOutput _
 
 
 newtype DescribeStreamSummaryInput = DescribeStreamSummaryInput 
   { "StreamName" :: (StreamName)
   }
+derive instance newtypeDescribeStreamSummaryInput :: Newtype DescribeStreamSummaryInput _
 
 
 newtype DescribeStreamSummaryOutput = DescribeStreamSummaryOutput 
   { "StreamDescriptionSummary" :: (StreamDescriptionSummary)
   }
+derive instance newtypeDescribeStreamSummaryOutput :: Newtype DescribeStreamSummaryOutput _
 
 
 -- | <p>Represents the input for <a>DisableEnhancedMonitoring</a>.</p>
@@ -204,6 +218,7 @@ newtype DisableEnhancedMonitoringInput = DisableEnhancedMonitoringInput
   { "StreamName" :: (StreamName)
   , "ShardLevelMetrics" :: (MetricsNameList)
   }
+derive instance newtypeDisableEnhancedMonitoringInput :: Newtype DisableEnhancedMonitoringInput _
 
 
 -- | <p>Represents the input for <a>EnableEnhancedMonitoring</a>.</p>
@@ -211,18 +226,22 @@ newtype EnableEnhancedMonitoringInput = EnableEnhancedMonitoringInput
   { "StreamName" :: (StreamName)
   , "ShardLevelMetrics" :: (MetricsNameList)
   }
+derive instance newtypeEnableEnhancedMonitoringInput :: Newtype EnableEnhancedMonitoringInput _
 
 
 newtype EncryptionType = EncryptionType String
+derive instance newtypeEncryptionType :: Newtype EncryptionType _
 
 
 -- | <p>Represents enhanced metrics types.</p>
 newtype EnhancedMetrics = EnhancedMetrics 
   { "ShardLevelMetrics" :: NullOrUndefined (MetricsNameList)
   }
+derive instance newtypeEnhancedMetrics :: Newtype EnhancedMetrics _
 
 
 newtype EnhancedMonitoringList = EnhancedMonitoringList (Array EnhancedMetrics)
+derive instance newtypeEnhancedMonitoringList :: Newtype EnhancedMonitoringList _
 
 
 -- | <p>Represents the output for <a>EnableEnhancedMonitoring</a> and <a>DisableEnhancedMonitoring</a>.</p>
@@ -231,24 +250,29 @@ newtype EnhancedMonitoringOutput = EnhancedMonitoringOutput
   , "CurrentShardLevelMetrics" :: NullOrUndefined (MetricsNameList)
   , "DesiredShardLevelMetrics" :: NullOrUndefined (MetricsNameList)
   }
+derive instance newtypeEnhancedMonitoringOutput :: Newtype EnhancedMonitoringOutput _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>The provided iterator exceeds the maximum age allowed.</p>
 newtype ExpiredIteratorException = ExpiredIteratorException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeExpiredIteratorException :: Newtype ExpiredIteratorException _
 
 
 -- | <p>The pagination token passed to the <code>ListShards</code> operation is expired. For more information, see <a>ListShardsInput$NextToken</a>.</p>
 newtype ExpiredNextTokenException = ExpiredNextTokenException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeExpiredNextTokenException :: Newtype ExpiredNextTokenException _
 
 
 -- | <p>Represents the input for <a>GetRecords</a>.</p>
@@ -256,9 +280,11 @@ newtype GetRecordsInput = GetRecordsInput
   { "ShardIterator" :: (ShardIterator)
   , "Limit" :: NullOrUndefined (GetRecordsInputLimit)
   }
+derive instance newtypeGetRecordsInput :: Newtype GetRecordsInput _
 
 
 newtype GetRecordsInputLimit = GetRecordsInputLimit Int
+derive instance newtypeGetRecordsInputLimit :: Newtype GetRecordsInputLimit _
 
 
 -- | <p>Represents the output for <a>GetRecords</a>.</p>
@@ -267,6 +293,7 @@ newtype GetRecordsOutput = GetRecordsOutput
   , "NextShardIterator" :: NullOrUndefined (ShardIterator)
   , "MillisBehindLatest" :: NullOrUndefined (MillisBehindLatest)
   }
+derive instance newtypeGetRecordsOutput :: Newtype GetRecordsOutput _
 
 
 -- | <p>Represents the input for <code>GetShardIterator</code>.</p>
@@ -277,15 +304,18 @@ newtype GetShardIteratorInput = GetShardIteratorInput
   , "StartingSequenceNumber" :: NullOrUndefined (SequenceNumber)
   , "Number" :: NullOrUndefined (Number)
   }
+derive instance newtypeGetShardIteratorInput :: Newtype GetShardIteratorInput _
 
 
 -- | <p>Represents the output for <code>GetShardIterator</code>.</p>
 newtype GetShardIteratorOutput = GetShardIteratorOutput 
   { "ShardIterator" :: NullOrUndefined (ShardIterator)
   }
+derive instance newtypeGetShardIteratorOutput :: Newtype GetShardIteratorOutput _
 
 
 newtype HashKey = HashKey String
+derive instance newtypeHashKey :: Newtype HashKey _
 
 
 -- | <p>The range of possible hash key values for the shard, which is a set of ordered contiguous positive integers.</p>
@@ -293,6 +323,7 @@ newtype HashKeyRange = HashKeyRange
   { "StartingHashKey" :: (HashKey)
   , "EndingHashKey" :: (HashKey)
   }
+derive instance newtypeHashKeyRange :: Newtype HashKeyRange _
 
 
 -- | <p>Represents the input for <a>IncreaseStreamRetentionPeriod</a>.</p>
@@ -300,57 +331,67 @@ newtype IncreaseStreamRetentionPeriodInput = IncreaseStreamRetentionPeriodInput
   { "StreamName" :: (StreamName)
   , "RetentionPeriodHours" :: (RetentionPeriodHours)
   }
+derive instance newtypeIncreaseStreamRetentionPeriodInput :: Newtype IncreaseStreamRetentionPeriodInput _
 
 
 -- | <p>A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information, see the returned message.</p>
 newtype InvalidArgumentException = InvalidArgumentException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidArgumentException :: Newtype InvalidArgumentException _
 
 
 -- | <p>The ciphertext references a key that doesn't exist or that you don't have access to.</p>
 newtype KMSAccessDeniedException = KMSAccessDeniedException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeKMSAccessDeniedException :: Newtype KMSAccessDeniedException _
 
 
 -- | <p>The request was rejected because the specified customer master key (CMK) isn't enabled.</p>
 newtype KMSDisabledException = KMSDisabledException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeKMSDisabledException :: Newtype KMSDisabledException _
 
 
 -- | <p>The request was rejected because the state of the specified resource isn't valid for this request. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 newtype KMSInvalidStateException = KMSInvalidStateException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeKMSInvalidStateException :: Newtype KMSInvalidStateException _
 
 
 -- | <p>The request was rejected because the specified entity or resource can't be found.</p>
 newtype KMSNotFoundException = KMSNotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeKMSNotFoundException :: Newtype KMSNotFoundException _
 
 
 -- | <p>The AWS access key ID needs a subscription for the service.</p>
 newtype KMSOptInRequired = KMSOptInRequired 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeKMSOptInRequired :: Newtype KMSOptInRequired _
 
 
 -- | <p>The request was denied due to request throttling. For more information about throttling, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#requests-per-second">Limits</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 newtype KMSThrottlingException = KMSThrottlingException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeKMSThrottlingException :: Newtype KMSThrottlingException _
 
 
 newtype KeyId = KeyId String
+derive instance newtypeKeyId :: Newtype KeyId _
 
 
 -- | <p>The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests exceeds the maximum number allowed. </p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListShardsInput = ListShardsInput 
@@ -360,15 +401,18 @@ newtype ListShardsInput = ListShardsInput
   , "MaxResults" :: NullOrUndefined (ListShardsInputLimit)
   , "StreamCreationTimestamp" :: NullOrUndefined (Number)
   }
+derive instance newtypeListShardsInput :: Newtype ListShardsInput _
 
 
 newtype ListShardsInputLimit = ListShardsInputLimit Int
+derive instance newtypeListShardsInputLimit :: Newtype ListShardsInputLimit _
 
 
 newtype ListShardsOutput = ListShardsOutput 
   { "Shards" :: NullOrUndefined (ShardList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListShardsOutput :: Newtype ListShardsOutput _
 
 
 -- | <p>Represents the input for <code>ListStreams</code>.</p>
@@ -376,9 +420,11 @@ newtype ListStreamsInput = ListStreamsInput
   { "Limit" :: NullOrUndefined (ListStreamsInputLimit)
   , "ExclusiveStartStreamName" :: NullOrUndefined (StreamName)
   }
+derive instance newtypeListStreamsInput :: Newtype ListStreamsInput _
 
 
 newtype ListStreamsInputLimit = ListStreamsInputLimit Int
+derive instance newtypeListStreamsInputLimit :: Newtype ListStreamsInputLimit _
 
 
 -- | <p>Represents the output for <code>ListStreams</code>.</p>
@@ -386,6 +432,7 @@ newtype ListStreamsOutput = ListStreamsOutput
   { "StreamNames" :: (StreamNameList)
   , "HasMoreStreams" :: (BooleanObject)
   }
+derive instance newtypeListStreamsOutput :: Newtype ListStreamsOutput _
 
 
 -- | <p>Represents the input for <code>ListTagsForStream</code>.</p>
@@ -394,9 +441,11 @@ newtype ListTagsForStreamInput = ListTagsForStreamInput
   , "ExclusiveStartTagKey" :: NullOrUndefined (TagKey)
   , "Limit" :: NullOrUndefined (ListTagsForStreamInputLimit)
   }
+derive instance newtypeListTagsForStreamInput :: Newtype ListTagsForStreamInput _
 
 
 newtype ListTagsForStreamInputLimit = ListTagsForStreamInputLimit Int
+derive instance newtypeListTagsForStreamInputLimit :: Newtype ListTagsForStreamInputLimit _
 
 
 -- | <p>Represents the output for <code>ListTagsForStream</code>.</p>
@@ -404,6 +453,7 @@ newtype ListTagsForStreamOutput = ListTagsForStreamOutput
   { "Tags" :: (TagList)
   , "HasMoreTags" :: (BooleanObject)
   }
+derive instance newtypeListTagsForStreamOutput :: Newtype ListTagsForStreamOutput _
 
 
 -- | <p>Represents the input for <code>MergeShards</code>.</p>
@@ -412,30 +462,38 @@ newtype MergeShardsInput = MergeShardsInput
   , "ShardToMerge" :: (ShardId)
   , "AdjacentShardToMerge" :: (ShardId)
   }
+derive instance newtypeMergeShardsInput :: Newtype MergeShardsInput _
 
 
 newtype MetricsName = MetricsName String
+derive instance newtypeMetricsName :: Newtype MetricsName _
 
 
 newtype MetricsNameList = MetricsNameList (Array MetricsName)
+derive instance newtypeMetricsNameList :: Newtype MetricsNameList _
 
 
 newtype MillisBehindLatest = MillisBehindLatest Number
+derive instance newtypeMillisBehindLatest :: Newtype MillisBehindLatest _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 newtype PartitionKey = PartitionKey String
+derive instance newtypePartitionKey :: Newtype PartitionKey _
 
 
 newtype PositiveIntegerObject = PositiveIntegerObject Int
+derive instance newtypePositiveIntegerObject :: Newtype PositiveIntegerObject _
 
 
 -- | <p>The request rate for the stream is too high, or the requested data is too large for the available throughput. Reduce the frequency or size of your requests. For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html">Streams Limits</a> in the <i>Amazon Kinesis Data Streams Developer Guide</i>, and <a href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">Error Retries and Exponential Backoff in AWS</a> in the <i>AWS General Reference</i>.</p>
 newtype ProvisionedThroughputExceededException = ProvisionedThroughputExceededException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeProvisionedThroughputExceededException :: Newtype ProvisionedThroughputExceededException _
 
 
 -- | <p>Represents the input for <code>PutRecord</code>.</p>
@@ -446,6 +504,7 @@ newtype PutRecordInput = PutRecordInput
   , "ExplicitHashKey" :: NullOrUndefined (HashKey)
   , "SequenceNumberForOrdering" :: NullOrUndefined (SequenceNumber)
   }
+derive instance newtypePutRecordInput :: Newtype PutRecordInput _
 
 
 -- | <p>Represents the output for <code>PutRecord</code>.</p>
@@ -454,6 +513,7 @@ newtype PutRecordOutput = PutRecordOutput
   , "SequenceNumber" :: (SequenceNumber)
   , "EncryptionType" :: NullOrUndefined (EncryptionType)
   }
+derive instance newtypePutRecordOutput :: Newtype PutRecordOutput _
 
 
 -- | <p>A <code>PutRecords</code> request.</p>
@@ -461,6 +521,7 @@ newtype PutRecordsInput = PutRecordsInput
   { "Records" :: (PutRecordsRequestEntryList)
   , "StreamName" :: (StreamName)
   }
+derive instance newtypePutRecordsInput :: Newtype PutRecordsInput _
 
 
 -- | <p> <code>PutRecords</code> results.</p>
@@ -469,6 +530,7 @@ newtype PutRecordsOutput = PutRecordsOutput
   , "Records" :: (PutRecordsResultEntryList)
   , "EncryptionType" :: NullOrUndefined (EncryptionType)
   }
+derive instance newtypePutRecordsOutput :: Newtype PutRecordsOutput _
 
 
 -- | <p>Represents the output for <code>PutRecords</code>.</p>
@@ -477,9 +539,11 @@ newtype PutRecordsRequestEntry = PutRecordsRequestEntry
   , "ExplicitHashKey" :: NullOrUndefined (HashKey)
   , "PartitionKey" :: (PartitionKey)
   }
+derive instance newtypePutRecordsRequestEntry :: Newtype PutRecordsRequestEntry _
 
 
 newtype PutRecordsRequestEntryList = PutRecordsRequestEntryList (Array PutRecordsRequestEntry)
+derive instance newtypePutRecordsRequestEntryList :: Newtype PutRecordsRequestEntryList _
 
 
 -- | <p>Represents the result of an individual record from a <code>PutRecords</code> request. A record that is successfully added to a stream includes <code>SequenceNumber</code> and <code>ShardId</code> in the result. A record that fails to be added to the stream includes <code>ErrorCode</code> and <code>ErrorMessage</code> in the result.</p>
@@ -489,9 +553,11 @@ newtype PutRecordsResultEntry = PutRecordsResultEntry
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypePutRecordsResultEntry :: Newtype PutRecordsResultEntry _
 
 
 newtype PutRecordsResultEntryList = PutRecordsResultEntryList (Array PutRecordsResultEntry)
+derive instance newtypePutRecordsResultEntryList :: Newtype PutRecordsResultEntryList _
 
 
 -- | <p>The unit of data of the Kinesis data stream, which is composed of a sequence number, a partition key, and a data blob.</p>
@@ -502,9 +568,11 @@ newtype Record'' = Record''
   , "PartitionKey" :: (PartitionKey)
   , "EncryptionType" :: NullOrUndefined (EncryptionType)
   }
+derive instance newtypeRecord'' :: Newtype Record'' _
 
 
 newtype RecordList = RecordList (Array Record'')
+derive instance newtypeRecordList :: Newtype RecordList _
 
 
 -- | <p>Represents the input for <code>RemoveTagsFromStream</code>.</p>
@@ -512,27 +580,33 @@ newtype RemoveTagsFromStreamInput = RemoveTagsFromStreamInput
   { "StreamName" :: (StreamName)
   , "TagKeys" :: (TagKeyList)
   }
+derive instance newtypeRemoveTagsFromStreamInput :: Newtype RemoveTagsFromStreamInput _
 
 
 -- | <p>The resource is not available for this operation. For successful operation, the resource must be in the <code>ACTIVE</code> state.</p>
 newtype ResourceInUseException = ResourceInUseException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>The requested resource could not be found. The stream might not be specified correctly.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype RetentionPeriodHours = RetentionPeriodHours Int
+derive instance newtypeRetentionPeriodHours :: Newtype RetentionPeriodHours _
 
 
 newtype ScalingType = ScalingType String
+derive instance newtypeScalingType :: Newtype ScalingType _
 
 
 newtype SequenceNumber = SequenceNumber String
+derive instance newtypeSequenceNumber :: Newtype SequenceNumber _
 
 
 -- | <p>The range of possible sequence numbers for the shard.</p>
@@ -540,6 +614,7 @@ newtype SequenceNumberRange = SequenceNumberRange
   { "StartingSequenceNumber" :: (SequenceNumber)
   , "EndingSequenceNumber" :: NullOrUndefined (SequenceNumber)
   }
+derive instance newtypeSequenceNumberRange :: Newtype SequenceNumberRange _
 
 
 -- | <p>A uniquely identified group of data records in a Kinesis data stream.</p>
@@ -550,21 +625,27 @@ newtype Shard = Shard
   , "HashKeyRange" :: (HashKeyRange)
   , "SequenceNumberRange" :: (SequenceNumberRange)
   }
+derive instance newtypeShard :: Newtype Shard _
 
 
 newtype ShardCountObject = ShardCountObject Int
+derive instance newtypeShardCountObject :: Newtype ShardCountObject _
 
 
 newtype ShardId = ShardId String
+derive instance newtypeShardId :: Newtype ShardId _
 
 
 newtype ShardIterator = ShardIterator String
+derive instance newtypeShardIterator :: Newtype ShardIterator _
 
 
 newtype ShardIteratorType = ShardIteratorType String
+derive instance newtypeShardIteratorType :: Newtype ShardIteratorType _
 
 
 newtype ShardList = ShardList (Array Shard)
+derive instance newtypeShardList :: Newtype ShardList _
 
 
 -- | <p>Represents the input for <code>SplitShard</code>.</p>
@@ -573,6 +654,7 @@ newtype SplitShardInput = SplitShardInput
   , "ShardToSplit" :: (ShardId)
   , "NewStartingHashKey" :: (HashKey)
   }
+derive instance newtypeSplitShardInput :: Newtype SplitShardInput _
 
 
 newtype StartStreamEncryptionInput = StartStreamEncryptionInput 
@@ -580,6 +662,7 @@ newtype StartStreamEncryptionInput = StartStreamEncryptionInput
   , "EncryptionType" :: (EncryptionType)
   , "KeyId" :: (KeyId)
   }
+derive instance newtypeStartStreamEncryptionInput :: Newtype StartStreamEncryptionInput _
 
 
 newtype StopStreamEncryptionInput = StopStreamEncryptionInput 
@@ -587,9 +670,11 @@ newtype StopStreamEncryptionInput = StopStreamEncryptionInput
   , "EncryptionType" :: (EncryptionType)
   , "KeyId" :: (KeyId)
   }
+derive instance newtypeStopStreamEncryptionInput :: Newtype StopStreamEncryptionInput _
 
 
 newtype StreamARN = StreamARN String
+derive instance newtypeStreamARN :: Newtype StreamARN _
 
 
 -- | <p>Represents the output for <a>DescribeStream</a>.</p>
@@ -605,6 +690,7 @@ newtype StreamDescription = StreamDescription
   , "EncryptionType" :: NullOrUndefined (EncryptionType)
   , "KeyId" :: NullOrUndefined (KeyId)
   }
+derive instance newtypeStreamDescription :: Newtype StreamDescription _
 
 
 -- | <p>Represents the output for <a>DescribeStreamSummary</a> </p>
@@ -619,15 +705,19 @@ newtype StreamDescriptionSummary = StreamDescriptionSummary
   , "KeyId" :: NullOrUndefined (KeyId)
   , "OpenShardCount" :: (ShardCountObject)
   }
+derive instance newtypeStreamDescriptionSummary :: Newtype StreamDescriptionSummary _
 
 
 newtype StreamName = StreamName String
+derive instance newtypeStreamName :: Newtype StreamName _
 
 
 newtype StreamNameList = StreamNameList (Array StreamName)
+derive instance newtypeStreamNameList :: Newtype StreamNameList _
 
 
 newtype StreamStatus = StreamStatus String
+derive instance newtypeStreamStatus :: Newtype StreamStatus _
 
 
 -- | <p>Metadata assigned to the stream, consisting of a key-value pair.</p>
@@ -635,21 +725,27 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagMap = TagMap (Map TagKey TagValue)
+derive instance newtypeTagMap :: Newtype TagMap _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype UpdateShardCountInput = UpdateShardCountInput 
@@ -657,6 +753,7 @@ newtype UpdateShardCountInput = UpdateShardCountInput
   , "TargetShardCount" :: (PositiveIntegerObject)
   , "ScalingType" :: (ScalingType)
   }
+derive instance newtypeUpdateShardCountInput :: Newtype UpdateShardCountInput _
 
 
 newtype UpdateShardCountOutput = UpdateShardCountOutput 
@@ -664,3 +761,4 @@ newtype UpdateShardCountOutput = UpdateShardCountOutput
   , "CurrentShardCount" :: NullOrUndefined (PositiveIntegerObject)
   , "TargetShardCount" :: NullOrUndefined (PositiveIntegerObject)
   }
+derive instance newtypeUpdateShardCountOutput :: Newtype UpdateShardCountOutput _

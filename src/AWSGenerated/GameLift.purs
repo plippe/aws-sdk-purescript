@@ -6,6 +6,7 @@ module AWS.GameLift where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -344,14 +345,17 @@ newtype AcceptMatchInput = AcceptMatchInput
   , "PlayerIds" :: (StringList)
   , "AcceptanceType" :: (AcceptanceType)
   }
+derive instance newtypeAcceptMatchInput :: Newtype AcceptMatchInput _
 
 
 newtype AcceptMatchOutput = AcceptMatchOutput 
   { 
   }
+derive instance newtypeAcceptMatchOutput :: Newtype AcceptMatchOutput _
 
 
 newtype AcceptanceType = AcceptanceType String
+derive instance newtypeAcceptanceType :: Newtype AcceptanceType _
 
 
 -- | <p>Properties describing a fleet alias.</p> <p>Alias-related operations include:</p> <ul> <li> <p> <a>CreateAlias</a> </p> </li> <li> <p> <a>ListAliases</a> </p> </li> <li> <p> <a>DescribeAlias</a> </p> </li> <li> <p> <a>UpdateAlias</a> </p> </li> <li> <p> <a>DeleteAlias</a> </p> </li> <li> <p> <a>ResolveAlias</a> </p> </li> </ul>
@@ -364,15 +368,19 @@ newtype Alias = Alias
   , "CreationTime" :: NullOrUndefined (Number)
   , "LastUpdatedTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeAlias :: Newtype Alias _
 
 
 newtype AliasId = AliasId String
+derive instance newtypeAliasId :: Newtype AliasId _
 
 
 newtype AliasList = AliasList (Array Alias)
+derive instance newtypeAliasList :: Newtype AliasList _
 
 
 newtype ArnStringModel = ArnStringModel String
+derive instance newtypeArnStringModel :: Newtype ArnStringModel _
 
 
 -- | <p>Values for use in <a>Player</a> attribute key:value pairs. This object lets you specify an attribute value using any of the valid data types: string, number, string array or data map. Each <code>AttributeValue</code> object can use only one of the available properties.</p>
@@ -382,6 +390,7 @@ newtype AttributeValue = AttributeValue
   , "SL" :: NullOrUndefined (StringList)
   , "SDM" :: NullOrUndefined (StringDoubleMap)
   }
+derive instance newtypeAttributeValue :: Newtype AttributeValue _
 
 
 -- | <p>Temporary access credentials used for uploading game build files to Amazon GameLift. They are valid for a limited time. If they expire before you upload your game build, get a new set by calling <a>RequestUploadCredentials</a>.</p>
@@ -390,9 +399,11 @@ newtype AwsCredentials = AwsCredentials
   , "SecretAccessKey" :: NullOrUndefined (NonEmptyString)
   , "SessionToken" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeAwsCredentials :: Newtype AwsCredentials _
 
 
 newtype BooleanModel = BooleanModel Boolean
+derive instance newtypeBooleanModel :: Newtype BooleanModel _
 
 
 -- | <p>Properties describing a game build.</p> <p>Build-related operations include:</p> <ul> <li> <p> <a>CreateBuild</a> </p> </li> <li> <p> <a>ListBuilds</a> </p> </li> <li> <p> <a>DescribeBuild</a> </p> </li> <li> <p> <a>UpdateBuild</a> </p> </li> <li> <p> <a>DeleteBuild</a> </p> </li> </ul>
@@ -405,24 +416,30 @@ newtype Build = Build
   , "OperatingSystem" :: NullOrUndefined (OperatingSystem)
   , "CreationTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeBuild :: Newtype Build _
 
 
 newtype BuildId = BuildId String
+derive instance newtypeBuildId :: Newtype BuildId _
 
 
 newtype BuildList = BuildList (Array Build)
+derive instance newtypeBuildList :: Newtype BuildList _
 
 
 newtype BuildStatus = BuildStatus String
+derive instance newtypeBuildStatus :: Newtype BuildStatus _
 
 
 newtype ComparisonOperatorType = ComparisonOperatorType String
+derive instance newtypeComparisonOperatorType :: Newtype ComparisonOperatorType _
 
 
 -- | <p>The requested operation would cause a conflict with the current state of a service resource associated with the request. Resolve the conflict before retrying this request.</p>
 newtype ConflictException = ConflictException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeConflictException :: Newtype ConflictException _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -431,12 +448,14 @@ newtype CreateAliasInput = CreateAliasInput
   , "Description" :: NullOrUndefined (NonZeroAndMaxString)
   , "RoutingStrategy" :: (RoutingStrategy)
   }
+derive instance newtypeCreateAliasInput :: Newtype CreateAliasInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreateAliasOutput = CreateAliasOutput 
   { "Alias" :: NullOrUndefined (Alias)
   }
+derive instance newtypeCreateAliasOutput :: Newtype CreateAliasOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -446,6 +465,7 @@ newtype CreateBuildInput = CreateBuildInput
   , "StorageLocation" :: NullOrUndefined (S3Location)
   , "OperatingSystem" :: NullOrUndefined (OperatingSystem)
   }
+derive instance newtypeCreateBuildInput :: Newtype CreateBuildInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -454,6 +474,7 @@ newtype CreateBuildOutput = CreateBuildOutput
   , "UploadCredentials" :: NullOrUndefined (AwsCredentials)
   , "StorageLocation" :: NullOrUndefined (S3Location)
   }
+derive instance newtypeCreateBuildOutput :: Newtype CreateBuildOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -474,12 +495,14 @@ newtype CreateFleetInput = CreateFleetInput
   , "PeerVpcId" :: NullOrUndefined (NonZeroAndMaxString)
   , "FleetType" :: NullOrUndefined (FleetType)
   }
+derive instance newtypeCreateFleetInput :: Newtype CreateFleetInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreateFleetOutput = CreateFleetOutput 
   { "FleetAttributes" :: NullOrUndefined (FleetAttributes)
   }
+derive instance newtypeCreateFleetOutput :: Newtype CreateFleetOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -494,12 +517,14 @@ newtype CreateGameSessionInput = CreateGameSessionInput
   , "IdempotencyToken" :: NullOrUndefined (IdStringModel)
   , "GameSessionData" :: NullOrUndefined (GameSessionData)
   }
+derive instance newtypeCreateGameSessionInput :: Newtype CreateGameSessionInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreateGameSessionOutput = CreateGameSessionOutput 
   { "GameSession" :: NullOrUndefined (GameSession)
   }
+derive instance newtypeCreateGameSessionOutput :: Newtype CreateGameSessionOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -509,12 +534,14 @@ newtype CreateGameSessionQueueInput = CreateGameSessionQueueInput
   , "PlayerLatencyPolicies" :: NullOrUndefined (PlayerLatencyPolicyList)
   , "Destinations" :: NullOrUndefined (GameSessionQueueDestinationList)
   }
+derive instance newtypeCreateGameSessionQueueInput :: Newtype CreateGameSessionQueueInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreateGameSessionQueueOutput = CreateGameSessionQueueOutput 
   { "GameSessionQueue" :: NullOrUndefined (GameSessionQueue)
   }
+derive instance newtypeCreateGameSessionQueueOutput :: Newtype CreateGameSessionQueueOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -532,12 +559,14 @@ newtype CreateMatchmakingConfigurationInput = CreateMatchmakingConfigurationInpu
   , "GameProperties" :: NullOrUndefined (GamePropertyList)
   , "GameSessionData" :: NullOrUndefined (GameSessionData)
   }
+derive instance newtypeCreateMatchmakingConfigurationInput :: Newtype CreateMatchmakingConfigurationInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreateMatchmakingConfigurationOutput = CreateMatchmakingConfigurationOutput 
   { "Configuration" :: NullOrUndefined (MatchmakingConfiguration)
   }
+derive instance newtypeCreateMatchmakingConfigurationOutput :: Newtype CreateMatchmakingConfigurationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -545,12 +574,14 @@ newtype CreateMatchmakingRuleSetInput = CreateMatchmakingRuleSetInput
   { "Name" :: (MatchmakingIdStringModel)
   , "RuleSetBody" :: (RuleSetBody)
   }
+derive instance newtypeCreateMatchmakingRuleSetInput :: Newtype CreateMatchmakingRuleSetInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreateMatchmakingRuleSetOutput = CreateMatchmakingRuleSetOutput 
   { "RuleSet" :: (MatchmakingRuleSet)
   }
+derive instance newtypeCreateMatchmakingRuleSetOutput :: Newtype CreateMatchmakingRuleSetOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -559,12 +590,14 @@ newtype CreatePlayerSessionInput = CreatePlayerSessionInput
   , "PlayerId" :: (NonZeroAndMaxString)
   , "PlayerData" :: NullOrUndefined (PlayerData)
   }
+derive instance newtypeCreatePlayerSessionInput :: Newtype CreatePlayerSessionInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreatePlayerSessionOutput = CreatePlayerSessionOutput 
   { "PlayerSession" :: NullOrUndefined (PlayerSession)
   }
+derive instance newtypeCreatePlayerSessionOutput :: Newtype CreatePlayerSessionOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -573,12 +606,14 @@ newtype CreatePlayerSessionsInput = CreatePlayerSessionsInput
   , "PlayerIds" :: (PlayerIdList)
   , "PlayerDataMap" :: NullOrUndefined (PlayerDataMap)
   }
+derive instance newtypeCreatePlayerSessionsInput :: Newtype CreatePlayerSessionsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreatePlayerSessionsOutput = CreatePlayerSessionsOutput 
   { "PlayerSessions" :: NullOrUndefined (PlayerSessionList)
   }
+derive instance newtypeCreatePlayerSessionsOutput :: Newtype CreatePlayerSessionsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -586,12 +621,14 @@ newtype CreateVpcPeeringAuthorizationInput = CreateVpcPeeringAuthorizationInput
   { "GameLiftAwsAccountId" :: (NonZeroAndMaxString)
   , "PeerVpcId" :: (NonZeroAndMaxString)
   }
+derive instance newtypeCreateVpcPeeringAuthorizationInput :: Newtype CreateVpcPeeringAuthorizationInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype CreateVpcPeeringAuthorizationOutput = CreateVpcPeeringAuthorizationOutput 
   { "VpcPeeringAuthorization" :: NullOrUndefined (VpcPeeringAuthorization)
   }
+derive instance newtypeCreateVpcPeeringAuthorizationOutput :: Newtype CreateVpcPeeringAuthorizationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -600,54 +637,64 @@ newtype CreateVpcPeeringConnectionInput = CreateVpcPeeringConnectionInput
   , "PeerVpcAwsAccountId" :: (NonZeroAndMaxString)
   , "PeerVpcId" :: (NonZeroAndMaxString)
   }
+derive instance newtypeCreateVpcPeeringConnectionInput :: Newtype CreateVpcPeeringConnectionInput _
 
 
 newtype CreateVpcPeeringConnectionOutput = CreateVpcPeeringConnectionOutput 
   { 
   }
+derive instance newtypeCreateVpcPeeringConnectionOutput :: Newtype CreateVpcPeeringConnectionOutput _
 
 
 newtype CustomEventData = CustomEventData String
+derive instance newtypeCustomEventData :: Newtype CustomEventData _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DeleteAliasInput = DeleteAliasInput 
   { "AliasId" :: (AliasId)
   }
+derive instance newtypeDeleteAliasInput :: Newtype DeleteAliasInput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DeleteBuildInput = DeleteBuildInput 
   { "BuildId" :: (BuildId)
   }
+derive instance newtypeDeleteBuildInput :: Newtype DeleteBuildInput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DeleteFleetInput = DeleteFleetInput 
   { "FleetId" :: (FleetId)
   }
+derive instance newtypeDeleteFleetInput :: Newtype DeleteFleetInput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DeleteGameSessionQueueInput = DeleteGameSessionQueueInput 
   { "Name" :: (GameSessionQueueName)
   }
+derive instance newtypeDeleteGameSessionQueueInput :: Newtype DeleteGameSessionQueueInput _
 
 
 newtype DeleteGameSessionQueueOutput = DeleteGameSessionQueueOutput 
   { 
   }
+derive instance newtypeDeleteGameSessionQueueOutput :: Newtype DeleteGameSessionQueueOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DeleteMatchmakingConfigurationInput = DeleteMatchmakingConfigurationInput 
   { "Name" :: (MatchmakingIdStringModel)
   }
+derive instance newtypeDeleteMatchmakingConfigurationInput :: Newtype DeleteMatchmakingConfigurationInput _
 
 
 newtype DeleteMatchmakingConfigurationOutput = DeleteMatchmakingConfigurationOutput 
   { 
   }
+derive instance newtypeDeleteMatchmakingConfigurationOutput :: Newtype DeleteMatchmakingConfigurationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -655,6 +702,7 @@ newtype DeleteScalingPolicyInput = DeleteScalingPolicyInput
   { "Name" :: (NonZeroAndMaxString)
   , "FleetId" :: (FleetId)
   }
+derive instance newtypeDeleteScalingPolicyInput :: Newtype DeleteScalingPolicyInput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -662,11 +710,13 @@ newtype DeleteVpcPeeringAuthorizationInput = DeleteVpcPeeringAuthorizationInput
   { "GameLiftAwsAccountId" :: (NonZeroAndMaxString)
   , "PeerVpcId" :: (NonZeroAndMaxString)
   }
+derive instance newtypeDeleteVpcPeeringAuthorizationInput :: Newtype DeleteVpcPeeringAuthorizationInput _
 
 
 newtype DeleteVpcPeeringAuthorizationOutput = DeleteVpcPeeringAuthorizationOutput 
   { 
   }
+derive instance newtypeDeleteVpcPeeringAuthorizationOutput :: Newtype DeleteVpcPeeringAuthorizationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -674,47 +724,55 @@ newtype DeleteVpcPeeringConnectionInput = DeleteVpcPeeringConnectionInput
   { "FleetId" :: (FleetId)
   , "VpcPeeringConnectionId" :: (NonZeroAndMaxString)
   }
+derive instance newtypeDeleteVpcPeeringConnectionInput :: Newtype DeleteVpcPeeringConnectionInput _
 
 
 newtype DeleteVpcPeeringConnectionOutput = DeleteVpcPeeringConnectionOutput 
   { 
   }
+derive instance newtypeDeleteVpcPeeringConnectionOutput :: Newtype DeleteVpcPeeringConnectionOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeAliasInput = DescribeAliasInput 
   { "AliasId" :: (AliasId)
   }
+derive instance newtypeDescribeAliasInput :: Newtype DescribeAliasInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeAliasOutput = DescribeAliasOutput 
   { "Alias" :: NullOrUndefined (Alias)
   }
+derive instance newtypeDescribeAliasOutput :: Newtype DescribeAliasOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeBuildInput = DescribeBuildInput 
   { "BuildId" :: (BuildId)
   }
+derive instance newtypeDescribeBuildInput :: Newtype DescribeBuildInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeBuildOutput = DescribeBuildOutput 
   { "Build" :: NullOrUndefined (Build)
   }
+derive instance newtypeDescribeBuildOutput :: Newtype DescribeBuildOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeEC2InstanceLimitsInput = DescribeEC2InstanceLimitsInput 
   { "EC2InstanceType" :: NullOrUndefined (EC2InstanceType)
   }
+derive instance newtypeDescribeEC2InstanceLimitsInput :: Newtype DescribeEC2InstanceLimitsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeEC2InstanceLimitsOutput = DescribeEC2InstanceLimitsOutput 
   { "EC2InstanceLimits" :: NullOrUndefined (EC2InstanceLimitList)
   }
+derive instance newtypeDescribeEC2InstanceLimitsOutput :: Newtype DescribeEC2InstanceLimitsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -723,6 +781,7 @@ newtype DescribeFleetAttributesInput = DescribeFleetAttributesInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetAttributesInput :: Newtype DescribeFleetAttributesInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -730,6 +789,7 @@ newtype DescribeFleetAttributesOutput = DescribeFleetAttributesOutput
   { "FleetAttributes" :: NullOrUndefined (FleetAttributesList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetAttributesOutput :: Newtype DescribeFleetAttributesOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -738,6 +798,7 @@ newtype DescribeFleetCapacityInput = DescribeFleetCapacityInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetCapacityInput :: Newtype DescribeFleetCapacityInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -745,6 +806,7 @@ newtype DescribeFleetCapacityOutput = DescribeFleetCapacityOutput
   { "FleetCapacity" :: NullOrUndefined (FleetCapacityList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetCapacityOutput :: Newtype DescribeFleetCapacityOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -755,6 +817,7 @@ newtype DescribeFleetEventsInput = DescribeFleetEventsInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetEventsInput :: Newtype DescribeFleetEventsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -762,18 +825,21 @@ newtype DescribeFleetEventsOutput = DescribeFleetEventsOutput
   { "Events" :: NullOrUndefined (EventList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetEventsOutput :: Newtype DescribeFleetEventsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeFleetPortSettingsInput = DescribeFleetPortSettingsInput 
   { "FleetId" :: (FleetId)
   }
+derive instance newtypeDescribeFleetPortSettingsInput :: Newtype DescribeFleetPortSettingsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeFleetPortSettingsOutput = DescribeFleetPortSettingsOutput 
   { "InboundPermissions" :: NullOrUndefined (IpPermissionsList)
   }
+derive instance newtypeDescribeFleetPortSettingsOutput :: Newtype DescribeFleetPortSettingsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -782,6 +848,7 @@ newtype DescribeFleetUtilizationInput = DescribeFleetUtilizationInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetUtilizationInput :: Newtype DescribeFleetUtilizationInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -789,6 +856,7 @@ newtype DescribeFleetUtilizationOutput = DescribeFleetUtilizationOutput
   { "FleetUtilization" :: NullOrUndefined (FleetUtilizationList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeFleetUtilizationOutput :: Newtype DescribeFleetUtilizationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -800,6 +868,7 @@ newtype DescribeGameSessionDetailsInput = DescribeGameSessionDetailsInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeGameSessionDetailsInput :: Newtype DescribeGameSessionDetailsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -807,18 +876,21 @@ newtype DescribeGameSessionDetailsOutput = DescribeGameSessionDetailsOutput
   { "GameSessionDetails" :: NullOrUndefined (GameSessionDetailList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeGameSessionDetailsOutput :: Newtype DescribeGameSessionDetailsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeGameSessionPlacementInput = DescribeGameSessionPlacementInput 
   { "PlacementId" :: (IdStringModel)
   }
+derive instance newtypeDescribeGameSessionPlacementInput :: Newtype DescribeGameSessionPlacementInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeGameSessionPlacementOutput = DescribeGameSessionPlacementOutput 
   { "GameSessionPlacement" :: NullOrUndefined (GameSessionPlacement)
   }
+derive instance newtypeDescribeGameSessionPlacementOutput :: Newtype DescribeGameSessionPlacementOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -827,6 +899,7 @@ newtype DescribeGameSessionQueuesInput = DescribeGameSessionQueuesInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeGameSessionQueuesInput :: Newtype DescribeGameSessionQueuesInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -834,6 +907,7 @@ newtype DescribeGameSessionQueuesOutput = DescribeGameSessionQueuesOutput
   { "GameSessionQueues" :: NullOrUndefined (GameSessionQueueList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeGameSessionQueuesOutput :: Newtype DescribeGameSessionQueuesOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -845,6 +919,7 @@ newtype DescribeGameSessionsInput = DescribeGameSessionsInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeGameSessionsInput :: Newtype DescribeGameSessionsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -852,6 +927,7 @@ newtype DescribeGameSessionsOutput = DescribeGameSessionsOutput
   { "GameSessions" :: NullOrUndefined (GameSessionList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeGameSessionsOutput :: Newtype DescribeGameSessionsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -861,6 +937,7 @@ newtype DescribeInstancesInput = DescribeInstancesInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeInstancesInput :: Newtype DescribeInstancesInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -868,6 +945,7 @@ newtype DescribeInstancesOutput = DescribeInstancesOutput
   { "Instances" :: NullOrUndefined (InstanceList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeInstancesOutput :: Newtype DescribeInstancesOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -877,6 +955,7 @@ newtype DescribeMatchmakingConfigurationsInput = DescribeMatchmakingConfiguratio
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeMatchmakingConfigurationsInput :: Newtype DescribeMatchmakingConfigurationsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -884,18 +963,21 @@ newtype DescribeMatchmakingConfigurationsOutput = DescribeMatchmakingConfigurati
   { "Configurations" :: NullOrUndefined (MatchmakingConfigurationList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeMatchmakingConfigurationsOutput :: Newtype DescribeMatchmakingConfigurationsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeMatchmakingInput = DescribeMatchmakingInput 
   { "TicketIds" :: (MatchmakingIdList)
   }
+derive instance newtypeDescribeMatchmakingInput :: Newtype DescribeMatchmakingInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeMatchmakingOutput = DescribeMatchmakingOutput 
   { "TicketList" :: NullOrUndefined (MatchmakingTicketList)
   }
+derive instance newtypeDescribeMatchmakingOutput :: Newtype DescribeMatchmakingOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -904,6 +986,7 @@ newtype DescribeMatchmakingRuleSetsInput = DescribeMatchmakingRuleSetsInput
   , "Limit" :: NullOrUndefined (RuleSetLimit)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeMatchmakingRuleSetsInput :: Newtype DescribeMatchmakingRuleSetsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -911,6 +994,7 @@ newtype DescribeMatchmakingRuleSetsOutput = DescribeMatchmakingRuleSetsOutput
   { "RuleSets" :: (MatchmakingRuleSetList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeMatchmakingRuleSetsOutput :: Newtype DescribeMatchmakingRuleSetsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -922,6 +1006,7 @@ newtype DescribePlayerSessionsInput = DescribePlayerSessionsInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribePlayerSessionsInput :: Newtype DescribePlayerSessionsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -929,18 +1014,21 @@ newtype DescribePlayerSessionsOutput = DescribePlayerSessionsOutput
   { "PlayerSessions" :: NullOrUndefined (PlayerSessionList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribePlayerSessionsOutput :: Newtype DescribePlayerSessionsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeRuntimeConfigurationInput = DescribeRuntimeConfigurationInput 
   { "FleetId" :: (FleetId)
   }
+derive instance newtypeDescribeRuntimeConfigurationInput :: Newtype DescribeRuntimeConfigurationInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeRuntimeConfigurationOutput = DescribeRuntimeConfigurationOutput 
   { "RuntimeConfiguration" :: NullOrUndefined (RuntimeConfiguration)
   }
+derive instance newtypeDescribeRuntimeConfigurationOutput :: Newtype DescribeRuntimeConfigurationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -950,6 +1038,7 @@ newtype DescribeScalingPoliciesInput = DescribeScalingPoliciesInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeScalingPoliciesInput :: Newtype DescribeScalingPoliciesInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -957,28 +1046,33 @@ newtype DescribeScalingPoliciesOutput = DescribeScalingPoliciesOutput
   { "ScalingPolicies" :: NullOrUndefined (ScalingPolicyList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeDescribeScalingPoliciesOutput :: Newtype DescribeScalingPoliciesOutput _
 
 
 newtype DescribeVpcPeeringAuthorizationsInput = DescribeVpcPeeringAuthorizationsInput 
   { 
   }
+derive instance newtypeDescribeVpcPeeringAuthorizationsInput :: Newtype DescribeVpcPeeringAuthorizationsInput _
 
 
 newtype DescribeVpcPeeringAuthorizationsOutput = DescribeVpcPeeringAuthorizationsOutput 
   { "VpcPeeringAuthorizations" :: NullOrUndefined (VpcPeeringAuthorizationList)
   }
+derive instance newtypeDescribeVpcPeeringAuthorizationsOutput :: Newtype DescribeVpcPeeringAuthorizationsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype DescribeVpcPeeringConnectionsInput = DescribeVpcPeeringConnectionsInput 
   { "FleetId" :: NullOrUndefined (FleetId)
   }
+derive instance newtypeDescribeVpcPeeringConnectionsInput :: Newtype DescribeVpcPeeringConnectionsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype DescribeVpcPeeringConnectionsOutput = DescribeVpcPeeringConnectionsOutput 
   { "VpcPeeringConnections" :: NullOrUndefined (VpcPeeringConnectionList)
   }
+derive instance newtypeDescribeVpcPeeringConnectionsOutput :: Newtype DescribeVpcPeeringConnectionsOutput _
 
 
 -- | <p>Player information for use when creating player sessions using a game session placement request with <a>StartGameSessionPlacement</a>.</p>
@@ -986,12 +1080,15 @@ newtype DesiredPlayerSession = DesiredPlayerSession
   { "PlayerId" :: NullOrUndefined (NonZeroAndMaxString)
   , "PlayerData" :: NullOrUndefined (PlayerData)
   }
+derive instance newtypeDesiredPlayerSession :: Newtype DesiredPlayerSession _
 
 
 newtype DesiredPlayerSessionList = DesiredPlayerSessionList (Array DesiredPlayerSession)
+derive instance newtypeDesiredPlayerSessionList :: Newtype DesiredPlayerSessionList _
 
 
 newtype DoubleObject = DoubleObject Number
+derive instance newtypeDoubleObject :: Newtype DoubleObject _
 
 
 -- | <p>Current status of fleet capacity. The number of active instances should match or be in the process of matching the number of desired instances. Pending and terminating counts are non-zero only if fleet capacity is adjusting to an <a>UpdateFleetCapacity</a> request, or if access to resources is temporarily affected.</p> <p>Fleet-related operations include:</p> <ul> <li> <p> <a>CreateFleet</a> </p> </li> <li> <p> <a>ListFleets</a> </p> </li> <li> <p>Describe fleets:</p> <ul> <li> <p> <a>DescribeFleetAttributes</a> </p> </li> <li> <p> <a>DescribeFleetPortSettings</a> </p> </li> <li> <p> <a>DescribeFleetUtilization</a> </p> </li> <li> <p> <a>DescribeRuntimeConfiguration</a> </p> </li> <li> <p> <a>DescribeFleetEvents</a> </p> </li> </ul> </li> <li> <p>Update fleets:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetPortSettings</a> </p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> </p> </li> </ul> </li> <li> <p>Manage fleet capacity:</p> <ul> <li> <p> <a>DescribeFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>PutScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeScalingPolicies</a> (automatic scaling)</p> </li> <li> <p> <a>DeleteScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeEC2InstanceLimits</a> </p> </li> </ul> </li> <li> <p> <a>DeleteFleet</a> </p> </li> </ul>
@@ -1004,6 +1101,7 @@ newtype EC2InstanceCounts = EC2InstanceCounts
   , "IDLE" :: NullOrUndefined (WholeNumber)
   , "TERMINATING" :: NullOrUndefined (WholeNumber)
   }
+derive instance newtypeEC2InstanceCounts :: Newtype EC2InstanceCounts _
 
 
 -- | <p>Maximum number of instances allowed based on the Amazon Elastic Compute Cloud (Amazon EC2) instance type. Instance limits can be retrieved by calling <a>DescribeEC2InstanceLimits</a>.</p>
@@ -1012,12 +1110,15 @@ newtype EC2InstanceLimit = EC2InstanceLimit
   , "CurrentInstances" :: NullOrUndefined (WholeNumber)
   , "InstanceLimit" :: NullOrUndefined (WholeNumber)
   }
+derive instance newtypeEC2InstanceLimit :: Newtype EC2InstanceLimit _
 
 
 newtype EC2InstanceLimitList = EC2InstanceLimitList (Array EC2InstanceLimit)
+derive instance newtypeEC2InstanceLimitList :: Newtype EC2InstanceLimitList _
 
 
 newtype EC2InstanceType = EC2InstanceType String
+derive instance newtypeEC2InstanceType :: Newtype EC2InstanceType _
 
 
 -- | <p>Log entry describing an event that involves Amazon GameLift resources (such as a fleet). In addition to tracking activity, event codes and messages can provide additional information for troubleshooting and debugging problems.</p>
@@ -1029,12 +1130,15 @@ newtype Event = Event
   , "EventTime" :: NullOrUndefined (Number)
   , "PreSignedLogUrl" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeEvent :: Newtype Event _
 
 
 newtype EventCode = EventCode String
+derive instance newtypeEventCode :: Newtype EventCode _
 
 
 newtype EventList = EventList (Array Event)
+derive instance newtypeEventList :: Newtype EventList _
 
 
 -- | <p>General properties describing a fleet.</p> <p>Fleet-related operations include:</p> <ul> <li> <p> <a>CreateFleet</a> </p> </li> <li> <p> <a>ListFleets</a> </p> </li> <li> <p>Describe fleets:</p> <ul> <li> <p> <a>DescribeFleetAttributes</a> </p> </li> <li> <p> <a>DescribeFleetPortSettings</a> </p> </li> <li> <p> <a>DescribeFleetUtilization</a> </p> </li> <li> <p> <a>DescribeRuntimeConfiguration</a> </p> </li> <li> <p> <a>DescribeFleetEvents</a> </p> </li> </ul> </li> <li> <p>Update fleets:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetPortSettings</a> </p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> </p> </li> </ul> </li> <li> <p>Manage fleet capacity:</p> <ul> <li> <p> <a>DescribeFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>PutScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeScalingPolicies</a> (automatic scaling)</p> </li> <li> <p> <a>DeleteScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeEC2InstanceLimits</a> </p> </li> </ul> </li> <li> <p> <a>DeleteFleet</a> </p> </li> </ul>
@@ -1057,9 +1161,11 @@ newtype FleetAttributes = FleetAttributes
   , "ResourceCreationLimitPolicy" :: NullOrUndefined (ResourceCreationLimitPolicy)
   , "MetricGroups" :: NullOrUndefined (MetricGroupList)
   }
+derive instance newtypeFleetAttributes :: Newtype FleetAttributes _
 
 
 newtype FleetAttributesList = FleetAttributesList (Array FleetAttributes)
+derive instance newtypeFleetAttributesList :: Newtype FleetAttributesList _
 
 
 -- | <p>Information about the fleet's capacity. Fleet capacity is measured in EC2 instances. By default, new fleets have a capacity of one instance, but can be updated as needed. The maximum number of instances for a fleet is determined by the fleet's instance type.</p> <p>Fleet-related operations include:</p> <ul> <li> <p> <a>CreateFleet</a> </p> </li> <li> <p> <a>ListFleets</a> </p> </li> <li> <p>Describe fleets:</p> <ul> <li> <p> <a>DescribeFleetAttributes</a> </p> </li> <li> <p> <a>DescribeFleetPortSettings</a> </p> </li> <li> <p> <a>DescribeFleetUtilization</a> </p> </li> <li> <p> <a>DescribeRuntimeConfiguration</a> </p> </li> <li> <p> <a>DescribeFleetEvents</a> </p> </li> </ul> </li> <li> <p>Update fleets:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetPortSettings</a> </p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> </p> </li> </ul> </li> <li> <p>Manage fleet capacity:</p> <ul> <li> <p> <a>DescribeFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>PutScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeScalingPolicies</a> (automatic scaling)</p> </li> <li> <p> <a>DeleteScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeEC2InstanceLimits</a> </p> </li> </ul> </li> <li> <p> <a>DeleteFleet</a> </p> </li> </ul>
@@ -1068,27 +1174,34 @@ newtype FleetCapacity = FleetCapacity
   , "InstanceType" :: NullOrUndefined (EC2InstanceType)
   , "InstanceCounts" :: NullOrUndefined (EC2InstanceCounts)
   }
+derive instance newtypeFleetCapacity :: Newtype FleetCapacity _
 
 
 -- | <p>The specified fleet has no available instances to fulfill a <code>CreateGameSession</code> request. Clients can retry such requests immediately or after a waiting period.</p>
 newtype FleetCapacityExceededException = FleetCapacityExceededException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeFleetCapacityExceededException :: Newtype FleetCapacityExceededException _
 
 
 newtype FleetCapacityList = FleetCapacityList (Array FleetCapacity)
+derive instance newtypeFleetCapacityList :: Newtype FleetCapacityList _
 
 
 newtype FleetId = FleetId String
+derive instance newtypeFleetId :: Newtype FleetId _
 
 
 newtype FleetIdList = FleetIdList (Array FleetId)
+derive instance newtypeFleetIdList :: Newtype FleetIdList _
 
 
 newtype FleetStatus = FleetStatus String
+derive instance newtypeFleetStatus :: Newtype FleetStatus _
 
 
 newtype FleetType = FleetType String
+derive instance newtypeFleetType :: Newtype FleetType _
 
 
 -- | <p>Current status of fleet utilization, including the number of game and player sessions being hosted.</p> <p>Fleet-related operations include:</p> <ul> <li> <p> <a>CreateFleet</a> </p> </li> <li> <p> <a>ListFleets</a> </p> </li> <li> <p>Describe fleets:</p> <ul> <li> <p> <a>DescribeFleetAttributes</a> </p> </li> <li> <p> <a>DescribeFleetPortSettings</a> </p> </li> <li> <p> <a>DescribeFleetUtilization</a> </p> </li> <li> <p> <a>DescribeRuntimeConfiguration</a> </p> </li> <li> <p> <a>DescribeFleetEvents</a> </p> </li> </ul> </li> <li> <p>Update fleets:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetPortSettings</a> </p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> </p> </li> </ul> </li> <li> <p>Manage fleet capacity:</p> <ul> <li> <p> <a>DescribeFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>PutScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeScalingPolicies</a> (automatic scaling)</p> </li> <li> <p> <a>DeleteScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeEC2InstanceLimits</a> </p> </li> </ul> </li> <li> <p> <a>DeleteFleet</a> </p> </li> </ul>
@@ -1099,12 +1212,15 @@ newtype FleetUtilization = FleetUtilization
   , "CurrentPlayerSessionCount" :: NullOrUndefined (WholeNumber)
   , "MaximumPlayerSessionCount" :: NullOrUndefined (WholeNumber)
   }
+derive instance newtypeFleetUtilization :: Newtype FleetUtilization _
 
 
 newtype FleetUtilizationList = FleetUtilizationList (Array FleetUtilization)
+derive instance newtypeFleetUtilizationList :: Newtype FleetUtilizationList _
 
 
 newtype FreeText = FreeText String
+derive instance newtypeFreeText :: Newtype FreeText _
 
 
 -- | <p>Set of key-value pairs that contain information about a game session. When included in a game session request, these properties communicate details to be used when setting up the new game session, such as to specify a game mode, level, or map. Game properties are passed to the game server process when initiating a new game session; the server process uses the properties as appropriate. For more information, see the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-api.html#gamelift-sdk-client-api-create"> Amazon GameLift Developer Guide</a>.</p>
@@ -1112,15 +1228,19 @@ newtype GameProperty = GameProperty
   { "Key" :: (GamePropertyKey)
   , "Value" :: (GamePropertyValue)
   }
+derive instance newtypeGameProperty :: Newtype GameProperty _
 
 
 newtype GamePropertyKey = GamePropertyKey String
+derive instance newtypeGamePropertyKey :: Newtype GamePropertyKey _
 
 
 newtype GamePropertyList = GamePropertyList (Array GameProperty)
+derive instance newtypeGamePropertyList :: Newtype GamePropertyList _
 
 
 newtype GamePropertyValue = GamePropertyValue String
+derive instance newtypeGamePropertyValue :: Newtype GamePropertyValue _
 
 
 -- | <p>Properties describing a game session.</p> <p>A game session in ACTIVE status can host players. When a game session ends, its status is set to <code>TERMINATED</code>. </p> <p>Once the session ends, the game session object is retained for 30 days. This means you can reuse idempotency token values after this time. Game session logs are retained for 14 days.</p> <p>Game-session-related operations include:</p> <ul> <li> <p> <a>CreateGameSession</a> </p> </li> <li> <p> <a>DescribeGameSessions</a> </p> </li> <li> <p> <a>DescribeGameSessionDetails</a> </p> </li> <li> <p> <a>SearchGameSessions</a> </p> </li> <li> <p> <a>UpdateGameSession</a> </p> </li> <li> <p> <a>GetGameSessionLogUrl</a> </p> </li> <li> <p>Game session placements</p> <ul> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> <li> <p> <a>DescribeGameSessionPlacement</a> </p> </li> <li> <p> <a>StopGameSessionPlacement</a> </p> </li> </ul> </li> </ul>
@@ -1142,9 +1262,11 @@ newtype GameSession = GameSession
   , "GameSessionData" :: NullOrUndefined (GameSessionData)
   , "MatchmakerData" :: NullOrUndefined (MatchmakerData)
   }
+derive instance newtypeGameSession :: Newtype GameSession _
 
 
 newtype GameSessionActivationTimeoutSeconds = GameSessionActivationTimeoutSeconds Int
+derive instance newtypeGameSessionActivationTimeoutSeconds :: Newtype GameSessionActivationTimeoutSeconds _
 
 
 -- | <p>Connection information for the new game session that is created with matchmaking. (with <a>StartMatchmaking</a>). Once a match is set, the FlexMatch engine places the match and creates a new game session for it. This information, including the game session endpoint and player sessions for each player in the original matchmaking request, is added to the <a>MatchmakingTicket</a>, which can be retrieved by calling <a>DescribeMatchmaking</a>.</p>
@@ -1154,9 +1276,11 @@ newtype GameSessionConnectionInfo = GameSessionConnectionInfo
   , "Port" :: NullOrUndefined (PositiveInteger)
   , "MatchedPlayerSessions" :: NullOrUndefined (MatchedPlayerSessionList)
   }
+derive instance newtypeGameSessionConnectionInfo :: Newtype GameSessionConnectionInfo _
 
 
 newtype GameSessionData = GameSessionData String
+derive instance newtypeGameSessionData :: Newtype GameSessionData _
 
 
 -- | <p>A game session's properties plus the protection policy currently in force.</p>
@@ -1164,18 +1288,22 @@ newtype GameSessionDetail = GameSessionDetail
   { "GameSession" :: NullOrUndefined (GameSession)
   , "ProtectionPolicy" :: NullOrUndefined (ProtectionPolicy)
   }
+derive instance newtypeGameSessionDetail :: Newtype GameSessionDetail _
 
 
 newtype GameSessionDetailList = GameSessionDetailList (Array GameSessionDetail)
+derive instance newtypeGameSessionDetailList :: Newtype GameSessionDetailList _
 
 
 -- | <p>The game instance is currently full and cannot allow the requested player(s) to join. Clients can retry such requests immediately or after a waiting period.</p>
 newtype GameSessionFullException = GameSessionFullException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeGameSessionFullException :: Newtype GameSessionFullException _
 
 
 newtype GameSessionList = GameSessionList (Array GameSession)
+derive instance newtypeGameSessionList :: Newtype GameSessionList _
 
 
 -- | <p>Object that describes a <a>StartGameSessionPlacement</a> request. This object includes the full details of the original request plus the current status and start/end time stamps.</p> <p>Game session placement-related operations include:</p> <ul> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> <li> <p> <a>DescribeGameSessionPlacement</a> </p> </li> <li> <p> <a>StopGameSessionPlacement</a> </p> </li> </ul>
@@ -1198,9 +1326,11 @@ newtype GameSessionPlacement = GameSessionPlacement
   , "GameSessionData" :: NullOrUndefined (GameSessionData)
   , "MatchmakerData" :: NullOrUndefined (MatchmakerData)
   }
+derive instance newtypeGameSessionPlacement :: Newtype GameSessionPlacement _
 
 
 newtype GameSessionPlacementState = GameSessionPlacementState String
+derive instance newtypeGameSessionPlacementState :: Newtype GameSessionPlacementState _
 
 
 -- | <p>Configuration of a queue that is used to process game session placement requests. The queue configuration identifies several game features:</p> <ul> <li> <p>The destinations where a new game session can potentially be hosted. Amazon GameLift tries these destinations in an order based on either the queue's default order or player latency information, if provided in a placement request. With latency information, Amazon GameLift can place game sessions where the majority of players are reporting the lowest possible latency. </p> </li> <li> <p>The length of time that placement requests can wait in the queue before timing out. </p> </li> <li> <p>A set of optional latency policies that protect individual players from high latencies, preventing game sessions from being placed where any individual player is reporting latency higher than a policy's maximum.</p> </li> </ul> <p>Queue-related operations include:</p> <ul> <li> <p> <a>CreateGameSessionQueue</a> </p> </li> <li> <p> <a>DescribeGameSessionQueues</a> </p> </li> <li> <p> <a>UpdateGameSessionQueue</a> </p> </li> <li> <p> <a>DeleteGameSessionQueue</a> </p> </li> </ul>
@@ -1211,42 +1341,52 @@ newtype GameSessionQueue = GameSessionQueue
   , "PlayerLatencyPolicies" :: NullOrUndefined (PlayerLatencyPolicyList)
   , "Destinations" :: NullOrUndefined (GameSessionQueueDestinationList)
   }
+derive instance newtypeGameSessionQueue :: Newtype GameSessionQueue _
 
 
 -- | <p>Fleet designated in a game session queue. Requests for new game sessions in the queue are fulfilled by starting a new game session on any destination configured for a queue. </p> <p>Queue-related operations include:</p> <ul> <li> <p> <a>CreateGameSessionQueue</a> </p> </li> <li> <p> <a>DescribeGameSessionQueues</a> </p> </li> <li> <p> <a>UpdateGameSessionQueue</a> </p> </li> <li> <p> <a>DeleteGameSessionQueue</a> </p> </li> </ul>
 newtype GameSessionQueueDestination = GameSessionQueueDestination 
   { "DestinationArn" :: NullOrUndefined (ArnStringModel)
   }
+derive instance newtypeGameSessionQueueDestination :: Newtype GameSessionQueueDestination _
 
 
 newtype GameSessionQueueDestinationList = GameSessionQueueDestinationList (Array GameSessionQueueDestination)
+derive instance newtypeGameSessionQueueDestinationList :: Newtype GameSessionQueueDestinationList _
 
 
 newtype GameSessionQueueList = GameSessionQueueList (Array GameSessionQueue)
+derive instance newtypeGameSessionQueueList :: Newtype GameSessionQueueList _
 
 
 newtype GameSessionQueueName = GameSessionQueueName String
+derive instance newtypeGameSessionQueueName :: Newtype GameSessionQueueName _
 
 
 newtype GameSessionQueueNameList = GameSessionQueueNameList (Array GameSessionQueueName)
+derive instance newtypeGameSessionQueueNameList :: Newtype GameSessionQueueNameList _
 
 
 newtype GameSessionStatus = GameSessionStatus String
+derive instance newtypeGameSessionStatus :: Newtype GameSessionStatus _
 
 
 newtype GameSessionStatusReason = GameSessionStatusReason String
+derive instance newtypeGameSessionStatusReason :: Newtype GameSessionStatusReason _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype GetGameSessionLogUrlInput = GetGameSessionLogUrlInput 
   { "GameSessionId" :: (ArnStringModel)
   }
+derive instance newtypeGetGameSessionLogUrlInput :: Newtype GetGameSessionLogUrlInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype GetGameSessionLogUrlOutput = GetGameSessionLogUrlOutput 
   { "PreSignedUrl" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeGetGameSessionLogUrlOutput :: Newtype GetGameSessionLogUrlOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1254,21 +1394,25 @@ newtype GetInstanceAccessInput = GetInstanceAccessInput
   { "FleetId" :: (FleetId)
   , "InstanceId" :: (InstanceId)
   }
+derive instance newtypeGetInstanceAccessInput :: Newtype GetInstanceAccessInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype GetInstanceAccessOutput = GetInstanceAccessOutput 
   { "InstanceAccess" :: NullOrUndefined (InstanceAccess)
   }
+derive instance newtypeGetInstanceAccessOutput :: Newtype GetInstanceAccessOutput _
 
 
 newtype IdStringModel = IdStringModel String
+derive instance newtypeIdStringModel :: Newtype IdStringModel _
 
 
 -- | <p>A game session with this custom ID string already exists in this fleet. Resolve this conflict before retrying this request.</p>
 newtype IdempotentParameterMismatchException = IdempotentParameterMismatchException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeIdempotentParameterMismatchException :: Newtype IdempotentParameterMismatchException _
 
 
 -- | <p>Properties that describe an instance of a virtual computing resource that hosts one or more game servers. A fleet may contain zero or more instances.</p>
@@ -1281,6 +1425,7 @@ newtype Instance = Instance
   , "Status" :: NullOrUndefined (InstanceStatus)
   , "CreationTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeInstance :: Newtype Instance _
 
 
 -- | <p>Information required to remotely connect to a fleet instance. Access is requested by calling <a>GetInstanceAccess</a>. </p>
@@ -1291,6 +1436,7 @@ newtype InstanceAccess = InstanceAccess
   , "OperatingSystem" :: NullOrUndefined (OperatingSystem)
   , "Credentials" :: NullOrUndefined (InstanceCredentials)
   }
+derive instance newtypeInstanceAccess :: Newtype InstanceAccess _
 
 
 -- | <p>Set of credentials required to remotely access a fleet instance. Access credentials are requested by calling <a>GetInstanceAccess</a> and returned in an <a>InstanceAccess</a> object.</p>
@@ -1298,42 +1444,51 @@ newtype InstanceCredentials = InstanceCredentials
   { "UserName" :: NullOrUndefined (NonEmptyString)
   , "Secret" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeInstanceCredentials :: Newtype InstanceCredentials _
 
 
 newtype InstanceId = InstanceId String
+derive instance newtypeInstanceId :: Newtype InstanceId _
 
 
 newtype InstanceList = InstanceList (Array Instance)
+derive instance newtypeInstanceList :: Newtype InstanceList _
 
 
 newtype InstanceStatus = InstanceStatus String
+derive instance newtypeInstanceStatus :: Newtype InstanceStatus _
 
 
 -- | <p>The service encountered an unrecoverable internal failure while processing the request. Clients can retry such requests immediately or after a waiting period.</p>
 newtype InternalServiceException = InternalServiceException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeInternalServiceException :: Newtype InternalServiceException _
 
 
 -- | <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the fleet. Resolve the conflict before retrying.</p>
 newtype InvalidFleetStatusException = InvalidFleetStatusException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeInvalidFleetStatusException :: Newtype InvalidFleetStatusException _
 
 
 -- | <p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the game instance. Resolve the conflict before retrying.</p>
 newtype InvalidGameSessionStatusException = InvalidGameSessionStatusException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeInvalidGameSessionStatusException :: Newtype InvalidGameSessionStatusException _
 
 
 -- | <p>One or more parameter values in the request are invalid. Correct the invalid parameter values before retrying.</p>
 newtype InvalidRequestException = InvalidRequestException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeInvalidRequestException :: Newtype InvalidRequestException _
 
 
 newtype IpAddress = IpAddress String
+derive instance newtypeIpAddress :: Newtype IpAddress _
 
 
 -- | <p>A range of IP addresses and port settings that allow inbound traffic to connect to server processes on Amazon GameLift. Each game session hosted on a fleet is assigned a unique combination of IP address and port number, which must fall into the fleet's allowed ranges. This combination is included in the <a>GameSession</a> object. </p>
@@ -1343,21 +1498,26 @@ newtype IpPermission = IpPermission
   , "IpRange" :: (NonBlankString)
   , "Protocol" :: (IpProtocol)
   }
+derive instance newtypeIpPermission :: Newtype IpPermission _
 
 
 newtype IpPermissionsList = IpPermissionsList (Array IpPermission)
+derive instance newtypeIpPermissionsList :: Newtype IpPermissionsList _
 
 
 newtype IpProtocol = IpProtocol String
+derive instance newtypeIpProtocol :: Newtype IpProtocol _
 
 
 newtype LatencyMap = LatencyMap (Map NonEmptyString PositiveInteger)
+derive instance newtypeLatencyMap :: Newtype LatencyMap _
 
 
 -- | <p>The requested operation would cause the resource to exceed the allowed service limit. Resolve the issue before retrying.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1367,6 +1527,7 @@ newtype ListAliasesInput = ListAliasesInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeListAliasesInput :: Newtype ListAliasesInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -1374,6 +1535,7 @@ newtype ListAliasesOutput = ListAliasesOutput
   { "Aliases" :: NullOrUndefined (AliasList)
   , "NextToken" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeListAliasesOutput :: Newtype ListAliasesOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1382,6 +1544,7 @@ newtype ListBuildsInput = ListBuildsInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeListBuildsInput :: Newtype ListBuildsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -1389,6 +1552,7 @@ newtype ListBuildsOutput = ListBuildsOutput
   { "Builds" :: NullOrUndefined (BuildList)
   , "NextToken" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeListBuildsOutput :: Newtype ListBuildsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1397,6 +1561,7 @@ newtype ListFleetsInput = ListFleetsInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeListFleetsInput :: Newtype ListFleetsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -1404,6 +1569,7 @@ newtype ListFleetsOutput = ListFleetsOutput
   { "FleetIds" :: NullOrUndefined (FleetIdList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeListFleetsOutput :: Newtype ListFleetsOutput _
 
 
 -- | <p>Represents a new player session that is created as a result of a successful FlexMatch match. A successful match automatically creates new player sessions for every player ID in the original matchmaking request. </p> <p>When players connect to the match's game session, they must include both player ID and player session ID in order to claim their assigned player slot.</p>
@@ -1411,15 +1577,19 @@ newtype MatchedPlayerSession = MatchedPlayerSession
   { "PlayerId" :: NullOrUndefined (NonZeroAndMaxString)
   , "PlayerSessionId" :: NullOrUndefined (PlayerSessionId)
   }
+derive instance newtypeMatchedPlayerSession :: Newtype MatchedPlayerSession _
 
 
 newtype MatchedPlayerSessionList = MatchedPlayerSessionList (Array MatchedPlayerSession)
+derive instance newtypeMatchedPlayerSessionList :: Newtype MatchedPlayerSessionList _
 
 
 newtype MatchmakerData = MatchmakerData String
+derive instance newtypeMatchmakerData :: Newtype MatchmakerData _
 
 
 newtype MatchmakingAcceptanceTimeoutInteger = MatchmakingAcceptanceTimeoutInteger Int
+derive instance newtypeMatchmakingAcceptanceTimeoutInteger :: Newtype MatchmakingAcceptanceTimeoutInteger _
 
 
 -- | <p>Guidelines for use with FlexMatch to match players into games. All matchmaking requests must specify a matchmaking configuration.</p>
@@ -1438,21 +1608,27 @@ newtype MatchmakingConfiguration = MatchmakingConfiguration
   , "GameProperties" :: NullOrUndefined (GamePropertyList)
   , "GameSessionData" :: NullOrUndefined (GameSessionData)
   }
+derive instance newtypeMatchmakingConfiguration :: Newtype MatchmakingConfiguration _
 
 
 newtype MatchmakingConfigurationList = MatchmakingConfigurationList (Array MatchmakingConfiguration)
+derive instance newtypeMatchmakingConfigurationList :: Newtype MatchmakingConfigurationList _
 
 
 newtype MatchmakingConfigurationStatus = MatchmakingConfigurationStatus String
+derive instance newtypeMatchmakingConfigurationStatus :: Newtype MatchmakingConfigurationStatus _
 
 
 newtype MatchmakingIdList = MatchmakingIdList (Array MatchmakingIdStringModel)
+derive instance newtypeMatchmakingIdList :: Newtype MatchmakingIdList _
 
 
 newtype MatchmakingIdStringModel = MatchmakingIdStringModel String
+derive instance newtypeMatchmakingIdStringModel :: Newtype MatchmakingIdStringModel _
 
 
 newtype MatchmakingRequestTimeoutInteger = MatchmakingRequestTimeoutInteger Int
+derive instance newtypeMatchmakingRequestTimeoutInteger :: Newtype MatchmakingRequestTimeoutInteger _
 
 
 -- | <p>Set of rule statements, used with FlexMatch, that determine how to build a certain kind of player match. Each rule set describes a type of group to be created and defines the parameters for acceptable player matches. Rule sets are used in <a>MatchmakingConfiguration</a> objects.</p> <p>A rule set may define the following elements for a match. For detailed information and examples showing how to construct a rule set, see <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html">Build a FlexMatch Rule Set</a>. </p> <ul> <li> <p>Teams -- Required. A rule set must define one or multiple teams for the match and set minimum and maximum team sizes. For example, a rule set might describe a 4x4 match that requires all eight slots to be filled. </p> </li> <li> <p>Player attributes -- Optional. These attributes specify a set of player characteristics to evaluate when looking for a match. Matchmaking requests that use a rule set with player attributes must provide the corresponding attribute values. For example, an attribute might specify a player's skill or level.</p> </li> <li> <p>Rules -- Optional. Rules define how to evaluate potential players for a match based on player attributes. A rule might specify minimum requirements for individual players, teams, or entire matches. For example, a rule might require each player to meet a certain skill level, each team to have at least one player in a certain role, or the match to have a minimum average skill level. or may describe an entire group--such as all teams must be evenly matched or have at least one player in a certain role. </p> </li> <li> <p>Expansions -- Optional. Expansions allow you to relax the rules after a period of time when no acceptable matches are found. This feature lets you balance getting players into games in a reasonable amount of time instead of making them wait indefinitely for the best possible match. For example, you might use an expansion to increase the maximum skill variance between players after 30 seconds.</p> </li> </ul>
@@ -1461,12 +1637,15 @@ newtype MatchmakingRuleSet = MatchmakingRuleSet
   , "RuleSetBody" :: (RuleSetBody)
   , "CreationTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeMatchmakingRuleSet :: Newtype MatchmakingRuleSet _
 
 
 newtype MatchmakingRuleSetList = MatchmakingRuleSetList (Array MatchmakingRuleSet)
+derive instance newtypeMatchmakingRuleSetList :: Newtype MatchmakingRuleSetList _
 
 
 newtype MatchmakingRuleSetNameList = MatchmakingRuleSetNameList (Array MatchmakingIdStringModel)
+derive instance newtypeMatchmakingRuleSetNameList :: Newtype MatchmakingRuleSetNameList _
 
 
 -- | <p>Ticket generated to track the progress of a matchmaking request. Each ticket is uniquely identified by a ticket ID, supplied by the requester, when creating a matchmaking request with <a>StartMatchmaking</a>. Tickets can be retrieved by calling <a>DescribeMatchmaking</a> with the ticket ID.</p>
@@ -1482,42 +1661,54 @@ newtype MatchmakingTicket = MatchmakingTicket
   , "GameSessionConnectionInfo" :: NullOrUndefined (GameSessionConnectionInfo)
   , "EstimatedWaitTime" :: NullOrUndefined (WholeNumber)
   }
+derive instance newtypeMatchmakingTicket :: Newtype MatchmakingTicket _
 
 
 newtype MatchmakingTicketList = MatchmakingTicketList (Array MatchmakingTicket)
+derive instance newtypeMatchmakingTicketList :: Newtype MatchmakingTicketList _
 
 
 newtype MaxConcurrentGameSessionActivations = MaxConcurrentGameSessionActivations Int
+derive instance newtypeMaxConcurrentGameSessionActivations :: Newtype MaxConcurrentGameSessionActivations _
 
 
 newtype MetricGroup = MetricGroup String
+derive instance newtypeMetricGroup :: Newtype MetricGroup _
 
 
 newtype MetricGroupList = MetricGroupList (Array MetricGroup)
+derive instance newtypeMetricGroupList :: Newtype MetricGroupList _
 
 
 newtype MetricName = MetricName String
+derive instance newtypeMetricName :: Newtype MetricName _
 
 
 newtype NonBlankAndLengthConstraintString = NonBlankAndLengthConstraintString String
+derive instance newtypeNonBlankAndLengthConstraintString :: Newtype NonBlankAndLengthConstraintString _
 
 
 newtype NonBlankString = NonBlankString String
+derive instance newtypeNonBlankString :: Newtype NonBlankString _
 
 
 newtype NonEmptyString = NonEmptyString String
+derive instance newtypeNonEmptyString :: Newtype NonEmptyString _
 
 
 newtype NonZeroAndMaxString = NonZeroAndMaxString String
+derive instance newtypeNonZeroAndMaxString :: Newtype NonZeroAndMaxString _
 
 
 -- | <p>A service resource associated with the request could not be found. Clients should not retry such requests.</p>
 newtype NotFoundException = NotFoundException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype OperatingSystem = OperatingSystem String
+derive instance newtypeOperatingSystem :: Newtype OperatingSystem _
 
 
 -- | <p>Information about a player session that was created as part of a <a>StartGameSessionPlacement</a> request. This object contains only the player ID and player session ID. To retrieve full details on a player session, call <a>DescribePlayerSessions</a> with the player session ID.</p> <p>Player-session-related operations include:</p> <ul> <li> <p> <a>CreatePlayerSession</a> </p> </li> <li> <p> <a>CreatePlayerSessions</a> </p> </li> <li> <p> <a>DescribePlayerSessions</a> </p> </li> <li> <p>Game session placements</p> <ul> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> <li> <p> <a>DescribeGameSessionPlacement</a> </p> </li> <li> <p> <a>StopGameSessionPlacement</a> </p> </li> </ul> </li> </ul>
@@ -1525,9 +1716,11 @@ newtype PlacedPlayerSession = PlacedPlayerSession
   { "PlayerId" :: NullOrUndefined (NonZeroAndMaxString)
   , "PlayerSessionId" :: NullOrUndefined (PlayerSessionId)
   }
+derive instance newtypePlacedPlayerSession :: Newtype PlacedPlayerSession _
 
 
 newtype PlacedPlayerSessionList = PlacedPlayerSessionList (Array PlacedPlayerSession)
+derive instance newtypePlacedPlayerSessionList :: Newtype PlacedPlayerSessionList _
 
 
 -- | <p>Represents a player in matchmaking. When starting a matchmaking request, a player has a player ID, attributes, and may have latency data. Team information is added after a match has been successfully completed.</p>
@@ -1537,18 +1730,23 @@ newtype Player = Player
   , "Team" :: NullOrUndefined (NonZeroAndMaxString)
   , "LatencyInMs" :: NullOrUndefined (LatencyMap)
   }
+derive instance newtypePlayer :: Newtype Player _
 
 
 newtype PlayerAttributeMap = PlayerAttributeMap (Map NonZeroAndMaxString AttributeValue)
+derive instance newtypePlayerAttributeMap :: Newtype PlayerAttributeMap _
 
 
 newtype PlayerData = PlayerData String
+derive instance newtypePlayerData :: Newtype PlayerData _
 
 
 newtype PlayerDataMap = PlayerDataMap (Map NonZeroAndMaxString PlayerData)
+derive instance newtypePlayerDataMap :: Newtype PlayerDataMap _
 
 
 newtype PlayerIdList = PlayerIdList (Array NonZeroAndMaxString)
+derive instance newtypePlayerIdList :: Newtype PlayerIdList _
 
 
 -- | <p>Regional latency information for a player, used when requesting a new game session with <a>StartGameSessionPlacement</a>. This value indicates the amount of time lag that exists when the player is connected to a fleet in the specified region. The relative difference between a player's latency values for multiple regions are used to determine which fleets are best suited to place a new game session for the player. </p>
@@ -1557,9 +1755,11 @@ newtype PlayerLatency = PlayerLatency
   , "RegionIdentifier" :: NullOrUndefined (NonZeroAndMaxString)
   , "LatencyInMilliseconds" :: NullOrUndefined (Number)
   }
+derive instance newtypePlayerLatency :: Newtype PlayerLatency _
 
 
 newtype PlayerLatencyList = PlayerLatencyList (Array PlayerLatency)
+derive instance newtypePlayerLatencyList :: Newtype PlayerLatencyList _
 
 
 -- | <p>Queue setting that determines the highest latency allowed for individual players when placing a game session. When a latency policy is in force, a game session cannot be placed at any destination in a region where a player is reporting latency higher than the cap. Latency policies are only enforced when the placement request contains player latency information.</p> <p>Queue-related operations include:</p> <ul> <li> <p> <a>CreateGameSessionQueue</a> </p> </li> <li> <p> <a>DescribeGameSessionQueues</a> </p> </li> <li> <p> <a>UpdateGameSessionQueue</a> </p> </li> <li> <p> <a>DeleteGameSessionQueue</a> </p> </li> </ul>
@@ -1567,12 +1767,15 @@ newtype PlayerLatencyPolicy = PlayerLatencyPolicy
   { "MaximumIndividualPlayerLatencyMilliseconds" :: NullOrUndefined (WholeNumber)
   , "PolicyDurationSeconds" :: NullOrUndefined (WholeNumber)
   }
+derive instance newtypePlayerLatencyPolicy :: Newtype PlayerLatencyPolicy _
 
 
 newtype PlayerLatencyPolicyList = PlayerLatencyPolicyList (Array PlayerLatencyPolicy)
+derive instance newtypePlayerLatencyPolicyList :: Newtype PlayerLatencyPolicyList _
 
 
 newtype PlayerList = PlayerList (Array Player)
+derive instance newtypePlayerList :: Newtype PlayerList _
 
 
 -- | <p>Properties describing a player session. Player session objects are created either by creating a player session for a specific game session, or as part of a game session placement. A player session represents either a player reservation for a game session (status <code>RESERVED</code>) or actual player activity in a game session (status <code>ACTIVE</code>). A player session object (including player data) is automatically passed to a game session when the player connects to the game session and is validated.</p> <p>When a player disconnects, the player session status changes to <code>COMPLETED</code>. Once the session ends, the player session object is retained for 30 days and then removed.</p> <p>Player-session-related operations include:</p> <ul> <li> <p> <a>CreatePlayerSession</a> </p> </li> <li> <p> <a>CreatePlayerSessions</a> </p> </li> <li> <p> <a>DescribePlayerSessions</a> </p> </li> <li> <p>Game session placements</p> <ul> <li> <p> <a>StartGameSessionPlacement</a> </p> </li> <li> <p> <a>DescribeGameSessionPlacement</a> </p> </li> <li> <p> <a>StopGameSessionPlacement</a> </p> </li> </ul> </li> </ul>
@@ -1588,30 +1791,39 @@ newtype PlayerSession = PlayerSession
   , "Port" :: NullOrUndefined (PortNumber)
   , "PlayerData" :: NullOrUndefined (PlayerData)
   }
+derive instance newtypePlayerSession :: Newtype PlayerSession _
 
 
 newtype PlayerSessionCreationPolicy = PlayerSessionCreationPolicy String
+derive instance newtypePlayerSessionCreationPolicy :: Newtype PlayerSessionCreationPolicy _
 
 
 newtype PlayerSessionId = PlayerSessionId String
+derive instance newtypePlayerSessionId :: Newtype PlayerSessionId _
 
 
 newtype PlayerSessionList = PlayerSessionList (Array PlayerSession)
+derive instance newtypePlayerSessionList :: Newtype PlayerSessionList _
 
 
 newtype PlayerSessionStatus = PlayerSessionStatus String
+derive instance newtypePlayerSessionStatus :: Newtype PlayerSessionStatus _
 
 
 newtype PortNumber = PortNumber Int
+derive instance newtypePortNumber :: Newtype PortNumber _
 
 
 newtype PositiveInteger = PositiveInteger Int
+derive instance newtypePositiveInteger :: Newtype PositiveInteger _
 
 
 newtype PositiveLong = PositiveLong Number
+derive instance newtypePositiveLong :: Newtype PositiveLong _
 
 
 newtype ProtectionPolicy = ProtectionPolicy String
+derive instance newtypeProtectionPolicy :: Newtype ProtectionPolicy _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1625,21 +1837,25 @@ newtype PutScalingPolicyInput = PutScalingPolicyInput
   , "EvaluationPeriods" :: (PositiveInteger)
   , "MetricName" :: (MetricName)
   }
+derive instance newtypePutScalingPolicyInput :: Newtype PutScalingPolicyInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype PutScalingPolicyOutput = PutScalingPolicyOutput 
   { "Name" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypePutScalingPolicyOutput :: Newtype PutScalingPolicyOutput _
 
 
 newtype QueueArnsList = QueueArnsList (Array ArnStringModel)
+derive instance newtypeQueueArnsList :: Newtype QueueArnsList _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype RequestUploadCredentialsInput = RequestUploadCredentialsInput 
   { "BuildId" :: (BuildId)
   }
+derive instance newtypeRequestUploadCredentialsInput :: Newtype RequestUploadCredentialsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -1647,18 +1863,21 @@ newtype RequestUploadCredentialsOutput = RequestUploadCredentialsOutput
   { "UploadCredentials" :: NullOrUndefined (AwsCredentials)
   , "StorageLocation" :: NullOrUndefined (S3Location)
   }
+derive instance newtypeRequestUploadCredentialsOutput :: Newtype RequestUploadCredentialsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype ResolveAliasInput = ResolveAliasInput 
   { "AliasId" :: (AliasId)
   }
+derive instance newtypeResolveAliasInput :: Newtype ResolveAliasInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype ResolveAliasOutput = ResolveAliasOutput 
   { "FleetId" :: NullOrUndefined (FleetId)
   }
+derive instance newtypeResolveAliasOutput :: Newtype ResolveAliasOutput _
 
 
 -- | <p>Policy that limits the number of game sessions a player can create on the same fleet. This optional policy gives game owners control over how players can consume available game server resources. A resource creation policy makes the following statement: "An individual player can create a maximum number of new game sessions within a specified time period".</p> <p>The policy is evaluated when a player tries to create a new game session. For example, with a policy of 10 new game sessions and a time period of 60 minutes, on receiving a <code>CreateGameSession</code> request, Amazon GameLift checks that the player (identified by <code>CreatorId</code>) has created fewer than 10 game sessions in the past 60 minutes.</p>
@@ -1666,6 +1885,7 @@ newtype ResourceCreationLimitPolicy = ResourceCreationLimitPolicy
   { "NewGameSessionsPerCreator" :: NullOrUndefined (WholeNumber)
   , "PolicyPeriodInMinutes" :: NullOrUndefined (WholeNumber)
   }
+derive instance newtypeResourceCreationLimitPolicy :: Newtype ResourceCreationLimitPolicy _
 
 
 -- | <p>Routing configuration for a fleet alias.</p> <p>Fleet-related operations include:</p> <ul> <li> <p> <a>CreateFleet</a> </p> </li> <li> <p> <a>ListFleets</a> </p> </li> <li> <p>Describe fleets:</p> <ul> <li> <p> <a>DescribeFleetAttributes</a> </p> </li> <li> <p> <a>DescribeFleetPortSettings</a> </p> </li> <li> <p> <a>DescribeFleetUtilization</a> </p> </li> <li> <p> <a>DescribeRuntimeConfiguration</a> </p> </li> <li> <p> <a>DescribeFleetEvents</a> </p> </li> </ul> </li> <li> <p>Update fleets:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetPortSettings</a> </p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> </p> </li> </ul> </li> <li> <p>Manage fleet capacity:</p> <ul> <li> <p> <a>DescribeFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>PutScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeScalingPolicies</a> (automatic scaling)</p> </li> <li> <p> <a>DeleteScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeEC2InstanceLimits</a> </p> </li> </ul> </li> <li> <p> <a>DeleteFleet</a> </p> </li> </ul>
@@ -1674,15 +1894,19 @@ newtype RoutingStrategy = RoutingStrategy
   , "FleetId" :: NullOrUndefined (FleetId)
   , "Message" :: NullOrUndefined (FreeText)
   }
+derive instance newtypeRoutingStrategy :: Newtype RoutingStrategy _
 
 
 newtype RoutingStrategyType = RoutingStrategyType String
+derive instance newtypeRoutingStrategyType :: Newtype RoutingStrategyType _
 
 
 newtype RuleSetBody = RuleSetBody String
+derive instance newtypeRuleSetBody :: Newtype RuleSetBody _
 
 
 newtype RuleSetLimit = RuleSetLimit Int
+derive instance newtypeRuleSetLimit :: Newtype RuleSetLimit _
 
 
 -- | <p>A collection of server process configurations that describe what processes to run on each instance in a fleet. All fleets must have a run-time configuration. Each instance in the fleet launches the server processes specified in the run-time configuration and launches new ones as existing processes end. Each instance regularly checks for an updated run-time configuration and follows the new instructions. </p> <p>The run-time configuration enables the instances in a fleet to run multiple processes simultaneously. Potential scenarios are as follows: (1) Run multiple processes of a single game server executable to maximize usage of your hosting resources. (2) Run one or more processes of different build executables, such as your game server executable and a related program, or two or more different versions of a game server. (3) Run multiple processes of a single game server but with different launch parameters, for example to run one process on each instance in debug mode.</p> <p>A Amazon GameLift instance is limited to 50 processes running simultaneously. A run-time configuration must specify fewer than this limit. To calculate the total number of processes specified in a run-time configuration, add the values of the <code>ConcurrentExecutions</code> parameter for each <code> <a>ServerProcess</a> </code> object in the run-time configuration.</p> <p>Fleet-related operations include:</p> <ul> <li> <p> <a>CreateFleet</a> </p> </li> <li> <p> <a>ListFleets</a> </p> </li> <li> <p>Describe fleets:</p> <ul> <li> <p> <a>DescribeFleetAttributes</a> </p> </li> <li> <p> <a>DescribeFleetPortSettings</a> </p> </li> <li> <p> <a>DescribeFleetUtilization</a> </p> </li> <li> <p> <a>DescribeRuntimeConfiguration</a> </p> </li> <li> <p> <a>DescribeFleetEvents</a> </p> </li> </ul> </li> <li> <p>Update fleets:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetPortSettings</a> </p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> </p> </li> </ul> </li> <li> <p>Manage fleet capacity:</p> <ul> <li> <p> <a>DescribeFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>PutScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeScalingPolicies</a> (automatic scaling)</p> </li> <li> <p> <a>DeleteScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeEC2InstanceLimits</a> </p> </li> </ul> </li> <li> <p> <a>DeleteFleet</a> </p> </li> </ul>
@@ -1691,6 +1915,7 @@ newtype RuntimeConfiguration = RuntimeConfiguration
   , "MaxConcurrentGameSessionActivations" :: NullOrUndefined (MaxConcurrentGameSessionActivations)
   , "GameSessionActivationTimeoutSeconds" :: NullOrUndefined (GameSessionActivationTimeoutSeconds)
   }
+derive instance newtypeRuntimeConfiguration :: Newtype RuntimeConfiguration _
 
 
 -- | <p>Location in Amazon Simple Storage Service (Amazon S3) where build files can be stored for access by Amazon GameLift. This location is specified in a <a>CreateBuild</a> request. For more details, see the <a href="http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build">Create a Build with Files in Amazon S3</a>.</p>
@@ -1699,9 +1924,11 @@ newtype S3Location = S3Location
   , "Key" :: NullOrUndefined (NonEmptyString)
   , "RoleArn" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeS3Location :: Newtype S3Location _
 
 
 newtype ScalingAdjustmentType = ScalingAdjustmentType String
+derive instance newtypeScalingAdjustmentType :: Newtype ScalingAdjustmentType _
 
 
 -- | <p>Rule that controls how a fleet is scaled. Scaling policies are uniquely identified by the combination of name and fleet ID.</p> <p>Fleet-related operations include:</p> <ul> <li> <p> <a>CreateFleet</a> </p> </li> <li> <p> <a>ListFleets</a> </p> </li> <li> <p>Describe fleets:</p> <ul> <li> <p> <a>DescribeFleetAttributes</a> </p> </li> <li> <p> <a>DescribeFleetPortSettings</a> </p> </li> <li> <p> <a>DescribeFleetUtilization</a> </p> </li> <li> <p> <a>DescribeRuntimeConfiguration</a> </p> </li> <li> <p> <a>DescribeFleetEvents</a> </p> </li> </ul> </li> <li> <p>Update fleets:</p> <ul> <li> <p> <a>UpdateFleetAttributes</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetPortSettings</a> </p> </li> <li> <p> <a>UpdateRuntimeConfiguration</a> </p> </li> </ul> </li> <li> <p>Manage fleet capacity:</p> <ul> <li> <p> <a>DescribeFleetCapacity</a> </p> </li> <li> <p> <a>UpdateFleetCapacity</a> </p> </li> <li> <p> <a>PutScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeScalingPolicies</a> (automatic scaling)</p> </li> <li> <p> <a>DeleteScalingPolicy</a> (automatic scaling)</p> </li> <li> <p> <a>DescribeEC2InstanceLimits</a> </p> </li> </ul> </li> <li> <p> <a>DeleteFleet</a> </p> </li> </ul>
@@ -1716,12 +1943,15 @@ newtype ScalingPolicy = ScalingPolicy
   , "EvaluationPeriods" :: NullOrUndefined (PositiveInteger)
   , "MetricName" :: NullOrUndefined (MetricName)
   }
+derive instance newtypeScalingPolicy :: Newtype ScalingPolicy _
 
 
 newtype ScalingPolicyList = ScalingPolicyList (Array ScalingPolicy)
+derive instance newtypeScalingPolicyList :: Newtype ScalingPolicyList _
 
 
 newtype ScalingStatusType = ScalingStatusType String
+derive instance newtypeScalingStatusType :: Newtype ScalingStatusType _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1733,6 +1963,7 @@ newtype SearchGameSessionsInput = SearchGameSessionsInput
   , "Limit" :: NullOrUndefined (PositiveInteger)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeSearchGameSessionsInput :: Newtype SearchGameSessionsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
@@ -1740,6 +1971,7 @@ newtype SearchGameSessionsOutput = SearchGameSessionsOutput
   { "GameSessions" :: NullOrUndefined (GameSessionList)
   , "NextToken" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeSearchGameSessionsOutput :: Newtype SearchGameSessionsOutput _
 
 
 -- | <p>A set of instructions for launching server processes on each instance in a fleet. Each instruction set identifies the location of the server executable, optional launch parameters, and the number of server processes with this configuration to maintain concurrently on the instance. Server process configurations make up a fleet's <code> <a>RuntimeConfiguration</a> </code>.</p>
@@ -1748,12 +1980,15 @@ newtype ServerProcess = ServerProcess
   , "Parameters" :: NullOrUndefined (NonZeroAndMaxString)
   , "ConcurrentExecutions" :: (PositiveInteger)
   }
+derive instance newtypeServerProcess :: Newtype ServerProcess _
 
 
 newtype ServerProcessList = ServerProcessList (Array ServerProcess)
+derive instance newtypeServerProcessList :: Newtype ServerProcessList _
 
 
 newtype SnsArnStringModel = SnsArnStringModel String
+derive instance newtypeSnsArnStringModel :: Newtype SnsArnStringModel _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1767,12 +2002,14 @@ newtype StartGameSessionPlacementInput = StartGameSessionPlacementInput
   , "DesiredPlayerSessions" :: NullOrUndefined (DesiredPlayerSessionList)
   , "GameSessionData" :: NullOrUndefined (GameSessionData)
   }
+derive instance newtypeStartGameSessionPlacementInput :: Newtype StartGameSessionPlacementInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype StartGameSessionPlacementOutput = StartGameSessionPlacementOutput 
   { "GameSessionPlacement" :: NullOrUndefined (GameSessionPlacement)
   }
+derive instance newtypeStartGameSessionPlacementOutput :: Newtype StartGameSessionPlacementOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1782,12 +2019,14 @@ newtype StartMatchBackfillInput = StartMatchBackfillInput
   , "GameSessionArn" :: (ArnStringModel)
   , "Players" :: (PlayerList)
   }
+derive instance newtypeStartMatchBackfillInput :: Newtype StartMatchBackfillInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype StartMatchBackfillOutput = StartMatchBackfillOutput 
   { "MatchmakingTicket" :: NullOrUndefined (MatchmakingTicket)
   }
+derive instance newtypeStartMatchBackfillOutput :: Newtype StartMatchBackfillOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1796,62 +2035,74 @@ newtype StartMatchmakingInput = StartMatchmakingInput
   , "ConfigurationName" :: (MatchmakingIdStringModel)
   , "Players" :: (PlayerList)
   }
+derive instance newtypeStartMatchmakingInput :: Newtype StartMatchmakingInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype StartMatchmakingOutput = StartMatchmakingOutput 
   { "MatchmakingTicket" :: NullOrUndefined (MatchmakingTicket)
   }
+derive instance newtypeStartMatchmakingOutput :: Newtype StartMatchmakingOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype StopGameSessionPlacementInput = StopGameSessionPlacementInput 
   { "PlacementId" :: (IdStringModel)
   }
+derive instance newtypeStopGameSessionPlacementInput :: Newtype StopGameSessionPlacementInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype StopGameSessionPlacementOutput = StopGameSessionPlacementOutput 
   { "GameSessionPlacement" :: NullOrUndefined (GameSessionPlacement)
   }
+derive instance newtypeStopGameSessionPlacementOutput :: Newtype StopGameSessionPlacementOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype StopMatchmakingInput = StopMatchmakingInput 
   { "TicketId" :: (MatchmakingIdStringModel)
   }
+derive instance newtypeStopMatchmakingInput :: Newtype StopMatchmakingInput _
 
 
 newtype StopMatchmakingOutput = StopMatchmakingOutput 
   { 
   }
+derive instance newtypeStopMatchmakingOutput :: Newtype StopMatchmakingOutput _
 
 
 newtype StringDoubleMap = StringDoubleMap (Map NonZeroAndMaxString DoubleObject)
+derive instance newtypeStringDoubleMap :: Newtype StringDoubleMap _
 
 
 newtype StringList = StringList (Array NonZeroAndMaxString)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 newtype StringModel = StringModel String
+derive instance newtypeStringModel :: Newtype StringModel _
 
 
 -- | <p>The service is unable to resolve the routing for a particular alias because it has a terminal <a>RoutingStrategy</a> associated with it. The message returned in this exception is the message defined in the routing strategy itself. Such requests should only be retried if the routing strategy for the specified alias is modified. </p>
 newtype TerminalRoutingStrategyException = TerminalRoutingStrategyException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeTerminalRoutingStrategyException :: Newtype TerminalRoutingStrategyException _
 
 
 -- | <p>The client failed authentication. Clients should not retry such requests.</p>
 newtype UnauthorizedException = UnauthorizedException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeUnauthorizedException :: Newtype UnauthorizedException _
 
 
 -- | <p>The requested operation is not supported in the region specified.</p>
 newtype UnsupportedRegionException = UnsupportedRegionException 
   { "Message" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeUnsupportedRegionException :: Newtype UnsupportedRegionException _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1861,12 +2112,14 @@ newtype UpdateAliasInput = UpdateAliasInput
   , "Description" :: NullOrUndefined (NonZeroAndMaxString)
   , "RoutingStrategy" :: NullOrUndefined (RoutingStrategy)
   }
+derive instance newtypeUpdateAliasInput :: Newtype UpdateAliasInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateAliasOutput = UpdateAliasOutput 
   { "Alias" :: NullOrUndefined (Alias)
   }
+derive instance newtypeUpdateAliasOutput :: Newtype UpdateAliasOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1875,12 +2128,14 @@ newtype UpdateBuildInput = UpdateBuildInput
   , "Name" :: NullOrUndefined (NonZeroAndMaxString)
   , "Version" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeUpdateBuildInput :: Newtype UpdateBuildInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateBuildOutput = UpdateBuildOutput 
   { "Build" :: NullOrUndefined (Build)
   }
+derive instance newtypeUpdateBuildOutput :: Newtype UpdateBuildOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1892,12 +2147,14 @@ newtype UpdateFleetAttributesInput = UpdateFleetAttributesInput
   , "ResourceCreationLimitPolicy" :: NullOrUndefined (ResourceCreationLimitPolicy)
   , "MetricGroups" :: NullOrUndefined (MetricGroupList)
   }
+derive instance newtypeUpdateFleetAttributesInput :: Newtype UpdateFleetAttributesInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateFleetAttributesOutput = UpdateFleetAttributesOutput 
   { "FleetId" :: NullOrUndefined (FleetId)
   }
+derive instance newtypeUpdateFleetAttributesOutput :: Newtype UpdateFleetAttributesOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1907,12 +2164,14 @@ newtype UpdateFleetCapacityInput = UpdateFleetCapacityInput
   , "MinSize" :: NullOrUndefined (WholeNumber)
   , "MaxSize" :: NullOrUndefined (WholeNumber)
   }
+derive instance newtypeUpdateFleetCapacityInput :: Newtype UpdateFleetCapacityInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateFleetCapacityOutput = UpdateFleetCapacityOutput 
   { "FleetId" :: NullOrUndefined (FleetId)
   }
+derive instance newtypeUpdateFleetCapacityOutput :: Newtype UpdateFleetCapacityOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1921,12 +2180,14 @@ newtype UpdateFleetPortSettingsInput = UpdateFleetPortSettingsInput
   , "InboundPermissionAuthorizations" :: NullOrUndefined (IpPermissionsList)
   , "InboundPermissionRevocations" :: NullOrUndefined (IpPermissionsList)
   }
+derive instance newtypeUpdateFleetPortSettingsInput :: Newtype UpdateFleetPortSettingsInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateFleetPortSettingsOutput = UpdateFleetPortSettingsOutput 
   { "FleetId" :: NullOrUndefined (FleetId)
   }
+derive instance newtypeUpdateFleetPortSettingsOutput :: Newtype UpdateFleetPortSettingsOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1937,12 +2198,14 @@ newtype UpdateGameSessionInput = UpdateGameSessionInput
   , "PlayerSessionCreationPolicy" :: NullOrUndefined (PlayerSessionCreationPolicy)
   , "ProtectionPolicy" :: NullOrUndefined (ProtectionPolicy)
   }
+derive instance newtypeUpdateGameSessionInput :: Newtype UpdateGameSessionInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateGameSessionOutput = UpdateGameSessionOutput 
   { "GameSession" :: NullOrUndefined (GameSession)
   }
+derive instance newtypeUpdateGameSessionOutput :: Newtype UpdateGameSessionOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1952,12 +2215,14 @@ newtype UpdateGameSessionQueueInput = UpdateGameSessionQueueInput
   , "PlayerLatencyPolicies" :: NullOrUndefined (PlayerLatencyPolicyList)
   , "Destinations" :: NullOrUndefined (GameSessionQueueDestinationList)
   }
+derive instance newtypeUpdateGameSessionQueueInput :: Newtype UpdateGameSessionQueueInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateGameSessionQueueOutput = UpdateGameSessionQueueOutput 
   { "GameSessionQueue" :: NullOrUndefined (GameSessionQueue)
   }
+derive instance newtypeUpdateGameSessionQueueOutput :: Newtype UpdateGameSessionQueueOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1975,12 +2240,14 @@ newtype UpdateMatchmakingConfigurationInput = UpdateMatchmakingConfigurationInpu
   , "GameProperties" :: NullOrUndefined (GamePropertyList)
   , "GameSessionData" :: NullOrUndefined (GameSessionData)
   }
+derive instance newtypeUpdateMatchmakingConfigurationInput :: Newtype UpdateMatchmakingConfigurationInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateMatchmakingConfigurationOutput = UpdateMatchmakingConfigurationOutput 
   { "Configuration" :: NullOrUndefined (MatchmakingConfiguration)
   }
+derive instance newtypeUpdateMatchmakingConfigurationOutput :: Newtype UpdateMatchmakingConfigurationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
@@ -1988,24 +2255,28 @@ newtype UpdateRuntimeConfigurationInput = UpdateRuntimeConfigurationInput
   { "FleetId" :: (FleetId)
   , "RuntimeConfiguration" :: (RuntimeConfiguration)
   }
+derive instance newtypeUpdateRuntimeConfigurationInput :: Newtype UpdateRuntimeConfigurationInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype UpdateRuntimeConfigurationOutput = UpdateRuntimeConfigurationOutput 
   { "RuntimeConfiguration" :: NullOrUndefined (RuntimeConfiguration)
   }
+derive instance newtypeUpdateRuntimeConfigurationOutput :: Newtype UpdateRuntimeConfigurationOutput _
 
 
 -- | <p>Represents the input for a request action.</p>
 newtype ValidateMatchmakingRuleSetInput = ValidateMatchmakingRuleSetInput 
   { "RuleSetBody" :: (RuleSetBody)
   }
+derive instance newtypeValidateMatchmakingRuleSetInput :: Newtype ValidateMatchmakingRuleSetInput _
 
 
 -- | <p>Represents the returned data in response to a request action.</p>
 newtype ValidateMatchmakingRuleSetOutput = ValidateMatchmakingRuleSetOutput 
   { "Valid" :: NullOrUndefined (BooleanModel)
   }
+derive instance newtypeValidateMatchmakingRuleSetOutput :: Newtype ValidateMatchmakingRuleSetOutput _
 
 
 -- | <p>Represents an authorization for a VPC peering connection between the VPC for an Amazon GameLift fleet and another VPC on an account you have access to. This authorization must exist and be valid for the peering connection to be established. Authorizations are valid for 24 hours after they are issued.</p> <p>VPC peering connection operations include:</p> <ul> <li> <p> <a>CreateVpcPeeringAuthorization</a> </p> </li> <li> <p> <a>DescribeVpcPeeringAuthorizations</a> </p> </li> <li> <p> <a>DeleteVpcPeeringAuthorization</a> </p> </li> <li> <p> <a>CreateVpcPeeringConnection</a> </p> </li> <li> <p> <a>DescribeVpcPeeringConnections</a> </p> </li> <li> <p> <a>DeleteVpcPeeringConnection</a> </p> </li> </ul>
@@ -2016,9 +2287,11 @@ newtype VpcPeeringAuthorization = VpcPeeringAuthorization
   , "CreationTime" :: NullOrUndefined (Number)
   , "ExpirationTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeVpcPeeringAuthorization :: Newtype VpcPeeringAuthorization _
 
 
 newtype VpcPeeringAuthorizationList = VpcPeeringAuthorizationList (Array VpcPeeringAuthorization)
+derive instance newtypeVpcPeeringAuthorizationList :: Newtype VpcPeeringAuthorizationList _
 
 
 -- | <p>Represents a peering connection between a VPC on one of your AWS accounts and the VPC for your Amazon GameLift fleets. This record may be for an active peering connection or a pending connection that has not yet been established.</p> <p>VPC peering connection operations include:</p> <ul> <li> <p> <a>CreateVpcPeeringAuthorization</a> </p> </li> <li> <p> <a>DescribeVpcPeeringAuthorizations</a> </p> </li> <li> <p> <a>DeleteVpcPeeringAuthorization</a> </p> </li> <li> <p> <a>CreateVpcPeeringConnection</a> </p> </li> <li> <p> <a>DescribeVpcPeeringConnections</a> </p> </li> <li> <p> <a>DeleteVpcPeeringConnection</a> </p> </li> </ul>
@@ -2030,9 +2303,11 @@ newtype VpcPeeringConnection = VpcPeeringConnection
   , "PeerVpcId" :: NullOrUndefined (NonZeroAndMaxString)
   , "GameLiftVpcId" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeVpcPeeringConnection :: Newtype VpcPeeringConnection _
 
 
 newtype VpcPeeringConnectionList = VpcPeeringConnectionList (Array VpcPeeringConnection)
+derive instance newtypeVpcPeeringConnectionList :: Newtype VpcPeeringConnectionList _
 
 
 -- | <p>Represents status information for a VPC peering connection. Status is associated with a <a>VpcPeeringConnection</a> object. Status codes and messages are provided from EC2 (see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcPeeringConnectionStateReason.html">VpcPeeringConnectionStateReason</a>). Connection status information is also communicated as a fleet <a>Event</a>.</p>
@@ -2040,6 +2315,8 @@ newtype VpcPeeringConnectionStatus = VpcPeeringConnectionStatus
   { "Code" :: NullOrUndefined (NonZeroAndMaxString)
   , "Message" :: NullOrUndefined (NonZeroAndMaxString)
   }
+derive instance newtypeVpcPeeringConnectionStatus :: Newtype VpcPeeringConnectionStatus _
 
 
 newtype WholeNumber = WholeNumber Int
+derive instance newtypeWholeNumber :: Newtype WholeNumber _

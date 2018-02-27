@@ -6,6 +6,7 @@ module AWS.Route53Domains where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -134,6 +135,7 @@ viewBilling = AWS.request serviceName "ViewBilling"
 
 
 newtype AddressLine = AddressLine String
+derive instance newtypeAddressLine :: Newtype AddressLine _
 
 
 -- | <p>Information for one billing record.</p>
@@ -144,9 +146,11 @@ newtype BillingRecord = BillingRecord
   , "BillDate" :: NullOrUndefined (Number)
   , "Price" :: NullOrUndefined (Price)
   }
+derive instance newtypeBillingRecord :: Newtype BillingRecord _
 
 
 newtype BillingRecords = BillingRecords (Array BillingRecord)
+derive instance newtypeBillingRecords :: Newtype BillingRecords _
 
 
 -- | <p>The CheckDomainAvailability request contains the following elements.</p>
@@ -154,12 +158,14 @@ newtype CheckDomainAvailabilityRequest = CheckDomainAvailabilityRequest
   { "DomainName" :: (DomainName)
   , "IdnLangCode" :: NullOrUndefined (LangCode)
   }
+derive instance newtypeCheckDomainAvailabilityRequest :: Newtype CheckDomainAvailabilityRequest _
 
 
 -- | <p>The CheckDomainAvailability response includes the following elements.</p>
 newtype CheckDomainAvailabilityResponse = CheckDomainAvailabilityResponse 
   { "Availability" :: (DomainAvailability)
   }
+derive instance newtypeCheckDomainAvailabilityResponse :: Newtype CheckDomainAvailabilityResponse _
 
 
 -- | <p>The CheckDomainTransferability request contains the following elements.</p>
@@ -167,15 +173,18 @@ newtype CheckDomainTransferabilityRequest = CheckDomainTransferabilityRequest
   { "DomainName" :: (DomainName)
   , "AuthCode" :: NullOrUndefined (DomainAuthCode)
   }
+derive instance newtypeCheckDomainTransferabilityRequest :: Newtype CheckDomainTransferabilityRequest _
 
 
 -- | <p>The CheckDomainTransferability response includes the following elements.</p>
 newtype CheckDomainTransferabilityResponse = CheckDomainTransferabilityResponse 
   { "Transferability" :: (DomainTransferability)
   }
+derive instance newtypeCheckDomainTransferabilityResponse :: Newtype CheckDomainTransferabilityResponse _
 
 
 newtype City = City String
+derive instance newtypeCity :: Newtype City _
 
 
 -- | <p>ContactDetail includes the following elements.</p>
@@ -195,24 +204,31 @@ newtype ContactDetail = ContactDetail
   , "Fax" :: NullOrUndefined (ContactNumber)
   , "ExtraParams" :: NullOrUndefined (ExtraParamList)
   }
+derive instance newtypeContactDetail :: Newtype ContactDetail _
 
 
 newtype ContactName = ContactName String
+derive instance newtypeContactName :: Newtype ContactName _
 
 
 newtype ContactNumber = ContactNumber String
+derive instance newtypeContactNumber :: Newtype ContactNumber _
 
 
 newtype ContactType = ContactType String
+derive instance newtypeContactType :: Newtype ContactType _
 
 
 newtype CountryCode = CountryCode String
+derive instance newtypeCountryCode :: Newtype CountryCode _
 
 
 newtype CurrentExpiryYear = CurrentExpiryYear Int
+derive instance newtypeCurrentExpiryYear :: Newtype CurrentExpiryYear _
 
 
 newtype DNSSec = DNSSec String
+derive instance newtypeDNSSec :: Newtype DNSSec _
 
 
 -- | <p>The DeleteTagsForDomainRequest includes the following elements.</p>
@@ -220,54 +236,66 @@ newtype DeleteTagsForDomainRequest = DeleteTagsForDomainRequest
   { "DomainName" :: (DomainName)
   , "TagsToDelete" :: (TagKeyList)
   }
+derive instance newtypeDeleteTagsForDomainRequest :: Newtype DeleteTagsForDomainRequest _
 
 
 newtype DeleteTagsForDomainResponse = DeleteTagsForDomainResponse 
   { 
   }
+derive instance newtypeDeleteTagsForDomainResponse :: Newtype DeleteTagsForDomainResponse _
 
 
 newtype DisableDomainAutoRenewRequest = DisableDomainAutoRenewRequest 
   { "DomainName" :: (DomainName)
   }
+derive instance newtypeDisableDomainAutoRenewRequest :: Newtype DisableDomainAutoRenewRequest _
 
 
 newtype DisableDomainAutoRenewResponse = DisableDomainAutoRenewResponse 
   { 
   }
+derive instance newtypeDisableDomainAutoRenewResponse :: Newtype DisableDomainAutoRenewResponse _
 
 
 -- | <p>The DisableDomainTransferLock request includes the following element.</p>
 newtype DisableDomainTransferLockRequest = DisableDomainTransferLockRequest 
   { "DomainName" :: (DomainName)
   }
+derive instance newtypeDisableDomainTransferLockRequest :: Newtype DisableDomainTransferLockRequest _
 
 
 -- | <p>The DisableDomainTransferLock response includes the following element.</p>
 newtype DisableDomainTransferLockResponse = DisableDomainTransferLockResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeDisableDomainTransferLockResponse :: Newtype DisableDomainTransferLockResponse _
 
 
 newtype DomainAuthCode = DomainAuthCode String
+derive instance newtypeDomainAuthCode :: Newtype DomainAuthCode _
 
 
 newtype DomainAvailability = DomainAvailability String
+derive instance newtypeDomainAvailability :: Newtype DomainAvailability _
 
 
 -- | <p>The number of domains has exceeded the allowed threshold for the account.</p>
 newtype DomainLimitExceeded = DomainLimitExceeded 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDomainLimitExceeded :: Newtype DomainLimitExceeded _
 
 
 newtype DomainName = DomainName String
+derive instance newtypeDomainName :: Newtype DomainName _
 
 
 newtype DomainStatus = DomainStatus String
+derive instance newtypeDomainStatus :: Newtype DomainStatus _
 
 
 newtype DomainStatusList = DomainStatusList (Array DomainStatus)
+derive instance newtypeDomainStatusList :: Newtype DomainStatusList _
 
 
 -- | <p>Information about one suggested domain name.</p>
@@ -275,9 +303,11 @@ newtype DomainSuggestion = DomainSuggestion
   { "DomainName" :: NullOrUndefined (DomainName)
   , "Availability" :: NullOrUndefined (String)
   }
+derive instance newtypeDomainSuggestion :: Newtype DomainSuggestion _
 
 
 newtype DomainSuggestionsList = DomainSuggestionsList (Array DomainSuggestion)
+derive instance newtypeDomainSuggestionsList :: Newtype DomainSuggestionsList _
 
 
 -- | <p>Summary information about one domain.</p>
@@ -287,51 +317,62 @@ newtype DomainSummary = DomainSummary
   , "TransferLock" :: NullOrUndefined (Boolean)
   , "Expiry" :: NullOrUndefined (Number)
   }
+derive instance newtypeDomainSummary :: Newtype DomainSummary _
 
 
 newtype DomainSummaryList = DomainSummaryList (Array DomainSummary)
+derive instance newtypeDomainSummaryList :: Newtype DomainSummaryList _
 
 
 newtype DomainTransferability = DomainTransferability 
   { "Transferable" :: NullOrUndefined (Transferable)
   }
+derive instance newtypeDomainTransferability :: Newtype DomainTransferability _
 
 
 -- | <p>The request is already in progress for the domain.</p>
 newtype DuplicateRequest = DuplicateRequest 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDuplicateRequest :: Newtype DuplicateRequest _
 
 
 newtype DurationInYears = DurationInYears Int
+derive instance newtypeDurationInYears :: Newtype DurationInYears _
 
 
 newtype Email = Email String
+derive instance newtypeEmail :: Newtype Email _
 
 
 newtype EnableDomainAutoRenewRequest = EnableDomainAutoRenewRequest 
   { "DomainName" :: (DomainName)
   }
+derive instance newtypeEnableDomainAutoRenewRequest :: Newtype EnableDomainAutoRenewRequest _
 
 
 newtype EnableDomainAutoRenewResponse = EnableDomainAutoRenewResponse 
   { 
   }
+derive instance newtypeEnableDomainAutoRenewResponse :: Newtype EnableDomainAutoRenewResponse _
 
 
 -- | <p>A request to set the transfer lock for the specified domain.</p>
 newtype EnableDomainTransferLockRequest = EnableDomainTransferLockRequest 
   { "DomainName" :: (DomainName)
   }
+derive instance newtypeEnableDomainTransferLockRequest :: Newtype EnableDomainTransferLockRequest _
 
 
 -- | <p>The EnableDomainTransferLock response includes the following elements.</p>
 newtype EnableDomainTransferLockResponse = EnableDomainTransferLockResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeEnableDomainTransferLockResponse :: Newtype EnableDomainTransferLockResponse _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>ExtraParam includes the following elements.</p>
@@ -339,35 +380,43 @@ newtype ExtraParam = ExtraParam
   { "Name" :: (ExtraParamName)
   , "Value" :: (ExtraParamValue)
   }
+derive instance newtypeExtraParam :: Newtype ExtraParam _
 
 
 newtype ExtraParamList = ExtraParamList (Array ExtraParam)
+derive instance newtypeExtraParamList :: Newtype ExtraParamList _
 
 
 newtype ExtraParamName = ExtraParamName String
+derive instance newtypeExtraParamName :: Newtype ExtraParamName _
 
 
 newtype ExtraParamValue = ExtraParamValue String
+derive instance newtypeExtraParamValue :: Newtype ExtraParamValue _
 
 
 newtype FIAuthKey = FIAuthKey String
+derive instance newtypeFIAuthKey :: Newtype FIAuthKey _
 
 
 newtype GetContactReachabilityStatusRequest = GetContactReachabilityStatusRequest 
   { "DomainName'" :: NullOrUndefined (DomainName)
   }
+derive instance newtypeGetContactReachabilityStatusRequest :: Newtype GetContactReachabilityStatusRequest _
 
 
 newtype GetContactReachabilityStatusResponse = GetContactReachabilityStatusResponse 
   { "DomainName'" :: NullOrUndefined (DomainName)
   , "Status'" :: NullOrUndefined (ReachabilityStatus)
   }
+derive instance newtypeGetContactReachabilityStatusResponse :: Newtype GetContactReachabilityStatusResponse _
 
 
 -- | <p>The GetDomainDetail request includes the following element.</p>
 newtype GetDomainDetailRequest = GetDomainDetailRequest 
   { "DomainName" :: (DomainName)
   }
+derive instance newtypeGetDomainDetailRequest :: Newtype GetDomainDetailRequest _
 
 
 -- | <p>The GetDomainDetail response includes the following elements.</p>
@@ -394,6 +443,7 @@ newtype GetDomainDetailResponse = GetDomainDetailResponse
   , "DnsSec" :: NullOrUndefined (DNSSec)
   , "StatusList" :: NullOrUndefined (DomainStatusList)
   }
+derive instance newtypeGetDomainDetailResponse :: Newtype GetDomainDetailResponse _
 
 
 newtype GetDomainSuggestionsRequest = GetDomainSuggestionsRequest 
@@ -401,17 +451,20 @@ newtype GetDomainSuggestionsRequest = GetDomainSuggestionsRequest
   , "SuggestionCount" :: (Int)
   , "OnlyAvailable" :: (Boolean)
   }
+derive instance newtypeGetDomainSuggestionsRequest :: Newtype GetDomainSuggestionsRequest _
 
 
 newtype GetDomainSuggestionsResponse = GetDomainSuggestionsResponse 
   { "SuggestionsList" :: NullOrUndefined (DomainSuggestionsList)
   }
+derive instance newtypeGetDomainSuggestionsResponse :: Newtype GetDomainSuggestionsResponse _
 
 
 -- | <p>The <a>GetOperationDetail</a> request includes the following element.</p>
 newtype GetOperationDetailRequest = GetOperationDetailRequest 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeGetOperationDetailRequest :: Newtype GetOperationDetailRequest _
 
 
 -- | <p>The GetOperationDetail response includes the following elements.</p>
@@ -423,27 +476,34 @@ newtype GetOperationDetailResponse = GetOperationDetailResponse
   , "Type" :: NullOrUndefined (OperationType)
   , "SubmittedDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeGetOperationDetailResponse :: Newtype GetOperationDetailResponse _
 
 
 newtype GlueIp = GlueIp String
+derive instance newtypeGlueIp :: Newtype GlueIp _
 
 
 newtype GlueIpList = GlueIpList (Array GlueIp)
+derive instance newtypeGlueIpList :: Newtype GlueIpList _
 
 
 newtype HostName = HostName String
+derive instance newtypeHostName :: Newtype HostName _
 
 
 -- | <p>The requested item is not acceptable. For example, for an OperationId it might refer to the ID of an operation that is already completed. For a domain name, it might not be a valid domain name or belong to the requester account.</p>
 newtype InvalidInput = InvalidInput 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidInput :: Newtype InvalidInput _
 
 
 newtype InvoiceId = InvoiceId String
+derive instance newtypeInvoiceId :: Newtype InvoiceId _
 
 
 newtype LangCode = LangCode String
+derive instance newtypeLangCode :: Newtype LangCode _
 
 
 -- | <p>The ListDomains request includes the following elements.</p>
@@ -451,6 +511,7 @@ newtype ListDomainsRequest = ListDomainsRequest
   { "Marker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListDomainsRequest :: Newtype ListDomainsRequest _
 
 
 -- | <p>The ListDomains response includes the following elements.</p>
@@ -458,6 +519,7 @@ newtype ListDomainsResponse = ListDomainsResponse
   { "Domains" :: (DomainSummaryList)
   , "NextPageMarker" :: NullOrUndefined (PageMarker)
   }
+derive instance newtypeListDomainsResponse :: Newtype ListDomainsResponse _
 
 
 -- | <p>The ListOperations request includes the following elements.</p>
@@ -465,6 +527,7 @@ newtype ListOperationsRequest = ListOperationsRequest
   { "Marker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListOperationsRequest :: Newtype ListOperationsRequest _
 
 
 -- | <p>The ListOperations response includes the following elements.</p>
@@ -472,18 +535,21 @@ newtype ListOperationsResponse = ListOperationsResponse
   { "Operations" :: (OperationSummaryList)
   , "NextPageMarker" :: NullOrUndefined (PageMarker)
   }
+derive instance newtypeListOperationsResponse :: Newtype ListOperationsResponse _
 
 
 -- | <p>The ListTagsForDomainRequest includes the following elements.</p>
 newtype ListTagsForDomainRequest = ListTagsForDomainRequest 
   { "DomainName" :: (DomainName)
   }
+derive instance newtypeListTagsForDomainRequest :: Newtype ListTagsForDomainRequest _
 
 
 -- | <p>The ListTagsForDomain response includes the following elements.</p>
 newtype ListTagsForDomainResponse = ListTagsForDomainResponse 
   { "TagList" :: (TagList)
   }
+derive instance newtypeListTagsForDomainResponse :: Newtype ListTagsForDomainResponse _
 
 
 -- | <p>Nameserver includes the following elements.</p>
@@ -491,21 +557,26 @@ newtype Nameserver = Nameserver
   { "Name" :: (HostName)
   , "GlueIps" :: NullOrUndefined (GlueIpList)
   }
+derive instance newtypeNameserver :: Newtype Nameserver _
 
 
 newtype NameserverList = NameserverList (Array Nameserver)
+derive instance newtypeNameserverList :: Newtype NameserverList _
 
 
 newtype OperationId = OperationId String
+derive instance newtypeOperationId :: Newtype OperationId _
 
 
 -- | <p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>
 newtype OperationLimitExceeded = OperationLimitExceeded 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeOperationLimitExceeded :: Newtype OperationLimitExceeded _
 
 
 newtype OperationStatus = OperationStatus String
+derive instance newtypeOperationStatus :: Newtype OperationStatus _
 
 
 -- | <p>OperationSummary includes the following elements.</p>
@@ -515,24 +586,31 @@ newtype OperationSummary = OperationSummary
   , "Type" :: (OperationType)
   , "SubmittedDate" :: (Number)
   }
+derive instance newtypeOperationSummary :: Newtype OperationSummary _
 
 
 newtype OperationSummaryList = OperationSummaryList (Array OperationSummary)
+derive instance newtypeOperationSummaryList :: Newtype OperationSummaryList _
 
 
 newtype OperationType = OperationType String
+derive instance newtypeOperationType :: Newtype OperationType _
 
 
 newtype PageMarker = PageMarker String
+derive instance newtypePageMarker :: Newtype PageMarker _
 
 
 newtype PageMaxItems = PageMaxItems Int
+derive instance newtypePageMaxItems :: Newtype PageMaxItems _
 
 
 newtype Price = Price Number
+derive instance newtypePrice :: Newtype Price _
 
 
 newtype ReachabilityStatus = ReachabilityStatus String
+derive instance newtypeReachabilityStatus :: Newtype ReachabilityStatus _
 
 
 -- | <p>The RegisterDomain request includes the following elements.</p>
@@ -548,24 +626,30 @@ newtype RegisterDomainRequest = RegisterDomainRequest
   , "PrivacyProtectRegistrantContact" :: NullOrUndefined (Boolean)
   , "PrivacyProtectTechContact" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeRegisterDomainRequest :: Newtype RegisterDomainRequest _
 
 
 -- | <p>The RegisterDomain response includes the following element.</p>
 newtype RegisterDomainResponse = RegisterDomainResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeRegisterDomainResponse :: Newtype RegisterDomainResponse _
 
 
 newtype RegistrarName = RegistrarName String
+derive instance newtypeRegistrarName :: Newtype RegistrarName _
 
 
 newtype RegistrarUrl = RegistrarUrl String
+derive instance newtypeRegistrarUrl :: Newtype RegistrarUrl _
 
 
 newtype RegistrarWhoIsServer = RegistrarWhoIsServer String
+derive instance newtypeRegistrarWhoIsServer :: Newtype RegistrarWhoIsServer _
 
 
 newtype RegistryDomainId = RegistryDomainId String
+derive instance newtypeRegistryDomainId :: Newtype RegistryDomainId _
 
 
 -- | <p>A <code>RenewDomain</code> request includes the number of years that you want to renew for and the current expiration year.</p>
@@ -574,19 +658,23 @@ newtype RenewDomainRequest = RenewDomainRequest
   , "DurationInYears" :: NullOrUndefined (DurationInYears)
   , "CurrentExpiryYear" :: (CurrentExpiryYear)
   }
+derive instance newtypeRenewDomainRequest :: Newtype RenewDomainRequest _
 
 
 newtype RenewDomainResponse = RenewDomainResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeRenewDomainResponse :: Newtype RenewDomainResponse _
 
 
 newtype Reseller = Reseller String
+derive instance newtypeReseller :: Newtype Reseller _
 
 
 newtype ResendContactReachabilityEmailRequest = ResendContactReachabilityEmailRequest 
   { "DomainName'" :: NullOrUndefined (DomainName)
   }
+derive instance newtypeResendContactReachabilityEmailRequest :: Newtype ResendContactReachabilityEmailRequest _
 
 
 newtype ResendContactReachabilityEmailResponse = ResendContactReachabilityEmailResponse 
@@ -594,27 +682,32 @@ newtype ResendContactReachabilityEmailResponse = ResendContactReachabilityEmailR
   , "EmailAddress'" :: NullOrUndefined (Email)
   , "IsAlreadyVerified'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeResendContactReachabilityEmailResponse :: Newtype ResendContactReachabilityEmailResponse _
 
 
 -- | <p>A request for the authorization code for the specified domain. To transfer a domain to another registrar, you provide this value to the new registrar.</p>
 newtype RetrieveDomainAuthCodeRequest = RetrieveDomainAuthCodeRequest 
   { "DomainName" :: (DomainName)
   }
+derive instance newtypeRetrieveDomainAuthCodeRequest :: Newtype RetrieveDomainAuthCodeRequest _
 
 
 -- | <p>The RetrieveDomainAuthCode response includes the following element.</p>
 newtype RetrieveDomainAuthCodeResponse = RetrieveDomainAuthCodeResponse 
   { "AuthCode" :: (DomainAuthCode)
   }
+derive instance newtypeRetrieveDomainAuthCodeResponse :: Newtype RetrieveDomainAuthCodeResponse _
 
 
 newtype State = State String
+derive instance newtypeState :: Newtype State _
 
 
 -- | <p>The top-level domain does not support this operation.</p>
 newtype TLDRulesViolation = TLDRulesViolation 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTLDRulesViolation :: Newtype TLDRulesViolation _
 
 
 -- | <p>Each tag includes the following elements.</p>
@@ -622,18 +715,23 @@ newtype Tag = Tag
   { "Key" :: NullOrUndefined (TagKey)
   , "Value" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>The TransferDomain request includes the following elements.</p>
@@ -651,22 +749,26 @@ newtype TransferDomainRequest = TransferDomainRequest
   , "PrivacyProtectRegistrantContact" :: NullOrUndefined (Boolean)
   , "PrivacyProtectTechContact" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeTransferDomainRequest :: Newtype TransferDomainRequest _
 
 
 -- | <p>The TranserDomain response includes the following element.</p>
 newtype TransferDomainResponse = TransferDomainResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeTransferDomainResponse :: Newtype TransferDomainResponse _
 
 
 -- | <p>Whether the domain name can be transferred to Amazon Route 53.</p> <note> <p>You can transfer only domains that have a value of <code>TRANSFERABLE</code> for <code>Transferable</code>.</p> </note> <p>Valid values:</p> <dl> <dt>TRANSFERABLE</dt> <dd> <p>The domain name can be transferred to Amazon Route 53.</p> </dd> <dt>UNTRANSFERRABLE</dt> <dd> <p>The domain name can't be transferred to Amazon Route 53.</p> </dd> <dt>DONT_KNOW</dt> <dd> <p>Reserved for future use.</p> </dd> </dl>
 newtype Transferable = Transferable String
+derive instance newtypeTransferable :: Newtype Transferable _
 
 
 -- | <p>Amazon Route 53 does not support this top-level domain (TLD).</p>
 newtype UnsupportedTLD = UnsupportedTLD 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeUnsupportedTLD :: Newtype UnsupportedTLD _
 
 
 -- | <p>The UpdateDomainContactPrivacy request includes the following elements.</p>
@@ -676,12 +778,14 @@ newtype UpdateDomainContactPrivacyRequest = UpdateDomainContactPrivacyRequest
   , "RegistrantPrivacy" :: NullOrUndefined (Boolean)
   , "TechPrivacy" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateDomainContactPrivacyRequest :: Newtype UpdateDomainContactPrivacyRequest _
 
 
 -- | <p>The UpdateDomainContactPrivacy response includes the following element.</p>
 newtype UpdateDomainContactPrivacyResponse = UpdateDomainContactPrivacyResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeUpdateDomainContactPrivacyResponse :: Newtype UpdateDomainContactPrivacyResponse _
 
 
 -- | <p>The UpdateDomainContact request includes the following elements.</p>
@@ -691,12 +795,14 @@ newtype UpdateDomainContactRequest = UpdateDomainContactRequest
   , "RegistrantContact" :: NullOrUndefined (ContactDetail)
   , "TechContact" :: NullOrUndefined (ContactDetail)
   }
+derive instance newtypeUpdateDomainContactRequest :: Newtype UpdateDomainContactRequest _
 
 
 -- | <p>The UpdateDomainContact response includes the following element.</p>
 newtype UpdateDomainContactResponse = UpdateDomainContactResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeUpdateDomainContactResponse :: Newtype UpdateDomainContactResponse _
 
 
 -- | <p>Replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.</p> <p>If successful, this operation returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email. </p>
@@ -705,12 +811,14 @@ newtype UpdateDomainNameserversRequest = UpdateDomainNameserversRequest
   , "FIAuthKey" :: NullOrUndefined (FIAuthKey)
   , "Nameservers" :: (NameserverList)
   }
+derive instance newtypeUpdateDomainNameserversRequest :: Newtype UpdateDomainNameserversRequest _
 
 
 -- | <p>The UpdateDomainNameservers response includes the following element.</p>
 newtype UpdateDomainNameserversResponse = UpdateDomainNameserversResponse 
   { "OperationId" :: (OperationId)
   }
+derive instance newtypeUpdateDomainNameserversResponse :: Newtype UpdateDomainNameserversResponse _
 
 
 -- | <p>The UpdateTagsForDomainRequest includes the following elements.</p>
@@ -718,11 +826,13 @@ newtype UpdateTagsForDomainRequest = UpdateTagsForDomainRequest
   { "DomainName" :: (DomainName)
   , "TagsToUpdate" :: NullOrUndefined (TagList)
   }
+derive instance newtypeUpdateTagsForDomainRequest :: Newtype UpdateTagsForDomainRequest _
 
 
 newtype UpdateTagsForDomainResponse = UpdateTagsForDomainResponse 
   { 
   }
+derive instance newtypeUpdateTagsForDomainResponse :: Newtype UpdateTagsForDomainResponse _
 
 
 -- | <p>The ViewBilling request includes the following elements.</p>
@@ -732,6 +842,7 @@ newtype ViewBillingRequest = ViewBillingRequest
   , "Marker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeViewBillingRequest :: Newtype ViewBillingRequest _
 
 
 -- | <p>The ViewBilling response includes the following elements.</p>
@@ -739,6 +850,8 @@ newtype ViewBillingResponse = ViewBillingResponse
   { "NextPageMarker" :: NullOrUndefined (PageMarker)
   , "BillingRecords" :: NullOrUndefined (BillingRecords)
   }
+derive instance newtypeViewBillingResponse :: Newtype ViewBillingResponse _
 
 
 newtype ZipCode = ZipCode String
+derive instance newtypeZipCode :: Newtype ZipCode _

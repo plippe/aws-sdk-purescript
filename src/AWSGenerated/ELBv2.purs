@@ -6,6 +6,7 @@ module AWS.ELBv2 where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -188,43 +189,52 @@ newtype Action = Action
   { "Type" :: (ActionTypeEnum)
   , "TargetGroupArn" :: (TargetGroupArn)
   }
+derive instance newtypeAction :: Newtype Action _
 
 
 newtype ActionTypeEnum = ActionTypeEnum String
+derive instance newtypeActionTypeEnum :: Newtype ActionTypeEnum _
 
 
 newtype Actions = Actions (Array Action)
+derive instance newtypeActions :: Newtype Actions _
 
 
 newtype AddListenerCertificatesInput = AddListenerCertificatesInput 
   { "ListenerArn" :: (ListenerArn)
   , "Certificates" :: (CertificateList)
   }
+derive instance newtypeAddListenerCertificatesInput :: Newtype AddListenerCertificatesInput _
 
 
 newtype AddListenerCertificatesOutput = AddListenerCertificatesOutput 
   { "Certificates" :: NullOrUndefined (CertificateList)
   }
+derive instance newtypeAddListenerCertificatesOutput :: Newtype AddListenerCertificatesOutput _
 
 
 newtype AddTagsInput = AddTagsInput 
   { "ResourceArns" :: (ResourceArns)
   , "Tags" :: (TagList)
   }
+derive instance newtypeAddTagsInput :: Newtype AddTagsInput _
 
 
 newtype AddTagsOutput = AddTagsOutput 
   { 
   }
+derive instance newtypeAddTagsOutput :: Newtype AddTagsOutput _
 
 
 newtype AllocationId = AllocationId String
+derive instance newtypeAllocationId :: Newtype AllocationId _
 
 
 -- | <p>The specified allocation ID does not exist.</p>
 newtype AllocationIdNotFoundException = AllocationIdNotFoundException 
   { 
   }
+derive instance newtypeAllocationIdNotFoundException :: Newtype AllocationIdNotFoundException _
 
 
 -- | <p>Information about an Availability Zone.</p>
@@ -233,18 +243,22 @@ newtype AvailabilityZone = AvailabilityZone
   , "SubnetId" :: NullOrUndefined (SubnetId)
   , "LoadBalancerAddresses" :: NullOrUndefined (LoadBalancerAddresses)
   }
+derive instance newtypeAvailabilityZone :: Newtype AvailabilityZone _
 
 
 -- | <p>The specified Availability Zone is not supported.</p>
 newtype AvailabilityZoneNotSupportedException = AvailabilityZoneNotSupportedException 
   { 
   }
+derive instance newtypeAvailabilityZoneNotSupportedException :: Newtype AvailabilityZoneNotSupportedException _
 
 
 newtype AvailabilityZones = AvailabilityZones (Array AvailabilityZone)
+derive instance newtypeAvailabilityZones :: Newtype AvailabilityZones _
 
 
 newtype CanonicalHostedZoneId = CanonicalHostedZoneId String
+derive instance newtypeCanonicalHostedZoneId :: Newtype CanonicalHostedZoneId _
 
 
 -- | <p>Information about an SSL server certificate.</p>
@@ -252,18 +266,22 @@ newtype Certificate = Certificate
   { "CertificateArn" :: NullOrUndefined (CertificateArn)
   , "IsDefault" :: NullOrUndefined (Default)
   }
+derive instance newtypeCertificate :: Newtype Certificate _
 
 
 newtype CertificateArn = CertificateArn String
+derive instance newtypeCertificateArn :: Newtype CertificateArn _
 
 
 newtype CertificateList = CertificateList (Array Certificate)
+derive instance newtypeCertificateList :: Newtype CertificateList _
 
 
 -- | <p>The specified certificate does not exist.</p>
 newtype CertificateNotFoundException = CertificateNotFoundException 
   { 
   }
+derive instance newtypeCertificateNotFoundException :: Newtype CertificateNotFoundException _
 
 
 -- | <p>Information about a cipher used in a policy.</p>
@@ -271,18 +289,23 @@ newtype Cipher = Cipher
   { "Name" :: NullOrUndefined (CipherName)
   , "Priority" :: NullOrUndefined (CipherPriority)
   }
+derive instance newtypeCipher :: Newtype Cipher _
 
 
 newtype CipherName = CipherName String
+derive instance newtypeCipherName :: Newtype CipherName _
 
 
 newtype CipherPriority = CipherPriority Int
+derive instance newtypeCipherPriority :: Newtype CipherPriority _
 
 
 newtype Ciphers = Ciphers (Array Cipher)
+derive instance newtypeCiphers :: Newtype Ciphers _
 
 
 newtype ConditionFieldName = ConditionFieldName String
+derive instance newtypeConditionFieldName :: Newtype ConditionFieldName _
 
 
 newtype CreateListenerInput = CreateListenerInput 
@@ -293,11 +316,13 @@ newtype CreateListenerInput = CreateListenerInput
   , "Certificates" :: NullOrUndefined (CertificateList)
   , "DefaultActions" :: (Actions)
   }
+derive instance newtypeCreateListenerInput :: Newtype CreateListenerInput _
 
 
 newtype CreateListenerOutput = CreateListenerOutput 
   { "Listeners" :: NullOrUndefined (Listeners)
   }
+derive instance newtypeCreateListenerOutput :: Newtype CreateListenerOutput _
 
 
 newtype CreateLoadBalancerInput = CreateLoadBalancerInput 
@@ -310,11 +335,13 @@ newtype CreateLoadBalancerInput = CreateLoadBalancerInput
   , "Type" :: NullOrUndefined (LoadBalancerTypeEnum)
   , "IpAddressType" :: NullOrUndefined (IpAddressType)
   }
+derive instance newtypeCreateLoadBalancerInput :: Newtype CreateLoadBalancerInput _
 
 
 newtype CreateLoadBalancerOutput = CreateLoadBalancerOutput 
   { "LoadBalancers" :: NullOrUndefined (LoadBalancers)
   }
+derive instance newtypeCreateLoadBalancerOutput :: Newtype CreateLoadBalancerOutput _
 
 
 newtype CreateRuleInput = CreateRuleInput 
@@ -323,11 +350,13 @@ newtype CreateRuleInput = CreateRuleInput
   , "Priority" :: (RulePriority)
   , "Actions" :: (Actions)
   }
+derive instance newtypeCreateRuleInput :: Newtype CreateRuleInput _
 
 
 newtype CreateRuleOutput = CreateRuleOutput 
   { "Rules" :: NullOrUndefined (Rules)
   }
+derive instance newtypeCreateRuleOutput :: Newtype CreateRuleOutput _
 
 
 newtype CreateTargetGroupInput = CreateTargetGroupInput 
@@ -345,83 +374,100 @@ newtype CreateTargetGroupInput = CreateTargetGroupInput
   , "Matcher" :: NullOrUndefined (Matcher)
   , "TargetType" :: NullOrUndefined (TargetTypeEnum)
   }
+derive instance newtypeCreateTargetGroupInput :: Newtype CreateTargetGroupInput _
 
 
 newtype CreateTargetGroupOutput = CreateTargetGroupOutput 
   { "TargetGroups" :: NullOrUndefined (TargetGroups)
   }
+derive instance newtypeCreateTargetGroupOutput :: Newtype CreateTargetGroupOutput _
 
 
 newtype CreatedTime = CreatedTime Number
+derive instance newtypeCreatedTime :: Newtype CreatedTime _
 
 
 newtype DNSName = DNSName String
+derive instance newtypeDNSName :: Newtype DNSName _
 
 
 newtype Default = Default Boolean
+derive instance newtypeDefault :: Newtype Default _
 
 
 newtype DeleteListenerInput = DeleteListenerInput 
   { "ListenerArn" :: (ListenerArn)
   }
+derive instance newtypeDeleteListenerInput :: Newtype DeleteListenerInput _
 
 
 newtype DeleteListenerOutput = DeleteListenerOutput 
   { 
   }
+derive instance newtypeDeleteListenerOutput :: Newtype DeleteListenerOutput _
 
 
 newtype DeleteLoadBalancerInput = DeleteLoadBalancerInput 
   { "LoadBalancerArn" :: (LoadBalancerArn)
   }
+derive instance newtypeDeleteLoadBalancerInput :: Newtype DeleteLoadBalancerInput _
 
 
 newtype DeleteLoadBalancerOutput = DeleteLoadBalancerOutput 
   { 
   }
+derive instance newtypeDeleteLoadBalancerOutput :: Newtype DeleteLoadBalancerOutput _
 
 
 newtype DeleteRuleInput = DeleteRuleInput 
   { "RuleArn" :: (RuleArn)
   }
+derive instance newtypeDeleteRuleInput :: Newtype DeleteRuleInput _
 
 
 newtype DeleteRuleOutput = DeleteRuleOutput 
   { 
   }
+derive instance newtypeDeleteRuleOutput :: Newtype DeleteRuleOutput _
 
 
 newtype DeleteTargetGroupInput = DeleteTargetGroupInput 
   { "TargetGroupArn" :: (TargetGroupArn)
   }
+derive instance newtypeDeleteTargetGroupInput :: Newtype DeleteTargetGroupInput _
 
 
 newtype DeleteTargetGroupOutput = DeleteTargetGroupOutput 
   { 
   }
+derive instance newtypeDeleteTargetGroupOutput :: Newtype DeleteTargetGroupOutput _
 
 
 newtype DeregisterTargetsInput = DeregisterTargetsInput 
   { "TargetGroupArn" :: (TargetGroupArn)
   , "Targets" :: (TargetDescriptions)
   }
+derive instance newtypeDeregisterTargetsInput :: Newtype DeregisterTargetsInput _
 
 
 newtype DeregisterTargetsOutput = DeregisterTargetsOutput 
   { 
   }
+derive instance newtypeDeregisterTargetsOutput :: Newtype DeregisterTargetsOutput _
 
 
 newtype DescribeAccountLimitsInput = DescribeAccountLimitsInput 
   { "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeAccountLimitsInput :: Newtype DescribeAccountLimitsInput _
 
 
 newtype DescribeAccountLimitsOutput = DescribeAccountLimitsOutput 
   { "Limits" :: NullOrUndefined (Limits)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeAccountLimitsOutput :: Newtype DescribeAccountLimitsOutput _
 
 
 newtype DescribeListenerCertificatesInput = DescribeListenerCertificatesInput 
@@ -429,12 +475,14 @@ newtype DescribeListenerCertificatesInput = DescribeListenerCertificatesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeListenerCertificatesInput :: Newtype DescribeListenerCertificatesInput _
 
 
 newtype DescribeListenerCertificatesOutput = DescribeListenerCertificatesOutput 
   { "Certificates" :: NullOrUndefined (CertificateList)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeListenerCertificatesOutput :: Newtype DescribeListenerCertificatesOutput _
 
 
 newtype DescribeListenersInput = DescribeListenersInput 
@@ -443,22 +491,26 @@ newtype DescribeListenersInput = DescribeListenersInput
   , "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeListenersInput :: Newtype DescribeListenersInput _
 
 
 newtype DescribeListenersOutput = DescribeListenersOutput 
   { "Listeners" :: NullOrUndefined (Listeners)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeListenersOutput :: Newtype DescribeListenersOutput _
 
 
 newtype DescribeLoadBalancerAttributesInput = DescribeLoadBalancerAttributesInput 
   { "LoadBalancerArn" :: (LoadBalancerArn)
   }
+derive instance newtypeDescribeLoadBalancerAttributesInput :: Newtype DescribeLoadBalancerAttributesInput _
 
 
 newtype DescribeLoadBalancerAttributesOutput = DescribeLoadBalancerAttributesOutput 
   { "Attributes" :: NullOrUndefined (LoadBalancerAttributes)
   }
+derive instance newtypeDescribeLoadBalancerAttributesOutput :: Newtype DescribeLoadBalancerAttributesOutput _
 
 
 newtype DescribeLoadBalancersInput = DescribeLoadBalancersInput 
@@ -467,12 +519,14 @@ newtype DescribeLoadBalancersInput = DescribeLoadBalancersInput
   , "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeLoadBalancersInput :: Newtype DescribeLoadBalancersInput _
 
 
 newtype DescribeLoadBalancersOutput = DescribeLoadBalancersOutput 
   { "LoadBalancers" :: NullOrUndefined (LoadBalancers)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeLoadBalancersOutput :: Newtype DescribeLoadBalancersOutput _
 
 
 newtype DescribeRulesInput = DescribeRulesInput 
@@ -481,12 +535,14 @@ newtype DescribeRulesInput = DescribeRulesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeRulesInput :: Newtype DescribeRulesInput _
 
 
 newtype DescribeRulesOutput = DescribeRulesOutput 
   { "Rules" :: NullOrUndefined (Rules)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeRulesOutput :: Newtype DescribeRulesOutput _
 
 
 newtype DescribeSSLPoliciesInput = DescribeSSLPoliciesInput 
@@ -494,32 +550,38 @@ newtype DescribeSSLPoliciesInput = DescribeSSLPoliciesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeSSLPoliciesInput :: Newtype DescribeSSLPoliciesInput _
 
 
 newtype DescribeSSLPoliciesOutput = DescribeSSLPoliciesOutput 
   { "SslPolicies" :: NullOrUndefined (SslPolicies)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeSSLPoliciesOutput :: Newtype DescribeSSLPoliciesOutput _
 
 
 newtype DescribeTagsInput = DescribeTagsInput 
   { "ResourceArns" :: (ResourceArns)
   }
+derive instance newtypeDescribeTagsInput :: Newtype DescribeTagsInput _
 
 
 newtype DescribeTagsOutput = DescribeTagsOutput 
   { "TagDescriptions" :: NullOrUndefined (TagDescriptions)
   }
+derive instance newtypeDescribeTagsOutput :: Newtype DescribeTagsOutput _
 
 
 newtype DescribeTargetGroupAttributesInput = DescribeTargetGroupAttributesInput 
   { "TargetGroupArn" :: (TargetGroupArn)
   }
+derive instance newtypeDescribeTargetGroupAttributesInput :: Newtype DescribeTargetGroupAttributesInput _
 
 
 newtype DescribeTargetGroupAttributesOutput = DescribeTargetGroupAttributesOutput 
   { "Attributes" :: NullOrUndefined (TargetGroupAttributes)
   }
+derive instance newtypeDescribeTargetGroupAttributesOutput :: Newtype DescribeTargetGroupAttributesOutput _
 
 
 newtype DescribeTargetGroupsInput = DescribeTargetGroupsInput 
@@ -529,116 +591,140 @@ newtype DescribeTargetGroupsInput = DescribeTargetGroupsInput
   , "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeTargetGroupsInput :: Newtype DescribeTargetGroupsInput _
 
 
 newtype DescribeTargetGroupsOutput = DescribeTargetGroupsOutput 
   { "TargetGroups" :: NullOrUndefined (TargetGroups)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeTargetGroupsOutput :: Newtype DescribeTargetGroupsOutput _
 
 
 newtype DescribeTargetHealthInput = DescribeTargetHealthInput 
   { "TargetGroupArn" :: (TargetGroupArn)
   , "Targets" :: NullOrUndefined (TargetDescriptions)
   }
+derive instance newtypeDescribeTargetHealthInput :: Newtype DescribeTargetHealthInput _
 
 
 newtype DescribeTargetHealthOutput = DescribeTargetHealthOutput 
   { "TargetHealthDescriptions" :: NullOrUndefined (TargetHealthDescriptions)
   }
+derive instance newtypeDescribeTargetHealthOutput :: Newtype DescribeTargetHealthOutput _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 -- | <p>A listener with the specified port already exists.</p>
 newtype DuplicateListenerException = DuplicateListenerException 
   { 
   }
+derive instance newtypeDuplicateListenerException :: Newtype DuplicateListenerException _
 
 
 -- | <p>A load balancer with the specified name already exists.</p>
 newtype DuplicateLoadBalancerNameException = DuplicateLoadBalancerNameException 
   { 
   }
+derive instance newtypeDuplicateLoadBalancerNameException :: Newtype DuplicateLoadBalancerNameException _
 
 
 -- | <p>A tag key was specified more than once.</p>
 newtype DuplicateTagKeysException = DuplicateTagKeysException 
   { 
   }
+derive instance newtypeDuplicateTagKeysException :: Newtype DuplicateTagKeysException _
 
 
 -- | <p>A target group with the specified name already exists.</p>
 newtype DuplicateTargetGroupNameException = DuplicateTargetGroupNameException 
   { 
   }
+derive instance newtypeDuplicateTargetGroupNameException :: Newtype DuplicateTargetGroupNameException _
 
 
 newtype HealthCheckIntervalSeconds = HealthCheckIntervalSeconds Int
+derive instance newtypeHealthCheckIntervalSeconds :: Newtype HealthCheckIntervalSeconds _
 
 
 newtype HealthCheckPort = HealthCheckPort String
+derive instance newtypeHealthCheckPort :: Newtype HealthCheckPort _
 
 
 newtype HealthCheckThresholdCount = HealthCheckThresholdCount Int
+derive instance newtypeHealthCheckThresholdCount :: Newtype HealthCheckThresholdCount _
 
 
 newtype HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds Int
+derive instance newtypeHealthCheckTimeoutSeconds :: Newtype HealthCheckTimeoutSeconds _
 
 
 -- | <p>The health of the specified targets could not be retrieved due to an internal error.</p>
 newtype HealthUnavailableException = HealthUnavailableException 
   { 
   }
+derive instance newtypeHealthUnavailableException :: Newtype HealthUnavailableException _
 
 
 newtype HttpCode = HttpCode String
+derive instance newtypeHttpCode :: Newtype HttpCode _
 
 
 -- | <p>The specified configuration is not valid with this protocol.</p>
 newtype IncompatibleProtocolsException = IncompatibleProtocolsException 
   { 
   }
+derive instance newtypeIncompatibleProtocolsException :: Newtype IncompatibleProtocolsException _
 
 
 -- | <p>The requested configuration is not valid.</p>
 newtype InvalidConfigurationRequestException = InvalidConfigurationRequestException 
   { 
   }
+derive instance newtypeInvalidConfigurationRequestException :: Newtype InvalidConfigurationRequestException _
 
 
 -- | <p>The requested scheme is not valid.</p>
 newtype InvalidSchemeException = InvalidSchemeException 
   { 
   }
+derive instance newtypeInvalidSchemeException :: Newtype InvalidSchemeException _
 
 
 -- | <p>The specified security group does not exist.</p>
 newtype InvalidSecurityGroupException = InvalidSecurityGroupException 
   { 
   }
+derive instance newtypeInvalidSecurityGroupException :: Newtype InvalidSecurityGroupException _
 
 
 -- | <p>The specified subnet is out of available addresses.</p>
 newtype InvalidSubnetException = InvalidSubnetException 
   { 
   }
+derive instance newtypeInvalidSubnetException :: Newtype InvalidSubnetException _
 
 
 -- | <p>The specified target does not exist, is not in the same VPC as the target group, or has an unsupported instance type.</p>
 newtype InvalidTargetException = InvalidTargetException 
   { 
   }
+derive instance newtypeInvalidTargetException :: Newtype InvalidTargetException _
 
 
 newtype IpAddress = IpAddress String
+derive instance newtypeIpAddress :: Newtype IpAddress _
 
 
 newtype IpAddressType = IpAddressType String
+derive instance newtypeIpAddressType :: Newtype IpAddressType _
 
 
 newtype IsDefault = IsDefault Boolean
+derive instance newtypeIsDefault :: Newtype IsDefault _
 
 
 -- | <p>Information about an Elastic Load Balancing resource limit for your AWS account.</p>
@@ -646,12 +732,15 @@ newtype Limit = Limit
   { "Name" :: NullOrUndefined (Name)
   , "Max" :: NullOrUndefined (Max)
   }
+derive instance newtypeLimit :: Newtype Limit _
 
 
 newtype Limits = Limits (Array Limit)
+derive instance newtypeLimits :: Newtype Limits _
 
 
 newtype ListOfString = ListOfString (Array StringValue)
+derive instance newtypeListOfString :: Newtype ListOfString _
 
 
 -- | <p>Information about a listener.</p>
@@ -664,21 +753,26 @@ newtype Listener = Listener
   , "SslPolicy" :: NullOrUndefined (SslPolicyName)
   , "DefaultActions" :: NullOrUndefined (Actions)
   }
+derive instance newtypeListener :: Newtype Listener _
 
 
 newtype ListenerArn = ListenerArn String
+derive instance newtypeListenerArn :: Newtype ListenerArn _
 
 
 newtype ListenerArns = ListenerArns (Array ListenerArn)
+derive instance newtypeListenerArns :: Newtype ListenerArns _
 
 
 -- | <p>The specified listener does not exist.</p>
 newtype ListenerNotFoundException = ListenerNotFoundException 
   { 
   }
+derive instance newtypeListenerNotFoundException :: Newtype ListenerNotFoundException _
 
 
 newtype Listeners = Listeners (Array Listener)
+derive instance newtypeListeners :: Newtype Listeners _
 
 
 -- | <p>Information about a load balancer.</p>
@@ -696,6 +790,7 @@ newtype LoadBalancer = LoadBalancer
   , "SecurityGroups" :: NullOrUndefined (SecurityGroups)
   , "IpAddressType" :: NullOrUndefined (IpAddressType)
   }
+derive instance newtypeLoadBalancer :: Newtype LoadBalancer _
 
 
 -- | <p>Information about a static IP address for a load balancer.</p>
@@ -703,15 +798,19 @@ newtype LoadBalancerAddress = LoadBalancerAddress
   { "IpAddress" :: NullOrUndefined (IpAddress)
   , "AllocationId" :: NullOrUndefined (AllocationId)
   }
+derive instance newtypeLoadBalancerAddress :: Newtype LoadBalancerAddress _
 
 
 newtype LoadBalancerAddresses = LoadBalancerAddresses (Array LoadBalancerAddress)
+derive instance newtypeLoadBalancerAddresses :: Newtype LoadBalancerAddresses _
 
 
 newtype LoadBalancerArn = LoadBalancerArn String
+derive instance newtypeLoadBalancerArn :: Newtype LoadBalancerArn _
 
 
 newtype LoadBalancerArns = LoadBalancerArns (Array LoadBalancerArn)
+derive instance newtypeLoadBalancerArns :: Newtype LoadBalancerArns _
 
 
 -- | <p>Information about a load balancer attribute.</p>
@@ -719,30 +818,38 @@ newtype LoadBalancerAttribute = LoadBalancerAttribute
   { "Key" :: NullOrUndefined (LoadBalancerAttributeKey)
   , "Value" :: NullOrUndefined (LoadBalancerAttributeValue)
   }
+derive instance newtypeLoadBalancerAttribute :: Newtype LoadBalancerAttribute _
 
 
 newtype LoadBalancerAttributeKey = LoadBalancerAttributeKey String
+derive instance newtypeLoadBalancerAttributeKey :: Newtype LoadBalancerAttributeKey _
 
 
 newtype LoadBalancerAttributeValue = LoadBalancerAttributeValue String
+derive instance newtypeLoadBalancerAttributeValue :: Newtype LoadBalancerAttributeValue _
 
 
 newtype LoadBalancerAttributes = LoadBalancerAttributes (Array LoadBalancerAttribute)
+derive instance newtypeLoadBalancerAttributes :: Newtype LoadBalancerAttributes _
 
 
 newtype LoadBalancerName = LoadBalancerName String
+derive instance newtypeLoadBalancerName :: Newtype LoadBalancerName _
 
 
 newtype LoadBalancerNames = LoadBalancerNames (Array LoadBalancerName)
+derive instance newtypeLoadBalancerNames :: Newtype LoadBalancerNames _
 
 
 -- | <p>The specified load balancer does not exist.</p>
 newtype LoadBalancerNotFoundException = LoadBalancerNotFoundException 
   { 
   }
+derive instance newtypeLoadBalancerNotFoundException :: Newtype LoadBalancerNotFoundException _
 
 
 newtype LoadBalancerSchemeEnum = LoadBalancerSchemeEnum String
+derive instance newtypeLoadBalancerSchemeEnum :: Newtype LoadBalancerSchemeEnum _
 
 
 -- | <p>Information about the state of the load balancer.</p>
@@ -750,27 +857,34 @@ newtype LoadBalancerState = LoadBalancerState
   { "Code" :: NullOrUndefined (LoadBalancerStateEnum)
   , "Reason" :: NullOrUndefined (StateReason)
   }
+derive instance newtypeLoadBalancerState :: Newtype LoadBalancerState _
 
 
 newtype LoadBalancerStateEnum = LoadBalancerStateEnum String
+derive instance newtypeLoadBalancerStateEnum :: Newtype LoadBalancerStateEnum _
 
 
 newtype LoadBalancerTypeEnum = LoadBalancerTypeEnum String
+derive instance newtypeLoadBalancerTypeEnum :: Newtype LoadBalancerTypeEnum _
 
 
 newtype LoadBalancers = LoadBalancers (Array LoadBalancer)
+derive instance newtypeLoadBalancers :: Newtype LoadBalancers _
 
 
 newtype Marker = Marker String
+derive instance newtypeMarker :: Newtype Marker _
 
 
 -- | <p>Information to use when checking for a successful response from a target.</p>
 newtype Matcher = Matcher 
   { "HttpCode" :: (HttpCode)
   }
+derive instance newtypeMatcher :: Newtype Matcher _
 
 
 newtype Max = Max String
+derive instance newtypeMax :: Newtype Max _
 
 
 newtype ModifyListenerInput = ModifyListenerInput 
@@ -781,22 +895,26 @@ newtype ModifyListenerInput = ModifyListenerInput
   , "Certificates" :: NullOrUndefined (CertificateList)
   , "DefaultActions" :: NullOrUndefined (Actions)
   }
+derive instance newtypeModifyListenerInput :: Newtype ModifyListenerInput _
 
 
 newtype ModifyListenerOutput = ModifyListenerOutput 
   { "Listeners" :: NullOrUndefined (Listeners)
   }
+derive instance newtypeModifyListenerOutput :: Newtype ModifyListenerOutput _
 
 
 newtype ModifyLoadBalancerAttributesInput = ModifyLoadBalancerAttributesInput 
   { "LoadBalancerArn" :: (LoadBalancerArn)
   , "Attributes" :: (LoadBalancerAttributes)
   }
+derive instance newtypeModifyLoadBalancerAttributesInput :: Newtype ModifyLoadBalancerAttributesInput _
 
 
 newtype ModifyLoadBalancerAttributesOutput = ModifyLoadBalancerAttributesOutput 
   { "Attributes" :: NullOrUndefined (LoadBalancerAttributes)
   }
+derive instance newtypeModifyLoadBalancerAttributesOutput :: Newtype ModifyLoadBalancerAttributesOutput _
 
 
 newtype ModifyRuleInput = ModifyRuleInput 
@@ -804,22 +922,26 @@ newtype ModifyRuleInput = ModifyRuleInput
   , "Conditions" :: NullOrUndefined (RuleConditionList)
   , "Actions" :: NullOrUndefined (Actions)
   }
+derive instance newtypeModifyRuleInput :: Newtype ModifyRuleInput _
 
 
 newtype ModifyRuleOutput = ModifyRuleOutput 
   { "Rules" :: NullOrUndefined (Rules)
   }
+derive instance newtypeModifyRuleOutput :: Newtype ModifyRuleOutput _
 
 
 newtype ModifyTargetGroupAttributesInput = ModifyTargetGroupAttributesInput 
   { "TargetGroupArn" :: (TargetGroupArn)
   , "Attributes" :: (TargetGroupAttributes)
   }
+derive instance newtypeModifyTargetGroupAttributesInput :: Newtype ModifyTargetGroupAttributesInput _
 
 
 newtype ModifyTargetGroupAttributesOutput = ModifyTargetGroupAttributesOutput 
   { "Attributes" :: NullOrUndefined (TargetGroupAttributes)
   }
+derive instance newtypeModifyTargetGroupAttributesOutput :: Newtype ModifyTargetGroupAttributesOutput _
 
 
 newtype ModifyTargetGroupInput = ModifyTargetGroupInput 
@@ -833,83 +955,101 @@ newtype ModifyTargetGroupInput = ModifyTargetGroupInput
   , "UnhealthyThresholdCount" :: NullOrUndefined (HealthCheckThresholdCount)
   , "Matcher" :: NullOrUndefined (Matcher)
   }
+derive instance newtypeModifyTargetGroupInput :: Newtype ModifyTargetGroupInput _
 
 
 newtype ModifyTargetGroupOutput = ModifyTargetGroupOutput 
   { "TargetGroups" :: NullOrUndefined (TargetGroups)
   }
+derive instance newtypeModifyTargetGroupOutput :: Newtype ModifyTargetGroupOutput _
 
 
 newtype Name = Name String
+derive instance newtypeName :: Newtype Name _
 
 
 -- | <p>This operation is not allowed.</p>
 newtype OperationNotPermittedException = OperationNotPermittedException 
   { 
   }
+derive instance newtypeOperationNotPermittedException :: Newtype OperationNotPermittedException _
 
 
 newtype PageSize = PageSize Int
+derive instance newtypePageSize :: Newtype PageSize _
 
 
 newtype Path = Path String
+derive instance newtypePath :: Newtype Path _
 
 
 newtype Port = Port Int
+derive instance newtypePort :: Newtype Port _
 
 
 -- | <p>The specified priority is in use.</p>
 newtype PriorityInUseException = PriorityInUseException 
   { 
   }
+derive instance newtypePriorityInUseException :: Newtype PriorityInUseException _
 
 
 newtype ProtocolEnum = ProtocolEnum String
+derive instance newtypeProtocolEnum :: Newtype ProtocolEnum _
 
 
 newtype RegisterTargetsInput = RegisterTargetsInput 
   { "TargetGroupArn" :: (TargetGroupArn)
   , "Targets" :: (TargetDescriptions)
   }
+derive instance newtypeRegisterTargetsInput :: Newtype RegisterTargetsInput _
 
 
 newtype RegisterTargetsOutput = RegisterTargetsOutput 
   { 
   }
+derive instance newtypeRegisterTargetsOutput :: Newtype RegisterTargetsOutput _
 
 
 newtype RemoveListenerCertificatesInput = RemoveListenerCertificatesInput 
   { "ListenerArn" :: (ListenerArn)
   , "Certificates" :: (CertificateList)
   }
+derive instance newtypeRemoveListenerCertificatesInput :: Newtype RemoveListenerCertificatesInput _
 
 
 newtype RemoveListenerCertificatesOutput = RemoveListenerCertificatesOutput 
   { 
   }
+derive instance newtypeRemoveListenerCertificatesOutput :: Newtype RemoveListenerCertificatesOutput _
 
 
 newtype RemoveTagsInput = RemoveTagsInput 
   { "ResourceArns" :: (ResourceArns)
   , "TagKeys" :: (TagKeys)
   }
+derive instance newtypeRemoveTagsInput :: Newtype RemoveTagsInput _
 
 
 newtype RemoveTagsOutput = RemoveTagsOutput 
   { 
   }
+derive instance newtypeRemoveTagsOutput :: Newtype RemoveTagsOutput _
 
 
 newtype ResourceArn = ResourceArn String
+derive instance newtypeResourceArn :: Newtype ResourceArn _
 
 
 newtype ResourceArns = ResourceArns (Array ResourceArn)
+derive instance newtypeResourceArns :: Newtype ResourceArns _
 
 
 -- | <p>A specified resource is in use.</p>
 newtype ResourceInUseException = ResourceInUseException 
   { 
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>Information about a rule.</p>
@@ -920,12 +1060,15 @@ newtype Rule = Rule
   , "Actions" :: NullOrUndefined (Actions)
   , "IsDefault" :: NullOrUndefined (IsDefault)
   }
+derive instance newtypeRule :: Newtype Rule _
 
 
 newtype RuleArn = RuleArn String
+derive instance newtypeRuleArn :: Newtype RuleArn _
 
 
 newtype RuleArns = RuleArns (Array RuleArn)
+derive instance newtypeRuleArns :: Newtype RuleArns _
 
 
 -- | <p>Information about a condition for a rule.</p>
@@ -933,21 +1076,26 @@ newtype RuleCondition = RuleCondition
   { "Field" :: NullOrUndefined (ConditionFieldName)
   , "Values" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeRuleCondition :: Newtype RuleCondition _
 
 
 newtype RuleConditionList = RuleConditionList (Array RuleCondition)
+derive instance newtypeRuleConditionList :: Newtype RuleConditionList _
 
 
 -- | <p>The specified rule does not exist.</p>
 newtype RuleNotFoundException = RuleNotFoundException 
   { 
   }
+derive instance newtypeRuleNotFoundException :: Newtype RuleNotFoundException _
 
 
 newtype RulePriority = RulePriority Int
+derive instance newtypeRulePriority :: Newtype RulePriority _
 
 
 newtype RulePriorityList = RulePriorityList (Array RulePriorityPair)
+derive instance newtypeRulePriorityList :: Newtype RulePriorityList _
 
 
 -- | <p>Information about the priorities for the rules for a listener.</p>
@@ -955,53 +1103,64 @@ newtype RulePriorityPair = RulePriorityPair
   { "RuleArn" :: NullOrUndefined (RuleArn)
   , "Priority" :: NullOrUndefined (RulePriority)
   }
+derive instance newtypeRulePriorityPair :: Newtype RulePriorityPair _
 
 
 newtype Rules = Rules (Array Rule)
+derive instance newtypeRules :: Newtype Rules _
 
 
 -- | <p>The specified SSL policy does not exist.</p>
 newtype SSLPolicyNotFoundException = SSLPolicyNotFoundException 
   { 
   }
+derive instance newtypeSSLPolicyNotFoundException :: Newtype SSLPolicyNotFoundException _
 
 
 newtype SecurityGroupId = SecurityGroupId String
+derive instance newtypeSecurityGroupId :: Newtype SecurityGroupId _
 
 
 newtype SecurityGroups = SecurityGroups (Array SecurityGroupId)
+derive instance newtypeSecurityGroups :: Newtype SecurityGroups _
 
 
 newtype SetIpAddressTypeInput = SetIpAddressTypeInput 
   { "LoadBalancerArn" :: (LoadBalancerArn)
   , "IpAddressType" :: (IpAddressType)
   }
+derive instance newtypeSetIpAddressTypeInput :: Newtype SetIpAddressTypeInput _
 
 
 newtype SetIpAddressTypeOutput = SetIpAddressTypeOutput 
   { "IpAddressType" :: NullOrUndefined (IpAddressType)
   }
+derive instance newtypeSetIpAddressTypeOutput :: Newtype SetIpAddressTypeOutput _
 
 
 newtype SetRulePrioritiesInput = SetRulePrioritiesInput 
   { "RulePriorities" :: (RulePriorityList)
   }
+derive instance newtypeSetRulePrioritiesInput :: Newtype SetRulePrioritiesInput _
 
 
 newtype SetRulePrioritiesOutput = SetRulePrioritiesOutput 
   { "Rules" :: NullOrUndefined (Rules)
   }
+derive instance newtypeSetRulePrioritiesOutput :: Newtype SetRulePrioritiesOutput _
 
 
 newtype SetSecurityGroupsInput = SetSecurityGroupsInput 
   { "LoadBalancerArn" :: (LoadBalancerArn)
   , "SecurityGroups" :: (SecurityGroups)
   }
+derive instance newtypeSetSecurityGroupsInput :: Newtype SetSecurityGroupsInput _
 
 
 newtype SetSecurityGroupsOutput = SetSecurityGroupsOutput 
   { "SecurityGroupIds" :: NullOrUndefined (SecurityGroups)
   }
+derive instance newtypeSetSecurityGroupsOutput :: Newtype SetSecurityGroupsOutput _
 
 
 newtype SetSubnetsInput = SetSubnetsInput 
@@ -1009,14 +1168,17 @@ newtype SetSubnetsInput = SetSubnetsInput
   , "Subnets" :: (Subnets)
   , "SubnetMappings" :: NullOrUndefined (SubnetMappings)
   }
+derive instance newtypeSetSubnetsInput :: Newtype SetSubnetsInput _
 
 
 newtype SetSubnetsOutput = SetSubnetsOutput 
   { "AvailabilityZones" :: NullOrUndefined (AvailabilityZones)
   }
+derive instance newtypeSetSubnetsOutput :: Newtype SetSubnetsOutput _
 
 
 newtype SslPolicies = SslPolicies (Array SslPolicy)
+derive instance newtypeSslPolicies :: Newtype SslPolicies _
 
 
 -- | <p>Information about a policy used for SSL negotiation.</p>
@@ -1025,27 +1187,35 @@ newtype SslPolicy = SslPolicy
   , "Ciphers" :: NullOrUndefined (Ciphers)
   , "Name" :: NullOrUndefined (SslPolicyName)
   }
+derive instance newtypeSslPolicy :: Newtype SslPolicy _
 
 
 newtype SslPolicyName = SslPolicyName String
+derive instance newtypeSslPolicyName :: Newtype SslPolicyName _
 
 
 newtype SslPolicyNames = SslPolicyNames (Array SslPolicyName)
+derive instance newtypeSslPolicyNames :: Newtype SslPolicyNames _
 
 
 newtype SslProtocol = SslProtocol String
+derive instance newtypeSslProtocol :: Newtype SslProtocol _
 
 
 newtype SslProtocols = SslProtocols (Array SslProtocol)
+derive instance newtypeSslProtocols :: Newtype SslProtocols _
 
 
 newtype StateReason = StateReason String
+derive instance newtypeStateReason :: Newtype StateReason _
 
 
 newtype StringValue = StringValue String
+derive instance newtypeStringValue :: Newtype StringValue _
 
 
 newtype SubnetId = SubnetId String
+derive instance newtypeSubnetId :: Newtype SubnetId _
 
 
 -- | <p>Information about a subnet mapping.</p>
@@ -1053,18 +1223,22 @@ newtype SubnetMapping = SubnetMapping
   { "SubnetId" :: NullOrUndefined (SubnetId)
   , "AllocationId" :: NullOrUndefined (AllocationId)
   }
+derive instance newtypeSubnetMapping :: Newtype SubnetMapping _
 
 
 newtype SubnetMappings = SubnetMappings (Array SubnetMapping)
+derive instance newtypeSubnetMappings :: Newtype SubnetMappings _
 
 
 -- | <p>The specified subnet does not exist.</p>
 newtype SubnetNotFoundException = SubnetNotFoundException 
   { 
   }
+derive instance newtypeSubnetNotFoundException :: Newtype SubnetNotFoundException _
 
 
 newtype Subnets = Subnets (Array SubnetId)
+derive instance newtypeSubnets :: Newtype Subnets _
 
 
 -- | <p>Information about a tag.</p>
@@ -1072,6 +1246,7 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 -- | <p>The tags associated with a resource.</p>
@@ -1079,21 +1254,27 @@ newtype TagDescription = TagDescription
   { "ResourceArn" :: NullOrUndefined (ResourceArn)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeTagDescription :: Newtype TagDescription _
 
 
 newtype TagDescriptions = TagDescriptions (Array TagDescription)
+derive instance newtypeTagDescriptions :: Newtype TagDescriptions _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeys = TagKeys (Array TagKey)
+derive instance newtypeTagKeys :: Newtype TagKeys _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>Information about a target.</p>
@@ -1102,9 +1283,11 @@ newtype TargetDescription = TargetDescription
   , "Port" :: NullOrUndefined (Port)
   , "AvailabilityZone" :: NullOrUndefined (ZoneName)
   }
+derive instance newtypeTargetDescription :: Newtype TargetDescription _
 
 
 newtype TargetDescriptions = TargetDescriptions (Array TargetDescription)
+derive instance newtypeTargetDescriptions :: Newtype TargetDescriptions _
 
 
 -- | <p>Information about a target group.</p>
@@ -1125,18 +1308,22 @@ newtype TargetGroup = TargetGroup
   , "LoadBalancerArns" :: NullOrUndefined (LoadBalancerArns)
   , "TargetType" :: NullOrUndefined (TargetTypeEnum)
   }
+derive instance newtypeTargetGroup :: Newtype TargetGroup _
 
 
 newtype TargetGroupArn = TargetGroupArn String
+derive instance newtypeTargetGroupArn :: Newtype TargetGroupArn _
 
 
 newtype TargetGroupArns = TargetGroupArns (Array TargetGroupArn)
+derive instance newtypeTargetGroupArns :: Newtype TargetGroupArns _
 
 
 -- | <p>You've reached the limit on the number of load balancers per target group.</p>
 newtype TargetGroupAssociationLimitException = TargetGroupAssociationLimitException 
   { 
   }
+derive instance newtypeTargetGroupAssociationLimitException :: Newtype TargetGroupAssociationLimitException _
 
 
 -- | <p>Information about a target group attribute.</p>
@@ -1144,30 +1331,38 @@ newtype TargetGroupAttribute = TargetGroupAttribute
   { "Key" :: NullOrUndefined (TargetGroupAttributeKey)
   , "Value" :: NullOrUndefined (TargetGroupAttributeValue)
   }
+derive instance newtypeTargetGroupAttribute :: Newtype TargetGroupAttribute _
 
 
 newtype TargetGroupAttributeKey = TargetGroupAttributeKey String
+derive instance newtypeTargetGroupAttributeKey :: Newtype TargetGroupAttributeKey _
 
 
 newtype TargetGroupAttributeValue = TargetGroupAttributeValue String
+derive instance newtypeTargetGroupAttributeValue :: Newtype TargetGroupAttributeValue _
 
 
 newtype TargetGroupAttributes = TargetGroupAttributes (Array TargetGroupAttribute)
+derive instance newtypeTargetGroupAttributes :: Newtype TargetGroupAttributes _
 
 
 newtype TargetGroupName = TargetGroupName String
+derive instance newtypeTargetGroupName :: Newtype TargetGroupName _
 
 
 newtype TargetGroupNames = TargetGroupNames (Array TargetGroupName)
+derive instance newtypeTargetGroupNames :: Newtype TargetGroupNames _
 
 
 -- | <p>The specified target group does not exist.</p>
 newtype TargetGroupNotFoundException = TargetGroupNotFoundException 
   { 
   }
+derive instance newtypeTargetGroupNotFoundException :: Newtype TargetGroupNotFoundException _
 
 
 newtype TargetGroups = TargetGroups (Array TargetGroup)
+derive instance newtypeTargetGroups :: Newtype TargetGroups _
 
 
 -- | <p>Information about the current health of a target.</p>
@@ -1176,6 +1371,7 @@ newtype TargetHealth = TargetHealth
   , "Reason" :: NullOrUndefined (TargetHealthReasonEnum)
   , "Description" :: NullOrUndefined (Description)
   }
+derive instance newtypeTargetHealth :: Newtype TargetHealth _
 
 
 -- | <p>Information about the health of a target.</p>
@@ -1184,78 +1380,95 @@ newtype TargetHealthDescription = TargetHealthDescription
   , "HealthCheckPort" :: NullOrUndefined (HealthCheckPort)
   , "TargetHealth" :: NullOrUndefined (TargetHealth)
   }
+derive instance newtypeTargetHealthDescription :: Newtype TargetHealthDescription _
 
 
 newtype TargetHealthDescriptions = TargetHealthDescriptions (Array TargetHealthDescription)
+derive instance newtypeTargetHealthDescriptions :: Newtype TargetHealthDescriptions _
 
 
 newtype TargetHealthReasonEnum = TargetHealthReasonEnum String
+derive instance newtypeTargetHealthReasonEnum :: Newtype TargetHealthReasonEnum _
 
 
 newtype TargetHealthStateEnum = TargetHealthStateEnum String
+derive instance newtypeTargetHealthStateEnum :: Newtype TargetHealthStateEnum _
 
 
 newtype TargetId = TargetId String
+derive instance newtypeTargetId :: Newtype TargetId _
 
 
 newtype TargetTypeEnum = TargetTypeEnum String
+derive instance newtypeTargetTypeEnum :: Newtype TargetTypeEnum _
 
 
 -- | <p>You've reached the limit on the number of certificates per load balancer.</p>
 newtype TooManyCertificatesException = TooManyCertificatesException 
   { 
   }
+derive instance newtypeTooManyCertificatesException :: Newtype TooManyCertificatesException _
 
 
 -- | <p>You've reached the limit on the number of listeners per load balancer.</p>
 newtype TooManyListenersException = TooManyListenersException 
   { 
   }
+derive instance newtypeTooManyListenersException :: Newtype TooManyListenersException _
 
 
 -- | <p>You've reached the limit on the number of load balancers for your AWS account.</p>
 newtype TooManyLoadBalancersException = TooManyLoadBalancersException 
   { 
   }
+derive instance newtypeTooManyLoadBalancersException :: Newtype TooManyLoadBalancersException _
 
 
 -- | <p>You've reached the limit on the number of times a target can be registered with a load balancer.</p>
 newtype TooManyRegistrationsForTargetIdException = TooManyRegistrationsForTargetIdException 
   { 
   }
+derive instance newtypeTooManyRegistrationsForTargetIdException :: Newtype TooManyRegistrationsForTargetIdException _
 
 
 -- | <p>You've reached the limit on the number of rules per load balancer.</p>
 newtype TooManyRulesException = TooManyRulesException 
   { 
   }
+derive instance newtypeTooManyRulesException :: Newtype TooManyRulesException _
 
 
 -- | <p>You've reached the limit on the number of tags per load balancer.</p>
 newtype TooManyTagsException = TooManyTagsException 
   { 
   }
+derive instance newtypeTooManyTagsException :: Newtype TooManyTagsException _
 
 
 -- | <p>You've reached the limit on the number of target groups for your AWS account.</p>
 newtype TooManyTargetGroupsException = TooManyTargetGroupsException 
   { 
   }
+derive instance newtypeTooManyTargetGroupsException :: Newtype TooManyTargetGroupsException _
 
 
 -- | <p>You've reached the limit on the number of targets.</p>
 newtype TooManyTargetsException = TooManyTargetsException 
   { 
   }
+derive instance newtypeTooManyTargetsException :: Newtype TooManyTargetsException _
 
 
 -- | <p>The specified protocol is not supported.</p>
 newtype UnsupportedProtocolException = UnsupportedProtocolException 
   { 
   }
+derive instance newtypeUnsupportedProtocolException :: Newtype UnsupportedProtocolException _
 
 
 newtype VpcId = VpcId String
+derive instance newtypeVpcId :: Newtype VpcId _
 
 
 newtype ZoneName = ZoneName String
+derive instance newtypeZoneName :: Newtype ZoneName _

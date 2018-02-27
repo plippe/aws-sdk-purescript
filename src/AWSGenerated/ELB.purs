@@ -6,6 +6,7 @@ module AWS.ELB where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -165,27 +166,34 @@ newtype AccessLog = AccessLog
   , "EmitInterval" :: NullOrUndefined (AccessLogInterval)
   , "S3BucketPrefix" :: NullOrUndefined (AccessLogPrefix)
   }
+derive instance newtypeAccessLog :: Newtype AccessLog _
 
 
 newtype AccessLogEnabled = AccessLogEnabled Boolean
+derive instance newtypeAccessLogEnabled :: Newtype AccessLogEnabled _
 
 
 newtype AccessLogInterval = AccessLogInterval Int
+derive instance newtypeAccessLogInterval :: Newtype AccessLogInterval _
 
 
 newtype AccessLogPrefix = AccessLogPrefix String
+derive instance newtypeAccessLogPrefix :: Newtype AccessLogPrefix _
 
 
 newtype AccessPointName = AccessPointName String
+derive instance newtypeAccessPointName :: Newtype AccessPointName _
 
 
 -- | <p>The specified load balancer does not exist.</p>
 newtype AccessPointNotFoundException = AccessPointNotFoundException 
   { 
   }
+derive instance newtypeAccessPointNotFoundException :: Newtype AccessPointNotFoundException _
 
 
 newtype AccessPointPort = AccessPointPort Int
+derive instance newtypeAccessPointPort :: Newtype AccessPointPort _
 
 
 -- | <p>Contains the parameters for EnableAvailabilityZonesForLoadBalancer.</p>
@@ -193,12 +201,14 @@ newtype AddAvailabilityZonesInput = AddAvailabilityZonesInput
   { "LoadBalancerName" :: (AccessPointName)
   , "AvailabilityZones" :: (AvailabilityZones)
   }
+derive instance newtypeAddAvailabilityZonesInput :: Newtype AddAvailabilityZonesInput _
 
 
 -- | <p>Contains the output of EnableAvailabilityZonesForLoadBalancer.</p>
 newtype AddAvailabilityZonesOutput = AddAvailabilityZonesOutput 
   { "AvailabilityZones" :: NullOrUndefined (AvailabilityZones)
   }
+derive instance newtypeAddAvailabilityZonesOutput :: Newtype AddAvailabilityZonesOutput _
 
 
 -- | <p>Contains the parameters for AddTags.</p>
@@ -206,12 +216,14 @@ newtype AddTagsInput = AddTagsInput
   { "LoadBalancerNames" :: (LoadBalancerNames)
   , "Tags" :: (TagList)
   }
+derive instance newtypeAddTagsInput :: Newtype AddTagsInput _
 
 
 -- | <p>Contains the output of AddTags.</p>
 newtype AddTagsOutput = AddTagsOutput 
   { 
   }
+derive instance newtypeAddTagsOutput :: Newtype AddTagsOutput _
 
 
 -- | <p>This data type is reserved.</p>
@@ -219,18 +231,23 @@ newtype AdditionalAttribute = AdditionalAttribute
   { "Key" :: NullOrUndefined (AdditionalAttributeKey)
   , "Value" :: NullOrUndefined (AdditionalAttributeValue)
   }
+derive instance newtypeAdditionalAttribute :: Newtype AdditionalAttribute _
 
 
 newtype AdditionalAttributeKey = AdditionalAttributeKey String
+derive instance newtypeAdditionalAttributeKey :: Newtype AdditionalAttributeKey _
 
 
 newtype AdditionalAttributeValue = AdditionalAttributeValue String
+derive instance newtypeAdditionalAttributeValue :: Newtype AdditionalAttributeValue _
 
 
 newtype AdditionalAttributes = AdditionalAttributes (Array AdditionalAttribute)
+derive instance newtypeAdditionalAttributes :: Newtype AdditionalAttributes _
 
 
 newtype AppCookieStickinessPolicies = AppCookieStickinessPolicies (Array AppCookieStickinessPolicy)
+derive instance newtypeAppCookieStickinessPolicies :: Newtype AppCookieStickinessPolicies _
 
 
 -- | <p>Information about a policy for application-controlled session stickiness.</p>
@@ -238,6 +255,7 @@ newtype AppCookieStickinessPolicy = AppCookieStickinessPolicy
   { "PolicyName" :: NullOrUndefined (PolicyName)
   , "CookieName" :: NullOrUndefined (CookieName)
   }
+derive instance newtypeAppCookieStickinessPolicy :: Newtype AppCookieStickinessPolicy _
 
 
 -- | <p>Contains the parameters for ApplySecurityGroupsToLoadBalancer.</p>
@@ -245,12 +263,14 @@ newtype ApplySecurityGroupsToLoadBalancerInput = ApplySecurityGroupsToLoadBalanc
   { "LoadBalancerName" :: (AccessPointName)
   , "SecurityGroups" :: (SecurityGroups)
   }
+derive instance newtypeApplySecurityGroupsToLoadBalancerInput :: Newtype ApplySecurityGroupsToLoadBalancerInput _
 
 
 -- | <p>Contains the output of ApplySecurityGroupsToLoadBalancer.</p>
 newtype ApplySecurityGroupsToLoadBalancerOutput = ApplySecurityGroupsToLoadBalancerOutput 
   { "SecurityGroups" :: NullOrUndefined (SecurityGroups)
   }
+derive instance newtypeApplySecurityGroupsToLoadBalancerOutput :: Newtype ApplySecurityGroupsToLoadBalancerOutput _
 
 
 -- | <p>Contains the parameters for AttachLoaBalancerToSubnets.</p>
@@ -258,27 +278,34 @@ newtype AttachLoadBalancerToSubnetsInput = AttachLoadBalancerToSubnetsInput
   { "LoadBalancerName" :: (AccessPointName)
   , "Subnets" :: (Subnets)
   }
+derive instance newtypeAttachLoadBalancerToSubnetsInput :: Newtype AttachLoadBalancerToSubnetsInput _
 
 
 -- | <p>Contains the output of AttachLoadBalancerToSubnets.</p>
 newtype AttachLoadBalancerToSubnetsOutput = AttachLoadBalancerToSubnetsOutput 
   { "Subnets" :: NullOrUndefined (Subnets)
   }
+derive instance newtypeAttachLoadBalancerToSubnetsOutput :: Newtype AttachLoadBalancerToSubnetsOutput _
 
 
 newtype AttributeName = AttributeName String
+derive instance newtypeAttributeName :: Newtype AttributeName _
 
 
 newtype AttributeType = AttributeType String
+derive instance newtypeAttributeType :: Newtype AttributeType _
 
 
 newtype AttributeValue = AttributeValue String
+derive instance newtypeAttributeValue :: Newtype AttributeValue _
 
 
 newtype AvailabilityZone = AvailabilityZone String
+derive instance newtypeAvailabilityZone :: Newtype AvailabilityZone _
 
 
 newtype AvailabilityZones = AvailabilityZones (Array AvailabilityZone)
+derive instance newtypeAvailabilityZones :: Newtype AvailabilityZones _
 
 
 -- | <p>Information about the configuration of an EC2 instance.</p>
@@ -286,18 +313,22 @@ newtype BackendServerDescription = BackendServerDescription
   { "InstancePort" :: NullOrUndefined (InstancePort)
   , "PolicyNames" :: NullOrUndefined (PolicyNames)
   }
+derive instance newtypeBackendServerDescription :: Newtype BackendServerDescription _
 
 
 newtype BackendServerDescriptions = BackendServerDescriptions (Array BackendServerDescription)
+derive instance newtypeBackendServerDescriptions :: Newtype BackendServerDescriptions _
 
 
 newtype Cardinality = Cardinality String
+derive instance newtypeCardinality :: Newtype Cardinality _
 
 
 -- | <p>The specified ARN does not refer to a valid SSL certificate in AWS Identity and Access Management (IAM) or AWS Certificate Manager (ACM). Note that if you recently uploaded the certificate to IAM, this error might indicate that the certificate is not fully available yet.</p>
 newtype CertificateNotFoundException = CertificateNotFoundException 
   { 
   }
+derive instance newtypeCertificateNotFoundException :: Newtype CertificateNotFoundException _
 
 
 -- | <p>Contains the parameters for ConfigureHealthCheck.</p>
@@ -305,12 +336,14 @@ newtype ConfigureHealthCheckInput = ConfigureHealthCheckInput
   { "LoadBalancerName" :: (AccessPointName)
   , "HealthCheck" :: (HealthCheck)
   }
+derive instance newtypeConfigureHealthCheckInput :: Newtype ConfigureHealthCheckInput _
 
 
 -- | <p>Contains the output of ConfigureHealthCheck.</p>
 newtype ConfigureHealthCheckOutput = ConfigureHealthCheckOutput 
   { "HealthCheck" :: NullOrUndefined (HealthCheck)
   }
+derive instance newtypeConfigureHealthCheckOutput :: Newtype ConfigureHealthCheckOutput _
 
 
 -- | <p>Information about the <code>ConnectionDraining</code> attribute.</p>
@@ -318,24 +351,30 @@ newtype ConnectionDraining = ConnectionDraining
   { "Enabled" :: (ConnectionDrainingEnabled)
   , "Timeout" :: NullOrUndefined (ConnectionDrainingTimeout)
   }
+derive instance newtypeConnectionDraining :: Newtype ConnectionDraining _
 
 
 newtype ConnectionDrainingEnabled = ConnectionDrainingEnabled Boolean
+derive instance newtypeConnectionDrainingEnabled :: Newtype ConnectionDrainingEnabled _
 
 
 newtype ConnectionDrainingTimeout = ConnectionDrainingTimeout Int
+derive instance newtypeConnectionDrainingTimeout :: Newtype ConnectionDrainingTimeout _
 
 
 -- | <p>Information about the <code>ConnectionSettings</code> attribute.</p>
 newtype ConnectionSettings = ConnectionSettings 
   { "IdleTimeout" :: (IdleTimeout)
   }
+derive instance newtypeConnectionSettings :: Newtype ConnectionSettings _
 
 
 newtype CookieExpirationPeriod = CookieExpirationPeriod Number
+derive instance newtypeCookieExpirationPeriod :: Newtype CookieExpirationPeriod _
 
 
 newtype CookieName = CookieName String
+derive instance newtypeCookieName :: Newtype CookieName _
 
 
 -- | <p>Contains the parameters for CreateLoadBalancer.</p>
@@ -348,12 +387,14 @@ newtype CreateAccessPointInput = CreateAccessPointInput
   , "Scheme" :: NullOrUndefined (LoadBalancerScheme)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateAccessPointInput :: Newtype CreateAccessPointInput _
 
 
 -- | <p>Contains the output for CreateLoadBalancer.</p>
 newtype CreateAccessPointOutput = CreateAccessPointOutput 
   { "DNSName" :: NullOrUndefined (DNSName)
   }
+derive instance newtypeCreateAccessPointOutput :: Newtype CreateAccessPointOutput _
 
 
 -- | <p>Contains the parameters for CreateAppCookieStickinessPolicy.</p>
@@ -362,12 +403,14 @@ newtype CreateAppCookieStickinessPolicyInput = CreateAppCookieStickinessPolicyIn
   , "PolicyName" :: (PolicyName)
   , "CookieName" :: (CookieName)
   }
+derive instance newtypeCreateAppCookieStickinessPolicyInput :: Newtype CreateAppCookieStickinessPolicyInput _
 
 
 -- | <p>Contains the output for CreateAppCookieStickinessPolicy.</p>
 newtype CreateAppCookieStickinessPolicyOutput = CreateAppCookieStickinessPolicyOutput 
   { 
   }
+derive instance newtypeCreateAppCookieStickinessPolicyOutput :: Newtype CreateAppCookieStickinessPolicyOutput _
 
 
 -- | <p>Contains the parameters for CreateLBCookieStickinessPolicy.</p>
@@ -376,12 +419,14 @@ newtype CreateLBCookieStickinessPolicyInput = CreateLBCookieStickinessPolicyInpu
   , "PolicyName" :: (PolicyName)
   , "CookieExpirationPeriod" :: NullOrUndefined (CookieExpirationPeriod)
   }
+derive instance newtypeCreateLBCookieStickinessPolicyInput :: Newtype CreateLBCookieStickinessPolicyInput _
 
 
 -- | <p>Contains the output for CreateLBCookieStickinessPolicy.</p>
 newtype CreateLBCookieStickinessPolicyOutput = CreateLBCookieStickinessPolicyOutput 
   { 
   }
+derive instance newtypeCreateLBCookieStickinessPolicyOutput :: Newtype CreateLBCookieStickinessPolicyOutput _
 
 
 -- | <p>Contains the parameters for CreateLoadBalancerListeners.</p>
@@ -389,12 +434,14 @@ newtype CreateLoadBalancerListenerInput = CreateLoadBalancerListenerInput
   { "LoadBalancerName" :: (AccessPointName)
   , "Listeners" :: (Listeners)
   }
+derive instance newtypeCreateLoadBalancerListenerInput :: Newtype CreateLoadBalancerListenerInput _
 
 
 -- | <p>Contains the parameters for CreateLoadBalancerListener.</p>
 newtype CreateLoadBalancerListenerOutput = CreateLoadBalancerListenerOutput 
   { 
   }
+derive instance newtypeCreateLoadBalancerListenerOutput :: Newtype CreateLoadBalancerListenerOutput _
 
 
 -- | <p>Contains the parameters for CreateLoadBalancerPolicy.</p>
@@ -404,42 +451,51 @@ newtype CreateLoadBalancerPolicyInput = CreateLoadBalancerPolicyInput
   , "PolicyTypeName" :: (PolicyTypeName)
   , "PolicyAttributes" :: NullOrUndefined (PolicyAttributes)
   }
+derive instance newtypeCreateLoadBalancerPolicyInput :: Newtype CreateLoadBalancerPolicyInput _
 
 
 -- | <p>Contains the output of CreateLoadBalancerPolicy.</p>
 newtype CreateLoadBalancerPolicyOutput = CreateLoadBalancerPolicyOutput 
   { 
   }
+derive instance newtypeCreateLoadBalancerPolicyOutput :: Newtype CreateLoadBalancerPolicyOutput _
 
 
 newtype CreatedTime = CreatedTime Number
+derive instance newtypeCreatedTime :: Newtype CreatedTime _
 
 
 -- | <p>Information about the <code>CrossZoneLoadBalancing</code> attribute.</p>
 newtype CrossZoneLoadBalancing = CrossZoneLoadBalancing 
   { "Enabled" :: (CrossZoneLoadBalancingEnabled)
   }
+derive instance newtypeCrossZoneLoadBalancing :: Newtype CrossZoneLoadBalancing _
 
 
 newtype CrossZoneLoadBalancingEnabled = CrossZoneLoadBalancingEnabled Boolean
+derive instance newtypeCrossZoneLoadBalancingEnabled :: Newtype CrossZoneLoadBalancingEnabled _
 
 
 newtype DNSName = DNSName String
+derive instance newtypeDNSName :: Newtype DNSName _
 
 
 newtype DefaultValue = DefaultValue String
+derive instance newtypeDefaultValue :: Newtype DefaultValue _
 
 
 -- | <p>Contains the parameters for DeleteLoadBalancer.</p>
 newtype DeleteAccessPointInput = DeleteAccessPointInput 
   { "LoadBalancerName" :: (AccessPointName)
   }
+derive instance newtypeDeleteAccessPointInput :: Newtype DeleteAccessPointInput _
 
 
 -- | <p>Contains the output of DeleteLoadBalancer.</p>
 newtype DeleteAccessPointOutput = DeleteAccessPointOutput 
   { 
   }
+derive instance newtypeDeleteAccessPointOutput :: Newtype DeleteAccessPointOutput _
 
 
 -- | <p>Contains the parameters for DeleteLoadBalancerListeners.</p>
@@ -447,12 +503,14 @@ newtype DeleteLoadBalancerListenerInput = DeleteLoadBalancerListenerInput
   { "LoadBalancerName" :: (AccessPointName)
   , "LoadBalancerPorts" :: (Ports)
   }
+derive instance newtypeDeleteLoadBalancerListenerInput :: Newtype DeleteLoadBalancerListenerInput _
 
 
 -- | <p>Contains the output of DeleteLoadBalancerListeners.</p>
 newtype DeleteLoadBalancerListenerOutput = DeleteLoadBalancerListenerOutput 
   { 
   }
+derive instance newtypeDeleteLoadBalancerListenerOutput :: Newtype DeleteLoadBalancerListenerOutput _
 
 
 -- | <p>Contains the parameters for DeleteLoadBalancerPolicy.</p>
@@ -460,17 +518,20 @@ newtype DeleteLoadBalancerPolicyInput = DeleteLoadBalancerPolicyInput
   { "LoadBalancerName" :: (AccessPointName)
   , "PolicyName" :: (PolicyName)
   }
+derive instance newtypeDeleteLoadBalancerPolicyInput :: Newtype DeleteLoadBalancerPolicyInput _
 
 
 -- | <p>Contains the output of DeleteLoadBalancerPolicy.</p>
 newtype DeleteLoadBalancerPolicyOutput = DeleteLoadBalancerPolicyOutput 
   { 
   }
+derive instance newtypeDeleteLoadBalancerPolicyOutput :: Newtype DeleteLoadBalancerPolicyOutput _
 
 
 newtype DependencyThrottleException = DependencyThrottleException 
   { 
   }
+derive instance newtypeDependencyThrottleException :: Newtype DependencyThrottleException _
 
 
 -- | <p>Contains the parameters for DeregisterInstancesFromLoadBalancer.</p>
@@ -478,12 +539,14 @@ newtype DeregisterEndPointsInput = DeregisterEndPointsInput
   { "LoadBalancerName" :: (AccessPointName)
   , "Instances" :: (Instances)
   }
+derive instance newtypeDeregisterEndPointsInput :: Newtype DeregisterEndPointsInput _
 
 
 -- | <p>Contains the output of DeregisterInstancesFromLoadBalancer.</p>
 newtype DeregisterEndPointsOutput = DeregisterEndPointsOutput 
   { "Instances" :: NullOrUndefined (Instances)
   }
+derive instance newtypeDeregisterEndPointsOutput :: Newtype DeregisterEndPointsOutput _
 
 
 -- | <p>Contains the parameters for DescribeLoadBalancers.</p>
@@ -492,6 +555,7 @@ newtype DescribeAccessPointsInput = DescribeAccessPointsInput
   , "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeAccessPointsInput :: Newtype DescribeAccessPointsInput _
 
 
 -- | <p>Contains the parameters for DescribeLoadBalancers.</p>
@@ -499,18 +563,21 @@ newtype DescribeAccessPointsOutput = DescribeAccessPointsOutput
   { "LoadBalancerDescriptions" :: NullOrUndefined (LoadBalancerDescriptions)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeAccessPointsOutput :: Newtype DescribeAccessPointsOutput _
 
 
 newtype DescribeAccountLimitsInput = DescribeAccountLimitsInput 
   { "Marker" :: NullOrUndefined (Marker)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeAccountLimitsInput :: Newtype DescribeAccountLimitsInput _
 
 
 newtype DescribeAccountLimitsOutput = DescribeAccountLimitsOutput 
   { "Limits" :: NullOrUndefined (Limits)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeAccountLimitsOutput :: Newtype DescribeAccountLimitsOutput _
 
 
 -- | <p>Contains the parameters for DescribeInstanceHealth.</p>
@@ -518,24 +585,28 @@ newtype DescribeEndPointStateInput = DescribeEndPointStateInput
   { "LoadBalancerName" :: (AccessPointName)
   , "Instances" :: NullOrUndefined (Instances)
   }
+derive instance newtypeDescribeEndPointStateInput :: Newtype DescribeEndPointStateInput _
 
 
 -- | <p>Contains the output for DescribeInstanceHealth.</p>
 newtype DescribeEndPointStateOutput = DescribeEndPointStateOutput 
   { "InstanceStates" :: NullOrUndefined (InstanceStates)
   }
+derive instance newtypeDescribeEndPointStateOutput :: Newtype DescribeEndPointStateOutput _
 
 
 -- | <p>Contains the parameters for DescribeLoadBalancerAttributes.</p>
 newtype DescribeLoadBalancerAttributesInput = DescribeLoadBalancerAttributesInput 
   { "LoadBalancerName" :: (AccessPointName)
   }
+derive instance newtypeDescribeLoadBalancerAttributesInput :: Newtype DescribeLoadBalancerAttributesInput _
 
 
 -- | <p>Contains the output of DescribeLoadBalancerAttributes.</p>
 newtype DescribeLoadBalancerAttributesOutput = DescribeLoadBalancerAttributesOutput 
   { "LoadBalancerAttributes" :: NullOrUndefined (LoadBalancerAttributes)
   }
+derive instance newtypeDescribeLoadBalancerAttributesOutput :: Newtype DescribeLoadBalancerAttributesOutput _
 
 
 -- | <p>Contains the parameters for DescribeLoadBalancerPolicies.</p>
@@ -543,39 +614,46 @@ newtype DescribeLoadBalancerPoliciesInput = DescribeLoadBalancerPoliciesInput
   { "LoadBalancerName" :: NullOrUndefined (AccessPointName)
   , "PolicyNames" :: NullOrUndefined (PolicyNames)
   }
+derive instance newtypeDescribeLoadBalancerPoliciesInput :: Newtype DescribeLoadBalancerPoliciesInput _
 
 
 -- | <p>Contains the output of DescribeLoadBalancerPolicies.</p>
 newtype DescribeLoadBalancerPoliciesOutput = DescribeLoadBalancerPoliciesOutput 
   { "PolicyDescriptions" :: NullOrUndefined (PolicyDescriptions)
   }
+derive instance newtypeDescribeLoadBalancerPoliciesOutput :: Newtype DescribeLoadBalancerPoliciesOutput _
 
 
 -- | <p>Contains the parameters for DescribeLoadBalancerPolicyTypes.</p>
 newtype DescribeLoadBalancerPolicyTypesInput = DescribeLoadBalancerPolicyTypesInput 
   { "PolicyTypeNames" :: NullOrUndefined (PolicyTypeNames)
   }
+derive instance newtypeDescribeLoadBalancerPolicyTypesInput :: Newtype DescribeLoadBalancerPolicyTypesInput _
 
 
 -- | <p>Contains the output of DescribeLoadBalancerPolicyTypes.</p>
 newtype DescribeLoadBalancerPolicyTypesOutput = DescribeLoadBalancerPolicyTypesOutput 
   { "PolicyTypeDescriptions" :: NullOrUndefined (PolicyTypeDescriptions)
   }
+derive instance newtypeDescribeLoadBalancerPolicyTypesOutput :: Newtype DescribeLoadBalancerPolicyTypesOutput _
 
 
 -- | <p>Contains the parameters for DescribeTags.</p>
 newtype DescribeTagsInput = DescribeTagsInput 
   { "LoadBalancerNames" :: (LoadBalancerNamesMax20)
   }
+derive instance newtypeDescribeTagsInput :: Newtype DescribeTagsInput _
 
 
 -- | <p>Contains the output for DescribeTags.</p>
 newtype DescribeTagsOutput = DescribeTagsOutput 
   { "TagDescriptions" :: NullOrUndefined (TagDescriptions)
   }
+derive instance newtypeDescribeTagsOutput :: Newtype DescribeTagsOutput _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 -- | <p>Contains the parameters for DetachLoadBalancerFromSubnets.</p>
@@ -583,39 +661,46 @@ newtype DetachLoadBalancerFromSubnetsInput = DetachLoadBalancerFromSubnetsInput
   { "LoadBalancerName" :: (AccessPointName)
   , "Subnets" :: (Subnets)
   }
+derive instance newtypeDetachLoadBalancerFromSubnetsInput :: Newtype DetachLoadBalancerFromSubnetsInput _
 
 
 -- | <p>Contains the output of DetachLoadBalancerFromSubnets.</p>
 newtype DetachLoadBalancerFromSubnetsOutput = DetachLoadBalancerFromSubnetsOutput 
   { "Subnets" :: NullOrUndefined (Subnets)
   }
+derive instance newtypeDetachLoadBalancerFromSubnetsOutput :: Newtype DetachLoadBalancerFromSubnetsOutput _
 
 
 -- | <p>The specified load balancer name already exists for this account.</p>
 newtype DuplicateAccessPointNameException = DuplicateAccessPointNameException 
   { 
   }
+derive instance newtypeDuplicateAccessPointNameException :: Newtype DuplicateAccessPointNameException _
 
 
 -- | <p>A listener already exists for the specified load balancer name and port, but with a different instance port, protocol, or SSL certificate.</p>
 newtype DuplicateListenerException = DuplicateListenerException 
   { 
   }
+derive instance newtypeDuplicateListenerException :: Newtype DuplicateListenerException _
 
 
 -- | <p>A policy with the specified name already exists for this load balancer.</p>
 newtype DuplicatePolicyNameException = DuplicatePolicyNameException 
   { 
   }
+derive instance newtypeDuplicatePolicyNameException :: Newtype DuplicatePolicyNameException _
 
 
 -- | <p>A tag key was specified more than once.</p>
 newtype DuplicateTagKeysException = DuplicateTagKeysException 
   { 
   }
+derive instance newtypeDuplicateTagKeysException :: Newtype DuplicateTagKeysException _
 
 
 newtype EndPointPort = EndPointPort Int
+derive instance newtypeEndPointPort :: Newtype EndPointPort _
 
 
 -- | <p>Information about a health check.</p>
@@ -626,33 +711,42 @@ newtype HealthCheck = HealthCheck
   , "UnhealthyThreshold" :: (UnhealthyThreshold)
   , "HealthyThreshold" :: (HealthyThreshold)
   }
+derive instance newtypeHealthCheck :: Newtype HealthCheck _
 
 
 newtype HealthCheckInterval = HealthCheckInterval Int
+derive instance newtypeHealthCheckInterval :: Newtype HealthCheckInterval _
 
 
 newtype HealthCheckTarget = HealthCheckTarget String
+derive instance newtypeHealthCheckTarget :: Newtype HealthCheckTarget _
 
 
 newtype HealthCheckTimeout = HealthCheckTimeout Int
+derive instance newtypeHealthCheckTimeout :: Newtype HealthCheckTimeout _
 
 
 newtype HealthyThreshold = HealthyThreshold Int
+derive instance newtypeHealthyThreshold :: Newtype HealthyThreshold _
 
 
 newtype IdleTimeout = IdleTimeout Int
+derive instance newtypeIdleTimeout :: Newtype IdleTimeout _
 
 
 -- | <p>The ID of an EC2 instance.</p>
 newtype Instance = Instance 
   { "InstanceId" :: NullOrUndefined (InstanceId)
   }
+derive instance newtypeInstance :: Newtype Instance _
 
 
 newtype InstanceId = InstanceId String
+derive instance newtypeInstanceId :: Newtype InstanceId _
 
 
 newtype InstancePort = InstancePort Int
+derive instance newtypeInstancePort :: Newtype InstancePort _
 
 
 -- | <p>Information about the state of an EC2 instance.</p>
@@ -662,45 +756,54 @@ newtype InstanceState = InstanceState
   , "ReasonCode" :: NullOrUndefined (ReasonCode)
   , "Description" :: NullOrUndefined (Description)
   }
+derive instance newtypeInstanceState :: Newtype InstanceState _
 
 
 newtype InstanceStates = InstanceStates (Array InstanceState)
+derive instance newtypeInstanceStates :: Newtype InstanceStates _
 
 
 newtype Instances = Instances (Array Instance)
+derive instance newtypeInstances :: Newtype Instances _
 
 
 -- | <p>The requested configuration change is not valid.</p>
 newtype InvalidConfigurationRequestException = InvalidConfigurationRequestException 
   { 
   }
+derive instance newtypeInvalidConfigurationRequestException :: Newtype InvalidConfigurationRequestException _
 
 
 -- | <p>The specified endpoint is not valid.</p>
 newtype InvalidEndPointException = InvalidEndPointException 
   { 
   }
+derive instance newtypeInvalidEndPointException :: Newtype InvalidEndPointException _
 
 
 -- | <p>The specified value for the schema is not valid. You can only specify a scheme for load balancers in a VPC.</p>
 newtype InvalidSchemeException = InvalidSchemeException 
   { 
   }
+derive instance newtypeInvalidSchemeException :: Newtype InvalidSchemeException _
 
 
 -- | <p>One or more of the specified security groups do not exist.</p>
 newtype InvalidSecurityGroupException = InvalidSecurityGroupException 
   { 
   }
+derive instance newtypeInvalidSecurityGroupException :: Newtype InvalidSecurityGroupException _
 
 
 -- | <p>The specified VPC has no associated Internet gateway.</p>
 newtype InvalidSubnetException = InvalidSubnetException 
   { 
   }
+derive instance newtypeInvalidSubnetException :: Newtype InvalidSubnetException _
 
 
 newtype LBCookieStickinessPolicies = LBCookieStickinessPolicies (Array LBCookieStickinessPolicy)
+derive instance newtypeLBCookieStickinessPolicies :: Newtype LBCookieStickinessPolicies _
 
 
 -- | <p>Information about a policy for duration-based session stickiness.</p>
@@ -708,6 +811,7 @@ newtype LBCookieStickinessPolicy = LBCookieStickinessPolicy
   { "PolicyName" :: NullOrUndefined (PolicyName)
   , "CookieExpirationPeriod" :: NullOrUndefined (CookieExpirationPeriod)
   }
+derive instance newtypeLBCookieStickinessPolicy :: Newtype LBCookieStickinessPolicy _
 
 
 -- | <p>Information about an Elastic Load Balancing resource limit for your AWS account.</p>
@@ -715,9 +819,11 @@ newtype Limit = Limit
   { "Name" :: NullOrUndefined (Name)
   , "Max" :: NullOrUndefined (Max)
   }
+derive instance newtypeLimit :: Newtype Limit _
 
 
 newtype Limits = Limits (Array Limit)
+derive instance newtypeLimits :: Newtype Limits _
 
 
 -- | <p>Information about a listener.</p> <p>For information about the protocols and the ports supported by Elastic Load Balancing, see <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html">Listeners for Your Classic Load Balancer</a> in the <i>Classic Load Balancer Guide</i>.</p>
@@ -728,6 +834,7 @@ newtype Listener = Listener
   , "InstancePort" :: (InstancePort)
   , "SSLCertificateId" :: NullOrUndefined (SSLCertificateId)
   }
+derive instance newtypeListener :: Newtype Listener _
 
 
 -- | <p>The policies enabled for a listener.</p>
@@ -735,24 +842,29 @@ newtype ListenerDescription = ListenerDescription
   { "Listener" :: NullOrUndefined (Listener)
   , "PolicyNames" :: NullOrUndefined (PolicyNames)
   }
+derive instance newtypeListenerDescription :: Newtype ListenerDescription _
 
 
 newtype ListenerDescriptions = ListenerDescriptions (Array ListenerDescription)
+derive instance newtypeListenerDescriptions :: Newtype ListenerDescriptions _
 
 
 -- | <p>The load balancer does not have a listener configured at the specified port.</p>
 newtype ListenerNotFoundException = ListenerNotFoundException 
   { 
   }
+derive instance newtypeListenerNotFoundException :: Newtype ListenerNotFoundException _
 
 
 newtype Listeners = Listeners (Array Listener)
+derive instance newtypeListeners :: Newtype Listeners _
 
 
 -- | <p>The specified load balancer attribute does not exist.</p>
 newtype LoadBalancerAttributeNotFoundException = LoadBalancerAttributeNotFoundException 
   { 
   }
+derive instance newtypeLoadBalancerAttributeNotFoundException :: Newtype LoadBalancerAttributeNotFoundException _
 
 
 -- | <p>The attributes for a load balancer.</p>
@@ -763,6 +875,7 @@ newtype LoadBalancerAttributes = LoadBalancerAttributes
   , "ConnectionSettings" :: NullOrUndefined (ConnectionSettings)
   , "AdditionalAttributes" :: NullOrUndefined (AdditionalAttributes)
   }
+derive instance newtypeLoadBalancerAttributes :: Newtype LoadBalancerAttributes _
 
 
 -- | <p>Information about a load balancer.</p>
@@ -784,24 +897,31 @@ newtype LoadBalancerDescription = LoadBalancerDescription
   , "CreatedTime" :: NullOrUndefined (CreatedTime)
   , "Scheme" :: NullOrUndefined (LoadBalancerScheme)
   }
+derive instance newtypeLoadBalancerDescription :: Newtype LoadBalancerDescription _
 
 
 newtype LoadBalancerDescriptions = LoadBalancerDescriptions (Array LoadBalancerDescription)
+derive instance newtypeLoadBalancerDescriptions :: Newtype LoadBalancerDescriptions _
 
 
 newtype LoadBalancerNames = LoadBalancerNames (Array AccessPointName)
+derive instance newtypeLoadBalancerNames :: Newtype LoadBalancerNames _
 
 
 newtype LoadBalancerNamesMax20 = LoadBalancerNamesMax20 (Array AccessPointName)
+derive instance newtypeLoadBalancerNamesMax20 :: Newtype LoadBalancerNamesMax20 _
 
 
 newtype LoadBalancerScheme = LoadBalancerScheme String
+derive instance newtypeLoadBalancerScheme :: Newtype LoadBalancerScheme _
 
 
 newtype Marker = Marker String
+derive instance newtypeMarker :: Newtype Marker _
 
 
 newtype Max = Max String
+derive instance newtypeMax :: Newtype Max _
 
 
 -- | <p>Contains the parameters for ModifyLoadBalancerAttributes.</p>
@@ -809,6 +929,7 @@ newtype ModifyLoadBalancerAttributesInput = ModifyLoadBalancerAttributesInput
   { "LoadBalancerName" :: (AccessPointName)
   , "LoadBalancerAttributes" :: (LoadBalancerAttributes)
   }
+derive instance newtypeModifyLoadBalancerAttributesInput :: Newtype ModifyLoadBalancerAttributesInput _
 
 
 -- | <p>Contains the output of ModifyLoadBalancerAttributes.</p>
@@ -816,18 +937,22 @@ newtype ModifyLoadBalancerAttributesOutput = ModifyLoadBalancerAttributesOutput
   { "LoadBalancerName" :: NullOrUndefined (AccessPointName)
   , "LoadBalancerAttributes" :: NullOrUndefined (LoadBalancerAttributes)
   }
+derive instance newtypeModifyLoadBalancerAttributesOutput :: Newtype ModifyLoadBalancerAttributesOutput _
 
 
 newtype Name = Name String
+derive instance newtypeName :: Newtype Name _
 
 
 -- | <p>This operation is not allowed.</p>
 newtype OperationNotPermittedException = OperationNotPermittedException 
   { 
   }
+derive instance newtypeOperationNotPermittedException :: Newtype OperationNotPermittedException _
 
 
 newtype PageSize = PageSize Int
+derive instance newtypePageSize :: Newtype PageSize _
 
 
 -- | <p>The policies for a load balancer.</p>
@@ -836,6 +961,7 @@ newtype Policies = Policies
   , "LBCookieStickinessPolicies" :: NullOrUndefined (LBCookieStickinessPolicies)
   , "OtherPolicies" :: NullOrUndefined (PolicyNames)
   }
+derive instance newtypePolicies :: Newtype Policies _
 
 
 -- | <p>Information about a policy attribute.</p>
@@ -843,6 +969,7 @@ newtype PolicyAttribute = PolicyAttribute
   { "AttributeName" :: NullOrUndefined (AttributeName)
   , "AttributeValue" :: NullOrUndefined (AttributeValue)
   }
+derive instance newtypePolicyAttribute :: Newtype PolicyAttribute _
 
 
 -- | <p>Information about a policy attribute.</p>
@@ -850,9 +977,11 @@ newtype PolicyAttributeDescription = PolicyAttributeDescription
   { "AttributeName" :: NullOrUndefined (AttributeName)
   , "AttributeValue" :: NullOrUndefined (AttributeValue)
   }
+derive instance newtypePolicyAttributeDescription :: Newtype PolicyAttributeDescription _
 
 
 newtype PolicyAttributeDescriptions = PolicyAttributeDescriptions (Array PolicyAttributeDescription)
+derive instance newtypePolicyAttributeDescriptions :: Newtype PolicyAttributeDescriptions _
 
 
 -- | <p>Information about a policy attribute type.</p>
@@ -863,12 +992,15 @@ newtype PolicyAttributeTypeDescription = PolicyAttributeTypeDescription
   , "DefaultValue" :: NullOrUndefined (DefaultValue)
   , "Cardinality" :: NullOrUndefined (Cardinality)
   }
+derive instance newtypePolicyAttributeTypeDescription :: Newtype PolicyAttributeTypeDescription _
 
 
 newtype PolicyAttributeTypeDescriptions = PolicyAttributeTypeDescriptions (Array PolicyAttributeTypeDescription)
+derive instance newtypePolicyAttributeTypeDescriptions :: Newtype PolicyAttributeTypeDescriptions _
 
 
 newtype PolicyAttributes = PolicyAttributes (Array PolicyAttribute)
+derive instance newtypePolicyAttributes :: Newtype PolicyAttributes _
 
 
 -- | <p>Information about a policy.</p>
@@ -877,21 +1009,26 @@ newtype PolicyDescription = PolicyDescription
   , "PolicyTypeName" :: NullOrUndefined (PolicyTypeName)
   , "PolicyAttributeDescriptions" :: NullOrUndefined (PolicyAttributeDescriptions)
   }
+derive instance newtypePolicyDescription :: Newtype PolicyDescription _
 
 
 newtype PolicyDescriptions = PolicyDescriptions (Array PolicyDescription)
+derive instance newtypePolicyDescriptions :: Newtype PolicyDescriptions _
 
 
 newtype PolicyName = PolicyName String
+derive instance newtypePolicyName :: Newtype PolicyName _
 
 
 newtype PolicyNames = PolicyNames (Array PolicyName)
+derive instance newtypePolicyNames :: Newtype PolicyNames _
 
 
 -- | <p>One or more of the specified policies do not exist.</p>
 newtype PolicyNotFoundException = PolicyNotFoundException 
   { 
   }
+derive instance newtypePolicyNotFoundException :: Newtype PolicyNotFoundException _
 
 
 -- | <p>Information about a policy type.</p>
@@ -900,30 +1037,38 @@ newtype PolicyTypeDescription = PolicyTypeDescription
   , "Description" :: NullOrUndefined (Description)
   , "PolicyAttributeTypeDescriptions" :: NullOrUndefined (PolicyAttributeTypeDescriptions)
   }
+derive instance newtypePolicyTypeDescription :: Newtype PolicyTypeDescription _
 
 
 newtype PolicyTypeDescriptions = PolicyTypeDescriptions (Array PolicyTypeDescription)
+derive instance newtypePolicyTypeDescriptions :: Newtype PolicyTypeDescriptions _
 
 
 newtype PolicyTypeName = PolicyTypeName String
+derive instance newtypePolicyTypeName :: Newtype PolicyTypeName _
 
 
 newtype PolicyTypeNames = PolicyTypeNames (Array PolicyTypeName)
+derive instance newtypePolicyTypeNames :: Newtype PolicyTypeNames _
 
 
 -- | <p>One or more of the specified policy types do not exist.</p>
 newtype PolicyTypeNotFoundException = PolicyTypeNotFoundException 
   { 
   }
+derive instance newtypePolicyTypeNotFoundException :: Newtype PolicyTypeNotFoundException _
 
 
 newtype Ports = Ports (Array AccessPointPort)
+derive instance newtypePorts :: Newtype Ports _
 
 
 newtype Protocol = Protocol String
+derive instance newtypeProtocol :: Newtype Protocol _
 
 
 newtype ReasonCode = ReasonCode String
+derive instance newtypeReasonCode :: Newtype ReasonCode _
 
 
 -- | <p>Contains the parameters for RegisterInstancesWithLoadBalancer.</p>
@@ -931,12 +1076,14 @@ newtype RegisterEndPointsInput = RegisterEndPointsInput
   { "LoadBalancerName" :: (AccessPointName)
   , "Instances" :: (Instances)
   }
+derive instance newtypeRegisterEndPointsInput :: Newtype RegisterEndPointsInput _
 
 
 -- | <p>Contains the output of RegisterInstancesWithLoadBalancer.</p>
 newtype RegisterEndPointsOutput = RegisterEndPointsOutput 
   { "Instances" :: NullOrUndefined (Instances)
   }
+derive instance newtypeRegisterEndPointsOutput :: Newtype RegisterEndPointsOutput _
 
 
 -- | <p>Contains the parameters for DisableAvailabilityZonesForLoadBalancer.</p>
@@ -944,12 +1091,14 @@ newtype RemoveAvailabilityZonesInput = RemoveAvailabilityZonesInput
   { "LoadBalancerName" :: (AccessPointName)
   , "AvailabilityZones" :: (AvailabilityZones)
   }
+derive instance newtypeRemoveAvailabilityZonesInput :: Newtype RemoveAvailabilityZonesInput _
 
 
 -- | <p>Contains the output for DisableAvailabilityZonesForLoadBalancer.</p>
 newtype RemoveAvailabilityZonesOutput = RemoveAvailabilityZonesOutput 
   { "AvailabilityZones" :: NullOrUndefined (AvailabilityZones)
   }
+derive instance newtypeRemoveAvailabilityZonesOutput :: Newtype RemoveAvailabilityZonesOutput _
 
 
 -- | <p>Contains the parameters for RemoveTags.</p>
@@ -957,30 +1106,38 @@ newtype RemoveTagsInput = RemoveTagsInput
   { "LoadBalancerNames" :: (LoadBalancerNames)
   , "Tags" :: (TagKeyList)
   }
+derive instance newtypeRemoveTagsInput :: Newtype RemoveTagsInput _
 
 
 -- | <p>Contains the output of RemoveTags.</p>
 newtype RemoveTagsOutput = RemoveTagsOutput 
   { 
   }
+derive instance newtypeRemoveTagsOutput :: Newtype RemoveTagsOutput _
 
 
 newtype S3BucketName = S3BucketName String
+derive instance newtypeS3BucketName :: Newtype S3BucketName _
 
 
 newtype SSLCertificateId = SSLCertificateId String
+derive instance newtypeSSLCertificateId :: Newtype SSLCertificateId _
 
 
 newtype SecurityGroupId = SecurityGroupId String
+derive instance newtypeSecurityGroupId :: Newtype SecurityGroupId _
 
 
 newtype SecurityGroupName = SecurityGroupName String
+derive instance newtypeSecurityGroupName :: Newtype SecurityGroupName _
 
 
 newtype SecurityGroupOwnerAlias = SecurityGroupOwnerAlias String
+derive instance newtypeSecurityGroupOwnerAlias :: Newtype SecurityGroupOwnerAlias _
 
 
 newtype SecurityGroups = SecurityGroups (Array SecurityGroupId)
+derive instance newtypeSecurityGroups :: Newtype SecurityGroups _
 
 
 -- | <p>Contains the parameters for SetLoadBalancerListenerSSLCertificate.</p>
@@ -989,12 +1146,14 @@ newtype SetLoadBalancerListenerSSLCertificateInput = SetLoadBalancerListenerSSLC
   , "LoadBalancerPort" :: (AccessPointPort)
   , "SSLCertificateId" :: (SSLCertificateId)
   }
+derive instance newtypeSetLoadBalancerListenerSSLCertificateInput :: Newtype SetLoadBalancerListenerSSLCertificateInput _
 
 
 -- | <p>Contains the output of SetLoadBalancerListenerSSLCertificate.</p>
 newtype SetLoadBalancerListenerSSLCertificateOutput = SetLoadBalancerListenerSSLCertificateOutput 
   { 
   }
+derive instance newtypeSetLoadBalancerListenerSSLCertificateOutput :: Newtype SetLoadBalancerListenerSSLCertificateOutput _
 
 
 -- | <p>Contains the parameters for SetLoadBalancerPoliciesForBackendServer.</p>
@@ -1003,12 +1162,14 @@ newtype SetLoadBalancerPoliciesForBackendServerInput = SetLoadBalancerPoliciesFo
   , "InstancePort" :: (EndPointPort)
   , "PolicyNames" :: (PolicyNames)
   }
+derive instance newtypeSetLoadBalancerPoliciesForBackendServerInput :: Newtype SetLoadBalancerPoliciesForBackendServerInput _
 
 
 -- | <p>Contains the output of SetLoadBalancerPoliciesForBackendServer.</p>
 newtype SetLoadBalancerPoliciesForBackendServerOutput = SetLoadBalancerPoliciesForBackendServerOutput 
   { 
   }
+derive instance newtypeSetLoadBalancerPoliciesForBackendServerOutput :: Newtype SetLoadBalancerPoliciesForBackendServerOutput _
 
 
 -- | <p>Contains the parameters for SetLoadBalancePoliciesOfListener.</p>
@@ -1017,12 +1178,14 @@ newtype SetLoadBalancerPoliciesOfListenerInput = SetLoadBalancerPoliciesOfListen
   , "LoadBalancerPort" :: (AccessPointPort)
   , "PolicyNames" :: (PolicyNames)
   }
+derive instance newtypeSetLoadBalancerPoliciesOfListenerInput :: Newtype SetLoadBalancerPoliciesOfListenerInput _
 
 
 -- | <p>Contains the output of SetLoadBalancePoliciesOfListener.</p>
 newtype SetLoadBalancerPoliciesOfListenerOutput = SetLoadBalancerPoliciesOfListenerOutput 
   { 
   }
+derive instance newtypeSetLoadBalancerPoliciesOfListenerOutput :: Newtype SetLoadBalancerPoliciesOfListenerOutput _
 
 
 -- | <p>Information about a source security group.</p>
@@ -1030,21 +1193,26 @@ newtype SourceSecurityGroup = SourceSecurityGroup
   { "OwnerAlias" :: NullOrUndefined (SecurityGroupOwnerAlias)
   , "GroupName" :: NullOrUndefined (SecurityGroupName)
   }
+derive instance newtypeSourceSecurityGroup :: Newtype SourceSecurityGroup _
 
 
 newtype State = State String
+derive instance newtypeState :: Newtype State _
 
 
 newtype SubnetId = SubnetId String
+derive instance newtypeSubnetId :: Newtype SubnetId _
 
 
 -- | <p>One or more of the specified subnets do not exist.</p>
 newtype SubnetNotFoundException = SubnetNotFoundException 
   { 
   }
+derive instance newtypeSubnetNotFoundException :: Newtype SubnetNotFoundException _
 
 
 newtype Subnets = Subnets (Array SubnetId)
+derive instance newtypeSubnets :: Newtype Subnets _
 
 
 -- | <p>Information about a tag.</p>
@@ -1052,6 +1220,7 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 -- | <p>The tags associated with a load balancer.</p>
@@ -1059,54 +1228,67 @@ newtype TagDescription = TagDescription
   { "LoadBalancerName" :: NullOrUndefined (AccessPointName)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeTagDescription :: Newtype TagDescription _
 
 
 newtype TagDescriptions = TagDescriptions (Array TagDescription)
+derive instance newtypeTagDescriptions :: Newtype TagDescriptions _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKeyOnly)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 -- | <p>The key of a tag.</p>
 newtype TagKeyOnly = TagKeyOnly 
   { "Key" :: NullOrUndefined (TagKey)
   }
+derive instance newtypeTagKeyOnly :: Newtype TagKeyOnly _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>The quota for the number of load balancers has been reached.</p>
 newtype TooManyAccessPointsException = TooManyAccessPointsException 
   { 
   }
+derive instance newtypeTooManyAccessPointsException :: Newtype TooManyAccessPointsException _
 
 
 -- | <p>The quota for the number of policies for this load balancer has been reached.</p>
 newtype TooManyPoliciesException = TooManyPoliciesException 
   { 
   }
+derive instance newtypeTooManyPoliciesException :: Newtype TooManyPoliciesException _
 
 
 -- | <p>The quota for the number of tags that can be assigned to a load balancer has been reached.</p>
 newtype TooManyTagsException = TooManyTagsException 
   { 
   }
+derive instance newtypeTooManyTagsException :: Newtype TooManyTagsException _
 
 
 newtype UnhealthyThreshold = UnhealthyThreshold Int
+derive instance newtypeUnhealthyThreshold :: Newtype UnhealthyThreshold _
 
 
 -- | <p>The specified protocol or signature version is not supported.</p>
 newtype UnsupportedProtocolException = UnsupportedProtocolException 
   { 
   }
+derive instance newtypeUnsupportedProtocolException :: Newtype UnsupportedProtocolException _
 
 
 newtype VPCId = VPCId String
+derive instance newtypeVPCId :: Newtype VPCId _

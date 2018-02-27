@@ -6,6 +6,7 @@ module AWS.MarketplaceCommerceAnalytics where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -24,27 +25,35 @@ startSupportDataExport = AWS.request serviceName "StartSupportDataExport"
 
 
 newtype CustomerDefinedValues = CustomerDefinedValues (Map OptionalKey OptionalValue)
+derive instance newtypeCustomerDefinedValues :: Newtype CustomerDefinedValues _
 
 
 newtype DataSetPublicationDate = DataSetPublicationDate Number
+derive instance newtypeDataSetPublicationDate :: Newtype DataSetPublicationDate _
 
 
 newtype DataSetRequestId = DataSetRequestId String
+derive instance newtypeDataSetRequestId :: Newtype DataSetRequestId _
 
 
 newtype DataSetType = DataSetType String
+derive instance newtypeDataSetType :: Newtype DataSetType _
 
 
 newtype DestinationS3BucketName = DestinationS3BucketName String
+derive instance newtypeDestinationS3BucketName :: Newtype DestinationS3BucketName _
 
 
 newtype DestinationS3Prefix = DestinationS3Prefix String
+derive instance newtypeDestinationS3Prefix :: Newtype DestinationS3Prefix _
 
 
 newtype ExceptionMessage = ExceptionMessage String
+derive instance newtypeExceptionMessage :: Newtype ExceptionMessage _
 
 
 newtype FromDate = FromDate Number
+derive instance newtypeFromDate :: Newtype FromDate _
 
 
 -- | Container for the parameters to the GenerateDataSet operation.
@@ -57,30 +66,37 @@ newtype GenerateDataSetRequest = GenerateDataSetRequest
   , "SnsTopicArn'" :: (SnsTopicArn)
   , "CustomerDefinedValues'" :: NullOrUndefined (CustomerDefinedValues)
   }
+derive instance newtypeGenerateDataSetRequest :: Newtype GenerateDataSetRequest _
 
 
 -- | Container for the result of the GenerateDataSet operation.
 newtype GenerateDataSetResult = GenerateDataSetResult 
   { "DataSetRequestId'" :: NullOrUndefined (DataSetRequestId)
   }
+derive instance newtypeGenerateDataSetResult :: Newtype GenerateDataSetResult _
 
 
 -- | This exception is thrown when an internal service error occurs.
 newtype MarketplaceCommerceAnalyticsException = MarketplaceCommerceAnalyticsException 
   { "Message'" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeMarketplaceCommerceAnalyticsException :: Newtype MarketplaceCommerceAnalyticsException _
 
 
 newtype OptionalKey = OptionalKey String
+derive instance newtypeOptionalKey :: Newtype OptionalKey _
 
 
 newtype OptionalValue = OptionalValue String
+derive instance newtypeOptionalValue :: Newtype OptionalValue _
 
 
 newtype RoleNameArn = RoleNameArn String
+derive instance newtypeRoleNameArn :: Newtype RoleNameArn _
 
 
 newtype SnsTopicArn = SnsTopicArn String
+derive instance newtypeSnsTopicArn :: Newtype SnsTopicArn _
 
 
 -- | Container for the parameters to the StartSupportDataExport operation.
@@ -93,12 +109,15 @@ newtype StartSupportDataExportRequest = StartSupportDataExportRequest
   , "SnsTopicArn'" :: (SnsTopicArn)
   , "CustomerDefinedValues'" :: NullOrUndefined (CustomerDefinedValues)
   }
+derive instance newtypeStartSupportDataExportRequest :: Newtype StartSupportDataExportRequest _
 
 
 -- | Container for the result of the StartSupportDataExport operation.
 newtype StartSupportDataExportResult = StartSupportDataExportResult 
   { "DataSetRequestId'" :: NullOrUndefined (DataSetRequestId)
   }
+derive instance newtypeStartSupportDataExportResult :: Newtype StartSupportDataExportResult _
 
 
 newtype SupportDataSetType = SupportDataSetType String
+derive instance newtypeSupportDataSetType :: Newtype SupportDataSetType _

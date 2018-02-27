@@ -6,6 +6,7 @@ module AWS.LexRuntime where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -24,30 +25,37 @@ postText = AWS.request serviceName "PostText"
 
 
 newtype Accept = Accept String
+derive instance newtypeAccept :: Newtype Accept _
 
 
 newtype AttributesString = AttributesString String
+derive instance newtypeAttributesString :: Newtype AttributesString _
 
 
 -- | <p>Either the Amazon Lex bot is still building, or one of the dependent services (Amazon Polly, AWS Lambda) failed with an internal service error.</p>
 newtype BadGatewayException = BadGatewayException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeBadGatewayException :: Newtype BadGatewayException _
 
 
 -- | <p> Request validation failed, there is no usable message in the context, or the bot build failed, is still in progress, or contains unbuilt changes. </p>
 newtype BadRequestException = BadRequestException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 newtype BlobStream = BlobStream String
+derive instance newtypeBlobStream :: Newtype BlobStream _
 
 
 newtype BotAlias = BotAlias String
+derive instance newtypeBotAlias :: Newtype BotAlias _
 
 
 newtype BotName = BotName String
+derive instance newtypeBotName :: Newtype BotName _
 
 
 -- | <p>Represents an option to be shown on the client platform (Facebook, Slack, etc.)</p>
@@ -55,33 +63,41 @@ newtype Button = Button
   { "Text'" :: (ButtonTextStringWithLength)
   , "Value'" :: (ButtonValueStringWithLength)
   }
+derive instance newtypeButton :: Newtype Button _
 
 
 newtype ButtonTextStringWithLength = ButtonTextStringWithLength String
+derive instance newtypeButtonTextStringWithLength :: Newtype ButtonTextStringWithLength _
 
 
 newtype ButtonValueStringWithLength = ButtonValueStringWithLength String
+derive instance newtypeButtonValueStringWithLength :: Newtype ButtonValueStringWithLength _
 
 
 -- | <p> Two clients are using the same AWS account, Amazon Lex bot, and user ID. </p>
 newtype ConflictException = ConflictException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeConflictException :: Newtype ConflictException _
 
 
 newtype ContentType = ContentType String
+derive instance newtypeContentType :: Newtype ContentType _
 
 
 -- | <p> One of the dependencies, such as AWS Lambda or Amazon Polly, threw an exception. For example, </p> <ul> <li> <p>If Amazon Lex does not have sufficient permissions to call a Lambda function.</p> </li> <li> <p>If a Lambda function takes longer than 30 seconds to execute.</p> </li> <li> <p>If a fulfillment Lambda function returns a <code>Delegate</code> dialog action without removing any slot values.</p> </li> </ul>
 newtype DependencyFailedException = DependencyFailedException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDependencyFailedException :: Newtype DependencyFailedException _
 
 
 newtype DialogState = DialogState String
+derive instance newtypeDialogState :: Newtype DialogState _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>Represents an option rendered to the user when a prompt is shown. It could be an image, a button, a link, or text. </p>
@@ -92,18 +108,22 @@ newtype GenericAttachment = GenericAttachment
   , "ImageUrl'" :: NullOrUndefined (StringUrlWithLength)
   , "Buttons'" :: NullOrUndefined (ListOfButtons')
   }
+derive instance newtypeGenericAttachment :: Newtype GenericAttachment _
 
 
 newtype HttpContentType = HttpContentType String
+derive instance newtypeHttpContentType :: Newtype HttpContentType _
 
 
 newtype IntentName = IntentName String
+derive instance newtypeIntentName :: Newtype IntentName _
 
 
 -- | <p>Internal service error. Retry the call.</p>
 newtype InternalFailureException = InternalFailureException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalFailureException :: Newtype InternalFailureException _
 
 
 -- | <p>Exceeded a limit.</p>
@@ -111,27 +131,32 @@ newtype LimitExceededException = LimitExceededException
   { "RetryAfterSeconds'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 -- | <p>This exception is not used.</p>
 newtype LoopDetectedException = LoopDetectedException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLoopDetectedException :: Newtype LoopDetectedException _
 
 
 newtype MessageFormatType = MessageFormatType String
+derive instance newtypeMessageFormatType :: Newtype MessageFormatType _
 
 
 -- | <p>The accept header in the request does not have a valid value.</p>
 newtype NotAcceptableException = NotAcceptableException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeNotAcceptableException :: Newtype NotAcceptableException _
 
 
 -- | <p>The resource (such as the Amazon Lex bot or an alias) that is referred to is not found.</p>
 newtype NotFoundException = NotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype PostContentRequest = PostContentRequest 
@@ -144,6 +169,7 @@ newtype PostContentRequest = PostContentRequest
   , "Accept'" :: NullOrUndefined (Accept)
   , "InputStream'" :: (BlobStream)
   }
+derive instance newtypePostContentRequest :: Newtype PostContentRequest _
 
 
 newtype PostContentResponse = PostContentResponse 
@@ -158,6 +184,7 @@ newtype PostContentResponse = PostContentResponse
   , "InputTranscript'" :: NullOrUndefined (String)
   , "AudioStream'" :: NullOrUndefined (BlobStream)
   }
+derive instance newtypePostContentResponse :: Newtype PostContentResponse _
 
 
 newtype PostTextRequest = PostTextRequest 
@@ -168,6 +195,7 @@ newtype PostTextRequest = PostTextRequest
   , "RequestAttributes'" :: NullOrUndefined (StringMap)
   , "InputText'" :: (Text)
   }
+derive instance newtypePostTextRequest :: Newtype PostTextRequest _
 
 
 newtype PostTextResponse = PostTextResponse 
@@ -180,12 +208,14 @@ newtype PostTextResponse = PostTextResponse
   , "SlotToElicit'" :: NullOrUndefined (String)
   , "ResponseCard'" :: NullOrUndefined (ResponseCard)
   }
+derive instance newtypePostTextResponse :: Newtype PostTextResponse _
 
 
 -- | <p>The input speech is too long.</p>
 newtype RequestTimeoutException = RequestTimeoutException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeRequestTimeoutException :: Newtype RequestTimeoutException _
 
 
 -- | <p>If you configure a response card when creating your bots, Amazon Lex substitutes the session attributes and slot values that are available, and then returns it. The response card can also come from a Lambda function ( <code>dialogCodeHook</code> and <code>fulfillmentActivity</code> on an intent).</p>
@@ -194,30 +224,39 @@ newtype ResponseCard = ResponseCard
   , "ContentType'" :: NullOrUndefined (ContentType)
   , "GenericAttachments'" :: NullOrUndefined (GenericAttachmentList')
   }
+derive instance newtypeResponseCard :: Newtype ResponseCard _
 
 
 newtype StringMap = StringMap (Map String String)
+derive instance newtypeStringMap :: Newtype StringMap _
 
 
 newtype StringUrlWithLength = StringUrlWithLength String
+derive instance newtypeStringUrlWithLength :: Newtype StringUrlWithLength _
 
 
 newtype StringWithLength = StringWithLength String
+derive instance newtypeStringWithLength :: Newtype StringWithLength _
 
 
 newtype Text = Text String
+derive instance newtypeText :: Newtype Text _
 
 
 -- | <p>The Content-Type header (<code>PostContent</code> API) has an invalid value. </p>
 newtype UnsupportedMediaTypeException = UnsupportedMediaTypeException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeUnsupportedMediaTypeException :: Newtype UnsupportedMediaTypeException _
 
 
 newtype UserId = UserId String
+derive instance newtypeUserId :: Newtype UserId _
 
 
 newtype GenericAttachmentList' = GenericAttachmentList' (Array GenericAttachment)
+derive instance newtypeGenericAttachmentList' :: Newtype GenericAttachmentList' _
 
 
 newtype ListOfButtons' = ListOfButtons' (Array Button)
+derive instance newtypeListOfButtons' :: Newtype ListOfButtons' _

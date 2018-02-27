@@ -6,6 +6,7 @@ module AWS.TranscribeService where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -32,43 +33,52 @@ startTranscriptionJob = AWS.request serviceName "StartTranscriptionJob"
 newtype BadRequestException = BadRequestException 
   { "Message" :: NullOrUndefined (FailureReason)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 -- | <p>The <code>JobName</code> field is a duplicate of a previously entered job name. Resend your request with a different name.</p>
 newtype ConflictException = ConflictException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeConflictException :: Newtype ConflictException _
 
 
 newtype DateTime = DateTime Number
+derive instance newtypeDateTime :: Newtype DateTime _
 
 
 newtype FailureReason = FailureReason String
+derive instance newtypeFailureReason :: Newtype FailureReason _
 
 
 newtype GetTranscriptionJobRequest = GetTranscriptionJobRequest 
   { "TranscriptionJobName" :: (TranscriptionJobName)
   }
+derive instance newtypeGetTranscriptionJobRequest :: Newtype GetTranscriptionJobRequest _
 
 
 newtype GetTranscriptionJobResponse = GetTranscriptionJobResponse 
   { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob)
   }
+derive instance newtypeGetTranscriptionJobResponse :: Newtype GetTranscriptionJobResponse _
 
 
 -- | <p>There was an internal error. Check the error message and try your request again.</p>
 newtype InternalFailureException = InternalFailureException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalFailureException :: Newtype InternalFailureException _
 
 
 newtype LanguageCode = LanguageCode String
+derive instance newtypeLanguageCode :: Newtype LanguageCode _
 
 
 -- | <p>Either you have sent too many requests or your input file is longer than 2 hours. Wait before you resend your request, or use a smaller file and resend the request.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListTranscriptionJobsRequest = ListTranscriptionJobsRequest 
@@ -76,6 +86,7 @@ newtype ListTranscriptionJobsRequest = ListTranscriptionJobsRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListTranscriptionJobsRequest :: Newtype ListTranscriptionJobsRequest _
 
 
 newtype ListTranscriptionJobsResponse = ListTranscriptionJobsResponse 
@@ -83,30 +94,37 @@ newtype ListTranscriptionJobsResponse = ListTranscriptionJobsResponse
   , "NextToken" :: NullOrUndefined (NextToken)
   , "TranscriptionJobSummaries" :: NullOrUndefined (TranscriptionJobSummaries)
   }
+derive instance newtypeListTranscriptionJobsResponse :: Newtype ListTranscriptionJobsResponse _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 -- | <p>Describes the input media file in a transcription request.</p>
 newtype Media = Media 
   { "MediaFileUri" :: NullOrUndefined (Uri)
   }
+derive instance newtypeMedia :: Newtype Media _
 
 
 newtype MediaFormat = MediaFormat String
+derive instance newtypeMediaFormat :: Newtype MediaFormat _
 
 
 newtype MediaSampleRateHertz = MediaSampleRateHertz Int
+derive instance newtypeMediaSampleRateHertz :: Newtype MediaSampleRateHertz _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>We can't find the requested job. Check the job name and try your request again.</p>
 newtype NotFoundException = NotFoundException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype StartTranscriptionJobRequest = StartTranscriptionJobRequest 
@@ -116,17 +134,20 @@ newtype StartTranscriptionJobRequest = StartTranscriptionJobRequest
   , "MediaFormat" :: (MediaFormat)
   , "Media" :: (Media)
   }
+derive instance newtypeStartTranscriptionJobRequest :: Newtype StartTranscriptionJobRequest _
 
 
 newtype StartTranscriptionJobResponse = StartTranscriptionJobResponse 
   { "TranscriptionJob" :: NullOrUndefined (TranscriptionJob)
   }
+derive instance newtypeStartTranscriptionJobResponse :: Newtype StartTranscriptionJobResponse _
 
 
 -- | <p>Describes the output of a transcription job.</p>
 newtype Transcript = Transcript 
   { "TranscriptFileUri" :: NullOrUndefined (Uri)
   }
+derive instance newtypeTranscript :: Newtype Transcript _
 
 
 -- | <p>Describes an asynchronous transcription job that was created with the <code>StartTranscriptionJob</code> operation.</p>
@@ -142,15 +163,19 @@ newtype TranscriptionJob = TranscriptionJob
   , "CompletionTime" :: NullOrUndefined (DateTime)
   , "FailureReason" :: NullOrUndefined (FailureReason)
   }
+derive instance newtypeTranscriptionJob :: Newtype TranscriptionJob _
 
 
 newtype TranscriptionJobName = TranscriptionJobName String
+derive instance newtypeTranscriptionJobName :: Newtype TranscriptionJobName _
 
 
 newtype TranscriptionJobStatus = TranscriptionJobStatus String
+derive instance newtypeTranscriptionJobStatus :: Newtype TranscriptionJobStatus _
 
 
 newtype TranscriptionJobSummaries = TranscriptionJobSummaries (Array TranscriptionJobSummary)
+derive instance newtypeTranscriptionJobSummaries :: Newtype TranscriptionJobSummaries _
 
 
 -- | <p>Provides a summary of information about a transcription job.</p>
@@ -162,6 +187,8 @@ newtype TranscriptionJobSummary = TranscriptionJobSummary
   , "TranscriptionJobStatus" :: NullOrUndefined (TranscriptionJobStatus)
   , "FailureReason" :: NullOrUndefined (FailureReason)
   }
+derive instance newtypeTranscriptionJobSummary :: Newtype TranscriptionJobSummary _
 
 
 newtype Uri = Uri String
+derive instance newtypeUri :: Newtype Uri _

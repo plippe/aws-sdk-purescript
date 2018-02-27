@@ -6,6 +6,7 @@ module AWS.XRay where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -49,15 +50,19 @@ newtype Alias = Alias
   , "Names" :: NullOrUndefined (AliasNames)
   , "Type" :: NullOrUndefined (String)
   }
+derive instance newtypeAlias :: Newtype Alias _
 
 
 newtype AliasList = AliasList (Array Alias)
+derive instance newtypeAliasList :: Newtype AliasList _
 
 
 newtype AliasNames = AliasNames (Array String)
+derive instance newtypeAliasNames :: Newtype AliasNames _
 
 
 newtype AnnotationKey = AnnotationKey String
+derive instance newtypeAnnotationKey :: Newtype AnnotationKey _
 
 
 -- | <p>Value of a segment annotation. Has one of three value types: Number, Boolean or String.</p>
@@ -66,9 +71,11 @@ newtype AnnotationValue = AnnotationValue
   , "BooleanValue" :: NullOrUndefined (NullableBoolean)
   , "StringValue" :: NullOrUndefined (String)
   }
+derive instance newtypeAnnotationValue :: Newtype AnnotationValue _
 
 
 newtype Annotations = Annotations (Map AnnotationKey ValuesWithServiceIds)
+derive instance newtypeAnnotations :: Newtype Annotations _
 
 
 -- | <p/>
@@ -80,12 +87,14 @@ newtype BackendConnectionErrors = BackendConnectionErrors
   , "UnknownHostCount" :: NullOrUndefined (NullableInteger)
   , "OtherCount" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeBackendConnectionErrors :: Newtype BackendConnectionErrors _
 
 
 newtype BatchGetTracesRequest = BatchGetTracesRequest 
   { "TraceIds" :: (TraceIdList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeBatchGetTracesRequest :: Newtype BatchGetTracesRequest _
 
 
 newtype BatchGetTracesResult = BatchGetTracesResult 
@@ -93,9 +102,11 @@ newtype BatchGetTracesResult = BatchGetTracesResult
   , "UnprocessedTraceIds" :: NullOrUndefined (UnprocessedTraceIdList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeBatchGetTracesResult :: Newtype BatchGetTracesResult _
 
 
 newtype EC2InstanceId = EC2InstanceId String
+derive instance newtypeEC2InstanceId :: Newtype EC2InstanceId _
 
 
 -- | <p>Information about a connection between two services.</p>
@@ -107,9 +118,11 @@ newtype Edge = Edge
   , "ResponseTimeHistogram" :: NullOrUndefined (Histogram)
   , "Aliases" :: NullOrUndefined (AliasList)
   }
+derive instance newtypeEdge :: Newtype Edge _
 
 
 newtype EdgeList = EdgeList (Array Edge)
+derive instance newtypeEdgeList :: Newtype EdgeList _
 
 
 -- | <p>Response statistics for an edge.</p>
@@ -120,9 +133,11 @@ newtype EdgeStatistics = EdgeStatistics
   , "TotalCount" :: NullOrUndefined (NullableLong)
   , "TotalResponseTime" :: NullOrUndefined (NullableDouble)
   }
+derive instance newtypeEdgeStatistics :: Newtype EdgeStatistics _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>Information about requests that failed with a 4xx Client Error status code.</p>
@@ -131,6 +146,7 @@ newtype ErrorStatistics = ErrorStatistics
   , "OtherCount" :: NullOrUndefined (NullableLong)
   , "TotalCount" :: NullOrUndefined (NullableLong)
   }
+derive instance newtypeErrorStatistics :: Newtype ErrorStatistics _
 
 
 -- | <p>Information about requests that failed with a 5xx Server Error status code.</p>
@@ -138,9 +154,11 @@ newtype FaultStatistics = FaultStatistics
   { "OtherCount" :: NullOrUndefined (NullableLong)
   , "TotalCount" :: NullOrUndefined (NullableLong)
   }
+derive instance newtypeFaultStatistics :: Newtype FaultStatistics _
 
 
 newtype FilterExpression = FilterExpression String
+derive instance newtypeFilterExpression :: Newtype FilterExpression _
 
 
 newtype GetServiceGraphRequest = GetServiceGraphRequest 
@@ -148,6 +166,7 @@ newtype GetServiceGraphRequest = GetServiceGraphRequest
   , "EndTime" :: (Number)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetServiceGraphRequest :: Newtype GetServiceGraphRequest _
 
 
 newtype GetServiceGraphResult = GetServiceGraphResult 
@@ -156,18 +175,21 @@ newtype GetServiceGraphResult = GetServiceGraphResult
   , "Services" :: NullOrUndefined (ServiceList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetServiceGraphResult :: Newtype GetServiceGraphResult _
 
 
 newtype GetTraceGraphRequest = GetTraceGraphRequest 
   { "TraceIds" :: (TraceIdList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetTraceGraphRequest :: Newtype GetTraceGraphRequest _
 
 
 newtype GetTraceGraphResult = GetTraceGraphResult 
   { "Services" :: NullOrUndefined (ServiceList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetTraceGraphResult :: Newtype GetTraceGraphResult _
 
 
 newtype GetTraceSummariesRequest = GetTraceSummariesRequest 
@@ -177,6 +199,7 @@ newtype GetTraceSummariesRequest = GetTraceSummariesRequest
   , "FilterExpression" :: NullOrUndefined (FilterExpression)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetTraceSummariesRequest :: Newtype GetTraceSummariesRequest _
 
 
 newtype GetTraceSummariesResult = GetTraceSummariesResult 
@@ -185,9 +208,11 @@ newtype GetTraceSummariesResult = GetTraceSummariesResult
   , "TracesProcessedCount" :: NullOrUndefined (NullableLong)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetTraceSummariesResult :: Newtype GetTraceSummariesResult _
 
 
 newtype Histogram = Histogram (Array HistogramEntry)
+derive instance newtypeHistogram :: Newtype Histogram _
 
 
 -- | <p>An entry in a histogram for a statistic. A histogram maps the range of observed values on the X axis, and the prevalence of each value on the Y axis.</p>
@@ -195,9 +220,11 @@ newtype HistogramEntry = HistogramEntry
   { "Value" :: NullOrUndefined (Number)
   , "Count" :: NullOrUndefined (Int)
   }
+derive instance newtypeHistogramEntry :: Newtype HistogramEntry _
 
 
 newtype Hostname = Hostname String
+derive instance newtypeHostname :: Newtype Hostname _
 
 
 -- | <p>Information about an HTTP request.</p>
@@ -208,24 +235,30 @@ newtype Http = Http
   , "UserAgent" :: NullOrUndefined (String)
   , "ClientIp" :: NullOrUndefined (String)
   }
+derive instance newtypeHttp :: Newtype Http _
 
 
 -- | <p>The request is missing required parameters or has invalid parameters.</p>
 newtype InvalidRequestException = InvalidRequestException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidRequestException :: Newtype InvalidRequestException _
 
 
 newtype NullableBoolean = NullableBoolean Boolean
+derive instance newtypeNullableBoolean :: Newtype NullableBoolean _
 
 
 newtype NullableDouble = NullableDouble Number
+derive instance newtypeNullableDouble :: Newtype NullableDouble _
 
 
 newtype NullableInteger = NullableInteger Int
+derive instance newtypeNullableInteger :: Newtype NullableInteger _
 
 
 newtype NullableLong = NullableLong Number
+derive instance newtypeNullableLong :: Newtype NullableLong _
 
 
 newtype PutTelemetryRecordsRequest = PutTelemetryRecordsRequest 
@@ -234,24 +267,29 @@ newtype PutTelemetryRecordsRequest = PutTelemetryRecordsRequest
   , "Hostname" :: NullOrUndefined (Hostname)
   , "ResourceARN" :: NullOrUndefined (ResourceARN)
   }
+derive instance newtypePutTelemetryRecordsRequest :: Newtype PutTelemetryRecordsRequest _
 
 
 newtype PutTelemetryRecordsResult = PutTelemetryRecordsResult 
   { 
   }
+derive instance newtypePutTelemetryRecordsResult :: Newtype PutTelemetryRecordsResult _
 
 
 newtype PutTraceSegmentsRequest = PutTraceSegmentsRequest 
   { "TraceSegmentDocuments" :: (TraceSegmentDocumentList)
   }
+derive instance newtypePutTraceSegmentsRequest :: Newtype PutTraceSegmentsRequest _
 
 
 newtype PutTraceSegmentsResult = PutTraceSegmentsResult 
   { "UnprocessedTraceSegments" :: NullOrUndefined (UnprocessedTraceSegmentList)
   }
+derive instance newtypePutTraceSegmentsResult :: Newtype PutTraceSegmentsResult _
 
 
 newtype ResourceARN = ResourceARN String
+derive instance newtypeResourceARN :: Newtype ResourceARN _
 
 
 -- | <p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a>PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p>
@@ -259,15 +297,19 @@ newtype Segment = Segment
   { "Id" :: NullOrUndefined (SegmentId)
   , "Document" :: NullOrUndefined (SegmentDocument)
   }
+derive instance newtypeSegment :: Newtype Segment _
 
 
 newtype SegmentDocument = SegmentDocument String
+derive instance newtypeSegmentDocument :: Newtype SegmentDocument _
 
 
 newtype SegmentId = SegmentId String
+derive instance newtypeSegmentId :: Newtype SegmentId _
 
 
 newtype SegmentList = SegmentList (Array Segment)
+derive instance newtypeSegmentList :: Newtype SegmentList _
 
 
 -- | <p>Information about an application that processed requests, users that made requests, or downstream services, resources and applications that an application used.</p>
@@ -286,6 +328,7 @@ newtype Service = Service
   , "DurationHistogram" :: NullOrUndefined (Histogram)
   , "ResponseTimeHistogram" :: NullOrUndefined (Histogram)
   }
+derive instance newtypeService :: Newtype Service _
 
 
 -- | <p/>
@@ -295,15 +338,19 @@ newtype ServiceId = ServiceId
   , "AccountId" :: NullOrUndefined (String)
   , "Type" :: NullOrUndefined (String)
   }
+derive instance newtypeServiceId :: Newtype ServiceId _
 
 
 newtype ServiceIds = ServiceIds (Array ServiceId)
+derive instance newtypeServiceIds :: Newtype ServiceIds _
 
 
 newtype ServiceList = ServiceList (Array Service)
+derive instance newtypeServiceList :: Newtype ServiceList _
 
 
 newtype ServiceNames = ServiceNames (Array String)
+derive instance newtypeServiceNames :: Newtype ServiceNames _
 
 
 -- | <p>Response statistics for a service.</p>
@@ -314,6 +361,7 @@ newtype ServiceStatistics = ServiceStatistics
   , "TotalCount" :: NullOrUndefined (NullableLong)
   , "TotalResponseTime" :: NullOrUndefined (NullableDouble)
   }
+derive instance newtypeServiceStatistics :: Newtype ServiceStatistics _
 
 
 -- | <p/>
@@ -325,15 +373,18 @@ newtype TelemetryRecord = TelemetryRecord
   , "SegmentsRejectedCount" :: NullOrUndefined (NullableInteger)
   , "BackendConnectionErrors" :: NullOrUndefined (BackendConnectionErrors)
   }
+derive instance newtypeTelemetryRecord :: Newtype TelemetryRecord _
 
 
 newtype TelemetryRecordList = TelemetryRecordList (Array TelemetryRecord)
+derive instance newtypeTelemetryRecordList :: Newtype TelemetryRecordList _
 
 
 -- | <p>The request exceeds the maximum number of requests per second.</p>
 newtype ThrottledException = ThrottledException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeThrottledException :: Newtype ThrottledException _
 
 
 -- | <p>A collection of segment documents with matching trace IDs.</p>
@@ -342,21 +393,27 @@ newtype Trace = Trace
   , "Duration" :: NullOrUndefined (NullableDouble)
   , "Segments" :: NullOrUndefined (SegmentList)
   }
+derive instance newtypeTrace :: Newtype Trace _
 
 
 newtype TraceId = TraceId String
+derive instance newtypeTraceId :: Newtype TraceId _
 
 
 newtype TraceIdList = TraceIdList (Array TraceId)
+derive instance newtypeTraceIdList :: Newtype TraceIdList _
 
 
 newtype TraceList = TraceList (Array Trace)
+derive instance newtypeTraceList :: Newtype TraceList _
 
 
 newtype TraceSegmentDocument = TraceSegmentDocument String
+derive instance newtypeTraceSegmentDocument :: Newtype TraceSegmentDocument _
 
 
 newtype TraceSegmentDocumentList = TraceSegmentDocumentList (Array TraceSegmentDocument)
+derive instance newtypeTraceSegmentDocumentList :: Newtype TraceSegmentDocumentList _
 
 
 -- | <p>Metadata generated from the segment documents in a trace.</p>
@@ -373,9 +430,11 @@ newtype TraceSummary = TraceSummary
   , "Users" :: NullOrUndefined (TraceUsers)
   , "ServiceIds" :: NullOrUndefined (ServiceIds)
   }
+derive instance newtypeTraceSummary :: Newtype TraceSummary _
 
 
 newtype TraceSummaryList = TraceSummaryList (Array TraceSummary)
+derive instance newtypeTraceSummaryList :: Newtype TraceSummaryList _
 
 
 -- | <p>Information about a user recorded in segment documents.</p>
@@ -383,12 +442,15 @@ newtype TraceUser = TraceUser
   { "UserName" :: NullOrUndefined (String)
   , "ServiceIds" :: NullOrUndefined (ServiceIds)
   }
+derive instance newtypeTraceUser :: Newtype TraceUser _
 
 
 newtype TraceUsers = TraceUsers (Array TraceUser)
+derive instance newtypeTraceUsers :: Newtype TraceUsers _
 
 
 newtype UnprocessedTraceIdList = UnprocessedTraceIdList (Array TraceId)
+derive instance newtypeUnprocessedTraceIdList :: Newtype UnprocessedTraceIdList _
 
 
 -- | <p>Information about a segment that failed processing.</p>
@@ -397,9 +459,11 @@ newtype UnprocessedTraceSegment = UnprocessedTraceSegment
   , "ErrorCode" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeUnprocessedTraceSegment :: Newtype UnprocessedTraceSegment _
 
 
 newtype UnprocessedTraceSegmentList = UnprocessedTraceSegmentList (Array UnprocessedTraceSegment)
+derive instance newtypeUnprocessedTraceSegmentList :: Newtype UnprocessedTraceSegmentList _
 
 
 -- | <p>Information about a segment annotation.</p>
@@ -407,6 +471,8 @@ newtype ValueWithServiceIds = ValueWithServiceIds
   { "AnnotationValue" :: NullOrUndefined (AnnotationValue)
   , "ServiceIds" :: NullOrUndefined (ServiceIds)
   }
+derive instance newtypeValueWithServiceIds :: Newtype ValueWithServiceIds _
 
 
 newtype ValuesWithServiceIds = ValuesWithServiceIds (Array ValueWithServiceIds)
+derive instance newtypeValuesWithServiceIds :: Newtype ValuesWithServiceIds _

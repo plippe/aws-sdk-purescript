@@ -6,6 +6,7 @@ module AWS.ApplicationAutoScaling where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -64,6 +65,7 @@ registerScalableTarget = AWS.request serviceName "RegisterScalableTarget"
 
 
 newtype AdjustmentType = AdjustmentType String
+derive instance newtypeAdjustmentType :: Newtype AdjustmentType _
 
 
 -- | <p>Represents a CloudWatch alarm associated with a scaling policy.</p>
@@ -71,18 +73,22 @@ newtype Alarm = Alarm
   { "AlarmName" :: (ResourceId)
   , "AlarmARN" :: (ResourceId)
   }
+derive instance newtypeAlarm :: Newtype Alarm _
 
 
 newtype Alarms = Alarms (Array Alarm)
+derive instance newtypeAlarms :: Newtype Alarms _
 
 
 -- | <p>Concurrent updates caused an exception, for example, if you request an update to an Application Auto Scaling resource that already has a pending update.</p>
 newtype ConcurrentUpdateException = ConcurrentUpdateException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConcurrentUpdateException :: Newtype ConcurrentUpdateException _
 
 
 newtype Cooldown = Cooldown Int
+derive instance newtypeCooldown :: Newtype Cooldown _
 
 
 -- | <p>Configures a customized metric for a target tracking policy.</p>
@@ -93,6 +99,7 @@ newtype CustomizedMetricSpecification = CustomizedMetricSpecification
   , "Statistic" :: (MetricStatistic)
   , "Unit''" :: NullOrUndefined (MetricUnit)
   }
+derive instance newtypeCustomizedMetricSpecification :: Newtype CustomizedMetricSpecification _
 
 
 newtype DeleteScalingPolicyRequest = DeleteScalingPolicyRequest 
@@ -101,11 +108,13 @@ newtype DeleteScalingPolicyRequest = DeleteScalingPolicyRequest
   , "ResourceId" :: (ResourceIdMaxLen1600)
   , "ScalableDimension" :: (ScalableDimension)
   }
+derive instance newtypeDeleteScalingPolicyRequest :: Newtype DeleteScalingPolicyRequest _
 
 
 newtype DeleteScalingPolicyResponse = DeleteScalingPolicyResponse 
   { 
   }
+derive instance newtypeDeleteScalingPolicyResponse :: Newtype DeleteScalingPolicyResponse _
 
 
 newtype DeleteScheduledActionRequest = DeleteScheduledActionRequest 
@@ -114,11 +123,13 @@ newtype DeleteScheduledActionRequest = DeleteScheduledActionRequest
   , "ResourceId" :: (ResourceIdMaxLen1600)
   , "ScalableDimension" :: NullOrUndefined (ScalableDimension)
   }
+derive instance newtypeDeleteScheduledActionRequest :: Newtype DeleteScheduledActionRequest _
 
 
 newtype DeleteScheduledActionResponse = DeleteScheduledActionResponse 
   { 
   }
+derive instance newtypeDeleteScheduledActionResponse :: Newtype DeleteScheduledActionResponse _
 
 
 newtype DeregisterScalableTargetRequest = DeregisterScalableTargetRequest 
@@ -126,11 +137,13 @@ newtype DeregisterScalableTargetRequest = DeregisterScalableTargetRequest
   , "ResourceId" :: (ResourceIdMaxLen1600)
   , "ScalableDimension" :: (ScalableDimension)
   }
+derive instance newtypeDeregisterScalableTargetRequest :: Newtype DeregisterScalableTargetRequest _
 
 
 newtype DeregisterScalableTargetResponse = DeregisterScalableTargetResponse 
   { 
   }
+derive instance newtypeDeregisterScalableTargetResponse :: Newtype DeregisterScalableTargetResponse _
 
 
 newtype DescribeScalableTargetsRequest = DescribeScalableTargetsRequest 
@@ -140,12 +153,14 @@ newtype DescribeScalableTargetsRequest = DescribeScalableTargetsRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScalableTargetsRequest :: Newtype DescribeScalableTargetsRequest _
 
 
 newtype DescribeScalableTargetsResponse = DescribeScalableTargetsResponse 
   { "ScalableTargets" :: NullOrUndefined (ScalableTargets)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScalableTargetsResponse :: Newtype DescribeScalableTargetsResponse _
 
 
 newtype DescribeScalingActivitiesRequest = DescribeScalingActivitiesRequest 
@@ -155,12 +170,14 @@ newtype DescribeScalingActivitiesRequest = DescribeScalingActivitiesRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScalingActivitiesRequest :: Newtype DescribeScalingActivitiesRequest _
 
 
 newtype DescribeScalingActivitiesResponse = DescribeScalingActivitiesResponse 
   { "ScalingActivities" :: NullOrUndefined (ScalingActivities)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScalingActivitiesResponse :: Newtype DescribeScalingActivitiesResponse _
 
 
 newtype DescribeScalingPoliciesRequest = DescribeScalingPoliciesRequest 
@@ -171,12 +188,14 @@ newtype DescribeScalingPoliciesRequest = DescribeScalingPoliciesRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScalingPoliciesRequest :: Newtype DescribeScalingPoliciesRequest _
 
 
 newtype DescribeScalingPoliciesResponse = DescribeScalingPoliciesResponse 
   { "ScalingPolicies" :: NullOrUndefined (ScalingPolicies)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScalingPoliciesResponse :: Newtype DescribeScalingPoliciesResponse _
 
 
 newtype DescribeScheduledActionsRequest = DescribeScheduledActionsRequest 
@@ -187,48 +206,58 @@ newtype DescribeScheduledActionsRequest = DescribeScheduledActionsRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScheduledActionsRequest :: Newtype DescribeScheduledActionsRequest _
 
 
 newtype DescribeScheduledActionsResponse = DescribeScheduledActionsResponse 
   { "ScheduledActions" :: NullOrUndefined (ScheduledActions)
   , "NextToken" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeDescribeScheduledActionsResponse :: Newtype DescribeScheduledActionsResponse _
 
 
 newtype DisableScaleIn = DisableScaleIn Boolean
+derive instance newtypeDisableScaleIn :: Newtype DisableScaleIn _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>Failed access to resources caused an exception. This exception is thrown when Application Auto Scaling is unable to retrieve the alarms associated with a scaling policy due to a client error, for example, if the role ARN specified for a scalable target does not have permission to call the CloudWatch <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html">DescribeAlarms</a> on your behalf.</p>
 newtype FailedResourceAccessException = FailedResourceAccessException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeFailedResourceAccessException :: Newtype FailedResourceAccessException _
 
 
 -- | <p>The service encountered an internal error.</p>
 newtype InternalServiceException = InternalServiceException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInternalServiceException :: Newtype InternalServiceException _
 
 
 -- | <p>The next token supplied was invalid.</p>
 newtype InvalidNextTokenException = InvalidNextTokenException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidNextTokenException :: Newtype InvalidNextTokenException _
 
 
 -- | <p>A per-account resource limit is exceeded. For more information, see <a href="http://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html">Application Auto Scaling Limits</a>.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype MetricAggregationType = MetricAggregationType String
+derive instance newtypeMetricAggregationType :: Newtype MetricAggregationType _
 
 
 -- | <p>Describes the dimension of a metric.</p>
@@ -236,48 +265,62 @@ newtype MetricDimension = MetricDimension
   { "Name" :: (MetricDimensionName)
   , "Value" :: (MetricDimensionValue)
   }
+derive instance newtypeMetricDimension :: Newtype MetricDimension _
 
 
 newtype MetricDimensionName = MetricDimensionName String
+derive instance newtypeMetricDimensionName :: Newtype MetricDimensionName _
 
 
 newtype MetricDimensionValue = MetricDimensionValue String
+derive instance newtypeMetricDimensionValue :: Newtype MetricDimensionValue _
 
 
 newtype MetricDimensions = MetricDimensions (Array MetricDimension)
+derive instance newtypeMetricDimensions :: Newtype MetricDimensions _
 
 
 newtype MetricName = MetricName String
+derive instance newtypeMetricName :: Newtype MetricName _
 
 
 newtype MetricNamespace = MetricNamespace String
+derive instance newtypeMetricNamespace :: Newtype MetricNamespace _
 
 
 newtype MetricScale = MetricScale Number
+derive instance newtypeMetricScale :: Newtype MetricScale _
 
 
 newtype MetricStatistic = MetricStatistic String
+derive instance newtypeMetricStatistic :: Newtype MetricStatistic _
 
 
 newtype MetricType = MetricType String
+derive instance newtypeMetricType :: Newtype MetricType _
 
 
 newtype MetricUnit = MetricUnit String
+derive instance newtypeMetricUnit :: Newtype MetricUnit _
 
 
 newtype MinAdjustmentMagnitude = MinAdjustmentMagnitude Int
+derive instance newtypeMinAdjustmentMagnitude :: Newtype MinAdjustmentMagnitude _
 
 
 -- | <p>The specified object could not be found. For any operation that depends on the existence of a scalable target, this exception is thrown if the scalable target with the specified service namespace, resource ID, and scalable dimension does not exist. For any operation that deletes or deregisters a resource, this exception is thrown if the resource cannot be found.</p>
 newtype ObjectNotFoundException = ObjectNotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeObjectNotFoundException :: Newtype ObjectNotFoundException _
 
 
 newtype PolicyName = PolicyName String
+derive instance newtypePolicyName :: Newtype PolicyName _
 
 
 newtype PolicyType = PolicyType String
+derive instance newtypePolicyType :: Newtype PolicyType _
 
 
 -- | <p>Configures a predefined metric for a target tracking policy.</p>
@@ -285,6 +328,7 @@ newtype PredefinedMetricSpecification = PredefinedMetricSpecification
   { "PredefinedMetricType" :: (MetricType)
   , "ResourceLabel" :: NullOrUndefined (ResourceLabel)
   }
+derive instance newtypePredefinedMetricSpecification :: Newtype PredefinedMetricSpecification _
 
 
 newtype PutScalingPolicyRequest = PutScalingPolicyRequest 
@@ -296,12 +340,14 @@ newtype PutScalingPolicyRequest = PutScalingPolicyRequest
   , "StepScalingPolicyConfiguration" :: NullOrUndefined (StepScalingPolicyConfiguration)
   , "TargetTrackingScalingPolicyConfiguration" :: NullOrUndefined (TargetTrackingScalingPolicyConfiguration)
   }
+derive instance newtypePutScalingPolicyRequest :: Newtype PutScalingPolicyRequest _
 
 
 newtype PutScalingPolicyResponse = PutScalingPolicyResponse 
   { "PolicyARN" :: (ResourceIdMaxLen1600)
   , "Alarms" :: NullOrUndefined (Alarms)
   }
+derive instance newtypePutScalingPolicyResponse :: Newtype PutScalingPolicyResponse _
 
 
 newtype PutScheduledActionRequest = PutScheduledActionRequest 
@@ -314,11 +360,13 @@ newtype PutScheduledActionRequest = PutScheduledActionRequest
   , "EndTime" :: NullOrUndefined (TimestampType)
   , "ScalableTargetAction" :: NullOrUndefined (ScalableTargetAction)
   }
+derive instance newtypePutScheduledActionRequest :: Newtype PutScheduledActionRequest _
 
 
 newtype PutScheduledActionResponse = PutScheduledActionResponse 
   { 
   }
+derive instance newtypePutScheduledActionResponse :: Newtype PutScheduledActionResponse _
 
 
 newtype RegisterScalableTargetRequest = RegisterScalableTargetRequest 
@@ -329,29 +377,37 @@ newtype RegisterScalableTargetRequest = RegisterScalableTargetRequest
   , "MaxCapacity" :: NullOrUndefined (ResourceCapacity)
   , "RoleARN" :: NullOrUndefined (ResourceIdMaxLen1600)
   }
+derive instance newtypeRegisterScalableTargetRequest :: Newtype RegisterScalableTargetRequest _
 
 
 newtype RegisterScalableTargetResponse = RegisterScalableTargetResponse 
   { 
   }
+derive instance newtypeRegisterScalableTargetResponse :: Newtype RegisterScalableTargetResponse _
 
 
 newtype ResourceCapacity = ResourceCapacity Int
+derive instance newtypeResourceCapacity :: Newtype ResourceCapacity _
 
 
 newtype ResourceId = ResourceId String
+derive instance newtypeResourceId :: Newtype ResourceId _
 
 
 newtype ResourceIdMaxLen1600 = ResourceIdMaxLen1600 String
+derive instance newtypeResourceIdMaxLen1600 :: Newtype ResourceIdMaxLen1600 _
 
 
 newtype ResourceIdsMaxLen1600 = ResourceIdsMaxLen1600 (Array ResourceIdMaxLen1600)
+derive instance newtypeResourceIdsMaxLen1600 :: Newtype ResourceIdsMaxLen1600 _
 
 
 newtype ResourceLabel = ResourceLabel String
+derive instance newtypeResourceLabel :: Newtype ResourceLabel _
 
 
 newtype ScalableDimension = ScalableDimension String
+derive instance newtypeScalableDimension :: Newtype ScalableDimension _
 
 
 -- | <p>Represents a scalable target.</p>
@@ -364,6 +420,7 @@ newtype ScalableTarget = ScalableTarget
   , "RoleARN" :: (ResourceIdMaxLen1600)
   , "CreationTime" :: (TimestampType)
   }
+derive instance newtypeScalableTarget :: Newtype ScalableTarget _
 
 
 -- | <p>Represents the minimum and maximum capacity for a scheduled action.</p>
@@ -371,12 +428,15 @@ newtype ScalableTargetAction = ScalableTargetAction
   { "MinCapacity" :: NullOrUndefined (ResourceCapacity)
   , "MaxCapacity" :: NullOrUndefined (ResourceCapacity)
   }
+derive instance newtypeScalableTargetAction :: Newtype ScalableTargetAction _
 
 
 newtype ScalableTargets = ScalableTargets (Array ScalableTarget)
+derive instance newtypeScalableTargets :: Newtype ScalableTargets _
 
 
 newtype ScalingActivities = ScalingActivities (Array ScalingActivity)
+derive instance newtypeScalingActivities :: Newtype ScalingActivities _
 
 
 -- | <p>Represents a scaling activity.</p>
@@ -393,15 +453,19 @@ newtype ScalingActivity = ScalingActivity
   , "StatusMessage" :: NullOrUndefined (XmlString)
   , "Details" :: NullOrUndefined (XmlString)
   }
+derive instance newtypeScalingActivity :: Newtype ScalingActivity _
 
 
 newtype ScalingActivityStatusCode = ScalingActivityStatusCode String
+derive instance newtypeScalingActivityStatusCode :: Newtype ScalingActivityStatusCode _
 
 
 newtype ScalingAdjustment = ScalingAdjustment Int
+derive instance newtypeScalingAdjustment :: Newtype ScalingAdjustment _
 
 
 newtype ScalingPolicies = ScalingPolicies (Array ScalingPolicy)
+derive instance newtypeScalingPolicies :: Newtype ScalingPolicies _
 
 
 -- | <p>Represents a scaling policy.</p>
@@ -417,6 +481,7 @@ newtype ScalingPolicy = ScalingPolicy
   , "Alarms" :: NullOrUndefined (Alarms)
   , "CreationTime" :: (TimestampType)
   }
+derive instance newtypeScalingPolicy :: Newtype ScalingPolicy _
 
 
 -- | <p>Represents a scheduled action.</p>
@@ -432,15 +497,19 @@ newtype ScheduledAction = ScheduledAction
   , "ScalableTargetAction" :: NullOrUndefined (ScalableTargetAction)
   , "CreationTime" :: (TimestampType)
   }
+derive instance newtypeScheduledAction :: Newtype ScheduledAction _
 
 
 newtype ScheduledActionName = ScheduledActionName String
+derive instance newtypeScheduledActionName :: Newtype ScheduledActionName _
 
 
 newtype ScheduledActions = ScheduledActions (Array ScheduledAction)
+derive instance newtypeScheduledActions :: Newtype ScheduledActions _
 
 
 newtype ServiceNamespace = ServiceNamespace String
+derive instance newtypeServiceNamespace :: Newtype ServiceNamespace _
 
 
 -- | <p>Represents a step adjustment for a <a>StepScalingPolicyConfiguration</a>. Describes an adjustment based on the difference between the value of the aggregated CloudWatch metric and the breach threshold that you've defined for the alarm. </p> <p>For the following examples, suppose that you have an alarm with a breach threshold of 50:</p> <ul> <li> <p>To trigger the adjustment when the metric is greater than or equal to 50 and less than 60, specify a lower bound of 0 and an upper bound of 10.</p> </li> <li> <p>To trigger the adjustment when the metric is greater than 40 and less than or equal to 50, specify a lower bound of -10 and an upper bound of 0.</p> </li> </ul> <p>There are a few rules for the step adjustments for your step policy:</p> <ul> <li> <p>The ranges of your step adjustments can't overlap or have a gap.</p> </li> <li> <p>At most one step adjustment can have a null lower bound. If one step adjustment has a negative lower bound, then there must be a step adjustment with a null lower bound.</p> </li> <li> <p>At most one step adjustment can have a null upper bound. If one step adjustment has a positive upper bound, then there must be a step adjustment with a null upper bound.</p> </li> <li> <p>The upper and lower bound can't be null in the same step adjustment.</p> </li> </ul>
@@ -449,9 +518,11 @@ newtype StepAdjustment = StepAdjustment
   , "MetricIntervalUpperBound" :: NullOrUndefined (MetricScale)
   , "ScalingAdjustment" :: (ScalingAdjustment)
   }
+derive instance newtypeStepAdjustment :: Newtype StepAdjustment _
 
 
 newtype StepAdjustments = StepAdjustments (Array StepAdjustment)
+derive instance newtypeStepAdjustments :: Newtype StepAdjustments _
 
 
 -- | <p>Represents a step scaling policy configuration.</p>
@@ -462,6 +533,7 @@ newtype StepScalingPolicyConfiguration = StepScalingPolicyConfiguration
   , "Cooldown" :: NullOrUndefined (Cooldown)
   , "MetricAggregationType" :: NullOrUndefined (MetricAggregationType)
   }
+derive instance newtypeStepScalingPolicyConfiguration :: Newtype StepScalingPolicyConfiguration _
 
 
 -- | <p>Represents a target tracking scaling policy configuration.</p>
@@ -473,15 +545,19 @@ newtype TargetTrackingScalingPolicyConfiguration = TargetTrackingScalingPolicyCo
   , "ScaleInCooldown" :: NullOrUndefined (Cooldown)
   , "DisableScaleIn" :: NullOrUndefined (DisableScaleIn)
   }
+derive instance newtypeTargetTrackingScalingPolicyConfiguration :: Newtype TargetTrackingScalingPolicyConfiguration _
 
 
 newtype TimestampType = TimestampType Number
+derive instance newtypeTimestampType :: Newtype TimestampType _
 
 
 -- | <p>An exception was thrown for a validation issue. Review the available parameters for the API request.</p>
 newtype ValidationException = ValidationException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeValidationException :: Newtype ValidationException _
 
 
 newtype XmlString = XmlString String
+derive instance newtypeXmlString :: Newtype XmlString _

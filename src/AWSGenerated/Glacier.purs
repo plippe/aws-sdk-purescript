@@ -6,6 +6,7 @@ module AWS.Glacier where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -184,6 +185,7 @@ newtype AbortMultipartUploadInput = AbortMultipartUploadInput
   , "VaultName'" :: (String)
   , "UploadId'" :: (String)
   }
+derive instance newtypeAbortMultipartUploadInput :: Newtype AbortMultipartUploadInput _
 
 
 -- | <p>The input values for <code>AbortVaultLock</code>.</p>
@@ -191,12 +193,15 @@ newtype AbortVaultLockInput = AbortVaultLockInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeAbortVaultLockInput :: Newtype AbortVaultLockInput _
 
 
 newtype AccessControlPolicyList = AccessControlPolicyList (Array Grant)
+derive instance newtypeAccessControlPolicyList :: Newtype AccessControlPolicyList _
 
 
 newtype ActionCode = ActionCode String
+derive instance newtypeActionCode :: Newtype ActionCode _
 
 
 -- | <p>The input values for <code>AddTagsToVault</code>.</p>
@@ -205,6 +210,7 @@ newtype AddTagsToVaultInput = AddTagsToVaultInput
   , "VaultName'" :: (String)
   , "Tags" :: NullOrUndefined (TagMap)
   }
+derive instance newtypeAddTagsToVaultInput :: Newtype AddTagsToVaultInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p> <p>For information about the underlying REST API, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html">Upload Archive</a>. For conceptual information, see <a href="http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html">Working with Archives in Amazon Glacier</a>.</p>
@@ -213,6 +219,7 @@ newtype ArchiveCreationOutput = ArchiveCreationOutput
   , "Checksum'" :: NullOrUndefined (String)
   , "ArchiveId'" :: NullOrUndefined (String)
   }
+derive instance newtypeArchiveCreationOutput :: Newtype ArchiveCreationOutput _
 
 
 -- | <p>Contains information about the comma-separated value (CSV) file to select from.</p>
@@ -224,6 +231,7 @@ newtype CSVInput = CSVInput
   , "FieldDelimiter" :: NullOrUndefined (String)
   , "QuoteCharacter" :: NullOrUndefined (String)
   }
+derive instance newtypeCSVInput :: Newtype CSVInput _
 
 
 -- | <p>Contains information about the comma-separated value (CSV) file that the job results are stored in.</p>
@@ -234,9 +242,11 @@ newtype CSVOutput = CSVOutput
   , "FieldDelimiter" :: NullOrUndefined (String)
   , "QuoteCharacter" :: NullOrUndefined (String)
   }
+derive instance newtypeCSVOutput :: Newtype CSVOutput _
 
 
 newtype CannedACL = CannedACL String
+derive instance newtypeCannedACL :: Newtype CannedACL _
 
 
 -- | <p>Provides options to complete a multipart upload operation. This informs Amazon Glacier that all the archive parts have been uploaded and Amazon Glacier can now assemble the archive from the uploaded parts. After assembling and saving the archive to the vault, Amazon Glacier returns the URI path of the newly created archive resource.</p>
@@ -247,6 +257,7 @@ newtype CompleteMultipartUploadInput = CompleteMultipartUploadInput
   , "ArchiveSize'" :: NullOrUndefined (String)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeCompleteMultipartUploadInput :: Newtype CompleteMultipartUploadInput _
 
 
 -- | <p>The input values for <code>CompleteVaultLock</code>.</p>
@@ -255,6 +266,7 @@ newtype CompleteVaultLockInput = CompleteVaultLockInput
   , "VaultName'" :: (String)
   , "LockId'" :: (String)
   }
+derive instance newtypeCompleteVaultLockInput :: Newtype CompleteVaultLockInput _
 
 
 -- | <p>Provides options to create a vault.</p>
@@ -262,18 +274,21 @@ newtype CreateVaultInput = CreateVaultInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeCreateVaultInput :: Newtype CreateVaultInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
 newtype CreateVaultOutput = CreateVaultOutput 
   { "Location'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateVaultOutput :: Newtype CreateVaultOutput _
 
 
 -- | <p>Data retrieval policy.</p>
 newtype DataRetrievalPolicy = DataRetrievalPolicy 
   { "Rules" :: NullOrUndefined (DataRetrievalRulesList)
   }
+derive instance newtypeDataRetrievalPolicy :: Newtype DataRetrievalPolicy _
 
 
 -- | <p>Data retrieval policy rule.</p>
@@ -281,12 +296,15 @@ newtype DataRetrievalRule = DataRetrievalRule
   { "Strategy" :: NullOrUndefined (String)
   , "BytesPerHour" :: NullOrUndefined (NullableLong)
   }
+derive instance newtypeDataRetrievalRule :: Newtype DataRetrievalRule _
 
 
 newtype DataRetrievalRulesList = DataRetrievalRulesList (Array DataRetrievalRule)
+derive instance newtypeDataRetrievalRulesList :: Newtype DataRetrievalRulesList _
 
 
 newtype DateTime = DateTime String
+derive instance newtypeDateTime :: Newtype DateTime _
 
 
 -- | <p>Provides options for deleting an archive from an Amazon Glacier vault.</p>
@@ -295,6 +313,7 @@ newtype DeleteArchiveInput = DeleteArchiveInput
   , "VaultName'" :: (String)
   , "ArchiveId'" :: (String)
   }
+derive instance newtypeDeleteArchiveInput :: Newtype DeleteArchiveInput _
 
 
 -- | <p>DeleteVaultAccessPolicy input.</p>
@@ -302,6 +321,7 @@ newtype DeleteVaultAccessPolicyInput = DeleteVaultAccessPolicyInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeDeleteVaultAccessPolicyInput :: Newtype DeleteVaultAccessPolicyInput _
 
 
 -- | <p>Provides options for deleting a vault from Amazon Glacier.</p>
@@ -309,6 +329,7 @@ newtype DeleteVaultInput = DeleteVaultInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeDeleteVaultInput :: Newtype DeleteVaultInput _
 
 
 -- | <p>Provides options for deleting a vault notification configuration from an Amazon Glacier vault.</p>
@@ -316,6 +337,7 @@ newtype DeleteVaultNotificationsInput = DeleteVaultNotificationsInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeDeleteVaultNotificationsInput :: Newtype DeleteVaultNotificationsInput _
 
 
 -- | <p>Provides options for retrieving a job description.</p>
@@ -324,6 +346,7 @@ newtype DescribeJobInput = DescribeJobInput
   , "VaultName'" :: (String)
   , "JobId'" :: (String)
   }
+derive instance newtypeDescribeJobInput :: Newtype DescribeJobInput _
 
 
 -- | <p>Provides options for retrieving metadata for a specific vault in Amazon Glacier.</p>
@@ -331,6 +354,7 @@ newtype DescribeVaultInput = DescribeVaultInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeDescribeVaultInput :: Newtype DescribeVaultInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -342,6 +366,7 @@ newtype DescribeVaultOutput = DescribeVaultOutput
   , "NumberOfArchives" :: NullOrUndefined (Number)
   , "SizeInBytes" :: NullOrUndefined (Number)
   }
+derive instance newtypeDescribeVaultOutput :: Newtype DescribeVaultOutput _
 
 
 -- | <p>Contains information about the encryption used to store the job results in Amazon S3. </p>
@@ -350,27 +375,33 @@ newtype Encryption = Encryption
   , "KMSKeyId" :: NullOrUndefined (String)
   , "KMSContext" :: NullOrUndefined (String)
   }
+derive instance newtypeEncryption :: Newtype Encryption _
 
 
 newtype EncryptionType = EncryptionType String
+derive instance newtypeEncryptionType :: Newtype EncryptionType _
 
 
 newtype ExpressionType = ExpressionType String
+derive instance newtypeExpressionType :: Newtype ExpressionType _
 
 
 newtype FileHeaderInfo = FileHeaderInfo String
+derive instance newtypeFileHeaderInfo :: Newtype FileHeaderInfo _
 
 
 -- | <p>Input for GetDataRetrievalPolicy.</p>
 newtype GetDataRetrievalPolicyInput = GetDataRetrievalPolicyInput 
   { "AccountId'" :: (String)
   }
+derive instance newtypeGetDataRetrievalPolicyInput :: Newtype GetDataRetrievalPolicyInput _
 
 
 -- | <p>Contains the Amazon Glacier response to the <code>GetDataRetrievalPolicy</code> request.</p>
 newtype GetDataRetrievalPolicyOutput = GetDataRetrievalPolicyOutput 
   { "Policy" :: NullOrUndefined (DataRetrievalPolicy)
   }
+derive instance newtypeGetDataRetrievalPolicyOutput :: Newtype GetDataRetrievalPolicyOutput _
 
 
 -- | <p>Provides options for downloading output of an Amazon Glacier job.</p>
@@ -380,6 +411,7 @@ newtype GetJobOutputInput = GetJobOutputInput
   , "JobId'" :: (String)
   , "Range'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetJobOutputInput :: Newtype GetJobOutputInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -392,6 +424,7 @@ newtype GetJobOutputOutput = GetJobOutputOutput
   , "ContentType'" :: NullOrUndefined (String)
   , "ArchiveDescription'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetJobOutputOutput :: Newtype GetJobOutputOutput _
 
 
 -- | <p>Input for GetVaultAccessPolicy.</p>
@@ -399,12 +432,14 @@ newtype GetVaultAccessPolicyInput = GetVaultAccessPolicyInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeGetVaultAccessPolicyInput :: Newtype GetVaultAccessPolicyInput _
 
 
 -- | <p>Output for GetVaultAccessPolicy.</p>
 newtype GetVaultAccessPolicyOutput = GetVaultAccessPolicyOutput 
   { "Policy'" :: NullOrUndefined (VaultAccessPolicy)
   }
+derive instance newtypeGetVaultAccessPolicyOutput :: Newtype GetVaultAccessPolicyOutput _
 
 
 -- | <p>The input values for <code>GetVaultLock</code>.</p>
@@ -412,6 +447,7 @@ newtype GetVaultLockInput = GetVaultLockInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeGetVaultLockInput :: Newtype GetVaultLockInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -421,6 +457,7 @@ newtype GetVaultLockOutput = GetVaultLockOutput
   , "ExpirationDate" :: NullOrUndefined (String)
   , "CreationDate" :: NullOrUndefined (String)
   }
+derive instance newtypeGetVaultLockOutput :: Newtype GetVaultLockOutput _
 
 
 -- | <p>Provides options for retrieving the notification configuration set on an Amazon Glacier vault.</p>
@@ -428,12 +465,14 @@ newtype GetVaultNotificationsInput = GetVaultNotificationsInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeGetVaultNotificationsInput :: Newtype GetVaultNotificationsInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
 newtype GetVaultNotificationsOutput = GetVaultNotificationsOutput 
   { "VaultNotificationConfig'" :: NullOrUndefined (VaultNotificationConfig)
   }
+derive instance newtypeGetVaultNotificationsOutput :: Newtype GetVaultNotificationsOutput _
 
 
 -- | <p>Contains the description of an Amazon Glacier job.</p>
@@ -460,6 +499,7 @@ newtype GlacierJobDescription = GlacierJobDescription
   , "SelectParameters" :: NullOrUndefined (SelectParameters)
   , "OutputLocation" :: NullOrUndefined (OutputLocation)
   }
+derive instance newtypeGlacierJobDescription :: Newtype GlacierJobDescription _
 
 
 -- | <p>Contains information about a grant.</p>
@@ -467,6 +507,7 @@ newtype Grant = Grant
   { "Grantee" :: NullOrUndefined (Grantee)
   , "Permission" :: NullOrUndefined (Permission)
   }
+derive instance newtypeGrant :: Newtype Grant _
 
 
 -- | <p>Contains information about the grantee.</p>
@@ -477,6 +518,7 @@ newtype Grantee = Grantee
   , "ID" :: NullOrUndefined (String)
   , "EmailAddress" :: NullOrUndefined (String)
   }
+derive instance newtypeGrantee :: Newtype Grantee _
 
 
 -- | <p>Provides options for initiating an Amazon Glacier job.</p>
@@ -485,6 +527,7 @@ newtype InitiateJobInput = InitiateJobInput
   , "VaultName'" :: (String)
   , "JobParameters'" :: NullOrUndefined (JobParameters)
   }
+derive instance newtypeInitiateJobInput :: Newtype InitiateJobInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -493,6 +536,7 @@ newtype InitiateJobOutput = InitiateJobOutput
   , "JobId'" :: NullOrUndefined (String)
   , "JobOutputPath'" :: NullOrUndefined (String)
   }
+derive instance newtypeInitiateJobOutput :: Newtype InitiateJobOutput _
 
 
 -- | <p>Provides options for initiating a multipart upload to an Amazon Glacier vault.</p>
@@ -502,6 +546,7 @@ newtype InitiateMultipartUploadInput = InitiateMultipartUploadInput
   , "ArchiveDescription'" :: NullOrUndefined (String)
   , "PartSize'" :: NullOrUndefined (String)
   }
+derive instance newtypeInitiateMultipartUploadInput :: Newtype InitiateMultipartUploadInput _
 
 
 -- | <p>The Amazon Glacier response to your request.</p>
@@ -509,6 +554,7 @@ newtype InitiateMultipartUploadOutput = InitiateMultipartUploadOutput
   { "Location'" :: NullOrUndefined (String)
   , "UploadId'" :: NullOrUndefined (String)
   }
+derive instance newtypeInitiateMultipartUploadOutput :: Newtype InitiateMultipartUploadOutput _
 
 
 -- | <p>The input values for <code>InitiateVaultLock</code>.</p>
@@ -517,18 +563,21 @@ newtype InitiateVaultLockInput = InitiateVaultLockInput
   , "VaultName'" :: (String)
   , "Policy'" :: NullOrUndefined (VaultLockPolicy)
   }
+derive instance newtypeInitiateVaultLockInput :: Newtype InitiateVaultLockInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
 newtype InitiateVaultLockOutput = InitiateVaultLockOutput 
   { "LockId'" :: NullOrUndefined (String)
   }
+derive instance newtypeInitiateVaultLockOutput :: Newtype InitiateVaultLockOutput _
 
 
 -- | <p>Describes how the archive is serialized.</p>
 newtype InputSerialization = InputSerialization 
   { "Csv'" :: NullOrUndefined (CSVInput)
   }
+derive instance newtypeInputSerialization :: Newtype InputSerialization _
 
 
 -- | <p>Returned if there is insufficient capacity to process this expedited request. This error only applies to expedited retrievals and not to standard or bulk retrievals.</p>
@@ -537,6 +586,7 @@ newtype InsufficientCapacityException = InsufficientCapacityException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInsufficientCapacityException :: Newtype InsufficientCapacityException _
 
 
 -- | <p>Returned if a parameter of the request is incorrectly specified.</p>
@@ -545,6 +595,7 @@ newtype InvalidParameterValueException = InvalidParameterValueException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidParameterValueException :: Newtype InvalidParameterValueException _
 
 
 -- | <p>Describes the options for a range inventory retrieval job.</p>
@@ -555,6 +606,7 @@ newtype InventoryRetrievalJobDescription = InventoryRetrievalJobDescription
   , "Limit" :: NullOrUndefined (String)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeInventoryRetrievalJobDescription :: Newtype InventoryRetrievalJobDescription _
 
 
 -- | <p>Provides options for specifying a range inventory retrieval job.</p>
@@ -564,9 +616,11 @@ newtype InventoryRetrievalJobInput = InventoryRetrievalJobInput
   , "Limit" :: NullOrUndefined (String)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeInventoryRetrievalJobInput :: Newtype InventoryRetrievalJobInput _
 
 
 newtype JobList = JobList (Array GlacierJobDescription)
+derive instance newtypeJobList :: Newtype JobList _
 
 
 -- | <p>Provides options for defining a job.</p>
@@ -582,6 +636,7 @@ newtype JobParameters = JobParameters
   , "SelectParameters" :: NullOrUndefined (SelectParameters)
   , "OutputLocation" :: NullOrUndefined (OutputLocation)
   }
+derive instance newtypeJobParameters :: Newtype JobParameters _
 
 
 -- | <p>Returned if the request results in a vault or account limit being exceeded.</p>
@@ -590,6 +645,7 @@ newtype LimitExceededException = LimitExceededException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 -- | <p>Provides options for retrieving a job list for an Amazon Glacier vault.</p>
@@ -601,6 +657,7 @@ newtype ListJobsInput = ListJobsInput
   , "Statuscode'" :: NullOrUndefined (String)
   , "Completed'" :: NullOrUndefined (String)
   }
+derive instance newtypeListJobsInput :: Newtype ListJobsInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -608,6 +665,7 @@ newtype ListJobsOutput = ListJobsOutput
   { "JobList" :: NullOrUndefined (JobList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeListJobsOutput :: Newtype ListJobsOutput _
 
 
 -- | <p>Provides options for retrieving list of in-progress multipart uploads for an Amazon Glacier vault.</p>
@@ -617,6 +675,7 @@ newtype ListMultipartUploadsInput = ListMultipartUploadsInput
   , "Marker'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (String)
   }
+derive instance newtypeListMultipartUploadsInput :: Newtype ListMultipartUploadsInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -624,6 +683,7 @@ newtype ListMultipartUploadsOutput = ListMultipartUploadsOutput
   { "UploadsList" :: NullOrUndefined (UploadsList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeListMultipartUploadsOutput :: Newtype ListMultipartUploadsOutput _
 
 
 -- | <p>Provides options for retrieving a list of parts of an archive that have been uploaded in a specific multipart upload.</p>
@@ -634,6 +694,7 @@ newtype ListPartsInput = ListPartsInput
   , "Marker'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (String)
   }
+derive instance newtypeListPartsInput :: Newtype ListPartsInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -646,16 +707,19 @@ newtype ListPartsOutput = ListPartsOutput
   , "Parts" :: NullOrUndefined (PartList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeListPartsOutput :: Newtype ListPartsOutput _
 
 
 newtype ListProvisionedCapacityInput = ListProvisionedCapacityInput 
   { "AccountId'" :: (String)
   }
+derive instance newtypeListProvisionedCapacityInput :: Newtype ListProvisionedCapacityInput _
 
 
 newtype ListProvisionedCapacityOutput = ListProvisionedCapacityOutput 
   { "ProvisionedCapacityList" :: NullOrUndefined (ProvisionedCapacityList)
   }
+derive instance newtypeListProvisionedCapacityOutput :: Newtype ListProvisionedCapacityOutput _
 
 
 -- | <p>The input value for <code>ListTagsForVaultInput</code>.</p>
@@ -663,12 +727,14 @@ newtype ListTagsForVaultInput = ListTagsForVaultInput
   { "AccountId'" :: (String)
   , "VaultName'" :: (String)
   }
+derive instance newtypeListTagsForVaultInput :: Newtype ListTagsForVaultInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
 newtype ListTagsForVaultOutput = ListTagsForVaultOutput 
   { "Tags" :: NullOrUndefined (TagMap)
   }
+derive instance newtypeListTagsForVaultOutput :: Newtype ListTagsForVaultOutput _
 
 
 -- | <p>Provides options to retrieve the vault list owned by the calling user's account. The list provides metadata information for each vault.</p>
@@ -677,6 +743,7 @@ newtype ListVaultsInput = ListVaultsInput
   , "Marker'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (String)
   }
+derive instance newtypeListVaultsInput :: Newtype ListVaultsInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
@@ -684,6 +751,7 @@ newtype ListVaultsOutput = ListVaultsOutput
   { "VaultList" :: NullOrUndefined (VaultList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeListVaultsOutput :: Newtype ListVaultsOutput _
 
 
 -- | <p>Returned if a required header or parameter is missing from the request.</p>
@@ -692,27 +760,33 @@ newtype MissingParameterValueException = MissingParameterValueException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeMissingParameterValueException :: Newtype MissingParameterValueException _
 
 
 newtype NotificationEventList = NotificationEventList (Array String)
+derive instance newtypeNotificationEventList :: Newtype NotificationEventList _
 
 
 newtype NullableLong = NullableLong Number
+derive instance newtypeNullableLong :: Newtype NullableLong _
 
 
 -- | <p>Contains information about the location where the select job results are stored.</p>
 newtype OutputLocation = OutputLocation 
   { "S3" :: NullOrUndefined (S3Location)
   }
+derive instance newtypeOutputLocation :: Newtype OutputLocation _
 
 
 -- | <p>Describes how the select output is serialized.</p>
 newtype OutputSerialization = OutputSerialization 
   { "Csv'" :: NullOrUndefined (CSVOutput)
   }
+derive instance newtypeOutputSerialization :: Newtype OutputSerialization _
 
 
 newtype PartList = PartList (Array PartListElement)
+derive instance newtypePartList :: Newtype PartList _
 
 
 -- | <p>A list of the part sizes of the multipart upload.</p>
@@ -720,9 +794,11 @@ newtype PartListElement = PartListElement
   { "RangeInBytes" :: NullOrUndefined (String)
   , "SHA256TreeHash" :: NullOrUndefined (String)
   }
+derive instance newtypePartListElement :: Newtype PartListElement _
 
 
 newtype Permission = Permission String
+derive instance newtypePermission :: Newtype Permission _
 
 
 -- | <p>Returned if a retrieval job would exceed the current data policy's retrieval rate limit. For more information about data retrieval policies,</p>
@@ -731,6 +807,7 @@ newtype PolicyEnforcedException = PolicyEnforcedException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypePolicyEnforcedException :: Newtype PolicyEnforcedException _
 
 
 -- | <p>The definition for a provisioned capacity unit.</p>
@@ -739,22 +816,27 @@ newtype ProvisionedCapacityDescription = ProvisionedCapacityDescription
   , "StartDate" :: NullOrUndefined (String)
   , "ExpirationDate" :: NullOrUndefined (String)
   }
+derive instance newtypeProvisionedCapacityDescription :: Newtype ProvisionedCapacityDescription _
 
 
 newtype ProvisionedCapacityList = ProvisionedCapacityList (Array ProvisionedCapacityDescription)
+derive instance newtypeProvisionedCapacityList :: Newtype ProvisionedCapacityList _
 
 
 newtype PurchaseProvisionedCapacityInput = PurchaseProvisionedCapacityInput 
   { "AccountId'" :: (String)
   }
+derive instance newtypePurchaseProvisionedCapacityInput :: Newtype PurchaseProvisionedCapacityInput _
 
 
 newtype PurchaseProvisionedCapacityOutput = PurchaseProvisionedCapacityOutput 
   { "CapacityId'" :: NullOrUndefined (String)
   }
+derive instance newtypePurchaseProvisionedCapacityOutput :: Newtype PurchaseProvisionedCapacityOutput _
 
 
 newtype QuoteFields = QuoteFields String
+derive instance newtypeQuoteFields :: Newtype QuoteFields _
 
 
 -- | <p>The input value for <code>RemoveTagsFromVaultInput</code>.</p>
@@ -763,6 +845,7 @@ newtype RemoveTagsFromVaultInput = RemoveTagsFromVaultInput
   , "VaultName'" :: (String)
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   }
+derive instance newtypeRemoveTagsFromVaultInput :: Newtype RemoveTagsFromVaultInput _
 
 
 -- | <p>Returned if, when uploading an archive, Amazon Glacier times out while receiving the upload.</p>
@@ -771,6 +854,7 @@ newtype RequestTimeoutException = RequestTimeoutException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeRequestTimeoutException :: Newtype RequestTimeoutException _
 
 
 -- | <p>Returned if the specified resource (such as a vault, upload ID, or job ID) doesn't exist.</p>
@@ -779,6 +863,7 @@ newtype ResourceNotFoundException = ResourceNotFoundException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>Contains information about the location in Amazon S3 where the select job results are stored.</p>
@@ -792,6 +877,7 @@ newtype S3Location = S3Location
   , "UserMetadata" :: NullOrUndefined (Hashmap')
   , "StorageClass" :: NullOrUndefined (StorageClass)
   }
+derive instance newtypeS3Location :: Newtype S3Location _
 
 
 -- | <p>Contains information about the parameters used for a select.</p>
@@ -801,6 +887,7 @@ newtype SelectParameters = SelectParameters
   , "Expression" :: NullOrUndefined (String)
   , "OutputSerialization" :: NullOrUndefined (OutputSerialization)
   }
+derive instance newtypeSelectParameters :: Newtype SelectParameters _
 
 
 -- | <p>Returned if the service cannot complete the request.</p>
@@ -809,6 +896,7 @@ newtype ServiceUnavailableException = ServiceUnavailableException
   , "Code'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 -- | <p>SetDataRetrievalPolicy input.</p>
@@ -816,6 +904,7 @@ newtype SetDataRetrievalPolicyInput = SetDataRetrievalPolicyInput
   { "AccountId'" :: (String)
   , "Policy" :: NullOrUndefined (DataRetrievalPolicy)
   }
+derive instance newtypeSetDataRetrievalPolicyInput :: Newtype SetDataRetrievalPolicyInput _
 
 
 -- | <p>SetVaultAccessPolicy input.</p>
@@ -824,6 +913,7 @@ newtype SetVaultAccessPolicyInput = SetVaultAccessPolicyInput
   , "VaultName'" :: (String)
   , "Policy'" :: NullOrUndefined (VaultAccessPolicy)
   }
+derive instance newtypeSetVaultAccessPolicyInput :: Newtype SetVaultAccessPolicyInput _
 
 
 -- | <p>Provides options to configure notifications that will be sent when specific events happen to a vault.</p>
@@ -832,33 +922,43 @@ newtype SetVaultNotificationsInput = SetVaultNotificationsInput
   , "VaultName'" :: (String)
   , "VaultNotificationConfig'" :: NullOrUndefined (VaultNotificationConfig)
   }
+derive instance newtypeSetVaultNotificationsInput :: Newtype SetVaultNotificationsInput _
 
 
 newtype Size = Size Number
+derive instance newtypeSize :: Newtype Size _
 
 
 newtype StatusCode = StatusCode String
+derive instance newtypeStatusCode :: Newtype StatusCode _
 
 
 newtype StorageClass = StorageClass String
+derive instance newtypeStorageClass :: Newtype StorageClass _
 
 
 newtype Stream = Stream String
+derive instance newtypeStream :: Newtype Stream _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array String)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagMap = TagMap (Map TagKey TagValue)
+derive instance newtypeTagMap :: Newtype TagMap _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Type = Type String
+derive instance newtypeType :: Newtype Type _
 
 
 -- | <p>Provides options to add an archive to a vault.</p>
@@ -869,6 +969,7 @@ newtype UploadArchiveInput = UploadArchiveInput
   , "Checksum'" :: NullOrUndefined (String)
   , "Body'" :: NullOrUndefined (Stream)
   }
+derive instance newtypeUploadArchiveInput :: Newtype UploadArchiveInput _
 
 
 -- | <p>A list of in-progress multipart uploads for a vault.</p>
@@ -879,6 +980,7 @@ newtype UploadListElement = UploadListElement
   , "PartSizeInBytes" :: NullOrUndefined (Number)
   , "CreationDate" :: NullOrUndefined (String)
   }
+derive instance newtypeUploadListElement :: Newtype UploadListElement _
 
 
 -- | <p>Provides options to upload a part of an archive in a multipart upload operation.</p>
@@ -890,30 +992,36 @@ newtype UploadMultipartPartInput = UploadMultipartPartInput
   , "Range'" :: NullOrUndefined (String)
   , "Body'" :: NullOrUndefined (Stream)
   }
+derive instance newtypeUploadMultipartPartInput :: Newtype UploadMultipartPartInput _
 
 
 -- | <p>Contains the Amazon Glacier response to your request.</p>
 newtype UploadMultipartPartOutput = UploadMultipartPartOutput 
   { "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeUploadMultipartPartOutput :: Newtype UploadMultipartPartOutput _
 
 
 newtype UploadsList = UploadsList (Array UploadListElement)
+derive instance newtypeUploadsList :: Newtype UploadsList _
 
 
 -- | <p>Contains the vault access policy.</p>
 newtype VaultAccessPolicy = VaultAccessPolicy 
   { "Policy" :: NullOrUndefined (String)
   }
+derive instance newtypeVaultAccessPolicy :: Newtype VaultAccessPolicy _
 
 
 newtype VaultList = VaultList (Array DescribeVaultOutput)
+derive instance newtypeVaultList :: Newtype VaultList _
 
 
 -- | <p>Contains the vault lock policy.</p>
 newtype VaultLockPolicy = VaultLockPolicy 
   { "Policy" :: NullOrUndefined (String)
   }
+derive instance newtypeVaultLockPolicy :: Newtype VaultLockPolicy _
 
 
 -- | <p>Represents a vault's notification configuration.</p>
@@ -921,9 +1029,12 @@ newtype VaultNotificationConfig = VaultNotificationConfig
   { "SNSTopic" :: NullOrUndefined (String)
   , "Events" :: NullOrUndefined (NotificationEventList)
   }
+derive instance newtypeVaultNotificationConfig :: Newtype VaultNotificationConfig _
 
 
 newtype Hashmap' = Hashmap' (Map String String)
+derive instance newtypeHashmap' :: Newtype Hashmap' _
 
 
 newtype Httpstatus' = Httpstatus' Int
+derive instance newtypeHttpstatus' :: Newtype Httpstatus' _

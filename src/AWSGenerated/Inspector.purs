@@ -6,6 +6,7 @@ module AWS.Inspector where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -179,6 +180,7 @@ updateAssessmentTarget = AWS.request serviceName "UpdateAssessmentTarget"
 
 
 newtype AccessDeniedErrorCode = AccessDeniedErrorCode String
+derive instance newtypeAccessDeniedErrorCode :: Newtype AccessDeniedErrorCode _
 
 
 -- | <p>You do not have required permissions to access the requested resource.</p>
@@ -187,20 +189,24 @@ newtype AccessDeniedException = AccessDeniedException
   , "ErrorCode'" :: (AccessDeniedErrorCode)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeAccessDeniedException :: Newtype AccessDeniedException _
 
 
 newtype AddAttributesToFindingsRequest = AddAttributesToFindingsRequest 
   { "FindingArns'" :: (AddRemoveAttributesFindingArnList)
   , "Attributes'" :: (UserAttributeList)
   }
+derive instance newtypeAddAttributesToFindingsRequest :: Newtype AddAttributesToFindingsRequest _
 
 
 newtype AddAttributesToFindingsResponse = AddAttributesToFindingsResponse 
   { "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeAddAttributesToFindingsResponse :: Newtype AddAttributesToFindingsResponse _
 
 
 newtype AddRemoveAttributesFindingArnList = AddRemoveAttributesFindingArnList (Array Arn)
+derive instance newtypeAddRemoveAttributesFindingArnList :: Newtype AddRemoveAttributesFindingArnList _
 
 
 -- | <p>Used in the exception error that is thrown if you start an assessment run for an assessment target that includes an EC2 instance that is already participating in another started assessment run.</p>
@@ -208,9 +214,11 @@ newtype AgentAlreadyRunningAssessment = AgentAlreadyRunningAssessment
   { "AgentId'" :: (AgentId)
   , "AssessmentRunArn'" :: (Arn)
   }
+derive instance newtypeAgentAlreadyRunningAssessment :: Newtype AgentAlreadyRunningAssessment _
 
 
 newtype AgentAlreadyRunningAssessmentList = AgentAlreadyRunningAssessmentList (Array AgentAlreadyRunningAssessment)
+derive instance newtypeAgentAlreadyRunningAssessmentList :: Newtype AgentAlreadyRunningAssessmentList _
 
 
 -- | <p>Contains information about an Amazon Inspector agent. This data type is used as a request parameter in the <a>ListAssessmentRunAgents</a> action.</p>
@@ -218,24 +226,31 @@ newtype AgentFilter = AgentFilter
   { "AgentHealths'" :: (AgentHealthList)
   , "AgentHealthCodes'" :: (AgentHealthCodeList)
   }
+derive instance newtypeAgentFilter :: Newtype AgentFilter _
 
 
 newtype AgentHealth = AgentHealth String
+derive instance newtypeAgentHealth :: Newtype AgentHealth _
 
 
 newtype AgentHealthCode = AgentHealthCode String
+derive instance newtypeAgentHealthCode :: Newtype AgentHealthCode _
 
 
 newtype AgentHealthCodeList = AgentHealthCodeList (Array AgentHealthCode)
+derive instance newtypeAgentHealthCodeList :: Newtype AgentHealthCodeList _
 
 
 newtype AgentHealthList = AgentHealthList (Array AgentHealth)
+derive instance newtypeAgentHealthList :: Newtype AgentHealthList _
 
 
 newtype AgentId = AgentId String
+derive instance newtypeAgentId :: Newtype AgentId _
 
 
 newtype AgentIdList = AgentIdList (Array AgentId)
+derive instance newtypeAgentIdList :: Newtype AgentIdList _
 
 
 -- | <p>Used as a response element in the <a>PreviewAgents</a> action.</p>
@@ -249,12 +264,15 @@ newtype AgentPreview = AgentPreview
   , "KernelVersion'" :: NullOrUndefined (KernelVersion)
   , "Ipv4Address'" :: NullOrUndefined (Ipv4Address)
   }
+derive instance newtypeAgentPreview :: Newtype AgentPreview _
 
 
 newtype AgentPreviewList = AgentPreviewList (Array AgentPreview)
+derive instance newtypeAgentPreviewList :: Newtype AgentPreviewList _
 
 
 newtype AgentVersion = AgentVersion String
+derive instance newtypeAgentVersion :: Newtype AgentVersion _
 
 
 -- | <p>You started an assessment run, but one of the instances is already participating in another assessment run.</p>
@@ -264,18 +282,23 @@ newtype AgentsAlreadyRunningAssessmentException = AgentsAlreadyRunningAssessment
   , "AgentsTruncated'" :: (Bool)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeAgentsAlreadyRunningAssessmentException :: Newtype AgentsAlreadyRunningAssessmentException _
 
 
 newtype AmiId = AmiId String
+derive instance newtypeAmiId :: Newtype AmiId _
 
 
 newtype Arn = Arn String
+derive instance newtypeArn :: Newtype Arn _
 
 
 newtype ArnCount = ArnCount Int
+derive instance newtypeArnCount :: Newtype ArnCount _
 
 
 newtype AssessmentRulesPackageArnList = AssessmentRulesPackageArnList (Array Arn)
+derive instance newtypeAssessmentRulesPackageArnList :: Newtype AssessmentRulesPackageArnList _
 
 
 -- | <p>A snapshot of an Amazon Inspector assessment run that contains the findings of the assessment run .</p> <p>Used as the response element in the <a>DescribeAssessmentRuns</a> action.</p>
@@ -296,6 +319,7 @@ newtype AssessmentRun = AssessmentRun
   , "Notifications'" :: (AssessmentRunNotificationList)
   , "FindingCounts'" :: (AssessmentRunFindingCounts)
   }
+derive instance newtypeAssessmentRun :: Newtype AssessmentRun _
 
 
 -- | <p>Contains information about an Amazon Inspector agent. This data type is used as a response element in the <a>ListAssessmentRunAgents</a> action.</p>
@@ -308,12 +332,15 @@ newtype AssessmentRunAgent = AssessmentRunAgent
   , "AutoScalingGroup'" :: NullOrUndefined (AutoScalingGroup)
   , "TelemetryMetadata'" :: (TelemetryMetadataList)
   }
+derive instance newtypeAssessmentRunAgent :: Newtype AssessmentRunAgent _
 
 
 newtype AssessmentRunAgentList = AssessmentRunAgentList (Array AssessmentRunAgent)
+derive instance newtypeAssessmentRunAgentList :: Newtype AssessmentRunAgentList _
 
 
 newtype AssessmentRunDuration = AssessmentRunDuration Int
+derive instance newtypeAssessmentRunDuration :: Newtype AssessmentRunDuration _
 
 
 -- | <p>Used as the request parameter in the <a>ListAssessmentRuns</a> action.</p>
@@ -326,12 +353,15 @@ newtype AssessmentRunFilter = AssessmentRunFilter
   , "CompletionTimeRange'" :: NullOrUndefined (TimestampRange)
   , "StateChangeTimeRange'" :: NullOrUndefined (TimestampRange)
   }
+derive instance newtypeAssessmentRunFilter :: Newtype AssessmentRunFilter _
 
 
 newtype AssessmentRunFindingCounts = AssessmentRunFindingCounts (Map Severity FindingCount)
+derive instance newtypeAssessmentRunFindingCounts :: Newtype AssessmentRunFindingCounts _
 
 
 newtype AssessmentRunInProgressArnList = AssessmentRunInProgressArnList (Array Arn)
+derive instance newtypeAssessmentRunInProgressArnList :: Newtype AssessmentRunInProgressArnList _
 
 
 -- | <p>You cannot perform a specified action if an assessment run is currently in progress.</p>
@@ -341,12 +371,15 @@ newtype AssessmentRunInProgressException = AssessmentRunInProgressException
   , "AssessmentRunArnsTruncated'" :: (Bool)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeAssessmentRunInProgressException :: Newtype AssessmentRunInProgressException _
 
 
 newtype AssessmentRunList = AssessmentRunList (Array AssessmentRun)
+derive instance newtypeAssessmentRunList :: Newtype AssessmentRunList _
 
 
 newtype AssessmentRunName = AssessmentRunName String
+derive instance newtypeAssessmentRunName :: Newtype AssessmentRunName _
 
 
 -- | <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
@@ -358,15 +391,19 @@ newtype AssessmentRunNotification = AssessmentRunNotification
   , "SnsTopicArn'" :: NullOrUndefined (Arn)
   , "SnsPublishStatusCode'" :: NullOrUndefined (AssessmentRunNotificationSnsStatusCode)
   }
+derive instance newtypeAssessmentRunNotification :: Newtype AssessmentRunNotification _
 
 
 newtype AssessmentRunNotificationList = AssessmentRunNotificationList (Array AssessmentRunNotification)
+derive instance newtypeAssessmentRunNotificationList :: Newtype AssessmentRunNotificationList _
 
 
 newtype AssessmentRunNotificationSnsStatusCode = AssessmentRunNotificationSnsStatusCode String
+derive instance newtypeAssessmentRunNotificationSnsStatusCode :: Newtype AssessmentRunNotificationSnsStatusCode _
 
 
 newtype AssessmentRunState = AssessmentRunState String
+derive instance newtypeAssessmentRunState :: Newtype AssessmentRunState _
 
 
 -- | <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
@@ -374,12 +411,15 @@ newtype AssessmentRunStateChange = AssessmentRunStateChange
   { "StateChangedAt'" :: (Number)
   , "State'" :: (AssessmentRunState)
   }
+derive instance newtypeAssessmentRunStateChange :: Newtype AssessmentRunStateChange _
 
 
 newtype AssessmentRunStateChangeList = AssessmentRunStateChangeList (Array AssessmentRunStateChange)
+derive instance newtypeAssessmentRunStateChangeList :: Newtype AssessmentRunStateChangeList _
 
 
 newtype AssessmentRunStateList = AssessmentRunStateList (Array AssessmentRunState)
+derive instance newtypeAssessmentRunStateList :: Newtype AssessmentRunStateList _
 
 
 -- | <p>Contains information about an Amazon Inspector application. This data type is used as the response element in the <a>DescribeAssessmentTargets</a> action.</p>
@@ -390,18 +430,22 @@ newtype AssessmentTarget = AssessmentTarget
   , "CreatedAt'" :: (Number)
   , "UpdatedAt'" :: (Number)
   }
+derive instance newtypeAssessmentTarget :: Newtype AssessmentTarget _
 
 
 -- | <p>Used as the request parameter in the <a>ListAssessmentTargets</a> action.</p>
 newtype AssessmentTargetFilter = AssessmentTargetFilter 
   { "AssessmentTargetNamePattern'" :: NullOrUndefined (NamePattern)
   }
+derive instance newtypeAssessmentTargetFilter :: Newtype AssessmentTargetFilter _
 
 
 newtype AssessmentTargetList = AssessmentTargetList (Array AssessmentTarget)
+derive instance newtypeAssessmentTargetList :: Newtype AssessmentTargetList _
 
 
 newtype AssessmentTargetName = AssessmentTargetName String
+derive instance newtypeAssessmentTargetName :: Newtype AssessmentTargetName _
 
 
 -- | <p>Contains information about an Amazon Inspector assessment template. This data type is used as the response element in the <a>DescribeAssessmentTemplates</a> action.</p>
@@ -416,6 +460,7 @@ newtype AssessmentTemplate = AssessmentTemplate
   , "AssessmentRunCount'" :: (ArnCount)
   , "CreatedAt'" :: (Number)
   }
+derive instance newtypeAssessmentTemplate :: Newtype AssessmentTemplate _
 
 
 -- | <p>Used as the request parameter in the <a>ListAssessmentTemplates</a> action.</p>
@@ -424,15 +469,19 @@ newtype AssessmentTemplateFilter = AssessmentTemplateFilter
   , "DurationRange'" :: NullOrUndefined (DurationRange)
   , "RulesPackageArns'" :: NullOrUndefined (FilterRulesPackageArnList)
   }
+derive instance newtypeAssessmentTemplateFilter :: Newtype AssessmentTemplateFilter _
 
 
 newtype AssessmentTemplateList = AssessmentTemplateList (Array AssessmentTemplate)
+derive instance newtypeAssessmentTemplateList :: Newtype AssessmentTemplateList _
 
 
 newtype AssessmentTemplateName = AssessmentTemplateName String
+derive instance newtypeAssessmentTemplateName :: Newtype AssessmentTemplateName _
 
 
 newtype AssessmentTemplateRulesPackageArnList = AssessmentTemplateRulesPackageArnList (Array Arn)
+derive instance newtypeAssessmentTemplateRulesPackageArnList :: Newtype AssessmentTemplateRulesPackageArnList _
 
 
 -- | <p>A collection of attributes of the host from which the finding is generated.</p>
@@ -444,9 +493,11 @@ newtype AssetAttributes = AssetAttributes
   , "Hostname'" :: NullOrUndefined (Hostname)
   , "Ipv4Addresses'" :: NullOrUndefined (Ipv4AddressList)
   }
+derive instance newtypeAssetAttributes :: Newtype AssetAttributes _
 
 
 newtype AssetType = AssetType String
+derive instance newtypeAssetType :: Newtype AssetType _
 
 
 -- | <p>This data type is used as a request parameter in the <a>AddAttributesToFindings</a> and <a>CreateAssessmentTemplate</a> actions.</p>
@@ -454,38 +505,48 @@ newtype Attribute = Attribute
   { "Key'" :: (AttributeKey)
   , "Value'" :: NullOrUndefined (AttributeValue)
   }
+derive instance newtypeAttribute :: Newtype Attribute _
 
 
 newtype AttributeKey = AttributeKey String
+derive instance newtypeAttributeKey :: Newtype AttributeKey _
 
 
 newtype AttributeList = AttributeList (Array Attribute)
+derive instance newtypeAttributeList :: Newtype AttributeList _
 
 
 newtype AttributeValue = AttributeValue String
+derive instance newtypeAttributeValue :: Newtype AttributeValue _
 
 
 newtype AutoScalingGroup = AutoScalingGroup String
+derive instance newtypeAutoScalingGroup :: Newtype AutoScalingGroup _
 
 
 newtype AutoScalingGroupList = AutoScalingGroupList (Array AutoScalingGroup)
+derive instance newtypeAutoScalingGroupList :: Newtype AutoScalingGroupList _
 
 
 newtype BatchDescribeArnList = BatchDescribeArnList (Array Arn)
+derive instance newtypeBatchDescribeArnList :: Newtype BatchDescribeArnList _
 
 
 newtype Bool = Bool Boolean
+derive instance newtypeBool :: Newtype Bool _
 
 
 newtype CreateAssessmentTargetRequest = CreateAssessmentTargetRequest 
   { "AssessmentTargetName'" :: (AssessmentTargetName)
   , "ResourceGroupArn'" :: (Arn)
   }
+derive instance newtypeCreateAssessmentTargetRequest :: Newtype CreateAssessmentTargetRequest _
 
 
 newtype CreateAssessmentTargetResponse = CreateAssessmentTargetResponse 
   { "AssessmentTargetArn'" :: (Arn)
   }
+derive instance newtypeCreateAssessmentTargetResponse :: Newtype CreateAssessmentTargetResponse _
 
 
 newtype CreateAssessmentTemplateRequest = CreateAssessmentTemplateRequest 
@@ -495,69 +556,82 @@ newtype CreateAssessmentTemplateRequest = CreateAssessmentTemplateRequest
   , "RulesPackageArns'" :: (AssessmentTemplateRulesPackageArnList)
   , "UserAttributesForFindings'" :: NullOrUndefined (UserAttributeList)
   }
+derive instance newtypeCreateAssessmentTemplateRequest :: Newtype CreateAssessmentTemplateRequest _
 
 
 newtype CreateAssessmentTemplateResponse = CreateAssessmentTemplateResponse 
   { "AssessmentTemplateArn'" :: (Arn)
   }
+derive instance newtypeCreateAssessmentTemplateResponse :: Newtype CreateAssessmentTemplateResponse _
 
 
 newtype CreateResourceGroupRequest = CreateResourceGroupRequest 
   { "ResourceGroupTags'" :: (ResourceGroupTags)
   }
+derive instance newtypeCreateResourceGroupRequest :: Newtype CreateResourceGroupRequest _
 
 
 newtype CreateResourceGroupResponse = CreateResourceGroupResponse 
   { "ResourceGroupArn'" :: (Arn)
   }
+derive instance newtypeCreateResourceGroupResponse :: Newtype CreateResourceGroupResponse _
 
 
 newtype DeleteAssessmentRunRequest = DeleteAssessmentRunRequest 
   { "AssessmentRunArn'" :: (Arn)
   }
+derive instance newtypeDeleteAssessmentRunRequest :: Newtype DeleteAssessmentRunRequest _
 
 
 newtype DeleteAssessmentTargetRequest = DeleteAssessmentTargetRequest 
   { "AssessmentTargetArn'" :: (Arn)
   }
+derive instance newtypeDeleteAssessmentTargetRequest :: Newtype DeleteAssessmentTargetRequest _
 
 
 newtype DeleteAssessmentTemplateRequest = DeleteAssessmentTemplateRequest 
   { "AssessmentTemplateArn'" :: (Arn)
   }
+derive instance newtypeDeleteAssessmentTemplateRequest :: Newtype DeleteAssessmentTemplateRequest _
 
 
 newtype DescribeAssessmentRunsRequest = DescribeAssessmentRunsRequest 
   { "AssessmentRunArns'" :: (BatchDescribeArnList)
   }
+derive instance newtypeDescribeAssessmentRunsRequest :: Newtype DescribeAssessmentRunsRequest _
 
 
 newtype DescribeAssessmentRunsResponse = DescribeAssessmentRunsResponse 
   { "AssessmentRuns'" :: (AssessmentRunList)
   , "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeDescribeAssessmentRunsResponse :: Newtype DescribeAssessmentRunsResponse _
 
 
 newtype DescribeAssessmentTargetsRequest = DescribeAssessmentTargetsRequest 
   { "AssessmentTargetArns'" :: (BatchDescribeArnList)
   }
+derive instance newtypeDescribeAssessmentTargetsRequest :: Newtype DescribeAssessmentTargetsRequest _
 
 
 newtype DescribeAssessmentTargetsResponse = DescribeAssessmentTargetsResponse 
   { "AssessmentTargets'" :: (AssessmentTargetList)
   , "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeDescribeAssessmentTargetsResponse :: Newtype DescribeAssessmentTargetsResponse _
 
 
 newtype DescribeAssessmentTemplatesRequest = DescribeAssessmentTemplatesRequest 
   { "AssessmentTemplateArns'" :: (BatchDescribeArnList)
   }
+derive instance newtypeDescribeAssessmentTemplatesRequest :: Newtype DescribeAssessmentTemplatesRequest _
 
 
 newtype DescribeAssessmentTemplatesResponse = DescribeAssessmentTemplatesResponse 
   { "AssessmentTemplates'" :: (AssessmentTemplateList)
   , "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeDescribeAssessmentTemplatesResponse :: Newtype DescribeAssessmentTemplatesResponse _
 
 
 newtype DescribeCrossAccountAccessRoleResponse = DescribeCrossAccountAccessRoleResponse 
@@ -565,41 +639,48 @@ newtype DescribeCrossAccountAccessRoleResponse = DescribeCrossAccountAccessRoleR
   , "Valid'" :: (Bool)
   , "RegisteredAt'" :: (Number)
   }
+derive instance newtypeDescribeCrossAccountAccessRoleResponse :: Newtype DescribeCrossAccountAccessRoleResponse _
 
 
 newtype DescribeFindingsRequest = DescribeFindingsRequest 
   { "FindingArns'" :: (BatchDescribeArnList)
   , "Locale'" :: NullOrUndefined (Locale)
   }
+derive instance newtypeDescribeFindingsRequest :: Newtype DescribeFindingsRequest _
 
 
 newtype DescribeFindingsResponse = DescribeFindingsResponse 
   { "Findings'" :: (FindingList)
   , "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeDescribeFindingsResponse :: Newtype DescribeFindingsResponse _
 
 
 newtype DescribeResourceGroupsRequest = DescribeResourceGroupsRequest 
   { "ResourceGroupArns'" :: (BatchDescribeArnList)
   }
+derive instance newtypeDescribeResourceGroupsRequest :: Newtype DescribeResourceGroupsRequest _
 
 
 newtype DescribeResourceGroupsResponse = DescribeResourceGroupsResponse 
   { "ResourceGroups'" :: (ResourceGroupList)
   , "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeDescribeResourceGroupsResponse :: Newtype DescribeResourceGroupsResponse _
 
 
 newtype DescribeRulesPackagesRequest = DescribeRulesPackagesRequest 
   { "RulesPackageArns'" :: (BatchDescribeArnList)
   , "Locale'" :: NullOrUndefined (Locale)
   }
+derive instance newtypeDescribeRulesPackagesRequest :: Newtype DescribeRulesPackagesRequest _
 
 
 newtype DescribeRulesPackagesResponse = DescribeRulesPackagesResponse 
   { "RulesPackages'" :: (RulesPackageList)
   , "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeDescribeRulesPackagesResponse :: Newtype DescribeRulesPackagesResponse _
 
 
 -- | <p>This data type is used in the <a>AssessmentTemplateFilter</a> data type.</p>
@@ -607,9 +688,11 @@ newtype DurationRange = DurationRange
   { "MinSeconds'" :: NullOrUndefined (AssessmentRunDuration)
   , "MaxSeconds'" :: NullOrUndefined (AssessmentRunDuration)
   }
+derive instance newtypeDurationRange :: Newtype DurationRange _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>This data type is used in the <a>Subscription</a> data type.</p>
@@ -617,9 +700,11 @@ newtype EventSubscription = EventSubscription
   { "Event'" :: (InspectorEvent)
   , "SubscribedAt'" :: (Number)
   }
+derive instance newtypeEventSubscription :: Newtype EventSubscription _
 
 
 newtype EventSubscriptionList = EventSubscriptionList (Array EventSubscription)
+derive instance newtypeEventSubscriptionList :: Newtype EventSubscriptionList _
 
 
 -- | <p>Includes details about the failed items.</p>
@@ -627,15 +712,19 @@ newtype FailedItemDetails = FailedItemDetails
   { "FailureCode'" :: (FailedItemErrorCode)
   , "Retryable'" :: (Bool)
   }
+derive instance newtypeFailedItemDetails :: Newtype FailedItemDetails _
 
 
 newtype FailedItemErrorCode = FailedItemErrorCode String
+derive instance newtypeFailedItemErrorCode :: Newtype FailedItemErrorCode _
 
 
 newtype FailedItems = FailedItems (Map Arn FailedItemDetails)
+derive instance newtypeFailedItems :: Newtype FailedItems _
 
 
 newtype FilterRulesPackageArnList = FilterRulesPackageArnList (Array Arn)
+derive instance newtypeFilterRulesPackageArnList :: Newtype FilterRulesPackageArnList _
 
 
 -- | <p>Contains information about an Amazon Inspector finding. This data type is used as the response element in the <a>DescribeFindings</a> action.</p>
@@ -659,9 +748,11 @@ newtype Finding = Finding
   , "CreatedAt'" :: (Number)
   , "UpdatedAt'" :: (Number)
   }
+derive instance newtypeFinding :: Newtype Finding _
 
 
 newtype FindingCount = FindingCount Int
+derive instance newtypeFindingCount :: Newtype FindingCount _
 
 
 -- | <p>This data type is used as a request parameter in the <a>ListFindings</a> action.</p>
@@ -675,12 +766,15 @@ newtype FindingFilter = FindingFilter
   , "UserAttributes'" :: NullOrUndefined (AttributeList)
   , "CreationTimeRange'" :: NullOrUndefined (TimestampRange)
   }
+derive instance newtypeFindingFilter :: Newtype FindingFilter _
 
 
 newtype FindingId = FindingId String
+derive instance newtypeFindingId :: Newtype FindingId _
 
 
 newtype FindingList = FindingList (Array Finding)
+derive instance newtypeFindingList :: Newtype FindingList _
 
 
 newtype GetAssessmentReportRequest = GetAssessmentReportRequest 
@@ -688,28 +782,34 @@ newtype GetAssessmentReportRequest = GetAssessmentReportRequest
   , "ReportFileFormat'" :: (ReportFileFormat)
   , "ReportType'" :: (ReportType)
   }
+derive instance newtypeGetAssessmentReportRequest :: Newtype GetAssessmentReportRequest _
 
 
 newtype GetAssessmentReportResponse = GetAssessmentReportResponse 
   { "Status'" :: (ReportStatus)
   , "Url'" :: NullOrUndefined (Url)
   }
+derive instance newtypeGetAssessmentReportResponse :: Newtype GetAssessmentReportResponse _
 
 
 newtype GetTelemetryMetadataRequest = GetTelemetryMetadataRequest 
   { "AssessmentRunArn'" :: (Arn)
   }
+derive instance newtypeGetTelemetryMetadataRequest :: Newtype GetTelemetryMetadataRequest _
 
 
 newtype GetTelemetryMetadataResponse = GetTelemetryMetadataResponse 
   { "TelemetryMetadata'" :: (TelemetryMetadataList)
   }
+derive instance newtypeGetTelemetryMetadataResponse :: Newtype GetTelemetryMetadataResponse _
 
 
 newtype Hostname = Hostname String
+derive instance newtypeHostname :: Newtype Hostname _
 
 
 newtype InspectorEvent = InspectorEvent String
+derive instance newtypeInspectorEvent :: Newtype InspectorEvent _
 
 
 -- | <p>This data type is used in the <a>Finding</a> data type.</p>
@@ -718,6 +818,7 @@ newtype InspectorServiceAttributes = InspectorServiceAttributes
   , "AssessmentRunArn'" :: NullOrUndefined (Arn)
   , "RulesPackageArn'" :: NullOrUndefined (Arn)
   }
+derive instance newtypeInspectorServiceAttributes :: Newtype InspectorServiceAttributes _
 
 
 -- | <p>Internal server error.</p>
@@ -725,9 +826,11 @@ newtype InternalException = InternalException
   { "Message'" :: (ErrorMessage)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeInternalException :: Newtype InternalException _
 
 
 newtype InvalidCrossAccountRoleErrorCode = InvalidCrossAccountRoleErrorCode String
+derive instance newtypeInvalidCrossAccountRoleErrorCode :: Newtype InvalidCrossAccountRoleErrorCode _
 
 
 -- | <p>Amazon Inspector cannot assume the cross-account role that it needs to list your EC2 instances during the assessment run.</p>
@@ -736,9 +839,11 @@ newtype InvalidCrossAccountRoleException = InvalidCrossAccountRoleException
   , "ErrorCode'" :: (InvalidCrossAccountRoleErrorCode)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeInvalidCrossAccountRoleException :: Newtype InvalidCrossAccountRoleException _
 
 
 newtype InvalidInputErrorCode = InvalidInputErrorCode String
+derive instance newtypeInvalidInputErrorCode :: Newtype InvalidInputErrorCode _
 
 
 -- | <p>The request was rejected because an invalid or out-of-range value was supplied for an input parameter.</p>
@@ -747,21 +852,27 @@ newtype InvalidInputException = InvalidInputException
   , "ErrorCode'" :: (InvalidInputErrorCode)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeInvalidInputException :: Newtype InvalidInputException _
 
 
 newtype IocConfidence = IocConfidence Int
+derive instance newtypeIocConfidence :: Newtype IocConfidence _
 
 
 newtype Ipv4Address = Ipv4Address String
+derive instance newtypeIpv4Address :: Newtype Ipv4Address _
 
 
 newtype Ipv4AddressList = Ipv4AddressList (Array Ipv4Address)
+derive instance newtypeIpv4AddressList :: Newtype Ipv4AddressList _
 
 
 newtype KernelVersion = KernelVersion String
+derive instance newtypeKernelVersion :: Newtype KernelVersion _
 
 
 newtype LimitExceededErrorCode = LimitExceededErrorCode String
+derive instance newtypeLimitExceededErrorCode :: Newtype LimitExceededErrorCode _
 
 
 -- | <p>The request was rejected because it attempted to create resources beyond the current AWS account limits. The error code describes the limit exceeded.</p>
@@ -770,6 +881,7 @@ newtype LimitExceededException = LimitExceededException
   , "ErrorCode'" :: (LimitExceededErrorCode)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListAssessmentRunAgentsRequest = ListAssessmentRunAgentsRequest 
@@ -778,12 +890,14 @@ newtype ListAssessmentRunAgentsRequest = ListAssessmentRunAgentsRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (ListMaxResults)
   }
+derive instance newtypeListAssessmentRunAgentsRequest :: Newtype ListAssessmentRunAgentsRequest _
 
 
 newtype ListAssessmentRunAgentsResponse = ListAssessmentRunAgentsResponse 
   { "AssessmentRunAgents'" :: (AssessmentRunAgentList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListAssessmentRunAgentsResponse :: Newtype ListAssessmentRunAgentsResponse _
 
 
 newtype ListAssessmentRunsRequest = ListAssessmentRunsRequest 
@@ -792,12 +906,14 @@ newtype ListAssessmentRunsRequest = ListAssessmentRunsRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (ListMaxResults)
   }
+derive instance newtypeListAssessmentRunsRequest :: Newtype ListAssessmentRunsRequest _
 
 
 newtype ListAssessmentRunsResponse = ListAssessmentRunsResponse 
   { "AssessmentRunArns'" :: (ListReturnedArnList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListAssessmentRunsResponse :: Newtype ListAssessmentRunsResponse _
 
 
 newtype ListAssessmentTargetsRequest = ListAssessmentTargetsRequest 
@@ -805,12 +921,14 @@ newtype ListAssessmentTargetsRequest = ListAssessmentTargetsRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (ListMaxResults)
   }
+derive instance newtypeListAssessmentTargetsRequest :: Newtype ListAssessmentTargetsRequest _
 
 
 newtype ListAssessmentTargetsResponse = ListAssessmentTargetsResponse 
   { "AssessmentTargetArns'" :: (ListReturnedArnList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListAssessmentTargetsResponse :: Newtype ListAssessmentTargetsResponse _
 
 
 newtype ListAssessmentTemplatesRequest = ListAssessmentTemplatesRequest 
@@ -819,15 +937,18 @@ newtype ListAssessmentTemplatesRequest = ListAssessmentTemplatesRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (ListMaxResults)
   }
+derive instance newtypeListAssessmentTemplatesRequest :: Newtype ListAssessmentTemplatesRequest _
 
 
 newtype ListAssessmentTemplatesResponse = ListAssessmentTemplatesResponse 
   { "AssessmentTemplateArns'" :: (ListReturnedArnList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListAssessmentTemplatesResponse :: Newtype ListAssessmentTemplatesResponse _
 
 
 newtype ListEventSubscriptionsMaxResults = ListEventSubscriptionsMaxResults Int
+derive instance newtypeListEventSubscriptionsMaxResults :: Newtype ListEventSubscriptionsMaxResults _
 
 
 newtype ListEventSubscriptionsRequest = ListEventSubscriptionsRequest 
@@ -835,12 +956,14 @@ newtype ListEventSubscriptionsRequest = ListEventSubscriptionsRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (ListEventSubscriptionsMaxResults)
   }
+derive instance newtypeListEventSubscriptionsRequest :: Newtype ListEventSubscriptionsRequest _
 
 
 newtype ListEventSubscriptionsResponse = ListEventSubscriptionsResponse 
   { "Subscriptions'" :: (SubscriptionList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListEventSubscriptionsResponse :: Newtype ListEventSubscriptionsResponse _
 
 
 newtype ListFindingsRequest = ListFindingsRequest 
@@ -849,58 +972,72 @@ newtype ListFindingsRequest = ListFindingsRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (ListMaxResults)
   }
+derive instance newtypeListFindingsRequest :: Newtype ListFindingsRequest _
 
 
 newtype ListFindingsResponse = ListFindingsResponse 
   { "FindingArns'" :: (ListReturnedArnList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListFindingsResponse :: Newtype ListFindingsResponse _
 
 
 newtype ListMaxResults = ListMaxResults Int
+derive instance newtypeListMaxResults :: Newtype ListMaxResults _
 
 
 newtype ListParentArnList = ListParentArnList (Array Arn)
+derive instance newtypeListParentArnList :: Newtype ListParentArnList _
 
 
 newtype ListReturnedArnList = ListReturnedArnList (Array Arn)
+derive instance newtypeListReturnedArnList :: Newtype ListReturnedArnList _
 
 
 newtype ListRulesPackagesRequest = ListRulesPackagesRequest 
   { "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (ListMaxResults)
   }
+derive instance newtypeListRulesPackagesRequest :: Newtype ListRulesPackagesRequest _
 
 
 newtype ListRulesPackagesResponse = ListRulesPackagesResponse 
   { "RulesPackageArns'" :: (ListReturnedArnList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListRulesPackagesResponse :: Newtype ListRulesPackagesResponse _
 
 
 newtype ListTagsForResourceRequest = ListTagsForResourceRequest 
   { "ResourceArn'" :: (Arn)
   }
+derive instance newtypeListTagsForResourceRequest :: Newtype ListTagsForResourceRequest _
 
 
 newtype ListTagsForResourceResponse = ListTagsForResourceResponse 
   { "Tags'" :: (TagList)
   }
+derive instance newtypeListTagsForResourceResponse :: Newtype ListTagsForResourceResponse _
 
 
 newtype Locale = Locale String
+derive instance newtypeLocale :: Newtype Locale _
 
 
 newtype Message = Message String
+derive instance newtypeMessage :: Newtype Message _
 
 
 newtype MessageType = MessageType String
+derive instance newtypeMessageType :: Newtype MessageType _
 
 
 newtype NamePattern = NamePattern String
+derive instance newtypeNamePattern :: Newtype NamePattern _
 
 
 newtype NoSuchEntityErrorCode = NoSuchEntityErrorCode String
+derive instance newtypeNoSuchEntityErrorCode :: Newtype NoSuchEntityErrorCode _
 
 
 -- | <p>The request was rejected because it referenced an entity that does not exist. The error code describes the entity.</p>
@@ -909,21 +1046,27 @@ newtype NoSuchEntityException = NoSuchEntityException
   , "ErrorCode'" :: (NoSuchEntityErrorCode)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeNoSuchEntityException :: Newtype NoSuchEntityException _
 
 
 newtype NumericSeverity = NumericSeverity Number
+derive instance newtypeNumericSeverity :: Newtype NumericSeverity _
 
 
 newtype NumericVersion = NumericVersion Int
+derive instance newtypeNumericVersion :: Newtype NumericVersion _
 
 
 newtype OperatingSystem = OperatingSystem String
+derive instance newtypeOperatingSystem :: Newtype OperatingSystem _
 
 
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 newtype PreviewAgentsMaxResults = PreviewAgentsMaxResults Int
+derive instance newtypePreviewAgentsMaxResults :: Newtype PreviewAgentsMaxResults _
 
 
 newtype PreviewAgentsRequest = PreviewAgentsRequest 
@@ -931,40 +1074,49 @@ newtype PreviewAgentsRequest = PreviewAgentsRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (PreviewAgentsMaxResults)
   }
+derive instance newtypePreviewAgentsRequest :: Newtype PreviewAgentsRequest _
 
 
 newtype PreviewAgentsResponse = PreviewAgentsResponse 
   { "AgentPreviews'" :: (AgentPreviewList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypePreviewAgentsResponse :: Newtype PreviewAgentsResponse _
 
 
 newtype ProviderName = ProviderName String
+derive instance newtypeProviderName :: Newtype ProviderName _
 
 
 newtype RegisterCrossAccountAccessRoleRequest = RegisterCrossAccountAccessRoleRequest 
   { "RoleArn'" :: (Arn)
   }
+derive instance newtypeRegisterCrossAccountAccessRoleRequest :: Newtype RegisterCrossAccountAccessRoleRequest _
 
 
 newtype RemoveAttributesFromFindingsRequest = RemoveAttributesFromFindingsRequest 
   { "FindingArns'" :: (AddRemoveAttributesFindingArnList)
   , "AttributeKeys'" :: (UserAttributeKeyList)
   }
+derive instance newtypeRemoveAttributesFromFindingsRequest :: Newtype RemoveAttributesFromFindingsRequest _
 
 
 newtype RemoveAttributesFromFindingsResponse = RemoveAttributesFromFindingsResponse 
   { "FailedItems'" :: (FailedItems)
   }
+derive instance newtypeRemoveAttributesFromFindingsResponse :: Newtype RemoveAttributesFromFindingsResponse _
 
 
 newtype ReportFileFormat = ReportFileFormat String
+derive instance newtypeReportFileFormat :: Newtype ReportFileFormat _
 
 
 newtype ReportStatus = ReportStatus String
+derive instance newtypeReportStatus :: Newtype ReportStatus _
 
 
 newtype ReportType = ReportType String
+derive instance newtypeReportType :: Newtype ReportType _
 
 
 -- | <p>Contains information about a resource group. The resource group defines a set of tags that, when queried, identify the AWS resources that make up the assessment target. This data type is used as the response element in the <a>DescribeResourceGroups</a> action.</p>
@@ -973,9 +1125,11 @@ newtype ResourceGroup = ResourceGroup
   , "Tags'" :: (ResourceGroupTags)
   , "CreatedAt'" :: (Number)
   }
+derive instance newtypeResourceGroup :: Newtype ResourceGroup _
 
 
 newtype ResourceGroupList = ResourceGroupList (Array ResourceGroup)
+derive instance newtypeResourceGroupList :: Newtype ResourceGroupList _
 
 
 -- | <p>This data type is used as one of the elements of the <a>ResourceGroup</a> data type.</p>
@@ -983,15 +1137,19 @@ newtype ResourceGroupTag = ResourceGroupTag
   { "Key'" :: (TagKey)
   , "Value'" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeResourceGroupTag :: Newtype ResourceGroupTag _
 
 
 newtype ResourceGroupTags = ResourceGroupTags (Array ResourceGroupTag)
+derive instance newtypeResourceGroupTags :: Newtype ResourceGroupTags _
 
 
 newtype RuleName = RuleName String
+derive instance newtypeRuleName :: Newtype RuleName _
 
 
 newtype RuleNameList = RuleNameList (Array RuleName)
+derive instance newtypeRuleNameList :: Newtype RuleNameList _
 
 
 -- | <p>Contains information about an Amazon Inspector rules package. This data type is used as the response element in the <a>DescribeRulesPackages</a> action.</p>
@@ -1002,47 +1160,58 @@ newtype RulesPackage = RulesPackage
   , "Provider'" :: (ProviderName)
   , "Description'" :: NullOrUndefined (Text)
   }
+derive instance newtypeRulesPackage :: Newtype RulesPackage _
 
 
 newtype RulesPackageList = RulesPackageList (Array RulesPackage)
+derive instance newtypeRulesPackageList :: Newtype RulesPackageList _
 
 
 newtype RulesPackageName = RulesPackageName String
+derive instance newtypeRulesPackageName :: Newtype RulesPackageName _
 
 
 newtype ServiceName = ServiceName String
+derive instance newtypeServiceName :: Newtype ServiceName _
 
 
 newtype SetTagsForResourceRequest = SetTagsForResourceRequest 
   { "ResourceArn'" :: (Arn)
   , "Tags'" :: NullOrUndefined (TagList)
   }
+derive instance newtypeSetTagsForResourceRequest :: Newtype SetTagsForResourceRequest _
 
 
 newtype Severity = Severity String
+derive instance newtypeSeverity :: Newtype Severity _
 
 
 newtype SeverityList = SeverityList (Array Severity)
+derive instance newtypeSeverityList :: Newtype SeverityList _
 
 
 newtype StartAssessmentRunRequest = StartAssessmentRunRequest 
   { "AssessmentTemplateArn'" :: (Arn)
   , "AssessmentRunName'" :: NullOrUndefined (AssessmentRunName)
   }
+derive instance newtypeStartAssessmentRunRequest :: Newtype StartAssessmentRunRequest _
 
 
 newtype StartAssessmentRunResponse = StartAssessmentRunResponse 
   { "AssessmentRunArn'" :: (Arn)
   }
+derive instance newtypeStartAssessmentRunResponse :: Newtype StartAssessmentRunResponse _
 
 
 newtype StopAction = StopAction String
+derive instance newtypeStopAction :: Newtype StopAction _
 
 
 newtype StopAssessmentRunRequest = StopAssessmentRunRequest 
   { "AssessmentRunArn'" :: (Arn)
   , "StopAction'" :: NullOrUndefined (StopAction)
   }
+derive instance newtypeStopAssessmentRunRequest :: Newtype StopAssessmentRunRequest _
 
 
 newtype SubscribeToEventRequest = SubscribeToEventRequest 
@@ -1050,6 +1219,7 @@ newtype SubscribeToEventRequest = SubscribeToEventRequest
   , "Event'" :: (InspectorEvent)
   , "TopicArn'" :: (Arn)
   }
+derive instance newtypeSubscribeToEventRequest :: Newtype SubscribeToEventRequest _
 
 
 -- | <p>This data type is used as a response element in the <a>ListEventSubscriptions</a> action.</p>
@@ -1058,9 +1228,11 @@ newtype Subscription = Subscription
   , "TopicArn'" :: (Arn)
   , "EventSubscriptions'" :: (EventSubscriptionList)
   }
+derive instance newtypeSubscription :: Newtype Subscription _
 
 
 newtype SubscriptionList = SubscriptionList (Array Subscription)
+derive instance newtypeSubscriptionList :: Newtype SubscriptionList _
 
 
 -- | <p>A key and value pair. This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>
@@ -1068,15 +1240,19 @@ newtype Tag = Tag
   { "Key'" :: (TagKey)
   , "Value'" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>The metadata about the Amazon Inspector application data metrics collected by the agent. This data type is used as the response element in the <a>GetTelemetryMetadata</a> action.</p>
@@ -1085,12 +1261,15 @@ newtype TelemetryMetadata = TelemetryMetadata
   , "Count'" :: (Number)
   , "DataSize'" :: NullOrUndefined (Number)
   }
+derive instance newtypeTelemetryMetadata :: Newtype TelemetryMetadata _
 
 
 newtype TelemetryMetadataList = TelemetryMetadataList (Array TelemetryMetadata)
+derive instance newtypeTelemetryMetadataList :: Newtype TelemetryMetadataList _
 
 
 newtype Text = Text String
+derive instance newtypeText :: Newtype Text _
 
 
 -- | <p>This data type is used in the <a>AssessmentRunFilter</a> data type.</p>
@@ -1098,6 +1277,7 @@ newtype TimestampRange = TimestampRange
   { "BeginDate'" :: NullOrUndefined (Number)
   , "EndDate'" :: NullOrUndefined (Number)
   }
+derive instance newtypeTimestampRange :: Newtype TimestampRange _
 
 
 newtype UnsubscribeFromEventRequest = UnsubscribeFromEventRequest 
@@ -1105,6 +1285,7 @@ newtype UnsubscribeFromEventRequest = UnsubscribeFromEventRequest
   , "Event'" :: (InspectorEvent)
   , "TopicArn'" :: (Arn)
   }
+derive instance newtypeUnsubscribeFromEventRequest :: Newtype UnsubscribeFromEventRequest _
 
 
 -- | <p>Used by the <a>GetAssessmentReport</a> API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.</p>
@@ -1112,6 +1293,7 @@ newtype UnsupportedFeatureException = UnsupportedFeatureException
   { "Message'" :: (ErrorMessage)
   , "CanRetry'" :: (Bool)
   }
+derive instance newtypeUnsupportedFeatureException :: Newtype UnsupportedFeatureException _
 
 
 newtype UpdateAssessmentTargetRequest = UpdateAssessmentTargetRequest 
@@ -1119,15 +1301,20 @@ newtype UpdateAssessmentTargetRequest = UpdateAssessmentTargetRequest
   , "AssessmentTargetName'" :: (AssessmentTargetName)
   , "ResourceGroupArn'" :: (Arn)
   }
+derive instance newtypeUpdateAssessmentTargetRequest :: Newtype UpdateAssessmentTargetRequest _
 
 
 newtype Url = Url String
+derive instance newtypeUrl :: Newtype Url _
 
 
 newtype UserAttributeKeyList = UserAttributeKeyList (Array AttributeKey)
+derive instance newtypeUserAttributeKeyList :: Newtype UserAttributeKeyList _
 
 
 newtype UserAttributeList = UserAttributeList (Array Attribute)
+derive instance newtypeUserAttributeList :: Newtype UserAttributeList _
 
 
 newtype Version = Version String
+derive instance newtypeVersion :: Newtype Version _

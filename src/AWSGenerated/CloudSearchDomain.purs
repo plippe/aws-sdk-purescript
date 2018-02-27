@@ -6,6 +6,7 @@ module AWS.CloudSearchDomain where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -29,6 +30,7 @@ uploadDocuments = AWS.request serviceName "UploadDocuments"
 
 
 newtype Adds = Adds Number
+derive instance newtypeAdds :: Newtype Adds _
 
 
 -- | <p>A container for facet information. </p>
@@ -36,24 +38,30 @@ newtype Bucket = Bucket
   { "Value'" :: NullOrUndefined (String)
   , "Count'" :: NullOrUndefined (Number)
   }
+derive instance newtypeBucket :: Newtype Bucket _
 
 
 -- | <p>A container for the calculated facet values and counts.</p>
 newtype BucketInfo = BucketInfo 
   { "Buckets'" :: NullOrUndefined (BucketList)
   }
+derive instance newtypeBucketInfo :: Newtype BucketInfo _
 
 
 newtype BucketList = BucketList (Array Bucket)
+derive instance newtypeBucketList :: Newtype BucketList _
 
 
 newtype ContentType = ContentType String
+derive instance newtypeContentType :: Newtype ContentType _
 
 
 newtype Cursor = Cursor String
+derive instance newtypeCursor :: Newtype Cursor _
 
 
 newtype Deletes = Deletes Number
+derive instance newtypeDeletes :: Newtype Deletes _
 
 
 -- | <p>Information about any problems encountered while processing an upload request.</p>
@@ -61,27 +69,34 @@ newtype DocumentServiceException = DocumentServiceException
   { "Status'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeDocumentServiceException :: Newtype DocumentServiceException _
 
 
 -- | <p>A warning returned by the document service when an issue is discovered while processing an upload request.</p>
 newtype DocumentServiceWarning = DocumentServiceWarning 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeDocumentServiceWarning :: Newtype DocumentServiceWarning _
 
 
 newtype DocumentServiceWarnings = DocumentServiceWarnings (Array DocumentServiceWarning)
+derive instance newtypeDocumentServiceWarnings :: Newtype DocumentServiceWarnings _
 
 
 newtype Expr = Expr String
+derive instance newtypeExpr :: Newtype Expr _
 
 
 newtype Exprs = Exprs (Map String String)
+derive instance newtypeExprs :: Newtype Exprs _
 
 
 newtype Facet = Facet String
+derive instance newtypeFacet :: Newtype Facet _
 
 
 newtype Facets = Facets (Map String BucketInfo)
+derive instance newtypeFacets :: Newtype Facets _
 
 
 -- | <p>The statistics for a field calculated in the request.</p>
@@ -95,21 +110,27 @@ newtype FieldStats = FieldStats
   , "Mean'" :: NullOrUndefined (String)
   , "Stddev'" :: NullOrUndefined (Number)
   }
+derive instance newtypeFieldStats :: Newtype FieldStats _
 
 
 newtype FieldValue = FieldValue (Array String)
+derive instance newtypeFieldValue :: Newtype FieldValue _
 
 
 newtype Fields = Fields (Map String FieldValue)
+derive instance newtypeFields :: Newtype Fields _
 
 
 newtype FilterQuery = FilterQuery String
+derive instance newtypeFilterQuery :: Newtype FilterQuery _
 
 
 newtype Highlight = Highlight String
+derive instance newtypeHighlight :: Newtype Highlight _
 
 
 newtype Highlights = Highlights (Map String String)
+derive instance newtypeHighlights :: Newtype Highlights _
 
 
 -- | <p>Information about a document that matches the search request.</p>
@@ -119,9 +140,11 @@ newtype Hit = Hit
   , "Exprs'" :: NullOrUndefined (Exprs)
   , "Highlights'" :: NullOrUndefined (Highlights)
   }
+derive instance newtypeHit :: Newtype Hit _
 
 
 newtype HitList = HitList (Array Hit)
+derive instance newtypeHitList :: Newtype HitList _
 
 
 -- | <p>The collection of documents that match the search request.</p>
@@ -131,27 +154,34 @@ newtype Hits = Hits
   , "Cursor'" :: NullOrUndefined (String)
   , "Hit'" :: NullOrUndefined (HitList)
   }
+derive instance newtypeHits :: Newtype Hits _
 
 
 newtype Partial = Partial Boolean
+derive instance newtypePartial :: Newtype Partial _
 
 
 newtype Query = Query String
+derive instance newtypeQuery :: Newtype Query _
 
 
 newtype QueryOptions = QueryOptions String
+derive instance newtypeQueryOptions :: Newtype QueryOptions _
 
 
 newtype QueryParser = QueryParser String
+derive instance newtypeQueryParser :: Newtype QueryParser _
 
 
 newtype Return = Return String
+derive instance newtypeReturn :: Newtype Return _
 
 
 -- | <p>Information about any problems encountered while processing a search request.</p>
 newtype SearchException = SearchException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeSearchException :: Newtype SearchException _
 
 
 -- | <p>Container for the parameters to the <code>Search</code> request.</p>
@@ -171,6 +201,7 @@ newtype SearchRequest = SearchRequest
   , "Start'" :: NullOrUndefined (Start)
   , "Stats'" :: NullOrUndefined (Stat)
   }
+derive instance newtypeSearchRequest :: Newtype SearchRequest _
 
 
 -- | <p>The result of a <code>Search</code> request. Contains the documents that match the specified search criteria and any requested fields, highlights, and facet information.</p>
@@ -180,6 +211,7 @@ newtype SearchResponse = SearchResponse
   , "Facets'" :: NullOrUndefined (Facets)
   , "Stats'" :: NullOrUndefined (Stats)
   }
+derive instance newtypeSearchResponse :: Newtype SearchResponse _
 
 
 -- | <p>Contains the resource id (<code>rid</code>) and the time it took to process the request (<code>timems</code>).</p>
@@ -187,22 +219,28 @@ newtype SearchStatus = SearchStatus
   { "Timems'" :: NullOrUndefined (Number)
   , "Rid'" :: NullOrUndefined (String)
   }
+derive instance newtypeSearchStatus :: Newtype SearchStatus _
 
 
 newtype Size = Size Number
+derive instance newtypeSize :: Newtype Size _
 
 
 newtype Sort = Sort String
+derive instance newtypeSort :: Newtype Sort _
 
 
 newtype Start = Start Number
+derive instance newtypeStart :: Newtype Start _
 
 
 newtype Stat = Stat String
+derive instance newtypeStat :: Newtype Stat _
 
 
 -- | <p>The statistics calculated in the request.</p>
 newtype Stats = Stats (Map String FieldStats)
+derive instance newtypeStats :: Newtype Stats _
 
 
 -- | <p>Container for the suggestion information returned in a <code>SuggestResponse</code>.</p>
@@ -211,6 +249,7 @@ newtype SuggestModel = SuggestModel
   , "Found'" :: NullOrUndefined (Number)
   , "Suggestions'" :: NullOrUndefined (Suggestions)
   }
+derive instance newtypeSuggestModel :: Newtype SuggestModel _
 
 
 -- | <p>Container for the parameters to the <code>Suggest</code> request.</p>
@@ -219,6 +258,7 @@ newtype SuggestRequest = SuggestRequest
   , "Suggester'" :: (Suggester)
   , "Size'" :: NullOrUndefined (SuggestionsSize)
   }
+derive instance newtypeSuggestRequest :: Newtype SuggestRequest _
 
 
 -- | <p>Contains the response to a <code>Suggest</code> request.</p>
@@ -226,6 +266,7 @@ newtype SuggestResponse = SuggestResponse
   { "Status'" :: NullOrUndefined (SuggestStatus)
   , "Suggest'" :: NullOrUndefined (SuggestModel)
   }
+derive instance newtypeSuggestResponse :: Newtype SuggestResponse _
 
 
 -- | <p>Contains the resource id (<code>rid</code>) and the time it took to process the request (<code>timems</code>).</p>
@@ -233,9 +274,11 @@ newtype SuggestStatus = SuggestStatus
   { "Timems'" :: NullOrUndefined (Number)
   , "Rid'" :: NullOrUndefined (String)
   }
+derive instance newtypeSuggestStatus :: Newtype SuggestStatus _
 
 
 newtype Suggester = Suggester String
+derive instance newtypeSuggester :: Newtype Suggester _
 
 
 -- | <p>An autocomplete suggestion that matches the query string specified in a <code>SuggestRequest</code>. </p>
@@ -244,12 +287,15 @@ newtype SuggestionMatch = SuggestionMatch
   , "Score'" :: NullOrUndefined (Number)
   , "Id'" :: NullOrUndefined (String)
   }
+derive instance newtypeSuggestionMatch :: Newtype SuggestionMatch _
 
 
 newtype Suggestions = Suggestions (Array SuggestionMatch)
+derive instance newtypeSuggestions :: Newtype Suggestions _
 
 
 newtype SuggestionsSize = SuggestionsSize Number
+derive instance newtypeSuggestionsSize :: Newtype SuggestionsSize _
 
 
 -- | <p>Container for the parameters to the <code>UploadDocuments</code> request.</p>
@@ -257,6 +303,7 @@ newtype UploadDocumentsRequest = UploadDocumentsRequest
   { "Documents'" :: (String)
   , "ContentType'" :: (ContentType)
   }
+derive instance newtypeUploadDocumentsRequest :: Newtype UploadDocumentsRequest _
 
 
 -- | <p>Contains the response to an <code>UploadDocuments</code> request.</p>
@@ -266,3 +313,4 @@ newtype UploadDocumentsResponse = UploadDocumentsResponse
   , "Deletes'" :: NullOrUndefined (Deletes)
   , "Warnings'" :: NullOrUndefined (DocumentServiceWarnings)
   }
+derive instance newtypeUploadDocumentsResponse :: Newtype UploadDocumentsResponse _

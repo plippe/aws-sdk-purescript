@@ -6,6 +6,7 @@ module AWS.LexModelBuildingService where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -194,15 +195,18 @@ startImport = AWS.request serviceName "StartImport"
 
 
 newtype AliasName = AliasName String
+derive instance newtypeAliasName :: Newtype AliasName _
 
 
 newtype AliasNameOrListAll = AliasNameOrListAll String
+derive instance newtypeAliasNameOrListAll :: Newtype AliasNameOrListAll _
 
 
 -- | <p>The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and try again.</p>
 newtype BadRequestException = BadRequestException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 -- | <p>Provides information about a bot alias.</p>
@@ -215,9 +219,11 @@ newtype BotAliasMetadata = BotAliasMetadata
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeBotAliasMetadata :: Newtype BotAliasMetadata _
 
 
 newtype BotAliasMetadataList = BotAliasMetadataList (Array BotAliasMetadata)
+derive instance newtypeBotAliasMetadataList :: Newtype BotAliasMetadataList _
 
 
 -- | <p>Represents an association between an Amazon Lex bot and an external messaging platform.</p>
@@ -232,12 +238,15 @@ newtype BotChannelAssociation = BotChannelAssociation
   , "Status'" :: NullOrUndefined (ChannelStatus)
   , "FailureReason'" :: NullOrUndefined (String)
   }
+derive instance newtypeBotChannelAssociation :: Newtype BotChannelAssociation _
 
 
 newtype BotChannelAssociationList = BotChannelAssociationList (Array BotChannelAssociation)
+derive instance newtypeBotChannelAssociationList :: Newtype BotChannelAssociationList _
 
 
 newtype BotChannelName = BotChannelName String
+derive instance newtypeBotChannelName :: Newtype BotChannelName _
 
 
 -- | <p>Provides information about a bot. .</p>
@@ -249,15 +258,19 @@ newtype BotMetadata = BotMetadata
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "Version'" :: NullOrUndefined (Version)
   }
+derive instance newtypeBotMetadata :: Newtype BotMetadata _
 
 
 newtype BotMetadataList = BotMetadataList (Array BotMetadata)
+derive instance newtypeBotMetadataList :: Newtype BotMetadataList _
 
 
 newtype BotName = BotName String
+derive instance newtypeBotName :: Newtype BotName _
 
 
 newtype BotVersions = BotVersions (Array Version)
+derive instance newtypeBotVersions :: Newtype BotVersions _
 
 
 -- | <p>Provides metadata for a built-in intent.</p>
@@ -265,21 +278,26 @@ newtype BuiltinIntentMetadata = BuiltinIntentMetadata
   { "Signature'" :: NullOrUndefined (BuiltinIntentSignature)
   , "SupportedLocales'" :: NullOrUndefined (LocaleList)
   }
+derive instance newtypeBuiltinIntentMetadata :: Newtype BuiltinIntentMetadata _
 
 
 newtype BuiltinIntentMetadataList = BuiltinIntentMetadataList (Array BuiltinIntentMetadata)
+derive instance newtypeBuiltinIntentMetadataList :: Newtype BuiltinIntentMetadataList _
 
 
 newtype BuiltinIntentSignature = BuiltinIntentSignature String
+derive instance newtypeBuiltinIntentSignature :: Newtype BuiltinIntentSignature _
 
 
 -- | <p>Provides information about a slot used in a built-in intent.</p>
 newtype BuiltinIntentSlot = BuiltinIntentSlot 
   { "Name'" :: NullOrUndefined (String)
   }
+derive instance newtypeBuiltinIntentSlot :: Newtype BuiltinIntentSlot _
 
 
 newtype BuiltinIntentSlotList = BuiltinIntentSlotList (Array BuiltinIntentSlot)
+derive instance newtypeBuiltinIntentSlotList :: Newtype BuiltinIntentSlotList _
 
 
 -- | <p>Provides information about a built in slot type.</p>
@@ -287,21 +305,27 @@ newtype BuiltinSlotTypeMetadata = BuiltinSlotTypeMetadata
   { "Signature'" :: NullOrUndefined (BuiltinSlotTypeSignature)
   , "SupportedLocales'" :: NullOrUndefined (LocaleList)
   }
+derive instance newtypeBuiltinSlotTypeMetadata :: Newtype BuiltinSlotTypeMetadata _
 
 
 newtype BuiltinSlotTypeMetadataList = BuiltinSlotTypeMetadataList (Array BuiltinSlotTypeMetadata)
+derive instance newtypeBuiltinSlotTypeMetadataList :: Newtype BuiltinSlotTypeMetadataList _
 
 
 newtype BuiltinSlotTypeSignature = BuiltinSlotTypeSignature String
+derive instance newtypeBuiltinSlotTypeSignature :: Newtype BuiltinSlotTypeSignature _
 
 
 newtype ChannelConfigurationMap = ChannelConfigurationMap (Map String String)
+derive instance newtypeChannelConfigurationMap :: Newtype ChannelConfigurationMap _
 
 
 newtype ChannelStatus = ChannelStatus String
+derive instance newtypeChannelStatus :: Newtype ChannelStatus _
 
 
 newtype ChannelType = ChannelType String
+derive instance newtypeChannelType :: Newtype ChannelType _
 
 
 -- | <p>Specifies a Lambda function that verifies requests to a bot or fulfills the user's request to a bot..</p>
@@ -309,27 +333,33 @@ newtype CodeHook = CodeHook
   { "Uri'" :: (LambdaARN)
   , "MessageVersion'" :: (MessageVersion)
   }
+derive instance newtypeCodeHook :: Newtype CodeHook _
 
 
 -- | <p> There was a conflict processing the request. Try your request again. </p>
 newtype ConflictException = ConflictException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeConflictException :: Newtype ConflictException _
 
 
 newtype ContentString = ContentString String
+derive instance newtypeContentString :: Newtype ContentString _
 
 
 newtype ContentType = ContentType String
+derive instance newtypeContentType :: Newtype ContentType _
 
 
 newtype Count = Count Int
+derive instance newtypeCount :: Newtype Count _
 
 
 newtype CreateBotVersionRequest = CreateBotVersionRequest 
   { "Name'" :: (BotName)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateBotVersionRequest :: Newtype CreateBotVersionRequest _
 
 
 newtype CreateBotVersionResponse = CreateBotVersionResponse 
@@ -349,12 +379,14 @@ newtype CreateBotVersionResponse = CreateBotVersionResponse
   , "Locale'" :: NullOrUndefined (Locale)
   , "ChildDirected'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateBotVersionResponse :: Newtype CreateBotVersionResponse _
 
 
 newtype CreateIntentVersionRequest = CreateIntentVersionRequest 
   { "Name'" :: (IntentName)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateIntentVersionRequest :: Newtype CreateIntentVersionRequest _
 
 
 newtype CreateIntentVersionResponse = CreateIntentVersionResponse 
@@ -374,12 +406,14 @@ newtype CreateIntentVersionResponse = CreateIntentVersionResponse
   , "Version'" :: NullOrUndefined (Version)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateIntentVersionResponse :: Newtype CreateIntentVersionResponse _
 
 
 newtype CreateSlotTypeVersionRequest = CreateSlotTypeVersionRequest 
   { "Name'" :: (SlotTypeName)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateSlotTypeVersionRequest :: Newtype CreateSlotTypeVersionRequest _
 
 
 newtype CreateSlotTypeVersionResponse = CreateSlotTypeVersionResponse 
@@ -392,15 +426,18 @@ newtype CreateSlotTypeVersionResponse = CreateSlotTypeVersionResponse
   , "Checksum'" :: NullOrUndefined (String)
   , "ValueSelectionStrategy'" :: NullOrUndefined (SlotValueSelectionStrategy)
   }
+derive instance newtypeCreateSlotTypeVersionResponse :: Newtype CreateSlotTypeVersionResponse _
 
 
 newtype CustomOrBuiltinSlotTypeName = CustomOrBuiltinSlotTypeName String
+derive instance newtypeCustomOrBuiltinSlotTypeName :: Newtype CustomOrBuiltinSlotTypeName _
 
 
 newtype DeleteBotAliasRequest = DeleteBotAliasRequest 
   { "Name'" :: (AliasName)
   , "BotName'" :: (BotName)
   }
+derive instance newtypeDeleteBotAliasRequest :: Newtype DeleteBotAliasRequest _
 
 
 newtype DeleteBotChannelAssociationRequest = DeleteBotChannelAssociationRequest 
@@ -408,48 +445,57 @@ newtype DeleteBotChannelAssociationRequest = DeleteBotChannelAssociationRequest
   , "BotName'" :: (BotName)
   , "BotAlias'" :: (AliasName)
   }
+derive instance newtypeDeleteBotChannelAssociationRequest :: Newtype DeleteBotChannelAssociationRequest _
 
 
 newtype DeleteBotRequest = DeleteBotRequest 
   { "Name'" :: (BotName)
   }
+derive instance newtypeDeleteBotRequest :: Newtype DeleteBotRequest _
 
 
 newtype DeleteBotVersionRequest = DeleteBotVersionRequest 
   { "Name'" :: (BotName)
   , "Version'" :: (NumericalVersion)
   }
+derive instance newtypeDeleteBotVersionRequest :: Newtype DeleteBotVersionRequest _
 
 
 newtype DeleteIntentRequest = DeleteIntentRequest 
   { "Name'" :: (IntentName)
   }
+derive instance newtypeDeleteIntentRequest :: Newtype DeleteIntentRequest _
 
 
 newtype DeleteIntentVersionRequest = DeleteIntentVersionRequest 
   { "Name'" :: (IntentName)
   , "Version'" :: (NumericalVersion)
   }
+derive instance newtypeDeleteIntentVersionRequest :: Newtype DeleteIntentVersionRequest _
 
 
 newtype DeleteSlotTypeRequest = DeleteSlotTypeRequest 
   { "Name'" :: (SlotTypeName)
   }
+derive instance newtypeDeleteSlotTypeRequest :: Newtype DeleteSlotTypeRequest _
 
 
 newtype DeleteSlotTypeVersionRequest = DeleteSlotTypeVersionRequest 
   { "Name'" :: (SlotTypeName)
   , "Version'" :: (NumericalVersion)
   }
+derive instance newtypeDeleteSlotTypeVersionRequest :: Newtype DeleteSlotTypeVersionRequest _
 
 
 newtype DeleteUtterancesRequest = DeleteUtterancesRequest 
   { "BotName'" :: (BotName)
   , "UserId'" :: (UserId)
   }
+derive instance newtypeDeleteUtterancesRequest :: Newtype DeleteUtterancesRequest _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 -- | <p>Each slot type can have a set of values. Each enumeration value represents a value the slot type can take. </p> <p>For example, a pizza ordering bot could have a slot type that specifies the type of crust that the pizza should have. The slot type could include the values </p> <ul> <li> <p>thick</p> </li> <li> <p>thin</p> </li> <li> <p>stuffed</p> </li> </ul>
@@ -457,15 +503,19 @@ newtype EnumerationValue = EnumerationValue
   { "Value'" :: (Value)
   , "Synonyms'" :: NullOrUndefined (SynonymList)
   }
+derive instance newtypeEnumerationValue :: Newtype EnumerationValue _
 
 
 newtype EnumerationValues = EnumerationValues (Array EnumerationValue)
+derive instance newtypeEnumerationValues :: Newtype EnumerationValues _
 
 
 newtype ExportStatus = ExportStatus String
+derive instance newtypeExportStatus :: Newtype ExportStatus _
 
 
 newtype ExportType = ExportType String
+derive instance newtypeExportType :: Newtype ExportType _
 
 
 -- | <p>A prompt for additional activity after an intent is fulfilled. For example, after the <code>OrderPizza</code> intent is fulfilled, you might prompt the user to find out whether the user wants to order drinks.</p>
@@ -473,6 +523,7 @@ newtype FollowUpPrompt = FollowUpPrompt
   { "Prompt'" :: (Prompt)
   , "RejectionStatement'" :: (Statement)
   }
+derive instance newtypeFollowUpPrompt :: Newtype FollowUpPrompt _
 
 
 -- | <p> Describes how the intent is fulfilled after the user provides all of the information required for the intent. You can provide a Lambda function to process the intent, or you can return the intent information to the client application. We recommend that you use a Lambda function so that the relevant logic lives in the Cloud and limit the client-side code primarily to presentation. If you need to update the logic, you only update the Lambda function; you don't need to upgrade your client application. </p> <p>Consider the following examples:</p> <ul> <li> <p>In a pizza ordering application, after the user provides all of the information for placing an order, you use a Lambda function to place an order with a pizzeria. </p> </li> <li> <p>In a gaming application, when a user says "pick up a rock," this information must go back to the client application so that it can perform the operation and update the graphics. In this case, you want Amazon Lex to return the intent data to the client. </p> </li> </ul>
@@ -480,15 +531,18 @@ newtype FulfillmentActivity = FulfillmentActivity
   { "Type'" :: (FulfillmentActivityType)
   , "CodeHook'" :: NullOrUndefined (CodeHook)
   }
+derive instance newtypeFulfillmentActivity :: Newtype FulfillmentActivity _
 
 
 newtype FulfillmentActivityType = FulfillmentActivityType String
+derive instance newtypeFulfillmentActivityType :: Newtype FulfillmentActivityType _
 
 
 newtype GetBotAliasRequest = GetBotAliasRequest 
   { "Name'" :: (AliasName)
   , "BotName'" :: (BotName)
   }
+derive instance newtypeGetBotAliasRequest :: Newtype GetBotAliasRequest _
 
 
 newtype GetBotAliasResponse = GetBotAliasResponse 
@@ -500,6 +554,7 @@ newtype GetBotAliasResponse = GetBotAliasResponse
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetBotAliasResponse :: Newtype GetBotAliasResponse _
 
 
 newtype GetBotAliasesRequest = GetBotAliasesRequest 
@@ -508,12 +563,14 @@ newtype GetBotAliasesRequest = GetBotAliasesRequest
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   , "NameContains'" :: NullOrUndefined (AliasName)
   }
+derive instance newtypeGetBotAliasesRequest :: Newtype GetBotAliasesRequest _
 
 
 newtype GetBotAliasesResponse = GetBotAliasesResponse 
   { "BotAliases" :: NullOrUndefined (BotAliasMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetBotAliasesResponse :: Newtype GetBotAliasesResponse _
 
 
 newtype GetBotChannelAssociationRequest = GetBotChannelAssociationRequest 
@@ -521,6 +578,7 @@ newtype GetBotChannelAssociationRequest = GetBotChannelAssociationRequest
   , "BotName'" :: (BotName)
   , "BotAlias'" :: (AliasName)
   }
+derive instance newtypeGetBotChannelAssociationRequest :: Newtype GetBotChannelAssociationRequest _
 
 
 newtype GetBotChannelAssociationResponse = GetBotChannelAssociationResponse 
@@ -534,6 +592,7 @@ newtype GetBotChannelAssociationResponse = GetBotChannelAssociationResponse
   , "Status'" :: NullOrUndefined (ChannelStatus)
   , "FailureReason'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetBotChannelAssociationResponse :: Newtype GetBotChannelAssociationResponse _
 
 
 newtype GetBotChannelAssociationsRequest = GetBotChannelAssociationsRequest 
@@ -543,18 +602,21 @@ newtype GetBotChannelAssociationsRequest = GetBotChannelAssociationsRequest
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   , "NameContains'" :: NullOrUndefined (BotChannelName)
   }
+derive instance newtypeGetBotChannelAssociationsRequest :: Newtype GetBotChannelAssociationsRequest _
 
 
 newtype GetBotChannelAssociationsResponse = GetBotChannelAssociationsResponse 
   { "BotChannelAssociations'" :: NullOrUndefined (BotChannelAssociationList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetBotChannelAssociationsResponse :: Newtype GetBotChannelAssociationsResponse _
 
 
 newtype GetBotRequest = GetBotRequest 
   { "Name'" :: (BotName)
   , "VersionOrAlias'" :: (String)
   }
+derive instance newtypeGetBotRequest :: Newtype GetBotRequest _
 
 
 newtype GetBotResponse = GetBotResponse 
@@ -574,6 +636,7 @@ newtype GetBotResponse = GetBotResponse
   , "Locale'" :: NullOrUndefined (Locale)
   , "ChildDirected'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGetBotResponse :: Newtype GetBotResponse _
 
 
 newtype GetBotVersionsRequest = GetBotVersionsRequest 
@@ -581,12 +644,14 @@ newtype GetBotVersionsRequest = GetBotVersionsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeGetBotVersionsRequest :: Newtype GetBotVersionsRequest _
 
 
 newtype GetBotVersionsResponse = GetBotVersionsResponse 
   { "Bots'" :: NullOrUndefined (BotMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetBotVersionsResponse :: Newtype GetBotVersionsResponse _
 
 
 newtype GetBotsRequest = GetBotsRequest 
@@ -594,17 +659,20 @@ newtype GetBotsRequest = GetBotsRequest
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   , "NameContains'" :: NullOrUndefined (BotName)
   }
+derive instance newtypeGetBotsRequest :: Newtype GetBotsRequest _
 
 
 newtype GetBotsResponse = GetBotsResponse 
   { "Bots'" :: NullOrUndefined (BotMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetBotsResponse :: Newtype GetBotsResponse _
 
 
 newtype GetBuiltinIntentRequest = GetBuiltinIntentRequest 
   { "Signature'" :: (BuiltinIntentSignature)
   }
+derive instance newtypeGetBuiltinIntentRequest :: Newtype GetBuiltinIntentRequest _
 
 
 newtype GetBuiltinIntentResponse = GetBuiltinIntentResponse 
@@ -612,6 +680,7 @@ newtype GetBuiltinIntentResponse = GetBuiltinIntentResponse
   , "SupportedLocales'" :: NullOrUndefined (LocaleList)
   , "Slots'" :: NullOrUndefined (BuiltinIntentSlotList)
   }
+derive instance newtypeGetBuiltinIntentResponse :: Newtype GetBuiltinIntentResponse _
 
 
 newtype GetBuiltinIntentsRequest = GetBuiltinIntentsRequest 
@@ -620,12 +689,14 @@ newtype GetBuiltinIntentsRequest = GetBuiltinIntentsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeGetBuiltinIntentsRequest :: Newtype GetBuiltinIntentsRequest _
 
 
 newtype GetBuiltinIntentsResponse = GetBuiltinIntentsResponse 
   { "Intents'" :: NullOrUndefined (BuiltinIntentMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetBuiltinIntentsResponse :: Newtype GetBuiltinIntentsResponse _
 
 
 newtype GetBuiltinSlotTypesRequest = GetBuiltinSlotTypesRequest 
@@ -634,12 +705,14 @@ newtype GetBuiltinSlotTypesRequest = GetBuiltinSlotTypesRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeGetBuiltinSlotTypesRequest :: Newtype GetBuiltinSlotTypesRequest _
 
 
 newtype GetBuiltinSlotTypesResponse = GetBuiltinSlotTypesResponse 
   { "SlotTypes'" :: NullOrUndefined (BuiltinSlotTypeMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetBuiltinSlotTypesResponse :: Newtype GetBuiltinSlotTypesResponse _
 
 
 newtype GetExportRequest = GetExportRequest 
@@ -648,6 +721,7 @@ newtype GetExportRequest = GetExportRequest
   , "ResourceType'" :: (ResourceType)
   , "ExportType'" :: (ExportType)
   }
+derive instance newtypeGetExportRequest :: Newtype GetExportRequest _
 
 
 newtype GetExportResponse = GetExportResponse 
@@ -659,11 +733,13 @@ newtype GetExportResponse = GetExportResponse
   , "FailureReason'" :: NullOrUndefined (String)
   , "Url'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetExportResponse :: Newtype GetExportResponse _
 
 
 newtype GetImportRequest = GetImportRequest 
   { "ImportId'" :: (String)
   }
+derive instance newtypeGetImportRequest :: Newtype GetImportRequest _
 
 
 newtype GetImportResponse = GetImportResponse 
@@ -675,12 +751,14 @@ newtype GetImportResponse = GetImportResponse
   , "FailureReason'" :: NullOrUndefined (StringList)
   , "CreatedDate'" :: NullOrUndefined (Number)
   }
+derive instance newtypeGetImportResponse :: Newtype GetImportResponse _
 
 
 newtype GetIntentRequest = GetIntentRequest 
   { "Name'" :: (IntentName)
   , "Version'" :: (Version)
   }
+derive instance newtypeGetIntentRequest :: Newtype GetIntentRequest _
 
 
 newtype GetIntentResponse = GetIntentResponse 
@@ -700,6 +778,7 @@ newtype GetIntentResponse = GetIntentResponse
   , "Version'" :: NullOrUndefined (Version)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetIntentResponse :: Newtype GetIntentResponse _
 
 
 newtype GetIntentVersionsRequest = GetIntentVersionsRequest 
@@ -707,12 +786,14 @@ newtype GetIntentVersionsRequest = GetIntentVersionsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeGetIntentVersionsRequest :: Newtype GetIntentVersionsRequest _
 
 
 newtype GetIntentVersionsResponse = GetIntentVersionsResponse 
   { "Intents'" :: NullOrUndefined (IntentMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetIntentVersionsResponse :: Newtype GetIntentVersionsResponse _
 
 
 newtype GetIntentsRequest = GetIntentsRequest 
@@ -720,18 +801,21 @@ newtype GetIntentsRequest = GetIntentsRequest
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   , "NameContains'" :: NullOrUndefined (IntentName)
   }
+derive instance newtypeGetIntentsRequest :: Newtype GetIntentsRequest _
 
 
 newtype GetIntentsResponse = GetIntentsResponse 
   { "Intents'" :: NullOrUndefined (IntentMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetIntentsResponse :: Newtype GetIntentsResponse _
 
 
 newtype GetSlotTypeRequest = GetSlotTypeRequest 
   { "Name'" :: (SlotTypeName)
   , "Version'" :: (Version)
   }
+derive instance newtypeGetSlotTypeRequest :: Newtype GetSlotTypeRequest _
 
 
 newtype GetSlotTypeResponse = GetSlotTypeResponse 
@@ -744,6 +828,7 @@ newtype GetSlotTypeResponse = GetSlotTypeResponse
   , "Checksum'" :: NullOrUndefined (String)
   , "ValueSelectionStrategy'" :: NullOrUndefined (SlotValueSelectionStrategy)
   }
+derive instance newtypeGetSlotTypeResponse :: Newtype GetSlotTypeResponse _
 
 
 newtype GetSlotTypeVersionsRequest = GetSlotTypeVersionsRequest 
@@ -751,12 +836,14 @@ newtype GetSlotTypeVersionsRequest = GetSlotTypeVersionsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeGetSlotTypeVersionsRequest :: Newtype GetSlotTypeVersionsRequest _
 
 
 newtype GetSlotTypeVersionsResponse = GetSlotTypeVersionsResponse 
   { "SlotTypes'" :: NullOrUndefined (SlotTypeMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetSlotTypeVersionsResponse :: Newtype GetSlotTypeVersionsResponse _
 
 
 newtype GetSlotTypesRequest = GetSlotTypesRequest 
@@ -764,12 +851,14 @@ newtype GetSlotTypesRequest = GetSlotTypesRequest
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   , "NameContains'" :: NullOrUndefined (SlotTypeName)
   }
+derive instance newtypeGetSlotTypesRequest :: Newtype GetSlotTypesRequest _
 
 
 newtype GetSlotTypesResponse = GetSlotTypesResponse 
   { "SlotTypes'" :: NullOrUndefined (SlotTypeMetadataList)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetSlotTypesResponse :: Newtype GetSlotTypesResponse _
 
 
 newtype GetUtterancesViewRequest = GetUtterancesViewRequest 
@@ -777,18 +866,22 @@ newtype GetUtterancesViewRequest = GetUtterancesViewRequest
   , "BotVersions'" :: (BotVersions)
   , "StatusType'" :: (StatusType)
   }
+derive instance newtypeGetUtterancesViewRequest :: Newtype GetUtterancesViewRequest _
 
 
 newtype GetUtterancesViewResponse = GetUtterancesViewResponse 
   { "BotName'" :: NullOrUndefined (BotName)
   , "Utterances'" :: NullOrUndefined (ListsOfUtterances)
   }
+derive instance newtypeGetUtterancesViewResponse :: Newtype GetUtterancesViewResponse _
 
 
 newtype GroupNumber = GroupNumber Int
+derive instance newtypeGroupNumber :: Newtype GroupNumber _
 
 
 newtype ImportStatus = ImportStatus String
+derive instance newtypeImportStatus :: Newtype ImportStatus _
 
 
 -- | <p>Identifies the specific version of an intent.</p>
@@ -796,9 +889,11 @@ newtype Intent = Intent
   { "IntentName'" :: (IntentName)
   , "IntentVersion'" :: (Version)
   }
+derive instance newtypeIntent :: Newtype Intent _
 
 
 newtype IntentList = IntentList (Array Intent)
+derive instance newtypeIntentList :: Newtype IntentList _
 
 
 -- | <p>Provides information about an intent.</p>
@@ -809,24 +904,30 @@ newtype IntentMetadata = IntentMetadata
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "Version'" :: NullOrUndefined (Version)
   }
+derive instance newtypeIntentMetadata :: Newtype IntentMetadata _
 
 
 newtype IntentMetadataList = IntentMetadataList (Array IntentMetadata)
+derive instance newtypeIntentMetadataList :: Newtype IntentMetadataList _
 
 
 newtype IntentName = IntentName String
+derive instance newtypeIntentName :: Newtype IntentName _
 
 
 newtype IntentUtteranceList = IntentUtteranceList (Array Utterance)
+derive instance newtypeIntentUtteranceList :: Newtype IntentUtteranceList _
 
 
 -- | <p>An internal Amazon Lex error occurred. Try your request again.</p>
 newtype InternalFailureException = InternalFailureException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalFailureException :: Newtype InternalFailureException _
 
 
 newtype LambdaARN = LambdaARN String
+derive instance newtypeLambdaARN :: Newtype LambdaARN _
 
 
 -- | <p>The request exceeded a limit. Try your request again.</p>
@@ -834,24 +935,31 @@ newtype LimitExceededException = LimitExceededException
   { "RetryAfterSeconds'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListOfUtterance = ListOfUtterance (Array UtteranceData)
+derive instance newtypeListOfUtterance :: Newtype ListOfUtterance _
 
 
 newtype ListsOfUtterances = ListsOfUtterances (Array UtteranceList)
+derive instance newtypeListsOfUtterances :: Newtype ListsOfUtterances _
 
 
 newtype Locale = Locale String
+derive instance newtypeLocale :: Newtype Locale _
 
 
 newtype LocaleList = LocaleList (Array Locale)
+derive instance newtypeLocaleList :: Newtype LocaleList _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype MergeStrategy = MergeStrategy String
+derive instance newtypeMergeStrategy :: Newtype MergeStrategy _
 
 
 -- | <p>The message object that provides the message text and its type.</p>
@@ -860,39 +968,49 @@ newtype Message = Message
   , "Content'" :: (ContentString)
   , "GroupNumber'" :: NullOrUndefined (GroupNumber)
   }
+derive instance newtypeMessage :: Newtype Message _
 
 
 newtype MessageList = MessageList (Array Message)
+derive instance newtypeMessageList :: Newtype MessageList _
 
 
 newtype MessageVersion = MessageVersion String
+derive instance newtypeMessageVersion :: Newtype MessageVersion _
 
 
 newtype Name = Name String
+derive instance newtypeName :: Newtype Name _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>The resource specified in the request was not found. Check the resource and try again.</p>
 newtype NotFoundException = NotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype NumericalVersion = NumericalVersion String
+derive instance newtypeNumericalVersion :: Newtype NumericalVersion _
 
 
 -- | <p> The checksum of the resource that you are trying to change does not match the checksum in the request. Check the resource's checksum and try again.</p>
 newtype PreconditionFailedException = PreconditionFailedException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypePreconditionFailedException :: Newtype PreconditionFailedException _
 
 
 newtype Priority = Priority Int
+derive instance newtypePriority :: Newtype Priority _
 
 
 newtype ProcessBehavior = ProcessBehavior String
+derive instance newtypeProcessBehavior :: Newtype ProcessBehavior _
 
 
 -- | <p>Obtains information from the user. To define a prompt, provide one or more messages and specify the number of attempts to get information from the user. If you provide more than one message, Amazon Lex chooses one of the messages to use to prompt the user. For more information, see <a>how-it-works</a>.</p>
@@ -901,9 +1019,11 @@ newtype Prompt = Prompt
   , "MaxAttempts'" :: (PromptMaxAttempts)
   , "ResponseCard'" :: NullOrUndefined (ResponseCard)
   }
+derive instance newtypePrompt :: Newtype Prompt _
 
 
 newtype PromptMaxAttempts = PromptMaxAttempts Int
+derive instance newtypePromptMaxAttempts :: Newtype PromptMaxAttempts _
 
 
 newtype PutBotAliasRequest = PutBotAliasRequest 
@@ -913,6 +1033,7 @@ newtype PutBotAliasRequest = PutBotAliasRequest
   , "BotName'" :: (BotName)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypePutBotAliasRequest :: Newtype PutBotAliasRequest _
 
 
 newtype PutBotAliasResponse = PutBotAliasResponse 
@@ -924,6 +1045,7 @@ newtype PutBotAliasResponse = PutBotAliasResponse
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "Checksum'" :: NullOrUndefined (String)
   }
+derive instance newtypePutBotAliasResponse :: Newtype PutBotAliasResponse _
 
 
 newtype PutBotRequest = PutBotRequest 
@@ -940,6 +1062,7 @@ newtype PutBotRequest = PutBotRequest
   , "ChildDirected'" :: (Boolean)
   , "CreateVersion'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePutBotRequest :: Newtype PutBotRequest _
 
 
 newtype PutBotResponse = PutBotResponse 
@@ -960,6 +1083,7 @@ newtype PutBotResponse = PutBotResponse
   , "ChildDirected'" :: NullOrUndefined (Boolean)
   , "CreateVersion'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePutBotResponse :: Newtype PutBotResponse _
 
 
 newtype PutIntentRequest = PutIntentRequest 
@@ -977,6 +1101,7 @@ newtype PutIntentRequest = PutIntentRequest
   , "Checksum'" :: NullOrUndefined (String)
   , "CreateVersion'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePutIntentRequest :: Newtype PutIntentRequest _
 
 
 newtype PutIntentResponse = PutIntentResponse 
@@ -997,6 +1122,7 @@ newtype PutIntentResponse = PutIntentResponse
   , "Checksum'" :: NullOrUndefined (String)
   , "CreateVersion'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePutIntentResponse :: Newtype PutIntentResponse _
 
 
 newtype PutSlotTypeRequest = PutSlotTypeRequest 
@@ -1007,6 +1133,7 @@ newtype PutSlotTypeRequest = PutSlotTypeRequest
   , "ValueSelectionStrategy'" :: NullOrUndefined (SlotValueSelectionStrategy)
   , "CreateVersion'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePutSlotTypeRequest :: Newtype PutSlotTypeRequest _
 
 
 newtype PutSlotTypeResponse = PutSlotTypeResponse 
@@ -1020,9 +1147,11 @@ newtype PutSlotTypeResponse = PutSlotTypeResponse
   , "ValueSelectionStrategy'" :: NullOrUndefined (SlotValueSelectionStrategy)
   , "CreateVersion'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypePutSlotTypeResponse :: Newtype PutSlotTypeResponse _
 
 
 newtype ReferenceType = ReferenceType String
+derive instance newtypeReferenceType :: Newtype ReferenceType _
 
 
 -- | <p>The resource that you are attempting to delete is referred to by another resource. Use this information to remove references to the resource that you are trying to delete.</p> <p>The body of the exception contains a JSON object that describes the resource.</p> <p> <code>{ "resourceType": BOT | BOTALIAS | BOTCHANNEL | INTENT,</code> </p> <p> <code>"resourceReference": {</code> </p> <p> <code>"name": <i>string</i>, "version": <i>string</i> } }</code> </p>
@@ -1030,6 +1159,7 @@ newtype ResourceInUseException = ResourceInUseException
   { "ReferenceType'" :: NullOrUndefined (ReferenceType)
   , "ExampleReference'" :: NullOrUndefined (ResourceReference)
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>Describes the resource that refers to the resource that you are attempting to delete. This object is returned as part of the <code>ResourceInUseException</code> exception. </p>
@@ -1037,15 +1167,19 @@ newtype ResourceReference = ResourceReference
   { "Name'" :: NullOrUndefined (Name)
   , "Version'" :: NullOrUndefined (Version)
   }
+derive instance newtypeResourceReference :: Newtype ResourceReference _
 
 
 newtype ResourceType = ResourceType String
+derive instance newtypeResourceType :: Newtype ResourceType _
 
 
 newtype ResponseCard = ResponseCard String
+derive instance newtypeResponseCard :: Newtype ResponseCard _
 
 
 newtype SessionTTL = SessionTTL Int
+derive instance newtypeSessionTTL :: Newtype SessionTTL _
 
 
 -- | <p>Identifies the version of a specific slot.</p>
@@ -1060,15 +1194,19 @@ newtype Slot = Slot
   , "SampleUtterances'" :: NullOrUndefined (SlotUtteranceList)
   , "ResponseCard'" :: NullOrUndefined (ResponseCard)
   }
+derive instance newtypeSlot :: Newtype Slot _
 
 
 newtype SlotConstraint = SlotConstraint String
+derive instance newtypeSlotConstraint :: Newtype SlotConstraint _
 
 
 newtype SlotList = SlotList (Array Slot)
+derive instance newtypeSlotList :: Newtype SlotList _
 
 
 newtype SlotName = SlotName String
+derive instance newtypeSlotName :: Newtype SlotName _
 
 
 -- | <p>Provides information about a slot type..</p>
@@ -1079,18 +1217,23 @@ newtype SlotTypeMetadata = SlotTypeMetadata
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "Version'" :: NullOrUndefined (Version)
   }
+derive instance newtypeSlotTypeMetadata :: Newtype SlotTypeMetadata _
 
 
 newtype SlotTypeMetadataList = SlotTypeMetadataList (Array SlotTypeMetadata)
+derive instance newtypeSlotTypeMetadataList :: Newtype SlotTypeMetadataList _
 
 
 newtype SlotTypeName = SlotTypeName String
+derive instance newtypeSlotTypeName :: Newtype SlotTypeName _
 
 
 newtype SlotUtteranceList = SlotUtteranceList (Array Utterance)
+derive instance newtypeSlotUtteranceList :: Newtype SlotUtteranceList _
 
 
 newtype SlotValueSelectionStrategy = SlotValueSelectionStrategy String
+derive instance newtypeSlotValueSelectionStrategy :: Newtype SlotValueSelectionStrategy _
 
 
 newtype StartImportRequest = StartImportRequest 
@@ -1098,6 +1241,7 @@ newtype StartImportRequest = StartImportRequest
   , "ResourceType'" :: (ResourceType)
   , "MergeStrategy'" :: (MergeStrategy)
   }
+derive instance newtypeStartImportRequest :: Newtype StartImportRequest _
 
 
 newtype StartImportResponse = StartImportResponse 
@@ -1108,6 +1252,7 @@ newtype StartImportResponse = StartImportResponse
   , "ImportStatus'" :: NullOrUndefined (ImportStatus)
   , "CreatedDate'" :: NullOrUndefined (Number)
   }
+derive instance newtypeStartImportResponse :: Newtype StartImportResponse _
 
 
 -- | <p>A collection of messages that convey information to the user. At runtime, Amazon Lex selects the message to convey. </p>
@@ -1115,24 +1260,31 @@ newtype Statement = Statement
   { "Messages'" :: (MessageList)
   , "ResponseCard'" :: NullOrUndefined (ResponseCard)
   }
+derive instance newtypeStatement :: Newtype Statement _
 
 
 newtype Status = Status String
+derive instance newtypeStatus :: Newtype Status _
 
 
 newtype StatusType = StatusType String
+derive instance newtypeStatusType :: Newtype StatusType _
 
 
 newtype StringList = StringList (Array String)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 newtype SynonymList = SynonymList (Array Value)
+derive instance newtypeSynonymList :: Newtype SynonymList _
 
 
 newtype UserId = UserId String
+derive instance newtypeUserId :: Newtype UserId _
 
 
 newtype Utterance = Utterance String
+derive instance newtypeUtterance :: Newtype Utterance _
 
 
 -- | <p>Provides information about a single utterance that was made to your bot. </p>
@@ -1143,6 +1295,7 @@ newtype UtteranceData = UtteranceData
   , "FirstUtteredDate'" :: NullOrUndefined (Number)
   , "LastUtteredDate'" :: NullOrUndefined (Number)
   }
+derive instance newtypeUtteranceData :: Newtype UtteranceData _
 
 
 -- | <p>Provides a list of utterances that have been made to a specific version of your bot. The list contains a maximum of 100 utterances.</p>
@@ -1150,12 +1303,16 @@ newtype UtteranceList = UtteranceList
   { "BotVersion'" :: NullOrUndefined (Version)
   , "Utterances'" :: NullOrUndefined (ListOfUtterance)
   }
+derive instance newtypeUtteranceList :: Newtype UtteranceList _
 
 
 newtype UtteranceString = UtteranceString String
+derive instance newtypeUtteranceString :: Newtype UtteranceString _
 
 
 newtype Value = Value String
+derive instance newtypeValue :: Newtype Value _
 
 
 newtype Version = Version String
+derive instance newtypeVersion :: Newtype Version _

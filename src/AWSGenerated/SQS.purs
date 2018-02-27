@@ -6,6 +6,7 @@ module AWS.SQS where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -114,9 +115,11 @@ untagQueue = AWS.request serviceName "UntagQueue"
 
 
 newtype AWSAccountIdList = AWSAccountIdList (Array String)
+derive instance newtypeAWSAccountIdList :: Newtype AWSAccountIdList _
 
 
 newtype ActionNameList = ActionNameList (Array String)
+derive instance newtypeActionNameList :: Newtype ActionNameList _
 
 
 -- | <p/>
@@ -126,21 +129,25 @@ newtype AddPermissionRequest = AddPermissionRequest
   , "AWSAccountIds" :: (AWSAccountIdList)
   , "Actions" :: (ActionNameList)
   }
+derive instance newtypeAddPermissionRequest :: Newtype AddPermissionRequest _
 
 
 newtype AttributeNameList = AttributeNameList (Array QueueAttributeName)
+derive instance newtypeAttributeNameList :: Newtype AttributeNameList _
 
 
 -- | <p>Two or more batch entries in the request have the same <code>Id</code>.</p>
 newtype BatchEntryIdsNotDistinct = BatchEntryIdsNotDistinct 
   { 
   }
+derive instance newtypeBatchEntryIdsNotDistinct :: Newtype BatchEntryIdsNotDistinct _
 
 
 -- | <p>The length of all the messages put together is more than the limit.</p>
 newtype BatchRequestTooLong = BatchRequestTooLong 
   { 
   }
+derive instance newtypeBatchRequestTooLong :: Newtype BatchRequestTooLong _
 
 
 -- | <p>This is used in the responses of batch API to give a detailed description of the result of an action on each entry in the request.</p>
@@ -150,15 +157,19 @@ newtype BatchResultErrorEntry = BatchResultErrorEntry
   , "Code" :: (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeBatchResultErrorEntry :: Newtype BatchResultErrorEntry _
 
 
 newtype BatchResultErrorEntryList = BatchResultErrorEntryList (Array BatchResultErrorEntry)
+derive instance newtypeBatchResultErrorEntryList :: Newtype BatchResultErrorEntryList _
 
 
 newtype Binary = Binary String
+derive instance newtypeBinary :: Newtype Binary _
 
 
 newtype BinaryList = BinaryList (Array Binary)
+derive instance newtypeBinaryList :: Newtype BinaryList _
 
 
 -- | <p/>
@@ -166,6 +177,7 @@ newtype ChangeMessageVisibilityBatchRequest = ChangeMessageVisibilityBatchReques
   { "QueueUrl" :: (String)
   , "Entries" :: (ChangeMessageVisibilityBatchRequestEntryList)
   }
+derive instance newtypeChangeMessageVisibilityBatchRequest :: Newtype ChangeMessageVisibilityBatchRequest _
 
 
 -- | <p>Encloses a receipt handle and an entry id for each message in <code> <a>ChangeMessageVisibilityBatch</a>.</code> </p> <important> <p>All of the following list parameters must be prefixed with <code>ChangeMessageVisibilityBatchRequestEntry.n</code>, where <code>n</code> is an integer value starting with <code>1</code>. For example, a parameter list for this action might look like this:</p> </important> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2</code> </p> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=&lt;replaceable&gt;Your_Receipt_Handle&lt;/replaceable&gt;</code> </p> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45</code> </p>
@@ -174,9 +186,11 @@ newtype ChangeMessageVisibilityBatchRequestEntry = ChangeMessageVisibilityBatchR
   , "ReceiptHandle" :: (String)
   , "VisibilityTimeout" :: NullOrUndefined (Int)
   }
+derive instance newtypeChangeMessageVisibilityBatchRequestEntry :: Newtype ChangeMessageVisibilityBatchRequestEntry _
 
 
 newtype ChangeMessageVisibilityBatchRequestEntryList = ChangeMessageVisibilityBatchRequestEntryList (Array ChangeMessageVisibilityBatchRequestEntry)
+derive instance newtypeChangeMessageVisibilityBatchRequestEntryList :: Newtype ChangeMessageVisibilityBatchRequestEntryList _
 
 
 -- | <p>For each message in the batch, the response contains a <code> <a>ChangeMessageVisibilityBatchResultEntry</a> </code> tag if the message succeeds or a <code> <a>BatchResultErrorEntry</a> </code> tag if the message fails.</p>
@@ -184,15 +198,18 @@ newtype ChangeMessageVisibilityBatchResult = ChangeMessageVisibilityBatchResult
   { "Successful" :: (ChangeMessageVisibilityBatchResultEntryList)
   , "Failed" :: (BatchResultErrorEntryList)
   }
+derive instance newtypeChangeMessageVisibilityBatchResult :: Newtype ChangeMessageVisibilityBatchResult _
 
 
 -- | <p>Encloses the <code>Id</code> of an entry in <code> <a>ChangeMessageVisibilityBatch</a>.</code> </p>
 newtype ChangeMessageVisibilityBatchResultEntry = ChangeMessageVisibilityBatchResultEntry 
   { "Id" :: (String)
   }
+derive instance newtypeChangeMessageVisibilityBatchResultEntry :: Newtype ChangeMessageVisibilityBatchResultEntry _
 
 
 newtype ChangeMessageVisibilityBatchResultEntryList = ChangeMessageVisibilityBatchResultEntryList (Array ChangeMessageVisibilityBatchResultEntry)
+derive instance newtypeChangeMessageVisibilityBatchResultEntryList :: Newtype ChangeMessageVisibilityBatchResultEntryList _
 
 
 newtype ChangeMessageVisibilityRequest = ChangeMessageVisibilityRequest 
@@ -200,6 +217,7 @@ newtype ChangeMessageVisibilityRequest = ChangeMessageVisibilityRequest
   , "ReceiptHandle" :: (String)
   , "VisibilityTimeout" :: (Int)
   }
+derive instance newtypeChangeMessageVisibilityRequest :: Newtype ChangeMessageVisibilityRequest _
 
 
 -- | <p/>
@@ -207,12 +225,14 @@ newtype CreateQueueRequest = CreateQueueRequest
   { "QueueName" :: (String)
   , "Attributes" :: NullOrUndefined (QueueAttributeMap)
   }
+derive instance newtypeCreateQueueRequest :: Newtype CreateQueueRequest _
 
 
 -- | <p>Returns the <code>QueueUrl</code> attribute of the created queue.</p>
 newtype CreateQueueResult = CreateQueueResult 
   { "QueueUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateQueueResult :: Newtype CreateQueueResult _
 
 
 -- | <p/>
@@ -220,6 +240,7 @@ newtype DeleteMessageBatchRequest = DeleteMessageBatchRequest
   { "QueueUrl" :: (String)
   , "Entries" :: (DeleteMessageBatchRequestEntryList)
   }
+derive instance newtypeDeleteMessageBatchRequest :: Newtype DeleteMessageBatchRequest _
 
 
 -- | <p>Encloses a receipt handle and an identifier for it.</p>
@@ -227,9 +248,11 @@ newtype DeleteMessageBatchRequestEntry = DeleteMessageBatchRequestEntry
   { "Id" :: (String)
   , "ReceiptHandle" :: (String)
   }
+derive instance newtypeDeleteMessageBatchRequestEntry :: Newtype DeleteMessageBatchRequestEntry _
 
 
 newtype DeleteMessageBatchRequestEntryList = DeleteMessageBatchRequestEntryList (Array DeleteMessageBatchRequestEntry)
+derive instance newtypeDeleteMessageBatchRequestEntryList :: Newtype DeleteMessageBatchRequestEntryList _
 
 
 -- | <p>For each message in the batch, the response contains a <code> <a>DeleteMessageBatchResultEntry</a> </code> tag if the message is deleted or a <code> <a>BatchResultErrorEntry</a> </code> tag if the message can't be deleted.</p>
@@ -237,15 +260,18 @@ newtype DeleteMessageBatchResult = DeleteMessageBatchResult
   { "Successful" :: (DeleteMessageBatchResultEntryList)
   , "Failed" :: (BatchResultErrorEntryList)
   }
+derive instance newtypeDeleteMessageBatchResult :: Newtype DeleteMessageBatchResult _
 
 
 -- | <p>Encloses the <code>Id</code> of an entry in <code> <a>DeleteMessageBatch</a>.</code> </p>
 newtype DeleteMessageBatchResultEntry = DeleteMessageBatchResultEntry 
   { "Id" :: (String)
   }
+derive instance newtypeDeleteMessageBatchResultEntry :: Newtype DeleteMessageBatchResultEntry _
 
 
 newtype DeleteMessageBatchResultEntryList = DeleteMessageBatchResultEntryList (Array DeleteMessageBatchResultEntry)
+derive instance newtypeDeleteMessageBatchResultEntryList :: Newtype DeleteMessageBatchResultEntryList _
 
 
 -- | <p/>
@@ -253,18 +279,21 @@ newtype DeleteMessageRequest = DeleteMessageRequest
   { "QueueUrl" :: (String)
   , "ReceiptHandle" :: (String)
   }
+derive instance newtypeDeleteMessageRequest :: Newtype DeleteMessageRequest _
 
 
 -- | <p/>
 newtype DeleteQueueRequest = DeleteQueueRequest 
   { "QueueUrl" :: (String)
   }
+derive instance newtypeDeleteQueueRequest :: Newtype DeleteQueueRequest _
 
 
 -- | <p>The batch request doesn't contain any entries.</p>
 newtype EmptyBatchRequest = EmptyBatchRequest 
   { 
   }
+derive instance newtypeEmptyBatchRequest :: Newtype EmptyBatchRequest _
 
 
 -- | <p/>
@@ -272,12 +301,14 @@ newtype GetQueueAttributesRequest = GetQueueAttributesRequest
   { "QueueUrl" :: (String)
   , "AttributeNames" :: NullOrUndefined (AttributeNameList)
   }
+derive instance newtypeGetQueueAttributesRequest :: Newtype GetQueueAttributesRequest _
 
 
 -- | <p>A list of returned queue attributes.</p>
 newtype GetQueueAttributesResult = GetQueueAttributesResult 
   { "Attributes" :: NullOrUndefined (QueueAttributeMap)
   }
+derive instance newtypeGetQueueAttributesResult :: Newtype GetQueueAttributesResult _
 
 
 -- | <p/>
@@ -285,70 +316,82 @@ newtype GetQueueUrlRequest = GetQueueUrlRequest
   { "QueueName" :: (String)
   , "QueueOwnerAWSAccountId" :: NullOrUndefined (String)
   }
+derive instance newtypeGetQueueUrlRequest :: Newtype GetQueueUrlRequest _
 
 
 -- | <p>For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UnderstandingResponses.html">Responses</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
 newtype GetQueueUrlResult = GetQueueUrlResult 
   { "QueueUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeGetQueueUrlResult :: Newtype GetQueueUrlResult _
 
 
 -- | <p>The attribute referred to doesn't exist.</p>
 newtype InvalidAttributeName = InvalidAttributeName 
   { 
   }
+derive instance newtypeInvalidAttributeName :: Newtype InvalidAttributeName _
 
 
 -- | <p>The <code>Id</code> of a batch entry in a batch request doesn't abide by the specification.</p>
 newtype InvalidBatchEntryId = InvalidBatchEntryId 
   { 
   }
+derive instance newtypeInvalidBatchEntryId :: Newtype InvalidBatchEntryId _
 
 
 -- | <p>The receipt handle isn't valid for the current version.</p>
 newtype InvalidIdFormat = InvalidIdFormat 
   { 
   }
+derive instance newtypeInvalidIdFormat :: Newtype InvalidIdFormat _
 
 
 -- | <p>The message contains characters outside the allowed set.</p>
 newtype InvalidMessageContents = InvalidMessageContents 
   { 
   }
+derive instance newtypeInvalidMessageContents :: Newtype InvalidMessageContents _
 
 
 -- | <p/>
 newtype ListDeadLetterSourceQueuesRequest = ListDeadLetterSourceQueuesRequest 
   { "QueueUrl" :: (String)
   }
+derive instance newtypeListDeadLetterSourceQueuesRequest :: Newtype ListDeadLetterSourceQueuesRequest _
 
 
 -- | <p>A list of your dead letter source queues.</p>
 newtype ListDeadLetterSourceQueuesResult = ListDeadLetterSourceQueuesResult 
   { "QueueUrls'" :: (QueueUrlList)
   }
+derive instance newtypeListDeadLetterSourceQueuesResult :: Newtype ListDeadLetterSourceQueuesResult _
 
 
 newtype ListQueueTagsRequest = ListQueueTagsRequest 
   { "QueueUrl" :: (String)
   }
+derive instance newtypeListQueueTagsRequest :: Newtype ListQueueTagsRequest _
 
 
 newtype ListQueueTagsResult = ListQueueTagsResult 
   { "Tags" :: NullOrUndefined (TagMap)
   }
+derive instance newtypeListQueueTagsResult :: Newtype ListQueueTagsResult _
 
 
 -- | <p/>
 newtype ListQueuesRequest = ListQueuesRequest 
   { "QueueNamePrefix" :: NullOrUndefined (String)
   }
+derive instance newtypeListQueuesRequest :: Newtype ListQueuesRequest _
 
 
 -- | <p>A list of your queues.</p>
 newtype ListQueuesResult = ListQueuesResult 
   { "QueueUrls" :: NullOrUndefined (QueueUrlList)
   }
+derive instance newtypeListQueuesResult :: Newtype ListQueuesResult _
 
 
 -- | <p>An Amazon SQS message.</p>
@@ -361,12 +404,15 @@ newtype Message = Message
   , "MD5OfMessageAttributes" :: NullOrUndefined (String)
   , "MessageAttributes" :: NullOrUndefined (MessageBodyAttributeMap)
   }
+derive instance newtypeMessage :: Newtype Message _
 
 
 newtype MessageAttributeName = MessageAttributeName String
+derive instance newtypeMessageAttributeName :: Newtype MessageAttributeName _
 
 
 newtype MessageAttributeNameList = MessageAttributeNameList (Array MessageAttributeName)
+derive instance newtypeMessageAttributeNameList :: Newtype MessageAttributeNameList _
 
 
 -- | <p>The user-specified message attribute value. For string data types, the <code>Value</code> attribute has the same restrictions on the content as the message body. For more information, see <code> <a>SendMessage</a>.</code> </p> <p> <code>Name</code>, <code>type</code>, <code>value</code> and the message body must not be empty or null. All parts of the message attribute, including <code>Name</code>, <code>Type</code>, and <code>Value</code>, are part of the message size restriction (256 KB or 262,144 bytes).</p>
@@ -377,75 +423,91 @@ newtype MessageAttributeValue = MessageAttributeValue
   , "BinaryListValues" :: NullOrUndefined (BinaryList)
   , "DataType" :: (String)
   }
+derive instance newtypeMessageAttributeValue :: Newtype MessageAttributeValue _
 
 
 newtype MessageBodyAttributeMap = MessageBodyAttributeMap (Map String MessageAttributeValue)
+derive instance newtypeMessageBodyAttributeMap :: Newtype MessageBodyAttributeMap _
 
 
 newtype MessageList = MessageList (Array Message)
+derive instance newtypeMessageList :: Newtype MessageList _
 
 
 -- | <p>The message referred to isn't in flight.</p>
 newtype MessageNotInflight = MessageNotInflight 
   { 
   }
+derive instance newtypeMessageNotInflight :: Newtype MessageNotInflight _
 
 
 newtype MessageSystemAttributeMap = MessageSystemAttributeMap (Map MessageSystemAttributeName String)
+derive instance newtypeMessageSystemAttributeMap :: Newtype MessageSystemAttributeMap _
 
 
 newtype MessageSystemAttributeName = MessageSystemAttributeName String
+derive instance newtypeMessageSystemAttributeName :: Newtype MessageSystemAttributeName _
 
 
 -- | <p>The action that you requested would violate a limit. For example, <code>ReceiveMessage</code> returns this error if the maximum number of inflight messages is reached. <code> <a>AddPermission</a> </code> returns this error if the maximum number of permissions for the queue is reached.</p>
 newtype OverLimit = OverLimit 
   { 
   }
+derive instance newtypeOverLimit :: Newtype OverLimit _
 
 
 -- | <p>Indicates that the specified queue previously received a <code>PurgeQueue</code> request within the last 60 seconds (the time it can take to delete the messages in the queue).</p>
 newtype PurgeQueueInProgress = PurgeQueueInProgress 
   { 
   }
+derive instance newtypePurgeQueueInProgress :: Newtype PurgeQueueInProgress _
 
 
 -- | <p/>
 newtype PurgeQueueRequest = PurgeQueueRequest 
   { "QueueUrl" :: (String)
   }
+derive instance newtypePurgeQueueRequest :: Newtype PurgeQueueRequest _
 
 
 newtype QueueAttributeMap = QueueAttributeMap (Map QueueAttributeName String)
+derive instance newtypeQueueAttributeMap :: Newtype QueueAttributeMap _
 
 
 newtype QueueAttributeName = QueueAttributeName String
+derive instance newtypeQueueAttributeName :: Newtype QueueAttributeName _
 
 
 -- | <p>You must wait 60 seconds after deleting a queue before you can create another one with the same name.</p>
 newtype QueueDeletedRecently = QueueDeletedRecently 
   { 
   }
+derive instance newtypeQueueDeletedRecently :: Newtype QueueDeletedRecently _
 
 
 -- | <p>The queue referred to doesn't exist.</p>
 newtype QueueDoesNotExist = QueueDoesNotExist 
   { 
   }
+derive instance newtypeQueueDoesNotExist :: Newtype QueueDoesNotExist _
 
 
 -- | <p>A queue already exists with this name. Amazon SQS returns this error only if the request includes attributes whose values differ from those of the existing queue.</p>
 newtype QueueNameExists = QueueNameExists 
   { 
   }
+derive instance newtypeQueueNameExists :: Newtype QueueNameExists _
 
 
 newtype QueueUrlList = QueueUrlList (Array String)
+derive instance newtypeQueueUrlList :: Newtype QueueUrlList _
 
 
 -- | <p>The receipt handle provided isn't valid.</p>
 newtype ReceiptHandleIsInvalid = ReceiptHandleIsInvalid 
   { 
   }
+derive instance newtypeReceiptHandleIsInvalid :: Newtype ReceiptHandleIsInvalid _
 
 
 -- | <p/>
@@ -458,12 +520,14 @@ newtype ReceiveMessageRequest = ReceiveMessageRequest
   , "WaitTimeSeconds" :: NullOrUndefined (Int)
   , "ReceiveRequestAttemptId" :: NullOrUndefined (String)
   }
+derive instance newtypeReceiveMessageRequest :: Newtype ReceiveMessageRequest _
 
 
 -- | <p>A list of received messages.</p>
 newtype ReceiveMessageResult = ReceiveMessageResult 
   { "Messages" :: NullOrUndefined (MessageList)
   }
+derive instance newtypeReceiveMessageResult :: Newtype ReceiveMessageResult _
 
 
 -- | <p/>
@@ -471,6 +535,7 @@ newtype RemovePermissionRequest = RemovePermissionRequest
   { "QueueUrl" :: (String)
   , "Label" :: (String)
   }
+derive instance newtypeRemovePermissionRequest :: Newtype RemovePermissionRequest _
 
 
 -- | <p/>
@@ -478,6 +543,7 @@ newtype SendMessageBatchRequest = SendMessageBatchRequest
   { "QueueUrl" :: (String)
   , "Entries" :: (SendMessageBatchRequestEntryList)
   }
+derive instance newtypeSendMessageBatchRequest :: Newtype SendMessageBatchRequest _
 
 
 -- | <p>Contains the details of a single Amazon SQS message along with an <code>Id</code>.</p>
@@ -489,9 +555,11 @@ newtype SendMessageBatchRequestEntry = SendMessageBatchRequestEntry
   , "MessageDeduplicationId" :: NullOrUndefined (String)
   , "MessageGroupId" :: NullOrUndefined (String)
   }
+derive instance newtypeSendMessageBatchRequestEntry :: Newtype SendMessageBatchRequestEntry _
 
 
 newtype SendMessageBatchRequestEntryList = SendMessageBatchRequestEntryList (Array SendMessageBatchRequestEntry)
+derive instance newtypeSendMessageBatchRequestEntryList :: Newtype SendMessageBatchRequestEntryList _
 
 
 -- | <p>For each message in the batch, the response contains a <code> <a>SendMessageBatchResultEntry</a> </code> tag if the message succeeds or a <code> <a>BatchResultErrorEntry</a> </code> tag if the message fails.</p>
@@ -499,6 +567,7 @@ newtype SendMessageBatchResult = SendMessageBatchResult
   { "Successful" :: (SendMessageBatchResultEntryList)
   , "Failed" :: (BatchResultErrorEntryList)
   }
+derive instance newtypeSendMessageBatchResult :: Newtype SendMessageBatchResult _
 
 
 -- | <p>Encloses a <code>MessageId</code> for a successfully-enqueued message in a <code> <a>SendMessageBatch</a>.</code> </p>
@@ -509,9 +578,11 @@ newtype SendMessageBatchResultEntry = SendMessageBatchResultEntry
   , "MD5OfMessageAttributes" :: NullOrUndefined (String)
   , "SequenceNumber" :: NullOrUndefined (String)
   }
+derive instance newtypeSendMessageBatchResultEntry :: Newtype SendMessageBatchResultEntry _
 
 
 newtype SendMessageBatchResultEntryList = SendMessageBatchResultEntryList (Array SendMessageBatchResultEntry)
+derive instance newtypeSendMessageBatchResultEntryList :: Newtype SendMessageBatchResultEntryList _
 
 
 -- | <p/>
@@ -523,6 +594,7 @@ newtype SendMessageRequest = SendMessageRequest
   , "MessageDeduplicationId" :: NullOrUndefined (String)
   , "MessageGroupId" :: NullOrUndefined (String)
   }
+derive instance newtypeSendMessageRequest :: Newtype SendMessageRequest _
 
 
 -- | <p>The <code>MD5OfMessageBody</code> and <code>MessageId</code> elements.</p>
@@ -532,6 +604,7 @@ newtype SendMessageResult = SendMessageResult
   , "MessageId" :: NullOrUndefined (String)
   , "SequenceNumber" :: NullOrUndefined (String)
   }
+derive instance newtypeSendMessageResult :: Newtype SendMessageResult _
 
 
 -- | <p/>
@@ -539,42 +612,52 @@ newtype SetQueueAttributesRequest = SetQueueAttributesRequest
   { "QueueUrl" :: (String)
   , "Attributes" :: (QueueAttributeMap)
   }
+derive instance newtypeSetQueueAttributesRequest :: Newtype SetQueueAttributesRequest _
 
 
 newtype StringList = StringList (Array String)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagMap = TagMap (Map TagKey TagValue)
+derive instance newtypeTagMap :: Newtype TagMap _
 
 
 newtype TagQueueRequest = TagQueueRequest 
   { "QueueUrl" :: (String)
   , "Tags" :: (TagMap)
   }
+derive instance newtypeTagQueueRequest :: Newtype TagQueueRequest _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>The batch request contains more entries than permissible.</p>
 newtype TooManyEntriesInBatchRequest = TooManyEntriesInBatchRequest 
   { 
   }
+derive instance newtypeTooManyEntriesInBatchRequest :: Newtype TooManyEntriesInBatchRequest _
 
 
 -- | <p>Error code 400. Unsupported operation.</p>
 newtype UnsupportedOperation = UnsupportedOperation 
   { 
   }
+derive instance newtypeUnsupportedOperation :: Newtype UnsupportedOperation _
 
 
 newtype UntagQueueRequest = UntagQueueRequest 
   { "QueueUrl" :: (String)
   , "TagKeys" :: (TagKeyList)
   }
+derive instance newtypeUntagQueueRequest :: Newtype UntagQueueRequest _

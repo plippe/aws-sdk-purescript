@@ -6,6 +6,7 @@ module AWS.Pricing where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -29,18 +30,22 @@ getProducts = AWS.request serviceName "GetProducts"
 
 
 newtype AttributeNameList = AttributeNameList (Array String)
+derive instance newtypeAttributeNameList :: Newtype AttributeNameList _
 
 
 -- | <p>The values of a given attribute, such as <code>Throughput Optimized HDD</code> or <code>Provisioned IOPS</code> for the <code>Amazon EC2</code> <code>volumeType</code> attribute.</p>
 newtype AttributeValue = AttributeValue 
   { "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeAttributeValue :: Newtype AttributeValue _
 
 
 newtype AttributeValueList = AttributeValueList (Array AttributeValue)
+derive instance newtypeAttributeValueList :: Newtype AttributeValueList _
 
 
 newtype BoxedInteger = BoxedInteger Int
+derive instance newtypeBoxedInteger :: Newtype BoxedInteger _
 
 
 newtype DescribeServicesRequest = DescribeServicesRequest 
@@ -49,6 +54,7 @@ newtype DescribeServicesRequest = DescribeServicesRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeDescribeServicesRequest :: Newtype DescribeServicesRequest _
 
 
 newtype DescribeServicesResponse = DescribeServicesResponse 
@@ -56,12 +62,14 @@ newtype DescribeServicesResponse = DescribeServicesResponse
   , "FormatVersion" :: NullOrUndefined (String)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeServicesResponse :: Newtype DescribeServicesResponse _
 
 
 -- | <p>The pagination token expired. Try again without a pagination token.</p>
 newtype ExpiredNextTokenException = ExpiredNextTokenException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeExpiredNextTokenException :: Newtype ExpiredNextTokenException _
 
 
 -- | <p>The constraints that you want all returned products to match.</p>
@@ -70,12 +78,15 @@ newtype Filter = Filter
   , "Field" :: (String)
   , "Value" :: (String)
   }
+derive instance newtypeFilter :: Newtype Filter _
 
 
 newtype FilterType = FilterType String
+derive instance newtypeFilterType :: Newtype FilterType _
 
 
 newtype Filters = Filters (Array Filter)
+derive instance newtypeFilters :: Newtype Filters _
 
 
 newtype GetAttributeValuesRequest = GetAttributeValuesRequest 
@@ -84,12 +95,14 @@ newtype GetAttributeValuesRequest = GetAttributeValuesRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeGetAttributeValuesRequest :: Newtype GetAttributeValuesRequest _
 
 
 newtype GetAttributeValuesResponse = GetAttributeValuesResponse 
   { "AttributeValues" :: NullOrUndefined (AttributeValueList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetAttributeValuesResponse :: Newtype GetAttributeValuesResponse _
 
 
 newtype GetProductsRequest = GetProductsRequest 
@@ -99,6 +112,7 @@ newtype GetProductsRequest = GetProductsRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeGetProductsRequest :: Newtype GetProductsRequest _
 
 
 newtype GetProductsResponse = GetProductsResponse 
@@ -106,36 +120,43 @@ newtype GetProductsResponse = GetProductsResponse
   , "PriceList" :: NullOrUndefined (PriceList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeGetProductsResponse :: Newtype GetProductsResponse _
 
 
 -- | <p>An error on the server occurred during the processing of your request. Try again later.</p>
 newtype InternalErrorException = InternalErrorException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInternalErrorException :: Newtype InternalErrorException _
 
 
 -- | <p>The pagination token is invalid. Try again without a pagination token.</p>
 newtype InvalidNextTokenException = InvalidNextTokenException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInvalidNextTokenException :: Newtype InvalidNextTokenException _
 
 
 -- | <p>One or more parameters had an invalid value.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>The requested resource can't be found.</p>
 newtype NotFoundException = NotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype PriceList = PriceList (Array PriceListItemJSON)
+derive instance newtypePriceList :: Newtype PriceList _
 
 
 newtype PriceListItemJSON = PriceListItemJSON String
+derive instance newtypePriceListItemJSON :: Newtype PriceListItemJSON _
 
 
 -- | <p>The metadata for a service, such as the service code and available attribute names.</p>
@@ -143,9 +164,12 @@ newtype Service = Service
   { "ServiceCode" :: NullOrUndefined (String)
   , "AttributeNames" :: NullOrUndefined (AttributeNameList)
   }
+derive instance newtypeService :: Newtype Service _
 
 
 newtype ServiceList = ServiceList (Array Service)
+derive instance newtypeServiceList :: Newtype ServiceList _
 
 
 newtype ErrorMessage' = ErrorMessage' String
+derive instance newtypeErrorMessage' :: Newtype ErrorMessage' _

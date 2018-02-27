@@ -6,6 +6,7 @@ module AWS.Athena where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -71,23 +72,27 @@ stopQueryExecution = AWS.request serviceName "StopQueryExecution"
 newtype BatchGetNamedQueryInput = BatchGetNamedQueryInput 
   { "NamedQueryIds" :: (NamedQueryIdList)
   }
+derive instance newtypeBatchGetNamedQueryInput :: Newtype BatchGetNamedQueryInput _
 
 
 newtype BatchGetNamedQueryOutput = BatchGetNamedQueryOutput 
   { "NamedQueries" :: NullOrUndefined (NamedQueryList)
   , "UnprocessedNamedQueryIds" :: NullOrUndefined (UnprocessedNamedQueryIdList)
   }
+derive instance newtypeBatchGetNamedQueryOutput :: Newtype BatchGetNamedQueryOutput _
 
 
 newtype BatchGetQueryExecutionInput = BatchGetQueryExecutionInput 
   { "QueryExecutionIds" :: (QueryExecutionIdList)
   }
+derive instance newtypeBatchGetQueryExecutionInput :: Newtype BatchGetQueryExecutionInput _
 
 
 newtype BatchGetQueryExecutionOutput = BatchGetQueryExecutionOutput 
   { "QueryExecutions" :: NullOrUndefined (QueryExecutionList)
   , "UnprocessedQueryExecutionIds" :: NullOrUndefined (UnprocessedQueryExecutionIdList)
   }
+derive instance newtypeBatchGetQueryExecutionOutput :: Newtype BatchGetQueryExecutionOutput _
 
 
 -- | <p>Information about the columns in a query execution result.</p>
@@ -103,12 +108,15 @@ newtype ColumnInfo = ColumnInfo
   , "Nullable" :: NullOrUndefined (ColumnNullable)
   , "CaseSensitive" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeColumnInfo :: Newtype ColumnInfo _
 
 
 newtype ColumnInfoList = ColumnInfoList (Array ColumnInfo)
+derive instance newtypeColumnInfoList :: Newtype ColumnInfoList _
 
 
 newtype ColumnNullable = ColumnNullable String
+derive instance newtypeColumnNullable :: Newtype ColumnNullable _
 
 
 newtype CreateNamedQueryInput = CreateNamedQueryInput 
@@ -118,36 +126,44 @@ newtype CreateNamedQueryInput = CreateNamedQueryInput
   , "QueryString" :: (QueryString)
   , "ClientRequestToken" :: NullOrUndefined (IdempotencyToken)
   }
+derive instance newtypeCreateNamedQueryInput :: Newtype CreateNamedQueryInput _
 
 
 newtype CreateNamedQueryOutput = CreateNamedQueryOutput 
   { "NamedQueryId" :: NullOrUndefined (NamedQueryId)
   }
+derive instance newtypeCreateNamedQueryOutput :: Newtype CreateNamedQueryOutput _
 
 
 newtype DatabaseString = DatabaseString String
+derive instance newtypeDatabaseString :: Newtype DatabaseString _
 
 
 newtype Date = Date Number
+derive instance newtypeDate :: Newtype Date _
 
 
 -- | <p>A piece of data (a field in the table).</p>
 newtype Datum = Datum 
   { "VarCharValue" :: NullOrUndefined (DatumString')
   }
+derive instance newtypeDatum :: Newtype Datum _
 
 
 newtype DeleteNamedQueryInput = DeleteNamedQueryInput 
   { "NamedQueryId" :: (NamedQueryId)
   }
+derive instance newtypeDeleteNamedQueryInput :: Newtype DeleteNamedQueryInput _
 
 
 newtype DeleteNamedQueryOutput = DeleteNamedQueryOutput 
   { 
   }
+derive instance newtypeDeleteNamedQueryOutput :: Newtype DeleteNamedQueryOutput _
 
 
 newtype DescriptionString = DescriptionString String
+derive instance newtypeDescriptionString :: Newtype DescriptionString _
 
 
 -- | <p>If query results are encrypted in Amazon S3, indicates the Amazon S3 encryption option used.</p>
@@ -155,35 +171,43 @@ newtype EncryptionConfiguration = EncryptionConfiguration
   { "EncryptionOption" :: (EncryptionOption)
   , "KmsKey" :: NullOrUndefined (String)
   }
+derive instance newtypeEncryptionConfiguration :: Newtype EncryptionConfiguration _
 
 
 newtype EncryptionOption = EncryptionOption String
+derive instance newtypeEncryptionOption :: Newtype EncryptionOption _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype GetNamedQueryInput = GetNamedQueryInput 
   { "NamedQueryId" :: (NamedQueryId)
   }
+derive instance newtypeGetNamedQueryInput :: Newtype GetNamedQueryInput _
 
 
 newtype GetNamedQueryOutput = GetNamedQueryOutput 
   { "NamedQuery" :: NullOrUndefined (NamedQuery)
   }
+derive instance newtypeGetNamedQueryOutput :: Newtype GetNamedQueryOutput _
 
 
 newtype GetQueryExecutionInput = GetQueryExecutionInput 
   { "QueryExecutionId" :: (QueryExecutionId)
   }
+derive instance newtypeGetQueryExecutionInput :: Newtype GetQueryExecutionInput _
 
 
 newtype GetQueryExecutionOutput = GetQueryExecutionOutput 
   { "QueryExecution" :: NullOrUndefined (QueryExecution)
   }
+derive instance newtypeGetQueryExecutionOutput :: Newtype GetQueryExecutionOutput _
 
 
 newtype GetQueryResultsInput = GetQueryResultsInput 
@@ -191,21 +215,25 @@ newtype GetQueryResultsInput = GetQueryResultsInput
   , "NextToken" :: NullOrUndefined (Token)
   , "MaxResults" :: NullOrUndefined (MaxQueryResults)
   }
+derive instance newtypeGetQueryResultsInput :: Newtype GetQueryResultsInput _
 
 
 newtype GetQueryResultsOutput = GetQueryResultsOutput 
   { "ResultSet" :: NullOrUndefined (ResultSet)
   , "NextToken" :: NullOrUndefined (Token)
   }
+derive instance newtypeGetQueryResultsOutput :: Newtype GetQueryResultsOutput _
 
 
 newtype IdempotencyToken = IdempotencyToken String
+derive instance newtypeIdempotencyToken :: Newtype IdempotencyToken _
 
 
 -- | <p>Indicates a platform issue, which may be due to a transient condition or outage.</p>
 newtype InternalServerException = InternalServerException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInternalServerException :: Newtype InternalServerException _
 
 
 -- | <p>Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.</p>
@@ -213,42 +241,51 @@ newtype InvalidRequestException = InvalidRequestException
   { "AthenaErrorCode" :: NullOrUndefined (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidRequestException :: Newtype InvalidRequestException _
 
 
 newtype ListNamedQueriesInput = ListNamedQueriesInput 
   { "NextToken" :: NullOrUndefined (Token)
   , "MaxResults" :: NullOrUndefined (MaxNamedQueriesCount)
   }
+derive instance newtypeListNamedQueriesInput :: Newtype ListNamedQueriesInput _
 
 
 newtype ListNamedQueriesOutput = ListNamedQueriesOutput 
   { "NamedQueryIds" :: NullOrUndefined (NamedQueryIdList)
   , "NextToken" :: NullOrUndefined (Token)
   }
+derive instance newtypeListNamedQueriesOutput :: Newtype ListNamedQueriesOutput _
 
 
 newtype ListQueryExecutionsInput = ListQueryExecutionsInput 
   { "NextToken" :: NullOrUndefined (Token)
   , "MaxResults" :: NullOrUndefined (MaxQueryExecutionsCount)
   }
+derive instance newtypeListQueryExecutionsInput :: Newtype ListQueryExecutionsInput _
 
 
 newtype ListQueryExecutionsOutput = ListQueryExecutionsOutput 
   { "QueryExecutionIds" :: NullOrUndefined (QueryExecutionIdList)
   , "NextToken" :: NullOrUndefined (Token)
   }
+derive instance newtypeListQueryExecutionsOutput :: Newtype ListQueryExecutionsOutput _
 
 
 newtype MaxNamedQueriesCount = MaxNamedQueriesCount Int
+derive instance newtypeMaxNamedQueriesCount :: Newtype MaxNamedQueriesCount _
 
 
 newtype MaxQueryExecutionsCount = MaxQueryExecutionsCount Int
+derive instance newtypeMaxQueryExecutionsCount :: Newtype MaxQueryExecutionsCount _
 
 
 newtype MaxQueryResults = MaxQueryResults Int
+derive instance newtypeMaxQueryResults :: Newtype MaxQueryResults _
 
 
 newtype NameString = NameString String
+derive instance newtypeNameString :: Newtype NameString _
 
 
 -- | <p>A query, where <code>QueryString</code> is the SQL query statements that comprise the query.</p>
@@ -259,15 +296,19 @@ newtype NamedQuery = NamedQuery
   , "QueryString" :: (QueryString)
   , "NamedQueryId" :: NullOrUndefined (NamedQueryId)
   }
+derive instance newtypeNamedQuery :: Newtype NamedQuery _
 
 
 newtype NamedQueryId = NamedQueryId String
+derive instance newtypeNamedQueryId :: Newtype NamedQueryId _
 
 
 newtype NamedQueryIdList = NamedQueryIdList (Array NamedQueryId)
+derive instance newtypeNamedQueryIdList :: Newtype NamedQueryIdList _
 
 
 newtype NamedQueryList = NamedQueryList (Array NamedQuery)
+derive instance newtypeNamedQueryList :: Newtype NamedQueryList _
 
 
 -- | <p>Information about a single instance of a query execution.</p>
@@ -279,24 +320,30 @@ newtype QueryExecution = QueryExecution
   , "Status" :: NullOrUndefined (QueryExecutionStatus)
   , "Statistics" :: NullOrUndefined (QueryExecutionStatistics)
   }
+derive instance newtypeQueryExecution :: Newtype QueryExecution _
 
 
 -- | <p>The database in which the query execution occurs.</p>
 newtype QueryExecutionContext = QueryExecutionContext 
   { "Database" :: NullOrUndefined (DatabaseString)
   }
+derive instance newtypeQueryExecutionContext :: Newtype QueryExecutionContext _
 
 
 newtype QueryExecutionId = QueryExecutionId String
+derive instance newtypeQueryExecutionId :: Newtype QueryExecutionId _
 
 
 newtype QueryExecutionIdList = QueryExecutionIdList (Array QueryExecutionId)
+derive instance newtypeQueryExecutionIdList :: Newtype QueryExecutionIdList _
 
 
 newtype QueryExecutionList = QueryExecutionList (Array QueryExecution)
+derive instance newtypeQueryExecutionList :: Newtype QueryExecutionList _
 
 
 newtype QueryExecutionState = QueryExecutionState String
+derive instance newtypeQueryExecutionState :: Newtype QueryExecutionState _
 
 
 -- | <p>The amount of data scanned during the query execution and the amount of time that it took to execute.</p>
@@ -304,6 +351,7 @@ newtype QueryExecutionStatistics = QueryExecutionStatistics
   { "EngineExecutionTimeInMillis" :: NullOrUndefined (Number)
   , "DataScannedInBytes" :: NullOrUndefined (Number)
   }
+derive instance newtypeQueryExecutionStatistics :: Newtype QueryExecutionStatistics _
 
 
 -- | <p>The completion date, current state, submission time, and state change reason (if applicable) for the query execution.</p>
@@ -313,9 +361,11 @@ newtype QueryExecutionStatus = QueryExecutionStatus
   , "SubmissionDateTime" :: NullOrUndefined (Date)
   , "CompletionDateTime" :: NullOrUndefined (Date)
   }
+derive instance newtypeQueryExecutionStatus :: Newtype QueryExecutionStatus _
 
 
 newtype QueryString = QueryString String
+derive instance newtypeQueryString :: Newtype QueryString _
 
 
 -- | <p>The location in Amazon S3 where query results are stored and the encryption option, if any, used for query results.</p>
@@ -323,6 +373,7 @@ newtype ResultConfiguration = ResultConfiguration
   { "OutputLocation" :: (String)
   , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration)
   }
+derive instance newtypeResultConfiguration :: Newtype ResultConfiguration _
 
 
 -- | <p>The metadata and rows that comprise a query result set. The metadata describes the column structure and data types.</p>
@@ -330,21 +381,25 @@ newtype ResultSet = ResultSet
   { "Rows" :: NullOrUndefined (RowList)
   , "ResultSetMetadata" :: NullOrUndefined (ResultSetMetadata)
   }
+derive instance newtypeResultSet :: Newtype ResultSet _
 
 
 -- | <p>The metadata that describes the column structure and data types of a table of query results.</p>
 newtype ResultSetMetadata = ResultSetMetadata 
   { "ColumnInfo" :: NullOrUndefined (ColumnInfoList)
   }
+derive instance newtypeResultSetMetadata :: Newtype ResultSetMetadata _
 
 
 -- | <p>The rows that comprise a query result table.</p>
 newtype Row = Row 
   { "Data" :: NullOrUndefined (DatumList')
   }
+derive instance newtypeRow :: Newtype Row _
 
 
 newtype RowList = RowList (Array Row)
+derive instance newtypeRowList :: Newtype RowList _
 
 
 newtype StartQueryExecutionInput = StartQueryExecutionInput 
@@ -353,27 +408,33 @@ newtype StartQueryExecutionInput = StartQueryExecutionInput
   , "QueryExecutionContext" :: NullOrUndefined (QueryExecutionContext)
   , "ResultConfiguration" :: (ResultConfiguration)
   }
+derive instance newtypeStartQueryExecutionInput :: Newtype StartQueryExecutionInput _
 
 
 newtype StartQueryExecutionOutput = StartQueryExecutionOutput 
   { "QueryExecutionId" :: NullOrUndefined (QueryExecutionId)
   }
+derive instance newtypeStartQueryExecutionOutput :: Newtype StartQueryExecutionOutput _
 
 
 newtype StopQueryExecutionInput = StopQueryExecutionInput 
   { "QueryExecutionId" :: (QueryExecutionId)
   }
+derive instance newtypeStopQueryExecutionInput :: Newtype StopQueryExecutionInput _
 
 
 newtype StopQueryExecutionOutput = StopQueryExecutionOutput 
   { 
   }
+derive instance newtypeStopQueryExecutionOutput :: Newtype StopQueryExecutionOutput _
 
 
 newtype ThrottleReason = ThrottleReason String
+derive instance newtypeThrottleReason :: Newtype ThrottleReason _
 
 
 newtype Token = Token String
+derive instance newtypeToken :: Newtype Token _
 
 
 -- | <p>Indicates that the request was throttled.</p>
@@ -381,6 +442,7 @@ newtype TooManyRequestsException = TooManyRequestsException
   { "Message" :: NullOrUndefined (ErrorMessage)
   , "Reason" :: NullOrUndefined (ThrottleReason)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | <p>Information about a named query ID that could not be processed.</p>
@@ -389,9 +451,11 @@ newtype UnprocessedNamedQueryId = UnprocessedNamedQueryId
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeUnprocessedNamedQueryId :: Newtype UnprocessedNamedQueryId _
 
 
 newtype UnprocessedNamedQueryIdList = UnprocessedNamedQueryIdList (Array UnprocessedNamedQueryId)
+derive instance newtypeUnprocessedNamedQueryIdList :: Newtype UnprocessedNamedQueryIdList _
 
 
 -- | <p>Describes a query execution that failed to process.</p>
@@ -400,12 +464,16 @@ newtype UnprocessedQueryExecutionId = UnprocessedQueryExecutionId
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeUnprocessedQueryExecutionId :: Newtype UnprocessedQueryExecutionId _
 
 
 newtype UnprocessedQueryExecutionIdList = UnprocessedQueryExecutionIdList (Array UnprocessedQueryExecutionId)
+derive instance newtypeUnprocessedQueryExecutionIdList :: Newtype UnprocessedQueryExecutionIdList _
 
 
 newtype DatumList' = DatumList' (Array Datum)
+derive instance newtypeDatumList' :: Newtype DatumList' _
 
 
 newtype DatumString' = DatumString' String
+derive instance newtypeDatumString' :: Newtype DatumString' _

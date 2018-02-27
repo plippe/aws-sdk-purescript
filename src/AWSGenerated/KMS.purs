@@ -6,6 +6,7 @@ module AWS.KMS where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -189,12 +190,15 @@ updateKeyDescription = AWS.request serviceName "UpdateKeyDescription"
 
 
 newtype AWSAccountIdType = AWSAccountIdType String
+derive instance newtypeAWSAccountIdType :: Newtype AWSAccountIdType _
 
 
 newtype AlgorithmSpec = AlgorithmSpec String
+derive instance newtypeAlgorithmSpec :: Newtype AlgorithmSpec _
 
 
 newtype AliasList = AliasList (Array AliasListEntry)
+derive instance newtypeAliasList :: Newtype AliasList _
 
 
 -- | <p>Contains information about an alias.</p>
@@ -203,40 +207,49 @@ newtype AliasListEntry = AliasListEntry
   , "AliasArn" :: NullOrUndefined (ArnType)
   , "TargetKeyId" :: NullOrUndefined (KeyIdType)
   }
+derive instance newtypeAliasListEntry :: Newtype AliasListEntry _
 
 
 newtype AliasNameType = AliasNameType String
+derive instance newtypeAliasNameType :: Newtype AliasNameType _
 
 
 -- | <p>The request was rejected because it attempted to create a resource that already exists.</p>
 newtype AlreadyExistsException = AlreadyExistsException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeAlreadyExistsException :: Newtype AlreadyExistsException _
 
 
 newtype ArnType = ArnType String
+derive instance newtypeArnType :: Newtype ArnType _
 
 
 newtype BooleanType = BooleanType Boolean
+derive instance newtypeBooleanType :: Newtype BooleanType _
 
 
 newtype CancelKeyDeletionRequest = CancelKeyDeletionRequest 
   { "KeyId" :: (KeyIdType)
   }
+derive instance newtypeCancelKeyDeletionRequest :: Newtype CancelKeyDeletionRequest _
 
 
 newtype CancelKeyDeletionResponse = CancelKeyDeletionResponse 
   { "KeyId" :: NullOrUndefined (KeyIdType)
   }
+derive instance newtypeCancelKeyDeletionResponse :: Newtype CancelKeyDeletionResponse _
 
 
 newtype CiphertextType = CiphertextType String
+derive instance newtypeCiphertextType :: Newtype CiphertextType _
 
 
 newtype CreateAliasRequest = CreateAliasRequest 
   { "AliasName" :: (AliasNameType)
   , "TargetKeyId" :: (KeyIdType)
   }
+derive instance newtypeCreateAliasRequest :: Newtype CreateAliasRequest _
 
 
 newtype CreateGrantRequest = CreateGrantRequest 
@@ -248,12 +261,14 @@ newtype CreateGrantRequest = CreateGrantRequest
   , "GrantTokens" :: NullOrUndefined (GrantTokenList)
   , "Name" :: NullOrUndefined (GrantNameType)
   }
+derive instance newtypeCreateGrantRequest :: Newtype CreateGrantRequest _
 
 
 newtype CreateGrantResponse = CreateGrantResponse 
   { "GrantToken" :: NullOrUndefined (GrantTokenType)
   , "GrantId" :: NullOrUndefined (GrantIdType)
   }
+derive instance newtypeCreateGrantResponse :: Newtype CreateGrantResponse _
 
 
 newtype CreateKeyRequest = CreateKeyRequest 
@@ -264,17 +279,21 @@ newtype CreateKeyRequest = CreateKeyRequest
   , "BypassPolicyLockoutSafetyCheck" :: NullOrUndefined (BooleanType)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateKeyRequest :: Newtype CreateKeyRequest _
 
 
 newtype CreateKeyResponse = CreateKeyResponse 
   { "KeyMetadata" :: NullOrUndefined (KeyMetadata)
   }
+derive instance newtypeCreateKeyResponse :: Newtype CreateKeyResponse _
 
 
 newtype DataKeySpec = DataKeySpec String
+derive instance newtypeDataKeySpec :: Newtype DataKeySpec _
 
 
 newtype DateType = DateType Number
+derive instance newtypeDateType :: Newtype DateType _
 
 
 newtype DecryptRequest = DecryptRequest 
@@ -282,68 +301,81 @@ newtype DecryptRequest = DecryptRequest
   , "EncryptionContext" :: NullOrUndefined (EncryptionContextType)
   , "GrantTokens" :: NullOrUndefined (GrantTokenList)
   }
+derive instance newtypeDecryptRequest :: Newtype DecryptRequest _
 
 
 newtype DecryptResponse = DecryptResponse 
   { "KeyId" :: NullOrUndefined (KeyIdType)
   , "Plaintext" :: NullOrUndefined (PlaintextType)
   }
+derive instance newtypeDecryptResponse :: Newtype DecryptResponse _
 
 
 newtype DeleteAliasRequest = DeleteAliasRequest 
   { "AliasName" :: (AliasNameType)
   }
+derive instance newtypeDeleteAliasRequest :: Newtype DeleteAliasRequest _
 
 
 newtype DeleteImportedKeyMaterialRequest = DeleteImportedKeyMaterialRequest 
   { "KeyId" :: (KeyIdType)
   }
+derive instance newtypeDeleteImportedKeyMaterialRequest :: Newtype DeleteImportedKeyMaterialRequest _
 
 
 -- | <p>The system timed out while trying to fulfill the request. The request can be retried.</p>
 newtype DependencyTimeoutException = DependencyTimeoutException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeDependencyTimeoutException :: Newtype DependencyTimeoutException _
 
 
 newtype DescribeKeyRequest = DescribeKeyRequest 
   { "KeyId" :: (KeyIdType)
   , "GrantTokens" :: NullOrUndefined (GrantTokenList)
   }
+derive instance newtypeDescribeKeyRequest :: Newtype DescribeKeyRequest _
 
 
 newtype DescribeKeyResponse = DescribeKeyResponse 
   { "KeyMetadata" :: NullOrUndefined (KeyMetadata)
   }
+derive instance newtypeDescribeKeyResponse :: Newtype DescribeKeyResponse _
 
 
 newtype DescriptionType = DescriptionType String
+derive instance newtypeDescriptionType :: Newtype DescriptionType _
 
 
 newtype DisableKeyRequest = DisableKeyRequest 
   { "KeyId" :: (KeyIdType)
   }
+derive instance newtypeDisableKeyRequest :: Newtype DisableKeyRequest _
 
 
 newtype DisableKeyRotationRequest = DisableKeyRotationRequest 
   { "KeyId" :: (KeyIdType)
   }
+derive instance newtypeDisableKeyRotationRequest :: Newtype DisableKeyRotationRequest _
 
 
 -- | <p>The request was rejected because the specified CMK is not enabled.</p>
 newtype DisabledException = DisabledException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeDisabledException :: Newtype DisabledException _
 
 
 newtype EnableKeyRequest = EnableKeyRequest 
   { "KeyId" :: (KeyIdType)
   }
+derive instance newtypeEnableKeyRequest :: Newtype EnableKeyRequest _
 
 
 newtype EnableKeyRotationRequest = EnableKeyRotationRequest 
   { "KeyId" :: (KeyIdType)
   }
+derive instance newtypeEnableKeyRotationRequest :: Newtype EnableKeyRotationRequest _
 
 
 newtype EncryptRequest = EncryptRequest 
@@ -352,33 +384,41 @@ newtype EncryptRequest = EncryptRequest
   , "EncryptionContext" :: NullOrUndefined (EncryptionContextType)
   , "GrantTokens" :: NullOrUndefined (GrantTokenList)
   }
+derive instance newtypeEncryptRequest :: Newtype EncryptRequest _
 
 
 newtype EncryptResponse = EncryptResponse 
   { "CiphertextBlob" :: NullOrUndefined (CiphertextType)
   , "KeyId" :: NullOrUndefined (KeyIdType)
   }
+derive instance newtypeEncryptResponse :: Newtype EncryptResponse _
 
 
 newtype EncryptionContextKey = EncryptionContextKey String
+derive instance newtypeEncryptionContextKey :: Newtype EncryptionContextKey _
 
 
 newtype EncryptionContextType = EncryptionContextType (Map EncryptionContextKey EncryptionContextValue)
+derive instance newtypeEncryptionContextType :: Newtype EncryptionContextType _
 
 
 newtype EncryptionContextValue = EncryptionContextValue String
+derive instance newtypeEncryptionContextValue :: Newtype EncryptionContextValue _
 
 
 newtype ErrorMessageType = ErrorMessageType String
+derive instance newtypeErrorMessageType :: Newtype ErrorMessageType _
 
 
 newtype ExpirationModelType = ExpirationModelType String
+derive instance newtypeExpirationModelType :: Newtype ExpirationModelType _
 
 
 -- | <p>The request was rejected because the provided import token is expired. Use <a>GetParametersForImport</a> to get a new import token and public key, use the new public key to encrypt the key material, and then try the request again.</p>
 newtype ExpiredImportTokenException = ExpiredImportTokenException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeExpiredImportTokenException :: Newtype ExpiredImportTokenException _
 
 
 newtype GenerateDataKeyRequest = GenerateDataKeyRequest 
@@ -388,6 +428,7 @@ newtype GenerateDataKeyRequest = GenerateDataKeyRequest
   , "KeySpec" :: NullOrUndefined (DataKeySpec)
   , "GrantTokens" :: NullOrUndefined (GrantTokenList)
   }
+derive instance newtypeGenerateDataKeyRequest :: Newtype GenerateDataKeyRequest _
 
 
 newtype GenerateDataKeyResponse = GenerateDataKeyResponse 
@@ -395,6 +436,7 @@ newtype GenerateDataKeyResponse = GenerateDataKeyResponse
   , "Plaintext" :: NullOrUndefined (PlaintextType)
   , "KeyId" :: NullOrUndefined (KeyIdType)
   }
+derive instance newtypeGenerateDataKeyResponse :: Newtype GenerateDataKeyResponse _
 
 
 newtype GenerateDataKeyWithoutPlaintextRequest = GenerateDataKeyWithoutPlaintextRequest 
@@ -404,43 +446,51 @@ newtype GenerateDataKeyWithoutPlaintextRequest = GenerateDataKeyWithoutPlaintext
   , "NumberOfBytes" :: NullOrUndefined (NumberOfBytesType)
   , "GrantTokens" :: NullOrUndefined (GrantTokenList)
   }
+derive instance newtypeGenerateDataKeyWithoutPlaintextRequest :: Newtype GenerateDataKeyWithoutPlaintextRequest _
 
 
 newtype GenerateDataKeyWithoutPlaintextResponse = GenerateDataKeyWithoutPlaintextResponse 
   { "CiphertextBlob" :: NullOrUndefined (CiphertextType)
   , "KeyId" :: NullOrUndefined (KeyIdType)
   }
+derive instance newtypeGenerateDataKeyWithoutPlaintextResponse :: Newtype GenerateDataKeyWithoutPlaintextResponse _
 
 
 newtype GenerateRandomRequest = GenerateRandomRequest 
   { "NumberOfBytes" :: NullOrUndefined (NumberOfBytesType)
   }
+derive instance newtypeGenerateRandomRequest :: Newtype GenerateRandomRequest _
 
 
 newtype GenerateRandomResponse = GenerateRandomResponse 
   { "Plaintext" :: NullOrUndefined (PlaintextType)
   }
+derive instance newtypeGenerateRandomResponse :: Newtype GenerateRandomResponse _
 
 
 newtype GetKeyPolicyRequest = GetKeyPolicyRequest 
   { "KeyId" :: (KeyIdType)
   , "PolicyName" :: (PolicyNameType)
   }
+derive instance newtypeGetKeyPolicyRequest :: Newtype GetKeyPolicyRequest _
 
 
 newtype GetKeyPolicyResponse = GetKeyPolicyResponse 
   { "Policy" :: NullOrUndefined (PolicyType)
   }
+derive instance newtypeGetKeyPolicyResponse :: Newtype GetKeyPolicyResponse _
 
 
 newtype GetKeyRotationStatusRequest = GetKeyRotationStatusRequest 
   { "KeyId" :: (KeyIdType)
   }
+derive instance newtypeGetKeyRotationStatusRequest :: Newtype GetKeyRotationStatusRequest _
 
 
 newtype GetKeyRotationStatusResponse = GetKeyRotationStatusResponse 
   { "KeyRotationEnabled" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeGetKeyRotationStatusResponse :: Newtype GetKeyRotationStatusResponse _
 
 
 newtype GetParametersForImportRequest = GetParametersForImportRequest 
@@ -448,6 +498,7 @@ newtype GetParametersForImportRequest = GetParametersForImportRequest
   , "WrappingAlgorithm" :: (AlgorithmSpec)
   , "WrappingKeySpec" :: (WrappingKeySpec)
   }
+derive instance newtypeGetParametersForImportRequest :: Newtype GetParametersForImportRequest _
 
 
 newtype GetParametersForImportResponse = GetParametersForImportResponse 
@@ -456,6 +507,7 @@ newtype GetParametersForImportResponse = GetParametersForImportResponse
   , "PublicKey" :: NullOrUndefined (PlaintextType)
   , "ParametersValidTo" :: NullOrUndefined (DateType)
   }
+derive instance newtypeGetParametersForImportResponse :: Newtype GetParametersForImportResponse _
 
 
 -- | <p>A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>Grant constraints apply only to operations that accept encryption context as input. For example, the <code> <a>DescribeKey</a> </code> operation does not accept encryption context as input. A grant that allows the <code>DescribeKey</code> operation does so regardless of the grant constraints. In constrast, the <code> <a>Encrypt</a> </code> operation accepts encryption context as input. A grant that allows the <code>Encrypt</code> operation does so only when the encryption context of the <code>Encrypt</code> operation satisfies the grant constraints.</p>
@@ -463,12 +515,15 @@ newtype GrantConstraints = GrantConstraints
   { "EncryptionContextSubset" :: NullOrUndefined (EncryptionContextType)
   , "EncryptionContextEquals" :: NullOrUndefined (EncryptionContextType)
   }
+derive instance newtypeGrantConstraints :: Newtype GrantConstraints _
 
 
 newtype GrantIdType = GrantIdType String
+derive instance newtypeGrantIdType :: Newtype GrantIdType _
 
 
 newtype GrantList = GrantList (Array GrantListEntry)
+derive instance newtypeGrantList :: Newtype GrantList _
 
 
 -- | <p>Contains information about an entry in a list of grants.</p>
@@ -483,21 +538,27 @@ newtype GrantListEntry = GrantListEntry
   , "Operations" :: NullOrUndefined (GrantOperationList)
   , "Constraints" :: NullOrUndefined (GrantConstraints)
   }
+derive instance newtypeGrantListEntry :: Newtype GrantListEntry _
 
 
 newtype GrantNameType = GrantNameType String
+derive instance newtypeGrantNameType :: Newtype GrantNameType _
 
 
 newtype GrantOperation = GrantOperation String
+derive instance newtypeGrantOperation :: Newtype GrantOperation _
 
 
 newtype GrantOperationList = GrantOperationList (Array GrantOperation)
+derive instance newtypeGrantOperationList :: Newtype GrantOperationList _
 
 
 newtype GrantTokenList = GrantTokenList (Array GrantTokenType)
+derive instance newtypeGrantTokenList :: Newtype GrantTokenList _
 
 
 newtype GrantTokenType = GrantTokenType String
+derive instance newtypeGrantTokenType :: Newtype GrantTokenType _
 
 
 newtype ImportKeyMaterialRequest = ImportKeyMaterialRequest 
@@ -507,83 +568,98 @@ newtype ImportKeyMaterialRequest = ImportKeyMaterialRequest
   , "ValidTo" :: NullOrUndefined (DateType)
   , "ExpirationModel" :: NullOrUndefined (ExpirationModelType)
   }
+derive instance newtypeImportKeyMaterialRequest :: Newtype ImportKeyMaterialRequest _
 
 
 newtype ImportKeyMaterialResponse = ImportKeyMaterialResponse 
   { 
   }
+derive instance newtypeImportKeyMaterialResponse :: Newtype ImportKeyMaterialResponse _
 
 
 -- | <p>The request was rejected because the provided key material is invalid or is not the same key material that was previously imported into this customer master key (CMK).</p>
 newtype IncorrectKeyMaterialException = IncorrectKeyMaterialException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeIncorrectKeyMaterialException :: Newtype IncorrectKeyMaterialException _
 
 
 -- | <p>The request was rejected because the specified alias name is not valid.</p>
 newtype InvalidAliasNameException = InvalidAliasNameException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidAliasNameException :: Newtype InvalidAliasNameException _
 
 
 -- | <p>The request was rejected because a specified ARN was not valid.</p>
 newtype InvalidArnException = InvalidArnException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidArnException :: Newtype InvalidArnException _
 
 
 -- | <p>The request was rejected because the specified ciphertext, or additional authenticated data incorporated into the ciphertext, such as the encryption context, is corrupted, missing, or otherwise invalid.</p>
 newtype InvalidCiphertextException = InvalidCiphertextException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidCiphertextException :: Newtype InvalidCiphertextException _
 
 
 -- | <p>The request was rejected because the specified <code>GrantId</code> is not valid.</p>
 newtype InvalidGrantIdException = InvalidGrantIdException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidGrantIdException :: Newtype InvalidGrantIdException _
 
 
 -- | <p>The request was rejected because the specified grant token is not valid.</p>
 newtype InvalidGrantTokenException = InvalidGrantTokenException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidGrantTokenException :: Newtype InvalidGrantTokenException _
 
 
 -- | <p>The request was rejected because the provided import token is invalid or is associated with a different customer master key (CMK).</p>
 newtype InvalidImportTokenException = InvalidImportTokenException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidImportTokenException :: Newtype InvalidImportTokenException _
 
 
 -- | <p>The request was rejected because the specified <code>KeySpec</code> value is not valid.</p>
 newtype InvalidKeyUsageException = InvalidKeyUsageException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidKeyUsageException :: Newtype InvalidKeyUsageException _
 
 
 -- | <p>The request was rejected because the marker that specifies where pagination should next begin is not valid.</p>
 newtype InvalidMarkerException = InvalidMarkerException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidMarkerException :: Newtype InvalidMarkerException _
 
 
 -- | <p>The request was rejected because an internal exception occurred. The request can be retried.</p>
 newtype KMSInternalException = KMSInternalException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeKMSInternalException :: Newtype KMSInternalException _
 
 
 -- | <p>The request was rejected because the state of the specified resource is not valid for this request.</p> <p>For more information about how key state affects the use of a CMK, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 newtype KMSInvalidStateException = KMSInvalidStateException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeKMSInvalidStateException :: Newtype KMSInvalidStateException _
 
 
 newtype KeyIdType = KeyIdType String
+derive instance newtypeKeyIdType :: Newtype KeyIdType _
 
 
 newtype KeyList = KeyList (Array KeyListEntry)
+derive instance newtypeKeyList :: Newtype KeyList _
 
 
 -- | <p>Contains information about each entry in the key list.</p>
@@ -591,9 +667,11 @@ newtype KeyListEntry = KeyListEntry
   { "KeyId" :: NullOrUndefined (KeyIdType)
   , "KeyArn" :: NullOrUndefined (ArnType)
   }
+derive instance newtypeKeyListEntry :: Newtype KeyListEntry _
 
 
 newtype KeyManagerType = KeyManagerType String
+derive instance newtypeKeyManagerType :: Newtype KeyManagerType _
 
 
 -- | <p>Contains metadata about a customer master key (CMK).</p> <p>This data type is used as a response element for the <a>CreateKey</a> and <a>DescribeKey</a> operations.</p>
@@ -612,33 +690,40 @@ newtype KeyMetadata = KeyMetadata
   , "ExpirationModel" :: NullOrUndefined (ExpirationModelType)
   , "KeyManager" :: NullOrUndefined (KeyManagerType)
   }
+derive instance newtypeKeyMetadata :: Newtype KeyMetadata _
 
 
 newtype KeyState = KeyState String
+derive instance newtypeKeyState :: Newtype KeyState _
 
 
 -- | <p>The request was rejected because the specified CMK was not available. The request can be retried.</p>
 newtype KeyUnavailableException = KeyUnavailableException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeKeyUnavailableException :: Newtype KeyUnavailableException _
 
 
 newtype KeyUsageType = KeyUsageType String
+derive instance newtypeKeyUsageType :: Newtype KeyUsageType _
 
 
 -- | <p>The request was rejected because a limit was exceeded. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/limits.html">Limits</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype LimitType = LimitType Int
+derive instance newtypeLimitType :: Newtype LimitType _
 
 
 newtype ListAliasesRequest = ListAliasesRequest 
   { "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeListAliasesRequest :: Newtype ListAliasesRequest _
 
 
 newtype ListAliasesResponse = ListAliasesResponse 
@@ -646,6 +731,7 @@ newtype ListAliasesResponse = ListAliasesResponse
   , "NextMarker" :: NullOrUndefined (MarkerType)
   , "Truncated" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeListAliasesResponse :: Newtype ListAliasesResponse _
 
 
 newtype ListGrantsRequest = ListGrantsRequest 
@@ -653,6 +739,7 @@ newtype ListGrantsRequest = ListGrantsRequest
   , "Marker" :: NullOrUndefined (MarkerType)
   , "KeyId" :: (KeyIdType)
   }
+derive instance newtypeListGrantsRequest :: Newtype ListGrantsRequest _
 
 
 newtype ListGrantsResponse = ListGrantsResponse 
@@ -660,6 +747,7 @@ newtype ListGrantsResponse = ListGrantsResponse
   , "NextMarker" :: NullOrUndefined (MarkerType)
   , "Truncated" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeListGrantsResponse :: Newtype ListGrantsResponse _
 
 
 newtype ListKeyPoliciesRequest = ListKeyPoliciesRequest 
@@ -667,6 +755,7 @@ newtype ListKeyPoliciesRequest = ListKeyPoliciesRequest
   , "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeListKeyPoliciesRequest :: Newtype ListKeyPoliciesRequest _
 
 
 newtype ListKeyPoliciesResponse = ListKeyPoliciesResponse 
@@ -674,12 +763,14 @@ newtype ListKeyPoliciesResponse = ListKeyPoliciesResponse
   , "NextMarker" :: NullOrUndefined (MarkerType)
   , "Truncated" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeListKeyPoliciesResponse :: Newtype ListKeyPoliciesResponse _
 
 
 newtype ListKeysRequest = ListKeysRequest 
   { "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeListKeysRequest :: Newtype ListKeysRequest _
 
 
 newtype ListKeysResponse = ListKeysResponse 
@@ -687,6 +778,7 @@ newtype ListKeysResponse = ListKeysResponse
   , "NextMarker" :: NullOrUndefined (MarkerType)
   , "Truncated" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeListKeysResponse :: Newtype ListKeysResponse _
 
 
 newtype ListResourceTagsRequest = ListResourceTagsRequest 
@@ -694,6 +786,7 @@ newtype ListResourceTagsRequest = ListResourceTagsRequest
   , "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeListResourceTagsRequest :: Newtype ListResourceTagsRequest _
 
 
 newtype ListResourceTagsResponse = ListResourceTagsResponse 
@@ -701,6 +794,7 @@ newtype ListResourceTagsResponse = ListResourceTagsResponse
   , "NextMarker" :: NullOrUndefined (MarkerType)
   , "Truncated" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeListResourceTagsResponse :: Newtype ListResourceTagsResponse _
 
 
 newtype ListRetirableGrantsRequest = ListRetirableGrantsRequest 
@@ -708,45 +802,57 @@ newtype ListRetirableGrantsRequest = ListRetirableGrantsRequest
   , "Marker" :: NullOrUndefined (MarkerType)
   , "RetiringPrincipal" :: (PrincipalIdType)
   }
+derive instance newtypeListRetirableGrantsRequest :: Newtype ListRetirableGrantsRequest _
 
 
 -- | <p>The request was rejected because the specified policy is not syntactically or semantically correct.</p>
 newtype MalformedPolicyDocumentException = MalformedPolicyDocumentException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeMalformedPolicyDocumentException :: Newtype MalformedPolicyDocumentException _
 
 
 newtype MarkerType = MarkerType String
+derive instance newtypeMarkerType :: Newtype MarkerType _
 
 
 -- | <p>The request was rejected because the specified entity or resource could not be found.</p>
 newtype NotFoundException = NotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype NumberOfBytesType = NumberOfBytesType Int
+derive instance newtypeNumberOfBytesType :: Newtype NumberOfBytesType _
 
 
 newtype OriginType = OriginType String
+derive instance newtypeOriginType :: Newtype OriginType _
 
 
 newtype PendingWindowInDaysType = PendingWindowInDaysType Int
+derive instance newtypePendingWindowInDaysType :: Newtype PendingWindowInDaysType _
 
 
 newtype PlaintextType = PlaintextType String
+derive instance newtypePlaintextType :: Newtype PlaintextType _
 
 
 newtype PolicyNameList = PolicyNameList (Array PolicyNameType)
+derive instance newtypePolicyNameList :: Newtype PolicyNameList _
 
 
 newtype PolicyNameType = PolicyNameType String
+derive instance newtypePolicyNameType :: Newtype PolicyNameType _
 
 
 newtype PolicyType = PolicyType String
+derive instance newtypePolicyType :: Newtype PolicyType _
 
 
 newtype PrincipalIdType = PrincipalIdType String
+derive instance newtypePrincipalIdType :: Newtype PrincipalIdType _
 
 
 newtype PutKeyPolicyRequest = PutKeyPolicyRequest 
@@ -755,6 +861,7 @@ newtype PutKeyPolicyRequest = PutKeyPolicyRequest
   , "Policy" :: (PolicyType)
   , "BypassPolicyLockoutSafetyCheck" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypePutKeyPolicyRequest :: Newtype PutKeyPolicyRequest _
 
 
 newtype ReEncryptRequest = ReEncryptRequest 
@@ -764,6 +871,7 @@ newtype ReEncryptRequest = ReEncryptRequest
   , "DestinationEncryptionContext" :: NullOrUndefined (EncryptionContextType)
   , "GrantTokens" :: NullOrUndefined (GrantTokenList)
   }
+derive instance newtypeReEncryptRequest :: Newtype ReEncryptRequest _
 
 
 newtype ReEncryptResponse = ReEncryptResponse 
@@ -771,6 +879,7 @@ newtype ReEncryptResponse = ReEncryptResponse
   , "SourceKeyId" :: NullOrUndefined (KeyIdType)
   , "KeyId" :: NullOrUndefined (KeyIdType)
   }
+derive instance newtypeReEncryptResponse :: Newtype ReEncryptResponse _
 
 
 newtype RetireGrantRequest = RetireGrantRequest 
@@ -778,24 +887,28 @@ newtype RetireGrantRequest = RetireGrantRequest
   , "KeyId" :: NullOrUndefined (KeyIdType)
   , "GrantId" :: NullOrUndefined (GrantIdType)
   }
+derive instance newtypeRetireGrantRequest :: Newtype RetireGrantRequest _
 
 
 newtype RevokeGrantRequest = RevokeGrantRequest 
   { "KeyId" :: (KeyIdType)
   , "GrantId" :: (GrantIdType)
   }
+derive instance newtypeRevokeGrantRequest :: Newtype RevokeGrantRequest _
 
 
 newtype ScheduleKeyDeletionRequest = ScheduleKeyDeletionRequest 
   { "KeyId" :: (KeyIdType)
   , "PendingWindowInDays" :: NullOrUndefined (PendingWindowInDaysType)
   }
+derive instance newtypeScheduleKeyDeletionRequest :: Newtype ScheduleKeyDeletionRequest _
 
 
 newtype ScheduleKeyDeletionResponse = ScheduleKeyDeletionResponse 
   { "KeyId" :: NullOrUndefined (KeyIdType)
   , "DeletionDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeScheduleKeyDeletionResponse :: Newtype ScheduleKeyDeletionResponse _
 
 
 -- | <p>A key-value pair. A tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p> <p>For information about the rules that apply to tag keys and tag values, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html">User-Defined Tag Restrictions</a> in the <i>AWS Billing and Cost Management User Guide</i>.</p>
@@ -803,54 +916,66 @@ newtype Tag = Tag
   { "TagKey" :: (TagKeyType)
   , "TagValue" :: (TagValueType)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 -- | <p>The request was rejected because one or more tags are not valid.</p>
 newtype TagException = TagException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeTagException :: Newtype TagException _
 
 
 newtype TagKeyList = TagKeyList (Array TagKeyType)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagKeyType = TagKeyType String
+derive instance newtypeTagKeyType :: Newtype TagKeyType _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagResourceRequest = TagResourceRequest 
   { "KeyId" :: (KeyIdType)
   , "Tags" :: (TagList)
   }
+derive instance newtypeTagResourceRequest :: Newtype TagResourceRequest _
 
 
 newtype TagValueType = TagValueType String
+derive instance newtypeTagValueType :: Newtype TagValueType _
 
 
 -- | <p>The request was rejected because a specified parameter is not supported or a specified resource is not valid for this operation.</p>
 newtype UnsupportedOperationException = UnsupportedOperationException 
   { "Message'" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeUnsupportedOperationException :: Newtype UnsupportedOperationException _
 
 
 newtype UntagResourceRequest = UntagResourceRequest 
   { "KeyId" :: (KeyIdType)
   , "TagKeys" :: (TagKeyList)
   }
+derive instance newtypeUntagResourceRequest :: Newtype UntagResourceRequest _
 
 
 newtype UpdateAliasRequest = UpdateAliasRequest 
   { "AliasName" :: (AliasNameType)
   , "TargetKeyId" :: (KeyIdType)
   }
+derive instance newtypeUpdateAliasRequest :: Newtype UpdateAliasRequest _
 
 
 newtype UpdateKeyDescriptionRequest = UpdateKeyDescriptionRequest 
   { "KeyId" :: (KeyIdType)
   , "Description" :: (DescriptionType)
   }
+derive instance newtypeUpdateKeyDescriptionRequest :: Newtype UpdateKeyDescriptionRequest _
 
 
 newtype WrappingKeySpec = WrappingKeySpec String
+derive instance newtypeWrappingKeySpec :: Newtype WrappingKeySpec _

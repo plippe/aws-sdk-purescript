@@ -6,6 +6,7 @@ module AWS.CloudWatchLogs where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -179,20 +180,24 @@ untagLogGroup = AWS.request serviceName "UntagLogGroup"
 
 
 newtype AccessPolicy = AccessPolicy String
+derive instance newtypeAccessPolicy :: Newtype AccessPolicy _
 
 
 newtype Arn = Arn String
+derive instance newtypeArn :: Newtype Arn _
 
 
 newtype AssociateKmsKeyRequest = AssociateKmsKeyRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "KmsKeyId'" :: (KmsKeyId)
   }
+derive instance newtypeAssociateKmsKeyRequest :: Newtype AssociateKmsKeyRequest _
 
 
 newtype CancelExportTaskRequest = CancelExportTaskRequest 
   { "TaskId'" :: (ExportTaskId)
   }
+derive instance newtypeCancelExportTaskRequest :: Newtype CancelExportTaskRequest _
 
 
 newtype CreateExportTaskRequest = CreateExportTaskRequest 
@@ -204,11 +209,13 @@ newtype CreateExportTaskRequest = CreateExportTaskRequest
   , "Destination'" :: (ExportDestinationBucket)
   , "DestinationPrefix'" :: NullOrUndefined (ExportDestinationPrefix)
   }
+derive instance newtypeCreateExportTaskRequest :: Newtype CreateExportTaskRequest _
 
 
 newtype CreateExportTaskResponse = CreateExportTaskResponse 
   { "TaskId'" :: NullOrUndefined (ExportTaskId)
   }
+derive instance newtypeCreateExportTaskResponse :: Newtype CreateExportTaskResponse _
 
 
 newtype CreateLogGroupRequest = CreateLogGroupRequest 
@@ -216,66 +223,79 @@ newtype CreateLogGroupRequest = CreateLogGroupRequest
   , "KmsKeyId'" :: NullOrUndefined (KmsKeyId)
   , "Tags'" :: NullOrUndefined (Tags)
   }
+derive instance newtypeCreateLogGroupRequest :: Newtype CreateLogGroupRequest _
 
 
 newtype CreateLogStreamRequest = CreateLogStreamRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "LogStreamName'" :: (LogStreamName)
   }
+derive instance newtypeCreateLogStreamRequest :: Newtype CreateLogStreamRequest _
 
 
 -- | <p>The event was already logged.</p>
 newtype DataAlreadyAcceptedException = DataAlreadyAcceptedException 
   { "ExpectedSequenceToken'" :: NullOrUndefined (SequenceToken)
   }
+derive instance newtypeDataAlreadyAcceptedException :: Newtype DataAlreadyAcceptedException _
 
 
 -- | <p>The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653.</p>
 newtype Days = Days Int
+derive instance newtypeDays :: Newtype Days _
 
 
 newtype DefaultValue = DefaultValue Number
+derive instance newtypeDefaultValue :: Newtype DefaultValue _
 
 
 newtype DeleteDestinationRequest = DeleteDestinationRequest 
   { "DestinationName'" :: (DestinationName)
   }
+derive instance newtypeDeleteDestinationRequest :: Newtype DeleteDestinationRequest _
 
 
 newtype DeleteLogGroupRequest = DeleteLogGroupRequest 
   { "LogGroupName'" :: (LogGroupName)
   }
+derive instance newtypeDeleteLogGroupRequest :: Newtype DeleteLogGroupRequest _
 
 
 newtype DeleteLogStreamRequest = DeleteLogStreamRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "LogStreamName'" :: (LogStreamName)
   }
+derive instance newtypeDeleteLogStreamRequest :: Newtype DeleteLogStreamRequest _
 
 
 newtype DeleteMetricFilterRequest = DeleteMetricFilterRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "FilterName'" :: (FilterName)
   }
+derive instance newtypeDeleteMetricFilterRequest :: Newtype DeleteMetricFilterRequest _
 
 
 newtype DeleteResourcePolicyRequest = DeleteResourcePolicyRequest 
   { "PolicyName'" :: NullOrUndefined (PolicyName)
   }
+derive instance newtypeDeleteResourcePolicyRequest :: Newtype DeleteResourcePolicyRequest _
 
 
 newtype DeleteRetentionPolicyRequest = DeleteRetentionPolicyRequest 
   { "LogGroupName'" :: (LogGroupName)
   }
+derive instance newtypeDeleteRetentionPolicyRequest :: Newtype DeleteRetentionPolicyRequest _
 
 
 newtype DeleteSubscriptionFilterRequest = DeleteSubscriptionFilterRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "FilterName'" :: (FilterName)
   }
+derive instance newtypeDeleteSubscriptionFilterRequest :: Newtype DeleteSubscriptionFilterRequest _
 
 
 newtype Descending = Descending Boolean
+derive instance newtypeDescending :: Newtype Descending _
 
 
 newtype DescribeDestinationsRequest = DescribeDestinationsRequest 
@@ -283,12 +303,14 @@ newtype DescribeDestinationsRequest = DescribeDestinationsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "Limit'" :: NullOrUndefined (DescribeLimit)
   }
+derive instance newtypeDescribeDestinationsRequest :: Newtype DescribeDestinationsRequest _
 
 
 newtype DescribeDestinationsResponse = DescribeDestinationsResponse 
   { "Destinations'" :: NullOrUndefined (Destinations)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeDestinationsResponse :: Newtype DescribeDestinationsResponse _
 
 
 newtype DescribeExportTasksRequest = DescribeExportTasksRequest 
@@ -297,15 +319,18 @@ newtype DescribeExportTasksRequest = DescribeExportTasksRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "Limit'" :: NullOrUndefined (DescribeLimit)
   }
+derive instance newtypeDescribeExportTasksRequest :: Newtype DescribeExportTasksRequest _
 
 
 newtype DescribeExportTasksResponse = DescribeExportTasksResponse 
   { "ExportTasks'" :: NullOrUndefined (ExportTasks)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeExportTasksResponse :: Newtype DescribeExportTasksResponse _
 
 
 newtype DescribeLimit = DescribeLimit Int
+derive instance newtypeDescribeLimit :: Newtype DescribeLimit _
 
 
 newtype DescribeLogGroupsRequest = DescribeLogGroupsRequest 
@@ -313,12 +338,14 @@ newtype DescribeLogGroupsRequest = DescribeLogGroupsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "Limit'" :: NullOrUndefined (DescribeLimit)
   }
+derive instance newtypeDescribeLogGroupsRequest :: Newtype DescribeLogGroupsRequest _
 
 
 newtype DescribeLogGroupsResponse = DescribeLogGroupsResponse 
   { "LogGroups'" :: NullOrUndefined (LogGroups)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeLogGroupsResponse :: Newtype DescribeLogGroupsResponse _
 
 
 newtype DescribeLogStreamsRequest = DescribeLogStreamsRequest 
@@ -329,12 +356,14 @@ newtype DescribeLogStreamsRequest = DescribeLogStreamsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "Limit'" :: NullOrUndefined (DescribeLimit)
   }
+derive instance newtypeDescribeLogStreamsRequest :: Newtype DescribeLogStreamsRequest _
 
 
 newtype DescribeLogStreamsResponse = DescribeLogStreamsResponse 
   { "LogStreams'" :: NullOrUndefined (LogStreams)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeLogStreamsResponse :: Newtype DescribeLogStreamsResponse _
 
 
 newtype DescribeMetricFiltersRequest = DescribeMetricFiltersRequest 
@@ -345,24 +374,28 @@ newtype DescribeMetricFiltersRequest = DescribeMetricFiltersRequest
   , "MetricName'" :: NullOrUndefined (MetricName)
   , "MetricNamespace'" :: NullOrUndefined (MetricNamespace)
   }
+derive instance newtypeDescribeMetricFiltersRequest :: Newtype DescribeMetricFiltersRequest _
 
 
 newtype DescribeMetricFiltersResponse = DescribeMetricFiltersResponse 
   { "MetricFilters'" :: NullOrUndefined (MetricFilters)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeMetricFiltersResponse :: Newtype DescribeMetricFiltersResponse _
 
 
 newtype DescribeResourcePoliciesRequest = DescribeResourcePoliciesRequest 
   { "NextToken'" :: NullOrUndefined (NextToken)
   , "Limit'" :: NullOrUndefined (DescribeLimit)
   }
+derive instance newtypeDescribeResourcePoliciesRequest :: Newtype DescribeResourcePoliciesRequest _
 
 
 newtype DescribeResourcePoliciesResponse = DescribeResourcePoliciesResponse 
   { "ResourcePolicies'" :: NullOrUndefined (ResourcePolicies)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeResourcePoliciesResponse :: Newtype DescribeResourcePoliciesResponse _
 
 
 newtype DescribeSubscriptionFiltersRequest = DescribeSubscriptionFiltersRequest 
@@ -371,12 +404,14 @@ newtype DescribeSubscriptionFiltersRequest = DescribeSubscriptionFiltersRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "Limit'" :: NullOrUndefined (DescribeLimit)
   }
+derive instance newtypeDescribeSubscriptionFiltersRequest :: Newtype DescribeSubscriptionFiltersRequest _
 
 
 newtype DescribeSubscriptionFiltersResponse = DescribeSubscriptionFiltersResponse 
   { "SubscriptionFilters'" :: NullOrUndefined (SubscriptionFilters)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeSubscriptionFiltersResponse :: Newtype DescribeSubscriptionFiltersResponse _
 
 
 -- | <p>Represents a cross-account destination that receives subscription log events.</p>
@@ -388,42 +423,54 @@ newtype Destination = Destination
   , "Arn'" :: NullOrUndefined (Arn)
   , "CreationTime'" :: NullOrUndefined (Number)
   }
+derive instance newtypeDestination :: Newtype Destination _
 
 
 newtype DestinationArn = DestinationArn String
+derive instance newtypeDestinationArn :: Newtype DestinationArn _
 
 
 newtype DestinationName = DestinationName String
+derive instance newtypeDestinationName :: Newtype DestinationName _
 
 
 newtype Destinations = Destinations (Array Destination)
+derive instance newtypeDestinations :: Newtype Destinations _
 
 
 newtype DisassociateKmsKeyRequest = DisassociateKmsKeyRequest 
   { "LogGroupName'" :: (LogGroupName)
   }
+derive instance newtypeDisassociateKmsKeyRequest :: Newtype DisassociateKmsKeyRequest _
 
 
 -- | <p>The method used to distribute log data to the destination, which can be either random or grouped by log stream.</p>
 newtype Distribution = Distribution String
+derive instance newtypeDistribution :: Newtype Distribution _
 
 
 newtype EventId = EventId String
+derive instance newtypeEventId :: Newtype EventId _
 
 
 newtype EventMessage = EventMessage String
+derive instance newtypeEventMessage :: Newtype EventMessage _
 
 
 newtype EventNumber = EventNumber Number
+derive instance newtypeEventNumber :: Newtype EventNumber _
 
 
 newtype EventsLimit = EventsLimit Int
+derive instance newtypeEventsLimit :: Newtype EventsLimit _
 
 
 newtype ExportDestinationBucket = ExportDestinationBucket String
+derive instance newtypeExportDestinationBucket :: Newtype ExportDestinationBucket _
 
 
 newtype ExportDestinationPrefix = ExportDestinationPrefix String
+derive instance newtypeExportDestinationPrefix :: Newtype ExportDestinationPrefix _
 
 
 -- | <p>Represents an export task.</p>
@@ -438,6 +485,7 @@ newtype ExportTask = ExportTask
   , "Status'" :: NullOrUndefined (ExportTaskStatus)
   , "ExecutionInfo'" :: NullOrUndefined (ExportTaskExecutionInfo)
   }
+derive instance newtypeExportTask :: Newtype ExportTask _
 
 
 -- | <p>Represents the status of an export task.</p>
@@ -445,12 +493,15 @@ newtype ExportTaskExecutionInfo = ExportTaskExecutionInfo
   { "CreationTime'" :: NullOrUndefined (Number)
   , "CompletionTime'" :: NullOrUndefined (Number)
   }
+derive instance newtypeExportTaskExecutionInfo :: Newtype ExportTaskExecutionInfo _
 
 
 newtype ExportTaskId = ExportTaskId String
+derive instance newtypeExportTaskId :: Newtype ExportTaskId _
 
 
 newtype ExportTaskName = ExportTaskName String
+derive instance newtypeExportTaskName :: Newtype ExportTaskName _
 
 
 -- | <p>Represents the status of an export task.</p>
@@ -458,21 +509,27 @@ newtype ExportTaskStatus = ExportTaskStatus
   { "Code'" :: NullOrUndefined (ExportTaskStatusCode)
   , "Message'" :: NullOrUndefined (ExportTaskStatusMessage)
   }
+derive instance newtypeExportTaskStatus :: Newtype ExportTaskStatus _
 
 
 newtype ExportTaskStatusCode = ExportTaskStatusCode String
+derive instance newtypeExportTaskStatusCode :: Newtype ExportTaskStatusCode _
 
 
 newtype ExportTaskStatusMessage = ExportTaskStatusMessage String
+derive instance newtypeExportTaskStatusMessage :: Newtype ExportTaskStatusMessage _
 
 
 newtype ExportTasks = ExportTasks (Array ExportTask)
+derive instance newtypeExportTasks :: Newtype ExportTasks _
 
 
 newtype ExtractedValues = ExtractedValues (Map Token Value)
+derive instance newtypeExtractedValues :: Newtype ExtractedValues _
 
 
 newtype FilterCount = FilterCount Int
+derive instance newtypeFilterCount :: Newtype FilterCount _
 
 
 newtype FilterLogEventsRequest = FilterLogEventsRequest 
@@ -485,6 +542,7 @@ newtype FilterLogEventsRequest = FilterLogEventsRequest
   , "Limit'" :: NullOrUndefined (EventsLimit)
   , "Interleaved'" :: NullOrUndefined (Interleaved)
   }
+derive instance newtypeFilterLogEventsRequest :: Newtype FilterLogEventsRequest _
 
 
 newtype FilterLogEventsResponse = FilterLogEventsResponse 
@@ -492,13 +550,16 @@ newtype FilterLogEventsResponse = FilterLogEventsResponse
   , "SearchedLogStreams'" :: NullOrUndefined (SearchedLogStreams)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeFilterLogEventsResponse :: Newtype FilterLogEventsResponse _
 
 
 newtype FilterName = FilterName String
+derive instance newtypeFilterName :: Newtype FilterName _
 
 
 -- | <p>A symbolic description of how CloudWatch Logs should interpret the data in each log event. For example, a log event may contain time stamps, IP addresses, strings, and so on. You use the filter pattern to specify what to look for in the log event message.</p>
 newtype FilterPattern = FilterPattern String
+derive instance newtypeFilterPattern :: Newtype FilterPattern _
 
 
 -- | <p>Represents a matched event.</p>
@@ -509,9 +570,11 @@ newtype FilteredLogEvent = FilteredLogEvent
   , "IngestionTime'" :: NullOrUndefined (Number)
   , "EventId'" :: NullOrUndefined (EventId)
   }
+derive instance newtypeFilteredLogEvent :: Newtype FilteredLogEvent _
 
 
 newtype FilteredLogEvents = FilteredLogEvents (Array FilteredLogEvent)
+derive instance newtypeFilteredLogEvents :: Newtype FilteredLogEvents _
 
 
 newtype GetLogEventsRequest = GetLogEventsRequest 
@@ -523,6 +586,7 @@ newtype GetLogEventsRequest = GetLogEventsRequest
   , "Limit'" :: NullOrUndefined (EventsLimit)
   , "StartFromHead'" :: NullOrUndefined (StartFromHead)
   }
+derive instance newtypeGetLogEventsRequest :: Newtype GetLogEventsRequest _
 
 
 newtype GetLogEventsResponse = GetLogEventsResponse 
@@ -530,6 +594,7 @@ newtype GetLogEventsResponse = GetLogEventsResponse
   , "NextForwardToken'" :: NullOrUndefined (NextToken)
   , "NextBackwardToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeGetLogEventsResponse :: Newtype GetLogEventsResponse _
 
 
 -- | <p>Represents a log event, which is a record of activity that was recorded by the application or resource being monitored.</p>
@@ -537,55 +602,67 @@ newtype InputLogEvent = InputLogEvent
   { "Number" :: (Number)
   , "Message'" :: (EventMessage)
   }
+derive instance newtypeInputLogEvent :: Newtype InputLogEvent _
 
 
 newtype InputLogEvents = InputLogEvents (Array InputLogEvent)
+derive instance newtypeInputLogEvents :: Newtype InputLogEvents _
 
 
 newtype InputLogStreamNames = InputLogStreamNames (Array LogStreamName)
+derive instance newtypeInputLogStreamNames :: Newtype InputLogStreamNames _
 
 
 newtype Interleaved = Interleaved Boolean
+derive instance newtypeInterleaved :: Newtype Interleaved _
 
 
 -- | <p>The operation is not valid on the specified resource.</p>
 newtype InvalidOperationException = InvalidOperationException 
   { 
   }
+derive instance newtypeInvalidOperationException :: Newtype InvalidOperationException _
 
 
 -- | <p>A parameter is specified incorrectly.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { 
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>The sequence token is not valid.</p>
 newtype InvalidSequenceTokenException = InvalidSequenceTokenException 
   { "ExpectedSequenceToken'" :: NullOrUndefined (SequenceToken)
   }
+derive instance newtypeInvalidSequenceTokenException :: Newtype InvalidSequenceTokenException _
 
 
 newtype KmsKeyId = KmsKeyId String
+derive instance newtypeKmsKeyId :: Newtype KmsKeyId _
 
 
 -- | <p>You have reached the maximum number of resources that can be created.</p>
 newtype LimitExceededException = LimitExceededException 
   { 
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListTagsLogGroupRequest = ListTagsLogGroupRequest 
   { "LogGroupName'" :: (LogGroupName)
   }
+derive instance newtypeListTagsLogGroupRequest :: Newtype ListTagsLogGroupRequest _
 
 
 newtype ListTagsLogGroupResponse = ListTagsLogGroupResponse 
   { "Tags'" :: NullOrUndefined (Tags)
   }
+derive instance newtypeListTagsLogGroupResponse :: Newtype ListTagsLogGroupResponse _
 
 
 newtype LogEventIndex = LogEventIndex Int
+derive instance newtypeLogEventIndex :: Newtype LogEventIndex _
 
 
 -- | <p>Represents a log group.</p>
@@ -598,12 +675,15 @@ newtype LogGroup = LogGroup
   , "StoredBytes'" :: NullOrUndefined (StoredBytes)
   , "KmsKeyId'" :: NullOrUndefined (KmsKeyId)
   }
+derive instance newtypeLogGroup :: Newtype LogGroup _
 
 
 newtype LogGroupName = LogGroupName String
+derive instance newtypeLogGroupName :: Newtype LogGroupName _
 
 
 newtype LogGroups = LogGroups (Array LogGroup)
+derive instance newtypeLogGroups :: Newtype LogGroups _
 
 
 -- | <p>Represents a log stream, which is a sequence of log events from a single emitter of logs.</p>
@@ -617,15 +697,19 @@ newtype LogStream = LogStream
   , "Arn'" :: NullOrUndefined (Arn)
   , "StoredBytes'" :: NullOrUndefined (StoredBytes)
   }
+derive instance newtypeLogStream :: Newtype LogStream _
 
 
 newtype LogStreamName = LogStreamName String
+derive instance newtypeLogStreamName :: Newtype LogStreamName _
 
 
 newtype LogStreamSearchedCompletely = LogStreamSearchedCompletely Boolean
+derive instance newtypeLogStreamSearchedCompletely :: Newtype LogStreamSearchedCompletely _
 
 
 newtype LogStreams = LogStreams (Array LogStream)
+derive instance newtypeLogStreams :: Newtype LogStreams _
 
 
 -- | <p>Metric filters express how CloudWatch Logs would extract metric observations from ingested log events and transform them into metric data in a CloudWatch metric.</p>
@@ -636,6 +720,7 @@ newtype MetricFilter = MetricFilter
   , "CreationTime'" :: NullOrUndefined (Number)
   , "LogGroupName'" :: NullOrUndefined (LogGroupName)
   }
+derive instance newtypeMetricFilter :: Newtype MetricFilter _
 
 
 -- | <p>Represents a matched event.</p>
@@ -644,19 +729,24 @@ newtype MetricFilterMatchRecord = MetricFilterMatchRecord
   , "EventMessage'" :: NullOrUndefined (EventMessage)
   , "ExtractedValues'" :: NullOrUndefined (ExtractedValues)
   }
+derive instance newtypeMetricFilterMatchRecord :: Newtype MetricFilterMatchRecord _
 
 
 newtype MetricFilterMatches = MetricFilterMatches (Array MetricFilterMatchRecord)
+derive instance newtypeMetricFilterMatches :: Newtype MetricFilterMatches _
 
 
 newtype MetricFilters = MetricFilters (Array MetricFilter)
+derive instance newtypeMetricFilters :: Newtype MetricFilters _
 
 
 -- | <p>The name of the CloudWatch metric to which the monitored log information should be published. For example, you may publish to a metric called ErrorCount.</p>
 newtype MetricName = MetricName String
+derive instance newtypeMetricName :: Newtype MetricName _
 
 
 newtype MetricNamespace = MetricNamespace String
+derive instance newtypeMetricNamespace :: Newtype MetricNamespace _
 
 
 -- | <p>Indicates how to transform ingested log events in to metric data in a CloudWatch metric.</p>
@@ -666,26 +756,32 @@ newtype MetricTransformation = MetricTransformation
   , "MetricValue'" :: (MetricValue)
   , "DefaultValue'" :: NullOrUndefined (DefaultValue)
   }
+derive instance newtypeMetricTransformation :: Newtype MetricTransformation _
 
 
 newtype MetricTransformations = MetricTransformations (Array MetricTransformation)
+derive instance newtypeMetricTransformations :: Newtype MetricTransformations _
 
 
 -- | <p>The value to publish to the CloudWatch metric. For example, if you're counting the occurrences of a term like "Error", the value is "1" for each occurrence. If you're counting the bytes transferred, the value is the value in the log event.</p>
 newtype MetricValue = MetricValue String
+derive instance newtypeMetricValue :: Newtype MetricValue _
 
 
 -- | <p>The token for the next set of items to return. The token expires after 24 hours.</p>
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>Multiple requests to update the same resource were in conflict.</p>
 newtype OperationAbortedException = OperationAbortedException 
   { 
   }
+derive instance newtypeOperationAbortedException :: Newtype OperationAbortedException _
 
 
 newtype OrderBy = OrderBy String
+derive instance newtypeOrderBy :: Newtype OrderBy _
 
 
 -- | <p>Represents a log event.</p>
@@ -694,21 +790,26 @@ newtype OutputLogEvent = OutputLogEvent
   , "Message'" :: NullOrUndefined (EventMessage)
   , "IngestionTime'" :: NullOrUndefined (Number)
   }
+derive instance newtypeOutputLogEvent :: Newtype OutputLogEvent _
 
 
 newtype OutputLogEvents = OutputLogEvents (Array OutputLogEvent)
+derive instance newtypeOutputLogEvents :: Newtype OutputLogEvents _
 
 
 newtype PolicyDocument = PolicyDocument String
+derive instance newtypePolicyDocument :: Newtype PolicyDocument _
 
 
 newtype PolicyName = PolicyName String
+derive instance newtypePolicyName :: Newtype PolicyName _
 
 
 newtype PutDestinationPolicyRequest = PutDestinationPolicyRequest 
   { "DestinationName'" :: (DestinationName)
   , "AccessPolicy'" :: (AccessPolicy)
   }
+derive instance newtypePutDestinationPolicyRequest :: Newtype PutDestinationPolicyRequest _
 
 
 newtype PutDestinationRequest = PutDestinationRequest 
@@ -716,11 +817,13 @@ newtype PutDestinationRequest = PutDestinationRequest
   , "TargetArn'" :: (TargetArn)
   , "RoleArn'" :: (RoleArn)
   }
+derive instance newtypePutDestinationRequest :: Newtype PutDestinationRequest _
 
 
 newtype PutDestinationResponse = PutDestinationResponse 
   { "Destination'" :: NullOrUndefined (Destination)
   }
+derive instance newtypePutDestinationResponse :: Newtype PutDestinationResponse _
 
 
 newtype PutLogEventsRequest = PutLogEventsRequest 
@@ -729,12 +832,14 @@ newtype PutLogEventsRequest = PutLogEventsRequest
   , "LogEvents'" :: (InputLogEvents)
   , "SequenceToken'" :: NullOrUndefined (SequenceToken)
   }
+derive instance newtypePutLogEventsRequest :: Newtype PutLogEventsRequest _
 
 
 newtype PutLogEventsResponse = PutLogEventsResponse 
   { "NextSequenceToken'" :: NullOrUndefined (SequenceToken)
   , "RejectedLogEventsInfo'" :: NullOrUndefined (RejectedLogEventsInfo)
   }
+derive instance newtypePutLogEventsResponse :: Newtype PutLogEventsResponse _
 
 
 newtype PutMetricFilterRequest = PutMetricFilterRequest 
@@ -743,23 +848,27 @@ newtype PutMetricFilterRequest = PutMetricFilterRequest
   , "FilterPattern'" :: (FilterPattern)
   , "MetricTransformations'" :: (MetricTransformations)
   }
+derive instance newtypePutMetricFilterRequest :: Newtype PutMetricFilterRequest _
 
 
 newtype PutResourcePolicyRequest = PutResourcePolicyRequest 
   { "PolicyName'" :: NullOrUndefined (PolicyName)
   , "PolicyDocument'" :: NullOrUndefined (PolicyDocument)
   }
+derive instance newtypePutResourcePolicyRequest :: Newtype PutResourcePolicyRequest _
 
 
 newtype PutResourcePolicyResponse = PutResourcePolicyResponse 
   { "ResourcePolicy'" :: NullOrUndefined (ResourcePolicy)
   }
+derive instance newtypePutResourcePolicyResponse :: Newtype PutResourcePolicyResponse _
 
 
 newtype PutRetentionPolicyRequest = PutRetentionPolicyRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "RetentionInDays'" :: (Days)
   }
+derive instance newtypePutRetentionPolicyRequest :: Newtype PutRetentionPolicyRequest _
 
 
 newtype PutSubscriptionFilterRequest = PutSubscriptionFilterRequest 
@@ -770,6 +879,7 @@ newtype PutSubscriptionFilterRequest = PutSubscriptionFilterRequest
   , "RoleArn'" :: NullOrUndefined (RoleArn)
   , "Distribution'" :: NullOrUndefined (Distribution)
   }
+derive instance newtypePutSubscriptionFilterRequest :: Newtype PutSubscriptionFilterRequest _
 
 
 -- | <p>Represents the rejected events.</p>
@@ -778,21 +888,25 @@ newtype RejectedLogEventsInfo = RejectedLogEventsInfo
   , "TooOldLogEventEndIndex'" :: NullOrUndefined (LogEventIndex)
   , "ExpiredLogEventEndIndex'" :: NullOrUndefined (LogEventIndex)
   }
+derive instance newtypeRejectedLogEventsInfo :: Newtype RejectedLogEventsInfo _
 
 
 -- | <p>The specified resource already exists.</p>
 newtype ResourceAlreadyExistsException = ResourceAlreadyExistsException 
   { 
   }
+derive instance newtypeResourceAlreadyExistsException :: Newtype ResourceAlreadyExistsException _
 
 
 -- | <p>The specified resource does not exist.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { 
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype ResourcePolicies = ResourcePolicies (Array ResourcePolicy)
+derive instance newtypeResourcePolicies :: Newtype ResourcePolicies _
 
 
 -- | <p>A policy enabling one or more entities to put logs to a log group in this account.</p>
@@ -801,9 +915,11 @@ newtype ResourcePolicy = ResourcePolicy
   , "PolicyDocument'" :: NullOrUndefined (PolicyDocument)
   , "LastUpdatedTime'" :: NullOrUndefined (Number)
   }
+derive instance newtypeResourcePolicy :: Newtype ResourcePolicy _
 
 
 newtype RoleArn = RoleArn String
+derive instance newtypeRoleArn :: Newtype RoleArn _
 
 
 -- | <p>Represents the search status of a log stream.</p>
@@ -811,24 +927,30 @@ newtype SearchedLogStream = SearchedLogStream
   { "LogStreamName'" :: NullOrUndefined (LogStreamName)
   , "SearchedCompletely'" :: NullOrUndefined (LogStreamSearchedCompletely)
   }
+derive instance newtypeSearchedLogStream :: Newtype SearchedLogStream _
 
 
 newtype SearchedLogStreams = SearchedLogStreams (Array SearchedLogStream)
+derive instance newtypeSearchedLogStreams :: Newtype SearchedLogStreams _
 
 
 newtype SequenceToken = SequenceToken String
+derive instance newtypeSequenceToken :: Newtype SequenceToken _
 
 
 -- | <p>The service cannot complete the request.</p>
 newtype ServiceUnavailableException = ServiceUnavailableException 
   { 
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 newtype StartFromHead = StartFromHead Boolean
+derive instance newtypeStartFromHead :: Newtype StartFromHead _
 
 
 newtype StoredBytes = StoredBytes Number
+derive instance newtypeStoredBytes :: Newtype StoredBytes _
 
 
 -- | <p>Represents a subscription filter.</p>
@@ -841,53 +963,67 @@ newtype SubscriptionFilter = SubscriptionFilter
   , "Distribution'" :: NullOrUndefined (Distribution)
   , "CreationTime'" :: NullOrUndefined (Number)
   }
+derive instance newtypeSubscriptionFilter :: Newtype SubscriptionFilter _
 
 
 newtype SubscriptionFilters = SubscriptionFilters (Array SubscriptionFilter)
+derive instance newtypeSubscriptionFilters :: Newtype SubscriptionFilters _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagList = TagList (Array TagKey)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagLogGroupRequest = TagLogGroupRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "Tags'" :: (Tags)
   }
+derive instance newtypeTagLogGroupRequest :: Newtype TagLogGroupRequest _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Map TagKey TagValue)
+derive instance newtypeTags :: Newtype Tags _
 
 
 newtype TargetArn = TargetArn String
+derive instance newtypeTargetArn :: Newtype TargetArn _
 
 
 newtype TestEventMessages = TestEventMessages (Array EventMessage)
+derive instance newtypeTestEventMessages :: Newtype TestEventMessages _
 
 
 newtype TestMetricFilterRequest = TestMetricFilterRequest 
   { "FilterPattern'" :: (FilterPattern)
   , "LogEventMessages'" :: (TestEventMessages)
   }
+derive instance newtypeTestMetricFilterRequest :: Newtype TestMetricFilterRequest _
 
 
 newtype TestMetricFilterResponse = TestMetricFilterResponse 
   { "Matches'" :: NullOrUndefined (MetricFilterMatches)
   }
+derive instance newtypeTestMetricFilterResponse :: Newtype TestMetricFilterResponse _
 
 
 newtype Token = Token String
+derive instance newtypeToken :: Newtype Token _
 
 
 newtype UntagLogGroupRequest = UntagLogGroupRequest 
   { "LogGroupName'" :: (LogGroupName)
   , "Tags'" :: (TagList)
   }
+derive instance newtypeUntagLogGroupRequest :: Newtype UntagLogGroupRequest _
 
 
 newtype Value = Value String
+derive instance newtypeValue :: Newtype Value _

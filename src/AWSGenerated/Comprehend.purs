@@ -6,6 +6,7 @@ module AWS.Comprehend where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -69,6 +70,7 @@ startTopicsDetectionJob = AWS.request serviceName "StartTopicsDetectionJob"
 
 
 newtype AnyLengthString = AnyLengthString String
+derive instance newtypeAnyLengthString :: Newtype AnyLengthString _
 
 
 -- | <p>The result of calling the operation. The operation returns one object for each document that is successfully processed by the operation.</p>
@@ -76,17 +78,20 @@ newtype BatchDetectDominantLanguageItemResult = BatchDetectDominantLanguageItemR
   { "Index" :: NullOrUndefined (Int)
   , "Languages" :: NullOrUndefined (ListOfDominantLanguages)
   }
+derive instance newtypeBatchDetectDominantLanguageItemResult :: Newtype BatchDetectDominantLanguageItemResult _
 
 
 newtype BatchDetectDominantLanguageRequest = BatchDetectDominantLanguageRequest 
   { "TextList" :: (StringList)
   }
+derive instance newtypeBatchDetectDominantLanguageRequest :: Newtype BatchDetectDominantLanguageRequest _
 
 
 newtype BatchDetectDominantLanguageResponse = BatchDetectDominantLanguageResponse 
   { "ResultList" :: (ListOfDetectDominantLanguageResult)
   , "ErrorList" :: (BatchItemErrorList)
   }
+derive instance newtypeBatchDetectDominantLanguageResponse :: Newtype BatchDetectDominantLanguageResponse _
 
 
 -- | <p>The result of calling the operation. The operation returns one object for each document that is successfully processed by the operation.</p>
@@ -94,18 +99,21 @@ newtype BatchDetectEntitiesItemResult = BatchDetectEntitiesItemResult
   { "Index" :: NullOrUndefined (Int)
   , "Entities" :: NullOrUndefined (ListOfEntities)
   }
+derive instance newtypeBatchDetectEntitiesItemResult :: Newtype BatchDetectEntitiesItemResult _
 
 
 newtype BatchDetectEntitiesRequest = BatchDetectEntitiesRequest 
   { "TextList" :: (StringList)
   , "LanguageCode" :: (String)
   }
+derive instance newtypeBatchDetectEntitiesRequest :: Newtype BatchDetectEntitiesRequest _
 
 
 newtype BatchDetectEntitiesResponse = BatchDetectEntitiesResponse 
   { "ResultList" :: (ListOfDetectEntitiesResult)
   , "ErrorList" :: (BatchItemErrorList)
   }
+derive instance newtypeBatchDetectEntitiesResponse :: Newtype BatchDetectEntitiesResponse _
 
 
 -- | <p>The result of calling the operation. The operation returns one object for each document that is successfully processed by the operation.</p>
@@ -113,18 +121,21 @@ newtype BatchDetectKeyPhrasesItemResult = BatchDetectKeyPhrasesItemResult
   { "Index" :: NullOrUndefined (Int)
   , "KeyPhrases" :: NullOrUndefined (ListOfKeyPhrases)
   }
+derive instance newtypeBatchDetectKeyPhrasesItemResult :: Newtype BatchDetectKeyPhrasesItemResult _
 
 
 newtype BatchDetectKeyPhrasesRequest = BatchDetectKeyPhrasesRequest 
   { "TextList" :: (StringList)
   , "LanguageCode" :: (String)
   }
+derive instance newtypeBatchDetectKeyPhrasesRequest :: Newtype BatchDetectKeyPhrasesRequest _
 
 
 newtype BatchDetectKeyPhrasesResponse = BatchDetectKeyPhrasesResponse 
   { "ResultList" :: (ListOfDetectKeyPhrasesResult)
   , "ErrorList" :: (BatchItemErrorList)
   }
+derive instance newtypeBatchDetectKeyPhrasesResponse :: Newtype BatchDetectKeyPhrasesResponse _
 
 
 -- | <p>The result of calling the operation. The operation returns one object for each document that is successfully processed by the operation.</p>
@@ -133,18 +144,21 @@ newtype BatchDetectSentimentItemResult = BatchDetectSentimentItemResult
   , "Sentiment" :: NullOrUndefined (SentimentType)
   , "SentimentScore" :: NullOrUndefined (SentimentScore)
   }
+derive instance newtypeBatchDetectSentimentItemResult :: Newtype BatchDetectSentimentItemResult _
 
 
 newtype BatchDetectSentimentRequest = BatchDetectSentimentRequest 
   { "TextList" :: (StringList)
   , "LanguageCode" :: (String)
   }
+derive instance newtypeBatchDetectSentimentRequest :: Newtype BatchDetectSentimentRequest _
 
 
 newtype BatchDetectSentimentResponse = BatchDetectSentimentResponse 
   { "ResultList" :: (ListOfDetectSentimentResult)
   , "ErrorList" :: (BatchItemErrorList)
   }
+derive instance newtypeBatchDetectSentimentResponse :: Newtype BatchDetectSentimentResponse _
 
 
 -- | <p>Describes an error that occurred while processing a document in a batch. The operation returns on <code>BatchItemError</code> object for each document that contained an error.</p>
@@ -153,72 +167,86 @@ newtype BatchItemError = BatchItemError
   , "ErrorCode" :: NullOrUndefined (String)
   , "ErrorMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeBatchItemError :: Newtype BatchItemError _
 
 
 newtype BatchItemErrorList = BatchItemErrorList (Array BatchItemError)
+derive instance newtypeBatchItemErrorList :: Newtype BatchItemErrorList _
 
 
 -- | <p>The number of documents in the request exceeds the limit of 25. Try your request again with fewer documents.</p>
 newtype BatchSizeLimitExceededException = BatchSizeLimitExceededException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeBatchSizeLimitExceededException :: Newtype BatchSizeLimitExceededException _
 
 
 newtype ClientRequestTokenString = ClientRequestTokenString String
+derive instance newtypeClientRequestTokenString :: Newtype ClientRequestTokenString _
 
 
 newtype DescribeTopicsDetectionJobRequest = DescribeTopicsDetectionJobRequest 
   { "JobId" :: (JobId)
   }
+derive instance newtypeDescribeTopicsDetectionJobRequest :: Newtype DescribeTopicsDetectionJobRequest _
 
 
 newtype DescribeTopicsDetectionJobResponse = DescribeTopicsDetectionJobResponse 
   { "TopicsDetectionJobProperties" :: NullOrUndefined (TopicsDetectionJobProperties)
   }
+derive instance newtypeDescribeTopicsDetectionJobResponse :: Newtype DescribeTopicsDetectionJobResponse _
 
 
 newtype DetectDominantLanguageRequest = DetectDominantLanguageRequest 
   { "Text" :: (String)
   }
+derive instance newtypeDetectDominantLanguageRequest :: Newtype DetectDominantLanguageRequest _
 
 
 newtype DetectDominantLanguageResponse = DetectDominantLanguageResponse 
   { "Languages" :: NullOrUndefined (ListOfDominantLanguages)
   }
+derive instance newtypeDetectDominantLanguageResponse :: Newtype DetectDominantLanguageResponse _
 
 
 newtype DetectEntitiesRequest = DetectEntitiesRequest 
   { "Text" :: (String)
   , "LanguageCode" :: (LanguageCode)
   }
+derive instance newtypeDetectEntitiesRequest :: Newtype DetectEntitiesRequest _
 
 
 newtype DetectEntitiesResponse = DetectEntitiesResponse 
   { "Entities" :: NullOrUndefined (ListOfEntities)
   }
+derive instance newtypeDetectEntitiesResponse :: Newtype DetectEntitiesResponse _
 
 
 newtype DetectKeyPhrasesRequest = DetectKeyPhrasesRequest 
   { "Text" :: (String)
   , "LanguageCode" :: (LanguageCode)
   }
+derive instance newtypeDetectKeyPhrasesRequest :: Newtype DetectKeyPhrasesRequest _
 
 
 newtype DetectKeyPhrasesResponse = DetectKeyPhrasesResponse 
   { "KeyPhrases" :: NullOrUndefined (ListOfKeyPhrases)
   }
+derive instance newtypeDetectKeyPhrasesResponse :: Newtype DetectKeyPhrasesResponse _
 
 
 newtype DetectSentimentRequest = DetectSentimentRequest 
   { "Text" :: (String)
   , "LanguageCode" :: (LanguageCode)
   }
+derive instance newtypeDetectSentimentRequest :: Newtype DetectSentimentRequest _
 
 
 newtype DetectSentimentResponse = DetectSentimentResponse 
   { "Sentiment" :: NullOrUndefined (SentimentType)
   , "SentimentScore" :: NullOrUndefined (SentimentScore)
   }
+derive instance newtypeDetectSentimentResponse :: Newtype DetectSentimentResponse _
 
 
 -- | <p>Returns the code for the dominant language in the input text and the level of confidence that Amazon Comprehend has in the accuracy of the detection.</p>
@@ -226,6 +254,7 @@ newtype DominantLanguage = DominantLanguage
   { "LanguageCode" :: NullOrUndefined (String)
   , "Score" :: NullOrUndefined (Number)
   }
+derive instance newtypeDominantLanguage :: Newtype DominantLanguage _
 
 
 -- | <p>Provides information about an entity. </p> <p> </p>
@@ -236,12 +265,15 @@ newtype Entity = Entity
   , "BeginOffset" :: NullOrUndefined (Int)
   , "EndOffset" :: NullOrUndefined (Int)
   }
+derive instance newtypeEntity :: Newtype Entity _
 
 
 newtype EntityType = EntityType String
+derive instance newtypeEntityType :: Newtype EntityType _
 
 
 newtype IamRoleArn = IamRoleArn String
+derive instance newtypeIamRoleArn :: Newtype IamRoleArn _
 
 
 -- | <p>The input properties for a topic detection job.</p>
@@ -249,42 +281,51 @@ newtype InputDataConfig = InputDataConfig
   { "S3Uri" :: (S3Uri)
   , "InputFormat" :: NullOrUndefined (InputFormat)
   }
+derive instance newtypeInputDataConfig :: Newtype InputDataConfig _
 
 
 newtype InputFormat = InputFormat String
+derive instance newtypeInputFormat :: Newtype InputFormat _
 
 
 -- | <p>An internal server error occurred. Retry your request.</p>
 newtype InternalServerException = InternalServerException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalServerException :: Newtype InternalServerException _
 
 
 -- | <p>The filter specified for the <code>ListTopicDetectionJobs</code> operation is invalid. Specify a different filter.</p>
 newtype InvalidFilterException = InvalidFilterException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidFilterException :: Newtype InvalidFilterException _
 
 
 -- | <p>The request is invalid.</p>
 newtype InvalidRequestException = InvalidRequestException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidRequestException :: Newtype InvalidRequestException _
 
 
 newtype JobId = JobId String
+derive instance newtypeJobId :: Newtype JobId _
 
 
 newtype JobName = JobName String
+derive instance newtypeJobName :: Newtype JobName _
 
 
 -- | <p>The specified job was not found. Check the job ID and try again.</p>
 newtype JobNotFoundException = JobNotFoundException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeJobNotFoundException :: Newtype JobNotFoundException _
 
 
 newtype JobStatus = JobStatus String
+derive instance newtypeJobStatus :: Newtype JobStatus _
 
 
 -- | <p>Describes a key noun phrase.</p>
@@ -294,30 +335,39 @@ newtype KeyPhrase = KeyPhrase
   , "BeginOffset" :: NullOrUndefined (Int)
   , "EndOffset" :: NullOrUndefined (Int)
   }
+derive instance newtypeKeyPhrase :: Newtype KeyPhrase _
 
 
 newtype LanguageCode = LanguageCode String
+derive instance newtypeLanguageCode :: Newtype LanguageCode _
 
 
 newtype ListOfDetectDominantLanguageResult = ListOfDetectDominantLanguageResult (Array BatchDetectDominantLanguageItemResult)
+derive instance newtypeListOfDetectDominantLanguageResult :: Newtype ListOfDetectDominantLanguageResult _
 
 
 newtype ListOfDetectEntitiesResult = ListOfDetectEntitiesResult (Array BatchDetectEntitiesItemResult)
+derive instance newtypeListOfDetectEntitiesResult :: Newtype ListOfDetectEntitiesResult _
 
 
 newtype ListOfDetectKeyPhrasesResult = ListOfDetectKeyPhrasesResult (Array BatchDetectKeyPhrasesItemResult)
+derive instance newtypeListOfDetectKeyPhrasesResult :: Newtype ListOfDetectKeyPhrasesResult _
 
 
 newtype ListOfDetectSentimentResult = ListOfDetectSentimentResult (Array BatchDetectSentimentItemResult)
+derive instance newtypeListOfDetectSentimentResult :: Newtype ListOfDetectSentimentResult _
 
 
 newtype ListOfDominantLanguages = ListOfDominantLanguages (Array DominantLanguage)
+derive instance newtypeListOfDominantLanguages :: Newtype ListOfDominantLanguages _
 
 
 newtype ListOfEntities = ListOfEntities (Array Entity)
+derive instance newtypeListOfEntities :: Newtype ListOfEntities _
 
 
 newtype ListOfKeyPhrases = ListOfKeyPhrases (Array KeyPhrase)
+derive instance newtypeListOfKeyPhrases :: Newtype ListOfKeyPhrases _
 
 
 newtype ListTopicsDetectionJobsRequest = ListTopicsDetectionJobsRequest 
@@ -325,27 +375,33 @@ newtype ListTopicsDetectionJobsRequest = ListTopicsDetectionJobsRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (MaxResultsInteger)
   }
+derive instance newtypeListTopicsDetectionJobsRequest :: Newtype ListTopicsDetectionJobsRequest _
 
 
 newtype ListTopicsDetectionJobsResponse = ListTopicsDetectionJobsResponse 
   { "TopicsDetectionJobPropertiesList" :: NullOrUndefined (TopicsDetectionJobPropertiesList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListTopicsDetectionJobsResponse :: Newtype ListTopicsDetectionJobsResponse _
 
 
 newtype MaxResultsInteger = MaxResultsInteger Int
+derive instance newtypeMaxResultsInteger :: Newtype MaxResultsInteger _
 
 
 newtype NumberOfTopicsInteger = NumberOfTopicsInteger Int
+derive instance newtypeNumberOfTopicsInteger :: Newtype NumberOfTopicsInteger _
 
 
 -- | <p>Provides configuration parameters for the output of topic detection jobs.</p> <p/>
 newtype OutputDataConfig = OutputDataConfig 
   { "S3Uri" :: (S3Uri)
   }
+derive instance newtypeOutputDataConfig :: Newtype OutputDataConfig _
 
 
 newtype S3Uri = S3Uri String
+derive instance newtypeS3Uri :: Newtype S3Uri _
 
 
 -- | <p>Describes the level of confidence that Amazon Comprehend has in the accuracy of its detection of sentiments.</p>
@@ -355,9 +411,11 @@ newtype SentimentScore = SentimentScore
   , "Neutral" :: NullOrUndefined (Number)
   , "Mixed" :: NullOrUndefined (Number)
   }
+derive instance newtypeSentimentScore :: Newtype SentimentScore _
 
 
 newtype SentimentType = SentimentType String
+derive instance newtypeSentimentType :: Newtype SentimentType _
 
 
 newtype StartTopicsDetectionJobRequest = StartTopicsDetectionJobRequest 
@@ -368,27 +426,32 @@ newtype StartTopicsDetectionJobRequest = StartTopicsDetectionJobRequest
   , "NumberOfTopics" :: NullOrUndefined (NumberOfTopicsInteger)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestTokenString)
   }
+derive instance newtypeStartTopicsDetectionJobRequest :: Newtype StartTopicsDetectionJobRequest _
 
 
 newtype StartTopicsDetectionJobResponse = StartTopicsDetectionJobResponse 
   { "JobId" :: NullOrUndefined (JobId)
   , "JobStatus" :: NullOrUndefined (JobStatus)
   }
+derive instance newtypeStartTopicsDetectionJobResponse :: Newtype StartTopicsDetectionJobResponse _
 
 
 newtype StringList = StringList (Array String)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 -- | <p>The size of the input text exceeds the limit. Use a smaller document.</p>
 newtype TextSizeLimitExceededException = TextSizeLimitExceededException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeTextSizeLimitExceededException :: Newtype TextSizeLimitExceededException _
 
 
 -- | <p>The number of requests exceeds the limit. Resubmit your request later.</p>
 newtype TooManyRequestsException = TooManyRequestsException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | <p>Provides information for filtering topic detection jobs. For more information, see .</p>
@@ -398,6 +461,7 @@ newtype TopicsDetectionJobFilter = TopicsDetectionJobFilter
   , "SubmitTimeBefore" :: NullOrUndefined (Number)
   , "SubmitTimeAfter" :: NullOrUndefined (Number)
   }
+derive instance newtypeTopicsDetectionJobFilter :: Newtype TopicsDetectionJobFilter _
 
 
 -- | <p>Provides information about a topic detection job.</p>
@@ -412,12 +476,15 @@ newtype TopicsDetectionJobProperties = TopicsDetectionJobProperties
   , "OutputDataConfig" :: NullOrUndefined (OutputDataConfig)
   , "NumberOfTopics" :: NullOrUndefined (Int)
   }
+derive instance newtypeTopicsDetectionJobProperties :: Newtype TopicsDetectionJobProperties _
 
 
 newtype TopicsDetectionJobPropertiesList = TopicsDetectionJobPropertiesList (Array TopicsDetectionJobProperties)
+derive instance newtypeTopicsDetectionJobPropertiesList :: Newtype TopicsDetectionJobPropertiesList _
 
 
 -- | <p>Amazon Comprehend can't process the language of the input text. For all APIs except <code>DetectDominantLanguage</code>, Amazon Comprehend accepts only English or Spanish text. For the <code>DetectDominantLanguage</code> API, Amazon Comprehend detects 100 languages. For a list of languages, see <a>how-languages</a> </p>
 newtype UnsupportedLanguageException = UnsupportedLanguageException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeUnsupportedLanguageException :: Newtype UnsupportedLanguageException _

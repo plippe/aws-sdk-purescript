@@ -6,6 +6,7 @@ module AWS.Rekognition where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -182,6 +183,7 @@ stopStreamProcessor = AWS.request serviceName "StopStreamProcessor"
 newtype AccessDeniedException = AccessDeniedException 
   { 
   }
+derive instance newtypeAccessDeniedException :: Newtype AccessDeniedException _
 
 
 -- | <p>Structure containing the estimated age range, in years, for a face.</p> <p>Rekognition estimates an age-range for faces detected in the input image. Estimated age ranges can overlap; a face of a 5 year old may have an estimated range of 4-6 whilst the face of a 6 year old may have an estimated range of 4-8.</p>
@@ -189,12 +191,15 @@ newtype AgeRange = AgeRange
   { "Low" :: NullOrUndefined (UInteger)
   , "High" :: NullOrUndefined (UInteger)
   }
+derive instance newtypeAgeRange :: Newtype AgeRange _
 
 
 newtype Attribute = Attribute String
+derive instance newtypeAttribute :: Newtype Attribute _
 
 
 newtype Attributes = Attributes (Array Attribute)
+derive instance newtypeAttributes :: Newtype Attributes _
 
 
 -- | <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
@@ -202,6 +207,7 @@ newtype Beard = Beard
   { "Value" :: NullOrUndefined (Boolean)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeBeard :: Newtype Beard _
 
 
 -- | <p>Identifies the bounding box around the object, face or text. The <code>left</code> (x-coordinate) and <code>top</code> (y-coordinate) are coordinates representing the top and left sides of the bounding box. Note that the upper-left corner of the image is the origin (0,0). </p> <p>The <code>top</code> and <code>left</code> values returned are ratios of the overall image size. For example, if the input image is 700x200 pixels, and the top-left coordinate of the bounding box is 350x50 pixels, the API returns a <code>left</code> value of 0.5 (350/700) and a <code>top</code> value of 0.25 (50/200).</p> <p>The <code>width</code> and <code>height</code> values represent the dimensions of the bounding box as a ratio of the overall image dimension. For example, if the input image is 700x200 pixels, and the bounding box width is 70 pixels, the width returned is 0.1. </p> <note> <p> The bounding box coordinates can have negative values. For example, if Amazon Rekognition is able to detect a face that is at the image edge and is only partially visible, the service can return coordinates that are outside the image bounds and, depending on the image edge, you might get negative values or values greater than 1 for the <code>left</code> or <code>top</code> values. </p> </note>
@@ -211,6 +217,7 @@ newtype BoundingBox = BoundingBox
   , "Left" :: NullOrUndefined (Number)
   , "Top" :: NullOrUndefined (Number)
   }
+derive instance newtypeBoundingBox :: Newtype BoundingBox _
 
 
 -- | <p>Provides information about a celebrity recognized by the operation.</p>
@@ -221,6 +228,7 @@ newtype Celebrity = Celebrity
   , "Face" :: NullOrUndefined (ComparedFace)
   , "MatchConfidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeCelebrity :: Newtype Celebrity _
 
 
 -- | <p>Information about a recognized celebrity.</p>
@@ -232,9 +240,11 @@ newtype CelebrityDetail = CelebrityDetail
   , "BoundingBox" :: NullOrUndefined (BoundingBox)
   , "Face" :: NullOrUndefined (FaceDetail)
   }
+derive instance newtypeCelebrityDetail :: Newtype CelebrityDetail _
 
 
 newtype CelebrityList = CelebrityList (Array Celebrity)
+derive instance newtypeCelebrityList :: Newtype CelebrityList _
 
 
 -- | <p>Information about a detected celebrity and the time the celebrity was detected in a stored video. For more information, see .</p>
@@ -242,21 +252,27 @@ newtype CelebrityRecognition = CelebrityRecognition
   { "Number" :: NullOrUndefined (Number)
   , "Celebrity" :: NullOrUndefined (CelebrityDetail)
   }
+derive instance newtypeCelebrityRecognition :: Newtype CelebrityRecognition _
 
 
 newtype CelebrityRecognitionSortBy = CelebrityRecognitionSortBy String
+derive instance newtypeCelebrityRecognitionSortBy :: Newtype CelebrityRecognitionSortBy _
 
 
 newtype CelebrityRecognitions = CelebrityRecognitions (Array CelebrityRecognition)
+derive instance newtypeCelebrityRecognitions :: Newtype CelebrityRecognitions _
 
 
 newtype ClientRequestToken = ClientRequestToken String
+derive instance newtypeClientRequestToken :: Newtype ClientRequestToken _
 
 
 newtype CollectionId = CollectionId String
+derive instance newtypeCollectionId :: Newtype CollectionId _
 
 
 newtype CollectionIdList = CollectionIdList (Array CollectionId)
+derive instance newtypeCollectionIdList :: Newtype CollectionIdList _
 
 
 -- | <p>Provides information about a face in a target image that matches the source image face analysed by <code>CompareFaces</code>. The <code>Face</code> property contains the bounding box of the face in the target image. The <code>Similarity</code> property is the confidence that the source image face matches the face in the bounding box.</p>
@@ -264,9 +280,11 @@ newtype CompareFacesMatch = CompareFacesMatch
   { "Similarity" :: NullOrUndefined (Percent)
   , "Face" :: NullOrUndefined (ComparedFace)
   }
+derive instance newtypeCompareFacesMatch :: Newtype CompareFacesMatch _
 
 
 newtype CompareFacesMatchList = CompareFacesMatchList (Array CompareFacesMatch)
+derive instance newtypeCompareFacesMatchList :: Newtype CompareFacesMatchList _
 
 
 newtype CompareFacesRequest = CompareFacesRequest 
@@ -274,6 +292,7 @@ newtype CompareFacesRequest = CompareFacesRequest
   , "TargetImage" :: (Image)
   , "SimilarityThreshold" :: NullOrUndefined (Percent)
   }
+derive instance newtypeCompareFacesRequest :: Newtype CompareFacesRequest _
 
 
 newtype CompareFacesResponse = CompareFacesResponse 
@@ -283,9 +302,11 @@ newtype CompareFacesResponse = CompareFacesResponse
   , "SourceImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection)
   , "TargetImageOrientationCorrection" :: NullOrUndefined (OrientationCorrection)
   }
+derive instance newtypeCompareFacesResponse :: Newtype CompareFacesResponse _
 
 
 newtype CompareFacesUnmatchList = CompareFacesUnmatchList (Array ComparedFace)
+derive instance newtypeCompareFacesUnmatchList :: Newtype CompareFacesUnmatchList _
 
 
 -- | <p>Provides face metadata for target image faces that are analysed by <code>CompareFaces</code> and <code>RecognizeCelebrities</code>.</p>
@@ -296,9 +317,11 @@ newtype ComparedFace = ComparedFace
   , "Pose" :: NullOrUndefined (Pose)
   , "Quality" :: NullOrUndefined (ImageQuality)
   }
+derive instance newtypeComparedFace :: Newtype ComparedFace _
 
 
 newtype ComparedFaceList = ComparedFaceList (Array ComparedFace)
+derive instance newtypeComparedFaceList :: Newtype ComparedFaceList _
 
 
 -- | <p>Type that describes the face Amazon Rekognition chose to compare with the faces in the target. This contains a bounding box for the selected face and confidence level that the bounding box contains a face. Note that Amazon Rekognition selects the largest face in the source image for this comparison. </p>
@@ -306,6 +329,7 @@ newtype ComparedSourceImageFace = ComparedSourceImageFace
   { "BoundingBox" :: NullOrUndefined (BoundingBox)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeComparedSourceImageFace :: Newtype ComparedSourceImageFace _
 
 
 -- | <p>Information about a moderation label detection in a stored video.</p>
@@ -313,17 +337,21 @@ newtype ContentModerationDetection = ContentModerationDetection
   { "Number" :: NullOrUndefined (Number)
   , "ModerationLabel" :: NullOrUndefined (ModerationLabel)
   }
+derive instance newtypeContentModerationDetection :: Newtype ContentModerationDetection _
 
 
 newtype ContentModerationDetections = ContentModerationDetections (Array ContentModerationDetection)
+derive instance newtypeContentModerationDetections :: Newtype ContentModerationDetections _
 
 
 newtype ContentModerationSortBy = ContentModerationSortBy String
+derive instance newtypeContentModerationSortBy :: Newtype ContentModerationSortBy _
 
 
 newtype CreateCollectionRequest = CreateCollectionRequest 
   { "CollectionId" :: (CollectionId)
   }
+derive instance newtypeCreateCollectionRequest :: Newtype CreateCollectionRequest _
 
 
 newtype CreateCollectionResponse = CreateCollectionResponse 
@@ -331,6 +359,7 @@ newtype CreateCollectionResponse = CreateCollectionResponse
   , "CollectionArn" :: NullOrUndefined (String)
   , "FaceModelVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateCollectionResponse :: Newtype CreateCollectionResponse _
 
 
 newtype CreateStreamProcessorRequest = CreateStreamProcessorRequest 
@@ -340,53 +369,64 @@ newtype CreateStreamProcessorRequest = CreateStreamProcessorRequest
   , "Settings" :: (StreamProcessorSettings)
   , "RoleArn" :: (RoleArn)
   }
+derive instance newtypeCreateStreamProcessorRequest :: Newtype CreateStreamProcessorRequest _
 
 
 newtype CreateStreamProcessorResponse = CreateStreamProcessorResponse 
   { "StreamProcessorArn" :: NullOrUndefined (StreamProcessorArn)
   }
+derive instance newtypeCreateStreamProcessorResponse :: Newtype CreateStreamProcessorResponse _
 
 
 newtype DateTime = DateTime Number
+derive instance newtypeDateTime :: Newtype DateTime _
 
 
 newtype Degree = Degree Number
+derive instance newtypeDegree :: Newtype Degree _
 
 
 newtype DeleteCollectionRequest = DeleteCollectionRequest 
   { "CollectionId" :: (CollectionId)
   }
+derive instance newtypeDeleteCollectionRequest :: Newtype DeleteCollectionRequest _
 
 
 newtype DeleteCollectionResponse = DeleteCollectionResponse 
   { "StatusCode" :: NullOrUndefined (UInteger)
   }
+derive instance newtypeDeleteCollectionResponse :: Newtype DeleteCollectionResponse _
 
 
 newtype DeleteFacesRequest = DeleteFacesRequest 
   { "CollectionId" :: (CollectionId)
   , "FaceIds" :: (FaceIdList)
   }
+derive instance newtypeDeleteFacesRequest :: Newtype DeleteFacesRequest _
 
 
 newtype DeleteFacesResponse = DeleteFacesResponse 
   { "DeletedFaces" :: NullOrUndefined (FaceIdList)
   }
+derive instance newtypeDeleteFacesResponse :: Newtype DeleteFacesResponse _
 
 
 newtype DeleteStreamProcessorRequest = DeleteStreamProcessorRequest 
   { "Name" :: (StreamProcessorName)
   }
+derive instance newtypeDeleteStreamProcessorRequest :: Newtype DeleteStreamProcessorRequest _
 
 
 newtype DeleteStreamProcessorResponse = DeleteStreamProcessorResponse 
   { 
   }
+derive instance newtypeDeleteStreamProcessorResponse :: Newtype DeleteStreamProcessorResponse _
 
 
 newtype DescribeStreamProcessorRequest = DescribeStreamProcessorRequest 
   { "Name" :: (StreamProcessorName)
   }
+derive instance newtypeDescribeStreamProcessorRequest :: Newtype DescribeStreamProcessorRequest _
 
 
 newtype DescribeStreamProcessorResponse = DescribeStreamProcessorResponse 
@@ -401,18 +441,21 @@ newtype DescribeStreamProcessorResponse = DescribeStreamProcessorResponse
   , "RoleArn" :: NullOrUndefined (RoleArn)
   , "Settings" :: NullOrUndefined (StreamProcessorSettings)
   }
+derive instance newtypeDescribeStreamProcessorResponse :: Newtype DescribeStreamProcessorResponse _
 
 
 newtype DetectFacesRequest = DetectFacesRequest 
   { "Image" :: (Image)
   , "Attributes" :: NullOrUndefined (Attributes)
   }
+derive instance newtypeDetectFacesRequest :: Newtype DetectFacesRequest _
 
 
 newtype DetectFacesResponse = DetectFacesResponse 
   { "FaceDetails" :: NullOrUndefined (FaceDetailList)
   , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
   }
+derive instance newtypeDetectFacesResponse :: Newtype DetectFacesResponse _
 
 
 newtype DetectLabelsRequest = DetectLabelsRequest 
@@ -420,33 +463,39 @@ newtype DetectLabelsRequest = DetectLabelsRequest
   , "MaxLabels" :: NullOrUndefined (UInteger)
   , "MinConfidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeDetectLabelsRequest :: Newtype DetectLabelsRequest _
 
 
 newtype DetectLabelsResponse = DetectLabelsResponse 
   { "Labels" :: NullOrUndefined (Labels)
   , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
   }
+derive instance newtypeDetectLabelsResponse :: Newtype DetectLabelsResponse _
 
 
 newtype DetectModerationLabelsRequest = DetectModerationLabelsRequest 
   { "Image" :: (Image)
   , "MinConfidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeDetectModerationLabelsRequest :: Newtype DetectModerationLabelsRequest _
 
 
 newtype DetectModerationLabelsResponse = DetectModerationLabelsResponse 
   { "ModerationLabels" :: NullOrUndefined (ModerationLabels)
   }
+derive instance newtypeDetectModerationLabelsResponse :: Newtype DetectModerationLabelsResponse _
 
 
 newtype DetectTextRequest = DetectTextRequest 
   { "Image" :: (Image)
   }
+derive instance newtypeDetectTextRequest :: Newtype DetectTextRequest _
 
 
 newtype DetectTextResponse = DetectTextResponse 
   { "TextDetections" :: NullOrUndefined (TextDetectionList)
   }
+derive instance newtypeDetectTextResponse :: Newtype DetectTextResponse _
 
 
 -- | <p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY.</p>
@@ -454,15 +503,19 @@ newtype Emotion = Emotion
   { "Type" :: NullOrUndefined (EmotionName)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeEmotion :: Newtype Emotion _
 
 
 newtype EmotionName = EmotionName String
+derive instance newtypeEmotionName :: Newtype EmotionName _
 
 
 newtype Emotions = Emotions (Array Emotion)
+derive instance newtypeEmotions :: Newtype Emotions _
 
 
 newtype ExternalImageId = ExternalImageId String
+derive instance newtypeExternalImageId :: Newtype ExternalImageId _
 
 
 -- | <p>Indicates whether or not the eyes on the face are open, and the confidence level in the determination.</p>
@@ -470,6 +523,7 @@ newtype EyeOpen = EyeOpen
   { "Value" :: NullOrUndefined (Boolean)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeEyeOpen :: Newtype EyeOpen _
 
 
 -- | <p>Indicates whether or not the face is wearing eye glasses, and the confidence level in the determination.</p>
@@ -477,6 +531,7 @@ newtype Eyeglasses = Eyeglasses
   { "Value" :: NullOrUndefined (Boolean)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeEyeglasses :: Newtype Eyeglasses _
 
 
 -- | <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
@@ -487,9 +542,11 @@ newtype Face = Face
   , "ExternalImageId" :: NullOrUndefined (ExternalImageId)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeFace :: Newtype Face _
 
 
 newtype FaceAttributes = FaceAttributes String
+derive instance newtypeFaceAttributes :: Newtype FaceAttributes _
 
 
 -- | <p>Structure containing attributes of the face that the algorithm detected.</p>
@@ -510,9 +567,11 @@ newtype FaceDetail = FaceDetail
   , "Quality" :: NullOrUndefined (ImageQuality)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeFaceDetail :: Newtype FaceDetail _
 
 
 newtype FaceDetailList = FaceDetailList (Array FaceDetail)
+derive instance newtypeFaceDetailList :: Newtype FaceDetailList _
 
 
 -- | <p>Information about a face detected in a video analysis request and the time the face was detected in the video. </p>
@@ -520,18 +579,23 @@ newtype FaceDetection = FaceDetection
   { "Number" :: NullOrUndefined (Number)
   , "Face" :: NullOrUndefined (FaceDetail)
   }
+derive instance newtypeFaceDetection :: Newtype FaceDetection _
 
 
 newtype FaceDetections = FaceDetections (Array FaceDetection)
+derive instance newtypeFaceDetections :: Newtype FaceDetections _
 
 
 newtype FaceId = FaceId String
+derive instance newtypeFaceId :: Newtype FaceId _
 
 
 newtype FaceIdList = FaceIdList (Array FaceId)
+derive instance newtypeFaceIdList :: Newtype FaceIdList _
 
 
 newtype FaceList = FaceList (Array Face)
+derive instance newtypeFaceList :: Newtype FaceList _
 
 
 -- | <p>Provides face metadata. In addition, it also provides the confidence in the match of this face with the input face.</p>
@@ -539,12 +603,15 @@ newtype FaceMatch = FaceMatch
   { "Similarity" :: NullOrUndefined (Percent)
   , "Face" :: NullOrUndefined (Face)
   }
+derive instance newtypeFaceMatch :: Newtype FaceMatch _
 
 
 newtype FaceMatchList = FaceMatchList (Array FaceMatch)
+derive instance newtypeFaceMatchList :: Newtype FaceMatchList _
 
 
 newtype FaceModelVersionList = FaceModelVersionList (Array String)
+derive instance newtypeFaceModelVersionList :: Newtype FaceModelVersionList _
 
 
 -- | <p>Object containing both the face metadata (stored in the back-end database) and facial attributes that are detected but aren't stored in the database.</p>
@@ -552,9 +619,11 @@ newtype FaceRecord = FaceRecord
   { "Face" :: NullOrUndefined (Face)
   , "FaceDetail" :: NullOrUndefined (FaceDetail)
   }
+derive instance newtypeFaceRecord :: Newtype FaceRecord _
 
 
 newtype FaceRecordList = FaceRecordList (Array FaceRecord)
+derive instance newtypeFaceRecordList :: Newtype FaceRecordList _
 
 
 -- | <p>Input face recognition parameters for an Amazon Rekognition stream processor. <code>FaceRecognitionSettings</code> is a request parameter for .</p>
@@ -562,9 +631,11 @@ newtype FaceSearchSettings = FaceSearchSettings
   { "CollectionId" :: NullOrUndefined (CollectionId)
   , "FaceMatchThreshold" :: NullOrUndefined (Percent)
   }
+derive instance newtypeFaceSearchSettings :: Newtype FaceSearchSettings _
 
 
 newtype FaceSearchSortBy = FaceSearchSortBy String
+derive instance newtypeFaceSearchSortBy :: Newtype FaceSearchSortBy _
 
 
 -- | <p>Gender of the face and the confidence level in the determination.</p>
@@ -572,9 +643,11 @@ newtype Gender = Gender
   { "Value" :: NullOrUndefined (GenderType)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeGender :: Newtype Gender _
 
 
 newtype GenderType = GenderType String
+derive instance newtypeGenderType :: Newtype GenderType _
 
 
 -- | <p>Information about where text detected by is located on an image.</p>
@@ -582,17 +655,20 @@ newtype Geometry = Geometry
   { "BoundingBox" :: NullOrUndefined (BoundingBox)
   , "Polygon" :: NullOrUndefined (Polygon)
   }
+derive instance newtypeGeometry :: Newtype Geometry _
 
 
 newtype GetCelebrityInfoRequest = GetCelebrityInfoRequest 
   { "Id" :: (RekognitionUniqueId)
   }
+derive instance newtypeGetCelebrityInfoRequest :: Newtype GetCelebrityInfoRequest _
 
 
 newtype GetCelebrityInfoResponse = GetCelebrityInfoResponse 
   { "Urls" :: NullOrUndefined (Urls)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeGetCelebrityInfoResponse :: Newtype GetCelebrityInfoResponse _
 
 
 newtype GetCelebrityRecognitionRequest = GetCelebrityRecognitionRequest 
@@ -601,6 +677,7 @@ newtype GetCelebrityRecognitionRequest = GetCelebrityRecognitionRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "SortBy" :: NullOrUndefined (CelebrityRecognitionSortBy)
   }
+derive instance newtypeGetCelebrityRecognitionRequest :: Newtype GetCelebrityRecognitionRequest _
 
 
 newtype GetCelebrityRecognitionResponse = GetCelebrityRecognitionResponse 
@@ -610,6 +687,7 @@ newtype GetCelebrityRecognitionResponse = GetCelebrityRecognitionResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "Celebrities" :: NullOrUndefined (CelebrityRecognitions)
   }
+derive instance newtypeGetCelebrityRecognitionResponse :: Newtype GetCelebrityRecognitionResponse _
 
 
 newtype GetContentModerationRequest = GetContentModerationRequest 
@@ -618,6 +696,7 @@ newtype GetContentModerationRequest = GetContentModerationRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "SortBy" :: NullOrUndefined (ContentModerationSortBy)
   }
+derive instance newtypeGetContentModerationRequest :: Newtype GetContentModerationRequest _
 
 
 newtype GetContentModerationResponse = GetContentModerationResponse 
@@ -627,6 +706,7 @@ newtype GetContentModerationResponse = GetContentModerationResponse
   , "ModerationLabels" :: NullOrUndefined (ContentModerationDetections)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeGetContentModerationResponse :: Newtype GetContentModerationResponse _
 
 
 newtype GetFaceDetectionRequest = GetFaceDetectionRequest 
@@ -634,6 +714,7 @@ newtype GetFaceDetectionRequest = GetFaceDetectionRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeGetFaceDetectionRequest :: Newtype GetFaceDetectionRequest _
 
 
 newtype GetFaceDetectionResponse = GetFaceDetectionResponse 
@@ -643,6 +724,7 @@ newtype GetFaceDetectionResponse = GetFaceDetectionResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "Faces" :: NullOrUndefined (FaceDetections)
   }
+derive instance newtypeGetFaceDetectionResponse :: Newtype GetFaceDetectionResponse _
 
 
 newtype GetFaceSearchRequest = GetFaceSearchRequest 
@@ -651,6 +733,7 @@ newtype GetFaceSearchRequest = GetFaceSearchRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "SortBy" :: NullOrUndefined (FaceSearchSortBy)
   }
+derive instance newtypeGetFaceSearchRequest :: Newtype GetFaceSearchRequest _
 
 
 newtype GetFaceSearchResponse = GetFaceSearchResponse 
@@ -660,6 +743,7 @@ newtype GetFaceSearchResponse = GetFaceSearchResponse
   , "VideoMetadata" :: NullOrUndefined (VideoMetadata)
   , "Persons" :: NullOrUndefined (PersonMatches)
   }
+derive instance newtypeGetFaceSearchResponse :: Newtype GetFaceSearchResponse _
 
 
 newtype GetLabelDetectionRequest = GetLabelDetectionRequest 
@@ -668,6 +752,7 @@ newtype GetLabelDetectionRequest = GetLabelDetectionRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "SortBy" :: NullOrUndefined (LabelDetectionSortBy)
   }
+derive instance newtypeGetLabelDetectionRequest :: Newtype GetLabelDetectionRequest _
 
 
 newtype GetLabelDetectionResponse = GetLabelDetectionResponse 
@@ -677,6 +762,7 @@ newtype GetLabelDetectionResponse = GetLabelDetectionResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "Labels" :: NullOrUndefined (LabelDetections)
   }
+derive instance newtypeGetLabelDetectionResponse :: Newtype GetLabelDetectionResponse _
 
 
 newtype GetPersonTrackingRequest = GetPersonTrackingRequest 
@@ -685,6 +771,7 @@ newtype GetPersonTrackingRequest = GetPersonTrackingRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "SortBy" :: NullOrUndefined (PersonTrackingSortBy)
   }
+derive instance newtypeGetPersonTrackingRequest :: Newtype GetPersonTrackingRequest _
 
 
 newtype GetPersonTrackingResponse = GetPersonTrackingResponse 
@@ -694,12 +781,14 @@ newtype GetPersonTrackingResponse = GetPersonTrackingResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "Persons" :: NullOrUndefined (PersonDetections)
   }
+derive instance newtypeGetPersonTrackingResponse :: Newtype GetPersonTrackingResponse _
 
 
 -- | <p>A <code>ClientRequestToken</code> input parameter was reused with an operation, but at least one of the other input parameters is different from the previous call to the operation.</p>
 newtype IdempotentParameterMismatchException = IdempotentParameterMismatchException 
   { 
   }
+derive instance newtypeIdempotentParameterMismatchException :: Newtype IdempotentParameterMismatchException _
 
 
 -- | <p>Provides the input image either as bytes or an S3 object.</p> <p>You pass image bytes to a Rekognition API operation by using the <code>Bytes</code> property. For example, you would use the <code>Bytes</code> property to pass an image loaded from a local file system. Image bytes passed by using the <code>Bytes</code> property must be base64-encoded. Your code may not need to encode image bytes if you are using an AWS SDK to call Rekognition API operations. For more information, see <a>images-bytes</a>.</p> <p> You pass images stored in an S3 bucket to a Rekognition API operation by using the <code>S3Object</code> property. Images stored in an S3 bucket do not need to be base64-encoded.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
@@ -707,12 +796,15 @@ newtype Image = Image
   { "Bytes" :: NullOrUndefined (ImageBlob)
   , "S3Object" :: NullOrUndefined (S3Object)
   }
+derive instance newtypeImage :: Newtype Image _
 
 
 newtype ImageBlob = ImageBlob String
+derive instance newtypeImageBlob :: Newtype ImageBlob _
 
 
 newtype ImageId = ImageId String
+derive instance newtypeImageId :: Newtype ImageId _
 
 
 -- | <p>Identifies face image brightness and sharpness. </p>
@@ -720,12 +812,14 @@ newtype ImageQuality = ImageQuality
   { "Brightness" :: NullOrUndefined (Number)
   , "Sharpness" :: NullOrUndefined (Number)
   }
+derive instance newtypeImageQuality :: Newtype ImageQuality _
 
 
 -- | <p>The input image size exceeds the allowed limit. For more information, see <a>limits</a>. </p>
 newtype ImageTooLargeException = ImageTooLargeException 
   { 
   }
+derive instance newtypeImageTooLargeException :: Newtype ImageTooLargeException _
 
 
 newtype IndexFacesRequest = IndexFacesRequest 
@@ -734,6 +828,7 @@ newtype IndexFacesRequest = IndexFacesRequest
   , "ExternalImageId" :: NullOrUndefined (ExternalImageId)
   , "DetectionAttributes" :: NullOrUndefined (Attributes)
   }
+derive instance newtypeIndexFacesRequest :: Newtype IndexFacesRequest _
 
 
 newtype IndexFacesResponse = IndexFacesResponse 
@@ -741,60 +836,72 @@ newtype IndexFacesResponse = IndexFacesResponse
   , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
   , "FaceModelVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeIndexFacesResponse :: Newtype IndexFacesResponse _
 
 
 -- | <p>Amazon Rekognition experienced a service issue. Try your call again.</p>
 newtype InternalServerError = InternalServerError 
   { 
   }
+derive instance newtypeInternalServerError :: Newtype InternalServerError _
 
 
 -- | <p>The provided image format is not supported. </p>
 newtype InvalidImageFormatException = InvalidImageFormatException 
   { 
   }
+derive instance newtypeInvalidImageFormatException :: Newtype InvalidImageFormatException _
 
 
 -- | <p>Pagination token in the request is not valid.</p>
 newtype InvalidPaginationTokenException = InvalidPaginationTokenException 
   { 
   }
+derive instance newtypeInvalidPaginationTokenException :: Newtype InvalidPaginationTokenException _
 
 
 -- | <p>Input parameter violated a constraint. Validate your parameter before calling the API operation again.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { 
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>Amazon Rekognition is unable to access the S3 object specified in the request.</p>
 newtype InvalidS3ObjectException = InvalidS3ObjectException 
   { 
   }
+derive instance newtypeInvalidS3ObjectException :: Newtype InvalidS3ObjectException _
 
 
 newtype JobId = JobId String
+derive instance newtypeJobId :: Newtype JobId _
 
 
 newtype JobTag = JobTag String
+derive instance newtypeJobTag :: Newtype JobTag _
 
 
 newtype KinesisDataArn = KinesisDataArn String
+derive instance newtypeKinesisDataArn :: Newtype KinesisDataArn _
 
 
 -- | <p>The Kinesis data stream Amazon Rekognition to which the analysis results of a Amazon Rekognition stream processor are streamed. For more information, see .</p>
 newtype KinesisDataStream = KinesisDataStream 
   { "Arn" :: NullOrUndefined (KinesisDataArn)
   }
+derive instance newtypeKinesisDataStream :: Newtype KinesisDataStream _
 
 
 newtype KinesisVideoArn = KinesisVideoArn String
+derive instance newtypeKinesisVideoArn :: Newtype KinesisVideoArn _
 
 
 -- | <p>Kinesis video stream stream that provides the source streaming video for a Rekognition Video stream processor. For more information, see .</p>
 newtype KinesisVideoStream = KinesisVideoStream 
   { "Arn" :: NullOrUndefined (KinesisVideoArn)
   }
+derive instance newtypeKinesisVideoStream :: Newtype KinesisVideoStream _
 
 
 -- | <p>Structure containing details about the detected label, including name, and level of confidence.</p>
@@ -802,6 +909,7 @@ newtype Label = Label
   { "Name" :: NullOrUndefined (String)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeLabel :: Newtype Label _
 
 
 -- | <p>Information about a label detected in a video analysis request and the time the label was detected in the video. </p>
@@ -809,15 +917,19 @@ newtype LabelDetection = LabelDetection
   { "Number" :: NullOrUndefined (Number)
   , "Label" :: NullOrUndefined (Label)
   }
+derive instance newtypeLabelDetection :: Newtype LabelDetection _
 
 
 newtype LabelDetectionSortBy = LabelDetectionSortBy String
+derive instance newtypeLabelDetectionSortBy :: Newtype LabelDetectionSortBy _
 
 
 newtype LabelDetections = LabelDetections (Array LabelDetection)
+derive instance newtypeLabelDetections :: Newtype LabelDetections _
 
 
 newtype Labels = Labels (Array Label)
+derive instance newtypeLabels :: Newtype Labels _
 
 
 -- | <p>Indicates the location of the landmark on the face.</p>
@@ -826,24 +938,29 @@ newtype Landmark = Landmark
   , "X" :: NullOrUndefined (Number)
   , "Y" :: NullOrUndefined (Number)
   }
+derive instance newtypeLandmark :: Newtype Landmark _
 
 
 newtype LandmarkType = LandmarkType String
+derive instance newtypeLandmarkType :: Newtype LandmarkType _
 
 
 newtype Landmarks = Landmarks (Array Landmark)
+derive instance newtypeLandmarks :: Newtype Landmarks _
 
 
 -- | <p/>
 newtype LimitExceededException = LimitExceededException 
   { 
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListCollectionsRequest = ListCollectionsRequest 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeListCollectionsRequest :: Newtype ListCollectionsRequest _
 
 
 newtype ListCollectionsResponse = ListCollectionsResponse 
@@ -851,6 +968,7 @@ newtype ListCollectionsResponse = ListCollectionsResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "FaceModelVersions" :: NullOrUndefined (FaceModelVersionList)
   }
+derive instance newtypeListCollectionsResponse :: Newtype ListCollectionsResponse _
 
 
 newtype ListFacesRequest = ListFacesRequest 
@@ -858,6 +976,7 @@ newtype ListFacesRequest = ListFacesRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeListFacesRequest :: Newtype ListFacesRequest _
 
 
 newtype ListFacesResponse = ListFacesResponse 
@@ -865,24 +984,29 @@ newtype ListFacesResponse = ListFacesResponse
   , "NextToken" :: NullOrUndefined (String)
   , "FaceModelVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeListFacesResponse :: Newtype ListFacesResponse _
 
 
 newtype ListStreamProcessorsRequest = ListStreamProcessorsRequest 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListStreamProcessorsRequest :: Newtype ListStreamProcessorsRequest _
 
 
 newtype ListStreamProcessorsResponse = ListStreamProcessorsResponse 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   , "StreamProcessors" :: NullOrUndefined (StreamProcessorList)
   }
+derive instance newtypeListStreamProcessorsResponse :: Newtype ListStreamProcessorsResponse _
 
 
 newtype MaxFaces = MaxFaces Int
+derive instance newtypeMaxFaces :: Newtype MaxFaces _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 -- | <p>Provides information about a single type of moderated content found in an image or video. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see <a>moderation</a>.</p>
@@ -891,9 +1015,11 @@ newtype ModerationLabel = ModerationLabel
   , "Name" :: NullOrUndefined (String)
   , "ParentName" :: NullOrUndefined (String)
   }
+derive instance newtypeModerationLabel :: Newtype ModerationLabel _
 
 
 newtype ModerationLabels = ModerationLabels (Array ModerationLabel)
+derive instance newtypeModerationLabels :: Newtype ModerationLabels _
 
 
 -- | <p>Indicates whether or not the mouth on the face is open, and the confidence level in the determination.</p>
@@ -901,6 +1027,7 @@ newtype MouthOpen = MouthOpen
   { "Value" :: NullOrUndefined (Boolean)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeMouthOpen :: Newtype MouthOpen _
 
 
 -- | <p>Indicates whether or not the face has a mustache, and the confidence level in the determination.</p>
@@ -908,6 +1035,7 @@ newtype Mustache = Mustache
   { "Value" :: NullOrUndefined (Boolean)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeMustache :: Newtype Mustache _
 
 
 -- | <p>The Amazon Simple Notification Service topic to which Amazon Rekognition publishes the completion status of a video analysis operation. For more information, see <a>api-video</a>.</p>
@@ -915,18 +1043,23 @@ newtype NotificationChannel = NotificationChannel
   { "SNSTopicArn" :: (SNSTopicArn)
   , "RoleArn" :: (RoleArn)
   }
+derive instance newtypeNotificationChannel :: Newtype NotificationChannel _
 
 
 newtype OrientationCorrection = OrientationCorrection String
+derive instance newtypeOrientationCorrection :: Newtype OrientationCorrection _
 
 
 newtype PageSize = PageSize Int
+derive instance newtypePageSize :: Newtype PageSize _
 
 
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 newtype Percent = Percent Number
+derive instance newtypePercent :: Newtype Percent _
 
 
 -- | <p>Details about a person detected in a video analysis request.</p>
@@ -935,6 +1068,7 @@ newtype PersonDetail = PersonDetail
   , "BoundingBox" :: NullOrUndefined (BoundingBox)
   , "Face" :: NullOrUndefined (FaceDetail)
   }
+derive instance newtypePersonDetail :: Newtype PersonDetail _
 
 
 -- | <p>Details and tracking information for a single time a person is tracked in a video. Amazon Rekognition operations that track persons return an array of <code>PersonDetection</code> objects with elements for each time a person is tracked in a video. For more information, see . </p>
@@ -942,12 +1076,15 @@ newtype PersonDetection = PersonDetection
   { "Number" :: NullOrUndefined (Number)
   , "Person" :: NullOrUndefined (PersonDetail)
   }
+derive instance newtypePersonDetection :: Newtype PersonDetection _
 
 
 newtype PersonDetections = PersonDetections (Array PersonDetection)
+derive instance newtypePersonDetections :: Newtype PersonDetections _
 
 
 newtype PersonIndex = PersonIndex Number
+derive instance newtypePersonIndex :: Newtype PersonIndex _
 
 
 -- | <p>Information about a person whose face matches a face(s) in a Amazon Rekognition collection. Includes information about the faces in the Amazon Rekognition collection (,information about the person (<a>PersonDetail</a>) and the timestamp for when the person was detected in a video. An array of <code>PersonMatch</code> objects is returned by . </p>
@@ -956,12 +1093,15 @@ newtype PersonMatch = PersonMatch
   , "Person" :: NullOrUndefined (PersonDetail)
   , "FaceMatches" :: NullOrUndefined (FaceMatchList)
   }
+derive instance newtypePersonMatch :: Newtype PersonMatch _
 
 
 newtype PersonMatches = PersonMatches (Array PersonMatch)
+derive instance newtypePersonMatches :: Newtype PersonMatches _
 
 
 newtype PersonTrackingSortBy = PersonTrackingSortBy String
+derive instance newtypePersonTrackingSortBy :: Newtype PersonTrackingSortBy _
 
 
 -- | <p>The X and Y coordinates of a point on an image. The X and Y values returned are ratios of the overall image size. For example, if the input image is 700x200 and the operation returns X=0.5 and Y=0.25, then the point is at the (350,50) pixel coordinate on the image.</p> <p>An array of <code>Point</code> objects, <code>Polygon</code>, is returned by . <code>Polygon</code> represents a fine-grained polygon around detected text. For more information, see . </p>
@@ -969,9 +1109,11 @@ newtype Point = Point
   { "X" :: NullOrUndefined (Number)
   , "Y" :: NullOrUndefined (Number)
   }
+derive instance newtypePoint :: Newtype Point _
 
 
 newtype Polygon = Polygon (Array Point)
+derive instance newtypePolygon :: Newtype Polygon _
 
 
 -- | <p>Indicates the pose of the face as determined by its pitch, roll, and yaw.</p>
@@ -980,17 +1122,20 @@ newtype Pose = Pose
   , "Yaw" :: NullOrUndefined (Degree)
   , "Pitch" :: NullOrUndefined (Degree)
   }
+derive instance newtypePose :: Newtype Pose _
 
 
 -- | <p>The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.</p>
 newtype ProvisionedThroughputExceededException = ProvisionedThroughputExceededException 
   { 
   }
+derive instance newtypeProvisionedThroughputExceededException :: Newtype ProvisionedThroughputExceededException _
 
 
 newtype RecognizeCelebritiesRequest = RecognizeCelebritiesRequest 
   { "Image" :: (Image)
   }
+derive instance newtypeRecognizeCelebritiesRequest :: Newtype RecognizeCelebritiesRequest _
 
 
 newtype RecognizeCelebritiesResponse = RecognizeCelebritiesResponse 
@@ -998,33 +1143,40 @@ newtype RecognizeCelebritiesResponse = RecognizeCelebritiesResponse
   , "UnrecognizedFaces" :: NullOrUndefined (ComparedFaceList)
   , "OrientationCorrection" :: NullOrUndefined (OrientationCorrection)
   }
+derive instance newtypeRecognizeCelebritiesResponse :: Newtype RecognizeCelebritiesResponse _
 
 
 newtype RekognitionUniqueId = RekognitionUniqueId String
+derive instance newtypeRekognitionUniqueId :: Newtype RekognitionUniqueId _
 
 
 -- | <p>A collection with the specified ID already exists.</p>
 newtype ResourceAlreadyExistsException = ResourceAlreadyExistsException 
   { 
   }
+derive instance newtypeResourceAlreadyExistsException :: Newtype ResourceAlreadyExistsException _
 
 
 -- | <p/>
 newtype ResourceInUseException = ResourceInUseException 
   { 
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>The collection specified in the request cannot be found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { 
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype RoleArn = RoleArn String
+derive instance newtypeRoleArn :: Newtype RoleArn _
 
 
 newtype S3Bucket = S3Bucket String
+derive instance newtypeS3Bucket :: Newtype S3Bucket _
 
 
 -- | <p>Provides the S3 bucket name and object name.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>
@@ -1033,15 +1185,19 @@ newtype S3Object = S3Object
   , "Name" :: NullOrUndefined (S3ObjectName)
   , "Version" :: NullOrUndefined (S3ObjectVersion)
   }
+derive instance newtypeS3Object :: Newtype S3Object _
 
 
 newtype S3ObjectName = S3ObjectName String
+derive instance newtypeS3ObjectName :: Newtype S3ObjectName _
 
 
 newtype S3ObjectVersion = S3ObjectVersion String
+derive instance newtypeS3ObjectVersion :: Newtype S3ObjectVersion _
 
 
 newtype SNSTopicArn = SNSTopicArn String
+derive instance newtypeSNSTopicArn :: Newtype SNSTopicArn _
 
 
 newtype SearchFacesByImageRequest = SearchFacesByImageRequest 
@@ -1050,6 +1206,7 @@ newtype SearchFacesByImageRequest = SearchFacesByImageRequest
   , "MaxFaces" :: NullOrUndefined (MaxFaces)
   , "FaceMatchThreshold" :: NullOrUndefined (Percent)
   }
+derive instance newtypeSearchFacesByImageRequest :: Newtype SearchFacesByImageRequest _
 
 
 newtype SearchFacesByImageResponse = SearchFacesByImageResponse 
@@ -1058,6 +1215,7 @@ newtype SearchFacesByImageResponse = SearchFacesByImageResponse
   , "FaceMatches" :: NullOrUndefined (FaceMatchList)
   , "FaceModelVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeSearchFacesByImageResponse :: Newtype SearchFacesByImageResponse _
 
 
 newtype SearchFacesRequest = SearchFacesRequest 
@@ -1066,6 +1224,7 @@ newtype SearchFacesRequest = SearchFacesRequest
   , "MaxFaces" :: NullOrUndefined (MaxFaces)
   , "FaceMatchThreshold" :: NullOrUndefined (Percent)
   }
+derive instance newtypeSearchFacesRequest :: Newtype SearchFacesRequest _
 
 
 newtype SearchFacesResponse = SearchFacesResponse 
@@ -1073,6 +1232,7 @@ newtype SearchFacesResponse = SearchFacesResponse
   , "FaceMatches" :: NullOrUndefined (FaceMatchList)
   , "FaceModelVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeSearchFacesResponse :: Newtype SearchFacesResponse _
 
 
 -- | <p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>
@@ -1080,6 +1240,7 @@ newtype Smile = Smile
   { "Value" :: NullOrUndefined (Boolean)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeSmile :: Newtype Smile _
 
 
 newtype StartCelebrityRecognitionRequest = StartCelebrityRecognitionRequest 
@@ -1088,11 +1249,13 @@ newtype StartCelebrityRecognitionRequest = StartCelebrityRecognitionRequest
   , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
   , "JobTag" :: NullOrUndefined (JobTag)
   }
+derive instance newtypeStartCelebrityRecognitionRequest :: Newtype StartCelebrityRecognitionRequest _
 
 
 newtype StartCelebrityRecognitionResponse = StartCelebrityRecognitionResponse 
   { "JobId" :: NullOrUndefined (JobId)
   }
+derive instance newtypeStartCelebrityRecognitionResponse :: Newtype StartCelebrityRecognitionResponse _
 
 
 newtype StartContentModerationRequest = StartContentModerationRequest 
@@ -1102,11 +1265,13 @@ newtype StartContentModerationRequest = StartContentModerationRequest
   , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
   , "JobTag" :: NullOrUndefined (JobTag)
   }
+derive instance newtypeStartContentModerationRequest :: Newtype StartContentModerationRequest _
 
 
 newtype StartContentModerationResponse = StartContentModerationResponse 
   { "JobId" :: NullOrUndefined (JobId)
   }
+derive instance newtypeStartContentModerationResponse :: Newtype StartContentModerationResponse _
 
 
 newtype StartFaceDetectionRequest = StartFaceDetectionRequest 
@@ -1116,11 +1281,13 @@ newtype StartFaceDetectionRequest = StartFaceDetectionRequest
   , "FaceAttributes" :: NullOrUndefined (FaceAttributes)
   , "JobTag" :: NullOrUndefined (JobTag)
   }
+derive instance newtypeStartFaceDetectionRequest :: Newtype StartFaceDetectionRequest _
 
 
 newtype StartFaceDetectionResponse = StartFaceDetectionResponse 
   { "JobId" :: NullOrUndefined (JobId)
   }
+derive instance newtypeStartFaceDetectionResponse :: Newtype StartFaceDetectionResponse _
 
 
 newtype StartFaceSearchRequest = StartFaceSearchRequest 
@@ -1131,11 +1298,13 @@ newtype StartFaceSearchRequest = StartFaceSearchRequest
   , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
   , "JobTag" :: NullOrUndefined (JobTag)
   }
+derive instance newtypeStartFaceSearchRequest :: Newtype StartFaceSearchRequest _
 
 
 newtype StartFaceSearchResponse = StartFaceSearchResponse 
   { "JobId" :: NullOrUndefined (JobId)
   }
+derive instance newtypeStartFaceSearchResponse :: Newtype StartFaceSearchResponse _
 
 
 newtype StartLabelDetectionRequest = StartLabelDetectionRequest 
@@ -1145,11 +1314,13 @@ newtype StartLabelDetectionRequest = StartLabelDetectionRequest
   , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
   , "JobTag" :: NullOrUndefined (JobTag)
   }
+derive instance newtypeStartLabelDetectionRequest :: Newtype StartLabelDetectionRequest _
 
 
 newtype StartLabelDetectionResponse = StartLabelDetectionResponse 
   { "JobId" :: NullOrUndefined (JobId)
   }
+derive instance newtypeStartLabelDetectionResponse :: Newtype StartLabelDetectionResponse _
 
 
 newtype StartPersonTrackingRequest = StartPersonTrackingRequest 
@@ -1158,34 +1329,41 @@ newtype StartPersonTrackingRequest = StartPersonTrackingRequest
   , "NotificationChannel" :: NullOrUndefined (NotificationChannel)
   , "JobTag" :: NullOrUndefined (JobTag)
   }
+derive instance newtypeStartPersonTrackingRequest :: Newtype StartPersonTrackingRequest _
 
 
 newtype StartPersonTrackingResponse = StartPersonTrackingResponse 
   { "JobId" :: NullOrUndefined (JobId)
   }
+derive instance newtypeStartPersonTrackingResponse :: Newtype StartPersonTrackingResponse _
 
 
 newtype StartStreamProcessorRequest = StartStreamProcessorRequest 
   { "Name" :: (StreamProcessorName)
   }
+derive instance newtypeStartStreamProcessorRequest :: Newtype StartStreamProcessorRequest _
 
 
 newtype StartStreamProcessorResponse = StartStreamProcessorResponse 
   { 
   }
+derive instance newtypeStartStreamProcessorResponse :: Newtype StartStreamProcessorResponse _
 
 
 newtype StatusMessage = StatusMessage String
+derive instance newtypeStatusMessage :: Newtype StatusMessage _
 
 
 newtype StopStreamProcessorRequest = StopStreamProcessorRequest 
   { "Name" :: (StreamProcessorName)
   }
+derive instance newtypeStopStreamProcessorRequest :: Newtype StopStreamProcessorRequest _
 
 
 newtype StopStreamProcessorResponse = StopStreamProcessorResponse 
   { 
   }
+derive instance newtypeStopStreamProcessorResponse :: Newtype StopStreamProcessorResponse _
 
 
 -- | <p>An object that recognizes faces in a streaming video. An Amazon Rekognition stream processor is created by a call to . The request parameters for <code>CreateStreamProcessor</code> describe the Kinesis video stream source for the streaming video, face recognition parameters, and where to stream the analysis resullts. </p>
@@ -1193,36 +1371,44 @@ newtype StreamProcessor = StreamProcessor
   { "Name" :: NullOrUndefined (StreamProcessorName)
   , "Status" :: NullOrUndefined (StreamProcessorStatus)
   }
+derive instance newtypeStreamProcessor :: Newtype StreamProcessor _
 
 
 newtype StreamProcessorArn = StreamProcessorArn String
+derive instance newtypeStreamProcessorArn :: Newtype StreamProcessorArn _
 
 
 -- | <p>Information about the source streaming video. </p>
 newtype StreamProcessorInput = StreamProcessorInput 
   { "KinesisVideoStream" :: NullOrUndefined (KinesisVideoStream)
   }
+derive instance newtypeStreamProcessorInput :: Newtype StreamProcessorInput _
 
 
 newtype StreamProcessorList = StreamProcessorList (Array StreamProcessor)
+derive instance newtypeStreamProcessorList :: Newtype StreamProcessorList _
 
 
 newtype StreamProcessorName = StreamProcessorName String
+derive instance newtypeStreamProcessorName :: Newtype StreamProcessorName _
 
 
 -- | <p>Information about the Amazon Kinesis Data Streams stream to which a Rekognition Video stream processor streams the results of a video analysis. For more information, see .</p>
 newtype StreamProcessorOutput = StreamProcessorOutput 
   { "KinesisDataStream" :: NullOrUndefined (KinesisDataStream)
   }
+derive instance newtypeStreamProcessorOutput :: Newtype StreamProcessorOutput _
 
 
 -- | <p>Input parameters used to recognize faces in a streaming video analyzed by a Amazon Rekognition stream processor.</p>
 newtype StreamProcessorSettings = StreamProcessorSettings 
   { "FaceSearch" :: NullOrUndefined (FaceSearchSettings)
   }
+derive instance newtypeStreamProcessorSettings :: Newtype StreamProcessorSettings _
 
 
 newtype StreamProcessorStatus = StreamProcessorStatus String
+derive instance newtypeStreamProcessorStatus :: Newtype StreamProcessorStatus _
 
 
 -- | <p>Indicates whether or not the face is wearing sunglasses, and the confidence level in the determination.</p>
@@ -1230,6 +1416,7 @@ newtype Sunglasses = Sunglasses
   { "Value" :: NullOrUndefined (Boolean)
   , "Confidence" :: NullOrUndefined (Percent)
   }
+derive instance newtypeSunglasses :: Newtype Sunglasses _
 
 
 -- | <p>Information about a word or line of text detected by .</p> <p>The <code>DetectedText</code> field contains the text that Amazon Rekognition detected in the image. </p> <p>Every word and line has an identifier (<code>Id</code>). Each word belongs to a line and has a parent identifier (<code>ParentId</code>) that identifies the line of text in which the word appears. The word <code>Id</code> is also an index for the word within a line of words. </p> <p>For more information, see <a>text-detection</a>.</p>
@@ -1241,39 +1428,49 @@ newtype TextDetection = TextDetection
   , "Confidence" :: NullOrUndefined (Percent)
   , "Geometry" :: NullOrUndefined (Geometry)
   }
+derive instance newtypeTextDetection :: Newtype TextDetection _
 
 
 newtype TextDetectionList = TextDetectionList (Array TextDetection)
+derive instance newtypeTextDetectionList :: Newtype TextDetectionList _
 
 
 newtype TextTypes = TextTypes String
+derive instance newtypeTextTypes :: Newtype TextTypes _
 
 
 -- | <p>Amazon Rekognition is temporarily unable to process the request. Try your call again.</p>
 newtype ThrottlingException = ThrottlingException 
   { 
   }
+derive instance newtypeThrottlingException :: Newtype ThrottlingException _
 
 
 newtype UInteger = UInteger Int
+derive instance newtypeUInteger :: Newtype UInteger _
 
 
 newtype ULong = ULong Number
+derive instance newtypeULong :: Newtype ULong _
 
 
 newtype Url = Url String
+derive instance newtypeUrl :: Newtype Url _
 
 
 newtype Urls = Urls (Array Url)
+derive instance newtypeUrls :: Newtype Urls _
 
 
 -- | <p>Video file stored in an Amazon S3 bucket. Amazon Rekognition video start operations such as use <code>Video</code> to specify a video for analysis. The supported file formats are .mp4, .mov and .avi.</p>
 newtype Video = Video 
   { "S3Object" :: NullOrUndefined (S3Object)
   }
+derive instance newtypeVideo :: Newtype Video _
 
 
 newtype VideoJobStatus = VideoJobStatus String
+derive instance newtypeVideoJobStatus :: Newtype VideoJobStatus _
 
 
 -- | <p>Information about a video that Amazon Rekognition analyzed. <code>Videometadata</code> is returned in every page of paginated responses from a Amazon Rekognition video operation.</p>
@@ -1285,9 +1482,11 @@ newtype VideoMetadata = VideoMetadata
   , "FrameHeight" :: NullOrUndefined (ULong)
   , "FrameWidth" :: NullOrUndefined (ULong)
   }
+derive instance newtypeVideoMetadata :: Newtype VideoMetadata _
 
 
 -- | <p>The file size or duration of the supplied media is too large. The maximum file size is 8GB. The maximum duration is 2 hours. </p>
 newtype VideoTooLargeException = VideoTooLargeException 
   { 
   }
+derive instance newtypeVideoTooLargeException :: Newtype VideoTooLargeException _

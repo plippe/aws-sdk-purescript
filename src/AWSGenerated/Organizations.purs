@@ -6,6 +6,7 @@ module AWS.Organizations where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -227,22 +228,26 @@ updatePolicy = AWS.request serviceName "UpdatePolicy"
 newtype AWSOrganizationsNotInUseException = AWSOrganizationsNotInUseException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeAWSOrganizationsNotInUseException :: Newtype AWSOrganizationsNotInUseException _
 
 
 newtype AcceptHandshakeRequest = AcceptHandshakeRequest 
   { "HandshakeId" :: (HandshakeId)
   }
+derive instance newtypeAcceptHandshakeRequest :: Newtype AcceptHandshakeRequest _
 
 
 newtype AcceptHandshakeResponse = AcceptHandshakeResponse 
   { "Handshake" :: NullOrUndefined (Handshake)
   }
+derive instance newtypeAcceptHandshakeResponse :: Newtype AcceptHandshakeResponse _
 
 
 -- | <p>You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access Management</a> in the <i>IAM User Guide</i>.</p>
 newtype AccessDeniedException = AccessDeniedException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeAccessDeniedException :: Newtype AccessDeniedException _
 
 
 -- | <p>The operation you attempted requires you to have the <code>iam:CreateServiceLinkedRole</code> so that Organizations can create the required service-linked role. You do not have that permission.</p>
@@ -250,9 +255,11 @@ newtype AccessDeniedForDependencyException = AccessDeniedForDependencyException
   { "Message" :: NullOrUndefined (ExceptionMessage)
   , "Reason" :: NullOrUndefined (AccessDeniedForDependencyExceptionReason)
   }
+derive instance newtypeAccessDeniedForDependencyException :: Newtype AccessDeniedForDependencyException _
 
 
 newtype AccessDeniedForDependencyExceptionReason = AccessDeniedForDependencyExceptionReason String
+derive instance newtypeAccessDeniedForDependencyExceptionReason :: Newtype AccessDeniedForDependencyExceptionReason _
 
 
 -- | <p>Contains information about an AWS account that is a member of an organization.</p>
@@ -265,58 +272,72 @@ newtype Account = Account
   , "JoinedMethod" :: NullOrUndefined (AccountJoinedMethod)
   , "JoinedTimestamp" :: NullOrUndefined (Number)
   }
+derive instance newtypeAccount :: Newtype Account _
 
 
 newtype AccountArn = AccountArn String
+derive instance newtypeAccountArn :: Newtype AccountArn _
 
 
 newtype AccountId = AccountId String
+derive instance newtypeAccountId :: Newtype AccountId _
 
 
 newtype AccountJoinedMethod = AccountJoinedMethod String
+derive instance newtypeAccountJoinedMethod :: Newtype AccountJoinedMethod _
 
 
 newtype AccountName = AccountName String
+derive instance newtypeAccountName :: Newtype AccountName _
 
 
 -- | <p> We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.</p>
 newtype AccountNotFoundException = AccountNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeAccountNotFoundException :: Newtype AccountNotFoundException _
 
 
 newtype AccountStatus = AccountStatus String
+derive instance newtypeAccountStatus :: Newtype AccountStatus _
 
 
 newtype Accounts = Accounts (Array Account)
+derive instance newtypeAccounts :: Newtype Accounts _
 
 
 newtype ActionType = ActionType String
+derive instance newtypeActionType :: Newtype ActionType _
 
 
 -- | <p>This account is already a member of an organization. An account can belong to only one organization at a time.</p>
 newtype AlreadyInOrganizationException = AlreadyInOrganizationException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeAlreadyInOrganizationException :: Newtype AlreadyInOrganizationException _
 
 
 newtype AttachPolicyRequest = AttachPolicyRequest 
   { "PolicyId" :: (PolicyId)
   , "TargetId" :: (PolicyTargetId)
   }
+derive instance newtypeAttachPolicyRequest :: Newtype AttachPolicyRequest _
 
 
 newtype AwsManagedPolicy = AwsManagedPolicy Boolean
+derive instance newtypeAwsManagedPolicy :: Newtype AwsManagedPolicy _
 
 
 newtype CancelHandshakeRequest = CancelHandshakeRequest 
   { "HandshakeId" :: (HandshakeId)
   }
+derive instance newtypeCancelHandshakeRequest :: Newtype CancelHandshakeRequest _
 
 
 newtype CancelHandshakeResponse = CancelHandshakeResponse 
   { "Handshake" :: NullOrUndefined (Handshake)
   }
+derive instance newtypeCancelHandshakeResponse :: Newtype CancelHandshakeResponse _
 
 
 -- | <p>Contains a list of child entities, either OUs or accounts.</p>
@@ -324,27 +345,33 @@ newtype Child = Child
   { "Id" :: NullOrUndefined (ChildId)
   , "Type" :: NullOrUndefined (ChildType)
   }
+derive instance newtypeChild :: Newtype Child _
 
 
 newtype ChildId = ChildId String
+derive instance newtypeChildId :: Newtype ChildId _
 
 
 -- | <p>We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.</p>
 newtype ChildNotFoundException = ChildNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeChildNotFoundException :: Newtype ChildNotFoundException _
 
 
 newtype ChildType = ChildType String
+derive instance newtypeChildType :: Newtype ChildType _
 
 
 newtype Children = Children (Array Child)
+derive instance newtypeChildren :: Newtype Children _
 
 
 -- | <p>The target of the operation is currently being modified by a different request. Try again later.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 -- | <p>Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:</p> <p/> <note> <p>Some of the reasons in the following list might not be applicable to this specific API or operation:</p> </note> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. </p> <p>Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.</p> <p> <b>Note</b>: deleted and closed accounts still count toward your limit.</p> <important> <p>If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact <a href="https://console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.</p> </important> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.</p> </li> <li> <p>OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.</p> </li> <li> <p>POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.</p> </li> <li> <p>MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.</p> </li> <li> <p>MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the AWS Customer Agreement. Follow the steps at <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info">To leave an organization when all required account information has not yet been provided</a> in the <i>AWS Organizations User Guide</i>.</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification. Follow the steps at <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info">To leave an organization when all required account information has not yet been provided</a> in the <i>AWS Organizations User Guide</i>.</p> </li> <li> <p>MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account. Follow the steps at <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info">To leave an organization when all required account information has not yet been provided</a> in the <i>AWS Organizations User Guide</i>.</p> </li> <li> <p>MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account. Follow the steps at <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info">To leave an organization when all required account information has not yet been provided</a> in the <i>AWS Organizations User Guide</i>.</p> </li> <li> <p>ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.</p> </li> <li> <p>MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.</p> </li> <li> <p>MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must first provide contact a valid address and phone number for the master account. Then try the operation again.</p> </li> </ul>
@@ -352,12 +379,15 @@ newtype ConstraintViolationException = ConstraintViolationException
   { "Message" :: NullOrUndefined (ExceptionMessage)
   , "Reason" :: NullOrUndefined (ConstraintViolationExceptionReason)
   }
+derive instance newtypeConstraintViolationException :: Newtype ConstraintViolationException _
 
 
 newtype ConstraintViolationExceptionReason = ConstraintViolationExceptionReason String
+derive instance newtypeConstraintViolationExceptionReason :: Newtype ConstraintViolationExceptionReason _
 
 
 newtype CreateAccountFailureReason = CreateAccountFailureReason String
+derive instance newtypeCreateAccountFailureReason :: Newtype CreateAccountFailureReason _
 
 
 newtype CreateAccountRequest = CreateAccountRequest 
@@ -366,20 +396,25 @@ newtype CreateAccountRequest = CreateAccountRequest
   , "RoleName" :: NullOrUndefined (RoleName)
   , "IamUserAccessToBilling" :: NullOrUndefined (IAMUserAccessToBilling)
   }
+derive instance newtypeCreateAccountRequest :: Newtype CreateAccountRequest _
 
 
 newtype CreateAccountRequestId = CreateAccountRequestId String
+derive instance newtypeCreateAccountRequestId :: Newtype CreateAccountRequestId _
 
 
 newtype CreateAccountResponse = CreateAccountResponse 
   { "CreateAccountStatus" :: NullOrUndefined (CreateAccountStatus)
   }
+derive instance newtypeCreateAccountResponse :: Newtype CreateAccountResponse _
 
 
 newtype CreateAccountState = CreateAccountState String
+derive instance newtypeCreateAccountState :: Newtype CreateAccountState _
 
 
 newtype CreateAccountStates = CreateAccountStates (Array CreateAccountState)
+derive instance newtypeCreateAccountStates :: Newtype CreateAccountStates _
 
 
 -- | <p>Contains the status about a <a>CreateAccount</a> request to create an AWS account in an organization.</p>
@@ -392,36 +427,43 @@ newtype CreateAccountStatus = CreateAccountStatus
   , "AccountId" :: NullOrUndefined (AccountId)
   , "FailureReason" :: NullOrUndefined (CreateAccountFailureReason)
   }
+derive instance newtypeCreateAccountStatus :: Newtype CreateAccountStatus _
 
 
 -- | <p>We can't find an create account request with the CreateAccountRequestId that you specified.</p>
 newtype CreateAccountStatusNotFoundException = CreateAccountStatusNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeCreateAccountStatusNotFoundException :: Newtype CreateAccountStatusNotFoundException _
 
 
 newtype CreateAccountStatuses = CreateAccountStatuses (Array CreateAccountStatus)
+derive instance newtypeCreateAccountStatuses :: Newtype CreateAccountStatuses _
 
 
 newtype CreateOrganizationRequest = CreateOrganizationRequest 
   { "FeatureSet" :: NullOrUndefined (OrganizationFeatureSet)
   }
+derive instance newtypeCreateOrganizationRequest :: Newtype CreateOrganizationRequest _
 
 
 newtype CreateOrganizationResponse = CreateOrganizationResponse 
   { "Organization" :: NullOrUndefined (Organization)
   }
+derive instance newtypeCreateOrganizationResponse :: Newtype CreateOrganizationResponse _
 
 
 newtype CreateOrganizationalUnitRequest = CreateOrganizationalUnitRequest 
   { "ParentId" :: (ParentId)
   , "Name" :: (OrganizationalUnitName)
   }
+derive instance newtypeCreateOrganizationalUnitRequest :: Newtype CreateOrganizationalUnitRequest _
 
 
 newtype CreateOrganizationalUnitResponse = CreateOrganizationalUnitResponse 
   { "OrganizationalUnit" :: NullOrUndefined (OrganizationalUnit)
   }
+derive instance newtypeCreateOrganizationalUnitResponse :: Newtype CreateOrganizationalUnitResponse _
 
 
 newtype CreatePolicyRequest = CreatePolicyRequest 
@@ -430,173 +472,206 @@ newtype CreatePolicyRequest = CreatePolicyRequest
   , "Name" :: (PolicyName)
   , "Type" :: (PolicyType)
   }
+derive instance newtypeCreatePolicyRequest :: Newtype CreatePolicyRequest _
 
 
 newtype CreatePolicyResponse = CreatePolicyResponse 
   { "Policy" :: NullOrUndefined (Policy)
   }
+derive instance newtypeCreatePolicyResponse :: Newtype CreatePolicyResponse _
 
 
 newtype DeclineHandshakeRequest = DeclineHandshakeRequest 
   { "HandshakeId" :: (HandshakeId)
   }
+derive instance newtypeDeclineHandshakeRequest :: Newtype DeclineHandshakeRequest _
 
 
 newtype DeclineHandshakeResponse = DeclineHandshakeResponse 
   { "Handshake" :: NullOrUndefined (Handshake)
   }
+derive instance newtypeDeclineHandshakeResponse :: Newtype DeclineHandshakeResponse _
 
 
 newtype DeleteOrganizationalUnitRequest = DeleteOrganizationalUnitRequest 
   { "OrganizationalUnitId" :: (OrganizationalUnitId)
   }
+derive instance newtypeDeleteOrganizationalUnitRequest :: Newtype DeleteOrganizationalUnitRequest _
 
 
 newtype DeletePolicyRequest = DeletePolicyRequest 
   { "PolicyId" :: (PolicyId)
   }
+derive instance newtypeDeletePolicyRequest :: Newtype DeletePolicyRequest _
 
 
 newtype DescribeAccountRequest = DescribeAccountRequest 
   { "AccountId" :: (AccountId)
   }
+derive instance newtypeDescribeAccountRequest :: Newtype DescribeAccountRequest _
 
 
 newtype DescribeAccountResponse = DescribeAccountResponse 
   { "Account" :: NullOrUndefined (Account)
   }
+derive instance newtypeDescribeAccountResponse :: Newtype DescribeAccountResponse _
 
 
 newtype DescribeCreateAccountStatusRequest = DescribeCreateAccountStatusRequest 
   { "CreateAccountRequestId" :: (CreateAccountRequestId)
   }
+derive instance newtypeDescribeCreateAccountStatusRequest :: Newtype DescribeCreateAccountStatusRequest _
 
 
 newtype DescribeCreateAccountStatusResponse = DescribeCreateAccountStatusResponse 
   { "CreateAccountStatus" :: NullOrUndefined (CreateAccountStatus)
   }
+derive instance newtypeDescribeCreateAccountStatusResponse :: Newtype DescribeCreateAccountStatusResponse _
 
 
 newtype DescribeHandshakeRequest = DescribeHandshakeRequest 
   { "HandshakeId" :: (HandshakeId)
   }
+derive instance newtypeDescribeHandshakeRequest :: Newtype DescribeHandshakeRequest _
 
 
 newtype DescribeHandshakeResponse = DescribeHandshakeResponse 
   { "Handshake" :: NullOrUndefined (Handshake)
   }
+derive instance newtypeDescribeHandshakeResponse :: Newtype DescribeHandshakeResponse _
 
 
 newtype DescribeOrganizationResponse = DescribeOrganizationResponse 
   { "Organization" :: NullOrUndefined (Organization)
   }
+derive instance newtypeDescribeOrganizationResponse :: Newtype DescribeOrganizationResponse _
 
 
 newtype DescribeOrganizationalUnitRequest = DescribeOrganizationalUnitRequest 
   { "OrganizationalUnitId" :: (OrganizationalUnitId)
   }
+derive instance newtypeDescribeOrganizationalUnitRequest :: Newtype DescribeOrganizationalUnitRequest _
 
 
 newtype DescribeOrganizationalUnitResponse = DescribeOrganizationalUnitResponse 
   { "OrganizationalUnit" :: NullOrUndefined (OrganizationalUnit)
   }
+derive instance newtypeDescribeOrganizationalUnitResponse :: Newtype DescribeOrganizationalUnitResponse _
 
 
 newtype DescribePolicyRequest = DescribePolicyRequest 
   { "PolicyId" :: (PolicyId)
   }
+derive instance newtypeDescribePolicyRequest :: Newtype DescribePolicyRequest _
 
 
 newtype DescribePolicyResponse = DescribePolicyResponse 
   { "Policy" :: NullOrUndefined (Policy)
   }
+derive instance newtypeDescribePolicyResponse :: Newtype DescribePolicyResponse _
 
 
 -- | <p>We can't find the destination container (a root or OU) with the ParentId that you specified.</p>
 newtype DestinationParentNotFoundException = DestinationParentNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeDestinationParentNotFoundException :: Newtype DestinationParentNotFoundException _
 
 
 newtype DetachPolicyRequest = DetachPolicyRequest 
   { "PolicyId" :: (PolicyId)
   , "TargetId" :: (PolicyTargetId)
   }
+derive instance newtypeDetachPolicyRequest :: Newtype DetachPolicyRequest _
 
 
 newtype DisableAWSServiceAccessRequest = DisableAWSServiceAccessRequest 
   { "ServicePrincipal" :: (ServicePrincipal)
   }
+derive instance newtypeDisableAWSServiceAccessRequest :: Newtype DisableAWSServiceAccessRequest _
 
 
 newtype DisablePolicyTypeRequest = DisablePolicyTypeRequest 
   { "RootId" :: (RootId)
   , "PolicyType" :: (PolicyType)
   }
+derive instance newtypeDisablePolicyTypeRequest :: Newtype DisablePolicyTypeRequest _
 
 
 newtype DisablePolicyTypeResponse = DisablePolicyTypeResponse 
   { "Root" :: NullOrUndefined (Root)
   }
+derive instance newtypeDisablePolicyTypeResponse :: Newtype DisablePolicyTypeResponse _
 
 
 -- | <p>That account is already present in the specified destination.</p>
 newtype DuplicateAccountException = DuplicateAccountException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeDuplicateAccountException :: Newtype DuplicateAccountException _
 
 
 -- | <p>A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.</p>
 newtype DuplicateHandshakeException = DuplicateHandshakeException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeDuplicateHandshakeException :: Newtype DuplicateHandshakeException _
 
 
 -- | <p>An organizational unit (OU) with the same name already exists.</p>
 newtype DuplicateOrganizationalUnitException = DuplicateOrganizationalUnitException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeDuplicateOrganizationalUnitException :: Newtype DuplicateOrganizationalUnitException _
 
 
 -- | <p>The selected policy is already attached to the specified target.</p>
 newtype DuplicatePolicyAttachmentException = DuplicatePolicyAttachmentException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeDuplicatePolicyAttachmentException :: Newtype DuplicatePolicyAttachmentException _
 
 
 -- | <p>A policy with the same name already exists.</p>
 newtype DuplicatePolicyException = DuplicatePolicyException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeDuplicatePolicyException :: Newtype DuplicatePolicyException _
 
 
 newtype Email = Email String
+derive instance newtypeEmail :: Newtype Email _
 
 
 newtype EnableAWSServiceAccessRequest = EnableAWSServiceAccessRequest 
   { "ServicePrincipal" :: (ServicePrincipal)
   }
+derive instance newtypeEnableAWSServiceAccessRequest :: Newtype EnableAWSServiceAccessRequest _
 
 
 newtype EnableAllFeaturesRequest = EnableAllFeaturesRequest 
   { 
   }
+derive instance newtypeEnableAllFeaturesRequest :: Newtype EnableAllFeaturesRequest _
 
 
 newtype EnableAllFeaturesResponse = EnableAllFeaturesResponse 
   { "Handshake" :: NullOrUndefined (Handshake)
   }
+derive instance newtypeEnableAllFeaturesResponse :: Newtype EnableAllFeaturesResponse _
 
 
 newtype EnablePolicyTypeRequest = EnablePolicyTypeRequest 
   { "RootId" :: (RootId)
   , "PolicyType" :: (PolicyType)
   }
+derive instance newtypeEnablePolicyTypeRequest :: Newtype EnablePolicyTypeRequest _
 
 
 newtype EnablePolicyTypeResponse = EnablePolicyTypeResponse 
   { "Root" :: NullOrUndefined (Root)
   }
+derive instance newtypeEnablePolicyTypeResponse :: Newtype EnablePolicyTypeResponse _
 
 
 -- | <p>A structure that contains details of a service principal that is enabled to integrate with AWS Organizations.</p>
@@ -604,24 +679,30 @@ newtype EnabledServicePrincipal = EnabledServicePrincipal
   { "ServicePrincipal" :: NullOrUndefined (ServicePrincipal)
   , "DateEnabled" :: NullOrUndefined (Number)
   }
+derive instance newtypeEnabledServicePrincipal :: Newtype EnabledServicePrincipal _
 
 
 newtype EnabledServicePrincipals = EnabledServicePrincipals (Array EnabledServicePrincipal)
+derive instance newtypeEnabledServicePrincipals :: Newtype EnabledServicePrincipals _
 
 
 newtype ExceptionMessage = ExceptionMessage String
+derive instance newtypeExceptionMessage :: Newtype ExceptionMessage _
 
 
 newtype ExceptionType = ExceptionType String
+derive instance newtypeExceptionType :: Newtype ExceptionType _
 
 
 -- | <p>AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.</p>
 newtype FinalizingOrganizationException = FinalizingOrganizationException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeFinalizingOrganizationException :: Newtype FinalizingOrganizationException _
 
 
 newtype GenericArn = GenericArn String
+derive instance newtypeGenericArn :: Newtype GenericArn _
 
 
 -- | <p>Contains information that must be exchanged to securely establish a relationship between two accounts (an <i>originator</i> and a <i>recipient</i>). For example, when a master account (the originator) invites another account (the recipient) to join its organization, the two accounts exchange information as a series of handshake requests and responses.</p> <p> <b>Note:</b> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in lists for only 30 days after entering that state After that they are deleted.</p>
@@ -635,15 +716,18 @@ newtype Handshake = Handshake
   , "Action" :: NullOrUndefined (ActionType)
   , "Resources" :: NullOrUndefined (HandshakeResources)
   }
+derive instance newtypeHandshake :: Newtype Handshake _
 
 
 -- | <p>The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.</p>
 newtype HandshakeAlreadyInStateException = HandshakeAlreadyInStateException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeHandshakeAlreadyInStateException :: Newtype HandshakeAlreadyInStateException _
 
 
 newtype HandshakeArn = HandshakeArn String
+derive instance newtypeHandshakeArn :: Newtype HandshakeArn _
 
 
 -- | <p>The requested operation would violate the constraint identified in the reason code.</p> <note> <p>Some of the reasons in the following list might not be applicable to this specific API or operation:</p> </note> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. <b>Note</b>: deleted and closed accounts still count toward your limit.</p> <important> <p>If you get an exception that indicates that you exceeded your account limits for the organization or that you can"t add an account because your organization is still initializing, please contact <a href="https://console.aws.amazon.com/support/home#/"> AWS Customer Support</a>.</p> </important> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.</p> </li> <li> <p>ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.</p> </li> <li> <p>INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.</p> </li> <li> <p>PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.</p> </li> <li> <p>ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.</p> </li> <li> <p>ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.</p> </li> </ul>
@@ -651,9 +735,11 @@ newtype HandshakeConstraintViolationException = HandshakeConstraintViolationExce
   { "Message" :: NullOrUndefined (ExceptionMessage)
   , "Reason" :: NullOrUndefined (HandshakeConstraintViolationExceptionReason)
   }
+derive instance newtypeHandshakeConstraintViolationException :: Newtype HandshakeConstraintViolationException _
 
 
 newtype HandshakeConstraintViolationExceptionReason = HandshakeConstraintViolationExceptionReason String
+derive instance newtypeHandshakeConstraintViolationExceptionReason :: Newtype HandshakeConstraintViolationExceptionReason _
 
 
 -- | <p>Specifies the criteria that are used to select the handshakes for the operation.</p>
@@ -661,21 +747,26 @@ newtype HandshakeFilter = HandshakeFilter
   { "ActionType" :: NullOrUndefined (ActionType)
   , "ParentHandshakeId" :: NullOrUndefined (HandshakeId)
   }
+derive instance newtypeHandshakeFilter :: Newtype HandshakeFilter _
 
 
 newtype HandshakeId = HandshakeId String
+derive instance newtypeHandshakeId :: Newtype HandshakeId _
 
 
 -- | <p>We can't find a handshake with the HandshakeId that you specified.</p>
 newtype HandshakeNotFoundException = HandshakeNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeHandshakeNotFoundException :: Newtype HandshakeNotFoundException _
 
 
 newtype HandshakeNotes = HandshakeNotes String
+derive instance newtypeHandshakeNotes :: Newtype HandshakeNotes _
 
 
 newtype HandshakeParties = HandshakeParties (Array HandshakeParty)
+derive instance newtypeHandshakeParties :: Newtype HandshakeParties _
 
 
 -- | <p>Identifies a participant in a handshake.</p>
@@ -683,12 +774,15 @@ newtype HandshakeParty = HandshakeParty
   { "Id" :: (HandshakePartyId)
   , "Type" :: (HandshakePartyType)
   }
+derive instance newtypeHandshakeParty :: Newtype HandshakeParty _
 
 
 newtype HandshakePartyId = HandshakePartyId String
+derive instance newtypeHandshakePartyId :: Newtype HandshakePartyId _
 
 
 newtype HandshakePartyType = HandshakePartyType String
+derive instance newtypeHandshakePartyType :: Newtype HandshakePartyType _
 
 
 -- | <p>Contains additional data that is needed to process a handshake.</p>
@@ -697,30 +791,38 @@ newtype HandshakeResource = HandshakeResource
   , "Type" :: NullOrUndefined (HandshakeResourceType)
   , "Resources" :: NullOrUndefined (HandshakeResources)
   }
+derive instance newtypeHandshakeResource :: Newtype HandshakeResource _
 
 
 newtype HandshakeResourceType = HandshakeResourceType String
+derive instance newtypeHandshakeResourceType :: Newtype HandshakeResourceType _
 
 
 newtype HandshakeResourceValue = HandshakeResourceValue String
+derive instance newtypeHandshakeResourceValue :: Newtype HandshakeResourceValue _
 
 
 newtype HandshakeResources = HandshakeResources (Array HandshakeResource)
+derive instance newtypeHandshakeResources :: Newtype HandshakeResources _
 
 
 newtype HandshakeState = HandshakeState String
+derive instance newtypeHandshakeState :: Newtype HandshakeState _
 
 
 newtype Handshakes = Handshakes (Array Handshake)
+derive instance newtypeHandshakes :: Newtype Handshakes _
 
 
 newtype IAMUserAccessToBilling = IAMUserAccessToBilling String
+derive instance newtypeIAMUserAccessToBilling :: Newtype IAMUserAccessToBilling _
 
 
 -- | <p>You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.</p>
 newtype InvalidHandshakeTransitionException = InvalidHandshakeTransitionException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeInvalidHandshakeTransitionException :: Newtype InvalidHandshakeTransitionException _
 
 
 -- | <p>The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:</p> <note> <p>Some of the reasons in the following list might not be applicable to this specific API or operation:</p> </note> <ul> <li> <p>INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.</p> </li> <li> <p>INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.</p> </li> <li> <p>INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. </p> </li> <li> <p>INVALID_ENUM: You specified a value that is not valid for that parameter.</p> </li> <li> <p>INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.</p> </li> <li> <p>INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.</p> </li> <li> <p>MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.</p> </li> <li> <p>MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.</p> </li> <li> <p>MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.</p> </li> <li> <p>MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.</p> </li> <li> <p>IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.</p> </li> <li> <p>INVALID_PATTERN: You provided a value that doesn't match the required pattern.</p> </li> <li> <p>INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.</p> </li> <li> <p>INPUT_REQUIRED: You must include a value for all required parameters.</p> </li> <li> <p>INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.</p> </li> <li> <p>MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.</p> </li> <li> <p>MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.</p> </li> </ul>
@@ -728,32 +830,38 @@ newtype InvalidInputException = InvalidInputException
   { "Message" :: NullOrUndefined (ExceptionMessage)
   , "Reason" :: NullOrUndefined (InvalidInputExceptionReason)
   }
+derive instance newtypeInvalidInputException :: Newtype InvalidInputException _
 
 
 newtype InvalidInputExceptionReason = InvalidInputExceptionReason String
+derive instance newtypeInvalidInputExceptionReason :: Newtype InvalidInputExceptionReason _
 
 
 newtype InviteAccountToOrganizationRequest = InviteAccountToOrganizationRequest 
   { "Target" :: (HandshakeParty)
   , "Notes" :: NullOrUndefined (HandshakeNotes)
   }
+derive instance newtypeInviteAccountToOrganizationRequest :: Newtype InviteAccountToOrganizationRequest _
 
 
 newtype InviteAccountToOrganizationResponse = InviteAccountToOrganizationResponse 
   { "Handshake" :: NullOrUndefined (Handshake)
   }
+derive instance newtypeInviteAccountToOrganizationResponse :: Newtype InviteAccountToOrganizationResponse _
 
 
 newtype ListAWSServiceAccessForOrganizationRequest = ListAWSServiceAccessForOrganizationRequest 
   { "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListAWSServiceAccessForOrganizationRequest :: Newtype ListAWSServiceAccessForOrganizationRequest _
 
 
 newtype ListAWSServiceAccessForOrganizationResponse = ListAWSServiceAccessForOrganizationResponse 
   { "EnabledServicePrincipals" :: NullOrUndefined (EnabledServicePrincipals)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListAWSServiceAccessForOrganizationResponse :: Newtype ListAWSServiceAccessForOrganizationResponse _
 
 
 newtype ListAccountsForParentRequest = ListAccountsForParentRequest 
@@ -761,24 +869,28 @@ newtype ListAccountsForParentRequest = ListAccountsForParentRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListAccountsForParentRequest :: Newtype ListAccountsForParentRequest _
 
 
 newtype ListAccountsForParentResponse = ListAccountsForParentResponse 
   { "Accounts" :: NullOrUndefined (Accounts)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListAccountsForParentResponse :: Newtype ListAccountsForParentResponse _
 
 
 newtype ListAccountsRequest = ListAccountsRequest 
   { "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListAccountsRequest :: Newtype ListAccountsRequest _
 
 
 newtype ListAccountsResponse = ListAccountsResponse 
   { "Accounts" :: NullOrUndefined (Accounts)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListAccountsResponse :: Newtype ListAccountsResponse _
 
 
 newtype ListChildrenRequest = ListChildrenRequest 
@@ -787,12 +899,14 @@ newtype ListChildrenRequest = ListChildrenRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListChildrenRequest :: Newtype ListChildrenRequest _
 
 
 newtype ListChildrenResponse = ListChildrenResponse 
   { "Children" :: NullOrUndefined (Children)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListChildrenResponse :: Newtype ListChildrenResponse _
 
 
 newtype ListCreateAccountStatusRequest = ListCreateAccountStatusRequest 
@@ -800,12 +914,14 @@ newtype ListCreateAccountStatusRequest = ListCreateAccountStatusRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListCreateAccountStatusRequest :: Newtype ListCreateAccountStatusRequest _
 
 
 newtype ListCreateAccountStatusResponse = ListCreateAccountStatusResponse 
   { "CreateAccountStatuses" :: NullOrUndefined (CreateAccountStatuses)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListCreateAccountStatusResponse :: Newtype ListCreateAccountStatusResponse _
 
 
 newtype ListHandshakesForAccountRequest = ListHandshakesForAccountRequest 
@@ -813,12 +929,14 @@ newtype ListHandshakesForAccountRequest = ListHandshakesForAccountRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListHandshakesForAccountRequest :: Newtype ListHandshakesForAccountRequest _
 
 
 newtype ListHandshakesForAccountResponse = ListHandshakesForAccountResponse 
   { "Handshakes" :: NullOrUndefined (Handshakes)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListHandshakesForAccountResponse :: Newtype ListHandshakesForAccountResponse _
 
 
 newtype ListHandshakesForOrganizationRequest = ListHandshakesForOrganizationRequest 
@@ -826,12 +944,14 @@ newtype ListHandshakesForOrganizationRequest = ListHandshakesForOrganizationRequ
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListHandshakesForOrganizationRequest :: Newtype ListHandshakesForOrganizationRequest _
 
 
 newtype ListHandshakesForOrganizationResponse = ListHandshakesForOrganizationResponse 
   { "Handshakes" :: NullOrUndefined (Handshakes)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListHandshakesForOrganizationResponse :: Newtype ListHandshakesForOrganizationResponse _
 
 
 newtype ListOrganizationalUnitsForParentRequest = ListOrganizationalUnitsForParentRequest 
@@ -839,12 +959,14 @@ newtype ListOrganizationalUnitsForParentRequest = ListOrganizationalUnitsForPare
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListOrganizationalUnitsForParentRequest :: Newtype ListOrganizationalUnitsForParentRequest _
 
 
 newtype ListOrganizationalUnitsForParentResponse = ListOrganizationalUnitsForParentResponse 
   { "OrganizationalUnits" :: NullOrUndefined (OrganizationalUnits)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListOrganizationalUnitsForParentResponse :: Newtype ListOrganizationalUnitsForParentResponse _
 
 
 newtype ListParentsRequest = ListParentsRequest 
@@ -852,12 +974,14 @@ newtype ListParentsRequest = ListParentsRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListParentsRequest :: Newtype ListParentsRequest _
 
 
 newtype ListParentsResponse = ListParentsResponse 
   { "Parents" :: NullOrUndefined (Parents)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListParentsResponse :: Newtype ListParentsResponse _
 
 
 newtype ListPoliciesForTargetRequest = ListPoliciesForTargetRequest 
@@ -866,12 +990,14 @@ newtype ListPoliciesForTargetRequest = ListPoliciesForTargetRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListPoliciesForTargetRequest :: Newtype ListPoliciesForTargetRequest _
 
 
 newtype ListPoliciesForTargetResponse = ListPoliciesForTargetResponse 
   { "Policies" :: NullOrUndefined (Policies)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListPoliciesForTargetResponse :: Newtype ListPoliciesForTargetResponse _
 
 
 newtype ListPoliciesRequest = ListPoliciesRequest 
@@ -879,24 +1005,28 @@ newtype ListPoliciesRequest = ListPoliciesRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListPoliciesRequest :: Newtype ListPoliciesRequest _
 
 
 newtype ListPoliciesResponse = ListPoliciesResponse 
   { "Policies" :: NullOrUndefined (Policies)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListPoliciesResponse :: Newtype ListPoliciesResponse _
 
 
 newtype ListRootsRequest = ListRootsRequest 
   { "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListRootsRequest :: Newtype ListRootsRequest _
 
 
 newtype ListRootsResponse = ListRootsResponse 
   { "Roots" :: NullOrUndefined (Roots)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListRootsResponse :: Newtype ListRootsResponse _
 
 
 newtype ListTargetsForPolicyRequest = ListTargetsForPolicyRequest 
@@ -904,27 +1034,32 @@ newtype ListTargetsForPolicyRequest = ListTargetsForPolicyRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListTargetsForPolicyRequest :: Newtype ListTargetsForPolicyRequest _
 
 
 newtype ListTargetsForPolicyResponse = ListTargetsForPolicyResponse 
   { "Targets" :: NullOrUndefined (PolicyTargets)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListTargetsForPolicyResponse :: Newtype ListTargetsForPolicyResponse _
 
 
 -- | <p>The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.</p>
 newtype MalformedPolicyDocumentException = MalformedPolicyDocumentException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeMalformedPolicyDocumentException :: Newtype MalformedPolicyDocumentException _
 
 
 -- | <p>You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.</p>
 newtype MasterCannotLeaveOrganizationException = MasterCannotLeaveOrganizationException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeMasterCannotLeaveOrganizationException :: Newtype MasterCannotLeaveOrganizationException _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype MoveAccountRequest = MoveAccountRequest 
@@ -932,9 +1067,11 @@ newtype MoveAccountRequest = MoveAccountRequest
   , "SourceParentId" :: (ParentId)
   , "DestinationParentId" :: (ParentId)
   }
+derive instance newtypeMoveAccountRequest :: Newtype MoveAccountRequest _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>Contains details about an organization. An organization is a collection of accounts that are centrally managed together using consolidated billing, organized hierarchically with organizational units (OUs), and controlled with policies .</p>
@@ -947,21 +1084,26 @@ newtype Organization = Organization
   , "MasterAccountEmail" :: NullOrUndefined (Email)
   , "AvailablePolicyTypes" :: NullOrUndefined (PolicyTypes)
   }
+derive instance newtypeOrganization :: Newtype Organization _
 
 
 newtype OrganizationArn = OrganizationArn String
+derive instance newtypeOrganizationArn :: Newtype OrganizationArn _
 
 
 newtype OrganizationFeatureSet = OrganizationFeatureSet String
+derive instance newtypeOrganizationFeatureSet :: Newtype OrganizationFeatureSet _
 
 
 newtype OrganizationId = OrganizationId String
+derive instance newtypeOrganizationId :: Newtype OrganizationId _
 
 
 -- | <p>The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.</p>
 newtype OrganizationNotEmptyException = OrganizationNotEmptyException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeOrganizationNotEmptyException :: Newtype OrganizationNotEmptyException _
 
 
 -- | <p>Contains details about an organizational unit (OU). An OU is a container of AWS accounts within a root of an organization. Policies that are attached to an OU apply to all accounts contained in that OU and in any child OUs.</p>
@@ -970,30 +1112,37 @@ newtype OrganizationalUnit = OrganizationalUnit
   , "Arn" :: NullOrUndefined (OrganizationalUnitArn)
   , "Name" :: NullOrUndefined (OrganizationalUnitName)
   }
+derive instance newtypeOrganizationalUnit :: Newtype OrganizationalUnit _
 
 
 newtype OrganizationalUnitArn = OrganizationalUnitArn String
+derive instance newtypeOrganizationalUnitArn :: Newtype OrganizationalUnitArn _
 
 
 newtype OrganizationalUnitId = OrganizationalUnitId String
+derive instance newtypeOrganizationalUnitId :: Newtype OrganizationalUnitId _
 
 
 newtype OrganizationalUnitName = OrganizationalUnitName String
+derive instance newtypeOrganizationalUnitName :: Newtype OrganizationalUnitName _
 
 
 -- | <p>The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.</p>
 newtype OrganizationalUnitNotEmptyException = OrganizationalUnitNotEmptyException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeOrganizationalUnitNotEmptyException :: Newtype OrganizationalUnitNotEmptyException _
 
 
 -- | <p>We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.</p>
 newtype OrganizationalUnitNotFoundException = OrganizationalUnitNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeOrganizationalUnitNotFoundException :: Newtype OrganizationalUnitNotFoundException _
 
 
 newtype OrganizationalUnits = OrganizationalUnits (Array OrganizationalUnit)
+derive instance newtypeOrganizationalUnits :: Newtype OrganizationalUnits _
 
 
 -- | <p>Contains information about either a root or an organizational unit (OU) that can contain OUs or accounts in an organization.</p>
@@ -1001,24 +1150,30 @@ newtype Parent = Parent
   { "Id" :: NullOrUndefined (ParentId)
   , "Type" :: NullOrUndefined (ParentType)
   }
+derive instance newtypeParent :: Newtype Parent _
 
 
 newtype ParentId = ParentId String
+derive instance newtypeParentId :: Newtype ParentId _
 
 
 -- | <p>We can't find a root or organizational unit (OU) with the ParentId that you specified.</p>
 newtype ParentNotFoundException = ParentNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeParentNotFoundException :: Newtype ParentNotFoundException _
 
 
 newtype ParentType = ParentType String
+derive instance newtypeParentType :: Newtype ParentType _
 
 
 newtype Parents = Parents (Array Parent)
+derive instance newtypeParents :: Newtype Parents _
 
 
 newtype Policies = Policies (Array PolicySummary)
+derive instance newtypePolicies :: Newtype Policies _
 
 
 -- | <p>Contains rules to be applied to the affected accounts. Policies can be attached directly to accounts, or to roots and OUs to affect all accounts in those hierarchies.</p>
@@ -1026,39 +1181,48 @@ newtype Policy = Policy
   { "PolicySummary" :: NullOrUndefined (PolicySummary)
   , "Content" :: NullOrUndefined (PolicyContent)
   }
+derive instance newtypePolicy :: Newtype Policy _
 
 
 newtype PolicyArn = PolicyArn String
+derive instance newtypePolicyArn :: Newtype PolicyArn _
 
 
 newtype PolicyContent = PolicyContent String
+derive instance newtypePolicyContent :: Newtype PolicyContent _
 
 
 newtype PolicyDescription = PolicyDescription String
+derive instance newtypePolicyDescription :: Newtype PolicyDescription _
 
 
 newtype PolicyId = PolicyId String
+derive instance newtypePolicyId :: Newtype PolicyId _
 
 
 -- | <p>The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.</p>
 newtype PolicyInUseException = PolicyInUseException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypePolicyInUseException :: Newtype PolicyInUseException _
 
 
 newtype PolicyName = PolicyName String
+derive instance newtypePolicyName :: Newtype PolicyName _
 
 
 -- | <p>The policy isn't attached to the specified target in the specified root.</p>
 newtype PolicyNotAttachedException = PolicyNotAttachedException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypePolicyNotAttachedException :: Newtype PolicyNotAttachedException _
 
 
 -- | <p>We can't find a policy with the PolicyId that you specified.</p>
 newtype PolicyNotFoundException = PolicyNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypePolicyNotFoundException :: Newtype PolicyNotFoundException _
 
 
 -- | <p>Contains information about a policy, but does not include the content. To see the content of a policy, see <a>DescribePolicy</a>.</p>
@@ -1070,9 +1234,11 @@ newtype PolicySummary = PolicySummary
   , "Type" :: NullOrUndefined (PolicyType)
   , "AwsManaged" :: NullOrUndefined (AwsManagedPolicy)
   }
+derive instance newtypePolicySummary :: Newtype PolicySummary _
 
 
 newtype PolicyTargetId = PolicyTargetId String
+derive instance newtypePolicyTargetId :: Newtype PolicyTargetId _
 
 
 -- | <p>Contains information about a root, OU, or account that a policy is attached to.</p>
@@ -1082,33 +1248,40 @@ newtype PolicyTargetSummary = PolicyTargetSummary
   , "Name" :: NullOrUndefined (TargetName)
   , "Type" :: NullOrUndefined (TargetType)
   }
+derive instance newtypePolicyTargetSummary :: Newtype PolicyTargetSummary _
 
 
 newtype PolicyTargets = PolicyTargets (Array PolicyTargetSummary)
+derive instance newtypePolicyTargets :: Newtype PolicyTargets _
 
 
 newtype PolicyType = PolicyType String
+derive instance newtypePolicyType :: Newtype PolicyType _
 
 
 -- | <p>The specified policy type is already enabled in the specified root.</p>
 newtype PolicyTypeAlreadyEnabledException = PolicyTypeAlreadyEnabledException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypePolicyTypeAlreadyEnabledException :: Newtype PolicyTypeAlreadyEnabledException _
 
 
 -- | <p>You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root">Enabling and Disabling a Policy Type on a Root</a> in the <i>AWS Organizations User Guide</i>.</p>
 newtype PolicyTypeNotAvailableForOrganizationException = PolicyTypeNotAvailableForOrganizationException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypePolicyTypeNotAvailableForOrganizationException :: Newtype PolicyTypeNotAvailableForOrganizationException _
 
 
 -- | <p>The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>
 newtype PolicyTypeNotEnabledException = PolicyTypeNotEnabledException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypePolicyTypeNotEnabledException :: Newtype PolicyTypeNotEnabledException _
 
 
 newtype PolicyTypeStatus = PolicyTypeStatus String
+derive instance newtypePolicyTypeStatus :: Newtype PolicyTypeStatus _
 
 
 -- | <p>Contains information about a policy type and its status in the associated root.</p>
@@ -1116,17 +1289,21 @@ newtype PolicyTypeSummary = PolicyTypeSummary
   { "Type" :: NullOrUndefined (PolicyType)
   , "Status" :: NullOrUndefined (PolicyTypeStatus)
   }
+derive instance newtypePolicyTypeSummary :: Newtype PolicyTypeSummary _
 
 
 newtype PolicyTypes = PolicyTypes (Array PolicyTypeSummary)
+derive instance newtypePolicyTypes :: Newtype PolicyTypes _
 
 
 newtype RemoveAccountFromOrganizationRequest = RemoveAccountFromOrganizationRequest 
   { "AccountId" :: (AccountId)
   }
+derive instance newtypeRemoveAccountFromOrganizationRequest :: Newtype RemoveAccountFromOrganizationRequest _
 
 
 newtype RoleName = RoleName String
+derive instance newtypeRoleName :: Newtype RoleName _
 
 
 -- | <p>Contains details about a root. A root is a top-level parent node in the hierarchy of an organization that can contain organizational units (OUs) and accounts. Every root contains every AWS account in the organization. Each root enables the accounts to be organized in a different way and to have different policy types enabled for use in that root.</p>
@@ -1136,51 +1313,63 @@ newtype Root = Root
   , "Name" :: NullOrUndefined (RootName)
   , "PolicyTypes" :: NullOrUndefined (PolicyTypes)
   }
+derive instance newtypeRoot :: Newtype Root _
 
 
 newtype RootArn = RootArn String
+derive instance newtypeRootArn :: Newtype RootArn _
 
 
 newtype RootId = RootId String
+derive instance newtypeRootId :: Newtype RootId _
 
 
 newtype RootName = RootName String
+derive instance newtypeRootName :: Newtype RootName _
 
 
 -- | <p>We can't find a root with the RootId that you specified.</p>
 newtype RootNotFoundException = RootNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeRootNotFoundException :: Newtype RootNotFoundException _
 
 
 newtype Roots = Roots (Array Root)
+derive instance newtypeRoots :: Newtype Roots _
 
 
 -- | <p>AWS Organizations can't complete your request because of an internal service error. Try again later.</p>
 newtype ServiceException = ServiceException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeServiceException :: Newtype ServiceException _
 
 
 newtype ServicePrincipal = ServicePrincipal String
+derive instance newtypeServicePrincipal :: Newtype ServicePrincipal _
 
 
 -- | <p>We can't find a source root or OU with the ParentId that you specified.</p>
 newtype SourceParentNotFoundException = SourceParentNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeSourceParentNotFoundException :: Newtype SourceParentNotFoundException _
 
 
 newtype TargetName = TargetName String
+derive instance newtypeTargetName :: Newtype TargetName _
 
 
 -- | <p>We can't find a root, OU, or account with the TargetId that you specified.</p>
 newtype TargetNotFoundException = TargetNotFoundException 
   { "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeTargetNotFoundException :: Newtype TargetNotFoundException _
 
 
 newtype TargetType = TargetType String
+derive instance newtypeTargetType :: Newtype TargetType _
 
 
 -- | <p>You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.</p>
@@ -1188,17 +1377,20 @@ newtype TooManyRequestsException = TooManyRequestsException
   { "Type" :: NullOrUndefined (ExceptionType)
   , "Message" :: NullOrUndefined (ExceptionMessage)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 newtype UpdateOrganizationalUnitRequest = UpdateOrganizationalUnitRequest 
   { "OrganizationalUnitId" :: (OrganizationalUnitId)
   , "Name" :: NullOrUndefined (OrganizationalUnitName)
   }
+derive instance newtypeUpdateOrganizationalUnitRequest :: Newtype UpdateOrganizationalUnitRequest _
 
 
 newtype UpdateOrganizationalUnitResponse = UpdateOrganizationalUnitResponse 
   { "OrganizationalUnit" :: NullOrUndefined (OrganizationalUnit)
   }
+derive instance newtypeUpdateOrganizationalUnitResponse :: Newtype UpdateOrganizationalUnitResponse _
 
 
 newtype UpdatePolicyRequest = UpdatePolicyRequest 
@@ -1207,8 +1399,10 @@ newtype UpdatePolicyRequest = UpdatePolicyRequest
   , "Description" :: NullOrUndefined (PolicyDescription)
   , "Content" :: NullOrUndefined (PolicyContent)
   }
+derive instance newtypeUpdatePolicyRequest :: Newtype UpdatePolicyRequest _
 
 
 newtype UpdatePolicyResponse = UpdatePolicyResponse 
   { "Policy" :: NullOrUndefined (Policy)
   }
+derive instance newtypeUpdatePolicyResponse :: Newtype UpdatePolicyResponse _

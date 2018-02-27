@@ -6,6 +6,7 @@ module AWS.CognitoSync where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -102,36 +103,45 @@ updateRecords = AWS.request serviceName "UpdateRecords"
 newtype AlreadyStreamedException = AlreadyStreamedException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeAlreadyStreamedException :: Newtype AlreadyStreamedException _
 
 
 newtype ApplicationArn = ApplicationArn String
+derive instance newtypeApplicationArn :: Newtype ApplicationArn _
 
 
 newtype ApplicationArnList = ApplicationArnList (Array ApplicationArn)
+derive instance newtypeApplicationArnList :: Newtype ApplicationArnList _
 
 
 newtype AssumeRoleArn = AssumeRoleArn String
+derive instance newtypeAssumeRoleArn :: Newtype AssumeRoleArn _
 
 
 -- | The input for the BulkPublish operation.
 newtype BulkPublishRequest = BulkPublishRequest 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeBulkPublishRequest :: Newtype BulkPublishRequest _
 
 
 -- | The output for the BulkPublish operation.
 newtype BulkPublishResponse = BulkPublishResponse 
   { "IdentityPoolId" :: NullOrUndefined (IdentityPoolId)
   }
+derive instance newtypeBulkPublishResponse :: Newtype BulkPublishResponse _
 
 
 newtype BulkPublishStatus = BulkPublishStatus String
+derive instance newtypeBulkPublishStatus :: Newtype BulkPublishStatus _
 
 
 newtype ClientContext = ClientContext String
+derive instance newtypeClientContext :: Newtype ClientContext _
 
 
 newtype CognitoEventType = CognitoEventType String
+derive instance newtypeCognitoEventType :: Newtype CognitoEventType _
 
 
 -- | Configuration options for configure Cognito streams.
@@ -140,12 +150,14 @@ newtype CognitoStreams = CognitoStreams
   , "RoleArn" :: NullOrUndefined (AssumeRoleArn)
   , "StreamingStatus" :: NullOrUndefined (StreamingStatus)
   }
+derive instance newtypeCognitoStreams :: Newtype CognitoStreams _
 
 
 -- | <p>Thrown if there are parallel requests to modify a resource.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message'" :: (String)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 -- | A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
@@ -158,15 +170,19 @@ newtype Dataset = Dataset
   , "DataStorage" :: NullOrUndefined (Number)
   , "NumRecords" :: NullOrUndefined (Number)
   }
+derive instance newtypeDataset :: Newtype Dataset _
 
 
 newtype DatasetList = DatasetList (Array Dataset)
+derive instance newtypeDatasetList :: Newtype DatasetList _
 
 
 newtype DatasetName = DatasetName String
+derive instance newtypeDatasetName :: Newtype DatasetName _
 
 
 newtype Date = Date Number
+derive instance newtypeDate :: Newtype Date _
 
 
 -- | A request to delete the specific dataset.
@@ -175,12 +191,14 @@ newtype DeleteDatasetRequest = DeleteDatasetRequest
   , "IdentityId" :: (IdentityId)
   , "DatasetName" :: (DatasetName)
   }
+derive instance newtypeDeleteDatasetRequest :: Newtype DeleteDatasetRequest _
 
 
 -- | Response to a successful DeleteDataset request.
 newtype DeleteDatasetResponse = DeleteDatasetResponse 
   { "Dataset" :: NullOrUndefined (Dataset)
   }
+derive instance newtypeDeleteDatasetResponse :: Newtype DeleteDatasetResponse _
 
 
 -- | A request for meta data about a dataset (creation date, number of records, size) by owner and dataset name.
@@ -189,24 +207,28 @@ newtype DescribeDatasetRequest = DescribeDatasetRequest
   , "IdentityId" :: (IdentityId)
   , "DatasetName" :: (DatasetName)
   }
+derive instance newtypeDescribeDatasetRequest :: Newtype DescribeDatasetRequest _
 
 
 -- | Response to a successful DescribeDataset request.
 newtype DescribeDatasetResponse = DescribeDatasetResponse 
   { "Dataset" :: NullOrUndefined (Dataset)
   }
+derive instance newtypeDescribeDatasetResponse :: Newtype DescribeDatasetResponse _
 
 
 -- | A request for usage information about the identity pool.
 newtype DescribeIdentityPoolUsageRequest = DescribeIdentityPoolUsageRequest 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeDescribeIdentityPoolUsageRequest :: Newtype DescribeIdentityPoolUsageRequest _
 
 
 -- | Response to a successful DescribeIdentityPoolUsage request.
 newtype DescribeIdentityPoolUsageResponse = DescribeIdentityPoolUsageResponse 
   { "IdentityPoolUsage" :: NullOrUndefined (IdentityPoolUsage)
   }
+derive instance newtypeDescribeIdentityPoolUsageResponse :: Newtype DescribeIdentityPoolUsageResponse _
 
 
 -- | A request for information about the usage of an identity pool.
@@ -214,33 +236,40 @@ newtype DescribeIdentityUsageRequest = DescribeIdentityUsageRequest
   { "IdentityPoolId" :: (IdentityPoolId)
   , "IdentityId" :: (IdentityId)
   }
+derive instance newtypeDescribeIdentityUsageRequest :: Newtype DescribeIdentityUsageRequest _
 
 
 -- | The response to a successful DescribeIdentityUsage request.
 newtype DescribeIdentityUsageResponse = DescribeIdentityUsageResponse 
   { "IdentityUsage" :: NullOrUndefined (IdentityUsage)
   }
+derive instance newtypeDescribeIdentityUsageResponse :: Newtype DescribeIdentityUsageResponse _
 
 
 newtype DeviceId = DeviceId String
+derive instance newtypeDeviceId :: Newtype DeviceId _
 
 
 -- | An exception thrown when there is an IN_PROGRESS bulk publish operation for the given identity pool.
 newtype DuplicateRequestException = DuplicateRequestException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeDuplicateRequestException :: Newtype DuplicateRequestException _
 
 
 newtype Events = Events (Map CognitoEventType LambdaFunctionArn)
+derive instance newtypeEvents :: Newtype Events _
 
 
 newtype ExceptionMessage = ExceptionMessage String
+derive instance newtypeExceptionMessage :: Newtype ExceptionMessage _
 
 
 -- | The input for the GetBulkPublishDetails operation.
 newtype GetBulkPublishDetailsRequest = GetBulkPublishDetailsRequest 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeGetBulkPublishDetailsRequest :: Newtype GetBulkPublishDetailsRequest _
 
 
 -- | The output for the GetBulkPublishDetails operation.
@@ -251,24 +280,28 @@ newtype GetBulkPublishDetailsResponse = GetBulkPublishDetailsResponse
   , "BulkPublishStatus" :: NullOrUndefined (BulkPublishStatus)
   , "FailureMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeGetBulkPublishDetailsResponse :: Newtype GetBulkPublishDetailsResponse _
 
 
 -- | <p>A request for a list of the configured Cognito Events</p>
 newtype GetCognitoEventsRequest = GetCognitoEventsRequest 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeGetCognitoEventsRequest :: Newtype GetCognitoEventsRequest _
 
 
 -- | <p>The response from the GetCognitoEvents request</p>
 newtype GetCognitoEventsResponse = GetCognitoEventsResponse 
   { "Events" :: NullOrUndefined (Events)
   }
+derive instance newtypeGetCognitoEventsResponse :: Newtype GetCognitoEventsResponse _
 
 
 -- | <p>The input for the GetIdentityPoolConfiguration operation.</p>
 newtype GetIdentityPoolConfigurationRequest = GetIdentityPoolConfigurationRequest 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeGetIdentityPoolConfigurationRequest :: Newtype GetIdentityPoolConfigurationRequest _
 
 
 -- | <p>The output for the GetIdentityPoolConfiguration operation.</p>
@@ -277,12 +310,15 @@ newtype GetIdentityPoolConfigurationResponse = GetIdentityPoolConfigurationRespo
   , "PushSync" :: NullOrUndefined (PushSync)
   , "CognitoStreams" :: NullOrUndefined (CognitoStreams)
   }
+derive instance newtypeGetIdentityPoolConfigurationResponse :: Newtype GetIdentityPoolConfigurationResponse _
 
 
 newtype IdentityId = IdentityId String
+derive instance newtypeIdentityId :: Newtype IdentityId _
 
 
 newtype IdentityPoolId = IdentityPoolId String
+derive instance newtypeIdentityPoolId :: Newtype IdentityPoolId _
 
 
 -- | Usage information for the identity pool.
@@ -292,9 +328,11 @@ newtype IdentityPoolUsage = IdentityPoolUsage
   , "DataStorage" :: NullOrUndefined (Number)
   , "LastModifiedDate" :: NullOrUndefined (Date)
   }
+derive instance newtypeIdentityPoolUsage :: Newtype IdentityPoolUsage _
 
 
 newtype IdentityPoolUsageList = IdentityPoolUsageList (Array IdentityPoolUsage)
+derive instance newtypeIdentityPoolUsageList :: Newtype IdentityPoolUsageList _
 
 
 -- | Usage information for the identity.
@@ -305,47 +343,56 @@ newtype IdentityUsage = IdentityUsage
   , "DatasetCount" :: NullOrUndefined (Int)
   , "DataStorage" :: NullOrUndefined (Number)
   }
+derive instance newtypeIdentityUsage :: Newtype IdentityUsage _
 
 
 newtype IntegerString = IntegerString Int
+derive instance newtypeIntegerString :: Newtype IntegerString _
 
 
 -- | Indicates an internal service error.
 newtype InternalErrorException = InternalErrorException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeInternalErrorException :: Newtype InternalErrorException _
 
 
 newtype InvalidConfigurationException = InvalidConfigurationException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeInvalidConfigurationException :: Newtype InvalidConfigurationException _
 
 
 -- | <p>The AWS Lambda function returned invalid output or an exception.</p>
 newtype InvalidLambdaFunctionOutputException = InvalidLambdaFunctionOutputException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeInvalidLambdaFunctionOutputException :: Newtype InvalidLambdaFunctionOutputException _
 
 
 -- | Thrown when a request parameter does not comply with the associated constraints.
 newtype InvalidParameterException = InvalidParameterException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 newtype LambdaFunctionArn = LambdaFunctionArn String
+derive instance newtypeLambdaFunctionArn :: Newtype LambdaFunctionArn _
 
 
 -- | <p>AWS Lambda throttled your account, please contact AWS Support</p>
 newtype LambdaThrottledException = LambdaThrottledException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeLambdaThrottledException :: Newtype LambdaThrottledException _
 
 
 -- | Thrown when the limit on the number of objects or operations has been exceeded.
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 -- | Request for a list of datasets for an identity.
@@ -355,6 +402,7 @@ newtype ListDatasetsRequest = ListDatasetsRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (IntegerString)
   }
+derive instance newtypeListDatasetsRequest :: Newtype ListDatasetsRequest _
 
 
 -- | Returned for a successful ListDatasets request.
@@ -363,6 +411,7 @@ newtype ListDatasetsResponse = ListDatasetsResponse
   , "Count" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListDatasetsResponse :: Newtype ListDatasetsResponse _
 
 
 -- | A request for usage information on an identity pool.
@@ -370,6 +419,7 @@ newtype ListIdentityPoolUsageRequest = ListIdentityPoolUsageRequest
   { "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (IntegerString)
   }
+derive instance newtypeListIdentityPoolUsageRequest :: Newtype ListIdentityPoolUsageRequest _
 
 
 -- | Returned for a successful ListIdentityPoolUsage request.
@@ -379,6 +429,7 @@ newtype ListIdentityPoolUsageResponse = ListIdentityPoolUsageResponse
   , "Count" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListIdentityPoolUsageResponse :: Newtype ListIdentityPoolUsageResponse _
 
 
 -- | A request for a list of records.
@@ -391,6 +442,7 @@ newtype ListRecordsRequest = ListRecordsRequest
   , "MaxResults" :: NullOrUndefined (IntegerString)
   , "SyncSessionToken" :: NullOrUndefined (SyncSessionToken)
   }
+derive instance newtypeListRecordsRequest :: Newtype ListRecordsRequest _
 
 
 -- | Returned for a successful ListRecordsRequest.
@@ -405,21 +457,26 @@ newtype ListRecordsResponse = ListRecordsResponse
   , "DatasetDeletedAfterRequestedSyncCount" :: NullOrUndefined (Boolean)
   , "SyncSessionToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListRecordsResponse :: Newtype ListRecordsResponse _
 
 
 newtype MergedDatasetNameList = MergedDatasetNameList (Array String)
+derive instance newtypeMergedDatasetNameList :: Newtype MergedDatasetNameList _
 
 
 -- | Thrown when a user is not authorized to access the requested resource.
 newtype NotAuthorizedException = NotAuthorizedException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeNotAuthorizedException :: Newtype NotAuthorizedException _
 
 
 newtype Operation = Operation String
+derive instance newtypeOperation :: Newtype Operation _
 
 
 newtype Platform = Platform String
+derive instance newtypePlatform :: Newtype Platform _
 
 
 -- | <p>Configuration options to be applied to the identity pool.</p>
@@ -427,9 +484,11 @@ newtype PushSync = PushSync
   { "ApplicationArns" :: NullOrUndefined (ApplicationArnList)
   , "RoleArn" :: NullOrUndefined (AssumeRoleArn)
   }
+derive instance newtypePushSync :: Newtype PushSync _
 
 
 newtype PushToken = PushToken String
+derive instance newtypePushToken :: Newtype PushToken _
 
 
 -- | The basic data structure of a dataset.
@@ -441,12 +500,15 @@ newtype Record'' = Record''
   , "LastModifiedBy" :: NullOrUndefined (String)
   , "DeviceLastModifiedDate" :: NullOrUndefined (Date)
   }
+derive instance newtypeRecord'' :: Newtype Record'' _
 
 
 newtype RecordKey = RecordKey String
+derive instance newtypeRecordKey :: Newtype RecordKey _
 
 
 newtype RecordList = RecordList (Array Record'')
+derive instance newtypeRecordList :: Newtype RecordList _
 
 
 -- | An update operation for a record.
@@ -457,12 +519,15 @@ newtype RecordPatch = RecordPatch
   , "SyncCount" :: (Number)
   , "DeviceLastModifiedDate" :: NullOrUndefined (Date)
   }
+derive instance newtypeRecordPatch :: Newtype RecordPatch _
 
 
 newtype RecordPatchList = RecordPatchList (Array RecordPatch)
+derive instance newtypeRecordPatchList :: Newtype RecordPatchList _
 
 
 newtype RecordValue = RecordValue String
+derive instance newtypeRecordValue :: Newtype RecordValue _
 
 
 -- | <p>A request to RegisterDevice.</p>
@@ -472,24 +537,28 @@ newtype RegisterDeviceRequest = RegisterDeviceRequest
   , "Platform" :: (Platform)
   , "Token" :: (PushToken)
   }
+derive instance newtypeRegisterDeviceRequest :: Newtype RegisterDeviceRequest _
 
 
 -- | <p>Response to a RegisterDevice request.</p>
 newtype RegisterDeviceResponse = RegisterDeviceResponse 
   { "DeviceId" :: NullOrUndefined (DeviceId)
   }
+derive instance newtypeRegisterDeviceResponse :: Newtype RegisterDeviceResponse _
 
 
 -- | Thrown if an update can't be applied because the resource was changed by another call and this would result in a conflict.
 newtype ResourceConflictException = ResourceConflictException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeResourceConflictException :: Newtype ResourceConflictException _
 
 
 -- | Thrown if the resource doesn't exist.
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>A request to configure Cognito Events"</p>"
@@ -497,6 +566,7 @@ newtype SetCognitoEventsRequest = SetCognitoEventsRequest
   { "IdentityPoolId" :: (IdentityPoolId)
   , "Events" :: (Events)
   }
+derive instance newtypeSetCognitoEventsRequest :: Newtype SetCognitoEventsRequest _
 
 
 -- | <p>The input for the SetIdentityPoolConfiguration operation.</p>
@@ -505,6 +575,7 @@ newtype SetIdentityPoolConfigurationRequest = SetIdentityPoolConfigurationReques
   , "PushSync" :: NullOrUndefined (PushSync)
   , "CognitoStreams" :: NullOrUndefined (CognitoStreams)
   }
+derive instance newtypeSetIdentityPoolConfigurationRequest :: Newtype SetIdentityPoolConfigurationRequest _
 
 
 -- | <p>The output for the SetIdentityPoolConfiguration operation</p>
@@ -513,12 +584,15 @@ newtype SetIdentityPoolConfigurationResponse = SetIdentityPoolConfigurationRespo
   , "PushSync" :: NullOrUndefined (PushSync)
   , "CognitoStreams" :: NullOrUndefined (CognitoStreams)
   }
+derive instance newtypeSetIdentityPoolConfigurationResponse :: Newtype SetIdentityPoolConfigurationResponse _
 
 
 newtype StreamName = StreamName String
+derive instance newtypeStreamName :: Newtype StreamName _
 
 
 newtype StreamingStatus = StreamingStatus String
+derive instance newtypeStreamingStatus :: Newtype StreamingStatus _
 
 
 -- | <p>A request to SubscribeToDatasetRequest.</p>
@@ -528,21 +602,25 @@ newtype SubscribeToDatasetRequest = SubscribeToDatasetRequest
   , "DatasetName" :: (DatasetName)
   , "DeviceId" :: (DeviceId)
   }
+derive instance newtypeSubscribeToDatasetRequest :: Newtype SubscribeToDatasetRequest _
 
 
 -- | <p>Response to a SubscribeToDataset request.</p>
 newtype SubscribeToDatasetResponse = SubscribeToDatasetResponse 
   { 
   }
+derive instance newtypeSubscribeToDatasetResponse :: Newtype SubscribeToDatasetResponse _
 
 
 newtype SyncSessionToken = SyncSessionToken String
+derive instance newtypeSyncSessionToken :: Newtype SyncSessionToken _
 
 
 -- | Thrown if the request is throttled.
 newtype TooManyRequestsException = TooManyRequestsException 
   { "Message'" :: (ExceptionMessage)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | <p>A request to UnsubscribeFromDataset.</p>
@@ -552,12 +630,14 @@ newtype UnsubscribeFromDatasetRequest = UnsubscribeFromDatasetRequest
   , "DatasetName" :: (DatasetName)
   , "DeviceId" :: (DeviceId)
   }
+derive instance newtypeUnsubscribeFromDatasetRequest :: Newtype UnsubscribeFromDatasetRequest _
 
 
 -- | <p>Response to an UnsubscribeFromDataset request.</p>
 newtype UnsubscribeFromDatasetResponse = UnsubscribeFromDatasetResponse 
   { 
   }
+derive instance newtypeUnsubscribeFromDatasetResponse :: Newtype UnsubscribeFromDatasetResponse _
 
 
 -- | A request to post updates to records or add and delete records for a dataset and user.
@@ -570,9 +650,11 @@ newtype UpdateRecordsRequest = UpdateRecordsRequest
   , "SyncSessionToken" :: (SyncSessionToken)
   , "ClientContext" :: NullOrUndefined (ClientContext)
   }
+derive instance newtypeUpdateRecordsRequest :: Newtype UpdateRecordsRequest _
 
 
 -- | Returned for a successful UpdateRecordsRequest.
 newtype UpdateRecordsResponse = UpdateRecordsResponse 
   { "Records" :: NullOrUndefined (RecordList)
   }
+derive instance newtypeUpdateRecordsResponse :: Newtype UpdateRecordsResponse _

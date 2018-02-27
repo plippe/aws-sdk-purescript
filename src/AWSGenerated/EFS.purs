@@ -6,6 +6,7 @@ module AWS.EFS where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -69,6 +70,7 @@ modifyMountTargetSecurityGroups = AWS.request serviceName "ModifyMountTargetSecu
 
 
 newtype AwsAccountId = AwsAccountId String
+derive instance newtypeAwsAccountId :: Newtype AwsAccountId _
 
 
 -- | <p>Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.</p>
@@ -76,6 +78,7 @@ newtype BadRequest = BadRequest
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeBadRequest :: Newtype BadRequest _
 
 
 newtype CreateFileSystemRequest = CreateFileSystemRequest 
@@ -84,6 +87,7 @@ newtype CreateFileSystemRequest = CreateFileSystemRequest
   , "Encrypted" :: NullOrUndefined (Encrypted)
   , "KmsKeyId" :: NullOrUndefined (KmsKeyId)
   }
+derive instance newtypeCreateFileSystemRequest :: Newtype CreateFileSystemRequest _
 
 
 -- | <p/>
@@ -93,6 +97,7 @@ newtype CreateMountTargetRequest = CreateMountTargetRequest
   , "IpAddress" :: NullOrUndefined (IpAddress)
   , "SecurityGroups" :: NullOrUndefined (SecurityGroups)
   }
+derive instance newtypeCreateMountTargetRequest :: Newtype CreateMountTargetRequest _
 
 
 -- | <p/>
@@ -100,21 +105,25 @@ newtype CreateTagsRequest = CreateTagsRequest
   { "FileSystemId" :: (FileSystemId)
   , "Tags" :: (Tags)
   }
+derive instance newtypeCreateTagsRequest :: Newtype CreateTagsRequest _
 
 
 newtype CreationToken = CreationToken String
+derive instance newtypeCreationToken :: Newtype CreationToken _
 
 
 -- | <p/>
 newtype DeleteFileSystemRequest = DeleteFileSystemRequest 
   { "FileSystemId" :: (FileSystemId)
   }
+derive instance newtypeDeleteFileSystemRequest :: Newtype DeleteFileSystemRequest _
 
 
 -- | <p/>
 newtype DeleteMountTargetRequest = DeleteMountTargetRequest 
   { "MountTargetId" :: (MountTargetId)
   }
+derive instance newtypeDeleteMountTargetRequest :: Newtype DeleteMountTargetRequest _
 
 
 -- | <p/>
@@ -122,6 +131,7 @@ newtype DeleteTagsRequest = DeleteTagsRequest
   { "FileSystemId" :: (FileSystemId)
   , "TagKeys" :: (TagKeys)
   }
+derive instance newtypeDeleteTagsRequest :: Newtype DeleteTagsRequest _
 
 
 -- | <p>The service timed out trying to fulfill the request, and the client should try the call again.</p>
@@ -129,6 +139,7 @@ newtype DependencyTimeout = DependencyTimeout
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDependencyTimeout :: Newtype DependencyTimeout _
 
 
 -- | <p/>
@@ -138,6 +149,7 @@ newtype DescribeFileSystemsRequest = DescribeFileSystemsRequest
   , "CreationToken" :: NullOrUndefined (CreationToken)
   , "FileSystemId" :: NullOrUndefined (FileSystemId)
   }
+derive instance newtypeDescribeFileSystemsRequest :: Newtype DescribeFileSystemsRequest _
 
 
 newtype DescribeFileSystemsResponse = DescribeFileSystemsResponse 
@@ -145,17 +157,20 @@ newtype DescribeFileSystemsResponse = DescribeFileSystemsResponse
   , "FileSystems" :: NullOrUndefined (FileSystemDescriptions)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeFileSystemsResponse :: Newtype DescribeFileSystemsResponse _
 
 
 -- | <p/>
 newtype DescribeMountTargetSecurityGroupsRequest = DescribeMountTargetSecurityGroupsRequest 
   { "MountTargetId" :: (MountTargetId)
   }
+derive instance newtypeDescribeMountTargetSecurityGroupsRequest :: Newtype DescribeMountTargetSecurityGroupsRequest _
 
 
 newtype DescribeMountTargetSecurityGroupsResponse = DescribeMountTargetSecurityGroupsResponse 
   { "SecurityGroups" :: (SecurityGroups)
   }
+derive instance newtypeDescribeMountTargetSecurityGroupsResponse :: Newtype DescribeMountTargetSecurityGroupsResponse _
 
 
 -- | <p/>
@@ -165,6 +180,7 @@ newtype DescribeMountTargetsRequest = DescribeMountTargetsRequest
   , "FileSystemId" :: NullOrUndefined (FileSystemId)
   , "MountTargetId" :: NullOrUndefined (MountTargetId)
   }
+derive instance newtypeDescribeMountTargetsRequest :: Newtype DescribeMountTargetsRequest _
 
 
 -- | <p/>
@@ -173,6 +189,7 @@ newtype DescribeMountTargetsResponse = DescribeMountTargetsResponse
   , "MountTargets" :: NullOrUndefined (MountTargetDescriptions)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeMountTargetsResponse :: Newtype DescribeMountTargetsResponse _
 
 
 -- | <p/>
@@ -181,6 +198,7 @@ newtype DescribeTagsRequest = DescribeTagsRequest
   , "Marker" :: NullOrUndefined (Marker)
   , "FileSystemId" :: (FileSystemId)
   }
+derive instance newtypeDescribeTagsRequest :: Newtype DescribeTagsRequest _
 
 
 -- | <p/>
@@ -189,15 +207,19 @@ newtype DescribeTagsResponse = DescribeTagsResponse
   , "Tags" :: (Tags)
   , "NextMarker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeTagsResponse :: Newtype DescribeTagsResponse _
 
 
 newtype Encrypted = Encrypted Boolean
+derive instance newtypeEncrypted :: Newtype Encrypted _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>Returned if the file system you are trying to create already exists, with the creation token you provided.</p>
@@ -206,6 +228,7 @@ newtype FileSystemAlreadyExists = FileSystemAlreadyExists
   , "Message" :: NullOrUndefined (ErrorMessage)
   , "FileSystemId" :: (FileSystemId)
   }
+derive instance newtypeFileSystemAlreadyExists :: Newtype FileSystemAlreadyExists _
 
 
 -- | <p>Description of the file system.</p>
@@ -222,12 +245,15 @@ newtype FileSystemDescription = FileSystemDescription
   , "Encrypted" :: NullOrUndefined (Encrypted)
   , "KmsKeyId" :: NullOrUndefined (KmsKeyId)
   }
+derive instance newtypeFileSystemDescription :: Newtype FileSystemDescription _
 
 
 newtype FileSystemDescriptions = FileSystemDescriptions (Array FileSystemDescription)
+derive instance newtypeFileSystemDescriptions :: Newtype FileSystemDescriptions _
 
 
 newtype FileSystemId = FileSystemId String
+derive instance newtypeFileSystemId :: Newtype FileSystemId _
 
 
 -- | <p>Returned if a file system has mount targets.</p>
@@ -235,6 +261,7 @@ newtype FileSystemInUse = FileSystemInUse
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeFileSystemInUse :: Newtype FileSystemInUse _
 
 
 -- | <p>Returned if the AWS account has already created maximum number of file systems allowed per account.</p>
@@ -242,6 +269,7 @@ newtype FileSystemLimitExceeded = FileSystemLimitExceeded
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeFileSystemLimitExceeded :: Newtype FileSystemLimitExceeded _
 
 
 -- | <p>Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.</p>
@@ -249,6 +277,7 @@ newtype FileSystemNotFound = FileSystemNotFound
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeFileSystemNotFound :: Newtype FileSystemNotFound _
 
 
 -- | <p>Latest known metered size (in bytes) of data stored in the file system, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent the actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not necessarily the exact size the file system was at any instant in time.</p>
@@ -256,9 +285,11 @@ newtype FileSystemSize = FileSystemSize
   { "Value" :: (FileSystemSizeValue)
   , "Number" :: NullOrUndefined (Number)
   }
+derive instance newtypeFileSystemSize :: Newtype FileSystemSize _
 
 
 newtype FileSystemSizeValue = FileSystemSizeValue Number
+derive instance newtypeFileSystemSizeValue :: Newtype FileSystemSizeValue _
 
 
 -- | <p>Returned if the file system's life cycle state is not "created".</p>
@@ -266,6 +297,7 @@ newtype IncorrectFileSystemLifeCycleState = IncorrectFileSystemLifeCycleState
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeIncorrectFileSystemLifeCycleState :: Newtype IncorrectFileSystemLifeCycleState _
 
 
 -- | <p>Returned if the mount target is not in the correct state for the operation.</p>
@@ -273,6 +305,7 @@ newtype IncorrectMountTargetState = IncorrectMountTargetState
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeIncorrectMountTargetState :: Newtype IncorrectMountTargetState _
 
 
 -- | <p>Returned if an error occurred on the server side.</p>
@@ -280,9 +313,11 @@ newtype InternalServerError = InternalServerError
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInternalServerError :: Newtype InternalServerError _
 
 
 newtype IpAddress = IpAddress String
+derive instance newtypeIpAddress :: Newtype IpAddress _
 
 
 -- | <p>Returned if the request specified an <code>IpAddress</code> that is already in use in the subnet.</p>
@@ -290,18 +325,23 @@ newtype IpAddressInUse = IpAddressInUse
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeIpAddressInUse :: Newtype IpAddressInUse _
 
 
 newtype KmsKeyId = KmsKeyId String
+derive instance newtypeKmsKeyId :: Newtype KmsKeyId _
 
 
 newtype LifeCycleState = LifeCycleState String
+derive instance newtypeLifeCycleState :: Newtype LifeCycleState _
 
 
 newtype Marker = Marker String
+derive instance newtypeMarker :: Newtype Marker _
 
 
 newtype MaxItems = MaxItems Int
+derive instance newtypeMaxItems :: Newtype MaxItems _
 
 
 -- | <p/>
@@ -309,6 +349,7 @@ newtype ModifyMountTargetSecurityGroupsRequest = ModifyMountTargetSecurityGroups
   { "MountTargetId" :: (MountTargetId)
   , "SecurityGroups" :: NullOrUndefined (SecurityGroups)
   }
+derive instance newtypeModifyMountTargetSecurityGroupsRequest :: Newtype ModifyMountTargetSecurityGroupsRequest _
 
 
 -- | <p>Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.</p>
@@ -316,9 +357,11 @@ newtype MountTargetConflict = MountTargetConflict
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeMountTargetConflict :: Newtype MountTargetConflict _
 
 
 newtype MountTargetCount = MountTargetCount Int
+derive instance newtypeMountTargetCount :: Newtype MountTargetCount _
 
 
 -- | <p>Provides a description of a mount target.</p>
@@ -331,12 +374,15 @@ newtype MountTargetDescription = MountTargetDescription
   , "IpAddress" :: NullOrUndefined (IpAddress)
   , "NetworkInterfaceId" :: NullOrUndefined (NetworkInterfaceId)
   }
+derive instance newtypeMountTargetDescription :: Newtype MountTargetDescription _
 
 
 newtype MountTargetDescriptions = MountTargetDescriptions (Array MountTargetDescription)
+derive instance newtypeMountTargetDescriptions :: Newtype MountTargetDescriptions _
 
 
 newtype MountTargetId = MountTargetId String
+derive instance newtypeMountTargetId :: Newtype MountTargetId _
 
 
 -- | <p>Returned if there is no mount target with the specified ID found in the caller's account.</p>
@@ -344,9 +390,11 @@ newtype MountTargetNotFound = MountTargetNotFound
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeMountTargetNotFound :: Newtype MountTargetNotFound _
 
 
 newtype NetworkInterfaceId = NetworkInterfaceId String
+derive instance newtypeNetworkInterfaceId :: Newtype NetworkInterfaceId _
 
 
 -- | <p> The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html">Amazon VPC Limits</a> in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). </p>
@@ -354,6 +402,7 @@ newtype NetworkInterfaceLimitExceeded = NetworkInterfaceLimitExceeded
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNetworkInterfaceLimitExceeded :: Newtype NetworkInterfaceLimitExceeded _
 
 
 -- | <p>Returned if <code>IpAddress</code> was not specified in the request and there are no free IP addresses in the subnet.</p>
@@ -361,12 +410,15 @@ newtype NoFreeAddressesInSubnet = NoFreeAddressesInSubnet
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoFreeAddressesInSubnet :: Newtype NoFreeAddressesInSubnet _
 
 
 newtype PerformanceMode = PerformanceMode String
+derive instance newtypePerformanceMode :: Newtype PerformanceMode _
 
 
 newtype SecurityGroup = SecurityGroup String
+derive instance newtypeSecurityGroup :: Newtype SecurityGroup _
 
 
 -- | <p>Returned if the size of <code>SecurityGroups</code> specified in the request is greater than five.</p>
@@ -374,6 +426,7 @@ newtype SecurityGroupLimitExceeded = SecurityGroupLimitExceeded
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeSecurityGroupLimitExceeded :: Newtype SecurityGroupLimitExceeded _
 
 
 -- | <p>Returned if one of the specified security groups does not exist in the subnet's VPC.</p>
@@ -381,12 +434,15 @@ newtype SecurityGroupNotFound = SecurityGroupNotFound
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeSecurityGroupNotFound :: Newtype SecurityGroupNotFound _
 
 
 newtype SecurityGroups = SecurityGroups (Array SecurityGroup)
+derive instance newtypeSecurityGroups :: Newtype SecurityGroups _
 
 
 newtype SubnetId = SubnetId String
+derive instance newtypeSubnetId :: Newtype SubnetId _
 
 
 -- | <p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>
@@ -394,6 +450,7 @@ newtype SubnetNotFound = SubnetNotFound
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeSubnetNotFound :: Newtype SubnetNotFound _
 
 
 -- | <p>A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:<code> + - = . _ : /</code> </p>
@@ -401,18 +458,23 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeys = TagKeys (Array TagKey)
+derive instance newtypeTagKeys :: Newtype TagKeys _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Array Tag)
+derive instance newtypeTags :: Newtype Tags _
 
 
 -- | <p/>
@@ -420,3 +482,4 @@ newtype UnsupportedAvailabilityZone = UnsupportedAvailabilityZone
   { "ErrorCode" :: (ErrorCode)
   , "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeUnsupportedAvailabilityZone :: Newtype UnsupportedAvailabilityZone _

@@ -6,6 +6,7 @@ module AWS.CloudWatch where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -89,15 +90,19 @@ setAlarmState = AWS.request serviceName "SetAlarmState"
 
 
 newtype ActionPrefix = ActionPrefix String
+derive instance newtypeActionPrefix :: Newtype ActionPrefix _
 
 
 newtype ActionsEnabled = ActionsEnabled Boolean
+derive instance newtypeActionsEnabled :: Newtype ActionsEnabled _
 
 
 newtype AlarmArn = AlarmArn String
+derive instance newtypeAlarmArn :: Newtype AlarmArn _
 
 
 newtype AlarmDescription = AlarmDescription String
+derive instance newtypeAlarmDescription :: Newtype AlarmDescription _
 
 
 -- | <p>Represents the history of a specific alarm.</p>
@@ -108,33 +113,43 @@ newtype AlarmHistoryItem = AlarmHistoryItem
   , "HistorySummary" :: NullOrUndefined (HistorySummary)
   , "HistoryData" :: NullOrUndefined (HistoryData)
   }
+derive instance newtypeAlarmHistoryItem :: Newtype AlarmHistoryItem _
 
 
 newtype AlarmHistoryItems = AlarmHistoryItems (Array AlarmHistoryItem)
+derive instance newtypeAlarmHistoryItems :: Newtype AlarmHistoryItems _
 
 
 newtype AlarmName = AlarmName String
+derive instance newtypeAlarmName :: Newtype AlarmName _
 
 
 newtype AlarmNamePrefix = AlarmNamePrefix String
+derive instance newtypeAlarmNamePrefix :: Newtype AlarmNamePrefix _
 
 
 newtype AlarmNames = AlarmNames (Array AlarmName)
+derive instance newtypeAlarmNames :: Newtype AlarmNames _
 
 
 newtype AwsQueryErrorMessage = AwsQueryErrorMessage String
+derive instance newtypeAwsQueryErrorMessage :: Newtype AwsQueryErrorMessage _
 
 
 newtype ComparisonOperator = ComparisonOperator String
+derive instance newtypeComparisonOperator :: Newtype ComparisonOperator _
 
 
 newtype DashboardArn = DashboardArn String
+derive instance newtypeDashboardArn :: Newtype DashboardArn _
 
 
 newtype DashboardBody = DashboardBody String
+derive instance newtypeDashboardBody :: Newtype DashboardBody _
 
 
 newtype DashboardEntries = DashboardEntries (Array DashboardEntry)
+derive instance newtypeDashboardEntries :: Newtype DashboardEntries _
 
 
 -- | <p>Represents a specific dashboard.</p>
@@ -144,9 +159,11 @@ newtype DashboardEntry = DashboardEntry
   , "LastModified" :: NullOrUndefined (LastModified)
   , "Size" :: NullOrUndefined (Size)
   }
+derive instance newtypeDashboardEntry :: Newtype DashboardEntry _
 
 
 newtype DashboardErrorMessage = DashboardErrorMessage String
+derive instance newtypeDashboardErrorMessage :: Newtype DashboardErrorMessage _
 
 
 -- | <p>Some part of the dashboard data is invalid.</p>
@@ -154,21 +171,26 @@ newtype DashboardInvalidInputError = DashboardInvalidInputError
   { "Message'" :: NullOrUndefined (DashboardErrorMessage)
   , "DashboardValidationMessages'" :: NullOrUndefined (DashboardValidationMessages)
   }
+derive instance newtypeDashboardInvalidInputError :: Newtype DashboardInvalidInputError _
 
 
 newtype DashboardName = DashboardName String
+derive instance newtypeDashboardName :: Newtype DashboardName _
 
 
 newtype DashboardNamePrefix = DashboardNamePrefix String
+derive instance newtypeDashboardNamePrefix :: Newtype DashboardNamePrefix _
 
 
 newtype DashboardNames = DashboardNames (Array DashboardName)
+derive instance newtypeDashboardNames :: Newtype DashboardNames _
 
 
 -- | <p>The specified dashboard does not exist.</p>
 newtype DashboardNotFoundError = DashboardNotFoundError 
   { "Message'" :: NullOrUndefined (DashboardErrorMessage)
   }
+derive instance newtypeDashboardNotFoundError :: Newtype DashboardNotFoundError _
 
 
 -- | <p>An error or warning for the operation.</p>
@@ -176,12 +198,15 @@ newtype DashboardValidationMessage = DashboardValidationMessage
   { "DataPath" :: NullOrUndefined (DataPath)
   , "Message" :: NullOrUndefined (Message)
   }
+derive instance newtypeDashboardValidationMessage :: Newtype DashboardValidationMessage _
 
 
 newtype DashboardValidationMessages = DashboardValidationMessages (Array DashboardValidationMessage)
+derive instance newtypeDashboardValidationMessages :: Newtype DashboardValidationMessages _
 
 
 newtype DataPath = DataPath String
+derive instance newtypeDataPath :: Newtype DataPath _
 
 
 -- | <p>Encapsulates the statistical data that CloudWatch computes from metric data.</p>
@@ -195,33 +220,41 @@ newtype Datapoint = Datapoint
   , "Unit''" :: NullOrUndefined (StandardUnit)
   , "ExtendedStatistics" :: NullOrUndefined (DatapointValueMap)
   }
+derive instance newtypeDatapoint :: Newtype Datapoint _
 
 
 newtype DatapointValue = DatapointValue Number
+derive instance newtypeDatapointValue :: Newtype DatapointValue _
 
 
 newtype DatapointValueMap = DatapointValueMap (Map ExtendedStatistic DatapointValue)
+derive instance newtypeDatapointValueMap :: Newtype DatapointValueMap _
 
 
 newtype Datapoints = Datapoints (Array Datapoint)
+derive instance newtypeDatapoints :: Newtype Datapoints _
 
 
 newtype DatapointsToAlarm = DatapointsToAlarm Int
+derive instance newtypeDatapointsToAlarm :: Newtype DatapointsToAlarm _
 
 
 newtype DeleteAlarmsInput = DeleteAlarmsInput 
   { "AlarmNames" :: (AlarmNames)
   }
+derive instance newtypeDeleteAlarmsInput :: Newtype DeleteAlarmsInput _
 
 
 newtype DeleteDashboardsInput = DeleteDashboardsInput 
   { "DashboardNames" :: (DashboardNames)
   }
+derive instance newtypeDeleteDashboardsInput :: Newtype DeleteDashboardsInput _
 
 
 newtype DeleteDashboardsOutput = DeleteDashboardsOutput 
   { 
   }
+derive instance newtypeDeleteDashboardsOutput :: Newtype DeleteDashboardsOutput _
 
 
 newtype DescribeAlarmHistoryInput = DescribeAlarmHistoryInput 
@@ -232,12 +265,14 @@ newtype DescribeAlarmHistoryInput = DescribeAlarmHistoryInput
   , "MaxRecords" :: NullOrUndefined (MaxRecords)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAlarmHistoryInput :: Newtype DescribeAlarmHistoryInput _
 
 
 newtype DescribeAlarmHistoryOutput = DescribeAlarmHistoryOutput 
   { "AlarmHistoryItems" :: NullOrUndefined (AlarmHistoryItems)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAlarmHistoryOutput :: Newtype DescribeAlarmHistoryOutput _
 
 
 newtype DescribeAlarmsForMetricInput = DescribeAlarmsForMetricInput 
@@ -249,11 +284,13 @@ newtype DescribeAlarmsForMetricInput = DescribeAlarmsForMetricInput
   , "Period" :: NullOrUndefined (Period)
   , "Unit''" :: NullOrUndefined (StandardUnit)
   }
+derive instance newtypeDescribeAlarmsForMetricInput :: Newtype DescribeAlarmsForMetricInput _
 
 
 newtype DescribeAlarmsForMetricOutput = DescribeAlarmsForMetricOutput 
   { "MetricAlarms" :: NullOrUndefined (MetricAlarms)
   }
+derive instance newtypeDescribeAlarmsForMetricOutput :: Newtype DescribeAlarmsForMetricOutput _
 
 
 newtype DescribeAlarmsInput = DescribeAlarmsInput 
@@ -264,12 +301,14 @@ newtype DescribeAlarmsInput = DescribeAlarmsInput
   , "MaxRecords" :: NullOrUndefined (MaxRecords)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAlarmsInput :: Newtype DescribeAlarmsInput _
 
 
 newtype DescribeAlarmsOutput = DescribeAlarmsOutput 
   { "MetricAlarms" :: NullOrUndefined (MetricAlarms)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAlarmsOutput :: Newtype DescribeAlarmsOutput _
 
 
 -- | <p>Expands the identity of a metric.</p>
@@ -277,6 +316,7 @@ newtype Dimension = Dimension
   { "Name" :: (DimensionName)
   , "Value" :: (DimensionValue)
   }
+derive instance newtypeDimension :: Newtype Dimension _
 
 
 -- | <p>Represents filters for a dimension.</p>
@@ -284,51 +324,65 @@ newtype DimensionFilter = DimensionFilter
   { "Name" :: (DimensionName)
   , "Value" :: NullOrUndefined (DimensionValue)
   }
+derive instance newtypeDimensionFilter :: Newtype DimensionFilter _
 
 
 newtype DimensionFilters = DimensionFilters (Array DimensionFilter)
+derive instance newtypeDimensionFilters :: Newtype DimensionFilters _
 
 
 newtype DimensionName = DimensionName String
+derive instance newtypeDimensionName :: Newtype DimensionName _
 
 
 newtype DimensionValue = DimensionValue String
+derive instance newtypeDimensionValue :: Newtype DimensionValue _
 
 
 newtype Dimensions = Dimensions (Array Dimension)
+derive instance newtypeDimensions :: Newtype Dimensions _
 
 
 newtype DisableAlarmActionsInput = DisableAlarmActionsInput 
   { "AlarmNames" :: (AlarmNames)
   }
+derive instance newtypeDisableAlarmActionsInput :: Newtype DisableAlarmActionsInput _
 
 
 newtype EnableAlarmActionsInput = EnableAlarmActionsInput 
   { "AlarmNames" :: (AlarmNames)
   }
+derive instance newtypeEnableAlarmActionsInput :: Newtype EnableAlarmActionsInput _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile String
+derive instance newtypeEvaluateLowSampleCountPercentile :: Newtype EvaluateLowSampleCountPercentile _
 
 
 newtype EvaluationPeriods = EvaluationPeriods Int
+derive instance newtypeEvaluationPeriods :: Newtype EvaluationPeriods _
 
 
 newtype ExtendedStatistic = ExtendedStatistic String
+derive instance newtypeExtendedStatistic :: Newtype ExtendedStatistic _
 
 
 newtype ExtendedStatistics = ExtendedStatistics (Array ExtendedStatistic)
+derive instance newtypeExtendedStatistics :: Newtype ExtendedStatistics _
 
 
 newtype FaultDescription = FaultDescription String
+derive instance newtypeFaultDescription :: Newtype FaultDescription _
 
 
 newtype GetDashboardInput = GetDashboardInput 
   { "DashboardName" :: (DashboardName)
   }
+derive instance newtypeGetDashboardInput :: Newtype GetDashboardInput _
 
 
 newtype GetDashboardOutput = GetDashboardOutput 
@@ -336,6 +390,7 @@ newtype GetDashboardOutput = GetDashboardOutput
   , "DashboardBody" :: NullOrUndefined (DashboardBody)
   , "DashboardName" :: NullOrUndefined (DashboardName)
   }
+derive instance newtypeGetDashboardOutput :: Newtype GetDashboardOutput _
 
 
 newtype GetMetricStatisticsInput = GetMetricStatisticsInput 
@@ -349,72 +404,86 @@ newtype GetMetricStatisticsInput = GetMetricStatisticsInput
   , "ExtendedStatistics" :: NullOrUndefined (ExtendedStatistics)
   , "Unit''" :: NullOrUndefined (StandardUnit)
   }
+derive instance newtypeGetMetricStatisticsInput :: Newtype GetMetricStatisticsInput _
 
 
 newtype GetMetricStatisticsOutput = GetMetricStatisticsOutput 
   { "Label" :: NullOrUndefined (MetricLabel)
   , "Datapoints" :: NullOrUndefined (Datapoints)
   }
+derive instance newtypeGetMetricStatisticsOutput :: Newtype GetMetricStatisticsOutput _
 
 
 newtype HistoryData = HistoryData String
+derive instance newtypeHistoryData :: Newtype HistoryData _
 
 
 newtype HistoryItemType = HistoryItemType String
+derive instance newtypeHistoryItemType :: Newtype HistoryItemType _
 
 
 newtype HistorySummary = HistorySummary String
+derive instance newtypeHistorySummary :: Newtype HistorySummary _
 
 
 -- | <p>Request processing has failed due to some unknown error, exception, or failure.</p>
 newtype InternalServiceFault = InternalServiceFault 
   { "Message" :: NullOrUndefined (FaultDescription)
   }
+derive instance newtypeInternalServiceFault :: Newtype InternalServiceFault _
 
 
 -- | <p>Data was not syntactically valid JSON.</p>
 newtype InvalidFormatFault = InvalidFormatFault 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidFormatFault :: Newtype InvalidFormatFault _
 
 
 -- | <p>The next token specified is invalid.</p>
 newtype InvalidNextToken = InvalidNextToken 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidNextToken :: Newtype InvalidNextToken _
 
 
 -- | <p>Parameters were used together that cannot be used together.</p>
 newtype InvalidParameterCombinationException = InvalidParameterCombinationException 
   { "Message'" :: NullOrUndefined (AwsQueryErrorMessage)
   }
+derive instance newtypeInvalidParameterCombinationException :: Newtype InvalidParameterCombinationException _
 
 
 -- | <p>The value of an input parameter is bad or out-of-range.</p>
 newtype InvalidParameterValueException = InvalidParameterValueException 
   { "Message'" :: NullOrUndefined (AwsQueryErrorMessage)
   }
+derive instance newtypeInvalidParameterValueException :: Newtype InvalidParameterValueException _
 
 
 newtype LastModified = LastModified Number
+derive instance newtypeLastModified :: Newtype LastModified _
 
 
 -- | <p>The quota for alarms for this customer has already been reached.</p>
 newtype LimitExceededFault = LimitExceededFault 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLimitExceededFault :: Newtype LimitExceededFault _
 
 
 newtype ListDashboardsInput = ListDashboardsInput 
   { "DashboardNamePrefix" :: NullOrUndefined (DashboardNamePrefix)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListDashboardsInput :: Newtype ListDashboardsInput _
 
 
 newtype ListDashboardsOutput = ListDashboardsOutput 
   { "DashboardEntries" :: NullOrUndefined (DashboardEntries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListDashboardsOutput :: Newtype ListDashboardsOutput _
 
 
 newtype ListMetricsInput = ListMetricsInput 
@@ -423,18 +492,22 @@ newtype ListMetricsInput = ListMetricsInput
   , "Dimensions" :: NullOrUndefined (DimensionFilters)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListMetricsInput :: Newtype ListMetricsInput _
 
 
 newtype ListMetricsOutput = ListMetricsOutput 
   { "Metrics" :: NullOrUndefined (Metrics)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListMetricsOutput :: Newtype ListMetricsOutput _
 
 
 newtype MaxRecords = MaxRecords Int
+derive instance newtypeMaxRecords :: Newtype MaxRecords _
 
 
 newtype Message = Message String
+derive instance newtypeMessage :: Newtype Message _
 
 
 -- | <p>Represents a specific metric.</p>
@@ -443,6 +516,7 @@ newtype Metric = Metric
   , "MetricName" :: NullOrUndefined (MetricName)
   , "Dimensions" :: NullOrUndefined (Dimensions)
   }
+derive instance newtypeMetric :: Newtype Metric _
 
 
 -- | <p>Represents an alarm.</p>
@@ -473,12 +547,15 @@ newtype MetricAlarm = MetricAlarm
   , "TreatMissingData" :: NullOrUndefined (TreatMissingData)
   , "EvaluateLowSampleCountPercentile" :: NullOrUndefined (EvaluateLowSampleCountPercentile)
   }
+derive instance newtypeMetricAlarm :: Newtype MetricAlarm _
 
 
 newtype MetricAlarms = MetricAlarms (Array MetricAlarm)
+derive instance newtypeMetricAlarms :: Newtype MetricAlarms _
 
 
 newtype MetricData = MetricData (Array MetricDatum)
+derive instance newtypeMetricData :: Newtype MetricData _
 
 
 -- | <p>Encapsulates the information sent to either create a metric or add new values to be aggregated into an existing metric.</p>
@@ -491,41 +568,51 @@ newtype MetricDatum = MetricDatum
   , "Unit''" :: NullOrUndefined (StandardUnit)
   , "StorageResolution" :: NullOrUndefined (StorageResolution)
   }
+derive instance newtypeMetricDatum :: Newtype MetricDatum _
 
 
 newtype MetricLabel = MetricLabel String
+derive instance newtypeMetricLabel :: Newtype MetricLabel _
 
 
 newtype MetricName = MetricName String
+derive instance newtypeMetricName :: Newtype MetricName _
 
 
 newtype Metrics = Metrics (Array Metric)
+derive instance newtypeMetrics :: Newtype Metrics _
 
 
 -- | <p>An input parameter that is required is missing.</p>
 newtype MissingRequiredParameterException = MissingRequiredParameterException 
   { "Message'" :: NullOrUndefined (AwsQueryErrorMessage)
   }
+derive instance newtypeMissingRequiredParameterException :: Newtype MissingRequiredParameterException _
 
 
 newtype Namespace = Namespace String
+derive instance newtypeNamespace :: Newtype Namespace _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 newtype Period = Period Int
+derive instance newtypePeriod :: Newtype Period _
 
 
 newtype PutDashboardInput = PutDashboardInput 
   { "DashboardName" :: (DashboardName)
   , "DashboardBody" :: (DashboardBody)
   }
+derive instance newtypePutDashboardInput :: Newtype PutDashboardInput _
 
 
 newtype PutDashboardOutput = PutDashboardOutput 
   { "DashboardValidationMessages" :: NullOrUndefined (DashboardValidationMessages)
   }
+derive instance newtypePutDashboardOutput :: Newtype PutDashboardOutput _
 
 
 newtype PutMetricAlarmInput = PutMetricAlarmInput 
@@ -549,24 +636,29 @@ newtype PutMetricAlarmInput = PutMetricAlarmInput
   , "TreatMissingData" :: NullOrUndefined (TreatMissingData)
   , "EvaluateLowSampleCountPercentile" :: NullOrUndefined (EvaluateLowSampleCountPercentile)
   }
+derive instance newtypePutMetricAlarmInput :: Newtype PutMetricAlarmInput _
 
 
 newtype PutMetricDataInput = PutMetricDataInput 
   { "Namespace" :: (Namespace)
   , "MetricData" :: (MetricData)
   }
+derive instance newtypePutMetricDataInput :: Newtype PutMetricDataInput _
 
 
 newtype ResourceList = ResourceList (Array ResourceName)
+derive instance newtypeResourceList :: Newtype ResourceList _
 
 
 newtype ResourceName = ResourceName String
+derive instance newtypeResourceName :: Newtype ResourceName _
 
 
 -- | <p>The named resource does not exist.</p>
 newtype ResourceNotFound = ResourceNotFound 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceNotFound :: Newtype ResourceNotFound _
 
 
 newtype SetAlarmStateInput = SetAlarmStateInput 
@@ -575,24 +667,31 @@ newtype SetAlarmStateInput = SetAlarmStateInput
   , "StateReason" :: (StateReason)
   , "StateReasonData" :: NullOrUndefined (StateReasonData)
   }
+derive instance newtypeSetAlarmStateInput :: Newtype SetAlarmStateInput _
 
 
 newtype Size = Size Number
+derive instance newtypeSize :: Newtype Size _
 
 
 newtype StandardUnit = StandardUnit String
+derive instance newtypeStandardUnit :: Newtype StandardUnit _
 
 
 newtype StateReason = StateReason String
+derive instance newtypeStateReason :: Newtype StateReason _
 
 
 newtype StateReasonData = StateReasonData String
+derive instance newtypeStateReasonData :: Newtype StateReasonData _
 
 
 newtype StateValue = StateValue String
+derive instance newtypeStateValue :: Newtype StateValue _
 
 
 newtype Statistic = Statistic String
+derive instance newtypeStatistic :: Newtype Statistic _
 
 
 -- | <p>Represents a set of statistics that describes a specific metric. </p>
@@ -602,15 +701,20 @@ newtype StatisticSet = StatisticSet
   , "Minimum" :: (DatapointValue)
   , "Maximum" :: (DatapointValue)
   }
+derive instance newtypeStatisticSet :: Newtype StatisticSet _
 
 
 newtype Statistics = Statistics (Array Statistic)
+derive instance newtypeStatistics :: Newtype Statistics _
 
 
 newtype StorageResolution = StorageResolution Int
+derive instance newtypeStorageResolution :: Newtype StorageResolution _
 
 
 newtype Threshold = Threshold Number
+derive instance newtypeThreshold :: Newtype Threshold _
 
 
 newtype TreatMissingData = TreatMissingData String
+derive instance newtypeTreatMissingData :: Newtype TreatMissingData _

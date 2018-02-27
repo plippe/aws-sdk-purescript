@@ -6,6 +6,7 @@ module AWS.ACM where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -67,21 +68,27 @@ newtype AddTagsToCertificateRequest = AddTagsToCertificateRequest
   { "CertificateArn" :: (Arn)
   , "Tags" :: (TagList)
   }
+derive instance newtypeAddTagsToCertificateRequest :: Newtype AddTagsToCertificateRequest _
 
 
 newtype Arn = Arn String
+derive instance newtypeArn :: Newtype Arn _
 
 
 newtype CertificateBody = CertificateBody String
+derive instance newtypeCertificateBody :: Newtype CertificateBody _
 
 
 newtype CertificateBodyBlob = CertificateBodyBlob String
+derive instance newtypeCertificateBodyBlob :: Newtype CertificateBodyBlob _
 
 
 newtype CertificateChain = CertificateChain String
+derive instance newtypeCertificateChain :: Newtype CertificateChain _
 
 
 newtype CertificateChainBlob = CertificateChainBlob String
+derive instance newtypeCertificateChainBlob :: Newtype CertificateChainBlob _
 
 
 -- | <p>Contains metadata about an ACM certificate. This structure is returned in the response to a <a>DescribeCertificate</a> request. </p>
@@ -110,12 +117,15 @@ newtype CertificateDetail = CertificateDetail
   , "KeyUsages" :: NullOrUndefined (KeyUsageList)
   , "ExtendedKeyUsages" :: NullOrUndefined (ExtendedKeyUsageList)
   }
+derive instance newtypeCertificateDetail :: Newtype CertificateDetail _
 
 
 newtype CertificateStatus = CertificateStatus String
+derive instance newtypeCertificateStatus :: Newtype CertificateStatus _
 
 
 newtype CertificateStatuses = CertificateStatuses (Array CertificateStatus)
+derive instance newtypeCertificateStatuses :: Newtype CertificateStatuses _
 
 
 -- | <p>This structure is returned in the response object of <a>ListCertificates</a> action. </p>
@@ -123,36 +133,45 @@ newtype CertificateSummary = CertificateSummary
   { "CertificateArn" :: NullOrUndefined (Arn)
   , "DomainName" :: NullOrUndefined (DomainNameString)
   }
+derive instance newtypeCertificateSummary :: Newtype CertificateSummary _
 
 
 newtype CertificateSummaryList = CertificateSummaryList (Array CertificateSummary)
+derive instance newtypeCertificateSummaryList :: Newtype CertificateSummaryList _
 
 
 newtype CertificateType = CertificateType String
+derive instance newtypeCertificateType :: Newtype CertificateType _
 
 
 newtype DeleteCertificateRequest = DeleteCertificateRequest 
   { "CertificateArn" :: (Arn)
   }
+derive instance newtypeDeleteCertificateRequest :: Newtype DeleteCertificateRequest _
 
 
 newtype DescribeCertificateRequest = DescribeCertificateRequest 
   { "CertificateArn" :: (Arn)
   }
+derive instance newtypeDescribeCertificateRequest :: Newtype DescribeCertificateRequest _
 
 
 newtype DescribeCertificateResponse = DescribeCertificateResponse 
   { "Certificate" :: NullOrUndefined (CertificateDetail)
   }
+derive instance newtypeDescribeCertificateResponse :: Newtype DescribeCertificateResponse _
 
 
 newtype DomainList = DomainList (Array DomainNameString)
+derive instance newtypeDomainList :: Newtype DomainList _
 
 
 newtype DomainNameString = DomainNameString String
+derive instance newtypeDomainNameString :: Newtype DomainNameString _
 
 
 newtype DomainStatus = DomainStatus String
+derive instance newtypeDomainStatus :: Newtype DomainStatus _
 
 
 -- | <p>Contains information about the validation of each domain name in the certificate.</p>
@@ -164,9 +183,11 @@ newtype DomainValidation = DomainValidation
   , "ResourceRecord" :: NullOrUndefined (ResourceRecord)
   , "ValidationMethod" :: NullOrUndefined (ValidationMethod)
   }
+derive instance newtypeDomainValidation :: Newtype DomainValidation _
 
 
 newtype DomainValidationList = DomainValidationList (Array DomainValidation)
+derive instance newtypeDomainValidationList :: Newtype DomainValidationList _
 
 
 -- | <p>Contains information about the domain names that you want ACM to use to send you emails that enable you to validate domain ownership.</p>
@@ -174,9 +195,11 @@ newtype DomainValidationOption = DomainValidationOption
   { "DomainName" :: (DomainNameString)
   , "ValidationDomain" :: (DomainNameString)
   }
+derive instance newtypeDomainValidationOption :: Newtype DomainValidationOption _
 
 
 newtype DomainValidationOptionList = DomainValidationOptionList (Array DomainValidationOption)
+derive instance newtypeDomainValidationOptionList :: Newtype DomainValidationOptionList _
 
 
 -- | <p>The Extended Key Usage X.509 v3 extension defines one or more purposes for which the public key can be used. This is in addition to or in place of the basic purposes specified by the Key Usage extension. </p>
@@ -184,18 +207,23 @@ newtype ExtendedKeyUsage = ExtendedKeyUsage
   { "Name" :: NullOrUndefined (ExtendedKeyUsageName)
   , "OID" :: NullOrUndefined (String)
   }
+derive instance newtypeExtendedKeyUsage :: Newtype ExtendedKeyUsage _
 
 
 newtype ExtendedKeyUsageFilterList = ExtendedKeyUsageFilterList (Array ExtendedKeyUsageName)
+derive instance newtypeExtendedKeyUsageFilterList :: Newtype ExtendedKeyUsageFilterList _
 
 
 newtype ExtendedKeyUsageList = ExtendedKeyUsageList (Array ExtendedKeyUsage)
+derive instance newtypeExtendedKeyUsageList :: Newtype ExtendedKeyUsageList _
 
 
 newtype ExtendedKeyUsageName = ExtendedKeyUsageName String
+derive instance newtypeExtendedKeyUsageName :: Newtype ExtendedKeyUsageName _
 
 
 newtype FailureReason = FailureReason String
+derive instance newtypeFailureReason :: Newtype FailureReason _
 
 
 -- | <p>This structure can be used in the <a>ListCertificates</a> action to filter the output of the certificate list. </p>
@@ -204,20 +232,24 @@ newtype Filters = Filters
   , "KeyUsage'" :: NullOrUndefined (KeyUsageFilterList)
   , "KeyTypes'" :: NullOrUndefined (KeyAlgorithmList)
   }
+derive instance newtypeFilters :: Newtype Filters _
 
 
 newtype GetCertificateRequest = GetCertificateRequest 
   { "CertificateArn" :: (Arn)
   }
+derive instance newtypeGetCertificateRequest :: Newtype GetCertificateRequest _
 
 
 newtype GetCertificateResponse = GetCertificateResponse 
   { "Certificate" :: NullOrUndefined (CertificateBody)
   , "CertificateChain" :: NullOrUndefined (CertificateChain)
   }
+derive instance newtypeGetCertificateResponse :: Newtype GetCertificateResponse _
 
 
 newtype IdempotencyToken = IdempotencyToken String
+derive instance newtypeIdempotencyToken :: Newtype IdempotencyToken _
 
 
 newtype ImportCertificateRequest = ImportCertificateRequest 
@@ -226,65 +258,79 @@ newtype ImportCertificateRequest = ImportCertificateRequest
   , "PrivateKey" :: (PrivateKeyBlob)
   , "CertificateChain" :: NullOrUndefined (CertificateChainBlob)
   }
+derive instance newtypeImportCertificateRequest :: Newtype ImportCertificateRequest _
 
 
 newtype ImportCertificateResponse = ImportCertificateResponse 
   { "CertificateArn" :: NullOrUndefined (Arn)
   }
+derive instance newtypeImportCertificateResponse :: Newtype ImportCertificateResponse _
 
 
 newtype InUseList = InUseList (Array String)
+derive instance newtypeInUseList :: Newtype InUseList _
 
 
 -- | <p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>
 newtype InvalidArnException = InvalidArnException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidArnException :: Newtype InvalidArnException _
 
 
 -- | <p>One or more values in the <a>DomainValidationOption</a> structure is incorrect.</p>
 newtype InvalidDomainValidationOptionsException = InvalidDomainValidationOptionsException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidDomainValidationOptionsException :: Newtype InvalidDomainValidationOptionsException _
 
 
 -- | <p>Processing has reached an invalid state. For example, this exception can occur if the specified domain is not using email validation, or the current certificate status does not permit the requested operation. See the exception message returned by ACM to determine which state is not valid.</p>
 newtype InvalidStateException = InvalidStateException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidStateException :: Newtype InvalidStateException _
 
 
 -- | <p>One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with <code>aws:</code>.</p>
 newtype InvalidTagException = InvalidTagException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidTagException :: Newtype InvalidTagException _
 
 
 newtype KeyAlgorithm = KeyAlgorithm String
+derive instance newtypeKeyAlgorithm :: Newtype KeyAlgorithm _
 
 
 newtype KeyAlgorithmList = KeyAlgorithmList (Array KeyAlgorithm)
+derive instance newtypeKeyAlgorithmList :: Newtype KeyAlgorithmList _
 
 
 -- | <p>The Key Usage X.509 v3 extension defines the purpose of the public key contained in the certificate.</p>
 newtype KeyUsage = KeyUsage 
   { "Name" :: NullOrUndefined (KeyUsageName)
   }
+derive instance newtypeKeyUsage :: Newtype KeyUsage _
 
 
 newtype KeyUsageFilterList = KeyUsageFilterList (Array KeyUsageName)
+derive instance newtypeKeyUsageFilterList :: Newtype KeyUsageFilterList _
 
 
 newtype KeyUsageList = KeyUsageList (Array KeyUsage)
+derive instance newtypeKeyUsageList :: Newtype KeyUsageList _
 
 
 newtype KeyUsageName = KeyUsageName String
+derive instance newtypeKeyUsageName :: Newtype KeyUsageName _
 
 
 -- | <p>An ACM limit has been exceeded. For example, you may have input more domains than are allowed or you've requested too many certificates for your account. See the exception message returned by ACM to determine which limit you have violated. For more information about ACM limits, see the <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html">Limits</a> topic.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListCertificatesRequest = ListCertificatesRequest 
@@ -293,43 +339,53 @@ newtype ListCertificatesRequest = ListCertificatesRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxItems" :: NullOrUndefined (MaxItems)
   }
+derive instance newtypeListCertificatesRequest :: Newtype ListCertificatesRequest _
 
 
 newtype ListCertificatesResponse = ListCertificatesResponse 
   { "NextToken" :: NullOrUndefined (NextToken)
   , "CertificateSummaryList" :: NullOrUndefined (CertificateSummaryList)
   }
+derive instance newtypeListCertificatesResponse :: Newtype ListCertificatesResponse _
 
 
 newtype ListTagsForCertificateRequest = ListTagsForCertificateRequest 
   { "CertificateArn" :: (Arn)
   }
+derive instance newtypeListTagsForCertificateRequest :: Newtype ListTagsForCertificateRequest _
 
 
 newtype ListTagsForCertificateResponse = ListTagsForCertificateResponse 
   { "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeListTagsForCertificateResponse :: Newtype ListTagsForCertificateResponse _
 
 
 newtype MaxItems = MaxItems Int
+derive instance newtypeMaxItems :: Newtype MaxItems _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 newtype PrivateKeyBlob = PrivateKeyBlob String
+derive instance newtypePrivateKeyBlob :: Newtype PrivateKeyBlob _
 
 
 newtype RecordType = RecordType String
+derive instance newtypeRecordType :: Newtype RecordType _
 
 
 newtype RemoveTagsFromCertificateRequest = RemoveTagsFromCertificateRequest 
   { "CertificateArn" :: (Arn)
   , "Tags" :: (TagList)
   }
+derive instance newtypeRemoveTagsFromCertificateRequest :: Newtype RemoveTagsFromCertificateRequest _
 
 
 newtype RenewalStatus = RenewalStatus String
+derive instance newtypeRenewalStatus :: Newtype RenewalStatus _
 
 
 -- | <p>Contains information about the status of ACM's <a href="http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html">managed renewal</a> for the certificate. This structure exists only when the certificate type is <code>AMAZON_ISSUED</code>.</p>
@@ -337,6 +393,7 @@ newtype RenewalSummary = RenewalSummary
   { "RenewalStatus" :: (RenewalStatus)
   , "DomainValidationOptions" :: (DomainValidationList)
   }
+derive instance newtypeRenewalSummary :: Newtype RenewalSummary _
 
 
 newtype RequestCertificateRequest = RequestCertificateRequest 
@@ -346,17 +403,20 @@ newtype RequestCertificateRequest = RequestCertificateRequest
   , "IdempotencyToken" :: NullOrUndefined (IdempotencyToken)
   , "DomainValidationOptions" :: NullOrUndefined (DomainValidationOptionList)
   }
+derive instance newtypeRequestCertificateRequest :: Newtype RequestCertificateRequest _
 
 
 newtype RequestCertificateResponse = RequestCertificateResponse 
   { "CertificateArn" :: NullOrUndefined (Arn)
   }
+derive instance newtypeRequestCertificateResponse :: Newtype RequestCertificateResponse _
 
 
 -- | <p>The certificate request is in process and the certificate in your account has not yet been issued.</p>
 newtype RequestInProgressException = RequestInProgressException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeRequestInProgressException :: Newtype RequestInProgressException _
 
 
 newtype ResendValidationEmailRequest = ResendValidationEmailRequest 
@@ -364,18 +424,21 @@ newtype ResendValidationEmailRequest = ResendValidationEmailRequest
   , "Domain" :: (DomainNameString)
   , "ValidationDomain" :: (DomainNameString)
   }
+derive instance newtypeResendValidationEmailRequest :: Newtype ResendValidationEmailRequest _
 
 
 -- | <p>The certificate is in use by another AWS service in the caller's account. Remove the association and try again.</p>
 newtype ResourceInUseException = ResourceInUseException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>The specified certificate cannot be found in the caller's account, or the caller's account cannot be found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>Contains a DNS record value that you can use to can use to validate ownership or control of a domain. This is used by the <a>DescribeCertificate</a> action. </p>
@@ -384,12 +447,15 @@ newtype ResourceRecord = ResourceRecord
   , "Type" :: (RecordType)
   , "Value" :: (String)
   }
+derive instance newtypeResourceRecord :: Newtype ResourceRecord _
 
 
 newtype RevocationReason = RevocationReason String
+derive instance newtypeRevocationReason :: Newtype RevocationReason _
 
 
 newtype TStamp = TStamp Number
+derive instance newtypeTStamp :: Newtype TStamp _
 
 
 -- | <p>A key-value pair that identifies or specifies metadata about an ACM resource.</p>
@@ -397,24 +463,31 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>The request contains too many tags. Try the request again with fewer tags.</p>
 newtype TooManyTagsException = TooManyTagsException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeTooManyTagsException :: Newtype TooManyTagsException _
 
 
 newtype ValidationEmailList = ValidationEmailList (Array String)
+derive instance newtypeValidationEmailList :: Newtype ValidationEmailList _
 
 
 newtype ValidationMethod = ValidationMethod String
+derive instance newtypeValidationMethod :: Newtype ValidationMethod _

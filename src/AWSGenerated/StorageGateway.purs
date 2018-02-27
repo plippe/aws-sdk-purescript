@@ -6,6 +6,7 @@ module AWS.StorageGateway where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -338,26 +339,31 @@ newtype ActivateGatewayInput = ActivateGatewayInput
   , "TapeDriveType" :: NullOrUndefined (TapeDriveType)
   , "MediumChangerType" :: NullOrUndefined (MediumChangerType)
   }
+derive instance newtypeActivateGatewayInput :: Newtype ActivateGatewayInput _
 
 
 -- | <p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note> <p>For gateways activated prior to September 02, 2015, the gateway ARN contains the gateway name rather than the gateway ID. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>
 newtype ActivateGatewayOutput = ActivateGatewayOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeActivateGatewayOutput :: Newtype ActivateGatewayOutput _
 
 
 newtype ActivationKey = ActivationKey String
+derive instance newtypeActivationKey :: Newtype ActivationKey _
 
 
 newtype AddCacheInput = AddCacheInput 
   { "GatewayARN" :: (GatewayARN)
   , "DiskIds" :: (DiskIds)
   }
+derive instance newtypeAddCacheInput :: Newtype AddCacheInput _
 
 
 newtype AddCacheOutput = AddCacheOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeAddCacheOutput :: Newtype AddCacheOutput _
 
 
 -- | <p>AddTagsToResourceInput</p>
@@ -365,23 +371,27 @@ newtype AddTagsToResourceInput = AddTagsToResourceInput
   { "ResourceARN" :: (ResourceARN)
   , "Tags" :: (Tags)
   }
+derive instance newtypeAddTagsToResourceInput :: Newtype AddTagsToResourceInput _
 
 
 -- | <p>AddTagsToResourceOutput</p>
 newtype AddTagsToResourceOutput = AddTagsToResourceOutput 
   { "ResourceARN" :: NullOrUndefined (ResourceARN)
   }
+derive instance newtypeAddTagsToResourceOutput :: Newtype AddTagsToResourceOutput _
 
 
 newtype AddUploadBufferInput = AddUploadBufferInput 
   { "GatewayARN" :: (GatewayARN)
   , "DiskIds" :: (DiskIds)
   }
+derive instance newtypeAddUploadBufferInput :: Newtype AddUploadBufferInput _
 
 
 newtype AddUploadBufferOutput = AddUploadBufferOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeAddUploadBufferOutput :: Newtype AddUploadBufferOutput _
 
 
 -- | <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>AddWorkingStorageInput$DiskIds</a> </p> </li> </ul>
@@ -389,21 +399,26 @@ newtype AddWorkingStorageInput = AddWorkingStorageInput
   { "GatewayARN" :: (GatewayARN)
   , "DiskIds" :: (DiskIds)
   }
+derive instance newtypeAddWorkingStorageInput :: Newtype AddWorkingStorageInput _
 
 
 -- | <p>A JSON object containing the of the gateway for which working storage was configured.</p>
 newtype AddWorkingStorageOutput = AddWorkingStorageOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeAddWorkingStorageOutput :: Newtype AddWorkingStorageOutput _
 
 
 newtype BandwidthDownloadRateLimit = BandwidthDownloadRateLimit Number
+derive instance newtypeBandwidthDownloadRateLimit :: Newtype BandwidthDownloadRateLimit _
 
 
 newtype BandwidthType = BandwidthType String
+derive instance newtypeBandwidthType :: Newtype BandwidthType _
 
 
 newtype BandwidthUploadRateLimit = BandwidthUploadRateLimit Number
+derive instance newtypeBandwidthUploadRateLimit :: Newtype BandwidthUploadRateLimit _
 
 
 -- | <p>Describes an iSCSI cached volume.</p>
@@ -419,9 +434,11 @@ newtype CachediSCSIVolume = CachediSCSIVolume
   , "CreatedDate" :: NullOrUndefined (CreatedDate)
   , "VolumeUsedInBytes" :: NullOrUndefined (VolumeUsedInBytes)
   }
+derive instance newtypeCachediSCSIVolume :: Newtype CachediSCSIVolume _
 
 
 newtype CachediSCSIVolumes = CachediSCSIVolumes (Array CachediSCSIVolume)
+derive instance newtypeCachediSCSIVolumes :: Newtype CachediSCSIVolumes _
 
 
 -- | <p>CancelArchivalInput</p>
@@ -429,12 +446,14 @@ newtype CancelArchivalInput = CancelArchivalInput
   { "GatewayARN" :: (GatewayARN)
   , "TapeARN" :: (TapeARN)
   }
+derive instance newtypeCancelArchivalInput :: Newtype CancelArchivalInput _
 
 
 -- | <p>CancelArchivalOutput</p>
 newtype CancelArchivalOutput = CancelArchivalOutput 
   { "TapeARN" :: NullOrUndefined (TapeARN)
   }
+derive instance newtypeCancelArchivalOutput :: Newtype CancelArchivalOutput _
 
 
 -- | <p>CancelRetrievalInput</p>
@@ -442,15 +461,18 @@ newtype CancelRetrievalInput = CancelRetrievalInput
   { "GatewayARN" :: (GatewayARN)
   , "TapeARN" :: (TapeARN)
   }
+derive instance newtypeCancelRetrievalInput :: Newtype CancelRetrievalInput _
 
 
 -- | <p>CancelRetrievalOutput</p>
 newtype CancelRetrievalOutput = CancelRetrievalOutput 
   { "TapeARN" :: NullOrUndefined (TapeARN)
   }
+derive instance newtypeCancelRetrievalOutput :: Newtype CancelRetrievalOutput _
 
 
 newtype ChapCredentials = ChapCredentials (Array ChapInfo)
+derive instance newtypeChapCredentials :: Newtype ChapCredentials _
 
 
 -- | <p>Describes Challenge-Handshake Authentication Protocol (CHAP) information that supports authentication between your gateway and iSCSI initiators.</p>
@@ -460,12 +482,15 @@ newtype ChapInfo = ChapInfo
   , "InitiatorName" :: NullOrUndefined (IqnName)
   , "SecretToAuthenticateTarget" :: NullOrUndefined (ChapSecret)
   }
+derive instance newtypeChapInfo :: Newtype ChapInfo _
 
 
 newtype ChapSecret = ChapSecret String
+derive instance newtypeChapSecret :: Newtype ChapSecret _
 
 
 newtype ClientToken = ClientToken String
+derive instance newtypeClientToken :: Newtype ClientToken _
 
 
 newtype CreateCachediSCSIVolumeInput = CreateCachediSCSIVolumeInput 
@@ -477,12 +502,14 @@ newtype CreateCachediSCSIVolumeInput = CreateCachediSCSIVolumeInput
   , "NetworkInterfaceId" :: (NetworkInterfaceId)
   , "ClientToken" :: (ClientToken)
   }
+derive instance newtypeCreateCachediSCSIVolumeInput :: Newtype CreateCachediSCSIVolumeInput _
 
 
 newtype CreateCachediSCSIVolumeOutput = CreateCachediSCSIVolumeOutput 
   { "VolumeARN" :: NullOrUndefined (VolumeARN)
   , "TargetARN" :: NullOrUndefined (TargetARN)
   }
+derive instance newtypeCreateCachediSCSIVolumeOutput :: Newtype CreateCachediSCSIVolumeOutput _
 
 
 -- | <p>CreateNFSFileShareInput</p>
@@ -500,18 +527,21 @@ newtype CreateNFSFileShareInput = CreateNFSFileShareInput
   , "ReadOnly" :: NullOrUndefined (Boolean)
   , "GuessMIMETypeEnabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateNFSFileShareInput :: Newtype CreateNFSFileShareInput _
 
 
 -- | <p>CreateNFSFileShareOutput</p>
 newtype CreateNFSFileShareOutput = CreateNFSFileShareOutput 
   { "FileShareARN" :: NullOrUndefined (FileShareARN)
   }
+derive instance newtypeCreateNFSFileShareOutput :: Newtype CreateNFSFileShareOutput _
 
 
 newtype CreateSnapshotFromVolumeRecoveryPointInput = CreateSnapshotFromVolumeRecoveryPointInput 
   { "VolumeARN" :: (VolumeARN)
   , "SnapshotDescription" :: (SnapshotDescription)
   }
+derive instance newtypeCreateSnapshotFromVolumeRecoveryPointInput :: Newtype CreateSnapshotFromVolumeRecoveryPointInput _
 
 
 newtype CreateSnapshotFromVolumeRecoveryPointOutput = CreateSnapshotFromVolumeRecoveryPointOutput 
@@ -519,6 +549,7 @@ newtype CreateSnapshotFromVolumeRecoveryPointOutput = CreateSnapshotFromVolumeRe
   , "VolumeARN" :: NullOrUndefined (VolumeARN)
   , "VolumeRecoveryPointTime" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateSnapshotFromVolumeRecoveryPointOutput :: Newtype CreateSnapshotFromVolumeRecoveryPointOutput _
 
 
 -- | <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateSnapshotInput$SnapshotDescription</a> </p> </li> <li> <p> <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul>
@@ -526,6 +557,7 @@ newtype CreateSnapshotInput = CreateSnapshotInput
   { "VolumeARN" :: (VolumeARN)
   , "SnapshotDescription" :: (SnapshotDescription)
   }
+derive instance newtypeCreateSnapshotInput :: Newtype CreateSnapshotInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
@@ -533,6 +565,7 @@ newtype CreateSnapshotOutput = CreateSnapshotOutput
   { "VolumeARN" :: NullOrUndefined (VolumeARN)
   , "SnapshotId" :: NullOrUndefined (SnapshotId)
   }
+derive instance newtypeCreateSnapshotOutput :: Newtype CreateSnapshotOutput _
 
 
 -- | <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateStorediSCSIVolumeInput$DiskId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$NetworkInterfaceId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$PreserveExistingData</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$SnapshotId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$TargetName</a> </p> </li> </ul>
@@ -544,6 +577,7 @@ newtype CreateStorediSCSIVolumeInput = CreateStorediSCSIVolumeInput
   , "TargetName" :: (TargetName)
   , "NetworkInterfaceId" :: (NetworkInterfaceId)
   }
+derive instance newtypeCreateStorediSCSIVolumeInput :: Newtype CreateStorediSCSIVolumeInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
@@ -552,6 +586,7 @@ newtype CreateStorediSCSIVolumeOutput = CreateStorediSCSIVolumeOutput
   , "VolumeSizeInBytes" :: NullOrUndefined (Number)
   , "TargetARN" :: NullOrUndefined (TargetARN)
   }
+derive instance newtypeCreateStorediSCSIVolumeOutput :: Newtype CreateStorediSCSIVolumeOutput _
 
 
 -- | <p>CreateTapeWithBarcodeInput</p>
@@ -560,12 +595,14 @@ newtype CreateTapeWithBarcodeInput = CreateTapeWithBarcodeInput
   , "TapeSizeInBytes" :: (TapeSize)
   , "TapeBarcode" :: (TapeBarcode)
   }
+derive instance newtypeCreateTapeWithBarcodeInput :: Newtype CreateTapeWithBarcodeInput _
 
 
 -- | <p>CreateTapeOutput</p>
 newtype CreateTapeWithBarcodeOutput = CreateTapeWithBarcodeOutput 
   { "TapeARN" :: NullOrUndefined (TapeARN)
   }
+derive instance newtypeCreateTapeWithBarcodeOutput :: Newtype CreateTapeWithBarcodeOutput _
 
 
 -- | <p>CreateTapesInput</p>
@@ -576,18 +613,22 @@ newtype CreateTapesInput = CreateTapesInput
   , "NumTapesToCreate" :: (NumTapesToCreate)
   , "TapeBarcodePrefix" :: (TapeBarcodePrefix)
   }
+derive instance newtypeCreateTapesInput :: Newtype CreateTapesInput _
 
 
 -- | <p>CreateTapeOutput</p>
 newtype CreateTapesOutput = CreateTapesOutput 
   { "TapeARNs" :: NullOrUndefined (TapeARNs)
   }
+derive instance newtypeCreateTapesOutput :: Newtype CreateTapesOutput _
 
 
 newtype CreatedDate = CreatedDate Number
+derive instance newtypeCreatedDate :: Newtype CreatedDate _
 
 
 newtype DayOfWeek = DayOfWeek Int
+derive instance newtypeDayOfWeek :: Newtype DayOfWeek _
 
 
 -- | <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DeleteBandwidthRateLimitInput$BandwidthType</a> </p> </li> </ul>
@@ -595,12 +636,14 @@ newtype DeleteBandwidthRateLimitInput = DeleteBandwidthRateLimitInput
   { "GatewayARN" :: (GatewayARN)
   , "BandwidthType" :: (BandwidthType)
   }
+derive instance newtypeDeleteBandwidthRateLimitInput :: Newtype DeleteBandwidthRateLimitInput _
 
 
 -- | <p>A JSON object containing the of the gateway whose bandwidth rate information was deleted.</p>
 newtype DeleteBandwidthRateLimitOutput = DeleteBandwidthRateLimitOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeDeleteBandwidthRateLimitOutput :: Newtype DeleteBandwidthRateLimitOutput _
 
 
 -- | <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>DeleteChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>DeleteChapCredentialsInput$TargetARN</a> </p> </li> </ul>
@@ -608,6 +651,7 @@ newtype DeleteChapCredentialsInput = DeleteChapCredentialsInput
   { "TargetARN" :: (TargetARN)
   , "InitiatorName" :: (IqnName)
   }
+derive instance newtypeDeleteChapCredentialsInput :: Newtype DeleteChapCredentialsInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
@@ -615,6 +659,7 @@ newtype DeleteChapCredentialsOutput = DeleteChapCredentialsOutput
   { "TargetARN" :: NullOrUndefined (TargetARN)
   , "InitiatorName" :: NullOrUndefined (IqnName)
   }
+derive instance newtypeDeleteChapCredentialsOutput :: Newtype DeleteChapCredentialsOutput _
 
 
 -- | <p>DeleteFileShareInput</p>
@@ -622,46 +667,54 @@ newtype DeleteFileShareInput = DeleteFileShareInput
   { "FileShareARN" :: (FileShareARN)
   , "ForceDelete" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteFileShareInput :: Newtype DeleteFileShareInput _
 
 
 -- | <p>DeleteFileShareOutput</p>
 newtype DeleteFileShareOutput = DeleteFileShareOutput 
   { "FileShareARN" :: NullOrUndefined (FileShareARN)
   }
+derive instance newtypeDeleteFileShareOutput :: Newtype DeleteFileShareOutput _
 
 
 -- | <p>A JSON object containing the ID of the gateway to delete.</p>
 newtype DeleteGatewayInput = DeleteGatewayInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDeleteGatewayInput :: Newtype DeleteGatewayInput _
 
 
 -- | <p>A JSON object containing the ID of the deleted gateway.</p>
 newtype DeleteGatewayOutput = DeleteGatewayOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeDeleteGatewayOutput :: Newtype DeleteGatewayOutput _
 
 
 newtype DeleteSnapshotScheduleInput = DeleteSnapshotScheduleInput 
   { "VolumeARN" :: (VolumeARN)
   }
+derive instance newtypeDeleteSnapshotScheduleInput :: Newtype DeleteSnapshotScheduleInput _
 
 
 newtype DeleteSnapshotScheduleOutput = DeleteSnapshotScheduleOutput 
   { "VolumeARN" :: NullOrUndefined (VolumeARN)
   }
+derive instance newtypeDeleteSnapshotScheduleOutput :: Newtype DeleteSnapshotScheduleOutput _
 
 
 -- | <p>DeleteTapeArchiveInput</p>
 newtype DeleteTapeArchiveInput = DeleteTapeArchiveInput 
   { "TapeARN" :: (TapeARN)
   }
+derive instance newtypeDeleteTapeArchiveInput :: Newtype DeleteTapeArchiveInput _
 
 
 -- | <p>DeleteTapeArchiveOutput</p>
 newtype DeleteTapeArchiveOutput = DeleteTapeArchiveOutput 
   { "TapeARN" :: NullOrUndefined (TapeARN)
   }
+derive instance newtypeDeleteTapeArchiveOutput :: Newtype DeleteTapeArchiveOutput _
 
 
 -- | <p>DeleteTapeInput</p>
@@ -669,30 +722,35 @@ newtype DeleteTapeInput = DeleteTapeInput
   { "GatewayARN" :: (GatewayARN)
   , "TapeARN" :: (TapeARN)
   }
+derive instance newtypeDeleteTapeInput :: Newtype DeleteTapeInput _
 
 
 -- | <p>DeleteTapeOutput</p>
 newtype DeleteTapeOutput = DeleteTapeOutput 
   { "TapeARN" :: NullOrUndefined (TapeARN)
   }
+derive instance newtypeDeleteTapeOutput :: Newtype DeleteTapeOutput _
 
 
 -- | <p>A JSON object containing the <a>DeleteVolumeInput$VolumeARN</a> to delete.</p>
 newtype DeleteVolumeInput = DeleteVolumeInput 
   { "VolumeARN" :: (VolumeARN)
   }
+derive instance newtypeDeleteVolumeInput :: Newtype DeleteVolumeInput _
 
 
 -- | <p>A JSON object containing the of the storage volume that was deleted</p>
 newtype DeleteVolumeOutput = DeleteVolumeOutput 
   { "VolumeARN" :: NullOrUndefined (VolumeARN)
   }
+derive instance newtypeDeleteVolumeOutput :: Newtype DeleteVolumeOutput _
 
 
 -- | <p>A JSON object containing the of the gateway.</p>
 newtype DescribeBandwidthRateLimitInput = DescribeBandwidthRateLimitInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDescribeBandwidthRateLimitInput :: Newtype DescribeBandwidthRateLimitInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
@@ -701,11 +759,13 @@ newtype DescribeBandwidthRateLimitOutput = DescribeBandwidthRateLimitOutput
   , "AverageUploadRateLimitInBitsPerSec" :: NullOrUndefined (BandwidthUploadRateLimit)
   , "AverageDownloadRateLimitInBitsPerSec" :: NullOrUndefined (BandwidthDownloadRateLimit)
   }
+derive instance newtypeDescribeBandwidthRateLimitOutput :: Newtype DescribeBandwidthRateLimitOutput _
 
 
 newtype DescribeCacheInput = DescribeCacheInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDescribeCacheInput :: Newtype DescribeCacheInput _
 
 
 newtype DescribeCacheOutput = DescribeCacheOutput 
@@ -717,35 +777,41 @@ newtype DescribeCacheOutput = DescribeCacheOutput
   , "CacheHitPercentage" :: NullOrUndefined (Number)
   , "CacheMissPercentage" :: NullOrUndefined (Number)
   }
+derive instance newtypeDescribeCacheOutput :: Newtype DescribeCacheOutput _
 
 
 newtype DescribeCachediSCSIVolumesInput = DescribeCachediSCSIVolumesInput 
   { "VolumeARNs" :: (VolumeARNs)
   }
+derive instance newtypeDescribeCachediSCSIVolumesInput :: Newtype DescribeCachediSCSIVolumesInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
 newtype DescribeCachediSCSIVolumesOutput = DescribeCachediSCSIVolumesOutput 
   { "CachediSCSIVolumes" :: NullOrUndefined (CachediSCSIVolumes)
   }
+derive instance newtypeDescribeCachediSCSIVolumesOutput :: Newtype DescribeCachediSCSIVolumesOutput _
 
 
 -- | <p>A JSON object containing the Amazon Resource Name (ARN) of the iSCSI volume target.</p>
 newtype DescribeChapCredentialsInput = DescribeChapCredentialsInput 
   { "TargetARN" :: (TargetARN)
   }
+derive instance newtypeDescribeChapCredentialsInput :: Newtype DescribeChapCredentialsInput _
 
 
 -- | <p>A JSON object containing a .</p>
 newtype DescribeChapCredentialsOutput = DescribeChapCredentialsOutput 
   { "ChapCredentials" :: NullOrUndefined (ChapCredentials)
   }
+derive instance newtypeDescribeChapCredentialsOutput :: Newtype DescribeChapCredentialsOutput _
 
 
 -- | <p>A JSON object containing the ID of the gateway.</p>
 newtype DescribeGatewayInformationInput = DescribeGatewayInformationInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDescribeGatewayInformationInput :: Newtype DescribeGatewayInformationInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
@@ -760,12 +826,14 @@ newtype DescribeGatewayInformationOutput = DescribeGatewayInformationOutput
   , "NextUpdateAvailabilityDate" :: NullOrUndefined (NextUpdateAvailabilityDate)
   , "LastSoftwareUpdate" :: NullOrUndefined (LastSoftwareUpdate)
   }
+derive instance newtypeDescribeGatewayInformationOutput :: Newtype DescribeGatewayInformationOutput _
 
 
 -- | <p>A JSON object containing the of the gateway.</p>
 newtype DescribeMaintenanceStartTimeInput = DescribeMaintenanceStartTimeInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDescribeMaintenanceStartTimeInput :: Newtype DescribeMaintenanceStartTimeInput _
 
 
 -- | <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DescribeMaintenanceStartTimeOutput$DayOfWeek</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$HourOfDay</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$MinuteOfHour</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$Timezone</a> </p> </li> </ul>
@@ -776,24 +844,28 @@ newtype DescribeMaintenanceStartTimeOutput = DescribeMaintenanceStartTimeOutput
   , "DayOfWeek" :: NullOrUndefined (DayOfWeek)
   , "Timezone" :: NullOrUndefined (GatewayTimezone)
   }
+derive instance newtypeDescribeMaintenanceStartTimeOutput :: Newtype DescribeMaintenanceStartTimeOutput _
 
 
 -- | <p>DescribeNFSFileSharesInput</p>
 newtype DescribeNFSFileSharesInput = DescribeNFSFileSharesInput 
   { "FileShareARNList" :: (FileShareARNList)
   }
+derive instance newtypeDescribeNFSFileSharesInput :: Newtype DescribeNFSFileSharesInput _
 
 
 -- | <p>DescribeNFSFileSharesOutput</p>
 newtype DescribeNFSFileSharesOutput = DescribeNFSFileSharesOutput 
   { "NFSFileShareInfoList" :: NullOrUndefined (NFSFileShareInfoList)
   }
+derive instance newtypeDescribeNFSFileSharesOutput :: Newtype DescribeNFSFileSharesOutput _
 
 
 -- | <p>A JSON object containing the <a>DescribeSnapshotScheduleInput$VolumeARN</a> of the volume.</p>
 newtype DescribeSnapshotScheduleInput = DescribeSnapshotScheduleInput 
   { "VolumeARN" :: (VolumeARN)
   }
+derive instance newtypeDescribeSnapshotScheduleInput :: Newtype DescribeSnapshotScheduleInput _
 
 
 newtype DescribeSnapshotScheduleOutput = DescribeSnapshotScheduleOutput 
@@ -803,17 +875,20 @@ newtype DescribeSnapshotScheduleOutput = DescribeSnapshotScheduleOutput
   , "Description" :: NullOrUndefined (Description)
   , "Timezone" :: NullOrUndefined (GatewayTimezone)
   }
+derive instance newtypeDescribeSnapshotScheduleOutput :: Newtype DescribeSnapshotScheduleOutput _
 
 
 -- | <p>A JSON object containing a list of <a>DescribeStorediSCSIVolumesInput$VolumeARNs</a>.</p>
 newtype DescribeStorediSCSIVolumesInput = DescribeStorediSCSIVolumesInput 
   { "VolumeARNs" :: (VolumeARNs)
   }
+derive instance newtypeDescribeStorediSCSIVolumesInput :: Newtype DescribeStorediSCSIVolumesInput _
 
 
 newtype DescribeStorediSCSIVolumesOutput = DescribeStorediSCSIVolumesOutput 
   { "StorediSCSIVolumes" :: NullOrUndefined (StorediSCSIVolumes)
   }
+derive instance newtypeDescribeStorediSCSIVolumesOutput :: Newtype DescribeStorediSCSIVolumesOutput _
 
 
 -- | <p>DescribeTapeArchivesInput</p>
@@ -822,6 +897,7 @@ newtype DescribeTapeArchivesInput = DescribeTapeArchivesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeDescribeTapeArchivesInput :: Newtype DescribeTapeArchivesInput _
 
 
 -- | <p>DescribeTapeArchivesOutput</p>
@@ -829,6 +905,7 @@ newtype DescribeTapeArchivesOutput = DescribeTapeArchivesOutput
   { "TapeArchives" :: NullOrUndefined (TapeArchives)
   , "Marker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeTapeArchivesOutput :: Newtype DescribeTapeArchivesOutput _
 
 
 -- | <p>DescribeTapeRecoveryPointsInput</p>
@@ -837,6 +914,7 @@ newtype DescribeTapeRecoveryPointsInput = DescribeTapeRecoveryPointsInput
   , "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeDescribeTapeRecoveryPointsInput :: Newtype DescribeTapeRecoveryPointsInput _
 
 
 -- | <p>DescribeTapeRecoveryPointsOutput</p>
@@ -845,6 +923,7 @@ newtype DescribeTapeRecoveryPointsOutput = DescribeTapeRecoveryPointsOutput
   , "TapeRecoveryPointInfos" :: NullOrUndefined (TapeRecoveryPointInfos)
   , "Marker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeTapeRecoveryPointsOutput :: Newtype DescribeTapeRecoveryPointsOutput _
 
 
 -- | <p>DescribeTapesInput</p>
@@ -854,6 +933,7 @@ newtype DescribeTapesInput = DescribeTapesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeDescribeTapesInput :: Newtype DescribeTapesInput _
 
 
 -- | <p>DescribeTapesOutput</p>
@@ -861,11 +941,13 @@ newtype DescribeTapesOutput = DescribeTapesOutput
   { "Tapes" :: NullOrUndefined (Tapes)
   , "Marker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeTapesOutput :: Newtype DescribeTapesOutput _
 
 
 newtype DescribeUploadBufferInput = DescribeUploadBufferInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDescribeUploadBufferInput :: Newtype DescribeUploadBufferInput _
 
 
 newtype DescribeUploadBufferOutput = DescribeUploadBufferOutput 
@@ -874,6 +956,7 @@ newtype DescribeUploadBufferOutput = DescribeUploadBufferOutput
   , "UploadBufferUsedInBytes" :: NullOrUndefined (Number)
   , "UploadBufferAllocatedInBytes" :: NullOrUndefined (Number)
   }
+derive instance newtypeDescribeUploadBufferOutput :: Newtype DescribeUploadBufferOutput _
 
 
 -- | <p>DescribeVTLDevicesInput</p>
@@ -883,6 +966,7 @@ newtype DescribeVTLDevicesInput = DescribeVTLDevicesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeDescribeVTLDevicesInput :: Newtype DescribeVTLDevicesInput _
 
 
 -- | <p>DescribeVTLDevicesOutput</p>
@@ -891,12 +975,14 @@ newtype DescribeVTLDevicesOutput = DescribeVTLDevicesOutput
   , "VTLDevices" :: NullOrUndefined (VTLDevices)
   , "Marker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeDescribeVTLDevicesOutput :: Newtype DescribeVTLDevicesOutput _
 
 
 -- | <p>A JSON object containing the of the gateway.</p>
 newtype DescribeWorkingStorageInput = DescribeWorkingStorageInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDescribeWorkingStorageInput :: Newtype DescribeWorkingStorageInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
@@ -906,12 +992,15 @@ newtype DescribeWorkingStorageOutput = DescribeWorkingStorageOutput
   , "WorkingStorageUsedInBytes" :: NullOrUndefined (Number)
   , "WorkingStorageAllocatedInBytes" :: NullOrUndefined (Number)
   }
+derive instance newtypeDescribeWorkingStorageOutput :: Newtype DescribeWorkingStorageOutput _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 newtype DeviceType = DeviceType String
+derive instance newtypeDeviceType :: Newtype DeviceType _
 
 
 -- | <p>Lists iSCSI information about a VTL device.</p>
@@ -921,18 +1010,21 @@ newtype DeviceiSCSIAttributes = DeviceiSCSIAttributes
   , "NetworkInterfacePort" :: NullOrUndefined (Int)
   , "ChapEnabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeviceiSCSIAttributes :: Newtype DeviceiSCSIAttributes _
 
 
 -- | <p>DisableGatewayInput</p>
 newtype DisableGatewayInput = DisableGatewayInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeDisableGatewayInput :: Newtype DisableGatewayInput _
 
 
 -- | <p>DisableGatewayOutput</p>
 newtype DisableGatewayOutput = DisableGatewayOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeDisableGatewayOutput :: Newtype DisableGatewayOutput _
 
 
 newtype Disk = Disk 
@@ -944,39 +1036,50 @@ newtype Disk = Disk
   , "DiskAllocationType" :: NullOrUndefined (DiskAllocationType)
   , "DiskAllocationResource" :: NullOrUndefined (String)
   }
+derive instance newtypeDisk :: Newtype Disk _
 
 
 newtype DiskAllocationType = DiskAllocationType String
+derive instance newtypeDiskAllocationType :: Newtype DiskAllocationType _
 
 
 newtype DiskId = DiskId String
+derive instance newtypeDiskId :: Newtype DiskId _
 
 
 newtype DiskIds = DiskIds (Array DiskId)
+derive instance newtypeDiskIds :: Newtype DiskIds _
 
 
 newtype Disks = Disks (Array Disk)
+derive instance newtypeDisks :: Newtype Disks _
 
 
 newtype DoubleObject = DoubleObject Number
+derive instance newtypeDoubleObject :: Newtype DoubleObject _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 -- | <p>The Amazon Resource Name (ARN) of the file share. </p>
 newtype FileShareARN = FileShareARN String
+derive instance newtypeFileShareARN :: Newtype FileShareARN _
 
 
 newtype FileShareARNList = FileShareARNList (Array FileShareARN)
+derive instance newtypeFileShareARNList :: Newtype FileShareARNList _
 
 
 -- | <p>The list of clients that are allowed to access the file gateway. The list must contain either valid IP addresses or valid CIDR blocks. </p>
 newtype FileShareClientList = FileShareClientList (Array IPV4AddressCIDR)
+derive instance newtypeFileShareClientList :: Newtype FileShareClientList _
 
 
 -- | <p>The ID of the file share. </p>
 newtype FileShareId = FileShareId String
+derive instance newtypeFileShareId :: Newtype FileShareId _
 
 
 -- | <p>Describes a file share.</p>
@@ -986,20 +1089,25 @@ newtype FileShareInfo = FileShareInfo
   , "FileShareStatus" :: NullOrUndefined (FileShareStatus)
   , "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeFileShareInfo :: Newtype FileShareInfo _
 
 
 newtype FileShareInfoList = FileShareInfoList (Array FileShareInfo)
+derive instance newtypeFileShareInfoList :: Newtype FileShareInfoList _
 
 
 -- | <p>The status of the file share. Possible values are CREATING, UPDATING, AVAILABLE and DELETING. </p>
 newtype FileShareStatus = FileShareStatus String
+derive instance newtypeFileShareStatus :: Newtype FileShareStatus _
 
 
 -- | <p>The Amazon Resource Name (ARN) of the gateway. Use the <a>ListGateways</a> operation to return a list of gateways for your account and region.</p>
 newtype GatewayARN = GatewayARN String
+derive instance newtypeGatewayARN :: Newtype GatewayARN _
 
 
 newtype GatewayId = GatewayId String
+derive instance newtypeGatewayId :: Newtype GatewayId _
 
 
 -- | <p>Describes a gateway object.</p>
@@ -1010,40 +1118,52 @@ newtype GatewayInfo = GatewayInfo
   , "GatewayOperationalState" :: NullOrUndefined (GatewayOperationalState)
   , "GatewayName" :: NullOrUndefined (String)
   }
+derive instance newtypeGatewayInfo :: Newtype GatewayInfo _
 
 
 -- | <p>The name you configured for your gateway.</p>
 newtype GatewayName = GatewayName String
+derive instance newtypeGatewayName :: Newtype GatewayName _
 
 
 newtype GatewayNetworkInterfaces = GatewayNetworkInterfaces (Array NetworkInterface)
+derive instance newtypeGatewayNetworkInterfaces :: Newtype GatewayNetworkInterfaces _
 
 
 newtype GatewayOperationalState = GatewayOperationalState String
+derive instance newtypeGatewayOperationalState :: Newtype GatewayOperationalState _
 
 
 newtype GatewayState = GatewayState String
+derive instance newtypeGatewayState :: Newtype GatewayState _
 
 
 newtype GatewayTimezone = GatewayTimezone String
+derive instance newtypeGatewayTimezone :: Newtype GatewayTimezone _
 
 
 newtype GatewayType = GatewayType String
+derive instance newtypeGatewayType :: Newtype GatewayType _
 
 
 newtype Gateways = Gateways (Array GatewayInfo)
+derive instance newtypeGateways :: Newtype Gateways _
 
 
 newtype HourOfDay = HourOfDay Int
+derive instance newtypeHourOfDay :: Newtype HourOfDay _
 
 
 newtype IPV4AddressCIDR = IPV4AddressCIDR String
+derive instance newtypeIPV4AddressCIDR :: Newtype IPV4AddressCIDR _
 
 
 newtype Initiator = Initiator String
+derive instance newtypeInitiator :: Newtype Initiator _
 
 
 newtype Initiators = Initiators (Array Initiator)
+derive instance newtypeInitiators :: Newtype Initiators _
 
 
 -- | <p>An internal server error has occurred during the request. For more information, see the error and message fields.</p>
@@ -1051,6 +1171,7 @@ newtype InternalServerError = InternalServerError
   { "Message'" :: NullOrUndefined (String)
   , "Error'" :: NullOrUndefined (StorageGatewayError)
   }
+derive instance newtypeInternalServerError :: Newtype InternalServerError _
 
 
 -- | <p>An exception occurred because an invalid gateway request was issued to the service. For more information, see the error and message fields.</p>
@@ -1058,16 +1179,20 @@ newtype InvalidGatewayRequestException = InvalidGatewayRequestException
   { "Message'" :: NullOrUndefined (String)
   , "Error'" :: NullOrUndefined (StorageGatewayError)
   }
+derive instance newtypeInvalidGatewayRequestException :: Newtype InvalidGatewayRequestException _
 
 
 newtype IqnName = IqnName String
+derive instance newtypeIqnName :: Newtype IqnName _
 
 
 -- | <p>The ARN of the KMS key used for Amazon S3 server side encryption. </p>
 newtype KMSKey = KMSKey String
+derive instance newtypeKMSKey :: Newtype KMSKey _
 
 
 newtype LastSoftwareUpdate = LastSoftwareUpdate String
+derive instance newtypeLastSoftwareUpdate :: Newtype LastSoftwareUpdate _
 
 
 -- | <p>ListFileShareInput</p>
@@ -1076,6 +1201,7 @@ newtype ListFileSharesInput = ListFileSharesInput
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   , "Marker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeListFileSharesInput :: Newtype ListFileSharesInput _
 
 
 -- | <p>ListFileShareOutput</p>
@@ -1084,6 +1210,7 @@ newtype ListFileSharesOutput = ListFileSharesOutput
   , "NextMarker" :: NullOrUndefined (Marker)
   , "FileShareInfoList" :: NullOrUndefined (FileShareInfoList)
   }
+derive instance newtypeListFileSharesOutput :: Newtype ListFileSharesOutput _
 
 
 -- | <p>A JSON object containing zero or more of the following fields:</p> <ul> <li> <p> <a>ListGatewaysInput$Limit</a> </p> </li> <li> <p> <a>ListGatewaysInput$Marker</a> </p> </li> </ul>
@@ -1091,24 +1218,28 @@ newtype ListGatewaysInput = ListGatewaysInput
   { "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeListGatewaysInput :: Newtype ListGatewaysInput _
 
 
 newtype ListGatewaysOutput = ListGatewaysOutput 
   { "Gateways" :: NullOrUndefined (Gateways)
   , "Marker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeListGatewaysOutput :: Newtype ListGatewaysOutput _
 
 
 -- | <p>A JSON object containing the of the gateway.</p>
 newtype ListLocalDisksInput = ListLocalDisksInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeListLocalDisksInput :: Newtype ListLocalDisksInput _
 
 
 newtype ListLocalDisksOutput = ListLocalDisksOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   , "Disks" :: NullOrUndefined (Disks)
   }
+derive instance newtypeListLocalDisksOutput :: Newtype ListLocalDisksOutput _
 
 
 -- | <p>ListTagsForResourceInput</p>
@@ -1117,6 +1248,7 @@ newtype ListTagsForResourceInput = ListTagsForResourceInput
   , "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeListTagsForResourceInput :: Newtype ListTagsForResourceInput _
 
 
 -- | <p>ListTagsForResourceOutput</p>
@@ -1125,6 +1257,7 @@ newtype ListTagsForResourceOutput = ListTagsForResourceOutput
   , "Marker" :: NullOrUndefined (Marker)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeListTagsForResourceOutput :: Newtype ListTagsForResourceOutput _
 
 
 -- | <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListTapesInput$Limit</a> </p> </li> <li> <p> <a>ListTapesInput$Marker</a> </p> </li> <li> <p> <a>ListTapesInput$TapeARNs</a> </p> </li> </ul>
@@ -1133,6 +1266,7 @@ newtype ListTapesInput = ListTapesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeListTapesInput :: Newtype ListTapesInput _
 
 
 -- | <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>ListTapesOutput$Marker</a> </p> </li> <li> <p> <a>ListTapesOutput$VolumeInfos</a> </p> </li> </ul>
@@ -1140,29 +1274,34 @@ newtype ListTapesOutput = ListTapesOutput
   { "TapeInfos" :: NullOrUndefined (TapeInfos)
   , "Marker" :: NullOrUndefined (Marker)
   }
+derive instance newtypeListTapesOutput :: Newtype ListTapesOutput _
 
 
 -- | <p>ListVolumeInitiatorsInput</p>
 newtype ListVolumeInitiatorsInput = ListVolumeInitiatorsInput 
   { "VolumeARN" :: (VolumeARN)
   }
+derive instance newtypeListVolumeInitiatorsInput :: Newtype ListVolumeInitiatorsInput _
 
 
 -- | <p>ListVolumeInitiatorsOutput</p>
 newtype ListVolumeInitiatorsOutput = ListVolumeInitiatorsOutput 
   { "Initiators" :: NullOrUndefined (Initiators)
   }
+derive instance newtypeListVolumeInitiatorsOutput :: Newtype ListVolumeInitiatorsOutput _
 
 
 newtype ListVolumeRecoveryPointsInput = ListVolumeRecoveryPointsInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeListVolumeRecoveryPointsInput :: Newtype ListVolumeRecoveryPointsInput _
 
 
 newtype ListVolumeRecoveryPointsOutput = ListVolumeRecoveryPointsOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   , "VolumeRecoveryPointInfos" :: NullOrUndefined (VolumeRecoveryPointInfos)
   }
+derive instance newtypeListVolumeRecoveryPointsOutput :: Newtype ListVolumeRecoveryPointsOutput _
 
 
 -- | <p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>
@@ -1171,6 +1310,7 @@ newtype ListVolumesInput = ListVolumesInput
   , "Marker" :: NullOrUndefined (Marker)
   , "Limit" :: NullOrUndefined (PositiveIntObject)
   }
+derive instance newtypeListVolumesInput :: Newtype ListVolumesInput _
 
 
 newtype ListVolumesOutput = ListVolumesOutput 
@@ -1178,22 +1318,28 @@ newtype ListVolumesOutput = ListVolumesOutput
   , "Marker" :: NullOrUndefined (Marker)
   , "VolumeInfos" :: NullOrUndefined (VolumeInfos)
   }
+derive instance newtypeListVolumesOutput :: Newtype ListVolumesOutput _
 
 
 newtype LocalConsolePassword = LocalConsolePassword String
+derive instance newtypeLocalConsolePassword :: Newtype LocalConsolePassword _
 
 
 -- | <p>The ARN of the backend storage used for storing file data. </p>
 newtype LocationARN = LocationARN String
+derive instance newtypeLocationARN :: Newtype LocationARN _
 
 
 newtype Marker = Marker String
+derive instance newtypeMarker :: Newtype Marker _
 
 
 newtype MediumChangerType = MediumChangerType String
+derive instance newtypeMediumChangerType :: Newtype MediumChangerType _
 
 
 newtype MinuteOfHour = MinuteOfHour Int
+derive instance newtypeMinuteOfHour :: Newtype MinuteOfHour _
 
 
 -- | <p>Describes file share default values. Files and folders stored as Amazon S3 objects in S3 buckets don't, by default, have Unix file permissions assigned to them. Upon discovery in an S3 bucket by Storage Gateway, the S3 objects that represent files and folders are assigned these default Unix permissions. This operation is only supported in the file gateway type.</p>
@@ -1203,6 +1349,7 @@ newtype NFSFileShareDefaults = NFSFileShareDefaults
   , "GroupId" :: NullOrUndefined (PermissionId)
   , "OwnerId" :: NullOrUndefined (PermissionId)
   }
+derive instance newtypeNFSFileShareDefaults :: Newtype NFSFileShareDefaults _
 
 
 -- | <p>The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.</p>
@@ -1223,9 +1370,11 @@ newtype NFSFileShareInfo = NFSFileShareInfo
   , "ReadOnly" :: NullOrUndefined (Boolean)
   , "GuessMIMETypeEnabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeNFSFileShareInfo :: Newtype NFSFileShareInfo _
 
 
 newtype NFSFileShareInfoList = NFSFileShareInfoList (Array NFSFileShareInfo)
+derive instance newtypeNFSFileShareInfoList :: Newtype NFSFileShareInfoList _
 
 
 -- | <p>Describes a gateway's network interface.</p>
@@ -1234,59 +1383,74 @@ newtype NetworkInterface = NetworkInterface
   , "MacAddress" :: NullOrUndefined (String)
   , "Ipv6Address" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkInterface :: Newtype NetworkInterface _
 
 
 newtype NetworkInterfaceId = NetworkInterfaceId String
+derive instance newtypeNetworkInterfaceId :: Newtype NetworkInterfaceId _
 
 
 newtype NextUpdateAvailabilityDate = NextUpdateAvailabilityDate String
+derive instance newtypeNextUpdateAvailabilityDate :: Newtype NextUpdateAvailabilityDate _
 
 
 -- | <p>The randomly generated ID of the notification that was sent. This ID is in UUID format.</p>
 newtype NotificationId = NotificationId String
+derive instance newtypeNotificationId :: Newtype NotificationId _
 
 
 newtype NotifyWhenUploadedInput = NotifyWhenUploadedInput 
   { "FileShareARN" :: (FileShareARN)
   }
+derive instance newtypeNotifyWhenUploadedInput :: Newtype NotifyWhenUploadedInput _
 
 
 newtype NotifyWhenUploadedOutput = NotifyWhenUploadedOutput 
   { "FileShareARN" :: NullOrUndefined (FileShareARN)
   , "NotificationId" :: NullOrUndefined (NotificationId)
   }
+derive instance newtypeNotifyWhenUploadedOutput :: Newtype NotifyWhenUploadedOutput _
 
 
 newtype NumTapesToCreate = NumTapesToCreate Int
+derive instance newtypeNumTapesToCreate :: Newtype NumTapesToCreate _
 
 
 -- | <p>The file share path used by the NFS client to identify the mount point. </p>
 newtype Path = Path String
+derive instance newtypePath :: Newtype Path _
 
 
 newtype PermissionId = PermissionId Number
+derive instance newtypePermissionId :: Newtype PermissionId _
 
 
 newtype PermissionMode = PermissionMode String
+derive instance newtypePermissionMode :: Newtype PermissionMode _
 
 
 newtype PositiveIntObject = PositiveIntObject Int
+derive instance newtypePositiveIntObject :: Newtype PositiveIntObject _
 
 
 newtype RecurrenceInHours = RecurrenceInHours Int
+derive instance newtypeRecurrenceInHours :: Newtype RecurrenceInHours _
 
 
 newtype RefreshCacheInput = RefreshCacheInput 
   { "FileShareARN" :: (FileShareARN)
   }
+derive instance newtypeRefreshCacheInput :: Newtype RefreshCacheInput _
 
 
 newtype RefreshCacheOutput = RefreshCacheOutput 
   { "FileShareARN" :: NullOrUndefined (FileShareARN)
   }
+derive instance newtypeRefreshCacheOutput :: Newtype RefreshCacheOutput _
 
 
 newtype RegionId = RegionId String
+derive instance newtypeRegionId :: Newtype RegionId _
 
 
 -- | <p>RemoveTagsFromResourceInput</p>
@@ -1294,25 +1458,30 @@ newtype RemoveTagsFromResourceInput = RemoveTagsFromResourceInput
   { "ResourceARN" :: (ResourceARN)
   , "TagKeys" :: (TagKeys)
   }
+derive instance newtypeRemoveTagsFromResourceInput :: Newtype RemoveTagsFromResourceInput _
 
 
 -- | <p>RemoveTagsFromResourceOutput</p>
 newtype RemoveTagsFromResourceOutput = RemoveTagsFromResourceOutput 
   { "ResourceARN" :: NullOrUndefined (ResourceARN)
   }
+derive instance newtypeRemoveTagsFromResourceOutput :: Newtype RemoveTagsFromResourceOutput _
 
 
 newtype ResetCacheInput = ResetCacheInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeResetCacheInput :: Newtype ResetCacheInput _
 
 
 newtype ResetCacheOutput = ResetCacheOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeResetCacheOutput :: Newtype ResetCacheOutput _
 
 
 newtype ResourceARN = ResourceARN String
+derive instance newtypeResourceARN :: Newtype ResourceARN _
 
 
 -- | <p>RetrieveTapeArchiveInput</p>
@@ -1320,12 +1489,14 @@ newtype RetrieveTapeArchiveInput = RetrieveTapeArchiveInput
   { "TapeARN" :: (TapeARN)
   , "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeRetrieveTapeArchiveInput :: Newtype RetrieveTapeArchiveInput _
 
 
 -- | <p>RetrieveTapeArchiveOutput</p>
 newtype RetrieveTapeArchiveOutput = RetrieveTapeArchiveOutput 
   { "TapeARN" :: NullOrUndefined (TapeARN)
   }
+derive instance newtypeRetrieveTapeArchiveOutput :: Newtype RetrieveTapeArchiveOutput _
 
 
 -- | <p>RetrieveTapeRecoveryPointInput</p>
@@ -1333,16 +1504,19 @@ newtype RetrieveTapeRecoveryPointInput = RetrieveTapeRecoveryPointInput
   { "TapeARN" :: (TapeARN)
   , "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeRetrieveTapeRecoveryPointInput :: Newtype RetrieveTapeRecoveryPointInput _
 
 
 -- | <p>RetrieveTapeRecoveryPointOutput</p>
 newtype RetrieveTapeRecoveryPointOutput = RetrieveTapeRecoveryPointOutput 
   { "TapeARN" :: NullOrUndefined (TapeARN)
   }
+derive instance newtypeRetrieveTapeRecoveryPointOutput :: Newtype RetrieveTapeRecoveryPointOutput _
 
 
 -- | <p>The ARN of the IAM role that file gateway assumes when it accesses the underlying storage. </p>
 newtype Role = Role String
+derive instance newtypeRole :: Newtype Role _
 
 
 -- | <p>An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.</p>
@@ -1350,6 +1524,7 @@ newtype ServiceUnavailableError = ServiceUnavailableError
   { "Message'" :: NullOrUndefined (String)
   , "Error'" :: NullOrUndefined (StorageGatewayError)
   }
+derive instance newtypeServiceUnavailableError :: Newtype ServiceUnavailableError _
 
 
 -- | <p>SetLocalConsolePasswordInput</p>
@@ -1357,49 +1532,59 @@ newtype SetLocalConsolePasswordInput = SetLocalConsolePasswordInput
   { "GatewayARN" :: (GatewayARN)
   , "LocalConsolePassword" :: (LocalConsolePassword)
   }
+derive instance newtypeSetLocalConsolePasswordInput :: Newtype SetLocalConsolePasswordInput _
 
 
 newtype SetLocalConsolePasswordOutput = SetLocalConsolePasswordOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeSetLocalConsolePasswordOutput :: Newtype SetLocalConsolePasswordOutput _
 
 
 -- | <p>A JSON object containing the of the gateway to shut down.</p>
 newtype ShutdownGatewayInput = ShutdownGatewayInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeShutdownGatewayInput :: Newtype ShutdownGatewayInput _
 
 
 -- | <p>A JSON object containing the of the gateway that was shut down.</p>
 newtype ShutdownGatewayOutput = ShutdownGatewayOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeShutdownGatewayOutput :: Newtype ShutdownGatewayOutput _
 
 
 newtype SnapshotDescription = SnapshotDescription String
+derive instance newtypeSnapshotDescription :: Newtype SnapshotDescription _
 
 
 newtype SnapshotId = SnapshotId String
+derive instance newtypeSnapshotId :: Newtype SnapshotId _
 
 
 -- | <p>The user mapped to anonymous user. Valid options are the following: </p> <ul> <li> <p>"RootSquash" - Only root is mapped to anonymous user.</p> </li> <li> <p>"NoSquash" - No one is mapped to anonymous user</p> </li> <li> <p>"AllSquash" - Everyone is mapped to anonymous user.</p> </li> </ul>
 newtype Squash = Squash String
+derive instance newtypeSquash :: Newtype Squash _
 
 
 -- | <p>A JSON object containing the of the gateway to start.</p>
 newtype StartGatewayInput = StartGatewayInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeStartGatewayInput :: Newtype StartGatewayInput _
 
 
 -- | <p>A JSON object containing the of the gateway that was restarted.</p>
 newtype StartGatewayOutput = StartGatewayOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeStartGatewayOutput :: Newtype StartGatewayOutput _
 
 
 -- | <p/>
 newtype StorageClass = StorageClass String
+derive instance newtypeStorageClass :: Newtype StorageClass _
 
 
 -- | <p>Provides additional information about an error that was returned by the service as an or. See the <code>errorCode</code> and <code>errorDetails</code> members for more information about the error.</p>
@@ -1407,6 +1592,7 @@ newtype StorageGatewayError = StorageGatewayError
   { "ErrorCode'" :: NullOrUndefined (ErrorCode)
   , "ErrorDetails'" :: NullOrUndefined (ErrorDetails')
   }
+derive instance newtypeStorageGatewayError :: Newtype StorageGatewayError _
 
 
 -- | <p>Describes an iSCSI stored volume.</p>
@@ -1424,27 +1610,34 @@ newtype StorediSCSIVolume = StorediSCSIVolume
   , "CreatedDate" :: NullOrUndefined (CreatedDate)
   , "VolumeUsedInBytes" :: NullOrUndefined (VolumeUsedInBytes)
   }
+derive instance newtypeStorediSCSIVolume :: Newtype StorediSCSIVolume _
 
 
 newtype StorediSCSIVolumes = StorediSCSIVolumes (Array StorediSCSIVolume)
+derive instance newtypeStorediSCSIVolumes :: Newtype StorediSCSIVolumes _
 
 
 newtype Tag = Tag 
   { "Key" :: (TagKey)
   , "Value" :: (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeys = TagKeys (Array TagKey)
+derive instance newtypeTagKeys :: Newtype TagKeys _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Array Tag)
+derive instance newtypeTags :: Newtype Tags _
 
 
 -- | <p>Describes a virtual tape object.</p>
@@ -1458,13 +1651,16 @@ newtype Tape = Tape
   , "Progress" :: NullOrUndefined (DoubleObject)
   , "TapeUsedInBytes" :: NullOrUndefined (TapeUsage)
   }
+derive instance newtypeTape :: Newtype Tape _
 
 
 newtype TapeARN = TapeARN String
+derive instance newtypeTapeARN :: Newtype TapeARN _
 
 
 -- | <p>The Amazon Resource Name (ARN) of each of the tapes you want to list. If you don't specify a tape ARN, the response lists all tapes in both your VTL and VTS.</p>
 newtype TapeARNs = TapeARNs (Array TapeARN)
+derive instance newtypeTapeARNs :: Newtype TapeARNs _
 
 
 -- | <p>Represents a virtual tape that is archived in the virtual tape shelf (VTS).</p>
@@ -1478,21 +1674,27 @@ newtype TapeArchive = TapeArchive
   , "TapeStatus" :: NullOrUndefined (TapeArchiveStatus)
   , "TapeUsedInBytes" :: NullOrUndefined (TapeUsage)
   }
+derive instance newtypeTapeArchive :: Newtype TapeArchive _
 
 
 newtype TapeArchiveStatus = TapeArchiveStatus String
+derive instance newtypeTapeArchiveStatus :: Newtype TapeArchiveStatus _
 
 
 newtype TapeArchives = TapeArchives (Array TapeArchive)
+derive instance newtypeTapeArchives :: Newtype TapeArchives _
 
 
 newtype TapeBarcode = TapeBarcode String
+derive instance newtypeTapeBarcode :: Newtype TapeBarcode _
 
 
 newtype TapeBarcodePrefix = TapeBarcodePrefix String
+derive instance newtypeTapeBarcodePrefix :: Newtype TapeBarcodePrefix _
 
 
 newtype TapeDriveType = TapeDriveType String
+derive instance newtypeTapeDriveType :: Newtype TapeDriveType _
 
 
 -- | <p>Describes a virtual tape.</p>
@@ -1503,10 +1705,12 @@ newtype TapeInfo = TapeInfo
   , "TapeStatus" :: NullOrUndefined (TapeStatus)
   , "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeTapeInfo :: Newtype TapeInfo _
 
 
 -- | <p>An array of <a>TapeInfo</a> objects, where each object describes an a single tape. If there not tapes in the tape library or VTS, then the <code>TapeInfos</code> is an empty array.</p>
 newtype TapeInfos = TapeInfos (Array TapeInfo)
+derive instance newtypeTapeInfos :: Newtype TapeInfos _
 
 
 -- | <p>Describes a recovery point.</p>
@@ -1516,33 +1720,43 @@ newtype TapeRecoveryPointInfo = TapeRecoveryPointInfo
   , "TapeSizeInBytes" :: NullOrUndefined (TapeSize)
   , "TapeStatus" :: NullOrUndefined (TapeRecoveryPointStatus)
   }
+derive instance newtypeTapeRecoveryPointInfo :: Newtype TapeRecoveryPointInfo _
 
 
 newtype TapeRecoveryPointInfos = TapeRecoveryPointInfos (Array TapeRecoveryPointInfo)
+derive instance newtypeTapeRecoveryPointInfos :: Newtype TapeRecoveryPointInfos _
 
 
 newtype TapeRecoveryPointStatus = TapeRecoveryPointStatus String
+derive instance newtypeTapeRecoveryPointStatus :: Newtype TapeRecoveryPointStatus _
 
 
 newtype TapeSize = TapeSize Number
+derive instance newtypeTapeSize :: Newtype TapeSize _
 
 
 newtype TapeStatus = TapeStatus String
+derive instance newtypeTapeStatus :: Newtype TapeStatus _
 
 
 newtype TapeUsage = TapeUsage Number
+derive instance newtypeTapeUsage :: Newtype TapeUsage _
 
 
 newtype Tapes = Tapes (Array Tape)
+derive instance newtypeTapes :: Newtype Tapes _
 
 
 newtype TargetARN = TargetARN String
+derive instance newtypeTargetARN :: Newtype TargetARN _
 
 
 newtype TargetName = TargetName String
+derive instance newtypeTargetName :: Newtype TargetName _
 
 
 newtype Time = Time Number
+derive instance newtypeTime :: Newtype Time _
 
 
 -- | <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a> </p> </li> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a> </p> </li> </ul>
@@ -1551,12 +1765,14 @@ newtype UpdateBandwidthRateLimitInput = UpdateBandwidthRateLimitInput
   , "AverageUploadRateLimitInBitsPerSec" :: NullOrUndefined (BandwidthUploadRateLimit)
   , "AverageDownloadRateLimitInBitsPerSec" :: NullOrUndefined (BandwidthDownloadRateLimit)
   }
+derive instance newtypeUpdateBandwidthRateLimitInput :: Newtype UpdateBandwidthRateLimitInput _
 
 
 -- | <p>A JSON object containing the of the gateway whose throttle information was updated.</p>
 newtype UpdateBandwidthRateLimitOutput = UpdateBandwidthRateLimitOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeUpdateBandwidthRateLimitOutput :: Newtype UpdateBandwidthRateLimitOutput _
 
 
 -- | <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateInitiator</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateTarget</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$TargetARN</a> </p> </li> </ul>
@@ -1566,6 +1782,7 @@ newtype UpdateChapCredentialsInput = UpdateChapCredentialsInput
   , "InitiatorName" :: (IqnName)
   , "SecretToAuthenticateTarget" :: NullOrUndefined (ChapSecret)
   }
+derive instance newtypeUpdateChapCredentialsInput :: Newtype UpdateChapCredentialsInput _
 
 
 -- | <p>A JSON object containing the following fields:</p>
@@ -1573,6 +1790,7 @@ newtype UpdateChapCredentialsOutput = UpdateChapCredentialsOutput
   { "TargetARN" :: NullOrUndefined (TargetARN)
   , "InitiatorName" :: NullOrUndefined (IqnName)
   }
+derive instance newtypeUpdateChapCredentialsOutput :: Newtype UpdateChapCredentialsOutput _
 
 
 newtype UpdateGatewayInformationInput = UpdateGatewayInformationInput 
@@ -1580,6 +1798,7 @@ newtype UpdateGatewayInformationInput = UpdateGatewayInformationInput
   , "GatewayName" :: NullOrUndefined (GatewayName)
   , "GatewayTimezone" :: NullOrUndefined (GatewayTimezone)
   }
+derive instance newtypeUpdateGatewayInformationInput :: Newtype UpdateGatewayInformationInput _
 
 
 -- | <p>A JSON object containing the ARN of the gateway that was updated.</p>
@@ -1587,18 +1806,21 @@ newtype UpdateGatewayInformationOutput = UpdateGatewayInformationOutput
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   , "GatewayName" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateGatewayInformationOutput :: Newtype UpdateGatewayInformationOutput _
 
 
 -- | <p>A JSON object containing the of the gateway to update.</p>
 newtype UpdateGatewaySoftwareNowInput = UpdateGatewaySoftwareNowInput 
   { "GatewayARN" :: (GatewayARN)
   }
+derive instance newtypeUpdateGatewaySoftwareNowInput :: Newtype UpdateGatewaySoftwareNowInput _
 
 
 -- | <p>A JSON object containing the of the gateway that was updated.</p>
 newtype UpdateGatewaySoftwareNowOutput = UpdateGatewaySoftwareNowOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeUpdateGatewaySoftwareNowOutput :: Newtype UpdateGatewaySoftwareNowOutput _
 
 
 -- | <p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$HourOfDay</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$MinuteOfHour</a> </p> </li> </ul>
@@ -1608,12 +1830,14 @@ newtype UpdateMaintenanceStartTimeInput = UpdateMaintenanceStartTimeInput
   , "MinuteOfHour" :: (MinuteOfHour)
   , "DayOfWeek" :: (DayOfWeek)
   }
+derive instance newtypeUpdateMaintenanceStartTimeInput :: Newtype UpdateMaintenanceStartTimeInput _
 
 
 -- | <p>A JSON object containing the of the gateway whose maintenance start time is updated.</p>
 newtype UpdateMaintenanceStartTimeOutput = UpdateMaintenanceStartTimeOutput 
   { "GatewayARN" :: NullOrUndefined (GatewayARN)
   }
+derive instance newtypeUpdateMaintenanceStartTimeOutput :: Newtype UpdateMaintenanceStartTimeOutput _
 
 
 -- | <p>UpdateNFSFileShareInput</p>
@@ -1628,12 +1852,14 @@ newtype UpdateNFSFileShareInput = UpdateNFSFileShareInput
   , "ReadOnly" :: NullOrUndefined (Boolean)
   , "GuessMIMETypeEnabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateNFSFileShareInput :: Newtype UpdateNFSFileShareInput _
 
 
 -- | <p>UpdateNFSFileShareOutput</p>
 newtype UpdateNFSFileShareOutput = UpdateNFSFileShareOutput 
   { "FileShareARN" :: NullOrUndefined (FileShareARN)
   }
+derive instance newtypeUpdateNFSFileShareOutput :: Newtype UpdateNFSFileShareOutput _
 
 
 -- | <p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateSnapshotScheduleInput$Description</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$RecurrenceInHours</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$StartAt</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$VolumeARN</a> </p> </li> </ul>
@@ -1643,24 +1869,28 @@ newtype UpdateSnapshotScheduleInput = UpdateSnapshotScheduleInput
   , "RecurrenceInHours" :: (RecurrenceInHours)
   , "Description" :: NullOrUndefined (Description)
   }
+derive instance newtypeUpdateSnapshotScheduleInput :: Newtype UpdateSnapshotScheduleInput _
 
 
 -- | <p>A JSON object containing the of the updated storage volume.</p>
 newtype UpdateSnapshotScheduleOutput = UpdateSnapshotScheduleOutput 
   { "VolumeARN" :: NullOrUndefined (VolumeARN)
   }
+derive instance newtypeUpdateSnapshotScheduleOutput :: Newtype UpdateSnapshotScheduleOutput _
 
 
 newtype UpdateVTLDeviceTypeInput = UpdateVTLDeviceTypeInput 
   { "VTLDeviceARN" :: (VTLDeviceARN)
   , "DeviceType" :: (DeviceType)
   }
+derive instance newtypeUpdateVTLDeviceTypeInput :: Newtype UpdateVTLDeviceTypeInput _
 
 
 -- | <p>UpdateVTLDeviceTypeOutput</p>
 newtype UpdateVTLDeviceTypeOutput = UpdateVTLDeviceTypeOutput 
   { "VTLDeviceARN" :: NullOrUndefined (VTLDeviceARN)
   }
+derive instance newtypeUpdateVTLDeviceTypeOutput :: Newtype UpdateVTLDeviceTypeOutput _
 
 
 -- | <p>Represents a device object associated with a tape gateway.</p>
@@ -1671,33 +1901,43 @@ newtype VTLDevice = VTLDevice
   , "VTLDeviceProductIdentifier" :: NullOrUndefined (VTLDeviceProductIdentifier)
   , "DeviceiSCSIAttributes" :: NullOrUndefined (DeviceiSCSIAttributes)
   }
+derive instance newtypeVTLDevice :: Newtype VTLDevice _
 
 
 newtype VTLDeviceARN = VTLDeviceARN String
+derive instance newtypeVTLDeviceARN :: Newtype VTLDeviceARN _
 
 
 newtype VTLDeviceARNs = VTLDeviceARNs (Array VTLDeviceARN)
+derive instance newtypeVTLDeviceARNs :: Newtype VTLDeviceARNs _
 
 
 newtype VTLDeviceProductIdentifier = VTLDeviceProductIdentifier String
+derive instance newtypeVTLDeviceProductIdentifier :: Newtype VTLDeviceProductIdentifier _
 
 
 newtype VTLDeviceType = VTLDeviceType String
+derive instance newtypeVTLDeviceType :: Newtype VTLDeviceType _
 
 
 newtype VTLDeviceVendor = VTLDeviceVendor String
+derive instance newtypeVTLDeviceVendor :: Newtype VTLDeviceVendor _
 
 
 newtype VTLDevices = VTLDevices (Array VTLDevice)
+derive instance newtypeVTLDevices :: Newtype VTLDevices _
 
 
 newtype VolumeARN = VolumeARN String
+derive instance newtypeVolumeARN :: Newtype VolumeARN _
 
 
 newtype VolumeARNs = VolumeARNs (Array VolumeARN)
+derive instance newtypeVolumeARNs :: Newtype VolumeARNs _
 
 
 newtype VolumeId = VolumeId String
+derive instance newtypeVolumeId :: Newtype VolumeId _
 
 
 -- | <p>Describes a storage volume object.</p>
@@ -1709,9 +1949,11 @@ newtype VolumeInfo = VolumeInfo
   , "VolumeType" :: NullOrUndefined (VolumeType)
   , "VolumeSizeInBytes" :: NullOrUndefined (Number)
   }
+derive instance newtypeVolumeInfo :: Newtype VolumeInfo _
 
 
 newtype VolumeInfos = VolumeInfos (Array VolumeInfo)
+derive instance newtypeVolumeInfos :: Newtype VolumeInfos _
 
 
 newtype VolumeRecoveryPointInfo = VolumeRecoveryPointInfo 
@@ -1720,18 +1962,23 @@ newtype VolumeRecoveryPointInfo = VolumeRecoveryPointInfo
   , "VolumeUsageInBytes" :: NullOrUndefined (Number)
   , "VolumeRecoveryPointTime" :: NullOrUndefined (String)
   }
+derive instance newtypeVolumeRecoveryPointInfo :: Newtype VolumeRecoveryPointInfo _
 
 
 newtype VolumeRecoveryPointInfos = VolumeRecoveryPointInfos (Array VolumeRecoveryPointInfo)
+derive instance newtypeVolumeRecoveryPointInfos :: Newtype VolumeRecoveryPointInfos _
 
 
 newtype VolumeStatus = VolumeStatus String
+derive instance newtypeVolumeStatus :: Newtype VolumeStatus _
 
 
 newtype VolumeType = VolumeType String
+derive instance newtypeVolumeType :: Newtype VolumeType _
 
 
 newtype VolumeUsedInBytes = VolumeUsedInBytes Number
+derive instance newtypeVolumeUsedInBytes :: Newtype VolumeUsedInBytes _
 
 
 -- | <p>Lists iSCSI information about a volume.</p>
@@ -1742,6 +1989,8 @@ newtype VolumeiSCSIAttributes = VolumeiSCSIAttributes
   , "LunNumber" :: NullOrUndefined (PositiveIntObject)
   , "ChapEnabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeVolumeiSCSIAttributes :: Newtype VolumeiSCSIAttributes _
 
 
 newtype ErrorDetails' = ErrorDetails' (Map String String)
+derive instance newtypeErrorDetails' :: Newtype ErrorDetails' _

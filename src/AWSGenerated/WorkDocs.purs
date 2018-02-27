@@ -6,6 +6,7 @@ module AWS.WorkDocs where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -218,17 +219,20 @@ newtype AbortDocumentVersionUploadRequest = AbortDocumentVersionUploadRequest
   , "DocumentId" :: (ResourceIdType)
   , "VersionId" :: (DocumentVersionIdType)
   }
+derive instance newtypeAbortDocumentVersionUploadRequest :: Newtype AbortDocumentVersionUploadRequest _
 
 
 newtype ActivateUserRequest = ActivateUserRequest 
   { "UserId" :: (IdType)
   , "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   }
+derive instance newtypeActivateUserRequest :: Newtype ActivateUserRequest _
 
 
 newtype ActivateUserResponse = ActivateUserResponse 
   { "User" :: NullOrUndefined (User)
   }
+derive instance newtypeActivateUserResponse :: Newtype ActivateUserResponse _
 
 
 -- | <p>Describes the activity information.</p>
@@ -242,9 +246,11 @@ newtype Activity = Activity
   , "OriginalParent" :: NullOrUndefined (ResourceMetadata)
   , "CommentMetadata" :: NullOrUndefined (CommentMetadata)
   }
+derive instance newtypeActivity :: Newtype Activity _
 
 
 newtype ActivityType = ActivityType String
+derive instance newtypeActivityType :: Newtype ActivityType _
 
 
 newtype AddResourcePermissionsRequest = AddResourcePermissionsRequest 
@@ -253,20 +259,25 @@ newtype AddResourcePermissionsRequest = AddResourcePermissionsRequest
   , "Principals" :: (SharePrincipalList)
   , "NotificationOptions" :: NullOrUndefined (NotificationOptions)
   }
+derive instance newtypeAddResourcePermissionsRequest :: Newtype AddResourcePermissionsRequest _
 
 
 newtype AddResourcePermissionsResponse = AddResourcePermissionsResponse 
   { "ShareResults" :: NullOrUndefined (ShareResultsList)
   }
+derive instance newtypeAddResourcePermissionsResponse :: Newtype AddResourcePermissionsResponse _
 
 
 newtype AuthenticationHeaderType = AuthenticationHeaderType String
+derive instance newtypeAuthenticationHeaderType :: Newtype AuthenticationHeaderType _
 
 
 newtype BooleanEnumType = BooleanEnumType String
+derive instance newtypeBooleanEnumType :: Newtype BooleanEnumType _
 
 
 newtype BooleanType = BooleanType Boolean
+derive instance newtypeBooleanType :: Newtype BooleanType _
 
 
 -- | <p>Describes a comment.</p>
@@ -281,12 +292,15 @@ newtype Comment = Comment
   , "Visibility" :: NullOrUndefined (CommentVisibilityType)
   , "RecipientId" :: NullOrUndefined (IdType)
   }
+derive instance newtypeComment :: Newtype Comment _
 
 
 newtype CommentIdType = CommentIdType String
+derive instance newtypeCommentIdType :: Newtype CommentIdType _
 
 
 newtype CommentList = CommentList (Array Comment)
+derive instance newtypeCommentList :: Newtype CommentList _
 
 
 -- | <p>Describes the metadata of a comment.</p>
@@ -297,21 +311,26 @@ newtype CommentMetadata = CommentMetadata
   , "CommentStatus" :: NullOrUndefined (CommentStatusType)
   , "RecipientId" :: NullOrUndefined (IdType)
   }
+derive instance newtypeCommentMetadata :: Newtype CommentMetadata _
 
 
 newtype CommentStatusType = CommentStatusType String
+derive instance newtypeCommentStatusType :: Newtype CommentStatusType _
 
 
 newtype CommentTextType = CommentTextType String
+derive instance newtypeCommentTextType :: Newtype CommentTextType _
 
 
 newtype CommentVisibilityType = CommentVisibilityType String
+derive instance newtypeCommentVisibilityType :: Newtype CommentVisibilityType _
 
 
 -- | <p>The resource hierarchy is changing.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 newtype CreateCommentRequest = CreateCommentRequest 
@@ -324,11 +343,13 @@ newtype CreateCommentRequest = CreateCommentRequest
   , "Visibility" :: NullOrUndefined (CommentVisibilityType)
   , "NotifyCollaborators" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeCreateCommentRequest :: Newtype CreateCommentRequest _
 
 
 newtype CreateCommentResponse = CreateCommentResponse 
   { "Comment" :: NullOrUndefined (Comment)
   }
+derive instance newtypeCreateCommentResponse :: Newtype CreateCommentResponse _
 
 
 newtype CreateCustomMetadataRequest = CreateCustomMetadataRequest 
@@ -337,11 +358,13 @@ newtype CreateCustomMetadataRequest = CreateCustomMetadataRequest
   , "VersionId" :: NullOrUndefined (DocumentVersionIdType)
   , "CustomMetadata" :: (CustomMetadataMap)
   }
+derive instance newtypeCreateCustomMetadataRequest :: Newtype CreateCustomMetadataRequest _
 
 
 newtype CreateCustomMetadataResponse = CreateCustomMetadataResponse 
   { 
   }
+derive instance newtypeCreateCustomMetadataResponse :: Newtype CreateCustomMetadataResponse _
 
 
 newtype CreateFolderRequest = CreateFolderRequest 
@@ -349,11 +372,13 @@ newtype CreateFolderRequest = CreateFolderRequest
   , "Name" :: NullOrUndefined (ResourceNameType)
   , "ParentFolderId" :: (ResourceIdType)
   }
+derive instance newtypeCreateFolderRequest :: Newtype CreateFolderRequest _
 
 
 newtype CreateFolderResponse = CreateFolderResponse 
   { "Metadata" :: NullOrUndefined (FolderMetadata)
   }
+derive instance newtypeCreateFolderResponse :: Newtype CreateFolderResponse _
 
 
 newtype CreateLabelsRequest = CreateLabelsRequest 
@@ -361,11 +386,13 @@ newtype CreateLabelsRequest = CreateLabelsRequest
   , "Labels" :: (SharedLabels)
   , "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   }
+derive instance newtypeCreateLabelsRequest :: Newtype CreateLabelsRequest _
 
 
 newtype CreateLabelsResponse = CreateLabelsResponse 
   { 
   }
+derive instance newtypeCreateLabelsResponse :: Newtype CreateLabelsResponse _
 
 
 newtype CreateNotificationSubscriptionRequest = CreateNotificationSubscriptionRequest 
@@ -374,11 +401,13 @@ newtype CreateNotificationSubscriptionRequest = CreateNotificationSubscriptionRe
   , "Protocol" :: (SubscriptionProtocolType)
   , "SubscriptionType" :: (SubscriptionType)
   }
+derive instance newtypeCreateNotificationSubscriptionRequest :: Newtype CreateNotificationSubscriptionRequest _
 
 
 newtype CreateNotificationSubscriptionResponse = CreateNotificationSubscriptionResponse 
   { "Subscription" :: NullOrUndefined (Subscription)
   }
+derive instance newtypeCreateNotificationSubscriptionResponse :: Newtype CreateNotificationSubscriptionResponse _
 
 
 newtype CreateUserRequest = CreateUserRequest 
@@ -392,41 +421,50 @@ newtype CreateUserRequest = CreateUserRequest
   , "StorageRule" :: NullOrUndefined (StorageRuleType)
   , "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   }
+derive instance newtypeCreateUserRequest :: Newtype CreateUserRequest _
 
 
 newtype CreateUserResponse = CreateUserResponse 
   { "User" :: NullOrUndefined (User)
   }
+derive instance newtypeCreateUserResponse :: Newtype CreateUserResponse _
 
 
 newtype CustomMetadataKeyList = CustomMetadataKeyList (Array CustomMetadataKeyType)
+derive instance newtypeCustomMetadataKeyList :: Newtype CustomMetadataKeyList _
 
 
 newtype CustomMetadataKeyType = CustomMetadataKeyType String
+derive instance newtypeCustomMetadataKeyType :: Newtype CustomMetadataKeyType _
 
 
 -- | <p>The limit has been reached on the number of custom properties for the specified resource.</p>
 newtype CustomMetadataLimitExceededException = CustomMetadataLimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeCustomMetadataLimitExceededException :: Newtype CustomMetadataLimitExceededException _
 
 
 newtype CustomMetadataMap = CustomMetadataMap (Map CustomMetadataKeyType CustomMetadataValueType)
+derive instance newtypeCustomMetadataMap :: Newtype CustomMetadataMap _
 
 
 newtype CustomMetadataValueType = CustomMetadataValueType String
+derive instance newtypeCustomMetadataValueType :: Newtype CustomMetadataValueType _
 
 
 newtype DeactivateUserRequest = DeactivateUserRequest 
   { "UserId" :: (IdType)
   , "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   }
+derive instance newtypeDeactivateUserRequest :: Newtype DeactivateUserRequest _
 
 
 -- | <p>The last user in the organization is being deactivated.</p>
 newtype DeactivatingLastSystemUserException = DeactivatingLastSystemUserException 
   { 
   }
+derive instance newtypeDeactivatingLastSystemUserException :: Newtype DeactivatingLastSystemUserException _
 
 
 newtype DeleteCommentRequest = DeleteCommentRequest 
@@ -435,6 +473,7 @@ newtype DeleteCommentRequest = DeleteCommentRequest
   , "VersionId" :: (DocumentVersionIdType)
   , "CommentId" :: (CommentIdType)
   }
+derive instance newtypeDeleteCommentRequest :: Newtype DeleteCommentRequest _
 
 
 newtype DeleteCustomMetadataRequest = DeleteCustomMetadataRequest 
@@ -444,29 +483,34 @@ newtype DeleteCustomMetadataRequest = DeleteCustomMetadataRequest
   , "Keys" :: NullOrUndefined (CustomMetadataKeyList)
   , "DeleteAll" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeDeleteCustomMetadataRequest :: Newtype DeleteCustomMetadataRequest _
 
 
 newtype DeleteCustomMetadataResponse = DeleteCustomMetadataResponse 
   { 
   }
+derive instance newtypeDeleteCustomMetadataResponse :: Newtype DeleteCustomMetadataResponse _
 
 
 newtype DeleteDocumentRequest = DeleteDocumentRequest 
   { "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   , "DocumentId" :: (ResourceIdType)
   }
+derive instance newtypeDeleteDocumentRequest :: Newtype DeleteDocumentRequest _
 
 
 newtype DeleteFolderContentsRequest = DeleteFolderContentsRequest 
   { "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   , "FolderId" :: (ResourceIdType)
   }
+derive instance newtypeDeleteFolderContentsRequest :: Newtype DeleteFolderContentsRequest _
 
 
 newtype DeleteFolderRequest = DeleteFolderRequest 
   { "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   , "FolderId" :: (ResourceIdType)
   }
+derive instance newtypeDeleteFolderRequest :: Newtype DeleteFolderRequest _
 
 
 newtype DeleteLabelsRequest = DeleteLabelsRequest 
@@ -475,23 +519,27 @@ newtype DeleteLabelsRequest = DeleteLabelsRequest
   , "Labels" :: NullOrUndefined (SharedLabels)
   , "DeleteAll" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeDeleteLabelsRequest :: Newtype DeleteLabelsRequest _
 
 
 newtype DeleteLabelsResponse = DeleteLabelsResponse 
   { 
   }
+derive instance newtypeDeleteLabelsResponse :: Newtype DeleteLabelsResponse _
 
 
 newtype DeleteNotificationSubscriptionRequest = DeleteNotificationSubscriptionRequest 
   { "SubscriptionId" :: (IdType)
   , "OrganizationId" :: (IdType)
   }
+derive instance newtypeDeleteNotificationSubscriptionRequest :: Newtype DeleteNotificationSubscriptionRequest _
 
 
 newtype DeleteUserRequest = DeleteUserRequest 
   { "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   , "UserId" :: (IdType)
   }
+derive instance newtypeDeleteUserRequest :: Newtype DeleteUserRequest _
 
 
 newtype DescribeActivitiesRequest = DescribeActivitiesRequest 
@@ -503,12 +551,14 @@ newtype DescribeActivitiesRequest = DescribeActivitiesRequest
   , "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeDescribeActivitiesRequest :: Newtype DescribeActivitiesRequest _
 
 
 newtype DescribeActivitiesResponse = DescribeActivitiesResponse 
   { "UserActivities" :: NullOrUndefined (UserActivities)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeDescribeActivitiesResponse :: Newtype DescribeActivitiesResponse _
 
 
 newtype DescribeCommentsRequest = DescribeCommentsRequest 
@@ -518,12 +568,14 @@ newtype DescribeCommentsRequest = DescribeCommentsRequest
   , "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeDescribeCommentsRequest :: Newtype DescribeCommentsRequest _
 
 
 newtype DescribeCommentsResponse = DescribeCommentsResponse 
   { "Comments" :: NullOrUndefined (CommentList)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeDescribeCommentsResponse :: Newtype DescribeCommentsResponse _
 
 
 newtype DescribeDocumentVersionsRequest = DescribeDocumentVersionsRequest 
@@ -534,12 +586,14 @@ newtype DescribeDocumentVersionsRequest = DescribeDocumentVersionsRequest
   , "Include" :: NullOrUndefined (FieldNamesType)
   , "Fields" :: NullOrUndefined (FieldNamesType)
   }
+derive instance newtypeDescribeDocumentVersionsRequest :: Newtype DescribeDocumentVersionsRequest _
 
 
 newtype DescribeDocumentVersionsResponse = DescribeDocumentVersionsResponse 
   { "DocumentVersions" :: NullOrUndefined (DocumentVersionMetadataList)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeDocumentVersionsResponse :: Newtype DescribeDocumentVersionsResponse _
 
 
 newtype DescribeFolderContentsRequest = DescribeFolderContentsRequest 
@@ -552,6 +606,7 @@ newtype DescribeFolderContentsRequest = DescribeFolderContentsRequest
   , "Type" :: NullOrUndefined (FolderContentType)
   , "Include" :: NullOrUndefined (FieldNamesType)
   }
+derive instance newtypeDescribeFolderContentsRequest :: Newtype DescribeFolderContentsRequest _
 
 
 newtype DescribeFolderContentsResponse = DescribeFolderContentsResponse 
@@ -559,6 +614,7 @@ newtype DescribeFolderContentsResponse = DescribeFolderContentsResponse
   , "Documents" :: NullOrUndefined (DocumentMetadataList)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeFolderContentsResponse :: Newtype DescribeFolderContentsResponse _
 
 
 newtype DescribeGroupsRequest = DescribeGroupsRequest 
@@ -568,12 +624,14 @@ newtype DescribeGroupsRequest = DescribeGroupsRequest
   , "Marker" :: NullOrUndefined (MarkerType)
   , "Limit" :: NullOrUndefined (PositiveIntegerType)
   }
+derive instance newtypeDescribeGroupsRequest :: Newtype DescribeGroupsRequest _
 
 
 newtype DescribeGroupsResponse = DescribeGroupsResponse 
   { "Groups" :: NullOrUndefined (GroupMetadataList)
   , "Marker" :: NullOrUndefined (MarkerType)
   }
+derive instance newtypeDescribeGroupsResponse :: Newtype DescribeGroupsResponse _
 
 
 newtype DescribeNotificationSubscriptionsRequest = DescribeNotificationSubscriptionsRequest 
@@ -581,12 +639,14 @@ newtype DescribeNotificationSubscriptionsRequest = DescribeNotificationSubscript
   , "Marker" :: NullOrUndefined (PageMarkerType)
   , "Limit" :: NullOrUndefined (LimitType)
   }
+derive instance newtypeDescribeNotificationSubscriptionsRequest :: Newtype DescribeNotificationSubscriptionsRequest _
 
 
 newtype DescribeNotificationSubscriptionsResponse = DescribeNotificationSubscriptionsResponse 
   { "Subscriptions" :: NullOrUndefined (SubscriptionList)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeNotificationSubscriptionsResponse :: Newtype DescribeNotificationSubscriptionsResponse _
 
 
 newtype DescribeResourcePermissionsRequest = DescribeResourcePermissionsRequest 
@@ -596,12 +656,14 @@ newtype DescribeResourcePermissionsRequest = DescribeResourcePermissionsRequest
   , "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeResourcePermissionsRequest :: Newtype DescribeResourcePermissionsRequest _
 
 
 newtype DescribeResourcePermissionsResponse = DescribeResourcePermissionsResponse 
   { "Principals" :: NullOrUndefined (PrincipalList)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeResourcePermissionsResponse :: Newtype DescribeResourcePermissionsResponse _
 
 
 newtype DescribeRootFoldersRequest = DescribeRootFoldersRequest 
@@ -609,12 +671,14 @@ newtype DescribeRootFoldersRequest = DescribeRootFoldersRequest
   , "Limit" :: NullOrUndefined (LimitType)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeRootFoldersRequest :: Newtype DescribeRootFoldersRequest _
 
 
 newtype DescribeRootFoldersResponse = DescribeRootFoldersResponse 
   { "Folders" :: NullOrUndefined (FolderMetadataList)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeRootFoldersResponse :: Newtype DescribeRootFoldersResponse _
 
 
 newtype DescribeUsersRequest = DescribeUsersRequest 
@@ -629,6 +693,7 @@ newtype DescribeUsersRequest = DescribeUsersRequest
   , "Limit" :: NullOrUndefined (LimitType)
   , "Fields" :: NullOrUndefined (FieldNamesType)
   }
+derive instance newtypeDescribeUsersRequest :: Newtype DescribeUsersRequest _
 
 
 newtype DescribeUsersResponse = DescribeUsersResponse 
@@ -636,15 +701,18 @@ newtype DescribeUsersResponse = DescribeUsersResponse
   , "TotalNumberOfUsers" :: NullOrUndefined (SizeType)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeDescribeUsersResponse :: Newtype DescribeUsersResponse _
 
 
 newtype DocumentContentType = DocumentContentType String
+derive instance newtypeDocumentContentType :: Newtype DocumentContentType _
 
 
 -- | <p>This exception is thrown when the document is locked for comments and user tries to create or delete a comment on that document.</p>
 newtype DocumentLockedForCommentsException = DocumentLockedForCommentsException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeDocumentLockedForCommentsException :: Newtype DocumentLockedForCommentsException _
 
 
 -- | <p>Describes the document.</p>
@@ -658,27 +726,35 @@ newtype DocumentMetadata = DocumentMetadata
   , "ResourceState" :: NullOrUndefined (ResourceStateType)
   , "Labels" :: NullOrUndefined (SharedLabels)
   }
+derive instance newtypeDocumentMetadata :: Newtype DocumentMetadata _
 
 
 newtype DocumentMetadataList = DocumentMetadataList (Array DocumentMetadata)
+derive instance newtypeDocumentMetadataList :: Newtype DocumentMetadataList _
 
 
 newtype DocumentSourceType = DocumentSourceType String
+derive instance newtypeDocumentSourceType :: Newtype DocumentSourceType _
 
 
 newtype DocumentSourceUrlMap = DocumentSourceUrlMap (Map DocumentSourceType UrlType)
+derive instance newtypeDocumentSourceUrlMap :: Newtype DocumentSourceUrlMap _
 
 
 newtype DocumentStatusType = DocumentStatusType String
+derive instance newtypeDocumentStatusType :: Newtype DocumentStatusType _
 
 
 newtype DocumentThumbnailType = DocumentThumbnailType String
+derive instance newtypeDocumentThumbnailType :: Newtype DocumentThumbnailType _
 
 
 newtype DocumentThumbnailUrlMap = DocumentThumbnailUrlMap (Map DocumentThumbnailType UrlType)
+derive instance newtypeDocumentThumbnailUrlMap :: Newtype DocumentThumbnailUrlMap _
 
 
 newtype DocumentVersionIdType = DocumentVersionIdType String
+derive instance newtypeDocumentVersionIdType :: Newtype DocumentVersionIdType _
 
 
 -- | <p>Describes a version of a document.</p>
@@ -697,30 +773,37 @@ newtype DocumentVersionMetadata = DocumentVersionMetadata
   , "Thumbnail" :: NullOrUndefined (DocumentThumbnailUrlMap)
   , "Source" :: NullOrUndefined (DocumentSourceUrlMap)
   }
+derive instance newtypeDocumentVersionMetadata :: Newtype DocumentVersionMetadata _
 
 
 newtype DocumentVersionMetadataList = DocumentVersionMetadataList (Array DocumentVersionMetadata)
+derive instance newtypeDocumentVersionMetadataList :: Newtype DocumentVersionMetadataList _
 
 
 newtype DocumentVersionStatus = DocumentVersionStatus String
+derive instance newtypeDocumentVersionStatus :: Newtype DocumentVersionStatus _
 
 
 -- | <p>This exception is thrown when a valid checkout ID is not presented on document version upload calls for a document that has been checked out from Web client.</p>
 newtype DraftUploadOutOfSyncException = DraftUploadOutOfSyncException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeDraftUploadOutOfSyncException :: Newtype DraftUploadOutOfSyncException _
 
 
 newtype EmailAddressType = EmailAddressType String
+derive instance newtypeEmailAddressType :: Newtype EmailAddressType _
 
 
 -- | <p>The resource already exists.</p>
 newtype EntityAlreadyExistsException = EntityAlreadyExistsException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeEntityAlreadyExistsException :: Newtype EntityAlreadyExistsException _
 
 
 newtype EntityIdList = EntityIdList (Array IdType)
+derive instance newtypeEntityIdList :: Newtype EntityIdList _
 
 
 -- | <p>The resource does not exist.</p>
@@ -728,21 +811,26 @@ newtype EntityNotExistsException = EntityNotExistsException
   { "Message" :: NullOrUndefined (ErrorMessageType)
   , "EntityIds" :: NullOrUndefined (EntityIdList)
   }
+derive instance newtypeEntityNotExistsException :: Newtype EntityNotExistsException _
 
 
 newtype ErrorMessageType = ErrorMessageType String
+derive instance newtypeErrorMessageType :: Newtype ErrorMessageType _
 
 
 -- | <p>The AWS Directory Service cannot reach an on-premises instance. Or a dependency under the control of the organization is failing, such as a connected Active Directory.</p>
 newtype FailedDependencyException = FailedDependencyException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeFailedDependencyException :: Newtype FailedDependencyException _
 
 
 newtype FieldNamesType = FieldNamesType String
+derive instance newtypeFieldNamesType :: Newtype FieldNamesType _
 
 
 newtype FolderContentType = FolderContentType String
+derive instance newtypeFolderContentType :: Newtype FolderContentType _
 
 
 -- | <p>Describes a folder.</p>
@@ -759,19 +847,23 @@ newtype FolderMetadata = FolderMetadata
   , "Size" :: NullOrUndefined (SizeType)
   , "LatestVersionSize" :: NullOrUndefined (SizeType)
   }
+derive instance newtypeFolderMetadata :: Newtype FolderMetadata _
 
 
 newtype FolderMetadataList = FolderMetadataList (Array FolderMetadata)
+derive instance newtypeFolderMetadataList :: Newtype FolderMetadataList _
 
 
 newtype GetCurrentUserRequest = GetCurrentUserRequest 
   { "AuthenticationToken" :: (AuthenticationHeaderType)
   }
+derive instance newtypeGetCurrentUserRequest :: Newtype GetCurrentUserRequest _
 
 
 newtype GetCurrentUserResponse = GetCurrentUserResponse 
   { "User" :: NullOrUndefined (User)
   }
+derive instance newtypeGetCurrentUserResponse :: Newtype GetCurrentUserResponse _
 
 
 newtype GetDocumentPathRequest = GetDocumentPathRequest 
@@ -781,11 +873,13 @@ newtype GetDocumentPathRequest = GetDocumentPathRequest
   , "Fields" :: NullOrUndefined (FieldNamesType)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeGetDocumentPathRequest :: Newtype GetDocumentPathRequest _
 
 
 newtype GetDocumentPathResponse = GetDocumentPathResponse 
   { "Path" :: NullOrUndefined (ResourcePath)
   }
+derive instance newtypeGetDocumentPathResponse :: Newtype GetDocumentPathResponse _
 
 
 newtype GetDocumentRequest = GetDocumentRequest 
@@ -793,12 +887,14 @@ newtype GetDocumentRequest = GetDocumentRequest
   , "DocumentId" :: (ResourceIdType)
   , "IncludeCustomMetadata" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeGetDocumentRequest :: Newtype GetDocumentRequest _
 
 
 newtype GetDocumentResponse = GetDocumentResponse 
   { "Metadata" :: NullOrUndefined (DocumentMetadata)
   , "CustomMetadata" :: NullOrUndefined (CustomMetadataMap)
   }
+derive instance newtypeGetDocumentResponse :: Newtype GetDocumentResponse _
 
 
 newtype GetDocumentVersionRequest = GetDocumentVersionRequest 
@@ -808,12 +904,14 @@ newtype GetDocumentVersionRequest = GetDocumentVersionRequest
   , "Fields" :: NullOrUndefined (FieldNamesType)
   , "IncludeCustomMetadata" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeGetDocumentVersionRequest :: Newtype GetDocumentVersionRequest _
 
 
 newtype GetDocumentVersionResponse = GetDocumentVersionResponse 
   { "Metadata" :: NullOrUndefined (DocumentVersionMetadata)
   , "CustomMetadata" :: NullOrUndefined (CustomMetadataMap)
   }
+derive instance newtypeGetDocumentVersionResponse :: Newtype GetDocumentVersionResponse _
 
 
 newtype GetFolderPathRequest = GetFolderPathRequest 
@@ -823,11 +921,13 @@ newtype GetFolderPathRequest = GetFolderPathRequest
   , "Fields" :: NullOrUndefined (FieldNamesType)
   , "Marker" :: NullOrUndefined (PageMarkerType)
   }
+derive instance newtypeGetFolderPathRequest :: Newtype GetFolderPathRequest _
 
 
 newtype GetFolderPathResponse = GetFolderPathResponse 
   { "Path" :: NullOrUndefined (ResourcePath)
   }
+derive instance newtypeGetFolderPathResponse :: Newtype GetFolderPathResponse _
 
 
 newtype GetFolderRequest = GetFolderRequest 
@@ -835,12 +935,14 @@ newtype GetFolderRequest = GetFolderRequest
   , "FolderId" :: (ResourceIdType)
   , "IncludeCustomMetadata" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeGetFolderRequest :: Newtype GetFolderRequest _
 
 
 newtype GetFolderResponse = GetFolderResponse 
   { "Metadata" :: NullOrUndefined (FolderMetadata)
   , "CustomMetadata" :: NullOrUndefined (CustomMetadataMap)
   }
+derive instance newtypeGetFolderResponse :: Newtype GetFolderResponse _
 
 
 -- | <p>Describes the metadata of a user group.</p>
@@ -848,30 +950,38 @@ newtype GroupMetadata = GroupMetadata
   { "Id" :: NullOrUndefined (IdType)
   , "Name" :: NullOrUndefined (GroupNameType)
   }
+derive instance newtypeGroupMetadata :: Newtype GroupMetadata _
 
 
 newtype GroupMetadataList = GroupMetadataList (Array GroupMetadata)
+derive instance newtypeGroupMetadataList :: Newtype GroupMetadataList _
 
 
 newtype GroupNameType = GroupNameType String
+derive instance newtypeGroupNameType :: Newtype GroupNameType _
 
 
 newtype HashType = HashType String
+derive instance newtypeHashType :: Newtype HashType _
 
 
 newtype HeaderNameType = HeaderNameType String
+derive instance newtypeHeaderNameType :: Newtype HeaderNameType _
 
 
 newtype HeaderValueType = HeaderValueType String
+derive instance newtypeHeaderValueType :: Newtype HeaderValueType _
 
 
 newtype IdType = IdType String
+derive instance newtypeIdType :: Newtype IdType _
 
 
 -- | <p>The user is undergoing transfer of ownership.</p>
 newtype IllegalUserStateException = IllegalUserStateException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeIllegalUserStateException :: Newtype IllegalUserStateException _
 
 
 newtype InitiateDocumentVersionUploadRequest = InitiateDocumentVersionUploadRequest 
@@ -884,48 +994,58 @@ newtype InitiateDocumentVersionUploadRequest = InitiateDocumentVersionUploadRequ
   , "DocumentSizeInBytes" :: NullOrUndefined (SizeType)
   , "ParentFolderId" :: (ResourceIdType)
   }
+derive instance newtypeInitiateDocumentVersionUploadRequest :: Newtype InitiateDocumentVersionUploadRequest _
 
 
 newtype InitiateDocumentVersionUploadResponse = InitiateDocumentVersionUploadResponse 
   { "Metadata" :: NullOrUndefined (DocumentMetadata)
   , "UploadMetadata" :: NullOrUndefined (UploadMetadata)
   }
+derive instance newtypeInitiateDocumentVersionUploadResponse :: Newtype InitiateDocumentVersionUploadResponse _
 
 
 -- | <p>The pagination marker or limit fields are not valid.</p>
 newtype InvalidArgumentException = InvalidArgumentException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidArgumentException :: Newtype InvalidArgumentException _
 
 
 -- | <p>The operation is invalid.</p>
 newtype InvalidOperationException = InvalidOperationException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidOperationException :: Newtype InvalidOperationException _
 
 
 -- | <p>The password is invalid.</p>
 newtype InvalidPasswordException = InvalidPasswordException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeInvalidPasswordException :: Newtype InvalidPasswordException _
 
 
 -- | <p>The maximum of 100,000 folders under the parent folder has been exceeded.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype LimitType = LimitType Int
+derive instance newtypeLimitType :: Newtype LimitType _
 
 
 newtype LocaleType = LocaleType String
+derive instance newtypeLocaleType :: Newtype LocaleType _
 
 
 newtype MarkerType = MarkerType String
+derive instance newtypeMarkerType :: Newtype MarkerType _
 
 
 newtype MessageType = MessageType String
+derive instance newtypeMessageType :: Newtype MessageType _
 
 
 -- | <p>Set of options which defines notification preferences of given action.</p>
@@ -933,15 +1053,19 @@ newtype NotificationOptions = NotificationOptions
   { "SendEmail" :: NullOrUndefined (BooleanType)
   , "EmailMessage" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeNotificationOptions :: Newtype NotificationOptions _
 
 
 newtype OrderType = OrderType String
+derive instance newtypeOrderType :: Newtype OrderType _
 
 
 newtype OrganizationUserList = OrganizationUserList (Array User)
+derive instance newtypeOrganizationUserList :: Newtype OrganizationUserList _
 
 
 newtype PageMarkerType = PageMarkerType String
+derive instance newtypePageMarkerType :: Newtype PageMarkerType _
 
 
 -- | <p>Describes the users or user groups.</p>
@@ -949,9 +1073,11 @@ newtype Participants = Participants
   { "Users" :: NullOrUndefined (UserMetadataList)
   , "Groups" :: NullOrUndefined (GroupMetadataList)
   }
+derive instance newtypeParticipants :: Newtype Participants _
 
 
 newtype PasswordType = PasswordType String
+derive instance newtypePasswordType :: Newtype PasswordType _
 
 
 -- | <p>Describes the permissions.</p>
@@ -959,15 +1085,19 @@ newtype PermissionInfo = PermissionInfo
   { "Role" :: NullOrUndefined (RoleType)
   , "Type" :: NullOrUndefined (RolePermissionType)
   }
+derive instance newtypePermissionInfo :: Newtype PermissionInfo _
 
 
 newtype PermissionInfoList = PermissionInfoList (Array PermissionInfo)
+derive instance newtypePermissionInfoList :: Newtype PermissionInfoList _
 
 
 newtype PositiveIntegerType = PositiveIntegerType Int
+derive instance newtypePositiveIntegerType :: Newtype PositiveIntegerType _
 
 
 newtype PositiveSizeType = PositiveSizeType Number
+derive instance newtypePositiveSizeType :: Newtype PositiveSizeType _
 
 
 -- | <p>Describes a resource.</p>
@@ -976,24 +1106,29 @@ newtype Principal = Principal
   , "Type" :: NullOrUndefined (PrincipalType)
   , "Roles" :: NullOrUndefined (PermissionInfoList)
   }
+derive instance newtypePrincipal :: Newtype Principal _
 
 
 newtype PrincipalList = PrincipalList (Array Principal)
+derive instance newtypePrincipalList :: Newtype PrincipalList _
 
 
 newtype PrincipalType = PrincipalType String
+derive instance newtypePrincipalType :: Newtype PrincipalType _
 
 
 -- | <p>The specified document version is not in the INITIALIZED state.</p>
 newtype ProhibitedStateException = ProhibitedStateException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeProhibitedStateException :: Newtype ProhibitedStateException _
 
 
 newtype RemoveAllResourcePermissionsRequest = RemoveAllResourcePermissionsRequest 
   { "AuthenticationToken" :: NullOrUndefined (AuthenticationHeaderType)
   , "ResourceId" :: (ResourceIdType)
   }
+derive instance newtypeRemoveAllResourcePermissionsRequest :: Newtype RemoveAllResourcePermissionsRequest _
 
 
 newtype RemoveResourcePermissionRequest = RemoveResourcePermissionRequest 
@@ -1002,15 +1137,18 @@ newtype RemoveResourcePermissionRequest = RemoveResourcePermissionRequest
   , "PrincipalId" :: (IdType)
   , "PrincipalType" :: NullOrUndefined (PrincipalType)
   }
+derive instance newtypeRemoveResourcePermissionRequest :: Newtype RemoveResourcePermissionRequest _
 
 
 -- | <p>The resource is already checked out.</p>
 newtype ResourceAlreadyCheckedOutException = ResourceAlreadyCheckedOutException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeResourceAlreadyCheckedOutException :: Newtype ResourceAlreadyCheckedOutException _
 
 
 newtype ResourceIdType = ResourceIdType String
+derive instance newtypeResourceIdType :: Newtype ResourceIdType _
 
 
 -- | <p>Describes the metadata of a resource.</p>
@@ -1023,15 +1161,18 @@ newtype ResourceMetadata = ResourceMetadata
   , "Owner" :: NullOrUndefined (UserMetadata)
   , "ParentId" :: NullOrUndefined (ResourceIdType)
   }
+derive instance newtypeResourceMetadata :: Newtype ResourceMetadata _
 
 
 newtype ResourceNameType = ResourceNameType String
+derive instance newtypeResourceNameType :: Newtype ResourceNameType _
 
 
 -- | <p>Describes the path information of a resource.</p>
 newtype ResourcePath = ResourcePath 
   { "Components" :: NullOrUndefined (ResourcePathComponentList)
   }
+derive instance newtypeResourcePath :: Newtype ResourcePath _
 
 
 -- | <p>Describes the resource path.</p>
@@ -1039,33 +1180,42 @@ newtype ResourcePathComponent = ResourcePathComponent
   { "Id" :: NullOrUndefined (IdType)
   , "Name" :: NullOrUndefined (ResourceNameType)
   }
+derive instance newtypeResourcePathComponent :: Newtype ResourcePathComponent _
 
 
 newtype ResourcePathComponentList = ResourcePathComponentList (Array ResourcePathComponent)
+derive instance newtypeResourcePathComponentList :: Newtype ResourcePathComponentList _
 
 
 newtype ResourceSortType = ResourceSortType String
+derive instance newtypeResourceSortType :: Newtype ResourceSortType _
 
 
 newtype ResourceStateType = ResourceStateType String
+derive instance newtypeResourceStateType :: Newtype ResourceStateType _
 
 
 newtype ResourceType = ResourceType String
+derive instance newtypeResourceType :: Newtype ResourceType _
 
 
 newtype RolePermissionType = RolePermissionType String
+derive instance newtypeRolePermissionType :: Newtype RolePermissionType _
 
 
 newtype RoleType = RoleType String
+derive instance newtypeRoleType :: Newtype RoleType _
 
 
 newtype SearchQueryType = SearchQueryType String
+derive instance newtypeSearchQueryType :: Newtype SearchQueryType _
 
 
 -- | <p>One or more of the dependencies is unavailable.</p>
 newtype ServiceUnavailableException = ServiceUnavailableException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 -- | <p>Describes the recipient type and ID, if available.</p>
@@ -1074,9 +1224,11 @@ newtype SharePrincipal = SharePrincipal
   , "Type" :: (PrincipalType)
   , "Role" :: (RoleType)
   }
+derive instance newtypeSharePrincipal :: Newtype SharePrincipal _
 
 
 newtype SharePrincipalList = SharePrincipalList (Array SharePrincipal)
+derive instance newtypeSharePrincipalList :: Newtype SharePrincipalList _
 
 
 -- | <p>Describes the share results of a resource.</p>
@@ -1087,36 +1239,45 @@ newtype ShareResult = ShareResult
   , "ShareId" :: NullOrUndefined (ResourceIdType)
   , "StatusMessage" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeShareResult :: Newtype ShareResult _
 
 
 newtype ShareResultsList = ShareResultsList (Array ShareResult)
+derive instance newtypeShareResultsList :: Newtype ShareResultsList _
 
 
 newtype ShareStatusType = ShareStatusType String
+derive instance newtypeShareStatusType :: Newtype ShareStatusType _
 
 
 newtype SharedLabel = SharedLabel String
+derive instance newtypeSharedLabel :: Newtype SharedLabel _
 
 
 newtype SharedLabels = SharedLabels (Array SharedLabel)
+derive instance newtypeSharedLabels :: Newtype SharedLabels _
 
 
 newtype SignedHeaderMap = SignedHeaderMap (Map HeaderNameType HeaderValueType)
+derive instance newtypeSignedHeaderMap :: Newtype SignedHeaderMap _
 
 
 newtype SizeType = SizeType Number
+derive instance newtypeSizeType :: Newtype SizeType _
 
 
 -- | <p>The storage limit has been exceeded.</p>
 newtype StorageLimitExceededException = StorageLimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeStorageLimitExceededException :: Newtype StorageLimitExceededException _
 
 
 -- | <p>The storage limit will be exceeded.</p>
 newtype StorageLimitWillExceedException = StorageLimitWillExceedException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeStorageLimitWillExceedException :: Newtype StorageLimitWillExceedException _
 
 
 -- | <p>Describes the storage for a user.</p>
@@ -1124,9 +1285,11 @@ newtype StorageRuleType = StorageRuleType
   { "StorageAllocatedInBytes" :: NullOrUndefined (PositiveSizeType)
   , "StorageType" :: NullOrUndefined (StorageType)
   }
+derive instance newtypeStorageRuleType :: Newtype StorageRuleType _
 
 
 newtype StorageType = StorageType String
+derive instance newtypeStorageType :: Newtype StorageType _
 
 
 -- | <p>Describes a subscription.</p>
@@ -1135,48 +1298,59 @@ newtype Subscription = Subscription
   , "EndPoint" :: NullOrUndefined (SubscriptionEndPointType)
   , "Protocol" :: NullOrUndefined (SubscriptionProtocolType)
   }
+derive instance newtypeSubscription :: Newtype Subscription _
 
 
 newtype SubscriptionEndPointType = SubscriptionEndPointType String
+derive instance newtypeSubscriptionEndPointType :: Newtype SubscriptionEndPointType _
 
 
 newtype SubscriptionList = SubscriptionList (Array Subscription)
+derive instance newtypeSubscriptionList :: Newtype SubscriptionList _
 
 
 newtype SubscriptionProtocolType = SubscriptionProtocolType String
+derive instance newtypeSubscriptionProtocolType :: Newtype SubscriptionProtocolType _
 
 
 newtype SubscriptionType = SubscriptionType String
+derive instance newtypeSubscriptionType :: Newtype SubscriptionType _
 
 
 newtype TimeZoneIdType = TimeZoneIdType String
+derive instance newtypeTimeZoneIdType :: Newtype TimeZoneIdType _
 
 
 newtype TimestampType = TimestampType Number
+derive instance newtypeTimestampType :: Newtype TimestampType _
 
 
 -- | <p>The limit has been reached on the number of labels for the specified resource.</p>
 newtype TooManyLabelsException = TooManyLabelsException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeTooManyLabelsException :: Newtype TooManyLabelsException _
 
 
 -- | <p>You've reached the limit on the number of subscriptions for the WorkDocs instance.</p>
 newtype TooManySubscriptionsException = TooManySubscriptionsException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeTooManySubscriptionsException :: Newtype TooManySubscriptionsException _
 
 
 -- | <p>The operation is not permitted.</p>
 newtype UnauthorizedOperationException = UnauthorizedOperationException 
   { 
   }
+derive instance newtypeUnauthorizedOperationException :: Newtype UnauthorizedOperationException _
 
 
 -- | <p>The caller does not have access to perform the action on the resource.</p>
 newtype UnauthorizedResourceAccessException = UnauthorizedResourceAccessException 
   { "Message" :: NullOrUndefined (ErrorMessageType)
   }
+derive instance newtypeUnauthorizedResourceAccessException :: Newtype UnauthorizedResourceAccessException _
 
 
 newtype UpdateDocumentRequest = UpdateDocumentRequest 
@@ -1186,6 +1360,7 @@ newtype UpdateDocumentRequest = UpdateDocumentRequest
   , "ParentFolderId" :: NullOrUndefined (ResourceIdType)
   , "ResourceState" :: NullOrUndefined (ResourceStateType)
   }
+derive instance newtypeUpdateDocumentRequest :: Newtype UpdateDocumentRequest _
 
 
 newtype UpdateDocumentVersionRequest = UpdateDocumentVersionRequest 
@@ -1194,6 +1369,7 @@ newtype UpdateDocumentVersionRequest = UpdateDocumentVersionRequest
   , "VersionId" :: (DocumentVersionIdType)
   , "VersionStatus" :: NullOrUndefined (DocumentVersionStatus)
   }
+derive instance newtypeUpdateDocumentVersionRequest :: Newtype UpdateDocumentVersionRequest _
 
 
 newtype UpdateFolderRequest = UpdateFolderRequest 
@@ -1203,6 +1379,7 @@ newtype UpdateFolderRequest = UpdateFolderRequest
   , "ParentFolderId" :: NullOrUndefined (ResourceIdType)
   , "ResourceState" :: NullOrUndefined (ResourceStateType)
   }
+derive instance newtypeUpdateFolderRequest :: Newtype UpdateFolderRequest _
 
 
 newtype UpdateUserRequest = UpdateUserRequest 
@@ -1216,11 +1393,13 @@ newtype UpdateUserRequest = UpdateUserRequest
   , "Locale" :: NullOrUndefined (LocaleType)
   , "GrantPoweruserPrivileges" :: NullOrUndefined (BooleanEnumType)
   }
+derive instance newtypeUpdateUserRequest :: Newtype UpdateUserRequest _
 
 
 newtype UpdateUserResponse = UpdateUserResponse 
   { "User" :: NullOrUndefined (User)
   }
+derive instance newtypeUpdateUserResponse :: Newtype UpdateUserResponse _
 
 
 -- | <p>Describes the upload.</p>
@@ -1228,9 +1407,11 @@ newtype UploadMetadata = UploadMetadata
   { "UploadUrl" :: NullOrUndefined (UrlType)
   , "SignedHeaders" :: NullOrUndefined (SignedHeaderMap)
   }
+derive instance newtypeUploadMetadata :: Newtype UploadMetadata _
 
 
 newtype UrlType = UrlType String
+derive instance newtypeUrlType :: Newtype UrlType _
 
 
 -- | <p>Describes a user.</p>
@@ -1251,18 +1432,23 @@ newtype User = User
   , "Locale" :: NullOrUndefined (LocaleType)
   , "Storage" :: NullOrUndefined (UserStorageMetadata)
   }
+derive instance newtypeUser :: Newtype User _
 
 
 newtype UserActivities = UserActivities (Array Activity)
+derive instance newtypeUserActivities :: Newtype UserActivities _
 
 
 newtype UserAttributeValueType = UserAttributeValueType String
+derive instance newtypeUserAttributeValueType :: Newtype UserAttributeValueType _
 
 
 newtype UserFilterType = UserFilterType String
+derive instance newtypeUserFilterType :: Newtype UserFilterType _
 
 
 newtype UserIdsType = UserIdsType String
+derive instance newtypeUserIdsType :: Newtype UserIdsType _
 
 
 -- | <p>Describes the metadata of the user.</p>
@@ -1273,15 +1459,19 @@ newtype UserMetadata = UserMetadata
   , "Surname" :: NullOrUndefined (UserAttributeValueType)
   , "EmailAddress" :: NullOrUndefined (EmailAddressType)
   }
+derive instance newtypeUserMetadata :: Newtype UserMetadata _
 
 
 newtype UserMetadataList = UserMetadataList (Array UserMetadata)
+derive instance newtypeUserMetadataList :: Newtype UserMetadataList _
 
 
 newtype UserSortType = UserSortType String
+derive instance newtypeUserSortType :: Newtype UserSortType _
 
 
 newtype UserStatusType = UserStatusType String
+derive instance newtypeUserStatusType :: Newtype UserStatusType _
 
 
 -- | <p>Describes the storage for a user.</p>
@@ -1289,9 +1479,12 @@ newtype UserStorageMetadata = UserStorageMetadata
   { "StorageUtilizedInBytes" :: NullOrUndefined (SizeType)
   , "StorageRule" :: NullOrUndefined (StorageRuleType)
   }
+derive instance newtypeUserStorageMetadata :: Newtype UserStorageMetadata _
 
 
 newtype UserType = UserType String
+derive instance newtypeUserType :: Newtype UserType _
 
 
 newtype UsernameType = UsernameType String
+derive instance newtypeUsernameType :: Newtype UsernameType _

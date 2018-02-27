@@ -6,6 +6,7 @@ module AWS.SNS where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -164,6 +165,7 @@ unsubscribe = AWS.request serviceName "Unsubscribe"
 
 
 newtype ActionsList = ActionsList (Array Action')
+derive instance newtypeActionsList :: Newtype ActionsList _
 
 
 newtype AddPermissionInput = AddPermissionInput 
@@ -172,27 +174,32 @@ newtype AddPermissionInput = AddPermissionInput
   , "AWSAccountId" :: (DelegatesList)
   , "ActionName" :: (ActionsList)
   }
+derive instance newtypeAddPermissionInput :: Newtype AddPermissionInput _
 
 
 -- | <p>Indicates that the user has been denied access to the requested resource.</p>
 newtype AuthorizationErrorException = AuthorizationErrorException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeAuthorizationErrorException :: Newtype AuthorizationErrorException _
 
 
 newtype Binary = Binary String
+derive instance newtypeBinary :: Newtype Binary _
 
 
 -- | <p>The input for the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>
 newtype CheckIfPhoneNumberIsOptedOutInput = CheckIfPhoneNumberIsOptedOutInput 
   { "PhoneNumber'" :: (PhoneNumber)
   }
+derive instance newtypeCheckIfPhoneNumberIsOptedOutInput :: Newtype CheckIfPhoneNumberIsOptedOutInput _
 
 
 -- | <p>The response from the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>
 newtype CheckIfPhoneNumberIsOptedOutResponse = CheckIfPhoneNumberIsOptedOutResponse 
   { "IsOptedOut'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCheckIfPhoneNumberIsOptedOutResponse :: Newtype CheckIfPhoneNumberIsOptedOutResponse _
 
 
 -- | <p>Input for ConfirmSubscription action.</p>
@@ -201,18 +208,21 @@ newtype ConfirmSubscriptionInput = ConfirmSubscriptionInput
   , "Token" :: (Token')
   , "AuthenticateOnUnsubscribe" :: NullOrUndefined (AuthenticateOnUnsubscribe')
   }
+derive instance newtypeConfirmSubscriptionInput :: Newtype ConfirmSubscriptionInput _
 
 
 -- | <p>Response for ConfirmSubscriptions action.</p>
 newtype ConfirmSubscriptionResponse = ConfirmSubscriptionResponse 
   { "SubscriptionArn" :: NullOrUndefined (SubscriptionARN')
   }
+derive instance newtypeConfirmSubscriptionResponse :: Newtype ConfirmSubscriptionResponse _
 
 
 -- | <p>Response from CreateEndpoint action.</p>
 newtype CreateEndpointResponse = CreateEndpointResponse 
   { "EndpointArn" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateEndpointResponse :: Newtype CreateEndpointResponse _
 
 
 -- | <p>Input for CreatePlatformApplication action.</p>
@@ -221,12 +231,14 @@ newtype CreatePlatformApplicationInput = CreatePlatformApplicationInput
   , "Platform" :: (String)
   , "Attributes" :: (MapStringToString)
   }
+derive instance newtypeCreatePlatformApplicationInput :: Newtype CreatePlatformApplicationInput _
 
 
 -- | <p>Response from CreatePlatformApplication action.</p>
 newtype CreatePlatformApplicationResponse = CreatePlatformApplicationResponse 
   { "PlatformApplicationArn" :: NullOrUndefined (String)
   }
+derive instance newtypeCreatePlatformApplicationResponse :: Newtype CreatePlatformApplicationResponse _
 
 
 -- | <p>Input for CreatePlatformEndpoint action.</p>
@@ -236,38 +248,45 @@ newtype CreatePlatformEndpointInput = CreatePlatformEndpointInput
   , "CustomUserData" :: NullOrUndefined (String)
   , "Attributes" :: NullOrUndefined (MapStringToString)
   }
+derive instance newtypeCreatePlatformEndpointInput :: Newtype CreatePlatformEndpointInput _
 
 
 -- | <p>Input for CreateTopic action.</p>
 newtype CreateTopicInput = CreateTopicInput 
   { "Name" :: (TopicName')
   }
+derive instance newtypeCreateTopicInput :: Newtype CreateTopicInput _
 
 
 -- | <p>Response from CreateTopic action.</p>
 newtype CreateTopicResponse = CreateTopicResponse 
   { "TopicArn" :: NullOrUndefined (TopicARN')
   }
+derive instance newtypeCreateTopicResponse :: Newtype CreateTopicResponse _
 
 
 newtype DelegatesList = DelegatesList (Array Delegate')
+derive instance newtypeDelegatesList :: Newtype DelegatesList _
 
 
 -- | <p>Input for DeleteEndpoint action.</p>
 newtype DeleteEndpointInput = DeleteEndpointInput 
   { "EndpointArn" :: (String)
   }
+derive instance newtypeDeleteEndpointInput :: Newtype DeleteEndpointInput _
 
 
 -- | <p>Input for DeletePlatformApplication action.</p>
 newtype DeletePlatformApplicationInput = DeletePlatformApplicationInput 
   { "PlatformApplicationArn" :: (String)
   }
+derive instance newtypeDeletePlatformApplicationInput :: Newtype DeletePlatformApplicationInput _
 
 
 newtype DeleteTopicInput = DeleteTopicInput 
   { "TopicArn" :: (TopicARN')
   }
+derive instance newtypeDeleteTopicInput :: Newtype DeleteTopicInput _
 
 
 -- | <p>Endpoint for mobile app and device.</p>
@@ -275,90 +294,105 @@ newtype Endpoint = Endpoint
   { "EndpointArn" :: NullOrUndefined (String)
   , "Attributes" :: NullOrUndefined (MapStringToString)
   }
+derive instance newtypeEndpoint :: Newtype Endpoint _
 
 
 -- | <p>Exception error indicating endpoint disabled.</p>
 newtype EndpointDisabledException = EndpointDisabledException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeEndpointDisabledException :: Newtype EndpointDisabledException _
 
 
 -- | <p>Input for GetEndpointAttributes action.</p>
 newtype GetEndpointAttributesInput = GetEndpointAttributesInput 
   { "EndpointArn" :: (String)
   }
+derive instance newtypeGetEndpointAttributesInput :: Newtype GetEndpointAttributesInput _
 
 
 -- | <p>Response from GetEndpointAttributes of the EndpointArn.</p>
 newtype GetEndpointAttributesResponse = GetEndpointAttributesResponse 
   { "Attributes" :: NullOrUndefined (MapStringToString)
   }
+derive instance newtypeGetEndpointAttributesResponse :: Newtype GetEndpointAttributesResponse _
 
 
 -- | <p>Input for GetPlatformApplicationAttributes action.</p>
 newtype GetPlatformApplicationAttributesInput = GetPlatformApplicationAttributesInput 
   { "PlatformApplicationArn" :: (String)
   }
+derive instance newtypeGetPlatformApplicationAttributesInput :: Newtype GetPlatformApplicationAttributesInput _
 
 
 -- | <p>Response for GetPlatformApplicationAttributes action.</p>
 newtype GetPlatformApplicationAttributesResponse = GetPlatformApplicationAttributesResponse 
   { "Attributes" :: NullOrUndefined (MapStringToString)
   }
+derive instance newtypeGetPlatformApplicationAttributesResponse :: Newtype GetPlatformApplicationAttributesResponse _
 
 
 -- | <p>The input for the <code>GetSMSAttributes</code> request.</p>
 newtype GetSMSAttributesInput = GetSMSAttributesInput 
   { "Attributes'" :: NullOrUndefined (ListString)
   }
+derive instance newtypeGetSMSAttributesInput :: Newtype GetSMSAttributesInput _
 
 
 -- | <p>The response from the <code>GetSMSAttributes</code> request.</p>
 newtype GetSMSAttributesResponse = GetSMSAttributesResponse 
   { "Attributes'" :: NullOrUndefined (MapStringToString)
   }
+derive instance newtypeGetSMSAttributesResponse :: Newtype GetSMSAttributesResponse _
 
 
 -- | <p>Input for GetSubscriptionAttributes.</p>
 newtype GetSubscriptionAttributesInput = GetSubscriptionAttributesInput 
   { "SubscriptionArn" :: (SubscriptionARN')
   }
+derive instance newtypeGetSubscriptionAttributesInput :: Newtype GetSubscriptionAttributesInput _
 
 
 -- | <p>Response for GetSubscriptionAttributes action.</p>
 newtype GetSubscriptionAttributesResponse = GetSubscriptionAttributesResponse 
   { "Attributes" :: NullOrUndefined (SubscriptionAttributesMap)
   }
+derive instance newtypeGetSubscriptionAttributesResponse :: Newtype GetSubscriptionAttributesResponse _
 
 
 -- | <p>Input for GetTopicAttributes action.</p>
 newtype GetTopicAttributesInput = GetTopicAttributesInput 
   { "TopicArn" :: (TopicARN')
   }
+derive instance newtypeGetTopicAttributesInput :: Newtype GetTopicAttributesInput _
 
 
 -- | <p>Response for GetTopicAttributes action.</p>
 newtype GetTopicAttributesResponse = GetTopicAttributesResponse 
   { "Attributes" :: NullOrUndefined (TopicAttributesMap)
   }
+derive instance newtypeGetTopicAttributesResponse :: Newtype GetTopicAttributesResponse _
 
 
 -- | <p>Indicates an internal service error.</p>
 newtype InternalErrorException = InternalErrorException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalErrorException :: Newtype InternalErrorException _
 
 
 -- | <p>Indicates that a request parameter does not comply with the associated constraints.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>Indicates that a request parameter does not comply with the associated constraints.</p>
 newtype InvalidParameterValueException = InvalidParameterValueException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidParameterValueException :: Newtype InvalidParameterValueException _
 
 
 -- | <p>Input for ListEndpointsByPlatformApplication action.</p>
@@ -366,6 +400,7 @@ newtype ListEndpointsByPlatformApplicationInput = ListEndpointsByPlatformApplica
   { "PlatformApplicationArn" :: (String)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListEndpointsByPlatformApplicationInput :: Newtype ListEndpointsByPlatformApplicationInput _
 
 
 -- | <p>Response for ListEndpointsByPlatformApplication action.</p>
@@ -373,18 +408,22 @@ newtype ListEndpointsByPlatformApplicationResponse = ListEndpointsByPlatformAppl
   { "Endpoints" :: NullOrUndefined (ListOfEndpoints)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListEndpointsByPlatformApplicationResponse :: Newtype ListEndpointsByPlatformApplicationResponse _
 
 
 newtype ListOfEndpoints = ListOfEndpoints (Array Endpoint)
+derive instance newtypeListOfEndpoints :: Newtype ListOfEndpoints _
 
 
 newtype ListOfPlatformApplications = ListOfPlatformApplications (Array PlatformApplication)
+derive instance newtypeListOfPlatformApplications :: Newtype ListOfPlatformApplications _
 
 
 -- | <p>The input for the <code>ListPhoneNumbersOptedOut</code> action.</p>
 newtype ListPhoneNumbersOptedOutInput = ListPhoneNumbersOptedOutInput 
   { "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListPhoneNumbersOptedOutInput :: Newtype ListPhoneNumbersOptedOutInput _
 
 
 -- | <p>The response from the <code>ListPhoneNumbersOptedOut</code> action.</p>
@@ -392,12 +431,14 @@ newtype ListPhoneNumbersOptedOutResponse = ListPhoneNumbersOptedOutResponse
   { "PhoneNumbers'" :: NullOrUndefined (PhoneNumberList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListPhoneNumbersOptedOutResponse :: Newtype ListPhoneNumbersOptedOutResponse _
 
 
 -- | <p>Input for ListPlatformApplications action.</p>
 newtype ListPlatformApplicationsInput = ListPlatformApplicationsInput 
   { "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListPlatformApplicationsInput :: Newtype ListPlatformApplicationsInput _
 
 
 -- | <p>Response for ListPlatformApplications action.</p>
@@ -405,9 +446,11 @@ newtype ListPlatformApplicationsResponse = ListPlatformApplicationsResponse
   { "PlatformApplications" :: NullOrUndefined (ListOfPlatformApplications)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListPlatformApplicationsResponse :: Newtype ListPlatformApplicationsResponse _
 
 
 newtype ListString = ListString (Array String)
+derive instance newtypeListString :: Newtype ListString _
 
 
 -- | <p>Input for ListSubscriptionsByTopic action.</p>
@@ -415,6 +458,7 @@ newtype ListSubscriptionsByTopicInput = ListSubscriptionsByTopicInput
   { "TopicArn" :: (TopicARN')
   , "NextToken" :: NullOrUndefined (NextToken')
   }
+derive instance newtypeListSubscriptionsByTopicInput :: Newtype ListSubscriptionsByTopicInput _
 
 
 -- | <p>Response for ListSubscriptionsByTopic action.</p>
@@ -422,12 +466,14 @@ newtype ListSubscriptionsByTopicResponse = ListSubscriptionsByTopicResponse
   { "Subscriptions" :: NullOrUndefined (SubscriptionsList)
   , "NextToken" :: NullOrUndefined (NextToken')
   }
+derive instance newtypeListSubscriptionsByTopicResponse :: Newtype ListSubscriptionsByTopicResponse _
 
 
 -- | <p>Input for ListSubscriptions action.</p>
 newtype ListSubscriptionsInput = ListSubscriptionsInput 
   { "NextToken" :: NullOrUndefined (NextToken')
   }
+derive instance newtypeListSubscriptionsInput :: Newtype ListSubscriptionsInput _
 
 
 -- | <p>Response for ListSubscriptions action</p>
@@ -435,11 +481,13 @@ newtype ListSubscriptionsResponse = ListSubscriptionsResponse
   { "Subscriptions" :: NullOrUndefined (SubscriptionsList)
   , "NextToken" :: NullOrUndefined (NextToken')
   }
+derive instance newtypeListSubscriptionsResponse :: Newtype ListSubscriptionsResponse _
 
 
 newtype ListTopicsInput = ListTopicsInput 
   { "NextToken" :: NullOrUndefined (NextToken')
   }
+derive instance newtypeListTopicsInput :: Newtype ListTopicsInput _
 
 
 -- | <p>Response for ListTopics action.</p>
@@ -447,12 +495,15 @@ newtype ListTopicsResponse = ListTopicsResponse
   { "Topics" :: NullOrUndefined (TopicsList)
   , "NextToken" :: NullOrUndefined (NextToken')
   }
+derive instance newtypeListTopicsResponse :: Newtype ListTopicsResponse _
 
 
 newtype MapStringToString = MapStringToString (Map String String)
+derive instance newtypeMapStringToString :: Newtype MapStringToString _
 
 
 newtype MessageAttributeMap = MessageAttributeMap (Map String MessageAttributeValue)
+derive instance newtypeMessageAttributeMap :: Newtype MessageAttributeMap _
 
 
 -- | <p>The user-specified message attribute value. For string data types, the value attribute has the same restrictions on the content as the message body. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_Publish.html">Publish</a>.</p> <p>Name, type, and value must not be empty or null. In addition, the message body should not be empty or null. All parts of the message attribute, including name, type, and value, are included in the message size restriction, which is currently 256 KB (262,144 bytes). For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SNSMessageAttributes.html">Using Amazon SNS Message Attributes</a>.</p>
@@ -461,30 +512,36 @@ newtype MessageAttributeValue = MessageAttributeValue
   , "StringValue" :: NullOrUndefined (String)
   , "BinaryValue" :: NullOrUndefined (Binary)
   }
+derive instance newtypeMessageAttributeValue :: Newtype MessageAttributeValue _
 
 
 -- | <p>Indicates that the requested resource does not exist.</p>
 newtype NotFoundException = NotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 -- | <p>Input for the OptInPhoneNumber action.</p>
 newtype OptInPhoneNumberInput = OptInPhoneNumberInput 
   { "PhoneNumber'" :: (PhoneNumber)
   }
+derive instance newtypeOptInPhoneNumberInput :: Newtype OptInPhoneNumberInput _
 
 
 -- | <p>The response for the OptInPhoneNumber action.</p>
 newtype OptInPhoneNumberResponse = OptInPhoneNumberResponse 
   { 
   }
+derive instance newtypeOptInPhoneNumberResponse :: Newtype OptInPhoneNumberResponse _
 
 
 newtype PhoneNumber = PhoneNumber String
+derive instance newtypePhoneNumber :: Newtype PhoneNumber _
 
 
 newtype PhoneNumberList = PhoneNumberList (Array PhoneNumber)
+derive instance newtypePhoneNumberList :: Newtype PhoneNumberList _
 
 
 -- | <p>Platform application object.</p>
@@ -492,12 +549,14 @@ newtype PlatformApplication = PlatformApplication
   { "PlatformApplicationArn" :: NullOrUndefined (String)
   , "Attributes" :: NullOrUndefined (MapStringToString)
   }
+derive instance newtypePlatformApplication :: Newtype PlatformApplication _
 
 
 -- | <p>Exception error indicating platform application disabled.</p>
 newtype PlatformApplicationDisabledException = PlatformApplicationDisabledException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypePlatformApplicationDisabledException :: Newtype PlatformApplicationDisabledException _
 
 
 -- | <p>Input for Publish action.</p>
@@ -510,12 +569,14 @@ newtype PublishInput = PublishInput
   , "MessageStructure" :: NullOrUndefined (MessageStructure')
   , "MessageAttributes" :: NullOrUndefined (MessageAttributeMap)
   }
+derive instance newtypePublishInput :: Newtype PublishInput _
 
 
 -- | <p>Response for Publish action.</p>
 newtype PublishResponse = PublishResponse 
   { "MessageId" :: NullOrUndefined (MessageId')
   }
+derive instance newtypePublishResponse :: Newtype PublishResponse _
 
 
 -- | <p>Input for RemovePermission action.</p>
@@ -523,6 +584,7 @@ newtype RemovePermissionInput = RemovePermissionInput
   { "TopicArn" :: (TopicARN')
   , "Label" :: (Label')
   }
+derive instance newtypeRemovePermissionInput :: Newtype RemovePermissionInput _
 
 
 -- | <p>Input for SetEndpointAttributes action.</p>
@@ -530,6 +592,7 @@ newtype SetEndpointAttributesInput = SetEndpointAttributesInput
   { "EndpointArn" :: (String)
   , "Attributes" :: (MapStringToString)
   }
+derive instance newtypeSetEndpointAttributesInput :: Newtype SetEndpointAttributesInput _
 
 
 -- | <p>Input for SetPlatformApplicationAttributes action.</p>
@@ -537,18 +600,21 @@ newtype SetPlatformApplicationAttributesInput = SetPlatformApplicationAttributes
   { "PlatformApplicationArn" :: (String)
   , "Attributes" :: (MapStringToString)
   }
+derive instance newtypeSetPlatformApplicationAttributesInput :: Newtype SetPlatformApplicationAttributesInput _
 
 
 -- | <p>The input for the SetSMSAttributes action.</p>
 newtype SetSMSAttributesInput = SetSMSAttributesInput 
   { "Attributes'" :: (MapStringToString)
   }
+derive instance newtypeSetSMSAttributesInput :: Newtype SetSMSAttributesInput _
 
 
 -- | <p>The response for the SetSMSAttributes action.</p>
 newtype SetSMSAttributesResponse = SetSMSAttributesResponse 
   { 
   }
+derive instance newtypeSetSMSAttributesResponse :: Newtype SetSMSAttributesResponse _
 
 
 -- | <p>Input for SetSubscriptionAttributes action.</p>
@@ -557,6 +623,7 @@ newtype SetSubscriptionAttributesInput = SetSubscriptionAttributesInput
   , "AttributeName" :: (AttributeName')
   , "AttributeValue" :: NullOrUndefined (AttributeValue')
   }
+derive instance newtypeSetSubscriptionAttributesInput :: Newtype SetSubscriptionAttributesInput _
 
 
 -- | <p>Input for SetTopicAttributes action.</p>
@@ -565,6 +632,7 @@ newtype SetTopicAttributesInput = SetTopicAttributesInput
   , "AttributeName" :: (AttributeName')
   , "AttributeValue" :: NullOrUndefined (AttributeValue')
   }
+derive instance newtypeSetTopicAttributesInput :: Newtype SetTopicAttributesInput _
 
 
 -- | <p>Input for Subscribe action.</p>
@@ -573,12 +641,14 @@ newtype SubscribeInput = SubscribeInput
   , "Protocol" :: (Protocol')
   , "Endpoint" :: NullOrUndefined (Endpoint')
   }
+derive instance newtypeSubscribeInput :: Newtype SubscribeInput _
 
 
 -- | <p>Response for Subscribe action.</p>
 newtype SubscribeResponse = SubscribeResponse 
   { "SubscriptionArn" :: NullOrUndefined (SubscriptionARN')
   }
+derive instance newtypeSubscribeResponse :: Newtype SubscribeResponse _
 
 
 -- | <p>A wrapper type for the attributes of an Amazon SNS subscription.</p>
@@ -589,99 +659,127 @@ newtype Subscription = Subscription
   , "Endpoint" :: NullOrUndefined (Endpoint')
   , "TopicArn" :: NullOrUndefined (TopicARN')
   }
+derive instance newtypeSubscription :: Newtype Subscription _
 
 
 newtype SubscriptionAttributesMap = SubscriptionAttributesMap (Map AttributeName' AttributeValue')
+derive instance newtypeSubscriptionAttributesMap :: Newtype SubscriptionAttributesMap _
 
 
 -- | <p>Indicates that the customer already owns the maximum allowed number of subscriptions.</p>
 newtype SubscriptionLimitExceededException = SubscriptionLimitExceededException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeSubscriptionLimitExceededException :: Newtype SubscriptionLimitExceededException _
 
 
 newtype SubscriptionsList = SubscriptionsList (Array Subscription)
+derive instance newtypeSubscriptionsList :: Newtype SubscriptionsList _
 
 
 -- | <p>Indicates that the rate at which requests have been submitted for this action exceeds the limit for your account.</p>
 newtype ThrottledException = ThrottledException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeThrottledException :: Newtype ThrottledException _
 
 
 -- | <p>A wrapper type for the topic's Amazon Resource Name (ARN). To retrieve a topic's attributes, use <code>GetTopicAttributes</code>.</p>
 newtype Topic = Topic 
   { "TopicArn" :: NullOrUndefined (TopicARN')
   }
+derive instance newtypeTopic :: Newtype Topic _
 
 
 newtype TopicAttributesMap = TopicAttributesMap (Map AttributeName' AttributeValue')
+derive instance newtypeTopicAttributesMap :: Newtype TopicAttributesMap _
 
 
 -- | <p>Indicates that the customer already owns the maximum allowed number of topics.</p>
 newtype TopicLimitExceededException = TopicLimitExceededException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeTopicLimitExceededException :: Newtype TopicLimitExceededException _
 
 
 newtype TopicsList = TopicsList (Array Topic)
+derive instance newtypeTopicsList :: Newtype TopicsList _
 
 
 -- | <p>Input for Unsubscribe action.</p>
 newtype UnsubscribeInput = UnsubscribeInput 
   { "SubscriptionArn" :: (SubscriptionARN')
   }
+derive instance newtypeUnsubscribeInput :: Newtype UnsubscribeInput _
 
 
 newtype Account' = Account' String
+derive instance newtypeAccount' :: Newtype Account' _
 
 
 newtype Action' = Action' String
+derive instance newtypeAction' :: Newtype Action' _
 
 
 newtype AttributeName' = AttributeName' String
+derive instance newtypeAttributeName' :: Newtype AttributeName' _
 
 
 newtype AttributeValue' = AttributeValue' String
+derive instance newtypeAttributeValue' :: Newtype AttributeValue' _
 
 
 newtype AuthenticateOnUnsubscribe' = AuthenticateOnUnsubscribe' String
+derive instance newtypeAuthenticateOnUnsubscribe' :: Newtype AuthenticateOnUnsubscribe' _
 
 
 newtype Delegate' = Delegate' String
+derive instance newtypeDelegate' :: Newtype Delegate' _
 
 
 newtype Endpoint' = Endpoint' String
+derive instance newtypeEndpoint' :: Newtype Endpoint' _
 
 
 newtype Label' = Label' String
+derive instance newtypeLabel' :: Newtype Label' _
 
 
 newtype Message' = Message' String
+derive instance newtypeMessage' :: Newtype Message' _
 
 
 newtype MessageId' = MessageId' String
+derive instance newtypeMessageId' :: Newtype MessageId' _
 
 
 newtype MessageStructure' = MessageStructure' String
+derive instance newtypeMessageStructure' :: Newtype MessageStructure' _
 
 
 newtype NextToken' = NextToken' String
+derive instance newtypeNextToken' :: Newtype NextToken' _
 
 
 newtype Protocol' = Protocol' String
+derive instance newtypeProtocol' :: Newtype Protocol' _
 
 
 newtype Subject' = Subject' String
+derive instance newtypeSubject' :: Newtype Subject' _
 
 
 newtype SubscriptionARN' = SubscriptionARN' String
+derive instance newtypeSubscriptionARN' :: Newtype SubscriptionARN' _
 
 
 newtype Token' = Token' String
+derive instance newtypeToken' :: Newtype Token' _
 
 
 newtype TopicARN' = TopicARN' String
+derive instance newtypeTopicARN' :: Newtype TopicARN' _
 
 
 newtype TopicName' = TopicName' String
+derive instance newtypeTopicName' :: Newtype TopicName' _

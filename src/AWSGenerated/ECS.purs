@@ -6,6 +6,7 @@ module AWS.ECS where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -172,12 +173,15 @@ updateService = AWS.request serviceName "UpdateService"
 newtype AccessDeniedException = AccessDeniedException 
   { 
   }
+derive instance newtypeAccessDeniedException :: Newtype AccessDeniedException _
 
 
 newtype AgentUpdateStatus = AgentUpdateStatus String
+derive instance newtypeAgentUpdateStatus :: Newtype AgentUpdateStatus _
 
 
 newtype AssignPublicIp = AssignPublicIp String
+derive instance newtypeAssignPublicIp :: Newtype AssignPublicIp _
 
 
 -- | <p>An object representing a container instance or task attachment.</p>
@@ -187,9 +191,11 @@ newtype Attachment = Attachment
   , "Status'" :: NullOrUndefined (String)
   , "Details'" :: NullOrUndefined (AttachmentDetails)
   }
+derive instance newtypeAttachment :: Newtype Attachment _
 
 
 newtype AttachmentDetails = AttachmentDetails (Array KeyValuePair)
+derive instance newtypeAttachmentDetails :: Newtype AttachmentDetails _
 
 
 -- | <p>An object representing a change in state for a task attachment.</p>
@@ -197,12 +203,15 @@ newtype AttachmentStateChange = AttachmentStateChange
   { "AttachmentArn'" :: (String)
   , "Status'" :: (String)
   }
+derive instance newtypeAttachmentStateChange :: Newtype AttachmentStateChange _
 
 
 newtype AttachmentStateChanges = AttachmentStateChanges (Array AttachmentStateChange)
+derive instance newtypeAttachmentStateChanges :: Newtype AttachmentStateChanges _
 
 
 newtype Attachments = Attachments (Array Attachment)
+derive instance newtypeAttachments :: Newtype Attachments _
 
 
 -- | <p>An attribute is a name-value pair associated with an Amazon ECS object. Attributes enable you to extend the Amazon ECS data model by adding custom metadata to your resources. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes">Attributes</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
@@ -212,15 +221,18 @@ newtype Attribute = Attribute
   , "TargetType'" :: NullOrUndefined (TargetType)
   , "TargetId'" :: NullOrUndefined (String)
   }
+derive instance newtypeAttribute :: Newtype Attribute _
 
 
 -- | <p>You can apply up to 10 custom attributes per resource. You can view the attributes of a resource with <a>ListAttributes</a>. You can remove existing attributes on a resource with <a>DeleteAttributes</a>.</p>
 newtype AttributeLimitExceededException = AttributeLimitExceededException 
   { 
   }
+derive instance newtypeAttributeLimitExceededException :: Newtype AttributeLimitExceededException _
 
 
 newtype Attributes = Attributes (Array Attribute)
+derive instance newtypeAttributes :: Newtype Attributes _
 
 
 -- | <p>An object representing the networking details for a task or service.</p>
@@ -229,24 +241,29 @@ newtype AwsVpcConfiguration = AwsVpcConfiguration
   , "SecurityGroups'" :: NullOrUndefined (StringList)
   , "AssignPublicIp'" :: NullOrUndefined (AssignPublicIp)
   }
+derive instance newtypeAwsVpcConfiguration :: Newtype AwsVpcConfiguration _
 
 
 -- | <p>Your AWS account has been blocked. <a href="http://aws.amazon.com/contact-us/">Contact AWS Customer Support</a> for more information.</p>
 newtype BlockedException = BlockedException 
   { 
   }
+derive instance newtypeBlockedException :: Newtype BlockedException _
 
 
 newtype BoxedBoolean = BoxedBoolean Boolean
+derive instance newtypeBoxedBoolean :: Newtype BoxedBoolean _
 
 
 newtype BoxedInteger = BoxedInteger Int
+derive instance newtypeBoxedInteger :: Newtype BoxedInteger _
 
 
 -- | <p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid.</p>
 newtype ClientException = ClientException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeClientException :: Newtype ClientException _
 
 
 -- | <p>A regional grouping of one or more container instances on which you can run task requests. Each account receives a default cluster the first time you use the Amazon ECS service, but you may also create other clusters. Clusters may contain more than one instance type simultaneously.</p>
@@ -260,48 +277,59 @@ newtype Cluster = Cluster
   , "ActiveServicesCount'" :: NullOrUndefined (Int)
   , "Statistics'" :: NullOrUndefined (Statistics)
   }
+derive instance newtypeCluster :: Newtype Cluster _
 
 
 -- | <p>You cannot delete a cluster that has registered container instances. You must first deregister the container instances before you can delete the cluster. For more information, see <a>DeregisterContainerInstance</a>.</p>
 newtype ClusterContainsContainerInstancesException = ClusterContainsContainerInstancesException 
   { 
   }
+derive instance newtypeClusterContainsContainerInstancesException :: Newtype ClusterContainsContainerInstancesException _
 
 
 -- | <p>You cannot delete a cluster that contains services. You must first update the service to reduce its desired task count to 0 and then delete the service. For more information, see <a>UpdateService</a> and <a>DeleteService</a>.</p>
 newtype ClusterContainsServicesException = ClusterContainsServicesException 
   { 
   }
+derive instance newtypeClusterContainsServicesException :: Newtype ClusterContainsServicesException _
 
 
 -- | <p>You cannot delete a cluster that has active tasks.</p>
 newtype ClusterContainsTasksException = ClusterContainsTasksException 
   { 
   }
+derive instance newtypeClusterContainsTasksException :: Newtype ClusterContainsTasksException _
 
 
 newtype ClusterField = ClusterField String
+derive instance newtypeClusterField :: Newtype ClusterField _
 
 
 newtype ClusterFieldList = ClusterFieldList (Array ClusterField)
+derive instance newtypeClusterFieldList :: Newtype ClusterFieldList _
 
 
 -- | <p>The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>. Amazon ECS clusters are region-specific.</p>
 newtype ClusterNotFoundException = ClusterNotFoundException 
   { 
   }
+derive instance newtypeClusterNotFoundException :: Newtype ClusterNotFoundException _
 
 
 newtype Clusters = Clusters (Array Cluster)
+derive instance newtypeClusters :: Newtype Clusters _
 
 
 newtype Compatibility = Compatibility String
+derive instance newtypeCompatibility :: Newtype Compatibility _
 
 
 newtype CompatibilityList = CompatibilityList (Array Compatibility)
+derive instance newtypeCompatibilityList :: Newtype CompatibilityList _
 
 
 newtype Connectivity = Connectivity String
+derive instance newtypeConnectivity :: Newtype Connectivity _
 
 
 -- | <p>A Docker container that is part of a task.</p>
@@ -315,6 +343,7 @@ newtype Container = Container
   , "NetworkBindings'" :: NullOrUndefined (NetworkBindings)
   , "NetworkInterfaces'" :: NullOrUndefined (NetworkInterfaces)
   }
+derive instance newtypeContainer :: Newtype Container _
 
 
 -- | <p>Container definitions are used in task definitions to describe the different containers that are launched as part of a task.</p>
@@ -347,9 +376,11 @@ newtype ContainerDefinition = ContainerDefinition
   , "Ulimits'" :: NullOrUndefined (UlimitList)
   , "LogConfiguration'" :: NullOrUndefined (LogConfiguration)
   }
+derive instance newtypeContainerDefinition :: Newtype ContainerDefinition _
 
 
 newtype ContainerDefinitions = ContainerDefinitions (Array ContainerDefinition)
+derive instance newtypeContainerDefinitions :: Newtype ContainerDefinitions _
 
 
 -- | <p>An EC2 instance that is running the Amazon ECS agent and has been registered with a cluster.</p>
@@ -369,12 +400,15 @@ newtype ContainerInstance = ContainerInstance
   , "RegisteredAt'" :: NullOrUndefined (Number)
   , "Attachments'" :: NullOrUndefined (Attachments)
   }
+derive instance newtypeContainerInstance :: Newtype ContainerInstance _
 
 
 newtype ContainerInstanceStatus = ContainerInstanceStatus String
+derive instance newtypeContainerInstanceStatus :: Newtype ContainerInstanceStatus _
 
 
 newtype ContainerInstances = ContainerInstances (Array ContainerInstance)
+derive instance newtypeContainerInstances :: Newtype ContainerInstances _
 
 
 -- | <p>The overrides that should be sent to a container.</p>
@@ -386,9 +420,11 @@ newtype ContainerOverride = ContainerOverride
   , "Memory'" :: NullOrUndefined (BoxedInteger)
   , "MemoryReservation'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeContainerOverride :: Newtype ContainerOverride _
 
 
 newtype ContainerOverrides = ContainerOverrides (Array ContainerOverride)
+derive instance newtypeContainerOverrides :: Newtype ContainerOverrides _
 
 
 -- | <p>An object representing a change in state for a container.</p>
@@ -399,22 +435,27 @@ newtype ContainerStateChange = ContainerStateChange
   , "Reason'" :: NullOrUndefined (String)
   , "Status'" :: NullOrUndefined (String)
   }
+derive instance newtypeContainerStateChange :: Newtype ContainerStateChange _
 
 
 newtype ContainerStateChanges = ContainerStateChanges (Array ContainerStateChange)
+derive instance newtypeContainerStateChanges :: Newtype ContainerStateChanges _
 
 
 newtype Containers = Containers (Array Container)
+derive instance newtypeContainers :: Newtype Containers _
 
 
 newtype CreateClusterRequest = CreateClusterRequest 
   { "ClusterName'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateClusterRequest :: Newtype CreateClusterRequest _
 
 
 newtype CreateClusterResponse = CreateClusterResponse 
   { "Cluster'" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeCreateClusterResponse :: Newtype CreateClusterResponse _
 
 
 newtype CreateServiceRequest = CreateServiceRequest 
@@ -433,43 +474,51 @@ newtype CreateServiceRequest = CreateServiceRequest
   , "NetworkConfiguration'" :: NullOrUndefined (NetworkConfiguration)
   , "HealthCheckGracePeriodSeconds'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeCreateServiceRequest :: Newtype CreateServiceRequest _
 
 
 newtype CreateServiceResponse = CreateServiceResponse 
   { "Service'" :: NullOrUndefined (Service)
   }
+derive instance newtypeCreateServiceResponse :: Newtype CreateServiceResponse _
 
 
 newtype DeleteAttributesRequest = DeleteAttributesRequest 
   { "Cluster'" :: NullOrUndefined (String)
   , "Attributes'" :: (Attributes)
   }
+derive instance newtypeDeleteAttributesRequest :: Newtype DeleteAttributesRequest _
 
 
 newtype DeleteAttributesResponse = DeleteAttributesResponse 
   { "Attributes'" :: NullOrUndefined (Attributes)
   }
+derive instance newtypeDeleteAttributesResponse :: Newtype DeleteAttributesResponse _
 
 
 newtype DeleteClusterRequest = DeleteClusterRequest 
   { "Cluster'" :: (String)
   }
+derive instance newtypeDeleteClusterRequest :: Newtype DeleteClusterRequest _
 
 
 newtype DeleteClusterResponse = DeleteClusterResponse 
   { "Cluster'" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeDeleteClusterResponse :: Newtype DeleteClusterResponse _
 
 
 newtype DeleteServiceRequest = DeleteServiceRequest 
   { "Cluster'" :: NullOrUndefined (String)
   , "Service'" :: (String)
   }
+derive instance newtypeDeleteServiceRequest :: Newtype DeleteServiceRequest _
 
 
 newtype DeleteServiceResponse = DeleteServiceResponse 
   { "Service'" :: NullOrUndefined (Service)
   }
+derive instance newtypeDeleteServiceResponse :: Newtype DeleteServiceResponse _
 
 
 -- | <p>The details of an Amazon ECS service deployment.</p>
@@ -486,6 +535,7 @@ newtype Deployment = Deployment
   , "PlatformVersion'" :: NullOrUndefined (String)
   , "NetworkConfiguration'" :: NullOrUndefined (NetworkConfiguration)
   }
+derive instance newtypeDeployment :: Newtype Deployment _
 
 
 -- | <p>Optional deployment parameters that control how many tasks run during the deployment and the ordering of stopping and starting tasks.</p>
@@ -493,9 +543,11 @@ newtype DeploymentConfiguration = DeploymentConfiguration
   { "MaximumPercent'" :: NullOrUndefined (BoxedInteger)
   , "MinimumHealthyPercent'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeDeploymentConfiguration :: Newtype DeploymentConfiguration _
 
 
 newtype Deployments = Deployments (Array Deployment)
+derive instance newtypeDeployments :: Newtype Deployments _
 
 
 newtype DeregisterContainerInstanceRequest = DeregisterContainerInstanceRequest 
@@ -503,82 +555,97 @@ newtype DeregisterContainerInstanceRequest = DeregisterContainerInstanceRequest
   , "ContainerInstance'" :: (String)
   , "Force'" :: NullOrUndefined (BoxedBoolean)
   }
+derive instance newtypeDeregisterContainerInstanceRequest :: Newtype DeregisterContainerInstanceRequest _
 
 
 newtype DeregisterContainerInstanceResponse = DeregisterContainerInstanceResponse 
   { "ContainerInstance'" :: NullOrUndefined (ContainerInstance)
   }
+derive instance newtypeDeregisterContainerInstanceResponse :: Newtype DeregisterContainerInstanceResponse _
 
 
 newtype DeregisterTaskDefinitionRequest = DeregisterTaskDefinitionRequest 
   { "TaskDefinition'" :: (String)
   }
+derive instance newtypeDeregisterTaskDefinitionRequest :: Newtype DeregisterTaskDefinitionRequest _
 
 
 newtype DeregisterTaskDefinitionResponse = DeregisterTaskDefinitionResponse 
   { "TaskDefinition'" :: NullOrUndefined (TaskDefinition)
   }
+derive instance newtypeDeregisterTaskDefinitionResponse :: Newtype DeregisterTaskDefinitionResponse _
 
 
 newtype DescribeClustersRequest = DescribeClustersRequest 
   { "Clusters'" :: NullOrUndefined (StringList)
   , "Include'" :: NullOrUndefined (ClusterFieldList)
   }
+derive instance newtypeDescribeClustersRequest :: Newtype DescribeClustersRequest _
 
 
 newtype DescribeClustersResponse = DescribeClustersResponse 
   { "Clusters'" :: NullOrUndefined (Clusters)
   , "Failures'" :: NullOrUndefined (Failures)
   }
+derive instance newtypeDescribeClustersResponse :: Newtype DescribeClustersResponse _
 
 
 newtype DescribeContainerInstancesRequest = DescribeContainerInstancesRequest 
   { "Cluster'" :: NullOrUndefined (String)
   , "ContainerInstances'" :: (StringList)
   }
+derive instance newtypeDescribeContainerInstancesRequest :: Newtype DescribeContainerInstancesRequest _
 
 
 newtype DescribeContainerInstancesResponse = DescribeContainerInstancesResponse 
   { "ContainerInstances'" :: NullOrUndefined (ContainerInstances)
   , "Failures'" :: NullOrUndefined (Failures)
   }
+derive instance newtypeDescribeContainerInstancesResponse :: Newtype DescribeContainerInstancesResponse _
 
 
 newtype DescribeServicesRequest = DescribeServicesRequest 
   { "Cluster'" :: NullOrUndefined (String)
   , "Services'" :: (StringList)
   }
+derive instance newtypeDescribeServicesRequest :: Newtype DescribeServicesRequest _
 
 
 newtype DescribeServicesResponse = DescribeServicesResponse 
   { "Services'" :: NullOrUndefined (Services)
   , "Failures'" :: NullOrUndefined (Failures)
   }
+derive instance newtypeDescribeServicesResponse :: Newtype DescribeServicesResponse _
 
 
 newtype DescribeTaskDefinitionRequest = DescribeTaskDefinitionRequest 
   { "TaskDefinition'" :: (String)
   }
+derive instance newtypeDescribeTaskDefinitionRequest :: Newtype DescribeTaskDefinitionRequest _
 
 
 newtype DescribeTaskDefinitionResponse = DescribeTaskDefinitionResponse 
   { "TaskDefinition'" :: NullOrUndefined (TaskDefinition)
   }
+derive instance newtypeDescribeTaskDefinitionResponse :: Newtype DescribeTaskDefinitionResponse _
 
 
 newtype DescribeTasksRequest = DescribeTasksRequest 
   { "Cluster'" :: NullOrUndefined (String)
   , "Tasks'" :: (StringList)
   }
+derive instance newtypeDescribeTasksRequest :: Newtype DescribeTasksRequest _
 
 
 newtype DescribeTasksResponse = DescribeTasksResponse 
   { "Tasks'" :: NullOrUndefined (Tasks)
   , "Failures'" :: NullOrUndefined (Failures)
   }
+derive instance newtypeDescribeTasksResponse :: Newtype DescribeTasksResponse _
 
 
 newtype DesiredStatus = DesiredStatus String
+derive instance newtypeDesiredStatus :: Newtype DesiredStatus _
 
 
 -- | <p>An object representing a container instance host device.</p>
@@ -587,33 +654,41 @@ newtype Device = Device
   , "ContainerPath'" :: NullOrUndefined (String)
   , "Permissions'" :: NullOrUndefined (DeviceCgroupPermissions)
   }
+derive instance newtypeDevice :: Newtype Device _
 
 
 newtype DeviceCgroupPermission = DeviceCgroupPermission String
+derive instance newtypeDeviceCgroupPermission :: Newtype DeviceCgroupPermission _
 
 
 newtype DeviceCgroupPermissions = DeviceCgroupPermissions (Array DeviceCgroupPermission)
+derive instance newtypeDeviceCgroupPermissions :: Newtype DeviceCgroupPermissions _
 
 
 newtype DevicesList = DevicesList (Array Device)
+derive instance newtypeDevicesList :: Newtype DevicesList _
 
 
 newtype DiscoverPollEndpointRequest = DiscoverPollEndpointRequest 
   { "ContainerInstance'" :: NullOrUndefined (String)
   , "Cluster'" :: NullOrUndefined (String)
   }
+derive instance newtypeDiscoverPollEndpointRequest :: Newtype DiscoverPollEndpointRequest _
 
 
 newtype DiscoverPollEndpointResponse = DiscoverPollEndpointResponse 
   { "Endpoint'" :: NullOrUndefined (String)
   , "TelemetryEndpoint'" :: NullOrUndefined (String)
   }
+derive instance newtypeDiscoverPollEndpointResponse :: Newtype DiscoverPollEndpointResponse _
 
 
 newtype DockerLabelsMap = DockerLabelsMap (Map String String)
+derive instance newtypeDockerLabelsMap :: Newtype DockerLabelsMap _
 
 
 newtype EnvironmentVariables = EnvironmentVariables (Array KeyValuePair)
+derive instance newtypeEnvironmentVariables :: Newtype EnvironmentVariables _
 
 
 -- | <p>A failed resource.</p>
@@ -621,9 +696,11 @@ newtype Failure = Failure
   { "Arn'" :: NullOrUndefined (String)
   , "Reason'" :: NullOrUndefined (String)
   }
+derive instance newtypeFailure :: Newtype Failure _
 
 
 newtype Failures = Failures (Array Failure)
+derive instance newtypeFailures :: Newtype Failures _
 
 
 -- | <p>Hostnames and IP address entries that are added to the <code>/etc/hosts</code> file of a container via the <code>extraHosts</code> parameter of its <a>ContainerDefinition</a>. </p>
@@ -631,21 +708,25 @@ newtype HostEntry = HostEntry
   { "Hostname'" :: (String)
   , "IpAddress'" :: (String)
   }
+derive instance newtypeHostEntry :: Newtype HostEntry _
 
 
 newtype HostEntryList = HostEntryList (Array HostEntry)
+derive instance newtypeHostEntryList :: Newtype HostEntryList _
 
 
 -- | <p>Details on a container instance host volume.</p>
 newtype HostVolumeProperties = HostVolumeProperties 
   { "SourcePath'" :: NullOrUndefined (String)
   }
+derive instance newtypeHostVolumeProperties :: Newtype HostVolumeProperties _
 
 
 -- | <p>The specified parameter is invalid. Review the available parameters for the API request.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { 
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>The Linux capabilities for the container that are added to or dropped from the default configuration provided by Docker. For more information on the default capabilities and the non-default available capabilities, see <a href="https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities">Runtime privilege and Linux capabilities</a> in the <i>Docker run reference</i>. For more detailed information on these Linux capabilities, see the <a href="http://man7.org/linux/man-pages/man7/capabilities.7.html">capabilities(7)</a> Linux manual page.</p>
@@ -653,6 +734,7 @@ newtype KernelCapabilities = KernelCapabilities
   { "Add'" :: NullOrUndefined (StringList)
   , "Drop'" :: NullOrUndefined (StringList)
   }
+derive instance newtypeKernelCapabilities :: Newtype KernelCapabilities _
 
 
 -- | <p>A key and value pair object.</p>
@@ -660,9 +742,11 @@ newtype KeyValuePair = KeyValuePair
   { "Name'" :: NullOrUndefined (String)
   , "Value'" :: NullOrUndefined (String)
   }
+derive instance newtypeKeyValuePair :: Newtype KeyValuePair _
 
 
 newtype LaunchType = LaunchType String
+derive instance newtypeLaunchType :: Newtype LaunchType _
 
 
 -- | <p>Linux-specific options that are applied to the container, such as Linux <a>KernelCapabilities</a>.</p>
@@ -671,6 +755,7 @@ newtype LinuxParameters = LinuxParameters
   , "Devices'" :: NullOrUndefined (DevicesList)
   , "InitProcessEnabled'" :: NullOrUndefined (BoxedBoolean)
   }
+derive instance newtypeLinuxParameters :: Newtype LinuxParameters _
 
 
 newtype ListAttributesRequest = ListAttributesRequest 
@@ -681,24 +766,28 @@ newtype ListAttributesRequest = ListAttributesRequest
   , "NextToken'" :: NullOrUndefined (String)
   , "MaxResults'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeListAttributesRequest :: Newtype ListAttributesRequest _
 
 
 newtype ListAttributesResponse = ListAttributesResponse 
   { "Attributes'" :: NullOrUndefined (Attributes)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListAttributesResponse :: Newtype ListAttributesResponse _
 
 
 newtype ListClustersRequest = ListClustersRequest 
   { "NextToken'" :: NullOrUndefined (String)
   , "MaxResults'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeListClustersRequest :: Newtype ListClustersRequest _
 
 
 newtype ListClustersResponse = ListClustersResponse 
   { "ClusterArns'" :: NullOrUndefined (StringList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListClustersResponse :: Newtype ListClustersResponse _
 
 
 newtype ListContainerInstancesRequest = ListContainerInstancesRequest 
@@ -708,12 +797,14 @@ newtype ListContainerInstancesRequest = ListContainerInstancesRequest
   , "MaxResults'" :: NullOrUndefined (BoxedInteger)
   , "Status'" :: NullOrUndefined (ContainerInstanceStatus)
   }
+derive instance newtypeListContainerInstancesRequest :: Newtype ListContainerInstancesRequest _
 
 
 newtype ListContainerInstancesResponse = ListContainerInstancesResponse 
   { "ContainerInstanceArns'" :: NullOrUndefined (StringList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListContainerInstancesResponse :: Newtype ListContainerInstancesResponse _
 
 
 newtype ListServicesRequest = ListServicesRequest 
@@ -722,12 +813,14 @@ newtype ListServicesRequest = ListServicesRequest
   , "MaxResults'" :: NullOrUndefined (BoxedInteger)
   , "LaunchType'" :: NullOrUndefined (LaunchType)
   }
+derive instance newtypeListServicesRequest :: Newtype ListServicesRequest _
 
 
 newtype ListServicesResponse = ListServicesResponse 
   { "ServiceArns'" :: NullOrUndefined (StringList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListServicesResponse :: Newtype ListServicesResponse _
 
 
 newtype ListTaskDefinitionFamiliesRequest = ListTaskDefinitionFamiliesRequest 
@@ -736,12 +829,14 @@ newtype ListTaskDefinitionFamiliesRequest = ListTaskDefinitionFamiliesRequest
   , "NextToken'" :: NullOrUndefined (String)
   , "MaxResults'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeListTaskDefinitionFamiliesRequest :: Newtype ListTaskDefinitionFamiliesRequest _
 
 
 newtype ListTaskDefinitionFamiliesResponse = ListTaskDefinitionFamiliesResponse 
   { "Families'" :: NullOrUndefined (StringList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListTaskDefinitionFamiliesResponse :: Newtype ListTaskDefinitionFamiliesResponse _
 
 
 newtype ListTaskDefinitionsRequest = ListTaskDefinitionsRequest 
@@ -751,12 +846,14 @@ newtype ListTaskDefinitionsRequest = ListTaskDefinitionsRequest
   , "NextToken'" :: NullOrUndefined (String)
   , "MaxResults'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeListTaskDefinitionsRequest :: Newtype ListTaskDefinitionsRequest _
 
 
 newtype ListTaskDefinitionsResponse = ListTaskDefinitionsResponse 
   { "TaskDefinitionArns'" :: NullOrUndefined (StringList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListTaskDefinitionsResponse :: Newtype ListTaskDefinitionsResponse _
 
 
 newtype ListTasksRequest = ListTasksRequest 
@@ -770,12 +867,14 @@ newtype ListTasksRequest = ListTasksRequest
   , "DesiredStatus'" :: NullOrUndefined (DesiredStatus)
   , "LaunchType'" :: NullOrUndefined (LaunchType)
   }
+derive instance newtypeListTasksRequest :: Newtype ListTasksRequest _
 
 
 newtype ListTasksResponse = ListTasksResponse 
   { "TaskArns'" :: NullOrUndefined (StringList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListTasksResponse :: Newtype ListTasksResponse _
 
 
 -- | <p>Details on a load balancer that is used with a service.</p>
@@ -785,9 +884,11 @@ newtype LoadBalancer = LoadBalancer
   , "ContainerName'" :: NullOrUndefined (String)
   , "ContainerPort'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeLoadBalancer :: Newtype LoadBalancer _
 
 
 newtype LoadBalancers = LoadBalancers (Array LoadBalancer)
+derive instance newtypeLoadBalancers :: Newtype LoadBalancers _
 
 
 -- | <p>Log configuration options to send to a custom log driver for the container.</p>
@@ -795,18 +896,22 @@ newtype LogConfiguration = LogConfiguration
   { "LogDriver'" :: (LogDriver)
   , "Options'" :: NullOrUndefined (LogConfigurationOptionsMap)
   }
+derive instance newtypeLogConfiguration :: Newtype LogConfiguration _
 
 
 newtype LogConfigurationOptionsMap = LogConfigurationOptionsMap (Map String String)
+derive instance newtypeLogConfigurationOptionsMap :: Newtype LogConfigurationOptionsMap _
 
 
 newtype LogDriver = LogDriver String
+derive instance newtypeLogDriver :: Newtype LogDriver _
 
 
 -- | <p>Amazon ECS is unable to determine the current version of the Amazon ECS container agent on the container instance and does not have enough information to proceed with an update. This could be because the agent running on the container instance is an older or custom version that does not use our version information.</p>
 newtype MissingVersionException = MissingVersionException 
   { 
   }
+derive instance newtypeMissingVersionException :: Newtype MissingVersionException _
 
 
 -- | <p>Details on a volume mount point that is used in a container definition.</p>
@@ -815,9 +920,11 @@ newtype MountPoint = MountPoint
   , "ContainerPath'" :: NullOrUndefined (String)
   , "ReadOnly'" :: NullOrUndefined (BoxedBoolean)
   }
+derive instance newtypeMountPoint :: Newtype MountPoint _
 
 
 newtype MountPointList = MountPointList (Array MountPoint)
+derive instance newtypeMountPointList :: Newtype MountPointList _
 
 
 -- | <p>Details on the network bindings between a container and its host container instance. After a task reaches the <code>RUNNING</code> status, manual and automatic host and container port assignments are visible in the <code>networkBindings</code> section of <a>DescribeTasks</a> API responses.</p>
@@ -827,15 +934,18 @@ newtype NetworkBinding = NetworkBinding
   , "HostPort'" :: NullOrUndefined (BoxedInteger)
   , "Protocol'" :: NullOrUndefined (TransportProtocol)
   }
+derive instance newtypeNetworkBinding :: Newtype NetworkBinding _
 
 
 newtype NetworkBindings = NetworkBindings (Array NetworkBinding)
+derive instance newtypeNetworkBindings :: Newtype NetworkBindings _
 
 
 -- | <p>An object representing the network configuration for a task or service.</p>
 newtype NetworkConfiguration = NetworkConfiguration 
   { "AwsvpcConfiguration'" :: NullOrUndefined (AwsVpcConfiguration)
   }
+derive instance newtypeNetworkConfiguration :: Newtype NetworkConfiguration _
 
 
 -- | <p>An object representing the Elastic Network Interface for tasks that use the <code>awsvpc</code> network mode.</p>
@@ -844,18 +954,22 @@ newtype NetworkInterface = NetworkInterface
   , "PrivateIpv4Address'" :: NullOrUndefined (String)
   , "Ipv6Address'" :: NullOrUndefined (String)
   }
+derive instance newtypeNetworkInterface :: Newtype NetworkInterface _
 
 
 newtype NetworkInterfaces = NetworkInterfaces (Array NetworkInterface)
+derive instance newtypeNetworkInterfaces :: Newtype NetworkInterfaces _
 
 
 newtype NetworkMode = NetworkMode String
+derive instance newtypeNetworkMode :: Newtype NetworkMode _
 
 
 -- | <p>There is no update available for this Amazon ECS container agent. This could be because the agent is already running the latest version, or it is so old that there is no update path to the current version.</p>
 newtype NoUpdateAvailableException = NoUpdateAvailableException 
   { 
   }
+derive instance newtypeNoUpdateAvailableException :: Newtype NoUpdateAvailableException _
 
 
 -- | <p>An object representing a constraint on task placement. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html">Task Placement Constraints</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
@@ -863,15 +977,19 @@ newtype PlacementConstraint = PlacementConstraint
   { "Type'" :: NullOrUndefined (PlacementConstraintType)
   , "Expression'" :: NullOrUndefined (String)
   }
+derive instance newtypePlacementConstraint :: Newtype PlacementConstraint _
 
 
 newtype PlacementConstraintType = PlacementConstraintType String
+derive instance newtypePlacementConstraintType :: Newtype PlacementConstraintType _
 
 
 newtype PlacementConstraints = PlacementConstraints (Array PlacementConstraint)
+derive instance newtypePlacementConstraints :: Newtype PlacementConstraints _
 
 
 newtype PlacementStrategies = PlacementStrategies (Array PlacementStrategy)
+derive instance newtypePlacementStrategies :: Newtype PlacementStrategies _
 
 
 -- | <p>The task placement strategy for a task or service. For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html">Task Placement Strategies</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
@@ -879,21 +997,25 @@ newtype PlacementStrategy = PlacementStrategy
   { "Type'" :: NullOrUndefined (PlacementStrategyType)
   , "Field'" :: NullOrUndefined (String)
   }
+derive instance newtypePlacementStrategy :: Newtype PlacementStrategy _
 
 
 newtype PlacementStrategyType = PlacementStrategyType String
+derive instance newtypePlacementStrategyType :: Newtype PlacementStrategyType _
 
 
 -- | <p>The specified platform version does not satisfy the task definition’s required capabilities.</p>
 newtype PlatformTaskDefinitionIncompatibilityException = PlatformTaskDefinitionIncompatibilityException 
   { 
   }
+derive instance newtypePlatformTaskDefinitionIncompatibilityException :: Newtype PlatformTaskDefinitionIncompatibilityException _
 
 
 -- | <p>The specified platform version does not exist.</p>
 newtype PlatformUnknownException = PlatformUnknownException 
   { 
   }
+derive instance newtypePlatformUnknownException :: Newtype PlatformUnknownException _
 
 
 -- | <p>Port mappings allow containers to access ports on the host container instance to send or receive traffic. Port mappings are specified as part of the container definition.</p> <p>If using containers in a task with the <code>awsvpc</code> or <code>host</code> network mode, exposed ports should be specified using <code>containerPort</code>. The <code>hostPort</code> can be left blank or it must be the same value as the <code>containerPort</code>.</p> <p>After a task reaches the <code>RUNNING</code> status, manual and automatic host and container port assignments are visible in the <code>networkBindings</code> section of <a>DescribeTasks</a> API responses.</p>
@@ -902,20 +1024,24 @@ newtype PortMapping = PortMapping
   , "HostPort'" :: NullOrUndefined (BoxedInteger)
   , "Protocol'" :: NullOrUndefined (TransportProtocol)
   }
+derive instance newtypePortMapping :: Newtype PortMapping _
 
 
 newtype PortMappingList = PortMappingList (Array PortMapping)
+derive instance newtypePortMappingList :: Newtype PortMappingList _
 
 
 newtype PutAttributesRequest = PutAttributesRequest 
   { "Cluster'" :: NullOrUndefined (String)
   , "Attributes'" :: (Attributes)
   }
+derive instance newtypePutAttributesRequest :: Newtype PutAttributesRequest _
 
 
 newtype PutAttributesResponse = PutAttributesResponse 
   { "Attributes'" :: NullOrUndefined (Attributes)
   }
+derive instance newtypePutAttributesResponse :: Newtype PutAttributesResponse _
 
 
 newtype RegisterContainerInstanceRequest = RegisterContainerInstanceRequest 
@@ -927,11 +1053,13 @@ newtype RegisterContainerInstanceRequest = RegisterContainerInstanceRequest
   , "ContainerInstanceArn'" :: NullOrUndefined (String)
   , "Attributes'" :: NullOrUndefined (Attributes)
   }
+derive instance newtypeRegisterContainerInstanceRequest :: Newtype RegisterContainerInstanceRequest _
 
 
 newtype RegisterContainerInstanceResponse = RegisterContainerInstanceResponse 
   { "ContainerInstance'" :: NullOrUndefined (ContainerInstance)
   }
+derive instance newtypeRegisterContainerInstanceResponse :: Newtype RegisterContainerInstanceResponse _
 
 
 newtype RegisterTaskDefinitionRequest = RegisterTaskDefinitionRequest 
@@ -946,14 +1074,17 @@ newtype RegisterTaskDefinitionRequest = RegisterTaskDefinitionRequest
   , "Cpu'" :: NullOrUndefined (String)
   , "Memory'" :: NullOrUndefined (String)
   }
+derive instance newtypeRegisterTaskDefinitionRequest :: Newtype RegisterTaskDefinitionRequest _
 
 
 newtype RegisterTaskDefinitionResponse = RegisterTaskDefinitionResponse 
   { "TaskDefinition'" :: NullOrUndefined (TaskDefinition)
   }
+derive instance newtypeRegisterTaskDefinitionResponse :: Newtype RegisterTaskDefinitionResponse _
 
 
 newtype RequiresAttributes = RequiresAttributes (Array Attribute)
+derive instance newtypeRequiresAttributes :: Newtype RequiresAttributes _
 
 
 -- | <p>Describes the resources available for a container instance.</p>
@@ -965,9 +1096,11 @@ newtype Resource = Resource
   , "IntegerValue'" :: NullOrUndefined (Int)
   , "StringSetValue'" :: NullOrUndefined (StringList)
   }
+derive instance newtypeResource :: Newtype Resource _
 
 
 newtype Resources = Resources (Array Resource)
+derive instance newtypeResources :: Newtype Resources _
 
 
 newtype RunTaskRequest = RunTaskRequest 
@@ -983,18 +1116,21 @@ newtype RunTaskRequest = RunTaskRequest
   , "PlatformVersion'" :: NullOrUndefined (String)
   , "NetworkConfiguration'" :: NullOrUndefined (NetworkConfiguration)
   }
+derive instance newtypeRunTaskRequest :: Newtype RunTaskRequest _
 
 
 newtype RunTaskResponse = RunTaskResponse 
   { "Tasks'" :: NullOrUndefined (Tasks)
   , "Failures'" :: NullOrUndefined (Failures)
   }
+derive instance newtypeRunTaskResponse :: Newtype RunTaskResponse _
 
 
 -- | <p>These errors are usually caused by a server issue.</p>
 newtype ServerException = ServerException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeServerException :: Newtype ServerException _
 
 
 -- | <p>Details on a service within a cluster</p>
@@ -1020,6 +1156,7 @@ newtype Service = Service
   , "NetworkConfiguration'" :: NullOrUndefined (NetworkConfiguration)
   , "HealthCheckGracePeriodSeconds'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeService :: Newtype Service _
 
 
 -- | <p>Details on an event associated with a service.</p>
@@ -1028,27 +1165,33 @@ newtype ServiceEvent = ServiceEvent
   , "CreatedAt'" :: NullOrUndefined (Number)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeServiceEvent :: Newtype ServiceEvent _
 
 
 newtype ServiceEvents = ServiceEvents (Array ServiceEvent)
+derive instance newtypeServiceEvents :: Newtype ServiceEvents _
 
 
 -- | <p>The specified service is not active. You can't update a service that is inactive. If you have previously deleted a service, you can re-create it with <a>CreateService</a>.</p>
 newtype ServiceNotActiveException = ServiceNotActiveException 
   { 
   }
+derive instance newtypeServiceNotActiveException :: Newtype ServiceNotActiveException _
 
 
 -- | <p>The specified service could not be found. You can view your available services with <a>ListServices</a>. Amazon ECS services are cluster-specific and region-specific.</p>
 newtype ServiceNotFoundException = ServiceNotFoundException 
   { 
   }
+derive instance newtypeServiceNotFoundException :: Newtype ServiceNotFoundException _
 
 
 newtype Services = Services (Array Service)
+derive instance newtypeServices :: Newtype Services _
 
 
 newtype SortOrder = SortOrder String
+derive instance newtypeSortOrder :: Newtype SortOrder _
 
 
 newtype StartTaskRequest = StartTaskRequest 
@@ -1060,15 +1203,18 @@ newtype StartTaskRequest = StartTaskRequest
   , "Group'" :: NullOrUndefined (String)
   , "NetworkConfiguration'" :: NullOrUndefined (NetworkConfiguration)
   }
+derive instance newtypeStartTaskRequest :: Newtype StartTaskRequest _
 
 
 newtype StartTaskResponse = StartTaskResponse 
   { "Tasks'" :: NullOrUndefined (Tasks)
   , "Failures'" :: NullOrUndefined (Failures)
   }
+derive instance newtypeStartTaskResponse :: Newtype StartTaskResponse _
 
 
 newtype Statistics = Statistics (Array KeyValuePair)
+derive instance newtypeStatistics :: Newtype Statistics _
 
 
 newtype StopTaskRequest = StopTaskRequest 
@@ -1076,14 +1222,17 @@ newtype StopTaskRequest = StopTaskRequest
   , "Task'" :: (String)
   , "Reason'" :: NullOrUndefined (String)
   }
+derive instance newtypeStopTaskRequest :: Newtype StopTaskRequest _
 
 
 newtype StopTaskResponse = StopTaskResponse 
   { "Task'" :: NullOrUndefined (Task)
   }
+derive instance newtypeStopTaskResponse :: Newtype StopTaskResponse _
 
 
 newtype StringList = StringList (Array String)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 newtype SubmitContainerStateChangeRequest = SubmitContainerStateChangeRequest 
@@ -1095,11 +1244,13 @@ newtype SubmitContainerStateChangeRequest = SubmitContainerStateChangeRequest
   , "Reason'" :: NullOrUndefined (String)
   , "NetworkBindings'" :: NullOrUndefined (NetworkBindings)
   }
+derive instance newtypeSubmitContainerStateChangeRequest :: Newtype SubmitContainerStateChangeRequest _
 
 
 newtype SubmitContainerStateChangeResponse = SubmitContainerStateChangeResponse 
   { "Acknowledgment'" :: NullOrUndefined (String)
   }
+derive instance newtypeSubmitContainerStateChangeResponse :: Newtype SubmitContainerStateChangeResponse _
 
 
 newtype SubmitTaskStateChangeRequest = SubmitTaskStateChangeRequest 
@@ -1113,20 +1264,24 @@ newtype SubmitTaskStateChangeRequest = SubmitTaskStateChangeRequest
   , "PullStoppedAt'" :: NullOrUndefined (Number)
   , "ExecutionStoppedAt'" :: NullOrUndefined (Number)
   }
+derive instance newtypeSubmitTaskStateChangeRequest :: Newtype SubmitTaskStateChangeRequest _
 
 
 newtype SubmitTaskStateChangeResponse = SubmitTaskStateChangeResponse 
   { "Acknowledgment'" :: NullOrUndefined (String)
   }
+derive instance newtypeSubmitTaskStateChangeResponse :: Newtype SubmitTaskStateChangeResponse _
 
 
 -- | <p>The specified target could not be found. You can view your available container instances with <a>ListContainerInstances</a>. Amazon ECS container instances are cluster-specific and region-specific.</p>
 newtype TargetNotFoundException = TargetNotFoundException 
   { 
   }
+derive instance newtypeTargetNotFoundException :: Newtype TargetNotFoundException _
 
 
 newtype TargetType = TargetType String
+derive instance newtypeTargetType :: Newtype TargetType _
 
 
 -- | <p>Details on a task in a cluster.</p>
@@ -1158,6 +1313,7 @@ newtype Task = Task
   , "PlatformVersion'" :: NullOrUndefined (String)
   , "Attachments'" :: NullOrUndefined (Attachments)
   }
+derive instance newtypeTask :: Newtype Task _
 
 
 -- | <p>Details of a task definition.</p>
@@ -1178,9 +1334,11 @@ newtype TaskDefinition = TaskDefinition
   , "Cpu'" :: NullOrUndefined (String)
   , "Memory'" :: NullOrUndefined (String)
   }
+derive instance newtypeTaskDefinition :: Newtype TaskDefinition _
 
 
 newtype TaskDefinitionFamilyStatus = TaskDefinitionFamilyStatus String
+derive instance newtypeTaskDefinitionFamilyStatus :: Newtype TaskDefinitionFamilyStatus _
 
 
 -- | <p>An object representing a constraint on task placement in the task definition.</p> <p>If you are using the Fargate launch type, task placement contraints are not supported.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html">Task Placement Constraints</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
@@ -1188,15 +1346,19 @@ newtype TaskDefinitionPlacementConstraint = TaskDefinitionPlacementConstraint
   { "Type'" :: NullOrUndefined (TaskDefinitionPlacementConstraintType)
   , "Expression'" :: NullOrUndefined (String)
   }
+derive instance newtypeTaskDefinitionPlacementConstraint :: Newtype TaskDefinitionPlacementConstraint _
 
 
 newtype TaskDefinitionPlacementConstraintType = TaskDefinitionPlacementConstraintType String
+derive instance newtypeTaskDefinitionPlacementConstraintType :: Newtype TaskDefinitionPlacementConstraintType _
 
 
 newtype TaskDefinitionPlacementConstraints = TaskDefinitionPlacementConstraints (Array TaskDefinitionPlacementConstraint)
+derive instance newtypeTaskDefinitionPlacementConstraints :: Newtype TaskDefinitionPlacementConstraints _
 
 
 newtype TaskDefinitionStatus = TaskDefinitionStatus String
+derive instance newtypeTaskDefinitionStatus :: Newtype TaskDefinitionStatus _
 
 
 -- | <p>The overrides associated with a task.</p>
@@ -1205,12 +1367,15 @@ newtype TaskOverride = TaskOverride
   , "TaskRoleArn'" :: NullOrUndefined (String)
   , "ExecutionRoleArn'" :: NullOrUndefined (String)
   }
+derive instance newtypeTaskOverride :: Newtype TaskOverride _
 
 
 newtype Tasks = Tasks (Array Task)
+derive instance newtypeTasks :: Newtype Tasks _
 
 
 newtype TransportProtocol = TransportProtocol String
+derive instance newtypeTransportProtocol :: Newtype TransportProtocol _
 
 
 -- | <p>The <code>ulimit</code> settings to pass to the container.</p>
@@ -1219,29 +1384,35 @@ newtype Ulimit = Ulimit
   , "SoftLimit'" :: (Int)
   , "HardLimit'" :: (Int)
   }
+derive instance newtypeUlimit :: Newtype Ulimit _
 
 
 newtype UlimitList = UlimitList (Array Ulimit)
+derive instance newtypeUlimitList :: Newtype UlimitList _
 
 
 newtype UlimitName = UlimitName String
+derive instance newtypeUlimitName :: Newtype UlimitName _
 
 
 -- | <p>The specified task is not supported in this region.</p>
 newtype UnsupportedFeatureException = UnsupportedFeatureException 
   { 
   }
+derive instance newtypeUnsupportedFeatureException :: Newtype UnsupportedFeatureException _
 
 
 newtype UpdateContainerAgentRequest = UpdateContainerAgentRequest 
   { "Cluster'" :: NullOrUndefined (String)
   , "ContainerInstance'" :: (String)
   }
+derive instance newtypeUpdateContainerAgentRequest :: Newtype UpdateContainerAgentRequest _
 
 
 newtype UpdateContainerAgentResponse = UpdateContainerAgentResponse 
   { "ContainerInstance'" :: NullOrUndefined (ContainerInstance)
   }
+derive instance newtypeUpdateContainerAgentResponse :: Newtype UpdateContainerAgentResponse _
 
 
 newtype UpdateContainerInstancesStateRequest = UpdateContainerInstancesStateRequest 
@@ -1249,18 +1420,21 @@ newtype UpdateContainerInstancesStateRequest = UpdateContainerInstancesStateRequ
   , "ContainerInstances'" :: (StringList)
   , "Status'" :: (ContainerInstanceStatus)
   }
+derive instance newtypeUpdateContainerInstancesStateRequest :: Newtype UpdateContainerInstancesStateRequest _
 
 
 newtype UpdateContainerInstancesStateResponse = UpdateContainerInstancesStateResponse 
   { "ContainerInstances'" :: NullOrUndefined (ContainerInstances)
   , "Failures'" :: NullOrUndefined (Failures)
   }
+derive instance newtypeUpdateContainerInstancesStateResponse :: Newtype UpdateContainerInstancesStateResponse _
 
 
 -- | <p>There is already a current Amazon ECS container agent update in progress on the specified container instance. If the container agent becomes disconnected while it is in a transitional stage, such as <code>PENDING</code> or <code>STAGING</code>, the update process can get stuck in that state. However, when the agent reconnects, it resumes where it stopped previously.</p>
 newtype UpdateInProgressException = UpdateInProgressException 
   { 
   }
+derive instance newtypeUpdateInProgressException :: Newtype UpdateInProgressException _
 
 
 newtype UpdateServiceRequest = UpdateServiceRequest 
@@ -1274,11 +1448,13 @@ newtype UpdateServiceRequest = UpdateServiceRequest
   , "ForceNewDeployment'" :: NullOrUndefined (Boolean)
   , "HealthCheckGracePeriodSeconds'" :: NullOrUndefined (BoxedInteger)
   }
+derive instance newtypeUpdateServiceRequest :: Newtype UpdateServiceRequest _
 
 
 newtype UpdateServiceResponse = UpdateServiceResponse 
   { "Service'" :: NullOrUndefined (Service)
   }
+derive instance newtypeUpdateServiceResponse :: Newtype UpdateServiceResponse _
 
 
 -- | <p>The Docker and Amazon ECS container agent version information about a container instance.</p>
@@ -1287,6 +1463,7 @@ newtype VersionInfo = VersionInfo
   , "AgentHash'" :: NullOrUndefined (String)
   , "DockerVersion'" :: NullOrUndefined (String)
   }
+derive instance newtypeVersionInfo :: Newtype VersionInfo _
 
 
 -- | <p>A data volume used in a task definition.</p>
@@ -1294,6 +1471,7 @@ newtype Volume = Volume
   { "Name'" :: NullOrUndefined (String)
   , "Host'" :: NullOrUndefined (HostVolumeProperties)
   }
+derive instance newtypeVolume :: Newtype Volume _
 
 
 -- | <p>Details on a data volume from another container in the same task definition.</p>
@@ -1301,9 +1479,12 @@ newtype VolumeFrom = VolumeFrom
   { "SourceContainer'" :: NullOrUndefined (String)
   , "ReadOnly'" :: NullOrUndefined (BoxedBoolean)
   }
+derive instance newtypeVolumeFrom :: Newtype VolumeFrom _
 
 
 newtype VolumeFromList = VolumeFromList (Array VolumeFrom)
+derive instance newtypeVolumeFromList :: Newtype VolumeFromList _
 
 
 newtype VolumeList = VolumeList (Array Volume)
+derive instance newtypeVolumeList :: Newtype VolumeList _

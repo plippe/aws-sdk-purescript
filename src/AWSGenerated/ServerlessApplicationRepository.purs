@@ -25,6 +25,7 @@ module AWS.ServerlessApplicationRepository where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -96,6 +97,7 @@ newtype Application = Application
   , "SpdxLicenseId" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Version)
   }
+derive instance newtypeApplication :: Newtype Application _
 
 
 -- | <p>List of application details.</p>
@@ -103,12 +105,14 @@ newtype ApplicationPage = ApplicationPage
   { "Applications" :: (ListOfApplicationSummary')
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeApplicationPage :: Newtype ApplicationPage _
 
 
 -- | <p>Policy statements applied to the application.</p>
 newtype ApplicationPolicy = ApplicationPolicy 
   { "Statements" :: (ListOfApplicationPolicyStatement')
   }
+derive instance newtypeApplicationPolicy :: Newtype ApplicationPolicy _
 
 
 -- | <p>Policy statement applied to the application.</p>
@@ -117,6 +121,7 @@ newtype ApplicationPolicyStatement = ApplicationPolicyStatement
   , "Principals" :: (ListOf__string')
   , "StatementId" :: NullOrUndefined (String)
   }
+derive instance newtypeApplicationPolicyStatement :: Newtype ApplicationPolicyStatement _
 
 
 -- | <p>Summary of details about the application.</p>
@@ -130,6 +135,7 @@ newtype ApplicationSummary = ApplicationSummary
   , "Name" :: (String)
   , "SpdxLicenseId" :: NullOrUndefined (String)
   }
+derive instance newtypeApplicationSummary :: Newtype ApplicationSummary _
 
 
 -- | <p>List of version summaries for the application.</p>
@@ -137,6 +143,7 @@ newtype ApplicationVersionPage = ApplicationVersionPage
   { "NextToken" :: NullOrUndefined (String)
   , "Versions" :: (ListOfVersionSummary')
   }
+derive instance newtypeApplicationVersionPage :: Newtype ApplicationVersionPage _
 
 
 -- | <p>One of the parameters in the request is invalid.</p>
@@ -144,6 +151,7 @@ newtype BadRequestException = BadRequestException
   { "ErrorCode" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 -- | <p>Details of the change set.</p>
@@ -153,6 +161,7 @@ newtype ChangeSetDetails = ChangeSetDetails
   , "SemanticVersion" :: (String)
   , "StackId" :: (String)
   }
+derive instance newtypeChangeSetDetails :: Newtype ChangeSetDetails _
 
 
 -- | <p>The resource already exists.</p>
@@ -160,6 +169,7 @@ newtype ConflictException = ConflictException
   { "ErrorCode" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeConflictException :: Newtype ConflictException _
 
 
 -- | <p>Create application request.</p>
@@ -179,6 +189,7 @@ newtype CreateApplicationInput = CreateApplicationInput
   , "TemplateBody" :: NullOrUndefined (String)
   , "TemplateUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationInput :: Newtype CreateApplicationInput _
 
 
 newtype CreateApplicationRequest = CreateApplicationRequest 
@@ -197,6 +208,7 @@ newtype CreateApplicationRequest = CreateApplicationRequest
   , "TemplateBody" :: NullOrUndefined (String)
   , "TemplateUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationRequest :: Newtype CreateApplicationRequest _
 
 
 newtype CreateApplicationResponse = CreateApplicationResponse 
@@ -212,6 +224,7 @@ newtype CreateApplicationResponse = CreateApplicationResponse
   , "SpdxLicenseId" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Version)
   }
+derive instance newtypeCreateApplicationResponse :: Newtype CreateApplicationResponse _
 
 
 -- | <p>Create version request.</p>
@@ -220,6 +233,7 @@ newtype CreateApplicationVersionInput = CreateApplicationVersionInput
   , "TemplateBody" :: NullOrUndefined (String)
   , "TemplateUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationVersionInput :: Newtype CreateApplicationVersionInput _
 
 
 newtype CreateApplicationVersionRequest = CreateApplicationVersionRequest 
@@ -229,6 +243,7 @@ newtype CreateApplicationVersionRequest = CreateApplicationVersionRequest
   , "TemplateBody" :: NullOrUndefined (String)
   , "TemplateUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationVersionRequest :: Newtype CreateApplicationVersionRequest _
 
 
 newtype CreateApplicationVersionResponse = CreateApplicationVersionResponse 
@@ -239,6 +254,7 @@ newtype CreateApplicationVersionResponse = CreateApplicationVersionResponse
   , "SourceCodeUrl" :: NullOrUndefined (String)
   , "TemplateUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationVersionResponse :: Newtype CreateApplicationVersionResponse _
 
 
 -- | <p>Create application ChangeSet request.</p>
@@ -247,6 +263,7 @@ newtype CreateCloudFormationChangeSetInput = CreateCloudFormationChangeSetInput
   , "SemanticVersion" :: NullOrUndefined (String)
   , "StackName" :: (String)
   }
+derive instance newtypeCreateCloudFormationChangeSetInput :: Newtype CreateCloudFormationChangeSetInput _
 
 
 newtype CreateCloudFormationChangeSetRequest = CreateCloudFormationChangeSetRequest 
@@ -255,6 +272,7 @@ newtype CreateCloudFormationChangeSetRequest = CreateCloudFormationChangeSetRequ
   , "SemanticVersion" :: NullOrUndefined (String)
   , "StackName" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateCloudFormationChangeSetRequest :: Newtype CreateCloudFormationChangeSetRequest _
 
 
 newtype CreateCloudFormationChangeSetResponse = CreateCloudFormationChangeSetResponse 
@@ -263,11 +281,13 @@ newtype CreateCloudFormationChangeSetResponse = CreateCloudFormationChangeSetRes
   , "SemanticVersion" :: NullOrUndefined (String)
   , "StackId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateCloudFormationChangeSetResponse :: Newtype CreateCloudFormationChangeSetResponse _
 
 
 newtype DeleteApplicationRequest = DeleteApplicationRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteApplicationRequest :: Newtype DeleteApplicationRequest _
 
 
 -- | <p>The client is not authenticated.</p>
@@ -275,22 +295,26 @@ newtype ForbiddenException = ForbiddenException
   { "ErrorCode" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeForbiddenException :: Newtype ForbiddenException _
 
 
 newtype GetApplicationPolicyRequest = GetApplicationPolicyRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetApplicationPolicyRequest :: Newtype GetApplicationPolicyRequest _
 
 
 newtype GetApplicationPolicyResponse = GetApplicationPolicyResponse 
   { "Statements" :: NullOrUndefined (ListOfApplicationPolicyStatement')
   }
+derive instance newtypeGetApplicationPolicyResponse :: Newtype GetApplicationPolicyResponse _
 
 
 newtype GetApplicationRequest = GetApplicationRequest 
   { "ApplicationId" :: (String)
   , "SemanticVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeGetApplicationRequest :: Newtype GetApplicationRequest _
 
 
 newtype GetApplicationResponse = GetApplicationResponse 
@@ -306,6 +330,7 @@ newtype GetApplicationResponse = GetApplicationResponse
   , "SpdxLicenseId" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Version)
   }
+derive instance newtypeGetApplicationResponse :: Newtype GetApplicationResponse _
 
 
 -- | <p>The AWS Serverless Application Repository service encountered an internal error.</p>
@@ -313,6 +338,7 @@ newtype InternalServerErrorException = InternalServerErrorException
   { "ErrorCode" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalServerErrorException :: Newtype InternalServerErrorException _
 
 
 newtype ListApplicationVersionsRequest = ListApplicationVersionsRequest 
@@ -320,27 +346,32 @@ newtype ListApplicationVersionsRequest = ListApplicationVersionsRequest
   , "MaxItems" :: NullOrUndefined (MaxItems)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListApplicationVersionsRequest :: Newtype ListApplicationVersionsRequest _
 
 
 newtype ListApplicationVersionsResponse = ListApplicationVersionsResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "Versions" :: NullOrUndefined (ListOfVersionSummary')
   }
+derive instance newtypeListApplicationVersionsResponse :: Newtype ListApplicationVersionsResponse _
 
 
 newtype ListApplicationsRequest = ListApplicationsRequest 
   { "MaxItems" :: NullOrUndefined (MaxItems)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListApplicationsRequest :: Newtype ListApplicationsRequest _
 
 
 newtype ListApplicationsResponse = ListApplicationsResponse 
   { "Applications" :: NullOrUndefined (ListOfApplicationSummary')
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListApplicationsResponse :: Newtype ListApplicationsResponse _
 
 
 newtype MaxItems = MaxItems Int
+derive instance newtypeMaxItems :: Newtype MaxItems _
 
 
 -- | <p>The resource (for example, an access policy statement) specified in the request does not exist.</p>
@@ -348,6 +379,7 @@ newtype NotFoundException = NotFoundException
   { "ErrorCode" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 -- | <p>Parameters supported by the application.</p>
@@ -366,6 +398,7 @@ newtype ParameterDefinition = ParameterDefinition
   , "ReferencedByResources" :: (ListOf__string')
   , "Type" :: NullOrUndefined (String)
   }
+derive instance newtypeParameterDefinition :: Newtype ParameterDefinition _
 
 
 -- | <p>Parameter value of the application.</p>
@@ -373,17 +406,20 @@ newtype ParameterValue = ParameterValue
   { "Name" :: (String)
   , "Value" :: (String)
   }
+derive instance newtypeParameterValue :: Newtype ParameterValue _
 
 
 newtype PutApplicationPolicyRequest = PutApplicationPolicyRequest 
   { "ApplicationId" :: (String)
   , "Statements" :: NullOrUndefined (ListOfApplicationPolicyStatement')
   }
+derive instance newtypePutApplicationPolicyRequest :: Newtype PutApplicationPolicyRequest _
 
 
 newtype PutApplicationPolicyResponse = PutApplicationPolicyResponse 
   { "Statements" :: NullOrUndefined (ListOfApplicationPolicyStatement')
   }
+derive instance newtypePutApplicationPolicyResponse :: Newtype PutApplicationPolicyResponse _
 
 
 -- | <p>The client is sending more than the allowed number of requests per unit time.</p>
@@ -391,6 +427,7 @@ newtype TooManyRequestsException = TooManyRequestsException
   { "ErrorCode" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | <p>Update application request.</p>
@@ -402,6 +439,7 @@ newtype UpdateApplicationInput = UpdateApplicationInput
   , "ReadmeBody" :: NullOrUndefined (String)
   , "ReadmeUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateApplicationInput :: Newtype UpdateApplicationInput _
 
 
 newtype UpdateApplicationRequest = UpdateApplicationRequest 
@@ -413,6 +451,7 @@ newtype UpdateApplicationRequest = UpdateApplicationRequest
   , "ReadmeBody" :: NullOrUndefined (String)
   , "ReadmeUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateApplicationRequest :: Newtype UpdateApplicationRequest _
 
 
 newtype UpdateApplicationResponse = UpdateApplicationResponse 
@@ -428,6 +467,7 @@ newtype UpdateApplicationResponse = UpdateApplicationResponse
   , "SpdxLicenseId" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Version)
   }
+derive instance newtypeUpdateApplicationResponse :: Newtype UpdateApplicationResponse _
 
 
 -- | <p>Application version details.</p>
@@ -439,6 +479,7 @@ newtype Version = Version
   , "SourceCodeUrl" :: NullOrUndefined (String)
   , "TemplateUrl" :: (String)
   }
+derive instance newtypeVersion :: Newtype Version _
 
 
 -- | <p>Application version summary.</p>
@@ -448,21 +489,28 @@ newtype VersionSummary = VersionSummary
   , "SemanticVersion" :: (String)
   , "SourceCodeUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeVersionSummary :: Newtype VersionSummary _
 
 
 newtype ListOfApplicationPolicyStatement' = ListOfApplicationPolicyStatement' (Array ApplicationPolicyStatement)
+derive instance newtypeListOfApplicationPolicyStatement' :: Newtype ListOfApplicationPolicyStatement' _
 
 
 newtype ListOfApplicationSummary' = ListOfApplicationSummary' (Array ApplicationSummary)
+derive instance newtypeListOfApplicationSummary' :: Newtype ListOfApplicationSummary' _
 
 
 newtype ListOfParameterDefinition' = ListOfParameterDefinition' (Array ParameterDefinition)
+derive instance newtypeListOfParameterDefinition' :: Newtype ListOfParameterDefinition' _
 
 
 newtype ListOfParameterValue' = ListOfParameterValue' (Array ParameterValue)
+derive instance newtypeListOfParameterValue' :: Newtype ListOfParameterValue' _
 
 
 newtype ListOfVersionSummary' = ListOfVersionSummary' (Array VersionSummary)
+derive instance newtypeListOfVersionSummary' :: Newtype ListOfVersionSummary' _
 
 
 newtype ListOf__string' = ListOf__string' (Array String)
+derive instance newtypeListOf__string' :: Newtype ListOf__string' _

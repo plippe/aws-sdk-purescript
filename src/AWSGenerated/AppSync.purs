@@ -6,6 +6,7 @@ module AWS.AppSync where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -154,42 +155,50 @@ newtype ApiKey = ApiKey
   , "Description'" :: NullOrUndefined (String)
   , "Expires'" :: NullOrUndefined (Number)
   }
+derive instance newtypeApiKey :: Newtype ApiKey _
 
 
 -- | <p>The API key exceeded a limit. Try your request again.</p>
 newtype ApiKeyLimitExceededException = ApiKeyLimitExceededException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeApiKeyLimitExceededException :: Newtype ApiKeyLimitExceededException _
 
 
 -- | <p>The API key expiration must be set to a value between 1 and 365 days.</p>
 newtype ApiKeyValidityOutOfBoundsException = ApiKeyValidityOutOfBoundsException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeApiKeyValidityOutOfBoundsException :: Newtype ApiKeyValidityOutOfBoundsException _
 
 
 newtype ApiKeys = ApiKeys (Array ApiKey)
+derive instance newtypeApiKeys :: Newtype ApiKeys _
 
 
 -- | <p>The GraphQL API exceeded a limit. Try your request again.</p>
 newtype ApiLimitExceededException = ApiLimitExceededException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeApiLimitExceededException :: Newtype ApiLimitExceededException _
 
 
 newtype AuthenticationType = AuthenticationType String
+derive instance newtypeAuthenticationType :: Newtype AuthenticationType _
 
 
 -- | <p>The request is not well formed. For example, a value is invalid or a required field is missing. Check the field values, and try again. </p>
 newtype BadRequestException = BadRequestException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 -- | <p>Another modification is being made. That modification must complete before you can make your change. </p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 newtype CreateApiKeyRequest = CreateApiKeyRequest 
@@ -197,11 +206,13 @@ newtype CreateApiKeyRequest = CreateApiKeyRequest
   , "Description'" :: NullOrUndefined (String)
   , "Expires'" :: NullOrUndefined (Number)
   }
+derive instance newtypeCreateApiKeyRequest :: Newtype CreateApiKeyRequest _
 
 
 newtype CreateApiKeyResponse = CreateApiKeyResponse 
   { "ApiKey'" :: NullOrUndefined (ApiKey)
   }
+derive instance newtypeCreateApiKeyResponse :: Newtype CreateApiKeyResponse _
 
 
 newtype CreateDataSourceRequest = CreateDataSourceRequest 
@@ -214,11 +225,13 @@ newtype CreateDataSourceRequest = CreateDataSourceRequest
   , "LambdaConfig'" :: NullOrUndefined (LambdaDataSourceConfig)
   , "ElasticsearchConfig'" :: NullOrUndefined (ElasticsearchDataSourceConfig)
   }
+derive instance newtypeCreateDataSourceRequest :: Newtype CreateDataSourceRequest _
 
 
 newtype CreateDataSourceResponse = CreateDataSourceResponse 
   { "DataSource'" :: NullOrUndefined (DataSource)
   }
+derive instance newtypeCreateDataSourceResponse :: Newtype CreateDataSourceResponse _
 
 
 newtype CreateGraphqlApiRequest = CreateGraphqlApiRequest 
@@ -226,11 +239,13 @@ newtype CreateGraphqlApiRequest = CreateGraphqlApiRequest
   , "AuthenticationType'" :: (AuthenticationType)
   , "UserPoolConfig'" :: NullOrUndefined (UserPoolConfig)
   }
+derive instance newtypeCreateGraphqlApiRequest :: Newtype CreateGraphqlApiRequest _
 
 
 newtype CreateGraphqlApiResponse = CreateGraphqlApiResponse 
   { "GraphqlApi'" :: NullOrUndefined (GraphqlApi)
   }
+derive instance newtypeCreateGraphqlApiResponse :: Newtype CreateGraphqlApiResponse _
 
 
 newtype CreateResolverRequest = CreateResolverRequest 
@@ -241,11 +256,13 @@ newtype CreateResolverRequest = CreateResolverRequest
   , "RequestMappingTemplate'" :: (MappingTemplate)
   , "ResponseMappingTemplate'" :: NullOrUndefined (MappingTemplate)
   }
+derive instance newtypeCreateResolverRequest :: Newtype CreateResolverRequest _
 
 
 newtype CreateResolverResponse = CreateResolverResponse 
   { "Resolver'" :: NullOrUndefined (Resolver)
   }
+derive instance newtypeCreateResolverResponse :: Newtype CreateResolverResponse _
 
 
 newtype CreateTypeRequest = CreateTypeRequest 
@@ -253,11 +270,13 @@ newtype CreateTypeRequest = CreateTypeRequest
   , "Definition'" :: (String)
   , "Format'" :: (TypeDefinitionFormat)
   }
+derive instance newtypeCreateTypeRequest :: Newtype CreateTypeRequest _
 
 
 newtype CreateTypeResponse = CreateTypeResponse 
   { "Type'" :: NullOrUndefined (Type)
   }
+derive instance newtypeCreateTypeResponse :: Newtype CreateTypeResponse _
 
 
 -- | <p>Describes a data source.</p>
@@ -271,47 +290,57 @@ newtype DataSource = DataSource
   , "LambdaConfig'" :: NullOrUndefined (LambdaDataSourceConfig)
   , "ElasticsearchConfig'" :: NullOrUndefined (ElasticsearchDataSourceConfig)
   }
+derive instance newtypeDataSource :: Newtype DataSource _
 
 
 newtype DataSourceType = DataSourceType String
+derive instance newtypeDataSourceType :: Newtype DataSourceType _
 
 
 newtype DataSources = DataSources (Array DataSource)
+derive instance newtypeDataSources :: Newtype DataSources _
 
 
 newtype DefaultAction = DefaultAction String
+derive instance newtypeDefaultAction :: Newtype DefaultAction _
 
 
 newtype DeleteApiKeyRequest = DeleteApiKeyRequest 
   { "ApiId'" :: (String)
   , "Id'" :: (String)
   }
+derive instance newtypeDeleteApiKeyRequest :: Newtype DeleteApiKeyRequest _
 
 
 newtype DeleteApiKeyResponse = DeleteApiKeyResponse 
   { 
   }
+derive instance newtypeDeleteApiKeyResponse :: Newtype DeleteApiKeyResponse _
 
 
 newtype DeleteDataSourceRequest = DeleteDataSourceRequest 
   { "ApiId'" :: (String)
   , "Name'" :: (ResourceName)
   }
+derive instance newtypeDeleteDataSourceRequest :: Newtype DeleteDataSourceRequest _
 
 
 newtype DeleteDataSourceResponse = DeleteDataSourceResponse 
   { 
   }
+derive instance newtypeDeleteDataSourceResponse :: Newtype DeleteDataSourceResponse _
 
 
 newtype DeleteGraphqlApiRequest = DeleteGraphqlApiRequest 
   { "ApiId'" :: (String)
   }
+derive instance newtypeDeleteGraphqlApiRequest :: Newtype DeleteGraphqlApiRequest _
 
 
 newtype DeleteGraphqlApiResponse = DeleteGraphqlApiResponse 
   { 
   }
+derive instance newtypeDeleteGraphqlApiResponse :: Newtype DeleteGraphqlApiResponse _
 
 
 newtype DeleteResolverRequest = DeleteResolverRequest 
@@ -319,22 +348,26 @@ newtype DeleteResolverRequest = DeleteResolverRequest
   , "TypeName'" :: (ResourceName)
   , "FieldName'" :: (ResourceName)
   }
+derive instance newtypeDeleteResolverRequest :: Newtype DeleteResolverRequest _
 
 
 newtype DeleteResolverResponse = DeleteResolverResponse 
   { 
   }
+derive instance newtypeDeleteResolverResponse :: Newtype DeleteResolverResponse _
 
 
 newtype DeleteTypeRequest = DeleteTypeRequest 
   { "ApiId'" :: (String)
   , "TypeName'" :: (ResourceName)
   }
+derive instance newtypeDeleteTypeRequest :: Newtype DeleteTypeRequest _
 
 
 newtype DeleteTypeResponse = DeleteTypeResponse 
   { 
   }
+derive instance newtypeDeleteTypeResponse :: Newtype DeleteTypeResponse _
 
 
 -- | <p>Describes a DynamoDB data source configuration.</p>
@@ -343,6 +376,7 @@ newtype DynamodbDataSourceConfig = DynamodbDataSourceConfig
   , "AwsRegion'" :: (String)
   , "UseCallerCredentials'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDynamodbDataSourceConfig :: Newtype DynamodbDataSourceConfig _
 
 
 -- | <p>Describes an Elasticsearch data source configuration.</p>
@@ -350,41 +384,49 @@ newtype ElasticsearchDataSourceConfig = ElasticsearchDataSourceConfig
   { "Endpoint'" :: (String)
   , "AwsRegion'" :: (String)
   }
+derive instance newtypeElasticsearchDataSourceConfig :: Newtype ElasticsearchDataSourceConfig _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype GetDataSourceRequest = GetDataSourceRequest 
   { "ApiId'" :: (String)
   , "Name'" :: (ResourceName)
   }
+derive instance newtypeGetDataSourceRequest :: Newtype GetDataSourceRequest _
 
 
 newtype GetDataSourceResponse = GetDataSourceResponse 
   { "DataSource'" :: NullOrUndefined (DataSource)
   }
+derive instance newtypeGetDataSourceResponse :: Newtype GetDataSourceResponse _
 
 
 newtype GetGraphqlApiRequest = GetGraphqlApiRequest 
   { "ApiId'" :: (String)
   }
+derive instance newtypeGetGraphqlApiRequest :: Newtype GetGraphqlApiRequest _
 
 
 newtype GetGraphqlApiResponse = GetGraphqlApiResponse 
   { "GraphqlApi'" :: NullOrUndefined (GraphqlApi)
   }
+derive instance newtypeGetGraphqlApiResponse :: Newtype GetGraphqlApiResponse _
 
 
 newtype GetIntrospectionSchemaRequest = GetIntrospectionSchemaRequest 
   { "ApiId'" :: (String)
   , "Format'" :: (OutputType)
   }
+derive instance newtypeGetIntrospectionSchemaRequest :: Newtype GetIntrospectionSchemaRequest _
 
 
 newtype GetIntrospectionSchemaResponse = GetIntrospectionSchemaResponse 
   { "Schema'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetIntrospectionSchemaResponse :: Newtype GetIntrospectionSchemaResponse _
 
 
 newtype GetResolverRequest = GetResolverRequest 
@@ -392,22 +434,26 @@ newtype GetResolverRequest = GetResolverRequest
   , "TypeName'" :: (ResourceName)
   , "FieldName'" :: (ResourceName)
   }
+derive instance newtypeGetResolverRequest :: Newtype GetResolverRequest _
 
 
 newtype GetResolverResponse = GetResolverResponse 
   { "Resolver'" :: NullOrUndefined (Resolver)
   }
+derive instance newtypeGetResolverResponse :: Newtype GetResolverResponse _
 
 
 newtype GetSchemaCreationStatusRequest = GetSchemaCreationStatusRequest 
   { "ApiId'" :: (String)
   }
+derive instance newtypeGetSchemaCreationStatusRequest :: Newtype GetSchemaCreationStatusRequest _
 
 
 newtype GetSchemaCreationStatusResponse = GetSchemaCreationStatusResponse 
   { "Status'" :: NullOrUndefined (SchemaStatus)
   , "Details'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetSchemaCreationStatusResponse :: Newtype GetSchemaCreationStatusResponse _
 
 
 newtype GetTypeRequest = GetTypeRequest 
@@ -415,17 +461,20 @@ newtype GetTypeRequest = GetTypeRequest
   , "TypeName'" :: (ResourceName)
   , "Format'" :: (TypeDefinitionFormat)
   }
+derive instance newtypeGetTypeRequest :: Newtype GetTypeRequest _
 
 
 newtype GetTypeResponse = GetTypeResponse 
   { "Type'" :: NullOrUndefined (Type)
   }
+derive instance newtypeGetTypeResponse :: Newtype GetTypeResponse _
 
 
 -- | <p>The GraphQL schema is not valid.</p>
 newtype GraphQLSchemaException = GraphQLSchemaException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeGraphQLSchemaException :: Newtype GraphQLSchemaException _
 
 
 -- | <p>Describes a GraphQL API.</p>
@@ -437,27 +486,32 @@ newtype GraphqlApi = GraphqlApi
   , "Arn'" :: NullOrUndefined (String)
   , "Uris'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeGraphqlApi :: Newtype GraphqlApi _
 
 
 newtype GraphqlApis = GraphqlApis (Array GraphqlApi)
+derive instance newtypeGraphqlApis :: Newtype GraphqlApis _
 
 
 -- | <p>An internal AWS AppSync error occurred. Try your request again.</p>
 newtype InternalFailureException = InternalFailureException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalFailureException :: Newtype InternalFailureException _
 
 
 -- | <p>Describes a Lambda data source configuration.</p>
 newtype LambdaDataSourceConfig = LambdaDataSourceConfig 
   { "LambdaFunctionArn'" :: (String)
   }
+derive instance newtypeLambdaDataSourceConfig :: Newtype LambdaDataSourceConfig _
 
 
 -- | <p>The request exceeded a limit. Try your request again.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListApiKeysRequest = ListApiKeysRequest 
@@ -465,12 +519,14 @@ newtype ListApiKeysRequest = ListApiKeysRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListApiKeysRequest :: Newtype ListApiKeysRequest _
 
 
 newtype ListApiKeysResponse = ListApiKeysResponse 
   { "ApiKeys'" :: NullOrUndefined (ApiKeys)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListApiKeysResponse :: Newtype ListApiKeysResponse _
 
 
 newtype ListDataSourcesRequest = ListDataSourcesRequest 
@@ -478,24 +534,28 @@ newtype ListDataSourcesRequest = ListDataSourcesRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListDataSourcesRequest :: Newtype ListDataSourcesRequest _
 
 
 newtype ListDataSourcesResponse = ListDataSourcesResponse 
   { "DataSources'" :: NullOrUndefined (DataSources)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListDataSourcesResponse :: Newtype ListDataSourcesResponse _
 
 
 newtype ListGraphqlApisRequest = ListGraphqlApisRequest 
   { "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListGraphqlApisRequest :: Newtype ListGraphqlApisRequest _
 
 
 newtype ListGraphqlApisResponse = ListGraphqlApisResponse 
   { "GraphqlApis'" :: NullOrUndefined (GraphqlApis)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListGraphqlApisResponse :: Newtype ListGraphqlApisResponse _
 
 
 newtype ListResolversRequest = ListResolversRequest 
@@ -504,12 +564,14 @@ newtype ListResolversRequest = ListResolversRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListResolversRequest :: Newtype ListResolversRequest _
 
 
 newtype ListResolversResponse = ListResolversResponse 
   { "Resolvers'" :: NullOrUndefined (Resolvers)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListResolversResponse :: Newtype ListResolversResponse _
 
 
 newtype ListTypesRequest = ListTypesRequest 
@@ -518,33 +580,41 @@ newtype ListTypesRequest = ListTypesRequest
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   , "MaxResults'" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListTypesRequest :: Newtype ListTypesRequest _
 
 
 newtype ListTypesResponse = ListTypesResponse 
   { "Types'" :: NullOrUndefined (TypeList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListTypesResponse :: Newtype ListTypesResponse _
 
 
 newtype MapOfStringToString = MapOfStringToString (Map String String)
+derive instance newtypeMapOfStringToString :: Newtype MapOfStringToString _
 
 
 newtype MappingTemplate = MappingTemplate String
+derive instance newtypeMappingTemplate :: Newtype MappingTemplate _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 -- | <p>The resource specified in the request was not found. Check the resource and try again.</p>
 newtype NotFoundException = NotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype OutputType = OutputType String
+derive instance newtypeOutputType :: Newtype OutputType _
 
 
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 -- | <p>Describes a resolver.</p>
@@ -556,26 +626,32 @@ newtype Resolver = Resolver
   , "RequestMappingTemplate'" :: NullOrUndefined (MappingTemplate)
   , "ResponseMappingTemplate'" :: NullOrUndefined (MappingTemplate)
   }
+derive instance newtypeResolver :: Newtype Resolver _
 
 
 newtype Resolvers = Resolvers (Array Resolver)
+derive instance newtypeResolvers :: Newtype Resolvers _
 
 
 newtype ResourceName = ResourceName String
+derive instance newtypeResourceName :: Newtype ResourceName _
 
 
 newtype SchemaStatus = SchemaStatus String
+derive instance newtypeSchemaStatus :: Newtype SchemaStatus _
 
 
 newtype StartSchemaCreationRequest = StartSchemaCreationRequest 
   { "ApiId'" :: (String)
   , "Definition'" :: (String)
   }
+derive instance newtypeStartSchemaCreationRequest :: Newtype StartSchemaCreationRequest _
 
 
 newtype StartSchemaCreationResponse = StartSchemaCreationResponse 
   { "Status'" :: NullOrUndefined (SchemaStatus)
   }
+derive instance newtypeStartSchemaCreationResponse :: Newtype StartSchemaCreationResponse _
 
 
 -- | <p>Describes a type.</p>
@@ -586,18 +662,22 @@ newtype Type = Type
   , "Definition'" :: NullOrUndefined (String)
   , "Format'" :: NullOrUndefined (TypeDefinitionFormat)
   }
+derive instance newtypeType :: Newtype Type _
 
 
 newtype TypeDefinitionFormat = TypeDefinitionFormat String
+derive instance newtypeTypeDefinitionFormat :: Newtype TypeDefinitionFormat _
 
 
 newtype TypeList = TypeList (Array Type)
+derive instance newtypeTypeList :: Newtype TypeList _
 
 
 -- | <p>You are not authorized to perform this operation.</p>
 newtype UnauthorizedException = UnauthorizedException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeUnauthorizedException :: Newtype UnauthorizedException _
 
 
 newtype UpdateApiKeyRequest = UpdateApiKeyRequest 
@@ -606,11 +686,13 @@ newtype UpdateApiKeyRequest = UpdateApiKeyRequest
   , "Description'" :: NullOrUndefined (String)
   , "Expires'" :: NullOrUndefined (Number)
   }
+derive instance newtypeUpdateApiKeyRequest :: Newtype UpdateApiKeyRequest _
 
 
 newtype UpdateApiKeyResponse = UpdateApiKeyResponse 
   { "ApiKey'" :: NullOrUndefined (ApiKey)
   }
+derive instance newtypeUpdateApiKeyResponse :: Newtype UpdateApiKeyResponse _
 
 
 newtype UpdateDataSourceRequest = UpdateDataSourceRequest 
@@ -623,11 +705,13 @@ newtype UpdateDataSourceRequest = UpdateDataSourceRequest
   , "LambdaConfig'" :: NullOrUndefined (LambdaDataSourceConfig)
   , "ElasticsearchConfig'" :: NullOrUndefined (ElasticsearchDataSourceConfig)
   }
+derive instance newtypeUpdateDataSourceRequest :: Newtype UpdateDataSourceRequest _
 
 
 newtype UpdateDataSourceResponse = UpdateDataSourceResponse 
   { "DataSource'" :: NullOrUndefined (DataSource)
   }
+derive instance newtypeUpdateDataSourceResponse :: Newtype UpdateDataSourceResponse _
 
 
 newtype UpdateGraphqlApiRequest = UpdateGraphqlApiRequest 
@@ -636,11 +720,13 @@ newtype UpdateGraphqlApiRequest = UpdateGraphqlApiRequest
   , "AuthenticationType'" :: NullOrUndefined (AuthenticationType)
   , "UserPoolConfig'" :: NullOrUndefined (UserPoolConfig)
   }
+derive instance newtypeUpdateGraphqlApiRequest :: Newtype UpdateGraphqlApiRequest _
 
 
 newtype UpdateGraphqlApiResponse = UpdateGraphqlApiResponse 
   { "GraphqlApi'" :: NullOrUndefined (GraphqlApi)
   }
+derive instance newtypeUpdateGraphqlApiResponse :: Newtype UpdateGraphqlApiResponse _
 
 
 newtype UpdateResolverRequest = UpdateResolverRequest 
@@ -651,11 +737,13 @@ newtype UpdateResolverRequest = UpdateResolverRequest
   , "RequestMappingTemplate'" :: (MappingTemplate)
   , "ResponseMappingTemplate'" :: NullOrUndefined (MappingTemplate)
   }
+derive instance newtypeUpdateResolverRequest :: Newtype UpdateResolverRequest _
 
 
 newtype UpdateResolverResponse = UpdateResolverResponse 
   { "Resolver'" :: NullOrUndefined (Resolver)
   }
+derive instance newtypeUpdateResolverResponse :: Newtype UpdateResolverResponse _
 
 
 newtype UpdateTypeRequest = UpdateTypeRequest 
@@ -664,11 +752,13 @@ newtype UpdateTypeRequest = UpdateTypeRequest
   , "Definition'" :: NullOrUndefined (String)
   , "Format'" :: (TypeDefinitionFormat)
   }
+derive instance newtypeUpdateTypeRequest :: Newtype UpdateTypeRequest _
 
 
 newtype UpdateTypeResponse = UpdateTypeResponse 
   { "Type'" :: NullOrUndefined (Type)
   }
+derive instance newtypeUpdateTypeResponse :: Newtype UpdateTypeResponse _
 
 
 -- | <p>Describes an Amazon Cognito User Pool configuration.</p>
@@ -678,3 +768,4 @@ newtype UserPoolConfig = UserPoolConfig
   , "DefaultAction'" :: (DefaultAction)
   , "AppIdClientRegex'" :: NullOrUndefined (String)
   }
+derive instance newtypeUserPoolConfig :: Newtype UserPoolConfig _

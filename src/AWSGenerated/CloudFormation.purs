@@ -6,6 +6,7 @@ module AWS.CloudFormation where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -219,6 +220,7 @@ validateTemplate = AWS.request serviceName "ValidateTemplate"
 
 
 newtype Account = Account String
+derive instance newtypeAccount :: Newtype Account _
 
 
 -- | <p>Structure that contains the results of the account gate function which AWS CloudFormation invokes, if present, before proceeding with a stack set operation in an account and region.</p> <p>For each account and region, AWS CloudFormation lets you specify a Lamdba function that encapsulates any requirements that must be met before CloudFormation can proceed with a stack set operation in that account and region. CloudFormation invokes the function each time a stack set operation is requested for that account and region; if the function returns <code>FAILED</code>, CloudFormation cancels the operation in that account and region, and sets the stack set operation result status for that account and region to <code>FAILED</code>. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-account-gating.html">Configuring a target account gate</a>.</p>
@@ -226,12 +228,15 @@ newtype AccountGateResult = AccountGateResult
   { "Status" :: NullOrUndefined (AccountGateStatus)
   , "StatusReason" :: NullOrUndefined (AccountGateStatusReason)
   }
+derive instance newtypeAccountGateResult :: Newtype AccountGateResult _
 
 
 newtype AccountGateStatus = AccountGateStatus String
+derive instance newtypeAccountGateStatus :: Newtype AccountGateStatus _
 
 
 newtype AccountGateStatusReason = AccountGateStatusReason String
+derive instance newtypeAccountGateStatusReason :: Newtype AccountGateStatusReason _
 
 
 -- | <p>The AccountLimit data type.</p>
@@ -239,27 +244,34 @@ newtype AccountLimit = AccountLimit
   { "Name" :: NullOrUndefined (LimitName)
   , "Value" :: NullOrUndefined (LimitValue)
   }
+derive instance newtypeAccountLimit :: Newtype AccountLimit _
 
 
 newtype AccountLimitList = AccountLimitList (Array AccountLimit)
+derive instance newtypeAccountLimitList :: Newtype AccountLimitList _
 
 
 newtype AccountList = AccountList (Array Account)
+derive instance newtypeAccountList :: Newtype AccountList _
 
 
 newtype AllowedValue = AllowedValue String
+derive instance newtypeAllowedValue :: Newtype AllowedValue _
 
 
 newtype AllowedValues = AllowedValues (Array AllowedValue)
+derive instance newtypeAllowedValues :: Newtype AllowedValues _
 
 
 -- | <p>The resource with the name requested already exists.</p>
 newtype AlreadyExistsException = AlreadyExistsException 
   { 
   }
+derive instance newtypeAlreadyExistsException :: Newtype AlreadyExistsException _
 
 
 newtype Arn = Arn String
+derive instance newtypeArn :: Newtype Arn _
 
 
 -- | <p>The input for the <a>CancelUpdateStack</a> action.</p>
@@ -267,18 +279,23 @@ newtype CancelUpdateStackInput = CancelUpdateStackInput
   { "StackName" :: (StackName)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeCancelUpdateStackInput :: Newtype CancelUpdateStackInput _
 
 
 newtype Capabilities = Capabilities (Array Capability)
+derive instance newtypeCapabilities :: Newtype Capabilities _
 
 
 newtype CapabilitiesReason = CapabilitiesReason String
+derive instance newtypeCapabilitiesReason :: Newtype CapabilitiesReason _
 
 
 newtype Capability = Capability String
+derive instance newtypeCapability :: Newtype Capability _
 
 
 newtype CausingEntity = CausingEntity String
+derive instance newtypeCausingEntity :: Newtype CausingEntity _
 
 
 -- | <p>The <code>Change</code> structure describes the changes AWS CloudFormation will perform if you execute the change set.</p>
@@ -286,33 +303,42 @@ newtype Change = Change
   { "Type" :: NullOrUndefined (ChangeType)
   , "ResourceChange" :: NullOrUndefined (ResourceChange)
   }
+derive instance newtypeChange :: Newtype Change _
 
 
 newtype ChangeAction = ChangeAction String
+derive instance newtypeChangeAction :: Newtype ChangeAction _
 
 
 newtype ChangeSetId = ChangeSetId String
+derive instance newtypeChangeSetId :: Newtype ChangeSetId _
 
 
 newtype ChangeSetName = ChangeSetName String
+derive instance newtypeChangeSetName :: Newtype ChangeSetName _
 
 
 newtype ChangeSetNameOrId = ChangeSetNameOrId String
+derive instance newtypeChangeSetNameOrId :: Newtype ChangeSetNameOrId _
 
 
 -- | <p>The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the <code>ListChangeSets</code> action.</p>
 newtype ChangeSetNotFoundException = ChangeSetNotFoundException 
   { 
   }
+derive instance newtypeChangeSetNotFoundException :: Newtype ChangeSetNotFoundException _
 
 
 newtype ChangeSetStatus = ChangeSetStatus String
+derive instance newtypeChangeSetStatus :: Newtype ChangeSetStatus _
 
 
 newtype ChangeSetStatusReason = ChangeSetStatusReason String
+derive instance newtypeChangeSetStatusReason :: Newtype ChangeSetStatusReason _
 
 
 newtype ChangeSetSummaries = ChangeSetSummaries (Array ChangeSetSummary)
+derive instance newtypeChangeSetSummaries :: Newtype ChangeSetSummaries _
 
 
 -- | <p>The <code>ChangeSetSummary</code> structure describes a change set, its status, and the stack with which it's associated.</p>
@@ -327,24 +353,31 @@ newtype ChangeSetSummary = ChangeSetSummary
   , "CreationTime" :: NullOrUndefined (CreationTime)
   , "Description" :: NullOrUndefined (Description)
   }
+derive instance newtypeChangeSetSummary :: Newtype ChangeSetSummary _
 
 
 newtype ChangeSetType = ChangeSetType String
+derive instance newtypeChangeSetType :: Newtype ChangeSetType _
 
 
 newtype ChangeSource = ChangeSource String
+derive instance newtypeChangeSource :: Newtype ChangeSource _
 
 
 newtype ChangeType = ChangeType String
+derive instance newtypeChangeType :: Newtype ChangeType _
 
 
 newtype Changes = Changes (Array Change)
+derive instance newtypeChanges :: Newtype Changes _
 
 
 newtype ClientRequestToken = ClientRequestToken String
+derive instance newtypeClientRequestToken :: Newtype ClientRequestToken _
 
 
 newtype ClientToken = ClientToken String
+derive instance newtypeClientToken :: Newtype ClientToken _
 
 
 -- | <p>The input for the <a>ContinueUpdateRollback</a> action.</p>
@@ -354,12 +387,14 @@ newtype ContinueUpdateRollbackInput = ContinueUpdateRollbackInput
   , "ResourcesToSkip" :: NullOrUndefined (ResourcesToSkip)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeContinueUpdateRollbackInput :: Newtype ContinueUpdateRollbackInput _
 
 
 -- | <p>The output for a <a>ContinueUpdateRollback</a> action.</p>
 newtype ContinueUpdateRollbackOutput = ContinueUpdateRollbackOutput 
   { 
   }
+derive instance newtypeContinueUpdateRollbackOutput :: Newtype ContinueUpdateRollbackOutput _
 
 
 -- | <p>The input for the <a>CreateChangeSet</a> action.</p>
@@ -380,6 +415,7 @@ newtype CreateChangeSetInput = CreateChangeSetInput
   , "Description" :: NullOrUndefined (Description)
   , "ChangeSetType" :: NullOrUndefined (ChangeSetType)
   }
+derive instance newtypeCreateChangeSetInput :: Newtype CreateChangeSetInput _
 
 
 -- | <p>The output for the <a>CreateChangeSet</a> action.</p>
@@ -387,6 +423,7 @@ newtype CreateChangeSetOutput = CreateChangeSetOutput
   { "Id" :: NullOrUndefined (ChangeSetId)
   , "StackId" :: NullOrUndefined (StackId)
   }
+derive instance newtypeCreateChangeSetOutput :: Newtype CreateChangeSetOutput _
 
 
 -- | <p>The input for <a>CreateStack</a> action.</p>
@@ -409,6 +446,7 @@ newtype CreateStackInput = CreateStackInput
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   , "EnableTerminationProtection" :: NullOrUndefined (EnableTerminationProtection)
   }
+derive instance newtypeCreateStackInput :: Newtype CreateStackInput _
 
 
 newtype CreateStackInstancesInput = CreateStackInstancesInput 
@@ -419,17 +457,20 @@ newtype CreateStackInstancesInput = CreateStackInstancesInput
   , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
   , "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeCreateStackInstancesInput :: Newtype CreateStackInstancesInput _
 
 
 newtype CreateStackInstancesOutput = CreateStackInstancesOutput 
   { "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeCreateStackInstancesOutput :: Newtype CreateStackInstancesOutput _
 
 
 -- | <p>The output for a <a>CreateStack</a> action.</p>
 newtype CreateStackOutput = CreateStackOutput 
   { "StackId" :: NullOrUndefined (StackId)
   }
+derive instance newtypeCreateStackOutput :: Newtype CreateStackOutput _
 
 
 newtype CreateStackSetInput = CreateStackSetInput 
@@ -442,20 +483,24 @@ newtype CreateStackSetInput = CreateStackSetInput
   , "Tags" :: NullOrUndefined (Tags)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeCreateStackSetInput :: Newtype CreateStackSetInput _
 
 
 newtype CreateStackSetOutput = CreateStackSetOutput 
   { "StackSetId" :: NullOrUndefined (StackSetId)
   }
+derive instance newtypeCreateStackSetOutput :: Newtype CreateStackSetOutput _
 
 
 -- | <p>The specified resource exists, but has been changed.</p>
 newtype CreatedButModifiedException = CreatedButModifiedException 
   { 
   }
+derive instance newtypeCreatedButModifiedException :: Newtype CreatedButModifiedException _
 
 
 newtype CreationTime = CreationTime Number
+derive instance newtypeCreationTime :: Newtype CreationTime _
 
 
 -- | <p>The input for the <a>DeleteChangeSet</a> action.</p>
@@ -463,12 +508,14 @@ newtype DeleteChangeSetInput = DeleteChangeSetInput
   { "ChangeSetName" :: (ChangeSetNameOrId)
   , "StackName" :: NullOrUndefined (StackNameOrId)
   }
+derive instance newtypeDeleteChangeSetInput :: Newtype DeleteChangeSetInput _
 
 
 -- | <p>The output for the <a>DeleteChangeSet</a> action.</p>
 newtype DeleteChangeSetOutput = DeleteChangeSetOutput 
   { 
   }
+derive instance newtypeDeleteChangeSetOutput :: Newtype DeleteChangeSetOutput _
 
 
 -- | <p>The input for <a>DeleteStack</a> action.</p>
@@ -478,6 +525,7 @@ newtype DeleteStackInput = DeleteStackInput
   , "RoleARN" :: NullOrUndefined (RoleARN)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeDeleteStackInput :: Newtype DeleteStackInput _
 
 
 newtype DeleteStackInstancesInput = DeleteStackInstancesInput 
@@ -488,30 +536,36 @@ newtype DeleteStackInstancesInput = DeleteStackInstancesInput
   , "RetainStacks" :: (RetainStacks)
   , "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeDeleteStackInstancesInput :: Newtype DeleteStackInstancesInput _
 
 
 newtype DeleteStackInstancesOutput = DeleteStackInstancesOutput 
   { "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeDeleteStackInstancesOutput :: Newtype DeleteStackInstancesOutput _
 
 
 newtype DeleteStackSetInput = DeleteStackSetInput 
   { "StackSetName" :: (StackSetName)
   }
+derive instance newtypeDeleteStackSetInput :: Newtype DeleteStackSetInput _
 
 
 newtype DeleteStackSetOutput = DeleteStackSetOutput 
   { 
   }
+derive instance newtypeDeleteStackSetOutput :: Newtype DeleteStackSetOutput _
 
 
 newtype DeletionTime = DeletionTime Number
+derive instance newtypeDeletionTime :: Newtype DeletionTime _
 
 
 -- | <p>The input for the <a>DescribeAccountLimits</a> action.</p>
 newtype DescribeAccountLimitsInput = DescribeAccountLimitsInput 
   { "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAccountLimitsInput :: Newtype DescribeAccountLimitsInput _
 
 
 -- | <p>The output for the <a>DescribeAccountLimits</a> action.</p>
@@ -519,6 +573,7 @@ newtype DescribeAccountLimitsOutput = DescribeAccountLimitsOutput
   { "AccountLimits" :: NullOrUndefined (AccountLimitList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAccountLimitsOutput :: Newtype DescribeAccountLimitsOutput _
 
 
 -- | <p>The input for the <a>DescribeChangeSet</a> action.</p>
@@ -527,6 +582,7 @@ newtype DescribeChangeSetInput = DescribeChangeSetInput
   , "StackName" :: NullOrUndefined (StackNameOrId)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeChangeSetInput :: Newtype DescribeChangeSetInput _
 
 
 -- | <p>The output for the <a>DescribeChangeSet</a> action.</p>
@@ -548,6 +604,7 @@ newtype DescribeChangeSetOutput = DescribeChangeSetOutput
   , "Changes" :: NullOrUndefined (Changes)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeChangeSetOutput :: Newtype DescribeChangeSetOutput _
 
 
 -- | <p>The input for <a>DescribeStackEvents</a> action.</p>
@@ -555,6 +612,7 @@ newtype DescribeStackEventsInput = DescribeStackEventsInput
   { "StackName" :: NullOrUndefined (StackName)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeStackEventsInput :: Newtype DescribeStackEventsInput _
 
 
 -- | <p>The output for a <a>DescribeStackEvents</a> action.</p>
@@ -562,6 +620,7 @@ newtype DescribeStackEventsOutput = DescribeStackEventsOutput
   { "StackEvents" :: NullOrUndefined (StackEvents)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeStackEventsOutput :: Newtype DescribeStackEventsOutput _
 
 
 newtype DescribeStackInstanceInput = DescribeStackInstanceInput 
@@ -569,11 +628,13 @@ newtype DescribeStackInstanceInput = DescribeStackInstanceInput
   , "StackInstanceAccount" :: (Account)
   , "StackInstanceRegion" :: (Region)
   }
+derive instance newtypeDescribeStackInstanceInput :: Newtype DescribeStackInstanceInput _
 
 
 newtype DescribeStackInstanceOutput = DescribeStackInstanceOutput 
   { "StackInstance" :: NullOrUndefined (StackInstance)
   }
+derive instance newtypeDescribeStackInstanceOutput :: Newtype DescribeStackInstanceOutput _
 
 
 -- | <p>The input for <a>DescribeStackResource</a> action.</p>
@@ -581,12 +642,14 @@ newtype DescribeStackResourceInput = DescribeStackResourceInput
   { "StackName" :: (StackName)
   , "LogicalResourceId" :: (LogicalResourceId)
   }
+derive instance newtypeDescribeStackResourceInput :: Newtype DescribeStackResourceInput _
 
 
 -- | <p>The output for a <a>DescribeStackResource</a> action.</p>
 newtype DescribeStackResourceOutput = DescribeStackResourceOutput 
   { "StackResourceDetail" :: NullOrUndefined (StackResourceDetail)
   }
+derive instance newtypeDescribeStackResourceOutput :: Newtype DescribeStackResourceOutput _
 
 
 -- | <p>The input for <a>DescribeStackResources</a> action.</p>
@@ -595,33 +658,39 @@ newtype DescribeStackResourcesInput = DescribeStackResourcesInput
   , "LogicalResourceId" :: NullOrUndefined (LogicalResourceId)
   , "PhysicalResourceId" :: NullOrUndefined (PhysicalResourceId)
   }
+derive instance newtypeDescribeStackResourcesInput :: Newtype DescribeStackResourcesInput _
 
 
 -- | <p>The output for a <a>DescribeStackResources</a> action.</p>
 newtype DescribeStackResourcesOutput = DescribeStackResourcesOutput 
   { "StackResources" :: NullOrUndefined (StackResources)
   }
+derive instance newtypeDescribeStackResourcesOutput :: Newtype DescribeStackResourcesOutput _
 
 
 newtype DescribeStackSetInput = DescribeStackSetInput 
   { "StackSetName" :: (StackSetName)
   }
+derive instance newtypeDescribeStackSetInput :: Newtype DescribeStackSetInput _
 
 
 newtype DescribeStackSetOperationInput = DescribeStackSetOperationInput 
   { "StackSetName" :: (StackSetName)
   , "OperationId" :: (ClientRequestToken)
   }
+derive instance newtypeDescribeStackSetOperationInput :: Newtype DescribeStackSetOperationInput _
 
 
 newtype DescribeStackSetOperationOutput = DescribeStackSetOperationOutput 
   { "StackSetOperation" :: NullOrUndefined (StackSetOperation)
   }
+derive instance newtypeDescribeStackSetOperationOutput :: Newtype DescribeStackSetOperationOutput _
 
 
 newtype DescribeStackSetOutput = DescribeStackSetOutput 
   { "StackSet" :: NullOrUndefined (StackSet)
   }
+derive instance newtypeDescribeStackSetOutput :: Newtype DescribeStackSetOutput _
 
 
 -- | <p>The input for <a>DescribeStacks</a> action.</p>
@@ -629,6 +698,7 @@ newtype DescribeStacksInput = DescribeStacksInput
   { "StackName" :: NullOrUndefined (StackName)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeStacksInput :: Newtype DescribeStacksInput _
 
 
 -- | <p>The output for a <a>DescribeStacks</a> action.</p>
@@ -636,15 +706,19 @@ newtype DescribeStacksOutput = DescribeStacksOutput
   { "Stacks" :: NullOrUndefined (Stacks)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeStacksOutput :: Newtype DescribeStacksOutput _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 newtype DisableRollback = DisableRollback Boolean
+derive instance newtypeDisableRollback :: Newtype DisableRollback _
 
 
 newtype EnableTerminationProtection = EnableTerminationProtection Boolean
+derive instance newtypeEnableTerminationProtection :: Newtype EnableTerminationProtection _
 
 
 -- | <p>The input for an <a>EstimateTemplateCost</a> action.</p>
@@ -653,18 +727,22 @@ newtype EstimateTemplateCostInput = EstimateTemplateCostInput
   , "TemplateURL" :: NullOrUndefined (TemplateURL)
   , "Parameters" :: NullOrUndefined (Parameters)
   }
+derive instance newtypeEstimateTemplateCostInput :: Newtype EstimateTemplateCostInput _
 
 
 -- | <p>The output for a <a>EstimateTemplateCost</a> action.</p>
 newtype EstimateTemplateCostOutput = EstimateTemplateCostOutput 
   { "Url" :: NullOrUndefined (Url)
   }
+derive instance newtypeEstimateTemplateCostOutput :: Newtype EstimateTemplateCostOutput _
 
 
 newtype EvaluationType = EvaluationType String
+derive instance newtypeEvaluationType :: Newtype EvaluationType _
 
 
 newtype EventId = EventId String
+derive instance newtypeEventId :: Newtype EventId _
 
 
 -- | <p>The input for the <a>ExecuteChangeSet</a> action.</p>
@@ -673,15 +751,18 @@ newtype ExecuteChangeSetInput = ExecuteChangeSetInput
   , "StackName" :: NullOrUndefined (StackNameOrId)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeExecuteChangeSetInput :: Newtype ExecuteChangeSetInput _
 
 
 -- | <p>The output for the <a>ExecuteChangeSet</a> action.</p>
 newtype ExecuteChangeSetOutput = ExecuteChangeSetOutput 
   { 
   }
+derive instance newtypeExecuteChangeSetOutput :: Newtype ExecuteChangeSetOutput _
 
 
 newtype ExecutionStatus = ExecutionStatus String
+derive instance newtypeExecutionStatus :: Newtype ExecutionStatus _
 
 
 -- | <p>The <code>Export</code> structure describes the exported output values for a stack.</p>
@@ -690,33 +771,41 @@ newtype Export = Export
   , "Name" :: NullOrUndefined (ExportName)
   , "Value" :: NullOrUndefined (ExportValue)
   }
+derive instance newtypeExport :: Newtype Export _
 
 
 newtype ExportName = ExportName String
+derive instance newtypeExportName :: Newtype ExportName _
 
 
 newtype ExportValue = ExportValue String
+derive instance newtypeExportValue :: Newtype ExportValue _
 
 
 newtype Exports = Exports (Array Export)
+derive instance newtypeExports :: Newtype Exports _
 
 
 newtype FailureToleranceCount = FailureToleranceCount Int
+derive instance newtypeFailureToleranceCount :: Newtype FailureToleranceCount _
 
 
 newtype FailureTolerancePercentage = FailureTolerancePercentage Int
+derive instance newtypeFailureTolerancePercentage :: Newtype FailureTolerancePercentage _
 
 
 -- | <p>The input for the <a>GetStackPolicy</a> action.</p>
 newtype GetStackPolicyInput = GetStackPolicyInput 
   { "StackName" :: (StackName)
   }
+derive instance newtypeGetStackPolicyInput :: Newtype GetStackPolicyInput _
 
 
 -- | <p>The output for the <a>GetStackPolicy</a> action.</p>
 newtype GetStackPolicyOutput = GetStackPolicyOutput 
   { "StackPolicyBody" :: NullOrUndefined (StackPolicyBody)
   }
+derive instance newtypeGetStackPolicyOutput :: Newtype GetStackPolicyOutput _
 
 
 -- | <p>The input for a <a>GetTemplate</a> action.</p>
@@ -725,6 +814,7 @@ newtype GetTemplateInput = GetTemplateInput
   , "ChangeSetName" :: NullOrUndefined (ChangeSetNameOrId)
   , "TemplateStage" :: NullOrUndefined (TemplateStage)
   }
+derive instance newtypeGetTemplateInput :: Newtype GetTemplateInput _
 
 
 -- | <p>The output for <a>GetTemplate</a> action.</p>
@@ -732,6 +822,7 @@ newtype GetTemplateOutput = GetTemplateOutput
   { "TemplateBody" :: NullOrUndefined (TemplateBody)
   , "StagesAvailable" :: NullOrUndefined (StageList)
   }
+derive instance newtypeGetTemplateOutput :: Newtype GetTemplateOutput _
 
 
 -- | <p>The input for the <a>GetTemplateSummary</a> action.</p>
@@ -741,6 +832,7 @@ newtype GetTemplateSummaryInput = GetTemplateSummaryInput
   , "StackName" :: NullOrUndefined (StackNameOrId)
   , "StackSetName" :: NullOrUndefined (StackSetNameOrId)
   }
+derive instance newtypeGetTemplateSummaryInput :: Newtype GetTemplateSummaryInput _
 
 
 -- | <p>The output for the <a>GetTemplateSummary</a> action.</p>
@@ -754,42 +846,51 @@ newtype GetTemplateSummaryOutput = GetTemplateSummaryOutput
   , "Metadata" :: NullOrUndefined (Metadata)
   , "DeclaredTransforms" :: NullOrUndefined (TransformsList)
   }
+derive instance newtypeGetTemplateSummaryOutput :: Newtype GetTemplateSummaryOutput _
 
 
 newtype Imports = Imports (Array StackName)
+derive instance newtypeImports :: Newtype Imports _
 
 
 -- | <p>The template contains resources with capabilities that weren't specified in the Capabilities parameter.</p>
 newtype InsufficientCapabilitiesException = InsufficientCapabilitiesException 
   { 
   }
+derive instance newtypeInsufficientCapabilitiesException :: Newtype InsufficientCapabilitiesException _
 
 
 -- | <p>The specified change set can't be used to update the stack. For example, the change set status might be <code>CREATE_IN_PROGRESS</code>, or the stack status might be <code>UPDATE_IN_PROGRESS</code>.</p>
 newtype InvalidChangeSetStatusException = InvalidChangeSetStatusException 
   { 
   }
+derive instance newtypeInvalidChangeSetStatusException :: Newtype InvalidChangeSetStatusException _
 
 
 -- | <p>The specified operation isn't valid.</p>
 newtype InvalidOperationException = InvalidOperationException 
   { 
   }
+derive instance newtypeInvalidOperationException :: Newtype InvalidOperationException _
 
 
 newtype LastUpdatedTime = LastUpdatedTime Number
+derive instance newtypeLastUpdatedTime :: Newtype LastUpdatedTime _
 
 
 -- | <p>The quota for the resource has already been reached.</p> <p>For information on stack set limitations, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html">Limitations of StackSets</a>.</p>
 newtype LimitExceededException = LimitExceededException 
   { 
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype LimitName = LimitName String
+derive instance newtypeLimitName :: Newtype LimitName _
 
 
 newtype LimitValue = LimitValue Int
+derive instance newtypeLimitValue :: Newtype LimitValue _
 
 
 -- | <p>The input for the <a>ListChangeSets</a> action.</p>
@@ -797,6 +898,7 @@ newtype ListChangeSetsInput = ListChangeSetsInput
   { "StackName" :: (StackNameOrId)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListChangeSetsInput :: Newtype ListChangeSetsInput _
 
 
 -- | <p>The output for the <a>ListChangeSets</a> action.</p>
@@ -804,29 +906,34 @@ newtype ListChangeSetsOutput = ListChangeSetsOutput
   { "Summaries" :: NullOrUndefined (ChangeSetSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListChangeSetsOutput :: Newtype ListChangeSetsOutput _
 
 
 newtype ListExportsInput = ListExportsInput 
   { "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListExportsInput :: Newtype ListExportsInput _
 
 
 newtype ListExportsOutput = ListExportsOutput 
   { "Exports" :: NullOrUndefined (Exports)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListExportsOutput :: Newtype ListExportsOutput _
 
 
 newtype ListImportsInput = ListImportsInput 
   { "ExportName" :: (ExportName)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListImportsInput :: Newtype ListImportsInput _
 
 
 newtype ListImportsOutput = ListImportsOutput 
   { "Imports" :: NullOrUndefined (Imports)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListImportsOutput :: Newtype ListImportsOutput _
 
 
 newtype ListStackInstancesInput = ListStackInstancesInput 
@@ -836,12 +943,14 @@ newtype ListStackInstancesInput = ListStackInstancesInput
   , "StackInstanceAccount" :: NullOrUndefined (Account)
   , "StackInstanceRegion" :: NullOrUndefined (Region)
   }
+derive instance newtypeListStackInstancesInput :: Newtype ListStackInstancesInput _
 
 
 newtype ListStackInstancesOutput = ListStackInstancesOutput 
   { "Summaries" :: NullOrUndefined (StackInstanceSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListStackInstancesOutput :: Newtype ListStackInstancesOutput _
 
 
 -- | <p>The input for the <a>ListStackResource</a> action.</p>
@@ -849,6 +958,7 @@ newtype ListStackResourcesInput = ListStackResourcesInput
   { "StackName" :: (StackName)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListStackResourcesInput :: Newtype ListStackResourcesInput _
 
 
 -- | <p>The output for a <a>ListStackResources</a> action.</p>
@@ -856,6 +966,7 @@ newtype ListStackResourcesOutput = ListStackResourcesOutput
   { "StackResourceSummaries" :: NullOrUndefined (StackResourceSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListStackResourcesOutput :: Newtype ListStackResourcesOutput _
 
 
 newtype ListStackSetOperationResultsInput = ListStackSetOperationResultsInput 
@@ -864,12 +975,14 @@ newtype ListStackSetOperationResultsInput = ListStackSetOperationResultsInput
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListStackSetOperationResultsInput :: Newtype ListStackSetOperationResultsInput _
 
 
 newtype ListStackSetOperationResultsOutput = ListStackSetOperationResultsOutput 
   { "Summaries" :: NullOrUndefined (StackSetOperationResultSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListStackSetOperationResultsOutput :: Newtype ListStackSetOperationResultsOutput _
 
 
 newtype ListStackSetOperationsInput = ListStackSetOperationsInput 
@@ -877,12 +990,14 @@ newtype ListStackSetOperationsInput = ListStackSetOperationsInput
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListStackSetOperationsInput :: Newtype ListStackSetOperationsInput _
 
 
 newtype ListStackSetOperationsOutput = ListStackSetOperationsOutput 
   { "Summaries" :: NullOrUndefined (StackSetOperationSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListStackSetOperationsOutput :: Newtype ListStackSetOperationsOutput _
 
 
 newtype ListStackSetsInput = ListStackSetsInput 
@@ -890,12 +1005,14 @@ newtype ListStackSetsInput = ListStackSetsInput
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "Status" :: NullOrUndefined (StackSetStatus)
   }
+derive instance newtypeListStackSetsInput :: Newtype ListStackSetsInput _
 
 
 newtype ListStackSetsOutput = ListStackSetsOutput 
   { "Summaries" :: NullOrUndefined (StackSetSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListStackSetsOutput :: Newtype ListStackSetsOutput _
 
 
 -- | <p>The input for <a>ListStacks</a> action.</p>
@@ -903,6 +1020,7 @@ newtype ListStacksInput = ListStacksInput
   { "NextToken" :: NullOrUndefined (NextToken)
   , "StackStatusFilter" :: NullOrUndefined (StackStatusFilter)
   }
+derive instance newtypeListStacksInput :: Newtype ListStacksInput _
 
 
 -- | <p>The output for <a>ListStacks</a> action.</p>
@@ -910,63 +1028,79 @@ newtype ListStacksOutput = ListStacksOutput
   { "StackSummaries" :: NullOrUndefined (StackSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListStacksOutput :: Newtype ListStacksOutput _
 
 
 newtype LogicalResourceId = LogicalResourceId String
+derive instance newtypeLogicalResourceId :: Newtype LogicalResourceId _
 
 
 newtype MaxConcurrentCount = MaxConcurrentCount Int
+derive instance newtypeMaxConcurrentCount :: Newtype MaxConcurrentCount _
 
 
 newtype MaxConcurrentPercentage = MaxConcurrentPercentage Int
+derive instance newtypeMaxConcurrentPercentage :: Newtype MaxConcurrentPercentage _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype Metadata = Metadata String
+derive instance newtypeMetadata :: Newtype Metadata _
 
 
 newtype MonitoringTimeInMinutes = MonitoringTimeInMinutes Int
+derive instance newtypeMonitoringTimeInMinutes :: Newtype MonitoringTimeInMinutes _
 
 
 -- | <p>The specified name is already in use.</p>
 newtype NameAlreadyExistsException = NameAlreadyExistsException 
   { 
   }
+derive instance newtypeNameAlreadyExistsException :: Newtype NameAlreadyExistsException _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 newtype NoEcho = NoEcho Boolean
+derive instance newtypeNoEcho :: Newtype NoEcho _
 
 
 newtype NotificationARN = NotificationARN String
+derive instance newtypeNotificationARN :: Newtype NotificationARN _
 
 
 newtype NotificationARNs = NotificationARNs (Array NotificationARN)
+derive instance newtypeNotificationARNs :: Newtype NotificationARNs _
 
 
 newtype OnFailure = OnFailure String
+derive instance newtypeOnFailure :: Newtype OnFailure _
 
 
 -- | <p>The specified operation ID already exists.</p>
 newtype OperationIdAlreadyExistsException = OperationIdAlreadyExistsException 
   { 
   }
+derive instance newtypeOperationIdAlreadyExistsException :: Newtype OperationIdAlreadyExistsException _
 
 
 -- | <p>Another operation is currently in progress for this stack set. Only one operation can be performed for a stack set at a given time.</p>
 newtype OperationInProgressException = OperationInProgressException 
   { 
   }
+derive instance newtypeOperationInProgressException :: Newtype OperationInProgressException _
 
 
 -- | <p>The specified ID refers to an operation that doesn't exist.</p>
 newtype OperationNotFoundException = OperationNotFoundException 
   { 
   }
+derive instance newtypeOperationNotFoundException :: Newtype OperationNotFoundException _
 
 
 -- | <p>The Output data type.</p>
@@ -976,15 +1110,19 @@ newtype Output = Output
   , "Description" :: NullOrUndefined (Description)
   , "ExportName" :: NullOrUndefined (ExportName)
   }
+derive instance newtypeOutput :: Newtype Output _
 
 
 newtype OutputKey = OutputKey String
+derive instance newtypeOutputKey :: Newtype OutputKey _
 
 
 newtype OutputValue = OutputValue String
+derive instance newtypeOutputValue :: Newtype OutputValue _
 
 
 newtype Outputs = Outputs (Array Output)
+derive instance newtypeOutputs :: Newtype Outputs _
 
 
 -- | <p>The Parameter data type.</p>
@@ -994,12 +1132,14 @@ newtype Parameter = Parameter
   , "UsePreviousValue" :: NullOrUndefined (UsePreviousValue)
   , "ResolvedValue" :: NullOrUndefined (ParameterValue)
   }
+derive instance newtypeParameter :: Newtype Parameter _
 
 
 -- | <p>A set of criteria that AWS CloudFormation uses to validate parameter values. Although other constraints might be defined in the stack template, AWS CloudFormation returns only the <code>AllowedValues</code> property.</p>
 newtype ParameterConstraints = ParameterConstraints 
   { "AllowedValues" :: NullOrUndefined (AllowedValues)
   }
+derive instance newtypeParameterConstraints :: Newtype ParameterConstraints _
 
 
 -- | <p>The ParameterDeclaration data type.</p>
@@ -1011,45 +1151,59 @@ newtype ParameterDeclaration = ParameterDeclaration
   , "Description" :: NullOrUndefined (Description)
   , "ParameterConstraints" :: NullOrUndefined (ParameterConstraints)
   }
+derive instance newtypeParameterDeclaration :: Newtype ParameterDeclaration _
 
 
 newtype ParameterDeclarations = ParameterDeclarations (Array ParameterDeclaration)
+derive instance newtypeParameterDeclarations :: Newtype ParameterDeclarations _
 
 
 newtype ParameterKey = ParameterKey String
+derive instance newtypeParameterKey :: Newtype ParameterKey _
 
 
 newtype ParameterType = ParameterType String
+derive instance newtypeParameterType :: Newtype ParameterType _
 
 
 newtype ParameterValue = ParameterValue String
+derive instance newtypeParameterValue :: Newtype ParameterValue _
 
 
 newtype Parameters = Parameters (Array Parameter)
+derive instance newtypeParameters :: Newtype Parameters _
 
 
 newtype PhysicalResourceId = PhysicalResourceId String
+derive instance newtypePhysicalResourceId :: Newtype PhysicalResourceId _
 
 
 newtype PropertyName = PropertyName String
+derive instance newtypePropertyName :: Newtype PropertyName _
 
 
 newtype Reason = Reason String
+derive instance newtypeReason :: Newtype Reason _
 
 
 newtype Region = Region String
+derive instance newtypeRegion :: Newtype Region _
 
 
 newtype RegionList = RegionList (Array Region)
+derive instance newtypeRegionList :: Newtype RegionList _
 
 
 newtype Replacement = Replacement String
+derive instance newtypeReplacement :: Newtype Replacement _
 
 
 newtype RequiresRecreation = RequiresRecreation String
+derive instance newtypeRequiresRecreation :: Newtype RequiresRecreation _
 
 
 newtype ResourceAttribute = ResourceAttribute String
+derive instance newtypeResourceAttribute :: Newtype ResourceAttribute _
 
 
 -- | <p>The <code>ResourceChange</code> structure describes the resource and the action that AWS CloudFormation will perform on it if you execute this change set.</p>
@@ -1062,6 +1216,7 @@ newtype ResourceChange = ResourceChange
   , "Scope" :: NullOrUndefined (Scope)
   , "Details" :: NullOrUndefined (ResourceChangeDetails)
   }
+derive instance newtypeResourceChange :: Newtype ResourceChange _
 
 
 -- | <p>For a resource with <code>Modify</code> as the action, the <code>ResourceChange</code> structure describes the changes AWS CloudFormation will make to that resource.</p>
@@ -1071,24 +1226,31 @@ newtype ResourceChangeDetail = ResourceChangeDetail
   , "ChangeSource" :: NullOrUndefined (ChangeSource)
   , "CausingEntity" :: NullOrUndefined (CausingEntity)
   }
+derive instance newtypeResourceChangeDetail :: Newtype ResourceChangeDetail _
 
 
 newtype ResourceChangeDetails = ResourceChangeDetails (Array ResourceChangeDetail)
+derive instance newtypeResourceChangeDetails :: Newtype ResourceChangeDetails _
 
 
 newtype ResourceProperties = ResourceProperties String
+derive instance newtypeResourceProperties :: Newtype ResourceProperties _
 
 
 newtype ResourceSignalStatus = ResourceSignalStatus String
+derive instance newtypeResourceSignalStatus :: Newtype ResourceSignalStatus _
 
 
 newtype ResourceSignalUniqueId = ResourceSignalUniqueId String
+derive instance newtypeResourceSignalUniqueId :: Newtype ResourceSignalUniqueId _
 
 
 newtype ResourceStatus = ResourceStatus String
+derive instance newtypeResourceStatus :: Newtype ResourceStatus _
 
 
 newtype ResourceStatusReason = ResourceStatusReason String
+derive instance newtypeResourceStatusReason :: Newtype ResourceStatusReason _
 
 
 -- | <p>The field that AWS CloudFormation will change, such as the name of a resource's property, and whether the resource will be recreated.</p>
@@ -1097,30 +1259,39 @@ newtype ResourceTargetDefinition = ResourceTargetDefinition
   , "Name" :: NullOrUndefined (PropertyName)
   , "RequiresRecreation" :: NullOrUndefined (RequiresRecreation)
   }
+derive instance newtypeResourceTargetDefinition :: Newtype ResourceTargetDefinition _
 
 
 newtype ResourceToSkip = ResourceToSkip String
+derive instance newtypeResourceToSkip :: Newtype ResourceToSkip _
 
 
 newtype ResourceType = ResourceType String
+derive instance newtypeResourceType :: Newtype ResourceType _
 
 
 newtype ResourceTypes = ResourceTypes (Array ResourceType)
+derive instance newtypeResourceTypes :: Newtype ResourceTypes _
 
 
 newtype ResourcesToSkip = ResourcesToSkip (Array ResourceToSkip)
+derive instance newtypeResourcesToSkip :: Newtype ResourcesToSkip _
 
 
 newtype RetainResources = RetainResources (Array LogicalResourceId)
+derive instance newtypeRetainResources :: Newtype RetainResources _
 
 
 newtype RetainStacks = RetainStacks Boolean
+derive instance newtypeRetainStacks :: Newtype RetainStacks _
 
 
 newtype RetainStacksNullable = RetainStacksNullable Boolean
+derive instance newtypeRetainStacksNullable :: Newtype RetainStacksNullable _
 
 
 newtype RoleARN = RoleARN String
+derive instance newtypeRoleARN :: Newtype RoleARN _
 
 
 -- | <p>Structure containing the rollback triggers for AWS CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.</p> <p>Rollback triggers enable you to have AWS CloudFormation monitor the state of your application during stack creation and updating, and to roll back that operation if the application breaches the threshold of any of the alarms you've specified. For each rollback trigger you create, you specify the Cloudwatch alarm that CloudFormation should monitor. CloudFormation monitors the specified alarms during the stack create or update operation, and for the specified amount of time after all resources have been deployed. If any of the alarms goes to ALERT state during the stack operation or the monitoring period, CloudFormation rolls back the entire stack operation. If the monitoring period expires without any alarms going to ALERT state, CloudFormation proceeds to dispose of old resources as usual.</p> <p>By default, CloudFormation only rolls back stack operations if an alarm goes to ALERT state, not INSUFFICIENT_DATA state. To have CloudFormation roll back the stack operation if an alarm goes to INSUFFICIENT_DATA state as well, edit the CloudWatch alarm to treat missing data as <code>breaching</code>. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html">Configuring How CloudWatch Alarms Treats Missing Data</a>.</p> <p>AWS CloudFormation does not monitor rollback triggers when it rolls back a stack during an update operation.</p>
@@ -1128,6 +1299,7 @@ newtype RollbackConfiguration = RollbackConfiguration
   { "RollbackTriggers" :: NullOrUndefined (RollbackTriggers)
   , "MonitoringTimeInMinutes" :: NullOrUndefined (MonitoringTimeInMinutes)
   }
+derive instance newtypeRollbackConfiguration :: Newtype RollbackConfiguration _
 
 
 -- | <p>A rollback trigger AWS CloudFormation monitors during creation and updating of stacks. If any of the alarms you specify goes to ALERT state during the stack operation or within the specified monitoring period afterwards, CloudFormation rolls back the entire stack operation. </p>
@@ -1135,12 +1307,15 @@ newtype RollbackTrigger = RollbackTrigger
   { "Arn" :: (Arn)
   , "Type" :: (Type)
   }
+derive instance newtypeRollbackTrigger :: Newtype RollbackTrigger _
 
 
 newtype RollbackTriggers = RollbackTriggers (Array RollbackTrigger)
+derive instance newtypeRollbackTriggers :: Newtype RollbackTriggers _
 
 
 newtype Scope = Scope (Array ResourceAttribute)
+derive instance newtypeScope :: Newtype Scope _
 
 
 -- | <p>The input for the <a>SetStackPolicy</a> action.</p>
@@ -1149,6 +1324,7 @@ newtype SetStackPolicyInput = SetStackPolicyInput
   , "StackPolicyBody" :: NullOrUndefined (StackPolicyBody)
   , "StackPolicyURL" :: NullOrUndefined (StackPolicyURL)
   }
+derive instance newtypeSetStackPolicyInput :: Newtype SetStackPolicyInput _
 
 
 -- | <p>The input for the <a>SignalResource</a> action.</p>
@@ -1158,6 +1334,7 @@ newtype SignalResourceInput = SignalResourceInput
   , "UniqueId" :: (ResourceSignalUniqueId)
   , "Status" :: (ResourceSignalStatus)
   }
+derive instance newtypeSignalResourceInput :: Newtype SignalResourceInput _
 
 
 -- | <p>The Stack data type.</p>
@@ -1184,6 +1361,7 @@ newtype Stack = Stack
   , "ParentId" :: NullOrUndefined (StackId)
   , "RootId" :: NullOrUndefined (StackId)
   }
+derive instance newtypeStack :: Newtype Stack _
 
 
 -- | <p>The StackEvent data type.</p>
@@ -1200,12 +1378,15 @@ newtype StackEvent = StackEvent
   , "ResourceProperties" :: NullOrUndefined (ResourceProperties)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeStackEvent :: Newtype StackEvent _
 
 
 newtype StackEvents = StackEvents (Array StackEvent)
+derive instance newtypeStackEvents :: Newtype StackEvents _
 
 
 newtype StackId = StackId String
+derive instance newtypeStackId :: Newtype StackId _
 
 
 -- | <p>An AWS CloudFormation stack, in a specific account and region, that's part of a stack set operation. A stack instance is a reference to an attempted or actual stack in a given account within a given region. A stack instance can exist without a stack—for example, if the stack couldn't be created for some reason. A stack instance is associated with only one stack set. Each stack instance contains the ID of its associated stack set, as well as the ID of the actual stack and the stack status.</p>
@@ -1218,18 +1399,22 @@ newtype StackInstance = StackInstance
   , "Status" :: NullOrUndefined (StackInstanceStatus)
   , "StatusReason" :: NullOrUndefined (Reason)
   }
+derive instance newtypeStackInstance :: Newtype StackInstance _
 
 
 -- | <p>The specified stack instance doesn't exist.</p>
 newtype StackInstanceNotFoundException = StackInstanceNotFoundException 
   { 
   }
+derive instance newtypeStackInstanceNotFoundException :: Newtype StackInstanceNotFoundException _
 
 
 newtype StackInstanceStatus = StackInstanceStatus String
+derive instance newtypeStackInstanceStatus :: Newtype StackInstanceStatus _
 
 
 newtype StackInstanceSummaries = StackInstanceSummaries (Array StackInstanceSummary)
+derive instance newtypeStackInstanceSummaries :: Newtype StackInstanceSummaries _
 
 
 -- | <p>The structure that contains summary information about a stack instance.</p>
@@ -1241,24 +1426,31 @@ newtype StackInstanceSummary = StackInstanceSummary
   , "Status" :: NullOrUndefined (StackInstanceStatus)
   , "StatusReason" :: NullOrUndefined (Reason)
   }
+derive instance newtypeStackInstanceSummary :: Newtype StackInstanceSummary _
 
 
 newtype StackName = StackName String
+derive instance newtypeStackName :: Newtype StackName _
 
 
 newtype StackNameOrId = StackNameOrId String
+derive instance newtypeStackNameOrId :: Newtype StackNameOrId _
 
 
 newtype StackPolicyBody = StackPolicyBody String
+derive instance newtypeStackPolicyBody :: Newtype StackPolicyBody _
 
 
 newtype StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody String
+derive instance newtypeStackPolicyDuringUpdateBody :: Newtype StackPolicyDuringUpdateBody _
 
 
 newtype StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL String
+derive instance newtypeStackPolicyDuringUpdateURL :: Newtype StackPolicyDuringUpdateURL _
 
 
 newtype StackPolicyURL = StackPolicyURL String
+derive instance newtypeStackPolicyURL :: Newtype StackPolicyURL _
 
 
 -- | <p>The StackResource data type.</p>
@@ -1273,6 +1465,7 @@ newtype StackResource = StackResource
   , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason)
   , "Description" :: NullOrUndefined (Description)
   }
+derive instance newtypeStackResource :: Newtype StackResource _
 
 
 -- | <p>Contains detailed information about the specified stack resource.</p>
@@ -1288,9 +1481,11 @@ newtype StackResourceDetail = StackResourceDetail
   , "Description" :: NullOrUndefined (Description)
   , "Metadata" :: NullOrUndefined (Metadata)
   }
+derive instance newtypeStackResourceDetail :: Newtype StackResourceDetail _
 
 
 newtype StackResourceSummaries = StackResourceSummaries (Array StackResourceSummary)
+derive instance newtypeStackResourceSummaries :: Newtype StackResourceSummaries _
 
 
 -- | <p>Contains high-level information about the specified stack resource.</p>
@@ -1302,9 +1497,11 @@ newtype StackResourceSummary = StackResourceSummary
   , "ResourceStatus" :: (ResourceStatus)
   , "ResourceStatusReason" :: NullOrUndefined (ResourceStatusReason)
   }
+derive instance newtypeStackResourceSummary :: Newtype StackResourceSummary _
 
 
 newtype StackResources = StackResources (Array StackResource)
+derive instance newtypeStackResources :: Newtype StackResources _
 
 
 -- | <p>A structure that contains information about a stack set. A stack set enables you to provision stacks into AWS accounts and across regions by using a single CloudFormation template. In the stack set, you specify the template to use, as well as any parameters and capabilities that the template requires. </p>
@@ -1318,27 +1515,33 @@ newtype StackSet = StackSet
   , "Capabilities" :: NullOrUndefined (Capabilities)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeStackSet :: Newtype StackSet _
 
 
 newtype StackSetId = StackSetId String
+derive instance newtypeStackSetId :: Newtype StackSetId _
 
 
 newtype StackSetName = StackSetName String
+derive instance newtypeStackSetName :: Newtype StackSetName _
 
 
 newtype StackSetNameOrId = StackSetNameOrId String
+derive instance newtypeStackSetNameOrId :: Newtype StackSetNameOrId _
 
 
 -- | <p>You can't yet delete this stack set, because it still contains one or more stack instances. Delete all stack instances from the stack set before deleting the stack set.</p>
 newtype StackSetNotEmptyException = StackSetNotEmptyException 
   { 
   }
+derive instance newtypeStackSetNotEmptyException :: Newtype StackSetNotEmptyException _
 
 
 -- | <p>The specified stack set doesn't exist.</p>
 newtype StackSetNotFoundException = StackSetNotFoundException 
   { 
   }
+derive instance newtypeStackSetNotFoundException :: Newtype StackSetNotFoundException _
 
 
 -- | <p>The structure that contains information about a stack set operation. </p>
@@ -1352,9 +1555,11 @@ newtype StackSetOperation = StackSetOperation
   , "CreationTimestamp" :: NullOrUndefined (Number)
   , "EndTimestamp" :: NullOrUndefined (Number)
   }
+derive instance newtypeStackSetOperation :: Newtype StackSetOperation _
 
 
 newtype StackSetOperationAction = StackSetOperationAction String
+derive instance newtypeStackSetOperationAction :: Newtype StackSetOperationAction _
 
 
 -- | <p>The user-specified preferences for how AWS CloudFormation performs a stack set operation. </p> <p>For more information on maximum concurrent accounts and failure tolerance, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options">Stack set operation options</a>.</p>
@@ -1365,12 +1570,15 @@ newtype StackSetOperationPreferences = StackSetOperationPreferences
   , "MaxConcurrentCount" :: NullOrUndefined (MaxConcurrentCount)
   , "MaxConcurrentPercentage" :: NullOrUndefined (MaxConcurrentPercentage)
   }
+derive instance newtypeStackSetOperationPreferences :: Newtype StackSetOperationPreferences _
 
 
 newtype StackSetOperationResultStatus = StackSetOperationResultStatus String
+derive instance newtypeStackSetOperationResultStatus :: Newtype StackSetOperationResultStatus _
 
 
 newtype StackSetOperationResultSummaries = StackSetOperationResultSummaries (Array StackSetOperationResultSummary)
+derive instance newtypeStackSetOperationResultSummaries :: Newtype StackSetOperationResultSummaries _
 
 
 -- | <p>The structure that contains information about a specified operation's results for a given account in a given region.</p>
@@ -1381,12 +1589,15 @@ newtype StackSetOperationResultSummary = StackSetOperationResultSummary
   , "StatusReason" :: NullOrUndefined (Reason)
   , "AccountGateResult" :: NullOrUndefined (AccountGateResult)
   }
+derive instance newtypeStackSetOperationResultSummary :: Newtype StackSetOperationResultSummary _
 
 
 newtype StackSetOperationStatus = StackSetOperationStatus String
+derive instance newtypeStackSetOperationStatus :: Newtype StackSetOperationStatus _
 
 
 newtype StackSetOperationSummaries = StackSetOperationSummaries (Array StackSetOperationSummary)
+derive instance newtypeStackSetOperationSummaries :: Newtype StackSetOperationSummaries _
 
 
 -- | <p>The structures that contain summary information about the specified operation.</p>
@@ -1397,12 +1608,15 @@ newtype StackSetOperationSummary = StackSetOperationSummary
   , "CreationTimestamp" :: NullOrUndefined (Number)
   , "EndTimestamp" :: NullOrUndefined (Number)
   }
+derive instance newtypeStackSetOperationSummary :: Newtype StackSetOperationSummary _
 
 
 newtype StackSetStatus = StackSetStatus String
+derive instance newtypeStackSetStatus :: Newtype StackSetStatus _
 
 
 newtype StackSetSummaries = StackSetSummaries (Array StackSetSummary)
+derive instance newtypeStackSetSummaries :: Newtype StackSetSummaries _
 
 
 -- | <p>The structures that contain summary information about the specified stack set.</p>
@@ -1412,18 +1626,23 @@ newtype StackSetSummary = StackSetSummary
   , "Description" :: NullOrUndefined (Description)
   , "Status" :: NullOrUndefined (StackSetStatus)
   }
+derive instance newtypeStackSetSummary :: Newtype StackSetSummary _
 
 
 newtype StackStatus = StackStatus String
+derive instance newtypeStackStatus :: Newtype StackStatus _
 
 
 newtype StackStatusFilter = StackStatusFilter (Array StackStatus)
+derive instance newtypeStackStatusFilter :: Newtype StackStatusFilter _
 
 
 newtype StackStatusReason = StackStatusReason String
+derive instance newtypeStackStatusReason :: Newtype StackStatusReason _
 
 
 newtype StackSummaries = StackSummaries (Array StackSummary)
+derive instance newtypeStackSummaries :: Newtype StackSummaries _
 
 
 -- | <p>The StackSummary Data Type</p>
@@ -1439,29 +1658,35 @@ newtype StackSummary = StackSummary
   , "ParentId" :: NullOrUndefined (StackId)
   , "RootId" :: NullOrUndefined (StackId)
   }
+derive instance newtypeStackSummary :: Newtype StackSummary _
 
 
 newtype Stacks = Stacks (Array Stack)
+derive instance newtypeStacks :: Newtype Stacks _
 
 
 newtype StageList = StageList (Array TemplateStage)
+derive instance newtypeStageList :: Newtype StageList _
 
 
 -- | <p>Another operation has been performed on this stack set since the specified operation was performed. </p>
 newtype StaleRequestException = StaleRequestException 
   { 
   }
+derive instance newtypeStaleRequestException :: Newtype StaleRequestException _
 
 
 newtype StopStackSetOperationInput = StopStackSetOperationInput 
   { "StackSetName" :: (StackSetName)
   , "OperationId" :: (ClientRequestToken)
   }
+derive instance newtypeStopStackSetOperationInput :: Newtype StopStackSetOperationInput _
 
 
 newtype StopStackSetOperationOutput = StopStackSetOperationOutput 
   { 
   }
+derive instance newtypeStopStackSetOperationOutput :: Newtype StopStackSetOperationOutput _
 
 
 -- | <p>The Tag type enables you to specify a key-value pair that can be used to store information about an AWS CloudFormation stack.</p>
@@ -1469,21 +1694,27 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Array Tag)
+derive instance newtypeTags :: Newtype Tags _
 
 
 newtype TemplateBody = TemplateBody String
+derive instance newtypeTemplateBody :: Newtype TemplateBody _
 
 
 newtype TemplateDescription = TemplateDescription String
+derive instance newtypeTemplateDescription :: Newtype TemplateDescription _
 
 
 -- | <p>The TemplateParameter data type.</p>
@@ -1493,33 +1724,42 @@ newtype TemplateParameter = TemplateParameter
   , "NoEcho" :: NullOrUndefined (NoEcho)
   , "Description" :: NullOrUndefined (Description)
   }
+derive instance newtypeTemplateParameter :: Newtype TemplateParameter _
 
 
 newtype TemplateParameters = TemplateParameters (Array TemplateParameter)
+derive instance newtypeTemplateParameters :: Newtype TemplateParameters _
 
 
 newtype TemplateStage = TemplateStage String
+derive instance newtypeTemplateStage :: Newtype TemplateStage _
 
 
 newtype TemplateURL = TemplateURL String
+derive instance newtypeTemplateURL :: Newtype TemplateURL _
 
 
 newtype TimeoutMinutes = TimeoutMinutes Int
+derive instance newtypeTimeoutMinutes :: Newtype TimeoutMinutes _
 
 
 -- | <p>A client request token already exists.</p>
 newtype TokenAlreadyExistsException = TokenAlreadyExistsException 
   { 
   }
+derive instance newtypeTokenAlreadyExistsException :: Newtype TokenAlreadyExistsException _
 
 
 newtype TransformName = TransformName String
+derive instance newtypeTransformName :: Newtype TransformName _
 
 
 newtype TransformsList = TransformsList (Array TransformName)
+derive instance newtypeTransformsList :: Newtype TransformsList _
 
 
 newtype Type = Type String
+derive instance newtypeType :: Newtype Type _
 
 
 -- | <p>The input for an <a>UpdateStack</a> action.</p>
@@ -1541,6 +1781,7 @@ newtype UpdateStackInput = UpdateStackInput
   , "Tags" :: NullOrUndefined (Tags)
   , "ClientRequestToken" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeUpdateStackInput :: Newtype UpdateStackInput _
 
 
 newtype UpdateStackInstancesInput = UpdateStackInstancesInput 
@@ -1551,17 +1792,20 @@ newtype UpdateStackInstancesInput = UpdateStackInstancesInput
   , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
   , "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeUpdateStackInstancesInput :: Newtype UpdateStackInstancesInput _
 
 
 newtype UpdateStackInstancesOutput = UpdateStackInstancesOutput 
   { "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeUpdateStackInstancesOutput :: Newtype UpdateStackInstancesOutput _
 
 
 -- | <p>The output for an <a>UpdateStack</a> action.</p>
 newtype UpdateStackOutput = UpdateStackOutput 
   { "StackId" :: NullOrUndefined (StackId)
   }
+derive instance newtypeUpdateStackOutput :: Newtype UpdateStackOutput _
 
 
 newtype UpdateStackSetInput = UpdateStackSetInput 
@@ -1576,31 +1820,38 @@ newtype UpdateStackSetInput = UpdateStackSetInput
   , "OperationPreferences" :: NullOrUndefined (StackSetOperationPreferences)
   , "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeUpdateStackSetInput :: Newtype UpdateStackSetInput _
 
 
 newtype UpdateStackSetOutput = UpdateStackSetOutput 
   { "OperationId" :: NullOrUndefined (ClientRequestToken)
   }
+derive instance newtypeUpdateStackSetOutput :: Newtype UpdateStackSetOutput _
 
 
 newtype UpdateTerminationProtectionInput = UpdateTerminationProtectionInput 
   { "EnableTerminationProtection" :: (EnableTerminationProtection)
   , "StackName" :: (StackNameOrId)
   }
+derive instance newtypeUpdateTerminationProtectionInput :: Newtype UpdateTerminationProtectionInput _
 
 
 newtype UpdateTerminationProtectionOutput = UpdateTerminationProtectionOutput 
   { "StackId" :: NullOrUndefined (StackId)
   }
+derive instance newtypeUpdateTerminationProtectionOutput :: Newtype UpdateTerminationProtectionOutput _
 
 
 newtype Url = Url String
+derive instance newtypeUrl :: Newtype Url _
 
 
 newtype UsePreviousTemplate = UsePreviousTemplate Boolean
+derive instance newtypeUsePreviousTemplate :: Newtype UsePreviousTemplate _
 
 
 newtype UsePreviousValue = UsePreviousValue Boolean
+derive instance newtypeUsePreviousValue :: Newtype UsePreviousValue _
 
 
 -- | <p>The input for <a>ValidateTemplate</a> action.</p>
@@ -1608,6 +1859,7 @@ newtype ValidateTemplateInput = ValidateTemplateInput
   { "TemplateBody" :: NullOrUndefined (TemplateBody)
   , "TemplateURL" :: NullOrUndefined (TemplateURL)
   }
+derive instance newtypeValidateTemplateInput :: Newtype ValidateTemplateInput _
 
 
 -- | <p>The output for <a>ValidateTemplate</a> action.</p>
@@ -1618,6 +1870,8 @@ newtype ValidateTemplateOutput = ValidateTemplateOutput
   , "CapabilitiesReason" :: NullOrUndefined (CapabilitiesReason)
   , "DeclaredTransforms" :: NullOrUndefined (TransformsList)
   }
+derive instance newtypeValidateTemplateOutput :: Newtype ValidateTemplateOutput _
 
 
 newtype Version = Version String
+derive instance newtypeVersion :: Newtype Version _

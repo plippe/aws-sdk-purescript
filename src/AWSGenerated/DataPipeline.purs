@@ -6,6 +6,7 @@ module AWS.DataPipeline where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -114,12 +115,14 @@ newtype ActivatePipelineInput = ActivatePipelineInput
   , "ParameterValues'" :: NullOrUndefined (ParameterValueList)
   , "StartTimestamp'" :: NullOrUndefined (Number)
   }
+derive instance newtypeActivatePipelineInput :: Newtype ActivatePipelineInput _
 
 
 -- | <p>Contains the output of ActivatePipeline.</p>
 newtype ActivatePipelineOutput = ActivatePipelineOutput 
   { 
   }
+derive instance newtypeActivatePipelineOutput :: Newtype ActivatePipelineOutput _
 
 
 -- | <p>Contains the parameters for AddTags.</p>
@@ -127,12 +130,14 @@ newtype AddTagsInput = AddTagsInput
   { "PipelineId'" :: (Id')
   , "Tags'" :: (TagList')
   }
+derive instance newtypeAddTagsInput :: Newtype AddTagsInput _
 
 
 -- | <p>Contains the output of AddTags.</p>
 newtype AddTagsOutput = AddTagsOutput 
   { 
   }
+derive instance newtypeAddTagsOutput :: Newtype AddTagsOutput _
 
 
 -- | <p>Contains the parameters for CreatePipeline.</p>
@@ -142,12 +147,14 @@ newtype CreatePipelineInput = CreatePipelineInput
   , "Description'" :: NullOrUndefined (String)
   , "Tags'" :: NullOrUndefined (TagList')
   }
+derive instance newtypeCreatePipelineInput :: Newtype CreatePipelineInput _
 
 
 -- | <p>Contains the output of CreatePipeline.</p>
 newtype CreatePipelineOutput = CreatePipelineOutput 
   { "PipelineId'" :: (Id')
   }
+derive instance newtypeCreatePipelineOutput :: Newtype CreatePipelineOutput _
 
 
 -- | <p>Contains the parameters for DeactivatePipeline.</p>
@@ -155,18 +162,21 @@ newtype DeactivatePipelineInput = DeactivatePipelineInput
   { "PipelineId'" :: (Id')
   , "CancelActive'" :: NullOrUndefined (CancelActive')
   }
+derive instance newtypeDeactivatePipelineInput :: Newtype DeactivatePipelineInput _
 
 
 -- | <p>Contains the output of DeactivatePipeline.</p>
 newtype DeactivatePipelineOutput = DeactivatePipelineOutput 
   { 
   }
+derive instance newtypeDeactivatePipelineOutput :: Newtype DeactivatePipelineOutput _
 
 
 -- | <p>Contains the parameters for DeletePipeline.</p>
 newtype DeletePipelineInput = DeletePipelineInput 
   { "PipelineId'" :: (Id')
   }
+derive instance newtypeDeletePipelineInput :: Newtype DeletePipelineInput _
 
 
 -- | <p>Contains the parameters for DescribeObjects.</p>
@@ -176,6 +186,7 @@ newtype DescribeObjectsInput = DescribeObjectsInput
   , "EvaluateExpressions'" :: NullOrUndefined (Boolean)
   , "Marker'" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeObjectsInput :: Newtype DescribeObjectsInput _
 
 
 -- | <p>Contains the output of DescribeObjects.</p>
@@ -184,18 +195,21 @@ newtype DescribeObjectsOutput = DescribeObjectsOutput
   , "Marker'" :: NullOrUndefined (String)
   , "HasMoreResults'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDescribeObjectsOutput :: Newtype DescribeObjectsOutput _
 
 
 -- | <p>Contains the parameters for DescribePipelines.</p>
 newtype DescribePipelinesInput = DescribePipelinesInput 
   { "PipelineIds'" :: (IdList')
   }
+derive instance newtypeDescribePipelinesInput :: Newtype DescribePipelinesInput _
 
 
 -- | <p>Contains the output of DescribePipelines.</p>
 newtype DescribePipelinesOutput = DescribePipelinesOutput 
   { "PipelineDescriptionList'" :: (PipelineDescriptionList)
   }
+derive instance newtypeDescribePipelinesOutput :: Newtype DescribePipelinesOutput _
 
 
 -- | <p>Contains the parameters for EvaluateExpression.</p>
@@ -204,12 +218,14 @@ newtype EvaluateExpressionInput = EvaluateExpressionInput
   , "ObjectId'" :: (Id')
   , "Expression'" :: (LongString')
   }
+derive instance newtypeEvaluateExpressionInput :: Newtype EvaluateExpressionInput _
 
 
 -- | <p>Contains the output of EvaluateExpression.</p>
 newtype EvaluateExpressionOutput = EvaluateExpressionOutput 
   { "EvaluatedExpression'" :: (LongString')
   }
+derive instance newtypeEvaluateExpressionOutput :: Newtype EvaluateExpressionOutput _
 
 
 -- | <p>A key-value pair that describes a property of a pipeline object. The value is specified as either a string value (<code>StringValue</code>) or a reference to another object (<code>RefValue</code>) but not as both.</p>
@@ -218,6 +234,7 @@ newtype Field = Field
   , "StringValue'" :: NullOrUndefined (FieldStringValue')
   , "RefValue'" :: NullOrUndefined (FieldNameString')
   }
+derive instance newtypeField :: Newtype Field _
 
 
 -- | <p>Contains the parameters for GetPipelineDefinition.</p>
@@ -225,6 +242,7 @@ newtype GetPipelineDefinitionInput = GetPipelineDefinitionInput
   { "PipelineId'" :: (Id')
   , "Version'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetPipelineDefinitionInput :: Newtype GetPipelineDefinitionInput _
 
 
 -- | <p>Contains the output of GetPipelineDefinition.</p>
@@ -233,6 +251,7 @@ newtype GetPipelineDefinitionOutput = GetPipelineDefinitionOutput
   , "ParameterObjects'" :: NullOrUndefined (ParameterObjectList)
   , "ParameterValues'" :: NullOrUndefined (ParameterValueList)
   }
+derive instance newtypeGetPipelineDefinitionOutput :: Newtype GetPipelineDefinitionOutput _
 
 
 -- | <p><p>Identity information for the EC2 instance that is hosting the task runner. You can get this value by calling a metadata URI from the EC2 instance. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p></p>
@@ -240,24 +259,28 @@ newtype InstanceIdentity = InstanceIdentity
   { "Document'" :: NullOrUndefined (String)
   , "Signature'" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceIdentity :: Newtype InstanceIdentity _
 
 
 -- | <p>An internal service error occurred.</p>
 newtype InternalServiceError = InternalServiceError 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInternalServiceError :: Newtype InternalServiceError _
 
 
 -- | <p>The request was not valid. Verify that your request was properly formatted, that the signature was generated with the correct credentials, and that you haven't exceeded any of the service limits for your account.</p>
 newtype InvalidRequestException = InvalidRequestException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInvalidRequestException :: Newtype InvalidRequestException _
 
 
 -- | <p>Contains the parameters for ListPipelines.</p>
 newtype ListPipelinesInput = ListPipelinesInput 
   { "Marker'" :: NullOrUndefined (String)
   }
+derive instance newtypeListPipelinesInput :: Newtype ListPipelinesInput _
 
 
 -- | <p>Contains the output of ListPipelines.</p>
@@ -266,6 +289,7 @@ newtype ListPipelinesOutput = ListPipelinesOutput
   , "Marker'" :: NullOrUndefined (String)
   , "HasMoreResults'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeListPipelinesOutput :: Newtype ListPipelinesOutput _
 
 
 -- | <p>Contains a logical operation for comparing the value of a field with a specified value.</p>
@@ -273,9 +297,11 @@ newtype Operator = Operator
   { "Type'" :: NullOrUndefined (OperatorType)
   , "Values'" :: NullOrUndefined (StringList')
   }
+derive instance newtypeOperator :: Newtype Operator _
 
 
 newtype OperatorType = OperatorType String
+derive instance newtypeOperatorType :: Newtype OperatorType _
 
 
 -- | <p>The attributes allowed or specified with a parameter object.</p>
@@ -283,9 +309,11 @@ newtype ParameterAttribute = ParameterAttribute
   { "Key'" :: (AttributeNameString')
   , "StringValue'" :: (AttributeValueString')
   }
+derive instance newtypeParameterAttribute :: Newtype ParameterAttribute _
 
 
 newtype ParameterAttributeList = ParameterAttributeList (Array ParameterAttribute)
+derive instance newtypeParameterAttributeList :: Newtype ParameterAttributeList _
 
 
 -- | <p>Contains information about a parameter object.</p>
@@ -293,9 +321,11 @@ newtype ParameterObject = ParameterObject
   { "Id'" :: (FieldNameString')
   , "Attributes'" :: (ParameterAttributeList)
   }
+derive instance newtypeParameterObject :: Newtype ParameterObject _
 
 
 newtype ParameterObjectList = ParameterObjectList (Array ParameterObject)
+derive instance newtypeParameterObjectList :: Newtype ParameterObjectList _
 
 
 -- | <p>A value or list of parameter values. </p>
@@ -303,15 +333,18 @@ newtype ParameterValue = ParameterValue
   { "Id'" :: (FieldNameString')
   , "StringValue'" :: (FieldStringValue')
   }
+derive instance newtypeParameterValue :: Newtype ParameterValue _
 
 
 newtype ParameterValueList = ParameterValueList (Array ParameterValue)
+derive instance newtypeParameterValueList :: Newtype ParameterValueList _
 
 
 -- | <p>The specified pipeline has been deleted.</p>
 newtype PipelineDeletedException = PipelineDeletedException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypePipelineDeletedException :: Newtype PipelineDeletedException _
 
 
 -- | <p>Contains pipeline metadata.</p>
@@ -322,9 +355,11 @@ newtype PipelineDescription = PipelineDescription
   , "Description'" :: NullOrUndefined (String)
   , "Tags'" :: NullOrUndefined (TagList')
   }
+derive instance newtypePipelineDescription :: Newtype PipelineDescription _
 
 
 newtype PipelineDescriptionList = PipelineDescriptionList (Array PipelineDescription)
+derive instance newtypePipelineDescriptionList :: Newtype PipelineDescriptionList _
 
 
 -- | <p>Contains the name and identifier of a pipeline.</p>
@@ -332,12 +367,14 @@ newtype PipelineIdName = PipelineIdName
   { "Id'" :: NullOrUndefined (Id')
   , "Name'" :: NullOrUndefined (Id')
   }
+derive instance newtypePipelineIdName :: Newtype PipelineIdName _
 
 
 -- | <p>The specified pipeline was not found. Verify that you used the correct user and account identifiers.</p>
 newtype PipelineNotFoundException = PipelineNotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypePipelineNotFoundException :: Newtype PipelineNotFoundException _
 
 
 -- | <p>Contains information about a pipeline object. This can be a logical, physical, or physical attempt pipeline object. The complete set of components of a pipeline defines the pipeline.</p>
@@ -346,12 +383,15 @@ newtype PipelineObject = PipelineObject
   , "Name'" :: (Id')
   , "Fields'" :: (FieldList')
   }
+derive instance newtypePipelineObject :: Newtype PipelineObject _
 
 
 newtype PipelineObjectList = PipelineObjectList (Array PipelineObject)
+derive instance newtypePipelineObjectList :: Newtype PipelineObjectList _
 
 
 newtype PipelineObjectMap = PipelineObjectMap (Map Id' PipelineObject)
+derive instance newtypePipelineObjectMap :: Newtype PipelineObjectMap _
 
 
 -- | <p>Contains the parameters for PollForTask.</p>
@@ -360,12 +400,14 @@ newtype PollForTaskInput = PollForTaskInput
   , "Hostname'" :: NullOrUndefined (Id')
   , "InstanceIdentity'" :: NullOrUndefined (InstanceIdentity)
   }
+derive instance newtypePollForTaskInput :: Newtype PollForTaskInput _
 
 
 -- | <p>Contains the output of PollForTask.</p>
 newtype PollForTaskOutput = PollForTaskOutput 
   { "TaskObject'" :: NullOrUndefined (TaskObject)
   }
+derive instance newtypePollForTaskOutput :: Newtype PollForTaskOutput _
 
 
 -- | <p>Contains the parameters for PutPipelineDefinition.</p>
@@ -375,6 +417,7 @@ newtype PutPipelineDefinitionInput = PutPipelineDefinitionInput
   , "ParameterObjects'" :: NullOrUndefined (ParameterObjectList)
   , "ParameterValues'" :: NullOrUndefined (ParameterValueList)
   }
+derive instance newtypePutPipelineDefinitionInput :: Newtype PutPipelineDefinitionInput _
 
 
 -- | <p>Contains the output of PutPipelineDefinition.</p>
@@ -383,12 +426,14 @@ newtype PutPipelineDefinitionOutput = PutPipelineDefinitionOutput
   , "ValidationWarnings'" :: NullOrUndefined (ValidationWarnings)
   , "Errored'" :: (Boolean)
   }
+derive instance newtypePutPipelineDefinitionOutput :: Newtype PutPipelineDefinitionOutput _
 
 
 -- | <p>Defines the query to run against an object.</p>
 newtype Query = Query 
   { "Selectors'" :: NullOrUndefined (SelectorList)
   }
+derive instance newtypeQuery :: Newtype Query _
 
 
 -- | <p>Contains the parameters for QueryObjects.</p>
@@ -399,6 +444,7 @@ newtype QueryObjectsInput = QueryObjectsInput
   , "Marker'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (Int)
   }
+derive instance newtypeQueryObjectsInput :: Newtype QueryObjectsInput _
 
 
 -- | <p>Contains the output of QueryObjects.</p>
@@ -407,6 +453,7 @@ newtype QueryObjectsOutput = QueryObjectsOutput
   , "Marker'" :: NullOrUndefined (String)
   , "HasMoreResults'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeQueryObjectsOutput :: Newtype QueryObjectsOutput _
 
 
 -- | <p>Contains the parameters for RemoveTags.</p>
@@ -414,12 +461,14 @@ newtype RemoveTagsInput = RemoveTagsInput
   { "PipelineId'" :: (Id')
   , "TagKeys'" :: (StringList')
   }
+derive instance newtypeRemoveTagsInput :: Newtype RemoveTagsInput _
 
 
 -- | <p>Contains the output of RemoveTags.</p>
 newtype RemoveTagsOutput = RemoveTagsOutput 
   { 
   }
+derive instance newtypeRemoveTagsOutput :: Newtype RemoveTagsOutput _
 
 
 -- | <p>Contains the parameters for ReportTaskProgress.</p>
@@ -427,12 +476,14 @@ newtype ReportTaskProgressInput = ReportTaskProgressInput
   { "TaskId'" :: (TaskId')
   , "Fields'" :: NullOrUndefined (FieldList')
   }
+derive instance newtypeReportTaskProgressInput :: Newtype ReportTaskProgressInput _
 
 
 -- | <p>Contains the output of ReportTaskProgress.</p>
 newtype ReportTaskProgressOutput = ReportTaskProgressOutput 
   { "Canceled'" :: (Boolean)
   }
+derive instance newtypeReportTaskProgressOutput :: Newtype ReportTaskProgressOutput _
 
 
 -- | <p>Contains the parameters for ReportTaskRunnerHeartbeat.</p>
@@ -441,12 +492,14 @@ newtype ReportTaskRunnerHeartbeatInput = ReportTaskRunnerHeartbeatInput
   , "WorkerGroup'" :: NullOrUndefined (String)
   , "Hostname'" :: NullOrUndefined (Id')
   }
+derive instance newtypeReportTaskRunnerHeartbeatInput :: Newtype ReportTaskRunnerHeartbeatInput _
 
 
 -- | <p>Contains the output of ReportTaskRunnerHeartbeat.</p>
 newtype ReportTaskRunnerHeartbeatOutput = ReportTaskRunnerHeartbeatOutput 
   { "Terminate'" :: (Boolean)
   }
+derive instance newtypeReportTaskRunnerHeartbeatOutput :: Newtype ReportTaskRunnerHeartbeatOutput _
 
 
 -- | <p>A comparision that is used to determine whether a query should return this object.</p>
@@ -454,10 +507,12 @@ newtype Selector = Selector
   { "FieldName'" :: NullOrUndefined (String)
   , "Operator'" :: NullOrUndefined (Operator)
   }
+derive instance newtypeSelector :: Newtype Selector _
 
 
 -- | <p>The list of Selectors that define queries on individual fields.</p>
 newtype SelectorList = SelectorList (Array Selector)
+derive instance newtypeSelectorList :: Newtype SelectorList _
 
 
 -- | <p>Contains the parameters for SetStatus.</p>
@@ -466,6 +521,7 @@ newtype SetStatusInput = SetStatusInput
   , "ObjectIds'" :: (IdList')
   , "Status'" :: (String)
   }
+derive instance newtypeSetStatusInput :: Newtype SetStatusInput _
 
 
 -- | <p>Contains the parameters for SetTaskStatus.</p>
@@ -476,12 +532,14 @@ newtype SetTaskStatusInput = SetTaskStatusInput
   , "ErrorMessage'" :: NullOrUndefined (ErrorMessage')
   , "ErrorStackTrace'" :: NullOrUndefined (String)
   }
+derive instance newtypeSetTaskStatusInput :: Newtype SetTaskStatusInput _
 
 
 -- | <p>Contains the output of SetTaskStatus.</p>
 newtype SetTaskStatusOutput = SetTaskStatusOutput 
   { 
   }
+derive instance newtypeSetTaskStatusOutput :: Newtype SetTaskStatusOutput _
 
 
 -- | <p>Tags are key/value pairs defined by a user and associated with a pipeline to control access. AWS Data Pipeline allows you to associate ten tags per pipeline. For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
@@ -489,12 +547,14 @@ newtype Tag = Tag
   { "Key'" :: (TagKey')
   , "Value'" :: (TagValue')
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 -- | <p>The specified task was not found. </p>
 newtype TaskNotFoundException = TaskNotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeTaskNotFoundException :: Newtype TaskNotFoundException _
 
 
 -- | <p>Contains information about a pipeline task that is assigned to a task runner.</p>
@@ -504,9 +564,11 @@ newtype TaskObject = TaskObject
   , "AttemptId'" :: NullOrUndefined (Id')
   , "Objects'" :: NullOrUndefined (PipelineObjectMap)
   }
+derive instance newtypeTaskObject :: Newtype TaskObject _
 
 
 newtype TaskStatus = TaskStatus String
+derive instance newtypeTaskStatus :: Newtype TaskStatus _
 
 
 -- | <p>Contains the parameters for ValidatePipelineDefinition.</p>
@@ -516,6 +578,7 @@ newtype ValidatePipelineDefinitionInput = ValidatePipelineDefinitionInput
   , "ParameterObjects'" :: NullOrUndefined (ParameterObjectList)
   , "ParameterValues'" :: NullOrUndefined (ParameterValueList)
   }
+derive instance newtypeValidatePipelineDefinitionInput :: Newtype ValidatePipelineDefinitionInput _
 
 
 -- | <p>Contains the output of ValidatePipelineDefinition.</p>
@@ -524,6 +587,7 @@ newtype ValidatePipelineDefinitionOutput = ValidatePipelineDefinitionOutput
   , "ValidationWarnings'" :: NullOrUndefined (ValidationWarnings)
   , "Errored'" :: (Boolean)
   }
+derive instance newtypeValidatePipelineDefinitionOutput :: Newtype ValidatePipelineDefinitionOutput _
 
 
 -- | <p>Defines a validation error. Validation errors prevent pipeline activation. The set of validation errors that can be returned are defined by AWS Data Pipeline.</p>
@@ -531,9 +595,11 @@ newtype ValidationError = ValidationError
   { "Id'" :: NullOrUndefined (Id')
   , "Errors'" :: NullOrUndefined (ValidationMessages')
   }
+derive instance newtypeValidationError :: Newtype ValidationError _
 
 
 newtype ValidationErrors = ValidationErrors (Array ValidationError)
+derive instance newtypeValidationErrors :: Newtype ValidationErrors _
 
 
 -- | <p>Defines a validation warning. Validation warnings do not prevent pipeline activation. The set of validation warnings that can be returned are defined by AWS Data Pipeline.</p>
@@ -541,60 +607,80 @@ newtype ValidationWarning = ValidationWarning
   { "Id'" :: NullOrUndefined (Id')
   , "Warnings'" :: NullOrUndefined (ValidationMessages')
   }
+derive instance newtypeValidationWarning :: Newtype ValidationWarning _
 
 
 newtype ValidationWarnings = ValidationWarnings (Array ValidationWarning)
+derive instance newtypeValidationWarnings :: Newtype ValidationWarnings _
 
 
 newtype AttributeNameString' = AttributeNameString' String
+derive instance newtypeAttributeNameString' :: Newtype AttributeNameString' _
 
 
 newtype AttributeValueString' = AttributeValueString' String
+derive instance newtypeAttributeValueString' :: Newtype AttributeValueString' _
 
 
 newtype CancelActive' = CancelActive' Boolean
+derive instance newtypeCancelActive' :: Newtype CancelActive' _
 
 
 newtype ErrorMessage' = ErrorMessage' String
+derive instance newtypeErrorMessage' :: Newtype ErrorMessage' _
 
 
 newtype FieldList' = FieldList' (Array Field)
+derive instance newtypeFieldList' :: Newtype FieldList' _
 
 
 newtype FieldNameString' = FieldNameString' String
+derive instance newtypeFieldNameString' :: Newtype FieldNameString' _
 
 
 newtype FieldStringValue' = FieldStringValue' String
+derive instance newtypeFieldStringValue' :: Newtype FieldStringValue' _
 
 
 newtype Id' = Id' String
+derive instance newtypeId' :: Newtype Id' _
 
 
 newtype IdList' = IdList' (Array Id')
+derive instance newtypeIdList' :: Newtype IdList' _
 
 
 newtype LongString' = LongString' String
+derive instance newtypeLongString' :: Newtype LongString' _
 
 
 newtype PipelineList' = PipelineList' (Array PipelineIdName)
+derive instance newtypePipelineList' :: Newtype PipelineList' _
 
 
 newtype StringList' = StringList' (Array String)
+derive instance newtypeStringList' :: Newtype StringList' _
 
 
 newtype TagKey' = TagKey' String
+derive instance newtypeTagKey' :: Newtype TagKey' _
 
 
 newtype TagList' = TagList' (Array Tag)
+derive instance newtypeTagList' :: Newtype TagList' _
 
 
 newtype TagValue' = TagValue' String
+derive instance newtypeTagValue' :: Newtype TagValue' _
 
 
 newtype TaskId' = TaskId' String
+derive instance newtypeTaskId' :: Newtype TaskId' _
 
 
 newtype ValidationMessage' = ValidationMessage' String
+derive instance newtypeValidationMessage' :: Newtype ValidationMessage' _
 
 
 newtype ValidationMessages' = ValidationMessages' (Array ValidationMessage')
+derive instance newtypeValidationMessages' :: Newtype ValidationMessages' _

@@ -6,6 +6,7 @@ module AWS.MediaStoreData where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -42,27 +43,33 @@ putObject = AWS.request serviceName "PutObject"
 newtype ContainerNotFoundException = ContainerNotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeContainerNotFoundException :: Newtype ContainerNotFoundException _
 
 
 newtype ContentRangePattern = ContentRangePattern String
+derive instance newtypeContentRangePattern :: Newtype ContentRangePattern _
 
 
 newtype ContentType = ContentType String
+derive instance newtypeContentType :: Newtype ContentType _
 
 
 newtype DeleteObjectRequest = DeleteObjectRequest 
   { "Path" :: (PathNaming)
   }
+derive instance newtypeDeleteObjectRequest :: Newtype DeleteObjectRequest _
 
 
 newtype DeleteObjectResponse = DeleteObjectResponse 
   { 
   }
+derive instance newtypeDeleteObjectResponse :: Newtype DeleteObjectResponse _
 
 
 newtype DescribeObjectRequest = DescribeObjectRequest 
   { "Path" :: (PathNaming)
   }
+derive instance newtypeDescribeObjectRequest :: Newtype DescribeObjectRequest _
 
 
 newtype DescribeObjectResponse = DescribeObjectResponse 
@@ -72,18 +79,22 @@ newtype DescribeObjectResponse = DescribeObjectResponse
   , "CacheControl" :: NullOrUndefined (StringPrimitive)
   , "LastModified" :: NullOrUndefined (TimeStamp)
   }
+derive instance newtypeDescribeObjectResponse :: Newtype DescribeObjectResponse _
 
 
 newtype ETag = ETag String
+derive instance newtypeETag :: Newtype ETag _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype GetObjectRequest = GetObjectRequest 
   { "Path" :: (PathNaming)
   , "Range" :: NullOrUndefined (RangePattern)
   }
+derive instance newtypeGetObjectRequest :: Newtype GetObjectRequest _
 
 
 newtype GetObjectResponse = GetObjectResponse 
@@ -96,12 +107,14 @@ newtype GetObjectResponse = GetObjectResponse
   , "LastModified" :: NullOrUndefined (TimeStamp)
   , "StatusCode" :: (StatusCode')
   }
+derive instance newtypeGetObjectResponse :: Newtype GetObjectResponse _
 
 
 -- | <p>The service is temporarily unavailable.</p>
 newtype InternalServerError = InternalServerError 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInternalServerError :: Newtype InternalServerError _
 
 
 -- | <p>A metadata entry for a folder or object.</p>
@@ -113,15 +126,19 @@ newtype Item = Item
   , "ContentType" :: NullOrUndefined (ContentType)
   , "ContentLength" :: NullOrUndefined (NonNegativeLong)
   }
+derive instance newtypeItem :: Newtype Item _
 
 
 newtype ItemList = ItemList (Array Item)
+derive instance newtypeItemList :: Newtype ItemList _
 
 
 newtype ItemName = ItemName String
+derive instance newtypeItemName :: Newtype ItemName _
 
 
 newtype ItemType = ItemType String
+derive instance newtypeItemType :: Newtype ItemType _
 
 
 newtype ListItemsRequest = ListItemsRequest 
@@ -129,36 +146,45 @@ newtype ListItemsRequest = ListItemsRequest
   , "MaxResults" :: NullOrUndefined (ListLimit)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListItemsRequest :: Newtype ListItemsRequest _
 
 
 newtype ListItemsResponse = ListItemsResponse 
   { "Items" :: NullOrUndefined (ItemList)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListItemsResponse :: Newtype ListItemsResponse _
 
 
 newtype ListLimit = ListLimit Int
+derive instance newtypeListLimit :: Newtype ListLimit _
 
 
 newtype ListPathNaming = ListPathNaming String
+derive instance newtypeListPathNaming :: Newtype ListPathNaming _
 
 
 newtype NonNegativeLong = NonNegativeLong Number
+derive instance newtypeNonNegativeLong :: Newtype NonNegativeLong _
 
 
 -- | <p>Could not perform an operation on an object that does not exist.</p>
 newtype ObjectNotFoundException = ObjectNotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeObjectNotFoundException :: Newtype ObjectNotFoundException _
 
 
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 newtype PathNaming = PathNaming String
+derive instance newtypePathNaming :: Newtype PathNaming _
 
 
 newtype PayloadBlob = PayloadBlob String
+derive instance newtypePayloadBlob :: Newtype PayloadBlob _
 
 
 newtype PutObjectRequest = PutObjectRequest 
@@ -168,6 +194,7 @@ newtype PutObjectRequest = PutObjectRequest
   , "CacheControl" :: NullOrUndefined (StringPrimitive)
   , "StorageClass" :: NullOrUndefined (StorageClass)
   }
+derive instance newtypePutObjectRequest :: Newtype PutObjectRequest _
 
 
 newtype PutObjectResponse = PutObjectResponse 
@@ -175,27 +202,35 @@ newtype PutObjectResponse = PutObjectResponse
   , "ETag" :: NullOrUndefined (ETag)
   , "StorageClass" :: NullOrUndefined (StorageClass)
   }
+derive instance newtypePutObjectResponse :: Newtype PutObjectResponse _
 
 
 newtype RangePattern = RangePattern String
+derive instance newtypeRangePattern :: Newtype RangePattern _
 
 
 -- | <p>The requested content range is not valid.</p>
 newtype RequestedRangeNotSatisfiableException = RequestedRangeNotSatisfiableException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeRequestedRangeNotSatisfiableException :: Newtype RequestedRangeNotSatisfiableException _
 
 
 newtype SHA256Hash = SHA256Hash String
+derive instance newtypeSHA256Hash :: Newtype SHA256Hash _
 
 
 newtype StorageClass = StorageClass String
+derive instance newtypeStorageClass :: Newtype StorageClass _
 
 
 newtype StringPrimitive = StringPrimitive String
+derive instance newtypeStringPrimitive :: Newtype StringPrimitive _
 
 
 newtype TimeStamp = TimeStamp Number
+derive instance newtypeTimeStamp :: Newtype TimeStamp _
 
 
 newtype StatusCode' = StatusCode' Int
+derive instance newtypeStatusCode' :: Newtype StatusCode' _

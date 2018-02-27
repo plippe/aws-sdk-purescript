@@ -6,6 +6,7 @@ module AWS.MigrationHub where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -97,12 +98,15 @@ putResourceAttributes = AWS.request serviceName "PutResourceAttributes"
 newtype AccessDeniedException = AccessDeniedException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeAccessDeniedException :: Newtype AccessDeniedException _
 
 
 newtype ApplicationId = ApplicationId String
+derive instance newtypeApplicationId :: Newtype ApplicationId _
 
 
 newtype ApplicationStatus = ApplicationStatus String
+derive instance newtypeApplicationStatus :: Newtype ApplicationStatus _
 
 
 newtype AssociateCreatedArtifactRequest = AssociateCreatedArtifactRequest 
@@ -111,11 +115,13 @@ newtype AssociateCreatedArtifactRequest = AssociateCreatedArtifactRequest
   , "CreatedArtifact" :: (CreatedArtifact)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeAssociateCreatedArtifactRequest :: Newtype AssociateCreatedArtifactRequest _
 
 
 newtype AssociateCreatedArtifactResult = AssociateCreatedArtifactResult 
   { 
   }
+derive instance newtypeAssociateCreatedArtifactResult :: Newtype AssociateCreatedArtifactResult _
 
 
 newtype AssociateDiscoveredResourceRequest = AssociateDiscoveredResourceRequest 
@@ -124,25 +130,30 @@ newtype AssociateDiscoveredResourceRequest = AssociateDiscoveredResourceRequest
   , "DiscoveredResource" :: (DiscoveredResource)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeAssociateDiscoveredResourceRequest :: Newtype AssociateDiscoveredResourceRequest _
 
 
 newtype AssociateDiscoveredResourceResult = AssociateDiscoveredResourceResult 
   { 
   }
+derive instance newtypeAssociateDiscoveredResourceResult :: Newtype AssociateDiscoveredResourceResult _
 
 
 newtype ConfigurationId = ConfigurationId String
+derive instance newtypeConfigurationId :: Newtype ConfigurationId _
 
 
 newtype CreateProgressUpdateStreamRequest = CreateProgressUpdateStreamRequest 
   { "ProgressUpdateStreamName" :: (ProgressUpdateStream)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeCreateProgressUpdateStreamRequest :: Newtype CreateProgressUpdateStreamRequest _
 
 
 newtype CreateProgressUpdateStreamResult = CreateProgressUpdateStreamResult 
   { 
   }
+derive instance newtypeCreateProgressUpdateStreamResult :: Newtype CreateProgressUpdateStreamResult _
 
 
 -- | <p>An ARN of the AWS cloud resource target receiving the migration (e.g., AMI, EC2 instance, RDS instance, etc.).</p>
@@ -150,48 +161,58 @@ newtype CreatedArtifact = CreatedArtifact
   { "Name" :: (CreatedArtifactName)
   , "Description" :: NullOrUndefined (CreatedArtifactDescription)
   }
+derive instance newtypeCreatedArtifact :: Newtype CreatedArtifact _
 
 
 newtype CreatedArtifactDescription = CreatedArtifactDescription String
+derive instance newtypeCreatedArtifactDescription :: Newtype CreatedArtifactDescription _
 
 
 newtype CreatedArtifactList = CreatedArtifactList (Array CreatedArtifact)
+derive instance newtypeCreatedArtifactList :: Newtype CreatedArtifactList _
 
 
 newtype CreatedArtifactName = CreatedArtifactName String
+derive instance newtypeCreatedArtifactName :: Newtype CreatedArtifactName _
 
 
 newtype DeleteProgressUpdateStreamRequest = DeleteProgressUpdateStreamRequest 
   { "ProgressUpdateStreamName" :: (ProgressUpdateStream)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeDeleteProgressUpdateStreamRequest :: Newtype DeleteProgressUpdateStreamRequest _
 
 
 newtype DeleteProgressUpdateStreamResult = DeleteProgressUpdateStreamResult 
   { 
   }
+derive instance newtypeDeleteProgressUpdateStreamResult :: Newtype DeleteProgressUpdateStreamResult _
 
 
 newtype DescribeApplicationStateRequest = DescribeApplicationStateRequest 
   { "ApplicationId" :: (ApplicationId)
   }
+derive instance newtypeDescribeApplicationStateRequest :: Newtype DescribeApplicationStateRequest _
 
 
 newtype DescribeApplicationStateResult = DescribeApplicationStateResult 
   { "ApplicationStatus" :: NullOrUndefined (ApplicationStatus)
   , "LastUpdatedTime" :: NullOrUndefined (UpdateDateTime)
   }
+derive instance newtypeDescribeApplicationStateResult :: Newtype DescribeApplicationStateResult _
 
 
 newtype DescribeMigrationTaskRequest = DescribeMigrationTaskRequest 
   { "ProgressUpdateStream" :: (ProgressUpdateStream)
   , "MigrationTaskName" :: (MigrationTaskName)
   }
+derive instance newtypeDescribeMigrationTaskRequest :: Newtype DescribeMigrationTaskRequest _
 
 
 newtype DescribeMigrationTaskResult = DescribeMigrationTaskResult 
   { "MigrationTask" :: NullOrUndefined (MigrationTask)
   }
+derive instance newtypeDescribeMigrationTaskResult :: Newtype DescribeMigrationTaskResult _
 
 
 newtype DisassociateCreatedArtifactRequest = DisassociateCreatedArtifactRequest 
@@ -200,11 +221,13 @@ newtype DisassociateCreatedArtifactRequest = DisassociateCreatedArtifactRequest
   , "CreatedArtifactName" :: (CreatedArtifactName)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeDisassociateCreatedArtifactRequest :: Newtype DisassociateCreatedArtifactRequest _
 
 
 newtype DisassociateCreatedArtifactResult = DisassociateCreatedArtifactResult 
   { 
   }
+derive instance newtypeDisassociateCreatedArtifactResult :: Newtype DisassociateCreatedArtifactResult _
 
 
 newtype DisassociateDiscoveredResourceRequest = DisassociateDiscoveredResourceRequest 
@@ -213,11 +236,13 @@ newtype DisassociateDiscoveredResourceRequest = DisassociateDiscoveredResourceRe
   , "ConfigurationId" :: (ConfigurationId)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeDisassociateDiscoveredResourceRequest :: Newtype DisassociateDiscoveredResourceRequest _
 
 
 newtype DisassociateDiscoveredResourceResult = DisassociateDiscoveredResourceResult 
   { 
   }
+derive instance newtypeDisassociateDiscoveredResourceResult :: Newtype DisassociateDiscoveredResourceResult _
 
 
 -- | <p>Object representing the on-premises resource being migrated.</p>
@@ -225,24 +250,30 @@ newtype DiscoveredResource = DiscoveredResource
   { "ConfigurationId" :: (ConfigurationId)
   , "Description" :: NullOrUndefined (DiscoveredResourceDescription)
   }
+derive instance newtypeDiscoveredResource :: Newtype DiscoveredResource _
 
 
 newtype DiscoveredResourceDescription = DiscoveredResourceDescription String
+derive instance newtypeDiscoveredResourceDescription :: Newtype DiscoveredResourceDescription _
 
 
 newtype DiscoveredResourceList = DiscoveredResourceList (Array DiscoveredResource)
+derive instance newtypeDiscoveredResourceList :: Newtype DiscoveredResourceList _
 
 
 newtype DryRun = DryRun Boolean
+derive instance newtypeDryRun :: Newtype DryRun _
 
 
 -- | <p>Exception raised to indicate a successfully authorized action when the <code>DryRun</code> flag is set to "true".</p>
 newtype DryRunOperation = DryRunOperation 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDryRunOperation :: Newtype DryRunOperation _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype ImportMigrationTaskRequest = ImportMigrationTaskRequest 
@@ -250,26 +281,31 @@ newtype ImportMigrationTaskRequest = ImportMigrationTaskRequest
   , "MigrationTaskName" :: (MigrationTaskName)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeImportMigrationTaskRequest :: Newtype ImportMigrationTaskRequest _
 
 
 newtype ImportMigrationTaskResult = ImportMigrationTaskResult 
   { 
   }
+derive instance newtypeImportMigrationTaskResult :: Newtype ImportMigrationTaskResult _
 
 
 -- | <p>Exception raised when there is an internal, configuration, or dependency error encountered.</p>
 newtype InternalServerError = InternalServerError 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInternalServerError :: Newtype InternalServerError _
 
 
 -- | <p>Exception raised when the provided input violates a policy constraint or is entered in the wrong format or data type.</p>
 newtype InvalidInputException = InvalidInputException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidInputException :: Newtype InvalidInputException _
 
 
 newtype LatestResourceAttributeList = LatestResourceAttributeList (Array ResourceAttribute)
+derive instance newtypeLatestResourceAttributeList :: Newtype LatestResourceAttributeList _
 
 
 newtype ListCreatedArtifactsRequest = ListCreatedArtifactsRequest 
@@ -278,12 +314,14 @@ newtype ListCreatedArtifactsRequest = ListCreatedArtifactsRequest
   , "NextToken" :: NullOrUndefined (Token)
   , "MaxResults" :: NullOrUndefined (MaxResultsCreatedArtifacts)
   }
+derive instance newtypeListCreatedArtifactsRequest :: Newtype ListCreatedArtifactsRequest _
 
 
 newtype ListCreatedArtifactsResult = ListCreatedArtifactsResult 
   { "NextToken" :: NullOrUndefined (Token)
   , "CreatedArtifactList" :: NullOrUndefined (CreatedArtifactList)
   }
+derive instance newtypeListCreatedArtifactsResult :: Newtype ListCreatedArtifactsResult _
 
 
 newtype ListDiscoveredResourcesRequest = ListDiscoveredResourcesRequest 
@@ -292,12 +330,14 @@ newtype ListDiscoveredResourcesRequest = ListDiscoveredResourcesRequest
   , "NextToken" :: NullOrUndefined (Token)
   , "MaxResults" :: NullOrUndefined (MaxResultsResources)
   }
+derive instance newtypeListDiscoveredResourcesRequest :: Newtype ListDiscoveredResourcesRequest _
 
 
 newtype ListDiscoveredResourcesResult = ListDiscoveredResourcesResult 
   { "NextToken" :: NullOrUndefined (Token)
   , "DiscoveredResourceList" :: NullOrUndefined (DiscoveredResourceList)
   }
+derive instance newtypeListDiscoveredResourcesResult :: Newtype ListDiscoveredResourcesResult _
 
 
 newtype ListMigrationTasksRequest = ListMigrationTasksRequest 
@@ -305,33 +345,40 @@ newtype ListMigrationTasksRequest = ListMigrationTasksRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "ResourceName" :: NullOrUndefined (ResourceName)
   }
+derive instance newtypeListMigrationTasksRequest :: Newtype ListMigrationTasksRequest _
 
 
 newtype ListMigrationTasksResult = ListMigrationTasksResult 
   { "NextToken" :: NullOrUndefined (Token)
   , "MigrationTaskSummaryList" :: NullOrUndefined (MigrationTaskSummaryList)
   }
+derive instance newtypeListMigrationTasksResult :: Newtype ListMigrationTasksResult _
 
 
 newtype ListProgressUpdateStreamsRequest = ListProgressUpdateStreamsRequest 
   { "NextToken" :: NullOrUndefined (Token)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListProgressUpdateStreamsRequest :: Newtype ListProgressUpdateStreamsRequest _
 
 
 newtype ListProgressUpdateStreamsResult = ListProgressUpdateStreamsResult 
   { "ProgressUpdateStreamSummaryList" :: NullOrUndefined (ProgressUpdateStreamSummaryList)
   , "NextToken" :: NullOrUndefined (Token)
   }
+derive instance newtypeListProgressUpdateStreamsResult :: Newtype ListProgressUpdateStreamsResult _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype MaxResultsCreatedArtifacts = MaxResultsCreatedArtifacts Int
+derive instance newtypeMaxResultsCreatedArtifacts :: Newtype MaxResultsCreatedArtifacts _
 
 
 newtype MaxResultsResources = MaxResultsResources Int
+derive instance newtypeMaxResultsResources :: Newtype MaxResultsResources _
 
 
 -- | <p>Represents a migration task in a migration tool.</p>
@@ -342,9 +389,11 @@ newtype MigrationTask = MigrationTask
   , "UpdateDateTime" :: NullOrUndefined (UpdateDateTime)
   , "ResourceAttributeList" :: NullOrUndefined (LatestResourceAttributeList)
   }
+derive instance newtypeMigrationTask :: Newtype MigrationTask _
 
 
 newtype MigrationTaskName = MigrationTaskName String
+derive instance newtypeMigrationTaskName :: Newtype MigrationTaskName _
 
 
 -- | <p>MigrationTaskSummary includes <code>MigrationTaskName</code>, <code>ProgressPercent</code>, <code>ProgressUpdateStream</code>, <code>Status</code>, and <code>UpdateDateTime</code> for each task.</p>
@@ -356,12 +405,15 @@ newtype MigrationTaskSummary = MigrationTaskSummary
   , "StatusDetail" :: NullOrUndefined (StatusDetail)
   , "UpdateDateTime" :: NullOrUndefined (UpdateDateTime)
   }
+derive instance newtypeMigrationTaskSummary :: Newtype MigrationTaskSummary _
 
 
 newtype MigrationTaskSummaryList = MigrationTaskSummaryList (Array MigrationTaskSummary)
+derive instance newtypeMigrationTaskSummaryList :: Newtype MigrationTaskSummaryList _
 
 
 newtype NextUpdateSeconds = NextUpdateSeconds Int
+derive instance newtypeNextUpdateSeconds :: Newtype NextUpdateSeconds _
 
 
 newtype NotifyApplicationStateRequest = NotifyApplicationStateRequest 
@@ -369,11 +421,13 @@ newtype NotifyApplicationStateRequest = NotifyApplicationStateRequest
   , "Status" :: (ApplicationStatus)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeNotifyApplicationStateRequest :: Newtype NotifyApplicationStateRequest _
 
 
 newtype NotifyApplicationStateResult = NotifyApplicationStateResult 
   { 
   }
+derive instance newtypeNotifyApplicationStateResult :: Newtype NotifyApplicationStateResult _
 
 
 newtype NotifyMigrationTaskStateRequest = NotifyMigrationTaskStateRequest 
@@ -384,32 +438,39 @@ newtype NotifyMigrationTaskStateRequest = NotifyMigrationTaskStateRequest
   , "NextUpdateSeconds" :: (NextUpdateSeconds)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypeNotifyMigrationTaskStateRequest :: Newtype NotifyMigrationTaskStateRequest _
 
 
 newtype NotifyMigrationTaskStateResult = NotifyMigrationTaskStateResult 
   { 
   }
+derive instance newtypeNotifyMigrationTaskStateResult :: Newtype NotifyMigrationTaskStateResult _
 
 
 -- | <p>Exception raised when there are problems accessing ADS (Application Discovery Service); most likely due to a misconfigured policy or the <code>ADSCaller</code> role is missing or not configured correctly.</p>
 newtype PolicyErrorException = PolicyErrorException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypePolicyErrorException :: Newtype PolicyErrorException _
 
 
 newtype ProgressPercent = ProgressPercent Int
+derive instance newtypeProgressPercent :: Newtype ProgressPercent _
 
 
 newtype ProgressUpdateStream = ProgressUpdateStream String
+derive instance newtypeProgressUpdateStream :: Newtype ProgressUpdateStream _
 
 
 -- | <p>Summary of the AWS resource used for access control that is implicitly linked to your AWS account.</p>
 newtype ProgressUpdateStreamSummary = ProgressUpdateStreamSummary 
   { "ProgressUpdateStreamName" :: NullOrUndefined (ProgressUpdateStream)
   }
+derive instance newtypeProgressUpdateStreamSummary :: Newtype ProgressUpdateStreamSummary _
 
 
 newtype ProgressUpdateStreamSummaryList = ProgressUpdateStreamSummaryList (Array ProgressUpdateStreamSummary)
+derive instance newtypeProgressUpdateStreamSummaryList :: Newtype ProgressUpdateStreamSummaryList _
 
 
 newtype PutResourceAttributesRequest = PutResourceAttributesRequest 
@@ -418,11 +479,13 @@ newtype PutResourceAttributesRequest = PutResourceAttributesRequest
   , "ResourceAttributeList" :: (ResourceAttributeList)
   , "DryRun" :: NullOrUndefined (DryRun)
   }
+derive instance newtypePutResourceAttributesRequest :: Newtype PutResourceAttributesRequest _
 
 
 newtype PutResourceAttributesResult = PutResourceAttributesResult 
   { 
   }
+derive instance newtypePutResourceAttributesResult :: Newtype PutResourceAttributesResult _
 
 
 -- | <p>Attribute associated with a resource.</p>
@@ -430,36 +493,45 @@ newtype ResourceAttribute = ResourceAttribute
   { "Type" :: (ResourceAttributeType)
   , "Value" :: (ResourceAttributeValue)
   }
+derive instance newtypeResourceAttribute :: Newtype ResourceAttribute _
 
 
 newtype ResourceAttributeList = ResourceAttributeList (Array ResourceAttribute)
+derive instance newtypeResourceAttributeList :: Newtype ResourceAttributeList _
 
 
 newtype ResourceAttributeType = ResourceAttributeType String
+derive instance newtypeResourceAttributeType :: Newtype ResourceAttributeType _
 
 
 newtype ResourceAttributeValue = ResourceAttributeValue String
+derive instance newtypeResourceAttributeValue :: Newtype ResourceAttributeValue _
 
 
 newtype ResourceName = ResourceName String
+derive instance newtypeResourceName :: Newtype ResourceName _
 
 
 -- | <p>Exception raised when the request references a resource (ADS configuration, update stream, migration task, etc.) that does not exist in ADS (Application Discovery Service) or in Migration Hub's repository.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>Exception raised when the service encounters throttled communication with upstream dependencies or is overloaded with requests.</p>
 newtype ServiceUnavailableException = ServiceUnavailableException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 newtype Status = Status String
+derive instance newtypeStatus :: Newtype Status _
 
 
 newtype StatusDetail = StatusDetail String
+derive instance newtypeStatusDetail :: Newtype StatusDetail _
 
 
 -- | <p>Task object encapsulating task information.</p>
@@ -468,15 +540,19 @@ newtype Task = Task
   , "StatusDetail" :: NullOrUndefined (StatusDetail)
   , "ProgressPercent" :: NullOrUndefined (ProgressPercent)
   }
+derive instance newtypeTask :: Newtype Task _
 
 
 newtype Token = Token String
+derive instance newtypeToken :: Newtype Token _
 
 
 -- | <p>Exception raised to indicate a request was not authorized when the <code>DryRun</code> flag is set to "true".</p>
 newtype UnauthorizedOperation = UnauthorizedOperation 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeUnauthorizedOperation :: Newtype UnauthorizedOperation _
 
 
 newtype UpdateDateTime = UpdateDateTime Number
+derive instance newtypeUpdateDateTime :: Newtype UpdateDateTime _

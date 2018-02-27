@@ -5,6 +5,7 @@ module AWS.Pinpoint where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -318,6 +319,7 @@ newtype ADMChannelRequest = ADMChannelRequest
   , "ClientSecret" :: NullOrUndefined (String)
   , "Enabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeADMChannelRequest :: Newtype ADMChannelRequest _
 
 
 -- | Amazon Device Messaging channel definition.
@@ -333,6 +335,7 @@ newtype ADMChannelResponse = ADMChannelResponse
   , "Platform" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeADMChannelResponse :: Newtype ADMChannelResponse _
 
 
 -- | ADM Message.
@@ -354,6 +357,7 @@ newtype ADMMessage = ADMMessage
   , "Title" :: NullOrUndefined (String)
   , "Url" :: NullOrUndefined (String)
   }
+derive instance newtypeADMMessage :: Newtype ADMMessage _
 
 
 -- | Apple Push Notification Service channel definition.
@@ -367,6 +371,7 @@ newtype APNSChannelRequest = APNSChannelRequest
   , "TokenKey" :: NullOrUndefined (String)
   , "TokenKeyId" :: NullOrUndefined (String)
   }
+derive instance newtypeAPNSChannelRequest :: Newtype APNSChannelRequest _
 
 
 -- | Apple Distribution Push Notification Service channel definition.
@@ -384,6 +389,7 @@ newtype APNSChannelResponse = APNSChannelResponse
   , "Platform" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeAPNSChannelResponse :: Newtype APNSChannelResponse _
 
 
 -- | APNS Message.
@@ -406,6 +412,7 @@ newtype APNSMessage = APNSMessage
   , "Title" :: NullOrUndefined (String)
   , "Url" :: NullOrUndefined (String)
   }
+derive instance newtypeAPNSMessage :: Newtype APNSMessage _
 
 
 -- | Apple Development Push Notification Service channel definition.
@@ -419,6 +426,7 @@ newtype APNSSandboxChannelRequest = APNSSandboxChannelRequest
   , "TokenKey" :: NullOrUndefined (String)
   , "TokenKeyId" :: NullOrUndefined (String)
   }
+derive instance newtypeAPNSSandboxChannelRequest :: Newtype APNSSandboxChannelRequest _
 
 
 -- | Apple Development Push Notification Service channel definition.
@@ -436,6 +444,7 @@ newtype APNSSandboxChannelResponse = APNSSandboxChannelResponse
   , "Platform" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeAPNSSandboxChannelResponse :: Newtype APNSSandboxChannelResponse _
 
 
 -- | Apple VoIP Push Notification Service channel definition.
@@ -449,6 +458,7 @@ newtype APNSVoipChannelRequest = APNSVoipChannelRequest
   , "TokenKey" :: NullOrUndefined (String)
   , "TokenKeyId" :: NullOrUndefined (String)
   }
+derive instance newtypeAPNSVoipChannelRequest :: Newtype APNSVoipChannelRequest _
 
 
 -- | Apple VoIP Push Notification Service channel definition.
@@ -466,6 +476,7 @@ newtype APNSVoipChannelResponse = APNSVoipChannelResponse
   , "Platform" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeAPNSVoipChannelResponse :: Newtype APNSVoipChannelResponse _
 
 
 -- | Apple VoIP Developer Push Notification Service channel definition.
@@ -479,6 +490,7 @@ newtype APNSVoipSandboxChannelRequest = APNSVoipSandboxChannelRequest
   , "TokenKey" :: NullOrUndefined (String)
   , "TokenKeyId" :: NullOrUndefined (String)
   }
+derive instance newtypeAPNSVoipSandboxChannelRequest :: Newtype APNSVoipSandboxChannelRequest _
 
 
 -- | Apple VoIP Developer Push Notification Service channel definition.
@@ -496,15 +508,18 @@ newtype APNSVoipSandboxChannelResponse = APNSVoipSandboxChannelResponse
   , "Platform" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeAPNSVoipSandboxChannelResponse :: Newtype APNSVoipSandboxChannelResponse _
 
 
 newtype Action = Action String
+derive instance newtypeAction :: Newtype Action _
 
 
 -- | Activities for campaign.
 newtype ActivitiesResponse = ActivitiesResponse 
   { "Item" :: NullOrUndefined (ListOfActivityResponse)
   }
+derive instance newtypeActivitiesResponse :: Newtype ActivitiesResponse _
 
 
 -- | Activity definition
@@ -523,6 +538,7 @@ newtype ActivityResponse = ActivityResponse
   , "TotalEndpointCount" :: NullOrUndefined (Int)
   , "TreatmentId" :: NullOrUndefined (String)
   }
+derive instance newtypeActivityResponse :: Newtype ActivityResponse _
 
 
 -- | Address configuration.
@@ -534,6 +550,7 @@ newtype AddressConfiguration = AddressConfiguration
   , "Substitutions" :: NullOrUndefined (MapOfListOf__string)
   , "TitleOverride" :: NullOrUndefined (String)
   }
+derive instance newtypeAddressConfiguration :: Newtype AddressConfiguration _
 
 
 -- | Application Response.
@@ -541,6 +558,7 @@ newtype ApplicationResponse = ApplicationResponse
   { "Id" :: NullOrUndefined (String)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeApplicationResponse :: Newtype ApplicationResponse _
 
 
 -- | Application settings.
@@ -550,6 +568,7 @@ newtype ApplicationSettingsResource = ApplicationSettingsResource
   , "Limits" :: NullOrUndefined (CampaignLimits)
   , "QuietTime" :: NullOrUndefined (QuietTime)
   }
+derive instance newtypeApplicationSettingsResource :: Newtype ApplicationSettingsResource _
 
 
 -- | Get Applications Result.
@@ -557,6 +576,7 @@ newtype ApplicationsResponse = ApplicationsResponse
   { "Item" :: NullOrUndefined (ListOfApplicationResponse)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeApplicationsResponse :: Newtype ApplicationsResponse _
 
 
 -- | Custom attibute dimension
@@ -564,9 +584,11 @@ newtype AttributeDimension = AttributeDimension
   { "AttributeType" :: NullOrUndefined (AttributeType)
   , "Values" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeAttributeDimension :: Newtype AttributeDimension _
 
 
 newtype AttributeType = AttributeType String
+derive instance newtypeAttributeType :: Newtype AttributeType _
 
 
 -- | Simple message object.
@@ -574,6 +596,7 @@ newtype BadRequestException = BadRequestException
   { "Message" :: NullOrUndefined (String)
   , "RequestID" :: NullOrUndefined (String)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 -- | Baidu Cloud Push credentials
@@ -582,6 +605,7 @@ newtype BaiduChannelRequest = BaiduChannelRequest
   , "Enabled" :: NullOrUndefined (Boolean)
   , "SecretKey" :: NullOrUndefined (String)
   }
+derive instance newtypeBaiduChannelRequest :: Newtype BaiduChannelRequest _
 
 
 -- | Baidu Cloud Messaging channel definition
@@ -598,6 +622,7 @@ newtype BaiduChannelResponse = BaiduChannelResponse
   , "Platform" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeBaiduChannelResponse :: Newtype BaiduChannelResponse _
 
 
 -- | Baidu Message.
@@ -616,6 +641,7 @@ newtype BaiduMessage = BaiduMessage
   , "Title" :: NullOrUndefined (String)
   , "Url" :: NullOrUndefined (String)
   }
+derive instance newtypeBaiduMessage :: Newtype BaiduMessage _
 
 
 -- | The email message configuration.
@@ -625,6 +651,7 @@ newtype CampaignEmailMessage = CampaignEmailMessage
   , "HtmlBody" :: NullOrUndefined (String)
   , "Title" :: NullOrUndefined (String)
   }
+derive instance newtypeCampaignEmailMessage :: Newtype CampaignEmailMessage _
 
 
 -- | Campaign Limits are used to limit the number of messages that can be sent to a user.
@@ -634,6 +661,7 @@ newtype CampaignLimits = CampaignLimits
   , "MessagesPerSecond" :: NullOrUndefined (Int)
   , "Total" :: NullOrUndefined (Int)
   }
+derive instance newtypeCampaignLimits :: Newtype CampaignLimits _
 
 
 -- | Campaign definition
@@ -658,6 +686,7 @@ newtype CampaignResponse = CampaignResponse
   , "TreatmentName" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeCampaignResponse :: Newtype CampaignResponse _
 
 
 -- | SMS message configuration.
@@ -666,15 +695,18 @@ newtype CampaignSmsMessage = CampaignSmsMessage
   , "MessageType" :: NullOrUndefined (MessageType)
   , "SenderId" :: NullOrUndefined (String)
   }
+derive instance newtypeCampaignSmsMessage :: Newtype CampaignSmsMessage _
 
 
 -- | State of the Campaign
 newtype CampaignState = CampaignState 
   { "CampaignStatus" :: NullOrUndefined (CampaignStatus)
   }
+derive instance newtypeCampaignState :: Newtype CampaignState _
 
 
 newtype CampaignStatus = CampaignStatus String
+derive instance newtypeCampaignStatus :: Newtype CampaignStatus _
 
 
 -- | List of available campaigns.
@@ -682,58 +714,69 @@ newtype CampaignsResponse = CampaignsResponse
   { "Item" :: NullOrUndefined (ListOfCampaignResponse)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeCampaignsResponse :: Newtype CampaignsResponse _
 
 
 newtype ChannelType = ChannelType String
+derive instance newtypeChannelType :: Newtype ChannelType _
 
 
 newtype CreateAppRequest = CreateAppRequest 
   { "CreateApplicationRequest" :: (CreateApplicationRequest)
   }
+derive instance newtypeCreateAppRequest :: Newtype CreateAppRequest _
 
 
 newtype CreateAppResponse = CreateAppResponse 
   { "ApplicationResponse" :: (ApplicationResponse)
   }
+derive instance newtypeCreateAppResponse :: Newtype CreateAppResponse _
 
 
 -- | Application Request.
 newtype CreateApplicationRequest = CreateApplicationRequest 
   { "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationRequest :: Newtype CreateApplicationRequest _
 
 
 newtype CreateCampaignRequest = CreateCampaignRequest 
   { "ApplicationId" :: (String)
   , "WriteCampaignRequest" :: (WriteCampaignRequest)
   }
+derive instance newtypeCreateCampaignRequest :: Newtype CreateCampaignRequest _
 
 
 newtype CreateCampaignResponse = CreateCampaignResponse 
   { "CampaignResponse" :: (CampaignResponse)
   }
+derive instance newtypeCreateCampaignResponse :: Newtype CreateCampaignResponse _
 
 
 newtype CreateImportJobRequest = CreateImportJobRequest 
   { "ApplicationId" :: (String)
   , "ImportJobRequest" :: (ImportJobRequest)
   }
+derive instance newtypeCreateImportJobRequest :: Newtype CreateImportJobRequest _
 
 
 newtype CreateImportJobResponse = CreateImportJobResponse 
   { "ImportJobResponse" :: (ImportJobResponse)
   }
+derive instance newtypeCreateImportJobResponse :: Newtype CreateImportJobResponse _
 
 
 newtype CreateSegmentRequest = CreateSegmentRequest 
   { "ApplicationId" :: (String)
   , "WriteSegmentRequest" :: (WriteSegmentRequest)
   }
+derive instance newtypeCreateSegmentRequest :: Newtype CreateSegmentRequest _
 
 
 newtype CreateSegmentResponse = CreateSegmentResponse 
   { "SegmentResponse" :: (SegmentResponse)
   }
+derive instance newtypeCreateSegmentResponse :: Newtype CreateSegmentResponse _
 
 
 -- | Default Message across push notification, email, and sms.
@@ -741,6 +784,7 @@ newtype DefaultMessage = DefaultMessage
   { "Body" :: NullOrUndefined (String)
   , "Substitutions" :: NullOrUndefined (MapOfListOf__string)
   }
+derive instance newtypeDefaultMessage :: Newtype DefaultMessage _
 
 
 -- | Default Push Notification Message.
@@ -753,145 +797,174 @@ newtype DefaultPushNotificationMessage = DefaultPushNotificationMessage
   , "Title" :: NullOrUndefined (String)
   , "Url" :: NullOrUndefined (String)
   }
+derive instance newtypeDefaultPushNotificationMessage :: Newtype DefaultPushNotificationMessage _
 
 
 newtype DeleteAdmChannelRequest = DeleteAdmChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteAdmChannelRequest :: Newtype DeleteAdmChannelRequest _
 
 
 newtype DeleteAdmChannelResponse = DeleteAdmChannelResponse 
   { "ADMChannelResponse" :: (ADMChannelResponse)
   }
+derive instance newtypeDeleteAdmChannelResponse :: Newtype DeleteAdmChannelResponse _
 
 
 newtype DeleteApnsChannelRequest = DeleteApnsChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteApnsChannelRequest :: Newtype DeleteApnsChannelRequest _
 
 
 newtype DeleteApnsChannelResponse = DeleteApnsChannelResponse 
   { "APNSChannelResponse" :: (APNSChannelResponse)
   }
+derive instance newtypeDeleteApnsChannelResponse :: Newtype DeleteApnsChannelResponse _
 
 
 newtype DeleteApnsSandboxChannelRequest = DeleteApnsSandboxChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteApnsSandboxChannelRequest :: Newtype DeleteApnsSandboxChannelRequest _
 
 
 newtype DeleteApnsSandboxChannelResponse = DeleteApnsSandboxChannelResponse 
   { "APNSSandboxChannelResponse" :: (APNSSandboxChannelResponse)
   }
+derive instance newtypeDeleteApnsSandboxChannelResponse :: Newtype DeleteApnsSandboxChannelResponse _
 
 
 newtype DeleteApnsVoipChannelRequest = DeleteApnsVoipChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteApnsVoipChannelRequest :: Newtype DeleteApnsVoipChannelRequest _
 
 
 newtype DeleteApnsVoipChannelResponse = DeleteApnsVoipChannelResponse 
   { "APNSVoipChannelResponse" :: (APNSVoipChannelResponse)
   }
+derive instance newtypeDeleteApnsVoipChannelResponse :: Newtype DeleteApnsVoipChannelResponse _
 
 
 newtype DeleteApnsVoipSandboxChannelRequest = DeleteApnsVoipSandboxChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteApnsVoipSandboxChannelRequest :: Newtype DeleteApnsVoipSandboxChannelRequest _
 
 
 newtype DeleteApnsVoipSandboxChannelResponse = DeleteApnsVoipSandboxChannelResponse 
   { "APNSVoipSandboxChannelResponse" :: (APNSVoipSandboxChannelResponse)
   }
+derive instance newtypeDeleteApnsVoipSandboxChannelResponse :: Newtype DeleteApnsVoipSandboxChannelResponse _
 
 
 newtype DeleteAppRequest = DeleteAppRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteAppRequest :: Newtype DeleteAppRequest _
 
 
 newtype DeleteAppResponse = DeleteAppResponse 
   { "ApplicationResponse" :: (ApplicationResponse)
   }
+derive instance newtypeDeleteAppResponse :: Newtype DeleteAppResponse _
 
 
 newtype DeleteBaiduChannelRequest = DeleteBaiduChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteBaiduChannelRequest :: Newtype DeleteBaiduChannelRequest _
 
 
 newtype DeleteBaiduChannelResponse = DeleteBaiduChannelResponse 
   { "BaiduChannelResponse" :: (BaiduChannelResponse)
   }
+derive instance newtypeDeleteBaiduChannelResponse :: Newtype DeleteBaiduChannelResponse _
 
 
 newtype DeleteCampaignRequest = DeleteCampaignRequest 
   { "ApplicationId" :: (String)
   , "CampaignId" :: (String)
   }
+derive instance newtypeDeleteCampaignRequest :: Newtype DeleteCampaignRequest _
 
 
 newtype DeleteCampaignResponse = DeleteCampaignResponse 
   { "CampaignResponse" :: (CampaignResponse)
   }
+derive instance newtypeDeleteCampaignResponse :: Newtype DeleteCampaignResponse _
 
 
 newtype DeleteEmailChannelRequest = DeleteEmailChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteEmailChannelRequest :: Newtype DeleteEmailChannelRequest _
 
 
 newtype DeleteEmailChannelResponse = DeleteEmailChannelResponse 
   { "EmailChannelResponse" :: (EmailChannelResponse)
   }
+derive instance newtypeDeleteEmailChannelResponse :: Newtype DeleteEmailChannelResponse _
 
 
 -- | DeleteEventStream Request
 newtype DeleteEventStreamRequest = DeleteEventStreamRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteEventStreamRequest :: Newtype DeleteEventStreamRequest _
 
 
 newtype DeleteEventStreamResponse = DeleteEventStreamResponse 
   { "EventStream" :: (EventStream)
   }
+derive instance newtypeDeleteEventStreamResponse :: Newtype DeleteEventStreamResponse _
 
 
 newtype DeleteGcmChannelRequest = DeleteGcmChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteGcmChannelRequest :: Newtype DeleteGcmChannelRequest _
 
 
 newtype DeleteGcmChannelResponse = DeleteGcmChannelResponse 
   { "GCMChannelResponse" :: (GCMChannelResponse)
   }
+derive instance newtypeDeleteGcmChannelResponse :: Newtype DeleteGcmChannelResponse _
 
 
 newtype DeleteSegmentRequest = DeleteSegmentRequest 
   { "ApplicationId" :: (String)
   , "SegmentId" :: (String)
   }
+derive instance newtypeDeleteSegmentRequest :: Newtype DeleteSegmentRequest _
 
 
 newtype DeleteSegmentResponse = DeleteSegmentResponse 
   { "SegmentResponse" :: (SegmentResponse)
   }
+derive instance newtypeDeleteSegmentResponse :: Newtype DeleteSegmentResponse _
 
 
 newtype DeleteSmsChannelRequest = DeleteSmsChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeDeleteSmsChannelRequest :: Newtype DeleteSmsChannelRequest _
 
 
 newtype DeleteSmsChannelResponse = DeleteSmsChannelResponse 
   { "SMSChannelResponse" :: (SMSChannelResponse)
   }
+derive instance newtypeDeleteSmsChannelResponse :: Newtype DeleteSmsChannelResponse _
 
 
 newtype DeliveryStatus = DeliveryStatus String
+derive instance newtypeDeliveryStatus :: Newtype DeliveryStatus _
 
 
 newtype DimensionType = DimensionType String
+derive instance newtypeDimensionType :: Newtype DimensionType _
 
 
 -- | The message configuration.
@@ -904,9 +977,11 @@ newtype DirectMessageConfiguration = DirectMessageConfiguration
   , "GCMMessage" :: NullOrUndefined (GCMMessage)
   , "SMSMessage" :: NullOrUndefined (SMSMessage)
   }
+derive instance newtypeDirectMessageConfiguration :: Newtype DirectMessageConfiguration _
 
 
 newtype Duration = Duration String
+derive instance newtypeDuration :: Newtype Duration _
 
 
 -- | Email Channel Request
@@ -916,6 +991,7 @@ newtype EmailChannelRequest = EmailChannelRequest
   , "Identity" :: NullOrUndefined (String)
   , "RoleArn" :: NullOrUndefined (String)
   }
+derive instance newtypeEmailChannelRequest :: Newtype EmailChannelRequest _
 
 
 -- | Email Channel Response.
@@ -934,6 +1010,7 @@ newtype EmailChannelResponse = EmailChannelResponse
   , "RoleArn" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeEmailChannelResponse :: Newtype EmailChannelResponse _
 
 
 -- | Endpoint update request
@@ -951,12 +1028,14 @@ newtype EndpointBatchItem = EndpointBatchItem
   , "RequestId" :: NullOrUndefined (String)
   , "User" :: NullOrUndefined (EndpointUser)
   }
+derive instance newtypeEndpointBatchItem :: Newtype EndpointBatchItem _
 
 
 -- | Endpoint batch update request.
 newtype EndpointBatchRequest = EndpointBatchRequest 
   { "Item" :: NullOrUndefined (ListOfEndpointBatchItem)
   }
+derive instance newtypeEndpointBatchRequest :: Newtype EndpointBatchRequest _
 
 
 -- | Endpoint demographic data
@@ -970,6 +1049,7 @@ newtype EndpointDemographic = EndpointDemographic
   , "PlatformVersion" :: NullOrUndefined (String)
   , "Timezone" :: NullOrUndefined (String)
   }
+derive instance newtypeEndpointDemographic :: Newtype EndpointDemographic _
 
 
 -- | Endpoint location data
@@ -981,6 +1061,7 @@ newtype EndpointLocation = EndpointLocation
   , "PostalCode" :: NullOrUndefined (String)
   , "Region" :: NullOrUndefined (String)
   }
+derive instance newtypeEndpointLocation :: Newtype EndpointLocation _
 
 
 -- | The result from sending a message to an endpoint.
@@ -991,6 +1072,7 @@ newtype EndpointMessageResult = EndpointMessageResult
   , "StatusMessage" :: NullOrUndefined (String)
   , "UpdatedToken" :: NullOrUndefined (String)
   }
+derive instance newtypeEndpointMessageResult :: Newtype EndpointMessageResult _
 
 
 -- | Endpoint update request
@@ -1007,6 +1089,7 @@ newtype EndpointRequest = EndpointRequest
   , "RequestId" :: NullOrUndefined (String)
   , "User" :: NullOrUndefined (EndpointUser)
   }
+derive instance newtypeEndpointRequest :: Newtype EndpointRequest _
 
 
 -- | Endpoint response
@@ -1027,6 +1110,7 @@ newtype EndpointResponse = EndpointResponse
   , "RequestId" :: NullOrUndefined (String)
   , "User" :: NullOrUndefined (EndpointUser)
   }
+derive instance newtypeEndpointResponse :: Newtype EndpointResponse _
 
 
 -- | Endpoint send configuration.
@@ -1037,6 +1121,7 @@ newtype EndpointSendConfiguration = EndpointSendConfiguration
   , "Substitutions" :: NullOrUndefined (MapOfListOf__string)
   , "TitleOverride" :: NullOrUndefined (String)
   }
+derive instance newtypeEndpointSendConfiguration :: Newtype EndpointSendConfiguration _
 
 
 -- | Endpoint user specific custom userAttributes
@@ -1044,6 +1129,7 @@ newtype EndpointUser = EndpointUser
   { "UserAttributes" :: NullOrUndefined (MapOfListOf__string)
   , "UserId" :: NullOrUndefined (String)
   }
+derive instance newtypeEndpointUser :: Newtype EndpointUser _
 
 
 -- | Model for an event publishing subscription export.
@@ -1055,6 +1141,7 @@ newtype EventStream = EventStream
   , "LastUpdatedBy" :: NullOrUndefined (String)
   , "RoleArn" :: NullOrUndefined (String)
   }
+derive instance newtypeEventStream :: Newtype EventStream _
 
 
 -- | Simple message object.
@@ -1062,12 +1149,15 @@ newtype ForbiddenException = ForbiddenException
   { "Message" :: NullOrUndefined (String)
   , "RequestID" :: NullOrUndefined (String)
   }
+derive instance newtypeForbiddenException :: Newtype ForbiddenException _
 
 
 newtype Format = Format String
+derive instance newtypeFormat :: Newtype Format _
 
 
 newtype Frequency = Frequency String
+derive instance newtypeFrequency :: Newtype Frequency _
 
 
 -- | Google Cloud Messaging credentials
@@ -1075,6 +1165,7 @@ newtype GCMChannelRequest = GCMChannelRequest
   { "ApiKey" :: NullOrUndefined (String)
   , "Enabled" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGCMChannelRequest :: Newtype GCMChannelRequest _
 
 
 -- | Google Cloud Messaging channel definition
@@ -1091,6 +1182,7 @@ newtype GCMChannelResponse = GCMChannelResponse
   , "Platform" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeGCMChannelResponse :: Newtype GCMChannelResponse _
 
 
 -- | GCM Message.
@@ -1113,97 +1205,116 @@ newtype GCMMessage = GCMMessage
   , "Title" :: NullOrUndefined (String)
   , "Url" :: NullOrUndefined (String)
   }
+derive instance newtypeGCMMessage :: Newtype GCMMessage _
 
 
 newtype GetAdmChannelRequest = GetAdmChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetAdmChannelRequest :: Newtype GetAdmChannelRequest _
 
 
 newtype GetAdmChannelResponse = GetAdmChannelResponse 
   { "ADMChannelResponse" :: (ADMChannelResponse)
   }
+derive instance newtypeGetAdmChannelResponse :: Newtype GetAdmChannelResponse _
 
 
 newtype GetApnsChannelRequest = GetApnsChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetApnsChannelRequest :: Newtype GetApnsChannelRequest _
 
 
 newtype GetApnsChannelResponse = GetApnsChannelResponse 
   { "APNSChannelResponse" :: (APNSChannelResponse)
   }
+derive instance newtypeGetApnsChannelResponse :: Newtype GetApnsChannelResponse _
 
 
 newtype GetApnsSandboxChannelRequest = GetApnsSandboxChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetApnsSandboxChannelRequest :: Newtype GetApnsSandboxChannelRequest _
 
 
 newtype GetApnsSandboxChannelResponse = GetApnsSandboxChannelResponse 
   { "APNSSandboxChannelResponse" :: (APNSSandboxChannelResponse)
   }
+derive instance newtypeGetApnsSandboxChannelResponse :: Newtype GetApnsSandboxChannelResponse _
 
 
 newtype GetApnsVoipChannelRequest = GetApnsVoipChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetApnsVoipChannelRequest :: Newtype GetApnsVoipChannelRequest _
 
 
 newtype GetApnsVoipChannelResponse = GetApnsVoipChannelResponse 
   { "APNSVoipChannelResponse" :: (APNSVoipChannelResponse)
   }
+derive instance newtypeGetApnsVoipChannelResponse :: Newtype GetApnsVoipChannelResponse _
 
 
 newtype GetApnsVoipSandboxChannelRequest = GetApnsVoipSandboxChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetApnsVoipSandboxChannelRequest :: Newtype GetApnsVoipSandboxChannelRequest _
 
 
 newtype GetApnsVoipSandboxChannelResponse = GetApnsVoipSandboxChannelResponse 
   { "APNSVoipSandboxChannelResponse" :: (APNSVoipSandboxChannelResponse)
   }
+derive instance newtypeGetApnsVoipSandboxChannelResponse :: Newtype GetApnsVoipSandboxChannelResponse _
 
 
 newtype GetAppRequest = GetAppRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetAppRequest :: Newtype GetAppRequest _
 
 
 newtype GetAppResponse = GetAppResponse 
   { "ApplicationResponse" :: (ApplicationResponse)
   }
+derive instance newtypeGetAppResponse :: Newtype GetAppResponse _
 
 
 newtype GetApplicationSettingsRequest = GetApplicationSettingsRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetApplicationSettingsRequest :: Newtype GetApplicationSettingsRequest _
 
 
 newtype GetApplicationSettingsResponse = GetApplicationSettingsResponse 
   { "ApplicationSettingsResource" :: (ApplicationSettingsResource)
   }
+derive instance newtypeGetApplicationSettingsResponse :: Newtype GetApplicationSettingsResponse _
 
 
 newtype GetAppsRequest = GetAppsRequest 
   { "PageSize" :: NullOrUndefined (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetAppsRequest :: Newtype GetAppsRequest _
 
 
 newtype GetAppsResponse = GetAppsResponse 
   { "ApplicationsResponse" :: (ApplicationsResponse)
   }
+derive instance newtypeGetAppsResponse :: Newtype GetAppsResponse _
 
 
 newtype GetBaiduChannelRequest = GetBaiduChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetBaiduChannelRequest :: Newtype GetBaiduChannelRequest _
 
 
 newtype GetBaiduChannelResponse = GetBaiduChannelResponse 
   { "BaiduChannelResponse" :: (BaiduChannelResponse)
   }
+derive instance newtypeGetBaiduChannelResponse :: Newtype GetBaiduChannelResponse _
 
 
 newtype GetCampaignActivitiesRequest = GetCampaignActivitiesRequest 
@@ -1212,22 +1323,26 @@ newtype GetCampaignActivitiesRequest = GetCampaignActivitiesRequest
   , "PageSize" :: NullOrUndefined (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetCampaignActivitiesRequest :: Newtype GetCampaignActivitiesRequest _
 
 
 newtype GetCampaignActivitiesResponse = GetCampaignActivitiesResponse 
   { "ActivitiesResponse" :: (ActivitiesResponse)
   }
+derive instance newtypeGetCampaignActivitiesResponse :: Newtype GetCampaignActivitiesResponse _
 
 
 newtype GetCampaignRequest = GetCampaignRequest 
   { "ApplicationId" :: (String)
   , "CampaignId" :: (String)
   }
+derive instance newtypeGetCampaignRequest :: Newtype GetCampaignRequest _
 
 
 newtype GetCampaignResponse = GetCampaignResponse 
   { "CampaignResponse" :: (CampaignResponse)
   }
+derive instance newtypeGetCampaignResponse :: Newtype GetCampaignResponse _
 
 
 newtype GetCampaignVersionRequest = GetCampaignVersionRequest 
@@ -1235,11 +1350,13 @@ newtype GetCampaignVersionRequest = GetCampaignVersionRequest
   , "CampaignId" :: (String)
   , "Version" :: (String)
   }
+derive instance newtypeGetCampaignVersionRequest :: Newtype GetCampaignVersionRequest _
 
 
 newtype GetCampaignVersionResponse = GetCampaignVersionResponse 
   { "CampaignResponse" :: (CampaignResponse)
   }
+derive instance newtypeGetCampaignVersionResponse :: Newtype GetCampaignVersionResponse _
 
 
 newtype GetCampaignVersionsRequest = GetCampaignVersionsRequest 
@@ -1248,11 +1365,13 @@ newtype GetCampaignVersionsRequest = GetCampaignVersionsRequest
   , "PageSize" :: NullOrUndefined (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetCampaignVersionsRequest :: Newtype GetCampaignVersionsRequest _
 
 
 newtype GetCampaignVersionsResponse = GetCampaignVersionsResponse 
   { "CampaignsResponse" :: (CampaignsResponse)
   }
+derive instance newtypeGetCampaignVersionsResponse :: Newtype GetCampaignVersionsResponse _
 
 
 newtype GetCampaignsRequest = GetCampaignsRequest 
@@ -1260,64 +1379,76 @@ newtype GetCampaignsRequest = GetCampaignsRequest
   , "PageSize" :: NullOrUndefined (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetCampaignsRequest :: Newtype GetCampaignsRequest _
 
 
 newtype GetCampaignsResponse = GetCampaignsResponse 
   { "CampaignsResponse" :: (CampaignsResponse)
   }
+derive instance newtypeGetCampaignsResponse :: Newtype GetCampaignsResponse _
 
 
 newtype GetEmailChannelRequest = GetEmailChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetEmailChannelRequest :: Newtype GetEmailChannelRequest _
 
 
 newtype GetEmailChannelResponse = GetEmailChannelResponse 
   { "EmailChannelResponse" :: (EmailChannelResponse)
   }
+derive instance newtypeGetEmailChannelResponse :: Newtype GetEmailChannelResponse _
 
 
 newtype GetEndpointRequest = GetEndpointRequest 
   { "ApplicationId" :: (String)
   , "EndpointId" :: (String)
   }
+derive instance newtypeGetEndpointRequest :: Newtype GetEndpointRequest _
 
 
 newtype GetEndpointResponse = GetEndpointResponse 
   { "EndpointResponse" :: (EndpointResponse)
   }
+derive instance newtypeGetEndpointResponse :: Newtype GetEndpointResponse _
 
 
 -- | GetEventStreamRequest
 newtype GetEventStreamRequest = GetEventStreamRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetEventStreamRequest :: Newtype GetEventStreamRequest _
 
 
 newtype GetEventStreamResponse = GetEventStreamResponse 
   { "EventStream" :: (EventStream)
   }
+derive instance newtypeGetEventStreamResponse :: Newtype GetEventStreamResponse _
 
 
 newtype GetGcmChannelRequest = GetGcmChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetGcmChannelRequest :: Newtype GetGcmChannelRequest _
 
 
 newtype GetGcmChannelResponse = GetGcmChannelResponse 
   { "GCMChannelResponse" :: (GCMChannelResponse)
   }
+derive instance newtypeGetGcmChannelResponse :: Newtype GetGcmChannelResponse _
 
 
 newtype GetImportJobRequest = GetImportJobRequest 
   { "ApplicationId" :: (String)
   , "JobId" :: (String)
   }
+derive instance newtypeGetImportJobRequest :: Newtype GetImportJobRequest _
 
 
 newtype GetImportJobResponse = GetImportJobResponse 
   { "ImportJobResponse" :: (ImportJobResponse)
   }
+derive instance newtypeGetImportJobResponse :: Newtype GetImportJobResponse _
 
 
 newtype GetImportJobsRequest = GetImportJobsRequest 
@@ -1325,11 +1456,13 @@ newtype GetImportJobsRequest = GetImportJobsRequest
   , "PageSize" :: NullOrUndefined (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetImportJobsRequest :: Newtype GetImportJobsRequest _
 
 
 newtype GetImportJobsResponse = GetImportJobsResponse 
   { "ImportJobsResponse" :: (ImportJobsResponse)
   }
+derive instance newtypeGetImportJobsResponse :: Newtype GetImportJobsResponse _
 
 
 newtype GetSegmentImportJobsRequest = GetSegmentImportJobsRequest 
@@ -1338,22 +1471,26 @@ newtype GetSegmentImportJobsRequest = GetSegmentImportJobsRequest
   , "SegmentId" :: (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetSegmentImportJobsRequest :: Newtype GetSegmentImportJobsRequest _
 
 
 newtype GetSegmentImportJobsResponse = GetSegmentImportJobsResponse 
   { "ImportJobsResponse" :: (ImportJobsResponse)
   }
+derive instance newtypeGetSegmentImportJobsResponse :: Newtype GetSegmentImportJobsResponse _
 
 
 newtype GetSegmentRequest = GetSegmentRequest 
   { "ApplicationId" :: (String)
   , "SegmentId" :: (String)
   }
+derive instance newtypeGetSegmentRequest :: Newtype GetSegmentRequest _
 
 
 newtype GetSegmentResponse = GetSegmentResponse 
   { "SegmentResponse" :: (SegmentResponse)
   }
+derive instance newtypeGetSegmentResponse :: Newtype GetSegmentResponse _
 
 
 newtype GetSegmentVersionRequest = GetSegmentVersionRequest 
@@ -1361,11 +1498,13 @@ newtype GetSegmentVersionRequest = GetSegmentVersionRequest
   , "SegmentId" :: (String)
   , "Version" :: (String)
   }
+derive instance newtypeGetSegmentVersionRequest :: Newtype GetSegmentVersionRequest _
 
 
 newtype GetSegmentVersionResponse = GetSegmentVersionResponse 
   { "SegmentResponse" :: (SegmentResponse)
   }
+derive instance newtypeGetSegmentVersionResponse :: Newtype GetSegmentVersionResponse _
 
 
 newtype GetSegmentVersionsRequest = GetSegmentVersionsRequest 
@@ -1374,11 +1513,13 @@ newtype GetSegmentVersionsRequest = GetSegmentVersionsRequest
   , "SegmentId" :: (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetSegmentVersionsRequest :: Newtype GetSegmentVersionsRequest _
 
 
 newtype GetSegmentVersionsResponse = GetSegmentVersionsResponse 
   { "SegmentsResponse" :: (SegmentsResponse)
   }
+derive instance newtypeGetSegmentVersionsResponse :: Newtype GetSegmentVersionsResponse _
 
 
 newtype GetSegmentsRequest = GetSegmentsRequest 
@@ -1386,21 +1527,25 @@ newtype GetSegmentsRequest = GetSegmentsRequest
   , "PageSize" :: NullOrUndefined (String)
   , "Token" :: NullOrUndefined (String)
   }
+derive instance newtypeGetSegmentsRequest :: Newtype GetSegmentsRequest _
 
 
 newtype GetSegmentsResponse = GetSegmentsResponse 
   { "SegmentsResponse" :: (SegmentsResponse)
   }
+derive instance newtypeGetSegmentsResponse :: Newtype GetSegmentsResponse _
 
 
 newtype GetSmsChannelRequest = GetSmsChannelRequest 
   { "ApplicationId" :: (String)
   }
+derive instance newtypeGetSmsChannelRequest :: Newtype GetSmsChannelRequest _
 
 
 newtype GetSmsChannelResponse = GetSmsChannelResponse 
   { "SMSChannelResponse" :: (SMSChannelResponse)
   }
+derive instance newtypeGetSmsChannelResponse :: Newtype GetSmsChannelResponse _
 
 
 newtype ImportJobRequest = ImportJobRequest 
@@ -1413,6 +1558,7 @@ newtype ImportJobRequest = ImportJobRequest
   , "SegmentId" :: NullOrUndefined (String)
   , "SegmentName" :: NullOrUndefined (String)
   }
+derive instance newtypeImportJobRequest :: Newtype ImportJobRequest _
 
 
 newtype ImportJobResource = ImportJobResource 
@@ -1425,6 +1571,7 @@ newtype ImportJobResource = ImportJobResource
   , "SegmentId" :: NullOrUndefined (String)
   , "SegmentName" :: NullOrUndefined (String)
   }
+derive instance newtypeImportJobResource :: Newtype ImportJobResource _
 
 
 newtype ImportJobResponse = ImportJobResponse 
@@ -1442,6 +1589,7 @@ newtype ImportJobResponse = ImportJobResponse
   , "TotalProcessed" :: NullOrUndefined (Int)
   , "Type" :: NullOrUndefined (String)
   }
+derive instance newtypeImportJobResponse :: Newtype ImportJobResponse _
 
 
 -- | Import job list.
@@ -1449,6 +1597,7 @@ newtype ImportJobsResponse = ImportJobsResponse
   { "Item" :: NullOrUndefined (ListOfImportJobResponse)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeImportJobsResponse :: Newtype ImportJobsResponse _
 
 
 -- | Simple message object.
@@ -1456,66 +1605,87 @@ newtype InternalServerErrorException = InternalServerErrorException
   { "Message" :: NullOrUndefined (String)
   , "RequestID" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalServerErrorException :: Newtype InternalServerErrorException _
 
 
 newtype JobStatus = JobStatus String
+derive instance newtypeJobStatus :: Newtype JobStatus _
 
 
 newtype ListOfActivityResponse = ListOfActivityResponse (Array ActivityResponse)
+derive instance newtypeListOfActivityResponse :: Newtype ListOfActivityResponse _
 
 
 newtype ListOfApplicationResponse = ListOfApplicationResponse (Array ApplicationResponse)
+derive instance newtypeListOfApplicationResponse :: Newtype ListOfApplicationResponse _
 
 
 newtype ListOfCampaignResponse = ListOfCampaignResponse (Array CampaignResponse)
+derive instance newtypeListOfCampaignResponse :: Newtype ListOfCampaignResponse _
 
 
 newtype ListOfEndpointBatchItem = ListOfEndpointBatchItem (Array EndpointBatchItem)
+derive instance newtypeListOfEndpointBatchItem :: Newtype ListOfEndpointBatchItem _
 
 
 newtype ListOfImportJobResponse = ListOfImportJobResponse (Array ImportJobResponse)
+derive instance newtypeListOfImportJobResponse :: Newtype ListOfImportJobResponse _
 
 
 newtype ListOfSegmentResponse = ListOfSegmentResponse (Array SegmentResponse)
+derive instance newtypeListOfSegmentResponse :: Newtype ListOfSegmentResponse _
 
 
 newtype ListOfTreatmentResource = ListOfTreatmentResource (Array TreatmentResource)
+derive instance newtypeListOfTreatmentResource :: Newtype ListOfTreatmentResource _
 
 
 newtype ListOfWriteTreatmentResource = ListOfWriteTreatmentResource (Array WriteTreatmentResource)
+derive instance newtypeListOfWriteTreatmentResource :: Newtype ListOfWriteTreatmentResource _
 
 
 newtype ListOf__string = ListOf__string (Array String)
+derive instance newtypeListOf__string :: Newtype ListOf__string _
 
 
 newtype MapOfAddressConfiguration = MapOfAddressConfiguration (Map String AddressConfiguration)
+derive instance newtypeMapOfAddressConfiguration :: Newtype MapOfAddressConfiguration _
 
 
 newtype MapOfAttributeDimension = MapOfAttributeDimension (Map String AttributeDimension)
+derive instance newtypeMapOfAttributeDimension :: Newtype MapOfAttributeDimension _
 
 
 newtype MapOfEndpointMessageResult = MapOfEndpointMessageResult (Map String EndpointMessageResult)
+derive instance newtypeMapOfEndpointMessageResult :: Newtype MapOfEndpointMessageResult _
 
 
 newtype MapOfEndpointSendConfiguration = MapOfEndpointSendConfiguration (Map String EndpointSendConfiguration)
+derive instance newtypeMapOfEndpointSendConfiguration :: Newtype MapOfEndpointSendConfiguration _
 
 
 newtype MapOfListOf__string = MapOfListOf__string (Map String ListOf__string)
+derive instance newtypeMapOfListOf__string :: Newtype MapOfListOf__string _
 
 
 newtype MapOfMapOfEndpointMessageResult = MapOfMapOfEndpointMessageResult (Map String MapOfEndpointMessageResult)
+derive instance newtypeMapOfMapOfEndpointMessageResult :: Newtype MapOfMapOfEndpointMessageResult _
 
 
 newtype MapOfMessageResult = MapOfMessageResult (Map String MessageResult)
+derive instance newtypeMapOfMessageResult :: Newtype MapOfMessageResult _
 
 
 newtype MapOf__double = MapOf__double (Map String Number)
+derive instance newtypeMapOf__double :: Newtype MapOf__double _
 
 
 newtype MapOf__integer = MapOf__integer (Map String Int)
+derive instance newtypeMapOf__integer :: Newtype MapOf__integer _
 
 
 newtype MapOf__string = MapOf__string (Map String String)
+derive instance newtypeMapOf__string :: Newtype MapOf__string _
 
 
 newtype Message = Message 
@@ -1531,6 +1701,7 @@ newtype Message = Message
   , "Title" :: NullOrUndefined (String)
   , "Url" :: NullOrUndefined (String)
   }
+derive instance newtypeMessage :: Newtype Message _
 
 
 -- | Simple message object.
@@ -1538,6 +1709,7 @@ newtype MessageBody = MessageBody
   { "Message" :: NullOrUndefined (String)
   , "RequestID" :: NullOrUndefined (String)
   }
+derive instance newtypeMessageBody :: Newtype MessageBody _
 
 
 -- | Message configuration for a campaign.
@@ -1550,6 +1722,7 @@ newtype MessageConfiguration = MessageConfiguration
   , "GCMMessage" :: NullOrUndefined (Message)
   , "SMSMessage" :: NullOrUndefined (CampaignSmsMessage)
   }
+derive instance newtypeMessageConfiguration :: Newtype MessageConfiguration _
 
 
 -- | Send message request.
@@ -1559,6 +1732,7 @@ newtype MessageRequest = MessageRequest
   , "Endpoints" :: NullOrUndefined (MapOfEndpointSendConfiguration)
   , "MessageConfiguration" :: NullOrUndefined (DirectMessageConfiguration)
   }
+derive instance newtypeMessageRequest :: Newtype MessageRequest _
 
 
 -- | Send message response.
@@ -1568,6 +1742,7 @@ newtype MessageResponse = MessageResponse
   , "RequestId" :: NullOrUndefined (String)
   , "Result" :: NullOrUndefined (MapOfMessageResult)
   }
+derive instance newtypeMessageResponse :: Newtype MessageResponse _
 
 
 -- | The result from sending a message to an address.
@@ -1577,9 +1752,11 @@ newtype MessageResult = MessageResult
   , "StatusMessage" :: NullOrUndefined (String)
   , "UpdatedToken" :: NullOrUndefined (String)
   }
+derive instance newtypeMessageResult :: Newtype MessageResult _
 
 
 newtype MessageType = MessageType String
+derive instance newtypeMessageType :: Newtype MessageType _
 
 
 -- | Simple message object.
@@ -1587,6 +1764,7 @@ newtype MethodNotAllowedException = MethodNotAllowedException
   { "Message" :: NullOrUndefined (String)
   , "RequestID" :: NullOrUndefined (String)
   }
+derive instance newtypeMethodNotAllowedException :: Newtype MethodNotAllowedException _
 
 
 -- | Simple message object.
@@ -1594,17 +1772,20 @@ newtype NotFoundException = NotFoundException
   { "Message" :: NullOrUndefined (String)
   , "RequestID" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype PutEventStreamRequest = PutEventStreamRequest 
   { "ApplicationId" :: (String)
   , "WriteEventStream" :: (WriteEventStream)
   }
+derive instance newtypePutEventStreamRequest :: Newtype PutEventStreamRequest _
 
 
 newtype PutEventStreamResponse = PutEventStreamResponse 
   { "EventStream" :: (EventStream)
   }
+derive instance newtypePutEventStreamResponse :: Newtype PutEventStreamResponse _
 
 
 -- | Quiet Time
@@ -1612,6 +1793,7 @@ newtype QuietTime = QuietTime
   { "End" :: NullOrUndefined (String)
   , "Start" :: NullOrUndefined (String)
   }
+derive instance newtypeQuietTime :: Newtype QuietTime _
 
 
 -- | Define how a segment based on recency of use.
@@ -1619,9 +1801,11 @@ newtype RecencyDimension = RecencyDimension
   { "Duration" :: NullOrUndefined (Duration)
   , "RecencyType" :: NullOrUndefined (RecencyType)
   }
+derive instance newtypeRecencyDimension :: Newtype RecencyDimension _
 
 
 newtype RecencyType = RecencyType String
+derive instance newtypeRecencyType :: Newtype RecencyType _
 
 
 -- | SMS Channel Request
@@ -1630,6 +1814,7 @@ newtype SMSChannelRequest = SMSChannelRequest
   , "SenderId" :: NullOrUndefined (String)
   , "ShortCode" :: NullOrUndefined (String)
   }
+derive instance newtypeSMSChannelRequest :: Newtype SMSChannelRequest _
 
 
 -- | SMS Channel Response.
@@ -1647,6 +1832,7 @@ newtype SMSChannelResponse = SMSChannelResponse
   , "ShortCode" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeSMSChannelResponse :: Newtype SMSChannelResponse _
 
 
 -- | SMS Message.
@@ -1656,6 +1842,7 @@ newtype SMSMessage = SMSMessage
   , "SenderId" :: NullOrUndefined (String)
   , "Substitutions" :: NullOrUndefined (MapOfListOf__string)
   }
+derive instance newtypeSMSMessage :: Newtype SMSMessage _
 
 
 -- | Shcedule that defines when a campaign is run.
@@ -1667,12 +1854,14 @@ newtype Schedule = Schedule
   , "StartTime" :: NullOrUndefined (String)
   , "Timezone" :: NullOrUndefined (String)
   }
+derive instance newtypeSchedule :: Newtype Schedule _
 
 
 -- | Segment behavior dimensions
 newtype SegmentBehaviors = SegmentBehaviors 
   { "Recency" :: NullOrUndefined (RecencyDimension)
   }
+derive instance newtypeSegmentBehaviors :: Newtype SegmentBehaviors _
 
 
 -- | Segment demographic dimensions
@@ -1684,6 +1873,7 @@ newtype SegmentDemographics = SegmentDemographics
   , "Model" :: NullOrUndefined (SetDimension)
   , "Platform" :: NullOrUndefined (SetDimension)
   }
+derive instance newtypeSegmentDemographics :: Newtype SegmentDemographics _
 
 
 -- | Segment dimensions
@@ -1694,6 +1884,7 @@ newtype SegmentDimensions = SegmentDimensions
   , "Location" :: NullOrUndefined (SegmentLocation)
   , "UserAttributes" :: NullOrUndefined (MapOfAttributeDimension)
   }
+derive instance newtypeSegmentDimensions :: Newtype SegmentDimensions _
 
 
 -- | Segment import definition.
@@ -1705,12 +1896,14 @@ newtype SegmentImportResource = SegmentImportResource
   , "S3Url" :: NullOrUndefined (String)
   , "Size" :: NullOrUndefined (Int)
   }
+derive instance newtypeSegmentImportResource :: Newtype SegmentImportResource _
 
 
 -- | Segment location dimensions
 newtype SegmentLocation = SegmentLocation 
   { "Country" :: NullOrUndefined (SetDimension)
   }
+derive instance newtypeSegmentLocation :: Newtype SegmentLocation _
 
 
 -- | Segment definition.
@@ -1725,9 +1918,11 @@ newtype SegmentResponse = SegmentResponse
   , "SegmentType" :: NullOrUndefined (SegmentType)
   , "Version" :: NullOrUndefined (Int)
   }
+derive instance newtypeSegmentResponse :: Newtype SegmentResponse _
 
 
 newtype SegmentType = SegmentType String
+derive instance newtypeSegmentType :: Newtype SegmentType _
 
 
 -- | Segments in your account.
@@ -1735,17 +1930,20 @@ newtype SegmentsResponse = SegmentsResponse
   { "Item" :: NullOrUndefined (ListOfSegmentResponse)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeSegmentsResponse :: Newtype SegmentsResponse _
 
 
 newtype SendMessagesRequest = SendMessagesRequest 
   { "ApplicationId" :: (String)
   , "MessageRequest" :: (MessageRequest)
   }
+derive instance newtypeSendMessagesRequest :: Newtype SendMessagesRequest _
 
 
 newtype SendMessagesResponse = SendMessagesResponse 
   { "MessageResponse" :: (MessageResponse)
   }
+derive instance newtypeSendMessagesResponse :: Newtype SendMessagesResponse _
 
 
 -- | Send message request.
@@ -1754,6 +1952,7 @@ newtype SendUsersMessageRequest = SendUsersMessageRequest
   , "MessageConfiguration" :: NullOrUndefined (DirectMessageConfiguration)
   , "Users" :: NullOrUndefined (MapOfEndpointSendConfiguration)
   }
+derive instance newtypeSendUsersMessageRequest :: Newtype SendUsersMessageRequest _
 
 
 -- | User send message response.
@@ -1762,17 +1961,20 @@ newtype SendUsersMessageResponse = SendUsersMessageResponse
   , "RequestId" :: NullOrUndefined (String)
   , "Result" :: NullOrUndefined (MapOfMapOfEndpointMessageResult)
   }
+derive instance newtypeSendUsersMessageResponse :: Newtype SendUsersMessageResponse _
 
 
 newtype SendUsersMessagesRequest = SendUsersMessagesRequest 
   { "ApplicationId" :: (String)
   , "SendUsersMessageRequest" :: (SendUsersMessageRequest)
   }
+derive instance newtypeSendUsersMessagesRequest :: Newtype SendUsersMessagesRequest _
 
 
 newtype SendUsersMessagesResponse = SendUsersMessagesResponse 
   { "SendUsersMessageResponse" :: (SendUsersMessageResponse)
   }
+derive instance newtypeSendUsersMessagesResponse :: Newtype SendUsersMessagesResponse _
 
 
 -- | Dimension specification of a segment.
@@ -1780,6 +1982,7 @@ newtype SetDimension = SetDimension
   { "DimensionType" :: NullOrUndefined (DimensionType)
   , "Values" :: NullOrUndefined (ListOf__string)
   }
+derive instance newtypeSetDimension :: Newtype SetDimension _
 
 
 -- | Simple message object.
@@ -1787,6 +1990,7 @@ newtype TooManyRequestsException = TooManyRequestsException
   { "Message" :: NullOrUndefined (String)
   , "RequestID" :: NullOrUndefined (String)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | Treatment resource
@@ -1799,83 +2003,98 @@ newtype TreatmentResource = TreatmentResource
   , "TreatmentDescription" :: NullOrUndefined (String)
   , "TreatmentName" :: NullOrUndefined (String)
   }
+derive instance newtypeTreatmentResource :: Newtype TreatmentResource _
 
 
 newtype UpdateAdmChannelRequest = UpdateAdmChannelRequest 
   { "ADMChannelRequest" :: (ADMChannelRequest)
   , "ApplicationId" :: (String)
   }
+derive instance newtypeUpdateAdmChannelRequest :: Newtype UpdateAdmChannelRequest _
 
 
 newtype UpdateAdmChannelResponse = UpdateAdmChannelResponse 
   { "ADMChannelResponse" :: (ADMChannelResponse)
   }
+derive instance newtypeUpdateAdmChannelResponse :: Newtype UpdateAdmChannelResponse _
 
 
 newtype UpdateApnsChannelRequest = UpdateApnsChannelRequest 
   { "APNSChannelRequest" :: (APNSChannelRequest)
   , "ApplicationId" :: (String)
   }
+derive instance newtypeUpdateApnsChannelRequest :: Newtype UpdateApnsChannelRequest _
 
 
 newtype UpdateApnsChannelResponse = UpdateApnsChannelResponse 
   { "APNSChannelResponse" :: (APNSChannelResponse)
   }
+derive instance newtypeUpdateApnsChannelResponse :: Newtype UpdateApnsChannelResponse _
 
 
 newtype UpdateApnsSandboxChannelRequest = UpdateApnsSandboxChannelRequest 
   { "APNSSandboxChannelRequest" :: (APNSSandboxChannelRequest)
   , "ApplicationId" :: (String)
   }
+derive instance newtypeUpdateApnsSandboxChannelRequest :: Newtype UpdateApnsSandboxChannelRequest _
 
 
 newtype UpdateApnsSandboxChannelResponse = UpdateApnsSandboxChannelResponse 
   { "APNSSandboxChannelResponse" :: (APNSSandboxChannelResponse)
   }
+derive instance newtypeUpdateApnsSandboxChannelResponse :: Newtype UpdateApnsSandboxChannelResponse _
 
 
 newtype UpdateApnsVoipChannelRequest = UpdateApnsVoipChannelRequest 
   { "APNSVoipChannelRequest" :: (APNSVoipChannelRequest)
   , "ApplicationId" :: (String)
   }
+derive instance newtypeUpdateApnsVoipChannelRequest :: Newtype UpdateApnsVoipChannelRequest _
 
 
 newtype UpdateApnsVoipChannelResponse = UpdateApnsVoipChannelResponse 
   { "APNSVoipChannelResponse" :: (APNSVoipChannelResponse)
   }
+derive instance newtypeUpdateApnsVoipChannelResponse :: Newtype UpdateApnsVoipChannelResponse _
 
 
 newtype UpdateApnsVoipSandboxChannelRequest = UpdateApnsVoipSandboxChannelRequest 
   { "APNSVoipSandboxChannelRequest" :: (APNSVoipSandboxChannelRequest)
   , "ApplicationId" :: (String)
   }
+derive instance newtypeUpdateApnsVoipSandboxChannelRequest :: Newtype UpdateApnsVoipSandboxChannelRequest _
 
 
 newtype UpdateApnsVoipSandboxChannelResponse = UpdateApnsVoipSandboxChannelResponse 
   { "APNSVoipSandboxChannelResponse" :: (APNSVoipSandboxChannelResponse)
   }
+derive instance newtypeUpdateApnsVoipSandboxChannelResponse :: Newtype UpdateApnsVoipSandboxChannelResponse _
 
 
 newtype UpdateApplicationSettingsRequest = UpdateApplicationSettingsRequest 
   { "ApplicationId" :: (String)
   , "WriteApplicationSettingsRequest" :: (WriteApplicationSettingsRequest)
   }
+derive instance newtypeUpdateApplicationSettingsRequest :: Newtype UpdateApplicationSettingsRequest _
 
 
 newtype UpdateApplicationSettingsResponse = UpdateApplicationSettingsResponse 
   { "ApplicationSettingsResource" :: (ApplicationSettingsResource)
   }
+derive instance newtypeUpdateApplicationSettingsResponse :: Newtype UpdateApplicationSettingsResponse _
 
 
 newtype UpdateBaiduChannelRequest = UpdateBaiduChannelRequest 
   { "ApplicationId" :: (String)
   , "BaiduChannelRequest" :: (BaiduChannelRequest)
   }
+derive instance newtypeUpdateBaiduChannelRequest :: Newtype UpdateBaiduChannelRequest _
 
 
 newtype UpdateBaiduChannelResponse = UpdateBaiduChannelResponse 
   { "BaiduChannelResponse" :: (BaiduChannelResponse)
   }
+derive instance newtypeUpdateBaiduChannelResponse :: Newtype UpdateBaiduChannelResponse _
 
 
 newtype UpdateCampaignRequest = UpdateCampaignRequest 
@@ -1883,22 +2102,26 @@ newtype UpdateCampaignRequest = UpdateCampaignRequest
   , "CampaignId" :: (String)
   , "WriteCampaignRequest" :: (WriteCampaignRequest)
   }
+derive instance newtypeUpdateCampaignRequest :: Newtype UpdateCampaignRequest _
 
 
 newtype UpdateCampaignResponse = UpdateCampaignResponse 
   { "CampaignResponse" :: (CampaignResponse)
   }
+derive instance newtypeUpdateCampaignResponse :: Newtype UpdateCampaignResponse _
 
 
 newtype UpdateEmailChannelRequest = UpdateEmailChannelRequest 
   { "ApplicationId" :: (String)
   , "EmailChannelRequest" :: (EmailChannelRequest)
   }
+derive instance newtypeUpdateEmailChannelRequest :: Newtype UpdateEmailChannelRequest _
 
 
 newtype UpdateEmailChannelResponse = UpdateEmailChannelResponse 
   { "EmailChannelResponse" :: (EmailChannelResponse)
   }
+derive instance newtypeUpdateEmailChannelResponse :: Newtype UpdateEmailChannelResponse _
 
 
 newtype UpdateEndpointRequest = UpdateEndpointRequest 
@@ -1906,33 +2129,39 @@ newtype UpdateEndpointRequest = UpdateEndpointRequest
   , "EndpointId" :: (String)
   , "EndpointRequest" :: (EndpointRequest)
   }
+derive instance newtypeUpdateEndpointRequest :: Newtype UpdateEndpointRequest _
 
 
 newtype UpdateEndpointResponse = UpdateEndpointResponse 
   { "MessageBody" :: (MessageBody)
   }
+derive instance newtypeUpdateEndpointResponse :: Newtype UpdateEndpointResponse _
 
 
 newtype UpdateEndpointsBatchRequest = UpdateEndpointsBatchRequest 
   { "ApplicationId" :: (String)
   , "EndpointBatchRequest" :: (EndpointBatchRequest)
   }
+derive instance newtypeUpdateEndpointsBatchRequest :: Newtype UpdateEndpointsBatchRequest _
 
 
 newtype UpdateEndpointsBatchResponse = UpdateEndpointsBatchResponse 
   { "MessageBody" :: (MessageBody)
   }
+derive instance newtypeUpdateEndpointsBatchResponse :: Newtype UpdateEndpointsBatchResponse _
 
 
 newtype UpdateGcmChannelRequest = UpdateGcmChannelRequest 
   { "ApplicationId" :: (String)
   , "GCMChannelRequest" :: (GCMChannelRequest)
   }
+derive instance newtypeUpdateGcmChannelRequest :: Newtype UpdateGcmChannelRequest _
 
 
 newtype UpdateGcmChannelResponse = UpdateGcmChannelResponse 
   { "GCMChannelResponse" :: (GCMChannelResponse)
   }
+derive instance newtypeUpdateGcmChannelResponse :: Newtype UpdateGcmChannelResponse _
 
 
 newtype UpdateSegmentRequest = UpdateSegmentRequest 
@@ -1940,22 +2169,26 @@ newtype UpdateSegmentRequest = UpdateSegmentRequest
   , "SegmentId" :: (String)
   , "WriteSegmentRequest" :: (WriteSegmentRequest)
   }
+derive instance newtypeUpdateSegmentRequest :: Newtype UpdateSegmentRequest _
 
 
 newtype UpdateSegmentResponse = UpdateSegmentResponse 
   { "SegmentResponse" :: (SegmentResponse)
   }
+derive instance newtypeUpdateSegmentResponse :: Newtype UpdateSegmentResponse _
 
 
 newtype UpdateSmsChannelRequest = UpdateSmsChannelRequest 
   { "ApplicationId" :: (String)
   , "SMSChannelRequest" :: (SMSChannelRequest)
   }
+derive instance newtypeUpdateSmsChannelRequest :: Newtype UpdateSmsChannelRequest _
 
 
 newtype UpdateSmsChannelResponse = UpdateSmsChannelResponse 
   { "SMSChannelResponse" :: (SMSChannelResponse)
   }
+derive instance newtypeUpdateSmsChannelResponse :: Newtype UpdateSmsChannelResponse _
 
 
 -- | Creating application setting request
@@ -1963,6 +2196,7 @@ newtype WriteApplicationSettingsRequest = WriteApplicationSettingsRequest
   { "Limits" :: NullOrUndefined (CampaignLimits)
   , "QuietTime" :: NullOrUndefined (QuietTime)
   }
+derive instance newtypeWriteApplicationSettingsRequest :: Newtype WriteApplicationSettingsRequest _
 
 
 -- | Used to create a campaign.
@@ -1980,6 +2214,7 @@ newtype WriteCampaignRequest = WriteCampaignRequest
   , "TreatmentDescription" :: NullOrUndefined (String)
   , "TreatmentName" :: NullOrUndefined (String)
   }
+derive instance newtypeWriteCampaignRequest :: Newtype WriteCampaignRequest _
 
 
 -- | Request to save an EventStream.
@@ -1987,6 +2222,7 @@ newtype WriteEventStream = WriteEventStream
   { "DestinationStreamArn" :: NullOrUndefined (String)
   , "RoleArn" :: NullOrUndefined (String)
   }
+derive instance newtypeWriteEventStream :: Newtype WriteEventStream _
 
 
 -- | Segment definition.
@@ -1994,6 +2230,7 @@ newtype WriteSegmentRequest = WriteSegmentRequest
   { "Dimensions" :: NullOrUndefined (SegmentDimensions)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeWriteSegmentRequest :: Newtype WriteSegmentRequest _
 
 
 -- | Used to create a campaign treatment.
@@ -2004,3 +2241,4 @@ newtype WriteTreatmentResource = WriteTreatmentResource
   , "TreatmentDescription" :: NullOrUndefined (String)
   , "TreatmentName" :: NullOrUndefined (String)
   }
+derive instance newtypeWriteTreatmentResource :: Newtype WriteTreatmentResource _

@@ -6,6 +6,7 @@ module AWS.KinesisVideoMedia where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -22,24 +23,30 @@ getMedia = AWS.request serviceName "GetMedia"
 newtype ClientLimitExceededException = ClientLimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeClientLimitExceededException :: Newtype ClientLimitExceededException _
 
 
 -- | <p>Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client connections.</p>
 newtype ConnectionLimitExceededException = ConnectionLimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConnectionLimitExceededException :: Newtype ConnectionLimitExceededException _
 
 
 newtype ContentType = ContentType String
+derive instance newtypeContentType :: Newtype ContentType _
 
 
 newtype ContinuationToken = ContinuationToken String
+derive instance newtypeContinuationToken :: Newtype ContinuationToken _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype FragmentNumberString = FragmentNumberString String
+derive instance newtypeFragmentNumberString :: Newtype FragmentNumberString _
 
 
 newtype GetMediaInput = GetMediaInput 
@@ -47,42 +54,50 @@ newtype GetMediaInput = GetMediaInput
   , "StreamARN" :: NullOrUndefined (ResourceARN)
   , "StartSelector" :: (StartSelector)
   }
+derive instance newtypeGetMediaInput :: Newtype GetMediaInput _
 
 
 newtype GetMediaOutput = GetMediaOutput 
   { "ContentType" :: NullOrUndefined (ContentType)
   , "Payload" :: NullOrUndefined (Payload)
   }
+derive instance newtypeGetMediaOutput :: Newtype GetMediaOutput _
 
 
 -- | <p>The value for this input parameter is invalid.</p>
 newtype InvalidArgumentException = InvalidArgumentException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidArgumentException :: Newtype InvalidArgumentException _
 
 
 -- | <p> Status Code: 400, Caller used wrong endpoint to write data to a stream. On receiving such an exception, the user must call <code>GetDataEndpoint</code> with <code>AccessMode</code> set to "READ" and use the endpoint Kinesis Video returns in the next <code>GetMedia</code> call. </p>
 newtype InvalidEndpointException = InvalidEndpointException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidEndpointException :: Newtype InvalidEndpointException _
 
 
 -- | <p>Status Code: 403, The caller is not authorized to perform an operation on the given stream, or the token has expired.</p>
 newtype NotAuthorizedException = NotAuthorizedException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNotAuthorizedException :: Newtype NotAuthorizedException _
 
 
 newtype Payload = Payload String
+derive instance newtypePayload :: Newtype Payload _
 
 
 newtype ResourceARN = ResourceARN String
+derive instance newtypeResourceARN :: Newtype ResourceARN _
 
 
 -- | <p>Status Code: 404, The stream with the given name does not exist.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>Identifies the chunk on the Kinesis video stream where you want the <code>GetMedia</code> API to start returning media data. You have the following options to identify the starting chunk: </p> <ul> <li> <p>Choose the latest (or oldest) chunk.</p> </li> <li> <p>Identify a specific chunk. You can identify a specific chunk either by providing a fragment number or time stamp (server or producer). </p> </li> <li> <p>Each chunk's metadata includes a continuation token as a Matroska (MKV) tag (<code>AWS_KINESISVIDEO_CONTINUATION_TOKEN</code>). If your previous <code>GetMedia</code> request terminated, you can use this tag value in your next <code>GetMedia</code> request. The API then starts returning chunks starting where the last API ended.</p> </li> </ul>
@@ -92,9 +107,12 @@ newtype StartSelector = StartSelector
   , "StartTimestamp" :: NullOrUndefined (Number)
   , "ContinuationToken" :: NullOrUndefined (ContinuationToken)
   }
+derive instance newtypeStartSelector :: Newtype StartSelector _
 
 
 newtype StartSelectorType = StartSelectorType String
+derive instance newtypeStartSelectorType :: Newtype StartSelectorType _
 
 
 newtype StreamName = StreamName String
+derive instance newtypeStreamName :: Newtype StreamName _

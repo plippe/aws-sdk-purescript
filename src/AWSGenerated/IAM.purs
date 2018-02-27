@@ -6,6 +6,7 @@ module AWS.IAM where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -631,6 +632,7 @@ newtype AccessKey = AccessKey
   , "SecretAccessKey" :: (AccessKeySecretType')
   , "CreateDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypeAccessKey :: Newtype AccessKey _
 
 
 -- | <p>Contains information about the last time an AWS access key was used.</p> <p>This data type is used as a response element in the <a>GetAccessKeyLastUsed</a> action.</p>
@@ -639,6 +641,7 @@ newtype AccessKeyLastUsed = AccessKeyLastUsed
   , "ServiceName" :: (StringType')
   , "Region" :: (StringType')
   }
+derive instance newtypeAccessKeyLastUsed :: Newtype AccessKeyLastUsed _
 
 
 -- | <p>Contains information about an AWS access key, without its secret key.</p> <p>This data type is used as a response element in the <a>ListAccessKeys</a> action.</p>
@@ -648,51 +651,61 @@ newtype AccessKeyMetadata = AccessKeyMetadata
   , "Status" :: NullOrUndefined (StatusType')
   , "CreateDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypeAccessKeyMetadata :: Newtype AccessKeyMetadata _
 
 
 newtype ActionNameListType = ActionNameListType (Array ActionNameType)
+derive instance newtypeActionNameListType :: Newtype ActionNameListType _
 
 
 newtype ActionNameType = ActionNameType String
+derive instance newtypeActionNameType :: Newtype ActionNameType _
 
 
 newtype AddClientIDToOpenIDConnectProviderRequest = AddClientIDToOpenIDConnectProviderRequest 
   { "OpenIDConnectProviderArn" :: (ArnType')
   , "ClientID" :: (ClientIDType')
   }
+derive instance newtypeAddClientIDToOpenIDConnectProviderRequest :: Newtype AddClientIDToOpenIDConnectProviderRequest _
 
 
 newtype AddRoleToInstanceProfileRequest = AddRoleToInstanceProfileRequest 
   { "InstanceProfileName" :: (InstanceProfileNameType')
   , "RoleName" :: (RoleNameType')
   }
+derive instance newtypeAddRoleToInstanceProfileRequest :: Newtype AddRoleToInstanceProfileRequest _
 
 
 newtype AddUserToGroupRequest = AddUserToGroupRequest 
   { "GroupName" :: (GroupNameType')
   , "UserName" :: (ExistingUserNameType')
   }
+derive instance newtypeAddUserToGroupRequest :: Newtype AddUserToGroupRequest _
 
 
 newtype ArnListType = ArnListType (Array ArnType')
+derive instance newtypeArnListType :: Newtype ArnListType _
 
 
 newtype AttachGroupPolicyRequest = AttachGroupPolicyRequest 
   { "GroupName" :: (GroupNameType')
   , "PolicyArn" :: (ArnType')
   }
+derive instance newtypeAttachGroupPolicyRequest :: Newtype AttachGroupPolicyRequest _
 
 
 newtype AttachRolePolicyRequest = AttachRolePolicyRequest 
   { "RoleName" :: (RoleNameType')
   , "PolicyArn" :: (ArnType')
   }
+derive instance newtypeAttachRolePolicyRequest :: Newtype AttachRolePolicyRequest _
 
 
 newtype AttachUserPolicyRequest = AttachUserPolicyRequest 
   { "UserName" :: (UserNameType')
   , "PolicyArn" :: (ArnType')
   }
+derive instance newtypeAttachUserPolicyRequest :: Newtype AttachUserPolicyRequest _
 
 
 -- | <p>Contains information about an attached policy.</p> <p>An attached policy is a managed policy that has been attached to a user, group, or role. This data type is used as a response element in the <a>ListAttachedGroupPolicies</a>, <a>ListAttachedRolePolicies</a>, <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
@@ -700,18 +713,22 @@ newtype AttachedPolicy = AttachedPolicy
   { "PolicyName" :: NullOrUndefined (PolicyNameType')
   , "PolicyArn" :: NullOrUndefined (ArnType')
   }
+derive instance newtypeAttachedPolicy :: Newtype AttachedPolicy _
 
 
 newtype BootstrapDatum = BootstrapDatum String
+derive instance newtypeBootstrapDatum :: Newtype BootstrapDatum _
 
 
 newtype ChangePasswordRequest = ChangePasswordRequest 
   { "OldPassword" :: (PasswordType')
   , "NewPassword" :: (PasswordType')
   }
+derive instance newtypeChangePasswordRequest :: Newtype ChangePasswordRequest _
 
 
 newtype ColumnNumber = ColumnNumber Int
+derive instance newtypeColumnNumber :: Newtype ColumnNumber _
 
 
 -- | <p>Contains information about a condition context key. It includes the name of the key and specifies the value (or values, if the context key supports multiple values) to use in the simulation. This information is used when evaluating the <code>Condition</code> elements of the input policies.</p> <p>This data type is used as an input parameter to <code> <a>SimulateCustomPolicy</a> </code> and <code> <a>SimulateCustomPolicy</a> </code>.</p>
@@ -720,64 +737,78 @@ newtype ContextEntry = ContextEntry
   , "ContextKeyValues" :: NullOrUndefined (ContextKeyValueListType)
   , "ContextKeyType" :: NullOrUndefined (ContextKeyTypeEnum)
   }
+derive instance newtypeContextEntry :: Newtype ContextEntry _
 
 
 newtype ContextEntryListType = ContextEntryListType (Array ContextEntry)
+derive instance newtypeContextEntryListType :: Newtype ContextEntryListType _
 
 
 newtype ContextKeyNameType = ContextKeyNameType String
+derive instance newtypeContextKeyNameType :: Newtype ContextKeyNameType _
 
 
 newtype ContextKeyNamesResultListType = ContextKeyNamesResultListType (Array ContextKeyNameType)
+derive instance newtypeContextKeyNamesResultListType :: Newtype ContextKeyNamesResultListType _
 
 
 newtype ContextKeyTypeEnum = ContextKeyTypeEnum String
+derive instance newtypeContextKeyTypeEnum :: Newtype ContextKeyTypeEnum _
 
 
 newtype ContextKeyValueListType = ContextKeyValueListType (Array ContextKeyValueType)
+derive instance newtypeContextKeyValueListType :: Newtype ContextKeyValueListType _
 
 
 newtype ContextKeyValueType = ContextKeyValueType String
+derive instance newtypeContextKeyValueType :: Newtype ContextKeyValueType _
 
 
 newtype CreateAccessKeyRequest = CreateAccessKeyRequest 
   { "UserName" :: NullOrUndefined (ExistingUserNameType')
   }
+derive instance newtypeCreateAccessKeyRequest :: Newtype CreateAccessKeyRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateAccessKey</a> request. </p>
 newtype CreateAccessKeyResponse = CreateAccessKeyResponse 
   { "AccessKey" :: (AccessKey)
   }
+derive instance newtypeCreateAccessKeyResponse :: Newtype CreateAccessKeyResponse _
 
 
 newtype CreateAccountAliasRequest = CreateAccountAliasRequest 
   { "AccountAlias" :: (AccountAliasType')
   }
+derive instance newtypeCreateAccountAliasRequest :: Newtype CreateAccountAliasRequest _
 
 
 newtype CreateGroupRequest = CreateGroupRequest 
   { "Path" :: NullOrUndefined (PathType')
   , "GroupName" :: (GroupNameType')
   }
+derive instance newtypeCreateGroupRequest :: Newtype CreateGroupRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateGroup</a> request. </p>
 newtype CreateGroupResponse = CreateGroupResponse 
   { "Group" :: (Group)
   }
+derive instance newtypeCreateGroupResponse :: Newtype CreateGroupResponse _
 
 
 newtype CreateInstanceProfileRequest = CreateInstanceProfileRequest 
   { "InstanceProfileName" :: (InstanceProfileNameType')
   , "Path" :: NullOrUndefined (PathType')
   }
+derive instance newtypeCreateInstanceProfileRequest :: Newtype CreateInstanceProfileRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateInstanceProfile</a> request. </p>
 newtype CreateInstanceProfileResponse = CreateInstanceProfileResponse 
   { "InstanceProfile" :: (InstanceProfile)
   }
+derive instance newtypeCreateInstanceProfileResponse :: Newtype CreateInstanceProfileResponse _
 
 
 newtype CreateLoginProfileRequest = CreateLoginProfileRequest 
@@ -785,12 +816,14 @@ newtype CreateLoginProfileRequest = CreateLoginProfileRequest
   , "Password" :: (PasswordType')
   , "PasswordResetRequired" :: NullOrUndefined (BooleanType')
   }
+derive instance newtypeCreateLoginProfileRequest :: Newtype CreateLoginProfileRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateLoginProfile</a> request. </p>
 newtype CreateLoginProfileResponse = CreateLoginProfileResponse 
   { "LoginProfile" :: (LoginProfile)
   }
+derive instance newtypeCreateLoginProfileResponse :: Newtype CreateLoginProfileResponse _
 
 
 newtype CreateOpenIDConnectProviderRequest = CreateOpenIDConnectProviderRequest 
@@ -798,12 +831,14 @@ newtype CreateOpenIDConnectProviderRequest = CreateOpenIDConnectProviderRequest
   , "ClientIDList" :: NullOrUndefined (ClientIDListType')
   , "ThumbprintList" :: (ThumbprintListType')
   }
+derive instance newtypeCreateOpenIDConnectProviderRequest :: Newtype CreateOpenIDConnectProviderRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateOpenIDConnectProvider</a> request. </p>
 newtype CreateOpenIDConnectProviderResponse = CreateOpenIDConnectProviderResponse 
   { "OpenIDConnectProviderArn" :: NullOrUndefined (ArnType')
   }
+derive instance newtypeCreateOpenIDConnectProviderResponse :: Newtype CreateOpenIDConnectProviderResponse _
 
 
 newtype CreatePolicyRequest = CreatePolicyRequest 
@@ -812,12 +847,14 @@ newtype CreatePolicyRequest = CreatePolicyRequest
   , "PolicyDocument" :: (PolicyDocumentType')
   , "Description" :: NullOrUndefined (PolicyDescriptionType')
   }
+derive instance newtypeCreatePolicyRequest :: Newtype CreatePolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreatePolicy</a> request. </p>
 newtype CreatePolicyResponse = CreatePolicyResponse 
   { "Policy" :: NullOrUndefined (Policy)
   }
+derive instance newtypeCreatePolicyResponse :: Newtype CreatePolicyResponse _
 
 
 newtype CreatePolicyVersionRequest = CreatePolicyVersionRequest 
@@ -825,12 +862,14 @@ newtype CreatePolicyVersionRequest = CreatePolicyVersionRequest
   , "PolicyDocument" :: (PolicyDocumentType')
   , "SetAsDefault" :: NullOrUndefined (BooleanType')
   }
+derive instance newtypeCreatePolicyVersionRequest :: Newtype CreatePolicyVersionRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreatePolicyVersion</a> request. </p>
 newtype CreatePolicyVersionResponse = CreatePolicyVersionResponse 
   { "PolicyVersion" :: NullOrUndefined (PolicyVersion)
   }
+derive instance newtypeCreatePolicyVersionResponse :: Newtype CreatePolicyVersionResponse _
 
 
 newtype CreateRoleRequest = CreateRoleRequest 
@@ -839,24 +878,28 @@ newtype CreateRoleRequest = CreateRoleRequest
   , "AssumeRolePolicyDocument" :: (PolicyDocumentType')
   , "Description" :: NullOrUndefined (RoleDescriptionType')
   }
+derive instance newtypeCreateRoleRequest :: Newtype CreateRoleRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateRole</a> request. </p>
 newtype CreateRoleResponse = CreateRoleResponse 
   { "Role" :: (Role)
   }
+derive instance newtypeCreateRoleResponse :: Newtype CreateRoleResponse _
 
 
 newtype CreateSAMLProviderRequest = CreateSAMLProviderRequest 
   { "SAMLMetadataDocument" :: (SAMLMetadataDocumentType)
   , "Name" :: (SAMLProviderNameType)
   }
+derive instance newtypeCreateSAMLProviderRequest :: Newtype CreateSAMLProviderRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateSAMLProvider</a> request. </p>
 newtype CreateSAMLProviderResponse = CreateSAMLProviderResponse 
   { "SAMLProviderArn" :: NullOrUndefined (ArnType')
   }
+derive instance newtypeCreateSAMLProviderResponse :: Newtype CreateSAMLProviderResponse _
 
 
 newtype CreateServiceLinkedRoleRequest = CreateServiceLinkedRoleRequest 
@@ -864,189 +907,223 @@ newtype CreateServiceLinkedRoleRequest = CreateServiceLinkedRoleRequest
   , "Description" :: NullOrUndefined (RoleDescriptionType')
   , "CustomSuffix" :: NullOrUndefined (CustomSuffixType')
   }
+derive instance newtypeCreateServiceLinkedRoleRequest :: Newtype CreateServiceLinkedRoleRequest _
 
 
 newtype CreateServiceLinkedRoleResponse = CreateServiceLinkedRoleResponse 
   { "Role" :: NullOrUndefined (Role)
   }
+derive instance newtypeCreateServiceLinkedRoleResponse :: Newtype CreateServiceLinkedRoleResponse _
 
 
 newtype CreateServiceSpecificCredentialRequest = CreateServiceSpecificCredentialRequest 
   { "UserName" :: (UserNameType')
   , "ServiceName" :: (ServiceName')
   }
+derive instance newtypeCreateServiceSpecificCredentialRequest :: Newtype CreateServiceSpecificCredentialRequest _
 
 
 newtype CreateServiceSpecificCredentialResponse = CreateServiceSpecificCredentialResponse 
   { "ServiceSpecificCredential" :: NullOrUndefined (ServiceSpecificCredential)
   }
+derive instance newtypeCreateServiceSpecificCredentialResponse :: Newtype CreateServiceSpecificCredentialResponse _
 
 
 newtype CreateUserRequest = CreateUserRequest 
   { "Path" :: NullOrUndefined (PathType')
   , "UserName" :: (UserNameType')
   }
+derive instance newtypeCreateUserRequest :: Newtype CreateUserRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateUser</a> request. </p>
 newtype CreateUserResponse = CreateUserResponse 
   { "User" :: NullOrUndefined (User)
   }
+derive instance newtypeCreateUserResponse :: Newtype CreateUserResponse _
 
 
 newtype CreateVirtualMFADeviceRequest = CreateVirtualMFADeviceRequest 
   { "Path" :: NullOrUndefined (PathType')
   , "VirtualMFADeviceName" :: (VirtualMFADeviceName')
   }
+derive instance newtypeCreateVirtualMFADeviceRequest :: Newtype CreateVirtualMFADeviceRequest _
 
 
 -- | <p>Contains the response to a successful <a>CreateVirtualMFADevice</a> request. </p>
 newtype CreateVirtualMFADeviceResponse = CreateVirtualMFADeviceResponse 
   { "VirtualMFADevice" :: (VirtualMFADevice)
   }
+derive instance newtypeCreateVirtualMFADeviceResponse :: Newtype CreateVirtualMFADeviceResponse _
 
 
 -- | <p>The request was rejected because the most recent credential report has expired. To generate a new credential report, use <a>GenerateCredentialReport</a>. For more information about credential report expiration, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Getting Credential Reports</a> in the <i>IAM User Guide</i>.</p>
 newtype CredentialReportExpiredException = CredentialReportExpiredException 
   { "Message'" :: NullOrUndefined (CredentialReportExpiredExceptionMessage')
   }
+derive instance newtypeCredentialReportExpiredException :: Newtype CredentialReportExpiredException _
 
 
 -- | <p>The request was rejected because the credential report does not exist. To generate a credential report, use <a>GenerateCredentialReport</a>.</p>
 newtype CredentialReportNotPresentException = CredentialReportNotPresentException 
   { "Message'" :: NullOrUndefined (CredentialReportNotPresentExceptionMessage')
   }
+derive instance newtypeCredentialReportNotPresentException :: Newtype CredentialReportNotPresentException _
 
 
 -- | <p>The request was rejected because the credential report is still being generated.</p>
 newtype CredentialReportNotReadyException = CredentialReportNotReadyException 
   { "Message'" :: NullOrUndefined (CredentialReportNotReadyExceptionMessage')
   }
+derive instance newtypeCredentialReportNotReadyException :: Newtype CredentialReportNotReadyException _
 
 
 newtype DeactivateMFADeviceRequest = DeactivateMFADeviceRequest 
   { "UserName" :: (ExistingUserNameType')
   , "SerialNumber" :: (SerialNumberType')
   }
+derive instance newtypeDeactivateMFADeviceRequest :: Newtype DeactivateMFADeviceRequest _
 
 
 newtype DeleteAccessKeyRequest = DeleteAccessKeyRequest 
   { "UserName" :: NullOrUndefined (ExistingUserNameType')
   , "AccessKeyId" :: (AccessKeyIdType')
   }
+derive instance newtypeDeleteAccessKeyRequest :: Newtype DeleteAccessKeyRequest _
 
 
 newtype DeleteAccountAliasRequest = DeleteAccountAliasRequest 
   { "AccountAlias" :: (AccountAliasType')
   }
+derive instance newtypeDeleteAccountAliasRequest :: Newtype DeleteAccountAliasRequest _
 
 
 -- | <p>The request was rejected because it attempted to delete a resource that has attached subordinate entities. The error message describes these entities.</p>
 newtype DeleteConflictException = DeleteConflictException 
   { "Message'" :: NullOrUndefined (DeleteConflictMessage')
   }
+derive instance newtypeDeleteConflictException :: Newtype DeleteConflictException _
 
 
 newtype DeleteGroupPolicyRequest = DeleteGroupPolicyRequest 
   { "GroupName" :: (GroupNameType')
   , "PolicyName" :: (PolicyNameType')
   }
+derive instance newtypeDeleteGroupPolicyRequest :: Newtype DeleteGroupPolicyRequest _
 
 
 newtype DeleteGroupRequest = DeleteGroupRequest 
   { "GroupName" :: (GroupNameType')
   }
+derive instance newtypeDeleteGroupRequest :: Newtype DeleteGroupRequest _
 
 
 newtype DeleteInstanceProfileRequest = DeleteInstanceProfileRequest 
   { "InstanceProfileName" :: (InstanceProfileNameType')
   }
+derive instance newtypeDeleteInstanceProfileRequest :: Newtype DeleteInstanceProfileRequest _
 
 
 newtype DeleteLoginProfileRequest = DeleteLoginProfileRequest 
   { "UserName" :: (UserNameType')
   }
+derive instance newtypeDeleteLoginProfileRequest :: Newtype DeleteLoginProfileRequest _
 
 
 newtype DeleteOpenIDConnectProviderRequest = DeleteOpenIDConnectProviderRequest 
   { "OpenIDConnectProviderArn" :: (ArnType')
   }
+derive instance newtypeDeleteOpenIDConnectProviderRequest :: Newtype DeleteOpenIDConnectProviderRequest _
 
 
 newtype DeletePolicyRequest = DeletePolicyRequest 
   { "PolicyArn" :: (ArnType')
   }
+derive instance newtypeDeletePolicyRequest :: Newtype DeletePolicyRequest _
 
 
 newtype DeletePolicyVersionRequest = DeletePolicyVersionRequest 
   { "PolicyArn" :: (ArnType')
   , "VersionId" :: (PolicyVersionIdType')
   }
+derive instance newtypeDeletePolicyVersionRequest :: Newtype DeletePolicyVersionRequest _
 
 
 newtype DeleteRolePolicyRequest = DeleteRolePolicyRequest 
   { "RoleName" :: (RoleNameType')
   , "PolicyName" :: (PolicyNameType')
   }
+derive instance newtypeDeleteRolePolicyRequest :: Newtype DeleteRolePolicyRequest _
 
 
 newtype DeleteRoleRequest = DeleteRoleRequest 
   { "RoleName" :: (RoleNameType')
   }
+derive instance newtypeDeleteRoleRequest :: Newtype DeleteRoleRequest _
 
 
 newtype DeleteSAMLProviderRequest = DeleteSAMLProviderRequest 
   { "SAMLProviderArn" :: (ArnType')
   }
+derive instance newtypeDeleteSAMLProviderRequest :: Newtype DeleteSAMLProviderRequest _
 
 
 newtype DeleteSSHPublicKeyRequest = DeleteSSHPublicKeyRequest 
   { "UserName" :: (UserNameType')
   , "SSHPublicKeyId" :: (PublicKeyIdType')
   }
+derive instance newtypeDeleteSSHPublicKeyRequest :: Newtype DeleteSSHPublicKeyRequest _
 
 
 newtype DeleteServerCertificateRequest = DeleteServerCertificateRequest 
   { "ServerCertificateName" :: (ServerCertificateNameType')
   }
+derive instance newtypeDeleteServerCertificateRequest :: Newtype DeleteServerCertificateRequest _
 
 
 newtype DeleteServiceLinkedRoleRequest = DeleteServiceLinkedRoleRequest 
   { "RoleName" :: (RoleNameType')
   }
+derive instance newtypeDeleteServiceLinkedRoleRequest :: Newtype DeleteServiceLinkedRoleRequest _
 
 
 newtype DeleteServiceLinkedRoleResponse = DeleteServiceLinkedRoleResponse 
   { "DeletionTaskId" :: (DeletionTaskIdType)
   }
+derive instance newtypeDeleteServiceLinkedRoleResponse :: Newtype DeleteServiceLinkedRoleResponse _
 
 
 newtype DeleteServiceSpecificCredentialRequest = DeleteServiceSpecificCredentialRequest 
   { "UserName" :: NullOrUndefined (UserNameType')
   , "ServiceSpecificCredentialId" :: (ServiceSpecificCredentialId')
   }
+derive instance newtypeDeleteServiceSpecificCredentialRequest :: Newtype DeleteServiceSpecificCredentialRequest _
 
 
 newtype DeleteSigningCertificateRequest = DeleteSigningCertificateRequest 
   { "UserName" :: NullOrUndefined (ExistingUserNameType')
   , "CertificateId" :: (CertificateIdType')
   }
+derive instance newtypeDeleteSigningCertificateRequest :: Newtype DeleteSigningCertificateRequest _
 
 
 newtype DeleteUserPolicyRequest = DeleteUserPolicyRequest 
   { "UserName" :: (ExistingUserNameType')
   , "PolicyName" :: (PolicyNameType')
   }
+derive instance newtypeDeleteUserPolicyRequest :: Newtype DeleteUserPolicyRequest _
 
 
 newtype DeleteUserRequest = DeleteUserRequest 
   { "UserName" :: (ExistingUserNameType')
   }
+derive instance newtypeDeleteUserRequest :: Newtype DeleteUserRequest _
 
 
 newtype DeleteVirtualMFADeviceRequest = DeleteVirtualMFADeviceRequest 
   { "SerialNumber" :: (SerialNumberType')
   }
+derive instance newtypeDeleteVirtualMFADeviceRequest :: Newtype DeleteVirtualMFADeviceRequest _
 
 
 -- | <p>The reason that the service-linked role deletion failed.</p> <p>This data type is used as a response element in the <a>GetServiceLinkedRoleDeletionStatus</a> operation.</p>
@@ -1054,42 +1131,50 @@ newtype DeletionTaskFailureReasonType = DeletionTaskFailureReasonType
   { "Reason" :: NullOrUndefined (ReasonType)
   , "RoleUsageList" :: NullOrUndefined (RoleUsageListType)
   }
+derive instance newtypeDeletionTaskFailureReasonType :: Newtype DeletionTaskFailureReasonType _
 
 
 newtype DeletionTaskIdType = DeletionTaskIdType String
+derive instance newtypeDeletionTaskIdType :: Newtype DeletionTaskIdType _
 
 
 newtype DeletionTaskStatusType = DeletionTaskStatusType String
+derive instance newtypeDeletionTaskStatusType :: Newtype DeletionTaskStatusType _
 
 
 newtype DetachGroupPolicyRequest = DetachGroupPolicyRequest 
   { "GroupName" :: (GroupNameType')
   , "PolicyArn" :: (ArnType')
   }
+derive instance newtypeDetachGroupPolicyRequest :: Newtype DetachGroupPolicyRequest _
 
 
 newtype DetachRolePolicyRequest = DetachRolePolicyRequest 
   { "RoleName" :: (RoleNameType')
   , "PolicyArn" :: (ArnType')
   }
+derive instance newtypeDetachRolePolicyRequest :: Newtype DetachRolePolicyRequest _
 
 
 newtype DetachUserPolicyRequest = DetachUserPolicyRequest 
   { "UserName" :: (UserNameType')
   , "PolicyArn" :: (ArnType')
   }
+derive instance newtypeDetachUserPolicyRequest :: Newtype DetachUserPolicyRequest _
 
 
 -- | <p>The request was rejected because the same certificate is associated with an IAM user in the account.</p>
 newtype DuplicateCertificateException = DuplicateCertificateException 
   { "Message'" :: NullOrUndefined (DuplicateCertificateMessage')
   }
+derive instance newtypeDuplicateCertificateException :: Newtype DuplicateCertificateException _
 
 
 -- | <p>The request was rejected because the SSH public key is already associated with the specified IAM user.</p>
 newtype DuplicateSSHPublicKeyException = DuplicateSSHPublicKeyException 
   { "Message'" :: NullOrUndefined (DuplicateSSHPublicKeyMessage')
   }
+derive instance newtypeDuplicateSSHPublicKeyException :: Newtype DuplicateSSHPublicKeyException _
 
 
 newtype EnableMFADeviceRequest = EnableMFADeviceRequest 
@@ -1098,27 +1183,33 @@ newtype EnableMFADeviceRequest = EnableMFADeviceRequest
   , "AuthenticationCode1" :: (AuthenticationCodeType')
   , "AuthenticationCode2" :: (AuthenticationCodeType')
   }
+derive instance newtypeEnableMFADeviceRequest :: Newtype EnableMFADeviceRequest _
 
 
 -- | <p>The request was rejected because it attempted to create a resource that already exists.</p>
 newtype EntityAlreadyExistsException = EntityAlreadyExistsException 
   { "Message'" :: NullOrUndefined (EntityAlreadyExistsMessage')
   }
+derive instance newtypeEntityAlreadyExistsException :: Newtype EntityAlreadyExistsException _
 
 
 -- | <p>The request was rejected because it referenced an entity that is temporarily unmodifiable, such as a user name that was deleted and then recreated. The error indicates that the request is likely to succeed if you try again after waiting several minutes. The error message describes the entity.</p>
 newtype EntityTemporarilyUnmodifiableException = EntityTemporarilyUnmodifiableException 
   { "Message'" :: NullOrUndefined (EntityTemporarilyUnmodifiableMessage')
   }
+derive instance newtypeEntityTemporarilyUnmodifiableException :: Newtype EntityTemporarilyUnmodifiableException _
 
 
 newtype EntityType = EntityType String
+derive instance newtypeEntityType :: Newtype EntityType _
 
 
 newtype EvalDecisionDetailsType = EvalDecisionDetailsType (Map EvalDecisionSourceType PolicyEvaluationDecisionType)
+derive instance newtypeEvalDecisionDetailsType :: Newtype EvalDecisionDetailsType _
 
 
 newtype EvalDecisionSourceType = EvalDecisionSourceType String
+derive instance newtypeEvalDecisionSourceType :: Newtype EvalDecisionSourceType _
 
 
 -- | <p>Contains the results of a simulation.</p> <p>This data type is used by the return parameter of <code> <a>SimulateCustomPolicy</a> </code> and <code> <a>SimulatePrincipalPolicy</a> </code>.</p>
@@ -1132,9 +1223,11 @@ newtype EvaluationResult = EvaluationResult
   , "EvalDecisionDetails" :: NullOrUndefined (EvalDecisionDetailsType)
   , "ResourceSpecificResults" :: NullOrUndefined (ResourceSpecificResultListType)
   }
+derive instance newtypeEvaluationResult :: Newtype EvaluationResult _
 
 
 newtype EvaluationResultsListType = EvaluationResultsListType (Array EvaluationResult)
+derive instance newtypeEvaluationResultsListType :: Newtype EvaluationResultsListType _
 
 
 -- | <p>Contains the response to a successful <a>GenerateCredentialReport</a> request. </p>
@@ -1142,11 +1235,13 @@ newtype GenerateCredentialReportResponse = GenerateCredentialReportResponse
   { "State" :: NullOrUndefined (ReportStateType)
   , "Description" :: NullOrUndefined (ReportStateDescriptionType)
   }
+derive instance newtypeGenerateCredentialReportResponse :: Newtype GenerateCredentialReportResponse _
 
 
 newtype GetAccessKeyLastUsedRequest = GetAccessKeyLastUsedRequest 
   { "AccessKeyId" :: (AccessKeyIdType')
   }
+derive instance newtypeGetAccessKeyLastUsedRequest :: Newtype GetAccessKeyLastUsedRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetAccessKeyLastUsed</a> request. It is also returned as a member of the <a>AccessKeyMetaData</a> structure returned by the <a>ListAccessKeys</a> action.</p>
@@ -1154,6 +1249,7 @@ newtype GetAccessKeyLastUsedResponse = GetAccessKeyLastUsedResponse
   { "UserName" :: NullOrUndefined (ExistingUserNameType')
   , "AccessKeyLastUsed" :: NullOrUndefined (AccessKeyLastUsed)
   }
+derive instance newtypeGetAccessKeyLastUsedResponse :: Newtype GetAccessKeyLastUsedResponse _
 
 
 newtype GetAccountAuthorizationDetailsRequest = GetAccountAuthorizationDetailsRequest 
@@ -1161,6 +1257,7 @@ newtype GetAccountAuthorizationDetailsRequest = GetAccountAuthorizationDetailsRe
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeGetAccountAuthorizationDetailsRequest :: Newtype GetAccountAuthorizationDetailsRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetAccountAuthorizationDetails</a> request. </p>
@@ -1172,35 +1269,41 @@ newtype GetAccountAuthorizationDetailsResponse = GetAccountAuthorizationDetailsR
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeGetAccountAuthorizationDetailsResponse :: Newtype GetAccountAuthorizationDetailsResponse _
 
 
 -- | <p>Contains the response to a successful <a>GetAccountPasswordPolicy</a> request. </p>
 newtype GetAccountPasswordPolicyResponse = GetAccountPasswordPolicyResponse 
   { "PasswordPolicy" :: (PasswordPolicy)
   }
+derive instance newtypeGetAccountPasswordPolicyResponse :: Newtype GetAccountPasswordPolicyResponse _
 
 
 -- | <p>Contains the response to a successful <a>GetAccountSummary</a> request. </p>
 newtype GetAccountSummaryResponse = GetAccountSummaryResponse 
   { "SummaryMap" :: NullOrUndefined (SummaryMapType')
   }
+derive instance newtypeGetAccountSummaryResponse :: Newtype GetAccountSummaryResponse _
 
 
 newtype GetContextKeysForCustomPolicyRequest = GetContextKeysForCustomPolicyRequest 
   { "PolicyInputList" :: (SimulationPolicyListType)
   }
+derive instance newtypeGetContextKeysForCustomPolicyRequest :: Newtype GetContextKeysForCustomPolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetContextKeysForPrincipalPolicy</a> or <a>GetContextKeysForCustomPolicy</a> request. </p>
 newtype GetContextKeysForPolicyResponse = GetContextKeysForPolicyResponse 
   { "ContextKeyNames" :: NullOrUndefined (ContextKeyNamesResultListType)
   }
+derive instance newtypeGetContextKeysForPolicyResponse :: Newtype GetContextKeysForPolicyResponse _
 
 
 newtype GetContextKeysForPrincipalPolicyRequest = GetContextKeysForPrincipalPolicyRequest 
   { "PolicySourceArn" :: (ArnType')
   , "PolicyInputList" :: NullOrUndefined (SimulationPolicyListType)
   }
+derive instance newtypeGetContextKeysForPrincipalPolicyRequest :: Newtype GetContextKeysForPrincipalPolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetCredentialReport</a> request. </p>
@@ -1209,12 +1312,14 @@ newtype GetCredentialReportResponse = GetCredentialReportResponse
   , "ReportFormat" :: NullOrUndefined (ReportFormatType)
   , "GeneratedTime" :: NullOrUndefined (DateType')
   }
+derive instance newtypeGetCredentialReportResponse :: Newtype GetCredentialReportResponse _
 
 
 newtype GetGroupPolicyRequest = GetGroupPolicyRequest 
   { "GroupName" :: (GroupNameType')
   , "PolicyName" :: (PolicyNameType')
   }
+derive instance newtypeGetGroupPolicyRequest :: Newtype GetGroupPolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetGroupPolicy</a> request. </p>
@@ -1223,6 +1328,7 @@ newtype GetGroupPolicyResponse = GetGroupPolicyResponse
   , "PolicyName" :: (PolicyNameType')
   , "PolicyDocument" :: (PolicyDocumentType')
   }
+derive instance newtypeGetGroupPolicyResponse :: Newtype GetGroupPolicyResponse _
 
 
 newtype GetGroupRequest = GetGroupRequest 
@@ -1230,6 +1336,7 @@ newtype GetGroupRequest = GetGroupRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeGetGroupRequest :: Newtype GetGroupRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetGroup</a> request. </p>
@@ -1239,33 +1346,39 @@ newtype GetGroupResponse = GetGroupResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeGetGroupResponse :: Newtype GetGroupResponse _
 
 
 newtype GetInstanceProfileRequest = GetInstanceProfileRequest 
   { "InstanceProfileName" :: (InstanceProfileNameType')
   }
+derive instance newtypeGetInstanceProfileRequest :: Newtype GetInstanceProfileRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetInstanceProfile</a> request. </p>
 newtype GetInstanceProfileResponse = GetInstanceProfileResponse 
   { "InstanceProfile" :: (InstanceProfile)
   }
+derive instance newtypeGetInstanceProfileResponse :: Newtype GetInstanceProfileResponse _
 
 
 newtype GetLoginProfileRequest = GetLoginProfileRequest 
   { "UserName" :: (UserNameType')
   }
+derive instance newtypeGetLoginProfileRequest :: Newtype GetLoginProfileRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetLoginProfile</a> request. </p>
 newtype GetLoginProfileResponse = GetLoginProfileResponse 
   { "LoginProfile" :: (LoginProfile)
   }
+derive instance newtypeGetLoginProfileResponse :: Newtype GetLoginProfileResponse _
 
 
 newtype GetOpenIDConnectProviderRequest = GetOpenIDConnectProviderRequest 
   { "OpenIDConnectProviderArn" :: (ArnType')
   }
+derive instance newtypeGetOpenIDConnectProviderRequest :: Newtype GetOpenIDConnectProviderRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetOpenIDConnectProvider</a> request. </p>
@@ -1275,35 +1388,41 @@ newtype GetOpenIDConnectProviderResponse = GetOpenIDConnectProviderResponse
   , "ThumbprintList" :: NullOrUndefined (ThumbprintListType')
   , "CreateDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypeGetOpenIDConnectProviderResponse :: Newtype GetOpenIDConnectProviderResponse _
 
 
 newtype GetPolicyRequest = GetPolicyRequest 
   { "PolicyArn" :: (ArnType')
   }
+derive instance newtypeGetPolicyRequest :: Newtype GetPolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetPolicy</a> request. </p>
 newtype GetPolicyResponse = GetPolicyResponse 
   { "Policy" :: NullOrUndefined (Policy)
   }
+derive instance newtypeGetPolicyResponse :: Newtype GetPolicyResponse _
 
 
 newtype GetPolicyVersionRequest = GetPolicyVersionRequest 
   { "PolicyArn" :: (ArnType')
   , "VersionId" :: (PolicyVersionIdType')
   }
+derive instance newtypeGetPolicyVersionRequest :: Newtype GetPolicyVersionRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetPolicyVersion</a> request. </p>
 newtype GetPolicyVersionResponse = GetPolicyVersionResponse 
   { "PolicyVersion" :: NullOrUndefined (PolicyVersion)
   }
+derive instance newtypeGetPolicyVersionResponse :: Newtype GetPolicyVersionResponse _
 
 
 newtype GetRolePolicyRequest = GetRolePolicyRequest 
   { "RoleName" :: (RoleNameType')
   , "PolicyName" :: (PolicyNameType')
   }
+derive instance newtypeGetRolePolicyRequest :: Newtype GetRolePolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetRolePolicy</a> request. </p>
@@ -1312,22 +1431,26 @@ newtype GetRolePolicyResponse = GetRolePolicyResponse
   , "PolicyName" :: (PolicyNameType')
   , "PolicyDocument" :: (PolicyDocumentType')
   }
+derive instance newtypeGetRolePolicyResponse :: Newtype GetRolePolicyResponse _
 
 
 newtype GetRoleRequest = GetRoleRequest 
   { "RoleName" :: (RoleNameType')
   }
+derive instance newtypeGetRoleRequest :: Newtype GetRoleRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetRole</a> request. </p>
 newtype GetRoleResponse = GetRoleResponse 
   { "Role" :: (Role)
   }
+derive instance newtypeGetRoleResponse :: Newtype GetRoleResponse _
 
 
 newtype GetSAMLProviderRequest = GetSAMLProviderRequest 
   { "SAMLProviderArn" :: (ArnType')
   }
+derive instance newtypeGetSAMLProviderRequest :: Newtype GetSAMLProviderRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetSAMLProvider</a> request. </p>
@@ -1336,6 +1459,7 @@ newtype GetSAMLProviderResponse = GetSAMLProviderResponse
   , "CreateDate" :: NullOrUndefined (DateType')
   , "ValidUntil" :: NullOrUndefined (DateType')
   }
+derive instance newtypeGetSAMLProviderResponse :: Newtype GetSAMLProviderResponse _
 
 
 newtype GetSSHPublicKeyRequest = GetSSHPublicKeyRequest 
@@ -1343,40 +1467,47 @@ newtype GetSSHPublicKeyRequest = GetSSHPublicKeyRequest
   , "SSHPublicKeyId" :: (PublicKeyIdType')
   , "Encoding" :: (EncodingType')
   }
+derive instance newtypeGetSSHPublicKeyRequest :: Newtype GetSSHPublicKeyRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetSSHPublicKey</a> request.</p>
 newtype GetSSHPublicKeyResponse = GetSSHPublicKeyResponse 
   { "SSHPublicKey" :: NullOrUndefined (SSHPublicKey)
   }
+derive instance newtypeGetSSHPublicKeyResponse :: Newtype GetSSHPublicKeyResponse _
 
 
 newtype GetServerCertificateRequest = GetServerCertificateRequest 
   { "ServerCertificateName" :: (ServerCertificateNameType')
   }
+derive instance newtypeGetServerCertificateRequest :: Newtype GetServerCertificateRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetServerCertificate</a> request. </p>
 newtype GetServerCertificateResponse = GetServerCertificateResponse 
   { "ServerCertificate" :: (ServerCertificate)
   }
+derive instance newtypeGetServerCertificateResponse :: Newtype GetServerCertificateResponse _
 
 
 newtype GetServiceLinkedRoleDeletionStatusRequest = GetServiceLinkedRoleDeletionStatusRequest 
   { "DeletionTaskId" :: (DeletionTaskIdType)
   }
+derive instance newtypeGetServiceLinkedRoleDeletionStatusRequest :: Newtype GetServiceLinkedRoleDeletionStatusRequest _
 
 
 newtype GetServiceLinkedRoleDeletionStatusResponse = GetServiceLinkedRoleDeletionStatusResponse 
   { "Status" :: (DeletionTaskStatusType)
   , "Reason" :: NullOrUndefined (DeletionTaskFailureReasonType)
   }
+derive instance newtypeGetServiceLinkedRoleDeletionStatusResponse :: Newtype GetServiceLinkedRoleDeletionStatusResponse _
 
 
 newtype GetUserPolicyRequest = GetUserPolicyRequest 
   { "UserName" :: (ExistingUserNameType')
   , "PolicyName" :: (PolicyNameType')
   }
+derive instance newtypeGetUserPolicyRequest :: Newtype GetUserPolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetUserPolicy</a> request. </p>
@@ -1385,17 +1516,20 @@ newtype GetUserPolicyResponse = GetUserPolicyResponse
   , "PolicyName" :: (PolicyNameType')
   , "PolicyDocument" :: (PolicyDocumentType')
   }
+derive instance newtypeGetUserPolicyResponse :: Newtype GetUserPolicyResponse _
 
 
 newtype GetUserRequest = GetUserRequest 
   { "UserName" :: NullOrUndefined (ExistingUserNameType')
   }
+derive instance newtypeGetUserRequest :: Newtype GetUserRequest _
 
 
 -- | <p>Contains the response to a successful <a>GetUser</a> request. </p>
 newtype GetUserResponse = GetUserResponse 
   { "User" :: (User)
   }
+derive instance newtypeGetUserResponse :: Newtype GetUserResponse _
 
 
 -- | <p>Contains information about an IAM group entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateGroup</a> </p> </li> <li> <p> <a>GetGroup</a> </p> </li> <li> <p> <a>ListGroups</a> </p> </li> </ul>
@@ -1406,6 +1540,7 @@ newtype Group = Group
   , "Arn" :: (ArnType')
   , "CreateDate" :: (DateType')
   }
+derive instance newtypeGroup :: Newtype Group _
 
 
 -- | <p>Contains information about an IAM group, including all of the group's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
@@ -1418,6 +1553,7 @@ newtype GroupDetail = GroupDetail
   , "GroupPolicyList" :: NullOrUndefined (PolicyDetailListType')
   , "AttachedManagedPolicies" :: NullOrUndefined (AttachedPoliciesListType')
   }
+derive instance newtypeGroupDetail :: Newtype GroupDetail _
 
 
 -- | <p>Contains information about an instance profile.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateInstanceProfile</a> </p> </li> <li> <p> <a>GetInstanceProfile</a> </p> </li> <li> <p> <a>ListInstanceProfiles</a> </p> </li> <li> <p> <a>ListInstanceProfilesForRole</a> </p> </li> </ul>
@@ -1429,51 +1565,60 @@ newtype InstanceProfile = InstanceProfile
   , "CreateDate" :: (DateType')
   , "Roles" :: (RoleListType')
   }
+derive instance newtypeInstanceProfile :: Newtype InstanceProfile _
 
 
 -- | <p>The request was rejected because the authentication code was not recognized. The error message describes the specific error.</p>
 newtype InvalidAuthenticationCodeException = InvalidAuthenticationCodeException 
   { "Message'" :: NullOrUndefined (InvalidAuthenticationCodeMessage')
   }
+derive instance newtypeInvalidAuthenticationCodeException :: Newtype InvalidAuthenticationCodeException _
 
 
 -- | <p>The request was rejected because the certificate is invalid.</p>
 newtype InvalidCertificateException = InvalidCertificateException 
   { "Message'" :: NullOrUndefined (InvalidCertificateMessage')
   }
+derive instance newtypeInvalidCertificateException :: Newtype InvalidCertificateException _
 
 
 -- | <p>The request was rejected because an invalid or out-of-range value was supplied for an input parameter.</p>
 newtype InvalidInputException = InvalidInputException 
   { "Message'" :: NullOrUndefined (InvalidInputMessage')
   }
+derive instance newtypeInvalidInputException :: Newtype InvalidInputException _
 
 
 -- | <p>The request was rejected because the public key is malformed or otherwise invalid.</p>
 newtype InvalidPublicKeyException = InvalidPublicKeyException 
   { "Message'" :: NullOrUndefined (InvalidPublicKeyMessage')
   }
+derive instance newtypeInvalidPublicKeyException :: Newtype InvalidPublicKeyException _
 
 
 -- | <p>The request was rejected because the type of user for the transaction was incorrect.</p>
 newtype InvalidUserTypeException = InvalidUserTypeException 
   { "Message'" :: NullOrUndefined (InvalidUserTypeMessage')
   }
+derive instance newtypeInvalidUserTypeException :: Newtype InvalidUserTypeException _
 
 
 -- | <p>The request was rejected because the public key certificate and the private key do not match.</p>
 newtype KeyPairMismatchException = KeyPairMismatchException 
   { "Message'" :: NullOrUndefined (KeyPairMismatchMessage')
   }
+derive instance newtypeKeyPairMismatchException :: Newtype KeyPairMismatchException _
 
 
 -- | <p>The request was rejected because it attempted to create resources beyond the current AWS account limits. The error message describes the limit exceeded.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (LimitExceededMessage')
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype LineNumber = LineNumber Int
+derive instance newtypeLineNumber :: Newtype LineNumber _
 
 
 newtype ListAccessKeysRequest = ListAccessKeysRequest 
@@ -1481,6 +1626,7 @@ newtype ListAccessKeysRequest = ListAccessKeysRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListAccessKeysRequest :: Newtype ListAccessKeysRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListAccessKeys</a> request. </p>
@@ -1489,12 +1635,14 @@ newtype ListAccessKeysResponse = ListAccessKeysResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListAccessKeysResponse :: Newtype ListAccessKeysResponse _
 
 
 newtype ListAccountAliasesRequest = ListAccountAliasesRequest 
   { "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListAccountAliasesRequest :: Newtype ListAccountAliasesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListAccountAliases</a> request. </p>
@@ -1503,6 +1651,7 @@ newtype ListAccountAliasesResponse = ListAccountAliasesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListAccountAliasesResponse :: Newtype ListAccountAliasesResponse _
 
 
 newtype ListAttachedGroupPoliciesRequest = ListAttachedGroupPoliciesRequest 
@@ -1511,6 +1660,7 @@ newtype ListAttachedGroupPoliciesRequest = ListAttachedGroupPoliciesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListAttachedGroupPoliciesRequest :: Newtype ListAttachedGroupPoliciesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListAttachedGroupPolicies</a> request. </p>
@@ -1519,6 +1669,7 @@ newtype ListAttachedGroupPoliciesResponse = ListAttachedGroupPoliciesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListAttachedGroupPoliciesResponse :: Newtype ListAttachedGroupPoliciesResponse _
 
 
 newtype ListAttachedRolePoliciesRequest = ListAttachedRolePoliciesRequest 
@@ -1527,6 +1678,7 @@ newtype ListAttachedRolePoliciesRequest = ListAttachedRolePoliciesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListAttachedRolePoliciesRequest :: Newtype ListAttachedRolePoliciesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListAttachedRolePolicies</a> request. </p>
@@ -1535,6 +1687,7 @@ newtype ListAttachedRolePoliciesResponse = ListAttachedRolePoliciesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListAttachedRolePoliciesResponse :: Newtype ListAttachedRolePoliciesResponse _
 
 
 newtype ListAttachedUserPoliciesRequest = ListAttachedUserPoliciesRequest 
@@ -1543,6 +1696,7 @@ newtype ListAttachedUserPoliciesRequest = ListAttachedUserPoliciesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListAttachedUserPoliciesRequest :: Newtype ListAttachedUserPoliciesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListAttachedUserPolicies</a> request. </p>
@@ -1551,6 +1705,7 @@ newtype ListAttachedUserPoliciesResponse = ListAttachedUserPoliciesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListAttachedUserPoliciesResponse :: Newtype ListAttachedUserPoliciesResponse _
 
 
 newtype ListEntitiesForPolicyRequest = ListEntitiesForPolicyRequest 
@@ -1560,6 +1715,7 @@ newtype ListEntitiesForPolicyRequest = ListEntitiesForPolicyRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListEntitiesForPolicyRequest :: Newtype ListEntitiesForPolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListEntitiesForPolicy</a> request. </p>
@@ -1570,6 +1726,7 @@ newtype ListEntitiesForPolicyResponse = ListEntitiesForPolicyResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListEntitiesForPolicyResponse :: Newtype ListEntitiesForPolicyResponse _
 
 
 newtype ListGroupPoliciesRequest = ListGroupPoliciesRequest 
@@ -1577,6 +1734,7 @@ newtype ListGroupPoliciesRequest = ListGroupPoliciesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListGroupPoliciesRequest :: Newtype ListGroupPoliciesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListGroupPolicies</a> request. </p>
@@ -1585,6 +1743,7 @@ newtype ListGroupPoliciesResponse = ListGroupPoliciesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListGroupPoliciesResponse :: Newtype ListGroupPoliciesResponse _
 
 
 newtype ListGroupsForUserRequest = ListGroupsForUserRequest 
@@ -1592,6 +1751,7 @@ newtype ListGroupsForUserRequest = ListGroupsForUserRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListGroupsForUserRequest :: Newtype ListGroupsForUserRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListGroupsForUser</a> request. </p>
@@ -1600,6 +1760,7 @@ newtype ListGroupsForUserResponse = ListGroupsForUserResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListGroupsForUserResponse :: Newtype ListGroupsForUserResponse _
 
 
 newtype ListGroupsRequest = ListGroupsRequest 
@@ -1607,6 +1768,7 @@ newtype ListGroupsRequest = ListGroupsRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListGroupsRequest :: Newtype ListGroupsRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListGroups</a> request. </p>
@@ -1615,6 +1777,7 @@ newtype ListGroupsResponse = ListGroupsResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListGroupsResponse :: Newtype ListGroupsResponse _
 
 
 newtype ListInstanceProfilesForRoleRequest = ListInstanceProfilesForRoleRequest 
@@ -1622,6 +1785,7 @@ newtype ListInstanceProfilesForRoleRequest = ListInstanceProfilesForRoleRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListInstanceProfilesForRoleRequest :: Newtype ListInstanceProfilesForRoleRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListInstanceProfilesForRole</a> request. </p>
@@ -1630,6 +1794,7 @@ newtype ListInstanceProfilesForRoleResponse = ListInstanceProfilesForRoleRespons
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListInstanceProfilesForRoleResponse :: Newtype ListInstanceProfilesForRoleResponse _
 
 
 newtype ListInstanceProfilesRequest = ListInstanceProfilesRequest 
@@ -1637,6 +1802,7 @@ newtype ListInstanceProfilesRequest = ListInstanceProfilesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListInstanceProfilesRequest :: Newtype ListInstanceProfilesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListInstanceProfiles</a> request. </p>
@@ -1645,6 +1811,7 @@ newtype ListInstanceProfilesResponse = ListInstanceProfilesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListInstanceProfilesResponse :: Newtype ListInstanceProfilesResponse _
 
 
 newtype ListMFADevicesRequest = ListMFADevicesRequest 
@@ -1652,6 +1819,7 @@ newtype ListMFADevicesRequest = ListMFADevicesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListMFADevicesRequest :: Newtype ListMFADevicesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListMFADevices</a> request. </p>
@@ -1660,17 +1828,20 @@ newtype ListMFADevicesResponse = ListMFADevicesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListMFADevicesResponse :: Newtype ListMFADevicesResponse _
 
 
 newtype ListOpenIDConnectProvidersRequest = ListOpenIDConnectProvidersRequest 
   { 
   }
+derive instance newtypeListOpenIDConnectProvidersRequest :: Newtype ListOpenIDConnectProvidersRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListOpenIDConnectProviders</a> request. </p>
 newtype ListOpenIDConnectProvidersResponse = ListOpenIDConnectProvidersResponse 
   { "OpenIDConnectProviderList" :: NullOrUndefined (OpenIDConnectProviderListType)
   }
+derive instance newtypeListOpenIDConnectProvidersResponse :: Newtype ListOpenIDConnectProvidersResponse _
 
 
 newtype ListPoliciesRequest = ListPoliciesRequest 
@@ -1680,6 +1851,7 @@ newtype ListPoliciesRequest = ListPoliciesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListPoliciesRequest :: Newtype ListPoliciesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListPolicies</a> request. </p>
@@ -1688,6 +1860,7 @@ newtype ListPoliciesResponse = ListPoliciesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListPoliciesResponse :: Newtype ListPoliciesResponse _
 
 
 newtype ListPolicyVersionsRequest = ListPolicyVersionsRequest 
@@ -1695,6 +1868,7 @@ newtype ListPolicyVersionsRequest = ListPolicyVersionsRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListPolicyVersionsRequest :: Newtype ListPolicyVersionsRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListPolicyVersions</a> request. </p>
@@ -1703,6 +1877,7 @@ newtype ListPolicyVersionsResponse = ListPolicyVersionsResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListPolicyVersionsResponse :: Newtype ListPolicyVersionsResponse _
 
 
 newtype ListRolePoliciesRequest = ListRolePoliciesRequest 
@@ -1710,6 +1885,7 @@ newtype ListRolePoliciesRequest = ListRolePoliciesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListRolePoliciesRequest :: Newtype ListRolePoliciesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListRolePolicies</a> request. </p>
@@ -1718,6 +1894,7 @@ newtype ListRolePoliciesResponse = ListRolePoliciesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListRolePoliciesResponse :: Newtype ListRolePoliciesResponse _
 
 
 newtype ListRolesRequest = ListRolesRequest 
@@ -1725,6 +1902,7 @@ newtype ListRolesRequest = ListRolesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListRolesRequest :: Newtype ListRolesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListRoles</a> request. </p>
@@ -1733,17 +1911,20 @@ newtype ListRolesResponse = ListRolesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListRolesResponse :: Newtype ListRolesResponse _
 
 
 newtype ListSAMLProvidersRequest = ListSAMLProvidersRequest 
   { 
   }
+derive instance newtypeListSAMLProvidersRequest :: Newtype ListSAMLProvidersRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListSAMLProviders</a> request. </p>
 newtype ListSAMLProvidersResponse = ListSAMLProvidersResponse 
   { "SAMLProviderList" :: NullOrUndefined (SAMLProviderListType)
   }
+derive instance newtypeListSAMLProvidersResponse :: Newtype ListSAMLProvidersResponse _
 
 
 newtype ListSSHPublicKeysRequest = ListSSHPublicKeysRequest 
@@ -1751,6 +1932,7 @@ newtype ListSSHPublicKeysRequest = ListSSHPublicKeysRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListSSHPublicKeysRequest :: Newtype ListSSHPublicKeysRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListSSHPublicKeys</a> request.</p>
@@ -1759,6 +1941,7 @@ newtype ListSSHPublicKeysResponse = ListSSHPublicKeysResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListSSHPublicKeysResponse :: Newtype ListSSHPublicKeysResponse _
 
 
 newtype ListServerCertificatesRequest = ListServerCertificatesRequest 
@@ -1766,6 +1949,7 @@ newtype ListServerCertificatesRequest = ListServerCertificatesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListServerCertificatesRequest :: Newtype ListServerCertificatesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListServerCertificates</a> request. </p>
@@ -1774,17 +1958,20 @@ newtype ListServerCertificatesResponse = ListServerCertificatesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListServerCertificatesResponse :: Newtype ListServerCertificatesResponse _
 
 
 newtype ListServiceSpecificCredentialsRequest = ListServiceSpecificCredentialsRequest 
   { "UserName" :: NullOrUndefined (UserNameType')
   , "ServiceName" :: NullOrUndefined (ServiceName')
   }
+derive instance newtypeListServiceSpecificCredentialsRequest :: Newtype ListServiceSpecificCredentialsRequest _
 
 
 newtype ListServiceSpecificCredentialsResponse = ListServiceSpecificCredentialsResponse 
   { "ServiceSpecificCredentials" :: NullOrUndefined (ServiceSpecificCredentialsListType)
   }
+derive instance newtypeListServiceSpecificCredentialsResponse :: Newtype ListServiceSpecificCredentialsResponse _
 
 
 newtype ListSigningCertificatesRequest = ListSigningCertificatesRequest 
@@ -1792,6 +1979,7 @@ newtype ListSigningCertificatesRequest = ListSigningCertificatesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListSigningCertificatesRequest :: Newtype ListSigningCertificatesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListSigningCertificates</a> request. </p>
@@ -1800,6 +1988,7 @@ newtype ListSigningCertificatesResponse = ListSigningCertificatesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListSigningCertificatesResponse :: Newtype ListSigningCertificatesResponse _
 
 
 newtype ListUserPoliciesRequest = ListUserPoliciesRequest 
@@ -1807,6 +1996,7 @@ newtype ListUserPoliciesRequest = ListUserPoliciesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListUserPoliciesRequest :: Newtype ListUserPoliciesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListUserPolicies</a> request. </p>
@@ -1815,6 +2005,7 @@ newtype ListUserPoliciesResponse = ListUserPoliciesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListUserPoliciesResponse :: Newtype ListUserPoliciesResponse _
 
 
 newtype ListUsersRequest = ListUsersRequest 
@@ -1822,6 +2013,7 @@ newtype ListUsersRequest = ListUsersRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListUsersRequest :: Newtype ListUsersRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListUsers</a> request. </p>
@@ -1830,6 +2022,7 @@ newtype ListUsersResponse = ListUsersResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListUsersResponse :: Newtype ListUsersResponse _
 
 
 newtype ListVirtualMFADevicesRequest = ListVirtualMFADevicesRequest 
@@ -1837,6 +2030,7 @@ newtype ListVirtualMFADevicesRequest = ListVirtualMFADevicesRequest
   , "Marker" :: NullOrUndefined (MarkerType')
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   }
+derive instance newtypeListVirtualMFADevicesRequest :: Newtype ListVirtualMFADevicesRequest _
 
 
 -- | <p>Contains the response to a successful <a>ListVirtualMFADevices</a> request. </p>
@@ -1845,6 +2039,7 @@ newtype ListVirtualMFADevicesResponse = ListVirtualMFADevicesResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeListVirtualMFADevicesResponse :: Newtype ListVirtualMFADevicesResponse _
 
 
 -- | <p>Contains the user name and password create date for a user.</p> <p> This data type is used as a response element in the <a>CreateLoginProfile</a> and <a>GetLoginProfile</a> actions. </p>
@@ -1853,6 +2048,7 @@ newtype LoginProfile = LoginProfile
   , "CreateDate" :: (DateType')
   , "PasswordResetRequired" :: NullOrUndefined (BooleanType')
   }
+derive instance newtypeLoginProfile :: Newtype LoginProfile _
 
 
 -- | <p>Contains information about an MFA device.</p> <p>This data type is used as a response element in the <a>ListMFADevices</a> action.</p>
@@ -1861,18 +2057,21 @@ newtype MFADevice = MFADevice
   , "SerialNumber" :: (SerialNumberType')
   , "EnableDate" :: (DateType')
   }
+derive instance newtypeMFADevice :: Newtype MFADevice _
 
 
 -- | <p>The request was rejected because the certificate was malformed or expired. The error message describes the specific error.</p>
 newtype MalformedCertificateException = MalformedCertificateException 
   { "Message'" :: NullOrUndefined (MalformedCertificateMessage')
   }
+derive instance newtypeMalformedCertificateException :: Newtype MalformedCertificateException _
 
 
 -- | <p>The request was rejected because the policy document was malformed. The error message describes the specific error.</p>
 newtype MalformedPolicyDocumentException = MalformedPolicyDocumentException 
   { "Message'" :: NullOrUndefined (MalformedPolicyDocumentMessage')
   }
+derive instance newtypeMalformedPolicyDocumentException :: Newtype MalformedPolicyDocumentException _
 
 
 -- | <p>Contains information about a managed policy, including the policy's ARN, versions, and the number of principal entities (users, groups, and roles) that the policy is attached to.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p> <p>For more information about managed policies, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
@@ -1889,35 +2088,42 @@ newtype ManagedPolicyDetail = ManagedPolicyDetail
   , "UpdateDate" :: NullOrUndefined (DateType')
   , "PolicyVersionList" :: NullOrUndefined (PolicyDocumentVersionListType')
   }
+derive instance newtypeManagedPolicyDetail :: Newtype ManagedPolicyDetail _
 
 
 newtype ManagedPolicyDetailListType = ManagedPolicyDetailListType (Array ManagedPolicyDetail)
+derive instance newtypeManagedPolicyDetailListType :: Newtype ManagedPolicyDetailListType _
 
 
 -- | <p>The request was rejected because it referenced an entity that does not exist. The error message describes the entity.</p>
 newtype NoSuchEntityException = NoSuchEntityException 
   { "Message'" :: NullOrUndefined (NoSuchEntityMessage')
   }
+derive instance newtypeNoSuchEntityException :: Newtype NoSuchEntityException _
 
 
 -- | <p>Contains the Amazon Resource Name (ARN) for an IAM OpenID Connect provider.</p>
 newtype OpenIDConnectProviderListEntry = OpenIDConnectProviderListEntry 
   { "Arn" :: NullOrUndefined (ArnType')
   }
+derive instance newtypeOpenIDConnectProviderListEntry :: Newtype OpenIDConnectProviderListEntry _
 
 
 -- | <p>Contains a list of IAM OpenID Connect providers.</p>
 newtype OpenIDConnectProviderListType = OpenIDConnectProviderListType (Array OpenIDConnectProviderListEntry)
+derive instance newtypeOpenIDConnectProviderListType :: Newtype OpenIDConnectProviderListType _
 
 
 -- | <p>Contains a URL that specifies the endpoint for an OpenID Connect provider.</p>
 newtype OpenIDConnectProviderUrlType = OpenIDConnectProviderUrlType String
+derive instance newtypeOpenIDConnectProviderUrlType :: Newtype OpenIDConnectProviderUrlType _
 
 
 -- | <p>Contains information about AWS Organizations's affect on a policy simulation.</p>
 newtype OrganizationsDecisionDetail = OrganizationsDecisionDetail 
   { "AllowedByOrganizations" :: NullOrUndefined (BooleanType')
   }
+derive instance newtypeOrganizationsDecisionDetail :: Newtype OrganizationsDecisionDetail _
 
 
 -- | <p>Contains information about the account password policy.</p> <p> This data type is used as a response element in the <a>GetAccountPasswordPolicy</a> action. </p>
@@ -1933,12 +2139,14 @@ newtype PasswordPolicy = PasswordPolicy
   , "PasswordReusePrevention" :: NullOrUndefined (PasswordReusePreventionType')
   , "HardExpiry" :: NullOrUndefined (BooleanObjectType')
   }
+derive instance newtypePasswordPolicy :: Newtype PasswordPolicy _
 
 
 -- | <p>The request was rejected because the provided password did not meet the requirements imposed by the account password policy.</p>
 newtype PasswordPolicyViolationException = PasswordPolicyViolationException 
   { "Message'" :: NullOrUndefined (PasswordPolicyViolationMessage')
   }
+derive instance newtypePasswordPolicyViolationException :: Newtype PasswordPolicyViolationException _
 
 
 -- | <p>Contains information about a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicy</a>, <a>GetPolicy</a>, and <a>ListPolicies</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
@@ -1954,6 +2162,7 @@ newtype Policy = Policy
   , "CreateDate" :: NullOrUndefined (DateType')
   , "UpdateDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypePolicy :: Newtype Policy _
 
 
 -- | <p>Contains information about an IAM policy, including the policy document.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
@@ -1961,15 +2170,18 @@ newtype PolicyDetail = PolicyDetail
   { "PolicyName" :: NullOrUndefined (PolicyNameType')
   , "PolicyDocument" :: NullOrUndefined (PolicyDocumentType')
   }
+derive instance newtypePolicyDetail :: Newtype PolicyDetail _
 
 
 newtype PolicyEvaluationDecisionType = PolicyEvaluationDecisionType String
+derive instance newtypePolicyEvaluationDecisionType :: Newtype PolicyEvaluationDecisionType _
 
 
 -- | <p>The request failed because a provided policy could not be successfully evaluated. An additional detailed message indicates the source of the failure.</p>
 newtype PolicyEvaluationException = PolicyEvaluationException 
   { "Message'" :: NullOrUndefined (PolicyEvaluationErrorMessage')
   }
+derive instance newtypePolicyEvaluationException :: Newtype PolicyEvaluationException _
 
 
 -- | <p>Contains information about a group that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
@@ -1977,18 +2189,22 @@ newtype PolicyGroup = PolicyGroup
   { "GroupName" :: NullOrUndefined (GroupNameType')
   , "GroupId" :: NullOrUndefined (IdType')
   }
+derive instance newtypePolicyGroup :: Newtype PolicyGroup _
 
 
 newtype PolicyGroupListType = PolicyGroupListType (Array PolicyGroup)
+derive instance newtypePolicyGroupListType :: Newtype PolicyGroupListType _
 
 
 newtype PolicyIdentifierType = PolicyIdentifierType String
+derive instance newtypePolicyIdentifierType :: Newtype PolicyIdentifierType _
 
 
 -- | <p>The request failed because AWS service role policies can only be attached to the service-linked role for that service.</p>
 newtype PolicyNotAttachableException = PolicyNotAttachableException 
   { "Message'" :: NullOrUndefined (PolicyNotAttachableMessage')
   }
+derive instance newtypePolicyNotAttachableException :: Newtype PolicyNotAttachableException _
 
 
 -- | <p>Contains information about a role that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
@@ -1996,12 +2212,15 @@ newtype PolicyRole = PolicyRole
   { "RoleName" :: NullOrUndefined (RoleNameType')
   , "RoleId" :: NullOrUndefined (IdType')
   }
+derive instance newtypePolicyRole :: Newtype PolicyRole _
 
 
 newtype PolicyRoleListType = PolicyRoleListType (Array PolicyRole)
+derive instance newtypePolicyRoleListType :: Newtype PolicyRoleListType _
 
 
 newtype PolicySourceType = PolicySourceType String
+derive instance newtypePolicySourceType :: Newtype PolicySourceType _
 
 
 -- | <p>Contains information about a user that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
@@ -2009,9 +2228,11 @@ newtype PolicyUser = PolicyUser
   { "UserName" :: NullOrUndefined (UserNameType')
   , "UserId" :: NullOrUndefined (IdType')
   }
+derive instance newtypePolicyUser :: Newtype PolicyUser _
 
 
 newtype PolicyUserListType = PolicyUserListType (Array PolicyUser)
+derive instance newtypePolicyUserListType :: Newtype PolicyUserListType _
 
 
 -- | <p>Contains information about a version of a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicyVersion</a>, <a>GetPolicyVersion</a>, <a>ListPolicyVersions</a>, and <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information about managed policies, refer to <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>
@@ -2021,6 +2242,7 @@ newtype PolicyVersion = PolicyVersion
   , "IsDefaultVersion" :: NullOrUndefined (BooleanType')
   , "CreateDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypePolicyVersion :: Newtype PolicyVersion _
 
 
 -- | <p>Contains the row and column of a location of a <code>Statement</code> element in a policy document.</p> <p>This data type is used as a member of the <code> <a>Statement</a> </code> type.</p>
@@ -2028,6 +2250,7 @@ newtype Position = Position
   { "Line" :: NullOrUndefined (LineNumber)
   , "Column" :: NullOrUndefined (ColumnNumber)
   }
+derive instance newtypePosition :: Newtype Position _
 
 
 newtype PutGroupPolicyRequest = PutGroupPolicyRequest 
@@ -2035,6 +2258,7 @@ newtype PutGroupPolicyRequest = PutGroupPolicyRequest
   , "PolicyName" :: (PolicyNameType')
   , "PolicyDocument" :: (PolicyDocumentType')
   }
+derive instance newtypePutGroupPolicyRequest :: Newtype PutGroupPolicyRequest _
 
 
 newtype PutRolePolicyRequest = PutRolePolicyRequest 
@@ -2042,6 +2266,7 @@ newtype PutRolePolicyRequest = PutRolePolicyRequest
   , "PolicyName" :: (PolicyNameType')
   , "PolicyDocument" :: (PolicyDocumentType')
   }
+derive instance newtypePutRolePolicyRequest :: Newtype PutRolePolicyRequest _
 
 
 newtype PutUserPolicyRequest = PutUserPolicyRequest 
@@ -2049,62 +2274,77 @@ newtype PutUserPolicyRequest = PutUserPolicyRequest
   , "PolicyName" :: (PolicyNameType')
   , "PolicyDocument" :: (PolicyDocumentType')
   }
+derive instance newtypePutUserPolicyRequest :: Newtype PutUserPolicyRequest _
 
 
 newtype ReasonType = ReasonType String
+derive instance newtypeReasonType :: Newtype ReasonType _
 
 
 newtype RegionNameType = RegionNameType String
+derive instance newtypeRegionNameType :: Newtype RegionNameType _
 
 
 newtype RemoveClientIDFromOpenIDConnectProviderRequest = RemoveClientIDFromOpenIDConnectProviderRequest 
   { "OpenIDConnectProviderArn" :: (ArnType')
   , "ClientID" :: (ClientIDType')
   }
+derive instance newtypeRemoveClientIDFromOpenIDConnectProviderRequest :: Newtype RemoveClientIDFromOpenIDConnectProviderRequest _
 
 
 newtype RemoveRoleFromInstanceProfileRequest = RemoveRoleFromInstanceProfileRequest 
   { "InstanceProfileName" :: (InstanceProfileNameType')
   , "RoleName" :: (RoleNameType')
   }
+derive instance newtypeRemoveRoleFromInstanceProfileRequest :: Newtype RemoveRoleFromInstanceProfileRequest _
 
 
 newtype RemoveUserFromGroupRequest = RemoveUserFromGroupRequest 
   { "GroupName" :: (GroupNameType')
   , "UserName" :: (ExistingUserNameType')
   }
+derive instance newtypeRemoveUserFromGroupRequest :: Newtype RemoveUserFromGroupRequest _
 
 
 newtype ReportContentType = ReportContentType String
+derive instance newtypeReportContentType :: Newtype ReportContentType _
 
 
 newtype ReportFormatType = ReportFormatType String
+derive instance newtypeReportFormatType :: Newtype ReportFormatType _
 
 
 newtype ReportStateDescriptionType = ReportStateDescriptionType String
+derive instance newtypeReportStateDescriptionType :: Newtype ReportStateDescriptionType _
 
 
 newtype ReportStateType = ReportStateType String
+derive instance newtypeReportStateType :: Newtype ReportStateType _
 
 
 newtype ResetServiceSpecificCredentialRequest = ResetServiceSpecificCredentialRequest 
   { "UserName" :: NullOrUndefined (UserNameType')
   , "ServiceSpecificCredentialId" :: (ServiceSpecificCredentialId')
   }
+derive instance newtypeResetServiceSpecificCredentialRequest :: Newtype ResetServiceSpecificCredentialRequest _
 
 
 newtype ResetServiceSpecificCredentialResponse = ResetServiceSpecificCredentialResponse 
   { "ServiceSpecificCredential" :: NullOrUndefined (ServiceSpecificCredential)
   }
+derive instance newtypeResetServiceSpecificCredentialResponse :: Newtype ResetServiceSpecificCredentialResponse _
 
 
 newtype ResourceHandlingOptionType = ResourceHandlingOptionType String
+derive instance newtypeResourceHandlingOptionType :: Newtype ResourceHandlingOptionType _
 
 
 newtype ResourceNameListType = ResourceNameListType (Array ResourceNameType)
+derive instance newtypeResourceNameListType :: Newtype ResourceNameListType _
 
 
 newtype ResourceNameType = ResourceNameType String
+derive instance newtypeResourceNameType :: Newtype ResourceNameType _
 
 
 -- | <p>Contains the result of the simulation of a single API action call on a single resource.</p> <p>This data type is used by a member of the <a>EvaluationResult</a> data type.</p>
@@ -2115,9 +2355,11 @@ newtype ResourceSpecificResult = ResourceSpecificResult
   , "MissingContextValues" :: NullOrUndefined (ContextKeyNamesResultListType)
   , "EvalDecisionDetails" :: NullOrUndefined (EvalDecisionDetailsType)
   }
+derive instance newtypeResourceSpecificResult :: Newtype ResourceSpecificResult _
 
 
 newtype ResourceSpecificResultListType = ResourceSpecificResultListType (Array ResourceSpecificResult)
+derive instance newtypeResourceSpecificResultListType :: Newtype ResourceSpecificResultListType _
 
 
 newtype ResyncMFADeviceRequest = ResyncMFADeviceRequest 
@@ -2126,6 +2368,7 @@ newtype ResyncMFADeviceRequest = ResyncMFADeviceRequest
   , "AuthenticationCode1" :: (AuthenticationCodeType')
   , "AuthenticationCode2" :: (AuthenticationCodeType')
   }
+derive instance newtypeResyncMFADeviceRequest :: Newtype ResyncMFADeviceRequest _
 
 
 -- | <p>Contains information about an IAM role. This structure is returned as a response element in several APIs that interact with roles.</p>
@@ -2138,6 +2381,7 @@ newtype Role = Role
   , "AssumeRolePolicyDocument" :: NullOrUndefined (PolicyDocumentType')
   , "Description" :: NullOrUndefined (RoleDescriptionType')
   }
+derive instance newtypeRole :: Newtype Role _
 
 
 -- | <p>Contains information about an IAM role, including all of the role's policies.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
@@ -2152,9 +2396,11 @@ newtype RoleDetail = RoleDetail
   , "RolePolicyList" :: NullOrUndefined (PolicyDetailListType')
   , "AttachedManagedPolicies" :: NullOrUndefined (AttachedPoliciesListType')
   }
+derive instance newtypeRoleDetail :: Newtype RoleDetail _
 
 
 newtype RoleUsageListType = RoleUsageListType (Array RoleUsageType)
+derive instance newtypeRoleUsageListType :: Newtype RoleUsageListType _
 
 
 -- | <p>An object that contains details about how a service-linked role is used.</p> <p>This data type is used as a response element in the <a>GetServiceLinkedRoleDeletionStatus</a> operation.</p>
@@ -2162,9 +2408,11 @@ newtype RoleUsageType = RoleUsageType
   { "Region" :: NullOrUndefined (RegionNameType)
   , "Resources" :: NullOrUndefined (ArnListType)
   }
+derive instance newtypeRoleUsageType :: Newtype RoleUsageType _
 
 
 newtype SAMLMetadataDocumentType = SAMLMetadataDocumentType String
+derive instance newtypeSAMLMetadataDocumentType :: Newtype SAMLMetadataDocumentType _
 
 
 -- | <p>Contains the list of SAML providers for this account.</p>
@@ -2173,12 +2421,15 @@ newtype SAMLProviderListEntry = SAMLProviderListEntry
   , "ValidUntil" :: NullOrUndefined (DateType')
   , "CreateDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypeSAMLProviderListEntry :: Newtype SAMLProviderListEntry _
 
 
 newtype SAMLProviderListType = SAMLProviderListType (Array SAMLProviderListEntry)
+derive instance newtypeSAMLProviderListType :: Newtype SAMLProviderListType _
 
 
 newtype SAMLProviderNameType = SAMLProviderNameType String
+derive instance newtypeSAMLProviderNameType :: Newtype SAMLProviderNameType _
 
 
 -- | <p>Contains information about an SSH public key.</p> <p>This data type is used as a response element in the <a>GetSSHPublicKey</a> and <a>UploadSSHPublicKey</a> actions. </p>
@@ -2190,9 +2441,11 @@ newtype SSHPublicKey = SSHPublicKey
   , "Status" :: (StatusType')
   , "UploadDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypeSSHPublicKey :: Newtype SSHPublicKey _
 
 
 newtype SSHPublicKeyListType = SSHPublicKeyListType (Array SSHPublicKeyMetadata)
+derive instance newtypeSSHPublicKeyListType :: Newtype SSHPublicKeyListType _
 
 
 -- | <p>Contains information about an SSH public key, without the key's body or fingerprint.</p> <p>This data type is used as a response element in the <a>ListSSHPublicKeys</a> action.</p>
@@ -2202,6 +2455,7 @@ newtype SSHPublicKeyMetadata = SSHPublicKeyMetadata
   , "Status" :: (StatusType')
   , "UploadDate" :: (DateType')
   }
+derive instance newtypeSSHPublicKeyMetadata :: Newtype SSHPublicKeyMetadata _
 
 
 -- | <p>Contains information about a server certificate.</p> <p> This data type is used as a response element in the <a>GetServerCertificate</a> action. </p>
@@ -2210,6 +2464,7 @@ newtype ServerCertificate = ServerCertificate
   , "CertificateBody" :: (CertificateBodyType')
   , "CertificateChain" :: NullOrUndefined (CertificateChainType')
   }
+derive instance newtypeServerCertificate :: Newtype ServerCertificate _
 
 
 -- | <p>Contains information about a server certificate without its certificate body, certificate chain, and private key.</p> <p> This data type is used as a response element in the <a>UploadServerCertificate</a> and <a>ListServerCertificates</a> actions. </p>
@@ -2221,18 +2476,21 @@ newtype ServerCertificateMetadata = ServerCertificateMetadata
   , "UploadDate" :: NullOrUndefined (DateType')
   , "Expiration" :: NullOrUndefined (DateType')
   }
+derive instance newtypeServerCertificateMetadata :: Newtype ServerCertificateMetadata _
 
 
 -- | <p>The request processing has failed because of an unknown error, exception or failure.</p>
 newtype ServiceFailureException = ServiceFailureException 
   { "Message'" :: NullOrUndefined (ServiceFailureExceptionMessage')
   }
+derive instance newtypeServiceFailureException :: Newtype ServiceFailureException _
 
 
 -- | <p>The specified service does not support service-specific credentials.</p>
 newtype ServiceNotSupportedException = ServiceNotSupportedException 
   { "Message'" :: NullOrUndefined (ServiceNotSupportedMessage')
   }
+derive instance newtypeServiceNotSupportedException :: Newtype ServiceNotSupportedException _
 
 
 -- | <p>Contains the details of a service specific credential.</p>
@@ -2245,6 +2503,7 @@ newtype ServiceSpecificCredential = ServiceSpecificCredential
   , "UserName" :: (UserNameType')
   , "Status" :: (StatusType')
   }
+derive instance newtypeServiceSpecificCredential :: Newtype ServiceSpecificCredential _
 
 
 -- | <p>Contains additional details about a service-specific credential.</p>
@@ -2256,15 +2515,18 @@ newtype ServiceSpecificCredentialMetadata = ServiceSpecificCredentialMetadata
   , "ServiceSpecificCredentialId" :: (ServiceSpecificCredentialId')
   , "ServiceName" :: (ServiceName')
   }
+derive instance newtypeServiceSpecificCredentialMetadata :: Newtype ServiceSpecificCredentialMetadata _
 
 
 newtype ServiceSpecificCredentialsListType = ServiceSpecificCredentialsListType (Array ServiceSpecificCredentialMetadata)
+derive instance newtypeServiceSpecificCredentialsListType :: Newtype ServiceSpecificCredentialsListType _
 
 
 newtype SetDefaultPolicyVersionRequest = SetDefaultPolicyVersionRequest 
   { "PolicyArn" :: (ArnType')
   , "VersionId" :: (PolicyVersionIdType')
   }
+derive instance newtypeSetDefaultPolicyVersionRequest :: Newtype SetDefaultPolicyVersionRequest _
 
 
 -- | <p>Contains information about an X.509 signing certificate.</p> <p>This data type is used as a response element in the <a>UploadSigningCertificate</a> and <a>ListSigningCertificates</a> actions. </p>
@@ -2275,6 +2537,7 @@ newtype SigningCertificate = SigningCertificate
   , "Status" :: (StatusType')
   , "UploadDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypeSigningCertificate :: Newtype SigningCertificate _
 
 
 newtype SimulateCustomPolicyRequest = SimulateCustomPolicyRequest 
@@ -2289,6 +2552,7 @@ newtype SimulateCustomPolicyRequest = SimulateCustomPolicyRequest
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeSimulateCustomPolicyRequest :: Newtype SimulateCustomPolicyRequest _
 
 
 -- | <p>Contains the response to a successful <a>SimulatePrincipalPolicy</a> or <a>SimulateCustomPolicy</a> request.</p>
@@ -2297,6 +2561,7 @@ newtype SimulatePolicyResponse = SimulatePolicyResponse
   , "IsTruncated" :: NullOrUndefined (BooleanType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeSimulatePolicyResponse :: Newtype SimulatePolicyResponse _
 
 
 newtype SimulatePrincipalPolicyRequest = SimulatePrincipalPolicyRequest 
@@ -2312,9 +2577,11 @@ newtype SimulatePrincipalPolicyRequest = SimulatePrincipalPolicyRequest
   , "MaxItems" :: NullOrUndefined (MaxItemsType')
   , "Marker" :: NullOrUndefined (MarkerType')
   }
+derive instance newtypeSimulatePrincipalPolicyRequest :: Newtype SimulatePrincipalPolicyRequest _
 
 
 newtype SimulationPolicyListType = SimulationPolicyListType (Array PolicyDocumentType')
+derive instance newtypeSimulationPolicyListType :: Newtype SimulationPolicyListType _
 
 
 -- | <p>Contains a reference to a <code>Statement</code> element in a policy document that determines the result of the simulation.</p> <p>This data type is used by the <code>MatchedStatements</code> member of the <code> <a>EvaluationResult</a> </code> type.</p>
@@ -2324,21 +2591,25 @@ newtype Statement = Statement
   , "StartPosition" :: NullOrUndefined (Position)
   , "EndPosition" :: NullOrUndefined (Position)
   }
+derive instance newtypeStatement :: Newtype Statement _
 
 
 newtype StatementListType = StatementListType (Array Statement)
+derive instance newtypeStatementListType :: Newtype StatementListType _
 
 
 -- | <p>The request was rejected because only the service that depends on the service-linked role can modify or delete the role on your behalf. The error message includes the name of the service that depends on this service-linked role. You must request the change through that service.</p>
 newtype UnmodifiableEntityException = UnmodifiableEntityException 
   { "Message'" :: NullOrUndefined (UnmodifiableEntityMessage')
   }
+derive instance newtypeUnmodifiableEntityException :: Newtype UnmodifiableEntityException _
 
 
 -- | <p>The request was rejected because the public key encoding format is unsupported or unrecognized.</p>
 newtype UnrecognizedPublicKeyEncodingException = UnrecognizedPublicKeyEncodingException 
   { "Message'" :: NullOrUndefined (UnrecognizedPublicKeyEncodingMessage')
   }
+derive instance newtypeUnrecognizedPublicKeyEncodingException :: Newtype UnrecognizedPublicKeyEncodingException _
 
 
 newtype UpdateAccessKeyRequest = UpdateAccessKeyRequest 
@@ -2346,6 +2617,7 @@ newtype UpdateAccessKeyRequest = UpdateAccessKeyRequest
   , "AccessKeyId" :: (AccessKeyIdType')
   , "Status" :: (StatusType')
   }
+derive instance newtypeUpdateAccessKeyRequest :: Newtype UpdateAccessKeyRequest _
 
 
 newtype UpdateAccountPasswordPolicyRequest = UpdateAccountPasswordPolicyRequest 
@@ -2359,12 +2631,14 @@ newtype UpdateAccountPasswordPolicyRequest = UpdateAccountPasswordPolicyRequest
   , "PasswordReusePrevention" :: NullOrUndefined (PasswordReusePreventionType')
   , "HardExpiry" :: NullOrUndefined (BooleanObjectType')
   }
+derive instance newtypeUpdateAccountPasswordPolicyRequest :: Newtype UpdateAccountPasswordPolicyRequest _
 
 
 newtype UpdateAssumeRolePolicyRequest = UpdateAssumeRolePolicyRequest 
   { "RoleName" :: (RoleNameType')
   , "PolicyDocument" :: (PolicyDocumentType')
   }
+derive instance newtypeUpdateAssumeRolePolicyRequest :: Newtype UpdateAssumeRolePolicyRequest _
 
 
 newtype UpdateGroupRequest = UpdateGroupRequest 
@@ -2372,6 +2646,7 @@ newtype UpdateGroupRequest = UpdateGroupRequest
   , "NewPath" :: NullOrUndefined (PathType')
   , "NewGroupName" :: NullOrUndefined (GroupNameType')
   }
+derive instance newtypeUpdateGroupRequest :: Newtype UpdateGroupRequest _
 
 
 newtype UpdateLoginProfileRequest = UpdateLoginProfileRequest 
@@ -2379,35 +2654,41 @@ newtype UpdateLoginProfileRequest = UpdateLoginProfileRequest
   , "Password" :: NullOrUndefined (PasswordType')
   , "PasswordResetRequired" :: NullOrUndefined (BooleanObjectType')
   }
+derive instance newtypeUpdateLoginProfileRequest :: Newtype UpdateLoginProfileRequest _
 
 
 newtype UpdateOpenIDConnectProviderThumbprintRequest = UpdateOpenIDConnectProviderThumbprintRequest 
   { "OpenIDConnectProviderArn" :: (ArnType')
   , "ThumbprintList" :: (ThumbprintListType')
   }
+derive instance newtypeUpdateOpenIDConnectProviderThumbprintRequest :: Newtype UpdateOpenIDConnectProviderThumbprintRequest _
 
 
 newtype UpdateRoleDescriptionRequest = UpdateRoleDescriptionRequest 
   { "RoleName" :: (RoleNameType')
   , "Description" :: (RoleDescriptionType')
   }
+derive instance newtypeUpdateRoleDescriptionRequest :: Newtype UpdateRoleDescriptionRequest _
 
 
 newtype UpdateRoleDescriptionResponse = UpdateRoleDescriptionResponse 
   { "Role" :: NullOrUndefined (Role)
   }
+derive instance newtypeUpdateRoleDescriptionResponse :: Newtype UpdateRoleDescriptionResponse _
 
 
 newtype UpdateSAMLProviderRequest = UpdateSAMLProviderRequest 
   { "SAMLMetadataDocument" :: (SAMLMetadataDocumentType)
   , "SAMLProviderArn" :: (ArnType')
   }
+derive instance newtypeUpdateSAMLProviderRequest :: Newtype UpdateSAMLProviderRequest _
 
 
 -- | <p>Contains the response to a successful <a>UpdateSAMLProvider</a> request. </p>
 newtype UpdateSAMLProviderResponse = UpdateSAMLProviderResponse 
   { "SAMLProviderArn" :: NullOrUndefined (ArnType')
   }
+derive instance newtypeUpdateSAMLProviderResponse :: Newtype UpdateSAMLProviderResponse _
 
 
 newtype UpdateSSHPublicKeyRequest = UpdateSSHPublicKeyRequest 
@@ -2415,6 +2696,7 @@ newtype UpdateSSHPublicKeyRequest = UpdateSSHPublicKeyRequest
   , "SSHPublicKeyId" :: (PublicKeyIdType')
   , "Status" :: (StatusType')
   }
+derive instance newtypeUpdateSSHPublicKeyRequest :: Newtype UpdateSSHPublicKeyRequest _
 
 
 newtype UpdateServerCertificateRequest = UpdateServerCertificateRequest 
@@ -2422,6 +2704,7 @@ newtype UpdateServerCertificateRequest = UpdateServerCertificateRequest
   , "NewPath" :: NullOrUndefined (PathType')
   , "NewServerCertificateName" :: NullOrUndefined (ServerCertificateNameType')
   }
+derive instance newtypeUpdateServerCertificateRequest :: Newtype UpdateServerCertificateRequest _
 
 
 newtype UpdateServiceSpecificCredentialRequest = UpdateServiceSpecificCredentialRequest 
@@ -2429,6 +2712,7 @@ newtype UpdateServiceSpecificCredentialRequest = UpdateServiceSpecificCredential
   , "ServiceSpecificCredentialId" :: (ServiceSpecificCredentialId')
   , "Status" :: (StatusType')
   }
+derive instance newtypeUpdateServiceSpecificCredentialRequest :: Newtype UpdateServiceSpecificCredentialRequest _
 
 
 newtype UpdateSigningCertificateRequest = UpdateSigningCertificateRequest 
@@ -2436,6 +2720,7 @@ newtype UpdateSigningCertificateRequest = UpdateSigningCertificateRequest
   , "CertificateId" :: (CertificateIdType')
   , "Status" :: (StatusType')
   }
+derive instance newtypeUpdateSigningCertificateRequest :: Newtype UpdateSigningCertificateRequest _
 
 
 newtype UpdateUserRequest = UpdateUserRequest 
@@ -2443,18 +2728,21 @@ newtype UpdateUserRequest = UpdateUserRequest
   , "NewPath" :: NullOrUndefined (PathType')
   , "NewUserName" :: NullOrUndefined (UserNameType')
   }
+derive instance newtypeUpdateUserRequest :: Newtype UpdateUserRequest _
 
 
 newtype UploadSSHPublicKeyRequest = UploadSSHPublicKeyRequest 
   { "UserName" :: (UserNameType')
   , "SSHPublicKeyBody" :: (PublicKeyMaterialType')
   }
+derive instance newtypeUploadSSHPublicKeyRequest :: Newtype UploadSSHPublicKeyRequest _
 
 
 -- | <p>Contains the response to a successful <a>UploadSSHPublicKey</a> request.</p>
 newtype UploadSSHPublicKeyResponse = UploadSSHPublicKeyResponse 
   { "SSHPublicKey" :: NullOrUndefined (SSHPublicKey)
   }
+derive instance newtypeUploadSSHPublicKeyResponse :: Newtype UploadSSHPublicKeyResponse _
 
 
 newtype UploadServerCertificateRequest = UploadServerCertificateRequest 
@@ -2464,24 +2752,28 @@ newtype UploadServerCertificateRequest = UploadServerCertificateRequest
   , "PrivateKey" :: (PrivateKeyType')
   , "CertificateChain" :: NullOrUndefined (CertificateChainType')
   }
+derive instance newtypeUploadServerCertificateRequest :: Newtype UploadServerCertificateRequest _
 
 
 -- | <p>Contains the response to a successful <a>UploadServerCertificate</a> request. </p>
 newtype UploadServerCertificateResponse = UploadServerCertificateResponse 
   { "ServerCertificateMetadata" :: NullOrUndefined (ServerCertificateMetadata)
   }
+derive instance newtypeUploadServerCertificateResponse :: Newtype UploadServerCertificateResponse _
 
 
 newtype UploadSigningCertificateRequest = UploadSigningCertificateRequest 
   { "UserName" :: NullOrUndefined (ExistingUserNameType')
   , "CertificateBody" :: (CertificateBodyType')
   }
+derive instance newtypeUploadSigningCertificateRequest :: Newtype UploadSigningCertificateRequest _
 
 
 -- | <p>Contains the response to a successful <a>UploadSigningCertificate</a> request. </p>
 newtype UploadSigningCertificateResponse = UploadSigningCertificateResponse 
   { "Certificate" :: (SigningCertificate)
   }
+derive instance newtypeUploadSigningCertificateResponse :: Newtype UploadSigningCertificateResponse _
 
 
 -- | <p>Contains information about an IAM user entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateUser</a> </p> </li> <li> <p> <a>GetUser</a> </p> </li> <li> <p> <a>ListUsers</a> </p> </li> </ul>
@@ -2493,6 +2785,7 @@ newtype User = User
   , "CreateDate" :: (DateType')
   , "PasswordLastUsed" :: NullOrUndefined (DateType')
   }
+derive instance newtypeUser :: Newtype User _
 
 
 -- | <p>Contains information about an IAM user, including all the user's policies and all the IAM groups the user is in.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p>
@@ -2506,6 +2799,7 @@ newtype UserDetail = UserDetail
   , "GroupList" :: NullOrUndefined (GroupNameListType')
   , "AttachedManagedPolicies" :: NullOrUndefined (AttachedPoliciesListType')
   }
+derive instance newtypeUserDetail :: Newtype UserDetail _
 
 
 -- | <p>Contains information about a virtual MFA device.</p>
@@ -2516,317 +2810,419 @@ newtype VirtualMFADevice = VirtualMFADevice
   , "User" :: NullOrUndefined (User)
   , "EnableDate" :: NullOrUndefined (DateType')
   }
+derive instance newtypeVirtualMFADevice :: Newtype VirtualMFADevice _
 
 
 newtype AccessKeyIdType' = AccessKeyIdType' String
+derive instance newtypeAccessKeyIdType' :: Newtype AccessKeyIdType' _
 
 
 -- | <p>Contains a list of access key metadata.</p> <p>This data type is used as a response element in the <a>ListAccessKeys</a> action.</p>
 newtype AccessKeyMetadataListType' = AccessKeyMetadataListType' (Array AccessKeyMetadata)
+derive instance newtypeAccessKeyMetadataListType' :: Newtype AccessKeyMetadataListType' _
 
 
 newtype AccessKeySecretType' = AccessKeySecretType' String
+derive instance newtypeAccessKeySecretType' :: Newtype AccessKeySecretType' _
 
 
 newtype AccountAliasListType' = AccountAliasListType' (Array AccountAliasType')
+derive instance newtypeAccountAliasListType' :: Newtype AccountAliasListType' _
 
 
 newtype AccountAliasType' = AccountAliasType' String
+derive instance newtypeAccountAliasType' :: Newtype AccountAliasType' _
 
 
 -- | <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p> <p>For more information about ARNs, go to <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
 newtype ArnType' = ArnType' String
+derive instance newtypeArnType' :: Newtype ArnType' _
 
 
 newtype AssignmentStatusType' = AssignmentStatusType' String
+derive instance newtypeAssignmentStatusType' :: Newtype AssignmentStatusType' _
 
 
 newtype AttachedPoliciesListType' = AttachedPoliciesListType' (Array AttachedPolicy)
+derive instance newtypeAttachedPoliciesListType' :: Newtype AttachedPoliciesListType' _
 
 
 newtype AttachmentCountType' = AttachmentCountType' Int
+derive instance newtypeAttachmentCountType' :: Newtype AttachmentCountType' _
 
 
 newtype AuthenticationCodeType' = AuthenticationCodeType' String
+derive instance newtypeAuthenticationCodeType' :: Newtype AuthenticationCodeType' _
 
 
 newtype BooleanObjectType' = BooleanObjectType' Boolean
+derive instance newtypeBooleanObjectType' :: Newtype BooleanObjectType' _
 
 
 newtype BooleanType' = BooleanType' Boolean
+derive instance newtypeBooleanType' :: Newtype BooleanType' _
 
 
 newtype CertificateBodyType' = CertificateBodyType' String
+derive instance newtypeCertificateBodyType' :: Newtype CertificateBodyType' _
 
 
 newtype CertificateChainType' = CertificateChainType' String
+derive instance newtypeCertificateChainType' :: Newtype CertificateChainType' _
 
 
 newtype CertificateIdType' = CertificateIdType' String
+derive instance newtypeCertificateIdType' :: Newtype CertificateIdType' _
 
 
 -- | <p>Contains a list of signing certificates.</p> <p>This data type is used as a response element in the <a>ListSigningCertificates</a> action.</p>
 newtype CertificateListType' = CertificateListType' (Array SigningCertificate)
+derive instance newtypeCertificateListType' :: Newtype CertificateListType' _
 
 
 newtype ClientIDListType' = ClientIDListType' (Array ClientIDType')
+derive instance newtypeClientIDListType' :: Newtype ClientIDListType' _
 
 
 newtype ClientIDType' = ClientIDType' String
+derive instance newtypeClientIDType' :: Newtype ClientIDType' _
 
 
 newtype CredentialReportExpiredExceptionMessage' = CredentialReportExpiredExceptionMessage' String
+derive instance newtypeCredentialReportExpiredExceptionMessage' :: Newtype CredentialReportExpiredExceptionMessage' _
 
 
 newtype CredentialReportNotPresentExceptionMessage' = CredentialReportNotPresentExceptionMessage' String
+derive instance newtypeCredentialReportNotPresentExceptionMessage' :: Newtype CredentialReportNotPresentExceptionMessage' _
 
 
 newtype CredentialReportNotReadyExceptionMessage' = CredentialReportNotReadyExceptionMessage' String
+derive instance newtypeCredentialReportNotReadyExceptionMessage' :: Newtype CredentialReportNotReadyExceptionMessage' _
 
 
 newtype CustomSuffixType' = CustomSuffixType' String
+derive instance newtypeCustomSuffixType' :: Newtype CustomSuffixType' _
 
 
 newtype DateType' = DateType' Number
+derive instance newtypeDateType' :: Newtype DateType' _
 
 
 newtype DeleteConflictMessage' = DeleteConflictMessage' String
+derive instance newtypeDeleteConflictMessage' :: Newtype DeleteConflictMessage' _
 
 
 newtype DuplicateCertificateMessage' = DuplicateCertificateMessage' String
+derive instance newtypeDuplicateCertificateMessage' :: Newtype DuplicateCertificateMessage' _
 
 
 newtype DuplicateSSHPublicKeyMessage' = DuplicateSSHPublicKeyMessage' String
+derive instance newtypeDuplicateSSHPublicKeyMessage' :: Newtype DuplicateSSHPublicKeyMessage' _
 
 
 newtype EncodingType' = EncodingType' String
+derive instance newtypeEncodingType' :: Newtype EncodingType' _
 
 
 newtype EntityAlreadyExistsMessage' = EntityAlreadyExistsMessage' String
+derive instance newtypeEntityAlreadyExistsMessage' :: Newtype EntityAlreadyExistsMessage' _
 
 
 newtype EntityListType' = EntityListType' (Array EntityType)
+derive instance newtypeEntityListType' :: Newtype EntityListType' _
 
 
 newtype EntityTemporarilyUnmodifiableMessage' = EntityTemporarilyUnmodifiableMessage' String
+derive instance newtypeEntityTemporarilyUnmodifiableMessage' :: Newtype EntityTemporarilyUnmodifiableMessage' _
 
 
 newtype ExistingUserNameType' = ExistingUserNameType' String
+derive instance newtypeExistingUserNameType' :: Newtype ExistingUserNameType' _
 
 
 newtype GroupDetailListType' = GroupDetailListType' (Array GroupDetail)
+derive instance newtypeGroupDetailListType' :: Newtype GroupDetailListType' _
 
 
 -- | <p>Contains a list of IAM groups.</p> <p>This data type is used as a response element in the <a>ListGroups</a> action.</p>
 newtype GroupListType' = GroupListType' (Array Group)
+derive instance newtypeGroupListType' :: Newtype GroupListType' _
 
 
 newtype GroupNameListType' = GroupNameListType' (Array GroupNameType')
+derive instance newtypeGroupNameListType' :: Newtype GroupNameListType' _
 
 
 newtype GroupNameType' = GroupNameType' String
+derive instance newtypeGroupNameType' :: Newtype GroupNameType' _
 
 
 newtype IdType' = IdType' String
+derive instance newtypeIdType' :: Newtype IdType' _
 
 
 -- | <p>Contains a list of instance profiles.</p>
 newtype InstanceProfileListType' = InstanceProfileListType' (Array InstanceProfile)
+derive instance newtypeInstanceProfileListType' :: Newtype InstanceProfileListType' _
 
 
 newtype InstanceProfileNameType' = InstanceProfileNameType' String
+derive instance newtypeInstanceProfileNameType' :: Newtype InstanceProfileNameType' _
 
 
 newtype InvalidAuthenticationCodeMessage' = InvalidAuthenticationCodeMessage' String
+derive instance newtypeInvalidAuthenticationCodeMessage' :: Newtype InvalidAuthenticationCodeMessage' _
 
 
 newtype InvalidCertificateMessage' = InvalidCertificateMessage' String
+derive instance newtypeInvalidCertificateMessage' :: Newtype InvalidCertificateMessage' _
 
 
 newtype InvalidInputMessage' = InvalidInputMessage' String
+derive instance newtypeInvalidInputMessage' :: Newtype InvalidInputMessage' _
 
 
 newtype InvalidPublicKeyMessage' = InvalidPublicKeyMessage' String
+derive instance newtypeInvalidPublicKeyMessage' :: Newtype InvalidPublicKeyMessage' _
 
 
 newtype InvalidUserTypeMessage' = InvalidUserTypeMessage' String
+derive instance newtypeInvalidUserTypeMessage' :: Newtype InvalidUserTypeMessage' _
 
 
 newtype KeyPairMismatchMessage' = KeyPairMismatchMessage' String
+derive instance newtypeKeyPairMismatchMessage' :: Newtype KeyPairMismatchMessage' _
 
 
 newtype LimitExceededMessage' = LimitExceededMessage' String
+derive instance newtypeLimitExceededMessage' :: Newtype LimitExceededMessage' _
 
 
 newtype MalformedCertificateMessage' = MalformedCertificateMessage' String
+derive instance newtypeMalformedCertificateMessage' :: Newtype MalformedCertificateMessage' _
 
 
 newtype MalformedPolicyDocumentMessage' = MalformedPolicyDocumentMessage' String
+derive instance newtypeMalformedPolicyDocumentMessage' :: Newtype MalformedPolicyDocumentMessage' _
 
 
 newtype MarkerType' = MarkerType' String
+derive instance newtypeMarkerType' :: Newtype MarkerType' _
 
 
 newtype MaxItemsType' = MaxItemsType' Int
+derive instance newtypeMaxItemsType' :: Newtype MaxItemsType' _
 
 
 newtype MaxPasswordAgeType' = MaxPasswordAgeType' Int
+derive instance newtypeMaxPasswordAgeType' :: Newtype MaxPasswordAgeType' _
 
 
 -- | <p>Contains a list of MFA devices.</p> <p>This data type is used as a response element in the <a>ListMFADevices</a> and <a>ListVirtualMFADevices</a> actions. </p>
 newtype MfaDeviceListType' = MfaDeviceListType' (Array MFADevice)
+derive instance newtypeMfaDeviceListType' :: Newtype MfaDeviceListType' _
 
 
 newtype MinimumPasswordLengthType' = MinimumPasswordLengthType' Int
+derive instance newtypeMinimumPasswordLengthType' :: Newtype MinimumPasswordLengthType' _
 
 
 newtype NoSuchEntityMessage' = NoSuchEntityMessage' String
+derive instance newtypeNoSuchEntityMessage' :: Newtype NoSuchEntityMessage' _
 
 
 newtype PasswordPolicyViolationMessage' = PasswordPolicyViolationMessage' String
+derive instance newtypePasswordPolicyViolationMessage' :: Newtype PasswordPolicyViolationMessage' _
 
 
 newtype PasswordReusePreventionType' = PasswordReusePreventionType' Int
+derive instance newtypePasswordReusePreventionType' :: Newtype PasswordReusePreventionType' _
 
 
 newtype PasswordType' = PasswordType' String
+derive instance newtypePasswordType' :: Newtype PasswordType' _
 
 
 newtype PathPrefixType' = PathPrefixType' String
+derive instance newtypePathPrefixType' :: Newtype PathPrefixType' _
 
 
 newtype PathType' = PathType' String
+derive instance newtypePathType' :: Newtype PathType' _
 
 
 newtype PolicyDescriptionType' = PolicyDescriptionType' String
+derive instance newtypePolicyDescriptionType' :: Newtype PolicyDescriptionType' _
 
 
 newtype PolicyDetailListType' = PolicyDetailListType' (Array PolicyDetail)
+derive instance newtypePolicyDetailListType' :: Newtype PolicyDetailListType' _
 
 
 newtype PolicyDocumentType' = PolicyDocumentType' String
+derive instance newtypePolicyDocumentType' :: Newtype PolicyDocumentType' _
 
 
 newtype PolicyDocumentVersionListType' = PolicyDocumentVersionListType' (Array PolicyVersion)
+derive instance newtypePolicyDocumentVersionListType' :: Newtype PolicyDocumentVersionListType' _
 
 
 newtype PolicyEvaluationErrorMessage' = PolicyEvaluationErrorMessage' String
+derive instance newtypePolicyEvaluationErrorMessage' :: Newtype PolicyEvaluationErrorMessage' _
 
 
 newtype PolicyListType' = PolicyListType' (Array Policy)
+derive instance newtypePolicyListType' :: Newtype PolicyListType' _
 
 
 -- | <p>Contains a list of policy names.</p> <p>This data type is used as a response element in the <a>ListPolicies</a> action.</p>
 newtype PolicyNameListType' = PolicyNameListType' (Array PolicyNameType')
+derive instance newtypePolicyNameListType' :: Newtype PolicyNameListType' _
 
 
 newtype PolicyNameType' = PolicyNameType' String
+derive instance newtypePolicyNameType' :: Newtype PolicyNameType' _
 
 
 newtype PolicyNotAttachableMessage' = PolicyNotAttachableMessage' String
+derive instance newtypePolicyNotAttachableMessage' :: Newtype PolicyNotAttachableMessage' _
 
 
 newtype PolicyPathType' = PolicyPathType' String
+derive instance newtypePolicyPathType' :: Newtype PolicyPathType' _
 
 
 newtype PolicyScopeType' = PolicyScopeType' String
+derive instance newtypePolicyScopeType' :: Newtype PolicyScopeType' _
 
 
 newtype PolicyVersionIdType' = PolicyVersionIdType' String
+derive instance newtypePolicyVersionIdType' :: Newtype PolicyVersionIdType' _
 
 
 newtype PrivateKeyType' = PrivateKeyType' String
+derive instance newtypePrivateKeyType' :: Newtype PrivateKeyType' _
 
 
 newtype PublicKeyFingerprintType' = PublicKeyFingerprintType' String
+derive instance newtypePublicKeyFingerprintType' :: Newtype PublicKeyFingerprintType' _
 
 
 newtype PublicKeyIdType' = PublicKeyIdType' String
+derive instance newtypePublicKeyIdType' :: Newtype PublicKeyIdType' _
 
 
 newtype PublicKeyMaterialType' = PublicKeyMaterialType' String
+derive instance newtypePublicKeyMaterialType' :: Newtype PublicKeyMaterialType' _
 
 
 newtype RoleDescriptionType' = RoleDescriptionType' String
+derive instance newtypeRoleDescriptionType' :: Newtype RoleDescriptionType' _
 
 
 newtype RoleDetailListType' = RoleDetailListType' (Array RoleDetail)
+derive instance newtypeRoleDetailListType' :: Newtype RoleDetailListType' _
 
 
 -- | <p>Contains a list of IAM roles.</p> <p>This data type is used as a response element in the <a>ListRoles</a> action.</p>
 newtype RoleListType' = RoleListType' (Array Role)
+derive instance newtypeRoleListType' :: Newtype RoleListType' _
 
 
 newtype RoleNameType' = RoleNameType' String
+derive instance newtypeRoleNameType' :: Newtype RoleNameType' _
 
 
 newtype SerialNumberType' = SerialNumberType' String
+derive instance newtypeSerialNumberType' :: Newtype SerialNumberType' _
 
 
 newtype ServerCertificateMetadataListType' = ServerCertificateMetadataListType' (Array ServerCertificateMetadata)
+derive instance newtypeServerCertificateMetadataListType' :: Newtype ServerCertificateMetadataListType' _
 
 
 newtype ServerCertificateNameType' = ServerCertificateNameType' String
+derive instance newtypeServerCertificateNameType' :: Newtype ServerCertificateNameType' _
 
 
 newtype ServiceFailureExceptionMessage' = ServiceFailureExceptionMessage' String
+derive instance newtypeServiceFailureExceptionMessage' :: Newtype ServiceFailureExceptionMessage' _
 
 
 newtype ServiceName' = ServiceName' String
+derive instance newtypeServiceName' :: Newtype ServiceName' _
 
 
 newtype ServiceNotSupportedMessage' = ServiceNotSupportedMessage' String
+derive instance newtypeServiceNotSupportedMessage' :: Newtype ServiceNotSupportedMessage' _
 
 
 newtype ServicePassword' = ServicePassword' String
+derive instance newtypeServicePassword' :: Newtype ServicePassword' _
 
 
 newtype ServiceSpecificCredentialId' = ServiceSpecificCredentialId' String
+derive instance newtypeServiceSpecificCredentialId' :: Newtype ServiceSpecificCredentialId' _
 
 
 newtype ServiceUserName' = ServiceUserName' String
+derive instance newtypeServiceUserName' :: Newtype ServiceUserName' _
 
 
 newtype StatusType' = StatusType' String
+derive instance newtypeStatusType' :: Newtype StatusType' _
 
 
 newtype StringType' = StringType' String
+derive instance newtypeStringType' :: Newtype StringType' _
 
 
 newtype SummaryKeyType' = SummaryKeyType' String
+derive instance newtypeSummaryKeyType' :: Newtype SummaryKeyType' _
 
 
 newtype SummaryMapType' = SummaryMapType' (Map SummaryKeyType' SummaryValueType')
+derive instance newtypeSummaryMapType' :: Newtype SummaryMapType' _
 
 
 newtype SummaryValueType' = SummaryValueType' Int
+derive instance newtypeSummaryValueType' :: Newtype SummaryValueType' _
 
 
 -- | <p>Contains a list of thumbprints of identity provider server certificates.</p>
 newtype ThumbprintListType' = ThumbprintListType' (Array ThumbprintType')
+derive instance newtypeThumbprintListType' :: Newtype ThumbprintListType' _
 
 
 -- | <p>Contains a thumbprint for an identity provider's server certificate.</p> <p>The identity provider's server certificate thumbprint is the hex-encoded SHA-1 hash value of the self-signed X.509 certificate used by the domain where the OpenID Connect provider makes its keys available. It is always a 40-character string.</p>
 newtype ThumbprintType' = ThumbprintType' String
+derive instance newtypeThumbprintType' :: Newtype ThumbprintType' _
 
 
 newtype UnmodifiableEntityMessage' = UnmodifiableEntityMessage' String
+derive instance newtypeUnmodifiableEntityMessage' :: Newtype UnmodifiableEntityMessage' _
 
 
 newtype UnrecognizedPublicKeyEncodingMessage' = UnrecognizedPublicKeyEncodingMessage' String
+derive instance newtypeUnrecognizedPublicKeyEncodingMessage' :: Newtype UnrecognizedPublicKeyEncodingMessage' _
 
 
 newtype UserDetailListType' = UserDetailListType' (Array UserDetail)
+derive instance newtypeUserDetailListType' :: Newtype UserDetailListType' _
 
 
 -- | <p>Contains a list of users.</p> <p>This data type is used as a response element in the <a>GetGroup</a> and <a>ListUsers</a> actions. </p>
 newtype UserListType' = UserListType' (Array User)
+derive instance newtypeUserListType' :: Newtype UserListType' _
 
 
 newtype UserNameType' = UserNameType' String
+derive instance newtypeUserNameType' :: Newtype UserNameType' _
 
 
 newtype VirtualMFADeviceListType' = VirtualMFADeviceListType' (Array VirtualMFADevice)
+derive instance newtypeVirtualMFADeviceListType' :: Newtype VirtualMFADeviceListType' _
 
 
 newtype VirtualMFADeviceName' = VirtualMFADeviceName' String
+derive instance newtypeVirtualMFADeviceName' :: Newtype VirtualMFADeviceName' _

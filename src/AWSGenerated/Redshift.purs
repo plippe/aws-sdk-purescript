@@ -6,6 +6,7 @@ module AWS.Redshift where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -332,6 +333,7 @@ rotateEncryptionKey = AWS.request serviceName "RotateEncryptionKey"
 newtype AccessToSnapshotDeniedFault = AccessToSnapshotDeniedFault 
   { 
   }
+derive instance newtypeAccessToSnapshotDeniedFault :: Newtype AccessToSnapshotDeniedFault _
 
 
 -- | <p>Describes an AWS customer account authorized to restore a snapshot.</p>
@@ -339,27 +341,32 @@ newtype AccountWithRestoreAccess = AccountWithRestoreAccess
   { "AccountId" :: NullOrUndefined (String)
   , "AccountAlias" :: NullOrUndefined (String)
   }
+derive instance newtypeAccountWithRestoreAccess :: Newtype AccountWithRestoreAccess _
 
 
 newtype AccountsWithRestoreAccessList = AccountsWithRestoreAccessList (Array AccountWithRestoreAccess)
+derive instance newtypeAccountsWithRestoreAccessList :: Newtype AccountsWithRestoreAccessList _
 
 
 -- | <p>The specified CIDR block or EC2 security group is already authorized for the specified cluster security group.</p>
 newtype AuthorizationAlreadyExistsFault = AuthorizationAlreadyExistsFault 
   { 
   }
+derive instance newtypeAuthorizationAlreadyExistsFault :: Newtype AuthorizationAlreadyExistsFault _
 
 
 -- | <p>The specified CIDR IP range or EC2 security group is not authorized for the specified cluster security group.</p>
 newtype AuthorizationNotFoundFault = AuthorizationNotFoundFault 
   { 
   }
+derive instance newtypeAuthorizationNotFoundFault :: Newtype AuthorizationNotFoundFault _
 
 
 -- | <p>The authorization quota for the cluster security group has been reached.</p>
 newtype AuthorizationQuotaExceededFault = AuthorizationQuotaExceededFault 
   { 
   }
+derive instance newtypeAuthorizationQuotaExceededFault :: Newtype AuthorizationQuotaExceededFault _
 
 
 -- | <p/>
@@ -369,11 +376,13 @@ newtype AuthorizeClusterSecurityGroupIngressMessage = AuthorizeClusterSecurityGr
   , "EC2SecurityGroupName" :: NullOrUndefined (String)
   , "EC2SecurityGroupOwnerId" :: NullOrUndefined (String)
   }
+derive instance newtypeAuthorizeClusterSecurityGroupIngressMessage :: Newtype AuthorizeClusterSecurityGroupIngressMessage _
 
 
 newtype AuthorizeClusterSecurityGroupIngressResult = AuthorizeClusterSecurityGroupIngressResult 
   { "ClusterSecurityGroup" :: NullOrUndefined (ClusterSecurityGroup)
   }
+derive instance newtypeAuthorizeClusterSecurityGroupIngressResult :: Newtype AuthorizeClusterSecurityGroupIngressResult _
 
 
 -- | <p/>
@@ -382,29 +391,35 @@ newtype AuthorizeSnapshotAccessMessage = AuthorizeSnapshotAccessMessage
   , "SnapshotClusterIdentifier" :: NullOrUndefined (String)
   , "AccountWithRestoreAccess" :: (String)
   }
+derive instance newtypeAuthorizeSnapshotAccessMessage :: Newtype AuthorizeSnapshotAccessMessage _
 
 
 newtype AuthorizeSnapshotAccessResult = AuthorizeSnapshotAccessResult 
   { "Snapshot" :: NullOrUndefined (Snapshot)
   }
+derive instance newtypeAuthorizeSnapshotAccessResult :: Newtype AuthorizeSnapshotAccessResult _
 
 
 -- | <p>Describes an availability zone.</p>
 newtype AvailabilityZone = AvailabilityZone 
   { "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeAvailabilityZone :: Newtype AvailabilityZone _
 
 
 newtype AvailabilityZoneList = AvailabilityZoneList (Array AvailabilityZone)
+derive instance newtypeAvailabilityZoneList :: Newtype AvailabilityZoneList _
 
 
 newtype BooleanOptional = BooleanOptional Boolean
+derive instance newtypeBooleanOptional :: Newtype BooleanOptional _
 
 
 -- | <p>Could not find the specified S3 bucket.</p>
 newtype BucketNotFoundFault = BucketNotFoundFault 
   { 
   }
+derive instance newtypeBucketNotFoundFault :: Newtype BucketNotFoundFault _
 
 
 -- | <p>Describes a cluster.</p>
@@ -443,12 +458,14 @@ newtype Cluster = Cluster
   , "EnhancedVpcRouting" :: NullOrUndefined (Boolean)
   , "IamRoles" :: NullOrUndefined (ClusterIamRoleList)
   }
+derive instance newtypeCluster :: Newtype Cluster _
 
 
 -- | <p>The account already has a cluster with the given identifier.</p>
 newtype ClusterAlreadyExistsFault = ClusterAlreadyExistsFault 
   { 
   }
+derive instance newtypeClusterAlreadyExistsFault :: Newtype ClusterAlreadyExistsFault _
 
 
 -- | <p>Temporary credentials with authorization to log on to an Amazon Redshift database. </p>
@@ -457,6 +474,7 @@ newtype ClusterCredentials = ClusterCredentials
   , "DbPassword" :: NullOrUndefined (SensitiveString)
   , "Expiration" :: NullOrUndefined (TStamp)
   }
+derive instance newtypeClusterCredentials :: Newtype ClusterCredentials _
 
 
 -- | <p>An AWS Identity and Access Management (IAM) role that can be used by the associated Amazon Redshift cluster to access other AWS services.</p>
@@ -464,12 +482,15 @@ newtype ClusterIamRole = ClusterIamRole
   { "IamRoleArn" :: NullOrUndefined (String)
   , "ApplyStatus" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterIamRole :: Newtype ClusterIamRole _
 
 
 newtype ClusterIamRoleList = ClusterIamRoleList (Array ClusterIamRole)
+derive instance newtypeClusterIamRoleList :: Newtype ClusterIamRoleList _
 
 
 newtype ClusterList = ClusterList (Array Cluster)
+derive instance newtypeClusterList :: Newtype ClusterList _
 
 
 -- | <p>The identifier of a node in a cluster.</p>
@@ -478,15 +499,18 @@ newtype ClusterNode = ClusterNode
   , "PrivateIPAddress" :: NullOrUndefined (String)
   , "PublicIPAddress" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterNode :: Newtype ClusterNode _
 
 
 newtype ClusterNodesList = ClusterNodesList (Array ClusterNode)
+derive instance newtypeClusterNodesList :: Newtype ClusterNodesList _
 
 
 -- | <p>The <code>ClusterIdentifier</code> parameter does not refer to an existing cluster. </p>
 newtype ClusterNotFoundFault = ClusterNotFoundFault 
   { 
   }
+derive instance newtypeClusterNotFoundFault :: Newtype ClusterNotFoundFault _
 
 
 -- | <p>Describes a parameter group.</p>
@@ -496,12 +520,14 @@ newtype ClusterParameterGroup = ClusterParameterGroup
   , "Description" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeClusterParameterGroup :: Newtype ClusterParameterGroup _
 
 
 -- | <p>A cluster parameter group with the same name already exists.</p>
 newtype ClusterParameterGroupAlreadyExistsFault = ClusterParameterGroupAlreadyExistsFault 
   { 
   }
+derive instance newtypeClusterParameterGroupAlreadyExistsFault :: Newtype ClusterParameterGroupAlreadyExistsFault _
 
 
 -- | <p>Contains the output from the <a>DescribeClusterParameters</a> action. </p>
@@ -509,6 +535,7 @@ newtype ClusterParameterGroupDetails = ClusterParameterGroupDetails
   { "Parameters" :: NullOrUndefined (ParametersList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterParameterGroupDetails :: Newtype ClusterParameterGroupDetails _
 
 
 -- | <p/>
@@ -516,18 +543,21 @@ newtype ClusterParameterGroupNameMessage = ClusterParameterGroupNameMessage
   { "ParameterGroupName" :: NullOrUndefined (String)
   , "ParameterGroupStatus" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterParameterGroupNameMessage :: Newtype ClusterParameterGroupNameMessage _
 
 
 -- | <p>The parameter group name does not refer to an existing parameter group.</p>
 newtype ClusterParameterGroupNotFoundFault = ClusterParameterGroupNotFoundFault 
   { 
   }
+derive instance newtypeClusterParameterGroupNotFoundFault :: Newtype ClusterParameterGroupNotFoundFault _
 
 
 -- | <p>The request would result in the user exceeding the allowed number of cluster parameter groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype ClusterParameterGroupQuotaExceededFault = ClusterParameterGroupQuotaExceededFault 
   { 
   }
+derive instance newtypeClusterParameterGroupQuotaExceededFault :: Newtype ClusterParameterGroupQuotaExceededFault _
 
 
 -- | <p>Describes the status of a parameter group.</p>
@@ -536,9 +566,11 @@ newtype ClusterParameterGroupStatus = ClusterParameterGroupStatus
   , "ParameterApplyStatus" :: NullOrUndefined (String)
   , "ClusterParameterStatusList" :: NullOrUndefined (ClusterParameterStatusList)
   }
+derive instance newtypeClusterParameterGroupStatus :: Newtype ClusterParameterGroupStatus _
 
 
 newtype ClusterParameterGroupStatusList = ClusterParameterGroupStatusList (Array ClusterParameterGroupStatus)
+derive instance newtypeClusterParameterGroupStatusList :: Newtype ClusterParameterGroupStatusList _
 
 
 -- | <p>Contains the output from the <a>DescribeClusterParameterGroups</a> action. </p>
@@ -546,6 +578,7 @@ newtype ClusterParameterGroupsMessage = ClusterParameterGroupsMessage
   { "Marker" :: NullOrUndefined (String)
   , "ParameterGroups" :: NullOrUndefined (ParameterGroupList)
   }
+derive instance newtypeClusterParameterGroupsMessage :: Newtype ClusterParameterGroupsMessage _
 
 
 -- | <p>Describes the status of a parameter group.</p>
@@ -554,15 +587,18 @@ newtype ClusterParameterStatus = ClusterParameterStatus
   , "ParameterApplyStatus" :: NullOrUndefined (String)
   , "ParameterApplyErrorDescription" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterParameterStatus :: Newtype ClusterParameterStatus _
 
 
 newtype ClusterParameterStatusList = ClusterParameterStatusList (Array ClusterParameterStatus)
+derive instance newtypeClusterParameterStatusList :: Newtype ClusterParameterStatusList _
 
 
 -- | <p>The request would exceed the allowed number of cluster instances for this account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype ClusterQuotaExceededFault = ClusterQuotaExceededFault 
   { 
   }
+derive instance newtypeClusterQuotaExceededFault :: Newtype ClusterQuotaExceededFault _
 
 
 -- | <p>Describes a security group.</p>
@@ -573,12 +609,14 @@ newtype ClusterSecurityGroup = ClusterSecurityGroup
   , "IPRanges" :: NullOrUndefined (IPRangeList)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeClusterSecurityGroup :: Newtype ClusterSecurityGroup _
 
 
 -- | <p>A cluster security group with the same name already exists.</p>
 newtype ClusterSecurityGroupAlreadyExistsFault = ClusterSecurityGroupAlreadyExistsFault 
   { 
   }
+derive instance newtypeClusterSecurityGroupAlreadyExistsFault :: Newtype ClusterSecurityGroupAlreadyExistsFault _
 
 
 -- | <p>Describes a cluster security group.</p>
@@ -586,9 +624,11 @@ newtype ClusterSecurityGroupMembership = ClusterSecurityGroupMembership
   { "ClusterSecurityGroupName" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterSecurityGroupMembership :: Newtype ClusterSecurityGroupMembership _
 
 
 newtype ClusterSecurityGroupMembershipList = ClusterSecurityGroupMembershipList (Array ClusterSecurityGroupMembership)
+derive instance newtypeClusterSecurityGroupMembershipList :: Newtype ClusterSecurityGroupMembershipList _
 
 
 -- | <p/>
@@ -596,30 +636,36 @@ newtype ClusterSecurityGroupMessage = ClusterSecurityGroupMessage
   { "Marker" :: NullOrUndefined (String)
   , "ClusterSecurityGroups" :: NullOrUndefined (ClusterSecurityGroups)
   }
+derive instance newtypeClusterSecurityGroupMessage :: Newtype ClusterSecurityGroupMessage _
 
 
 newtype ClusterSecurityGroupNameList = ClusterSecurityGroupNameList (Array String)
+derive instance newtypeClusterSecurityGroupNameList :: Newtype ClusterSecurityGroupNameList _
 
 
 -- | <p>The cluster security group name does not refer to an existing cluster security group.</p>
 newtype ClusterSecurityGroupNotFoundFault = ClusterSecurityGroupNotFoundFault 
   { 
   }
+derive instance newtypeClusterSecurityGroupNotFoundFault :: Newtype ClusterSecurityGroupNotFoundFault _
 
 
 -- | <p>The request would result in the user exceeding the allowed number of cluster security groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype ClusterSecurityGroupQuotaExceededFault = ClusterSecurityGroupQuotaExceededFault 
   { 
   }
+derive instance newtypeClusterSecurityGroupQuotaExceededFault :: Newtype ClusterSecurityGroupQuotaExceededFault _
 
 
 newtype ClusterSecurityGroups = ClusterSecurityGroups (Array ClusterSecurityGroup)
+derive instance newtypeClusterSecurityGroups :: Newtype ClusterSecurityGroups _
 
 
 -- | <p>The value specified as a snapshot identifier is already used by an existing snapshot.</p>
 newtype ClusterSnapshotAlreadyExistsFault = ClusterSnapshotAlreadyExistsFault 
   { 
   }
+derive instance newtypeClusterSnapshotAlreadyExistsFault :: Newtype ClusterSnapshotAlreadyExistsFault _
 
 
 -- | <p>Returns the destination region and retention period that are configured for cross-region snapshot copy.</p>
@@ -628,18 +674,21 @@ newtype ClusterSnapshotCopyStatus = ClusterSnapshotCopyStatus
   , "RetentionPeriod" :: NullOrUndefined (Number)
   , "SnapshotCopyGrantName" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterSnapshotCopyStatus :: Newtype ClusterSnapshotCopyStatus _
 
 
 -- | <p>The snapshot identifier does not refer to an existing cluster snapshot.</p>
 newtype ClusterSnapshotNotFoundFault = ClusterSnapshotNotFoundFault 
   { 
   }
+derive instance newtypeClusterSnapshotNotFoundFault :: Newtype ClusterSnapshotNotFoundFault _
 
 
 -- | <p>The request would result in the user exceeding the allowed number of cluster snapshots.</p>
 newtype ClusterSnapshotQuotaExceededFault = ClusterSnapshotQuotaExceededFault 
   { 
   }
+derive instance newtypeClusterSnapshotQuotaExceededFault :: Newtype ClusterSnapshotQuotaExceededFault _
 
 
 -- | <p>Describes a subnet group.</p>
@@ -651,12 +700,14 @@ newtype ClusterSubnetGroup = ClusterSubnetGroup
   , "Subnets" :: NullOrUndefined (SubnetList)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeClusterSubnetGroup :: Newtype ClusterSubnetGroup _
 
 
 -- | <p>A <i>ClusterSubnetGroupName</i> is already used by an existing cluster subnet group. </p>
 newtype ClusterSubnetGroupAlreadyExistsFault = ClusterSubnetGroupAlreadyExistsFault 
   { 
   }
+derive instance newtypeClusterSubnetGroupAlreadyExistsFault :: Newtype ClusterSubnetGroupAlreadyExistsFault _
 
 
 -- | <p>Contains the output from the <a>DescribeClusterSubnetGroups</a> action. </p>
@@ -664,27 +715,32 @@ newtype ClusterSubnetGroupMessage = ClusterSubnetGroupMessage
   { "Marker" :: NullOrUndefined (String)
   , "ClusterSubnetGroups" :: NullOrUndefined (ClusterSubnetGroups)
   }
+derive instance newtypeClusterSubnetGroupMessage :: Newtype ClusterSubnetGroupMessage _
 
 
 -- | <p>The cluster subnet group name does not refer to an existing cluster subnet group.</p>
 newtype ClusterSubnetGroupNotFoundFault = ClusterSubnetGroupNotFoundFault 
   { 
   }
+derive instance newtypeClusterSubnetGroupNotFoundFault :: Newtype ClusterSubnetGroupNotFoundFault _
 
 
 -- | <p>The request would result in user exceeding the allowed number of cluster subnet groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype ClusterSubnetGroupQuotaExceededFault = ClusterSubnetGroupQuotaExceededFault 
   { 
   }
+derive instance newtypeClusterSubnetGroupQuotaExceededFault :: Newtype ClusterSubnetGroupQuotaExceededFault _
 
 
 newtype ClusterSubnetGroups = ClusterSubnetGroups (Array ClusterSubnetGroup)
+derive instance newtypeClusterSubnetGroups :: Newtype ClusterSubnetGroups _
 
 
 -- | <p>The request would result in user exceeding the allowed number of subnets in a cluster subnet groups. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype ClusterSubnetQuotaExceededFault = ClusterSubnetQuotaExceededFault 
   { 
   }
+derive instance newtypeClusterSubnetQuotaExceededFault :: Newtype ClusterSubnetQuotaExceededFault _
 
 
 -- | <p>Describes a cluster version, including the parameter group family and description of the version.</p>
@@ -693,9 +749,11 @@ newtype ClusterVersion = ClusterVersion
   , "ClusterParameterGroupFamily" :: NullOrUndefined (String)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterVersion :: Newtype ClusterVersion _
 
 
 newtype ClusterVersionList = ClusterVersionList (Array ClusterVersion)
+derive instance newtypeClusterVersionList :: Newtype ClusterVersionList _
 
 
 -- | <p>Contains the output from the <a>DescribeClusterVersions</a> action. </p>
@@ -703,6 +761,7 @@ newtype ClusterVersionsMessage = ClusterVersionsMessage
   { "Marker" :: NullOrUndefined (String)
   , "ClusterVersions" :: NullOrUndefined (ClusterVersionList)
   }
+derive instance newtypeClusterVersionsMessage :: Newtype ClusterVersionsMessage _
 
 
 -- | <p>Contains the output from the <a>DescribeClusters</a> action. </p>
@@ -710,6 +769,7 @@ newtype ClustersMessage = ClustersMessage
   { "Marker" :: NullOrUndefined (String)
   , "Clusters" :: NullOrUndefined (ClusterList)
   }
+derive instance newtypeClustersMessage :: Newtype ClustersMessage _
 
 
 -- | <p/>
@@ -718,17 +778,20 @@ newtype CopyClusterSnapshotMessage = CopyClusterSnapshotMessage
   , "SourceSnapshotClusterIdentifier" :: NullOrUndefined (String)
   , "TargetSnapshotIdentifier" :: (String)
   }
+derive instance newtypeCopyClusterSnapshotMessage :: Newtype CopyClusterSnapshotMessage _
 
 
 newtype CopyClusterSnapshotResult = CopyClusterSnapshotResult 
   { "Snapshot" :: NullOrUndefined (Snapshot)
   }
+derive instance newtypeCopyClusterSnapshotResult :: Newtype CopyClusterSnapshotResult _
 
 
 -- | <p>Cross-region snapshot copy was temporarily disabled. Try your request again.</p>
 newtype CopyToRegionDisabledFault = CopyToRegionDisabledFault 
   { 
   }
+derive instance newtypeCopyToRegionDisabledFault :: Newtype CopyToRegionDisabledFault _
 
 
 -- | <p/>
@@ -761,6 +824,7 @@ newtype CreateClusterMessage = CreateClusterMessage
   , "AdditionalInfo" :: NullOrUndefined (String)
   , "IamRoles" :: NullOrUndefined (IamRoleArnList)
   }
+derive instance newtypeCreateClusterMessage :: Newtype CreateClusterMessage _
 
 
 -- | <p/>
@@ -770,16 +834,19 @@ newtype CreateClusterParameterGroupMessage = CreateClusterParameterGroupMessage
   , "Description" :: (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateClusterParameterGroupMessage :: Newtype CreateClusterParameterGroupMessage _
 
 
 newtype CreateClusterParameterGroupResult = CreateClusterParameterGroupResult 
   { "ClusterParameterGroup" :: NullOrUndefined (ClusterParameterGroup)
   }
+derive instance newtypeCreateClusterParameterGroupResult :: Newtype CreateClusterParameterGroupResult _
 
 
 newtype CreateClusterResult = CreateClusterResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeCreateClusterResult :: Newtype CreateClusterResult _
 
 
 -- | <p/>
@@ -788,11 +855,13 @@ newtype CreateClusterSecurityGroupMessage = CreateClusterSecurityGroupMessage
   , "Description" :: (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateClusterSecurityGroupMessage :: Newtype CreateClusterSecurityGroupMessage _
 
 
 newtype CreateClusterSecurityGroupResult = CreateClusterSecurityGroupResult 
   { "ClusterSecurityGroup" :: NullOrUndefined (ClusterSecurityGroup)
   }
+derive instance newtypeCreateClusterSecurityGroupResult :: Newtype CreateClusterSecurityGroupResult _
 
 
 -- | <p/>
@@ -801,11 +870,13 @@ newtype CreateClusterSnapshotMessage = CreateClusterSnapshotMessage
   , "ClusterIdentifier" :: (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateClusterSnapshotMessage :: Newtype CreateClusterSnapshotMessage _
 
 
 newtype CreateClusterSnapshotResult = CreateClusterSnapshotResult 
   { "Snapshot" :: NullOrUndefined (Snapshot)
   }
+derive instance newtypeCreateClusterSnapshotResult :: Newtype CreateClusterSnapshotResult _
 
 
 -- | <p/>
@@ -815,11 +886,13 @@ newtype CreateClusterSubnetGroupMessage = CreateClusterSubnetGroupMessage
   , "SubnetIds" :: (SubnetIdentifierList)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateClusterSubnetGroupMessage :: Newtype CreateClusterSubnetGroupMessage _
 
 
 newtype CreateClusterSubnetGroupResult = CreateClusterSubnetGroupResult 
   { "ClusterSubnetGroup" :: NullOrUndefined (ClusterSubnetGroup)
   }
+derive instance newtypeCreateClusterSubnetGroupResult :: Newtype CreateClusterSubnetGroupResult _
 
 
 -- | <p/>
@@ -833,11 +906,13 @@ newtype CreateEventSubscriptionMessage = CreateEventSubscriptionMessage
   , "Enabled" :: NullOrUndefined (BooleanOptional)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateEventSubscriptionMessage :: Newtype CreateEventSubscriptionMessage _
 
 
 newtype CreateEventSubscriptionResult = CreateEventSubscriptionResult 
   { "EventSubscription" :: NullOrUndefined (EventSubscription)
   }
+derive instance newtypeCreateEventSubscriptionResult :: Newtype CreateEventSubscriptionResult _
 
 
 -- | <p/>
@@ -845,11 +920,13 @@ newtype CreateHsmClientCertificateMessage = CreateHsmClientCertificateMessage
   { "HsmClientCertificateIdentifier" :: (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateHsmClientCertificateMessage :: Newtype CreateHsmClientCertificateMessage _
 
 
 newtype CreateHsmClientCertificateResult = CreateHsmClientCertificateResult 
   { "HsmClientCertificate" :: NullOrUndefined (HsmClientCertificate)
   }
+derive instance newtypeCreateHsmClientCertificateResult :: Newtype CreateHsmClientCertificateResult _
 
 
 -- | <p/>
@@ -862,11 +939,13 @@ newtype CreateHsmConfigurationMessage = CreateHsmConfigurationMessage
   , "HsmServerPublicCertificate" :: (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateHsmConfigurationMessage :: Newtype CreateHsmConfigurationMessage _
 
 
 newtype CreateHsmConfigurationResult = CreateHsmConfigurationResult 
   { "HsmConfiguration" :: NullOrUndefined (HsmConfiguration)
   }
+derive instance newtypeCreateHsmConfigurationResult :: Newtype CreateHsmConfigurationResult _
 
 
 -- | <p>The result of the <code>CreateSnapshotCopyGrant</code> action.</p>
@@ -875,11 +954,13 @@ newtype CreateSnapshotCopyGrantMessage = CreateSnapshotCopyGrantMessage
   , "KmsKeyId" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateSnapshotCopyGrantMessage :: Newtype CreateSnapshotCopyGrantMessage _
 
 
 newtype CreateSnapshotCopyGrantResult = CreateSnapshotCopyGrantResult 
   { "SnapshotCopyGrant" :: NullOrUndefined (SnapshotCopyGrant)
   }
+derive instance newtypeCreateSnapshotCopyGrantResult :: Newtype CreateSnapshotCopyGrantResult _
 
 
 -- | <p>Contains the output from the <code>CreateTags</code> action. </p>
@@ -887,9 +968,11 @@ newtype CreateTagsMessage = CreateTagsMessage
   { "ResourceName" :: (String)
   , "Tags" :: (TagList)
   }
+derive instance newtypeCreateTagsMessage :: Newtype CreateTagsMessage _
 
 
 newtype DbGroupList = DbGroupList (Array String)
+derive instance newtypeDbGroupList :: Newtype DbGroupList _
 
 
 -- | <p>Describes the default cluster parameters for a parameter group family.</p>
@@ -898,6 +981,7 @@ newtype DefaultClusterParameters = DefaultClusterParameters
   , "Marker" :: NullOrUndefined (String)
   , "Parameters" :: NullOrUndefined (ParametersList)
   }
+derive instance newtypeDefaultClusterParameters :: Newtype DefaultClusterParameters _
 
 
 -- | <p/>
@@ -906,23 +990,27 @@ newtype DeleteClusterMessage = DeleteClusterMessage
   , "SkipFinalClusterSnapshot" :: NullOrUndefined (Boolean)
   , "FinalClusterSnapshotIdentifier" :: NullOrUndefined (String)
   }
+derive instance newtypeDeleteClusterMessage :: Newtype DeleteClusterMessage _
 
 
 -- | <p/>
 newtype DeleteClusterParameterGroupMessage = DeleteClusterParameterGroupMessage 
   { "ParameterGroupName" :: (String)
   }
+derive instance newtypeDeleteClusterParameterGroupMessage :: Newtype DeleteClusterParameterGroupMessage _
 
 
 newtype DeleteClusterResult = DeleteClusterResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeDeleteClusterResult :: Newtype DeleteClusterResult _
 
 
 -- | <p/>
 newtype DeleteClusterSecurityGroupMessage = DeleteClusterSecurityGroupMessage 
   { "ClusterSecurityGroupName" :: (String)
   }
+derive instance newtypeDeleteClusterSecurityGroupMessage :: Newtype DeleteClusterSecurityGroupMessage _
 
 
 -- | <p/>
@@ -930,41 +1018,48 @@ newtype DeleteClusterSnapshotMessage = DeleteClusterSnapshotMessage
   { "SnapshotIdentifier" :: (String)
   , "SnapshotClusterIdentifier" :: NullOrUndefined (String)
   }
+derive instance newtypeDeleteClusterSnapshotMessage :: Newtype DeleteClusterSnapshotMessage _
 
 
 newtype DeleteClusterSnapshotResult = DeleteClusterSnapshotResult 
   { "Snapshot" :: NullOrUndefined (Snapshot)
   }
+derive instance newtypeDeleteClusterSnapshotResult :: Newtype DeleteClusterSnapshotResult _
 
 
 -- | <p/>
 newtype DeleteClusterSubnetGroupMessage = DeleteClusterSubnetGroupMessage 
   { "ClusterSubnetGroupName" :: (String)
   }
+derive instance newtypeDeleteClusterSubnetGroupMessage :: Newtype DeleteClusterSubnetGroupMessage _
 
 
 -- | <p/>
 newtype DeleteEventSubscriptionMessage = DeleteEventSubscriptionMessage 
   { "SubscriptionName" :: (String)
   }
+derive instance newtypeDeleteEventSubscriptionMessage :: Newtype DeleteEventSubscriptionMessage _
 
 
 -- | <p/>
 newtype DeleteHsmClientCertificateMessage = DeleteHsmClientCertificateMessage 
   { "HsmClientCertificateIdentifier" :: (String)
   }
+derive instance newtypeDeleteHsmClientCertificateMessage :: Newtype DeleteHsmClientCertificateMessage _
 
 
 -- | <p/>
 newtype DeleteHsmConfigurationMessage = DeleteHsmConfigurationMessage 
   { "HsmConfigurationIdentifier" :: (String)
   }
+derive instance newtypeDeleteHsmConfigurationMessage :: Newtype DeleteHsmConfigurationMessage _
 
 
 -- | <p>The result of the <code>DeleteSnapshotCopyGrant</code> action.</p>
 newtype DeleteSnapshotCopyGrantMessage = DeleteSnapshotCopyGrantMessage 
   { "SnapshotCopyGrantName" :: (String)
   }
+derive instance newtypeDeleteSnapshotCopyGrantMessage :: Newtype DeleteSnapshotCopyGrantMessage _
 
 
 -- | <p>Contains the output from the <code>DeleteTags</code> action. </p>
@@ -972,18 +1067,21 @@ newtype DeleteTagsMessage = DeleteTagsMessage
   { "ResourceName" :: (String)
   , "TagKeys" :: (TagKeyList)
   }
+derive instance newtypeDeleteTagsMessage :: Newtype DeleteTagsMessage _
 
 
 -- | <p>The request cannot be completed because a dependent service is throttling requests made by Amazon Redshift on your behalf. Wait and retry the request.</p>
 newtype DependentServiceRequestThrottlingFault = DependentServiceRequestThrottlingFault 
   { 
   }
+derive instance newtypeDependentServiceRequestThrottlingFault :: Newtype DependentServiceRequestThrottlingFault _
 
 
 -- | <p>Your request cannot be completed because a dependent internal service is temporarily unavailable. Wait 30 to 60 seconds and try again.</p>
 newtype DependentServiceUnavailableFault = DependentServiceUnavailableFault 
   { 
   }
+derive instance newtypeDependentServiceUnavailableFault :: Newtype DependentServiceUnavailableFault _
 
 
 -- | <p/>
@@ -994,6 +1092,7 @@ newtype DescribeClusterParameterGroupsMessage = DescribeClusterParameterGroupsMe
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeClusterParameterGroupsMessage :: Newtype DescribeClusterParameterGroupsMessage _
 
 
 -- | <p/>
@@ -1003,6 +1102,7 @@ newtype DescribeClusterParametersMessage = DescribeClusterParametersMessage
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeClusterParametersMessage :: Newtype DescribeClusterParametersMessage _
 
 
 -- | <p/>
@@ -1013,6 +1113,7 @@ newtype DescribeClusterSecurityGroupsMessage = DescribeClusterSecurityGroupsMess
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeClusterSecurityGroupsMessage :: Newtype DescribeClusterSecurityGroupsMessage _
 
 
 -- | <p/>
@@ -1028,6 +1129,7 @@ newtype DescribeClusterSnapshotsMessage = DescribeClusterSnapshotsMessage
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeClusterSnapshotsMessage :: Newtype DescribeClusterSnapshotsMessage _
 
 
 -- | <p/>
@@ -1038,6 +1140,7 @@ newtype DescribeClusterSubnetGroupsMessage = DescribeClusterSubnetGroupsMessage
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeClusterSubnetGroupsMessage :: Newtype DescribeClusterSubnetGroupsMessage _
 
 
 -- | <p/>
@@ -1047,6 +1150,7 @@ newtype DescribeClusterVersionsMessage = DescribeClusterVersionsMessage
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeClusterVersionsMessage :: Newtype DescribeClusterVersionsMessage _
 
 
 -- | <p/>
@@ -1057,6 +1161,7 @@ newtype DescribeClustersMessage = DescribeClustersMessage
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeClustersMessage :: Newtype DescribeClustersMessage _
 
 
 -- | <p/>
@@ -1065,17 +1170,20 @@ newtype DescribeDefaultClusterParametersMessage = DescribeDefaultClusterParamete
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeDefaultClusterParametersMessage :: Newtype DescribeDefaultClusterParametersMessage _
 
 
 newtype DescribeDefaultClusterParametersResult = DescribeDefaultClusterParametersResult 
   { "DefaultClusterParameters" :: NullOrUndefined (DefaultClusterParameters)
   }
+derive instance newtypeDescribeDefaultClusterParametersResult :: Newtype DescribeDefaultClusterParametersResult _
 
 
 -- | <p/>
 newtype DescribeEventCategoriesMessage = DescribeEventCategoriesMessage 
   { "SourceType" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEventCategoriesMessage :: Newtype DescribeEventCategoriesMessage _
 
 
 -- | <p/>
@@ -1086,6 +1194,7 @@ newtype DescribeEventSubscriptionsMessage = DescribeEventSubscriptionsMessage
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeEventSubscriptionsMessage :: Newtype DescribeEventSubscriptionsMessage _
 
 
 -- | <p/>
@@ -1098,6 +1207,7 @@ newtype DescribeEventsMessage = DescribeEventsMessage
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEventsMessage :: Newtype DescribeEventsMessage _
 
 
 -- | <p/>
@@ -1108,6 +1218,7 @@ newtype DescribeHsmClientCertificatesMessage = DescribeHsmClientCertificatesMess
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeHsmClientCertificatesMessage :: Newtype DescribeHsmClientCertificatesMessage _
 
 
 -- | <p/>
@@ -1118,12 +1229,14 @@ newtype DescribeHsmConfigurationsMessage = DescribeHsmConfigurationsMessage
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeHsmConfigurationsMessage :: Newtype DescribeHsmConfigurationsMessage _
 
 
 -- | <p/>
 newtype DescribeLoggingStatusMessage = DescribeLoggingStatusMessage 
   { "ClusterIdentifier" :: (String)
   }
+derive instance newtypeDescribeLoggingStatusMessage :: Newtype DescribeLoggingStatusMessage _
 
 
 -- | <p/>
@@ -1133,6 +1246,7 @@ newtype DescribeOrderableClusterOptionsMessage = DescribeOrderableClusterOptions
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeOrderableClusterOptionsMessage :: Newtype DescribeOrderableClusterOptionsMessage _
 
 
 -- | <p/>
@@ -1141,6 +1255,7 @@ newtype DescribeReservedNodeOfferingsMessage = DescribeReservedNodeOfferingsMess
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeReservedNodeOfferingsMessage :: Newtype DescribeReservedNodeOfferingsMessage _
 
 
 -- | <p/>
@@ -1149,12 +1264,14 @@ newtype DescribeReservedNodesMessage = DescribeReservedNodesMessage
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeReservedNodesMessage :: Newtype DescribeReservedNodesMessage _
 
 
 -- | <p/>
 newtype DescribeResizeMessage = DescribeResizeMessage 
   { "ClusterIdentifier" :: (String)
   }
+derive instance newtypeDescribeResizeMessage :: Newtype DescribeResizeMessage _
 
 
 -- | <p>The result of the <code>DescribeSnapshotCopyGrants</code> action.</p>
@@ -1165,6 +1282,7 @@ newtype DescribeSnapshotCopyGrantsMessage = DescribeSnapshotCopyGrantsMessage
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeSnapshotCopyGrantsMessage :: Newtype DescribeSnapshotCopyGrantsMessage _
 
 
 -- | <p/>
@@ -1174,6 +1292,7 @@ newtype DescribeTableRestoreStatusMessage = DescribeTableRestoreStatusMessage
   , "MaxRecords" :: NullOrUndefined (IntegerOptional)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeTableRestoreStatusMessage :: Newtype DescribeTableRestoreStatusMessage _
 
 
 -- | <p/>
@@ -1185,26 +1304,31 @@ newtype DescribeTagsMessage = DescribeTagsMessage
   , "TagKeys" :: NullOrUndefined (TagKeyList)
   , "TagValues" :: NullOrUndefined (TagValueList)
   }
+derive instance newtypeDescribeTagsMessage :: Newtype DescribeTagsMessage _
 
 
 -- | <p/>
 newtype DisableLoggingMessage = DisableLoggingMessage 
   { "ClusterIdentifier" :: (String)
   }
+derive instance newtypeDisableLoggingMessage :: Newtype DisableLoggingMessage _
 
 
 -- | <p/>
 newtype DisableSnapshotCopyMessage = DisableSnapshotCopyMessage 
   { "ClusterIdentifier" :: (String)
   }
+derive instance newtypeDisableSnapshotCopyMessage :: Newtype DisableSnapshotCopyMessage _
 
 
 newtype DisableSnapshotCopyResult = DisableSnapshotCopyResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeDisableSnapshotCopyResult :: Newtype DisableSnapshotCopyResult _
 
 
 newtype DoubleOptional = DoubleOptional Number
+derive instance newtypeDoubleOptional :: Newtype DoubleOptional _
 
 
 -- | <p>Describes an Amazon EC2 security group.</p>
@@ -1214,9 +1338,11 @@ newtype EC2SecurityGroup = EC2SecurityGroup
   , "EC2SecurityGroupOwnerId" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeEC2SecurityGroup :: Newtype EC2SecurityGroup _
 
 
 newtype EC2SecurityGroupList = EC2SecurityGroupList (Array EC2SecurityGroup)
+derive instance newtypeEC2SecurityGroupList :: Newtype EC2SecurityGroupList _
 
 
 -- | <p>Describes the status of the elastic IP (EIP) address.</p>
@@ -1224,6 +1350,7 @@ newtype ElasticIpStatus = ElasticIpStatus
   { "ElasticIp" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeElasticIpStatus :: Newtype ElasticIpStatus _
 
 
 -- | <p/>
@@ -1232,6 +1359,7 @@ newtype EnableLoggingMessage = EnableLoggingMessage
   , "BucketName" :: (String)
   , "S3KeyPrefix" :: NullOrUndefined (String)
   }
+derive instance newtypeEnableLoggingMessage :: Newtype EnableLoggingMessage _
 
 
 -- | <p/>
@@ -1241,11 +1369,13 @@ newtype EnableSnapshotCopyMessage = EnableSnapshotCopyMessage
   , "RetentionPeriod" :: NullOrUndefined (IntegerOptional)
   , "SnapshotCopyGrantName" :: NullOrUndefined (String)
   }
+derive instance newtypeEnableSnapshotCopyMessage :: Newtype EnableSnapshotCopyMessage _
 
 
 newtype EnableSnapshotCopyResult = EnableSnapshotCopyResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeEnableSnapshotCopyResult :: Newtype EnableSnapshotCopyResult _
 
 
 -- | <p>Describes a connection endpoint.</p>
@@ -1253,6 +1383,7 @@ newtype Endpoint = Endpoint
   { "Address" :: NullOrUndefined (String)
   , "Port" :: NullOrUndefined (Int)
   }
+derive instance newtypeEndpoint :: Newtype Endpoint _
 
 
 -- | <p>Describes an event.</p>
@@ -1265,9 +1396,11 @@ newtype Event = Event
   , "Date" :: NullOrUndefined (TStamp)
   , "EventId" :: NullOrUndefined (String)
   }
+derive instance newtypeEvent :: Newtype Event _
 
 
 newtype EventCategoriesList = EventCategoriesList (Array String)
+derive instance newtypeEventCategoriesList :: Newtype EventCategoriesList _
 
 
 -- | <p>Describes event categories.</p>
@@ -1275,15 +1408,18 @@ newtype EventCategoriesMap = EventCategoriesMap
   { "SourceType" :: NullOrUndefined (String)
   , "Events" :: NullOrUndefined (EventInfoMapList)
   }
+derive instance newtypeEventCategoriesMap :: Newtype EventCategoriesMap _
 
 
 newtype EventCategoriesMapList = EventCategoriesMapList (Array EventCategoriesMap)
+derive instance newtypeEventCategoriesMapList :: Newtype EventCategoriesMapList _
 
 
 -- | <p/>
 newtype EventCategoriesMessage = EventCategoriesMessage 
   { "EventCategoriesMapList" :: NullOrUndefined (EventCategoriesMapList)
   }
+derive instance newtypeEventCategoriesMessage :: Newtype EventCategoriesMessage _
 
 
 -- | <p>Describes event information.</p>
@@ -1293,12 +1429,15 @@ newtype EventInfoMap = EventInfoMap
   , "EventDescription" :: NullOrUndefined (String)
   , "Severity" :: NullOrUndefined (String)
   }
+derive instance newtypeEventInfoMap :: Newtype EventInfoMap _
 
 
 newtype EventInfoMapList = EventInfoMapList (Array EventInfoMap)
+derive instance newtypeEventInfoMapList :: Newtype EventInfoMapList _
 
 
 newtype EventList = EventList (Array Event)
+derive instance newtypeEventList :: Newtype EventList _
 
 
 -- | <p>Describes event subscriptions.</p>
@@ -1315,15 +1454,18 @@ newtype EventSubscription = EventSubscription
   , "Enabled" :: NullOrUndefined (Boolean)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeEventSubscription :: Newtype EventSubscription _
 
 
 -- | <p>The request would exceed the allowed number of event subscriptions for this account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype EventSubscriptionQuotaExceededFault = EventSubscriptionQuotaExceededFault 
   { 
   }
+derive instance newtypeEventSubscriptionQuotaExceededFault :: Newtype EventSubscriptionQuotaExceededFault _
 
 
 newtype EventSubscriptionsList = EventSubscriptionsList (Array EventSubscription)
+derive instance newtypeEventSubscriptionsList :: Newtype EventSubscriptionsList _
 
 
 -- | <p/>
@@ -1331,6 +1473,7 @@ newtype EventSubscriptionsMessage = EventSubscriptionsMessage
   { "Marker" :: NullOrUndefined (String)
   , "EventSubscriptionsList" :: NullOrUndefined (EventSubscriptionsList)
   }
+derive instance newtypeEventSubscriptionsMessage :: Newtype EventSubscriptionsMessage _
 
 
 -- | <p/>
@@ -1338,6 +1481,7 @@ newtype EventsMessage = EventsMessage
   { "Marker" :: NullOrUndefined (String)
   , "Events" :: NullOrUndefined (EventList)
   }
+derive instance newtypeEventsMessage :: Newtype EventsMessage _
 
 
 -- | <p>The request parameters to get cluster credentials.</p>
@@ -1349,6 +1493,7 @@ newtype GetClusterCredentialsMessage = GetClusterCredentialsMessage
   , "AutoCreate" :: NullOrUndefined (BooleanOptional)
   , "DbGroups" :: NullOrUndefined (DbGroupList)
   }
+derive instance newtypeGetClusterCredentialsMessage :: Newtype GetClusterCredentialsMessage _
 
 
 -- | <p>Returns information about an HSM client certificate. The certificate is stored in a secure Hardware Storage Module (HSM), and used by the Amazon Redshift cluster to encrypt data files.</p>
@@ -1357,15 +1502,18 @@ newtype HsmClientCertificate = HsmClientCertificate
   , "HsmClientCertificatePublicKey" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeHsmClientCertificate :: Newtype HsmClientCertificate _
 
 
 -- | <p>There is already an existing Amazon Redshift HSM client certificate with the specified identifier.</p>
 newtype HsmClientCertificateAlreadyExistsFault = HsmClientCertificateAlreadyExistsFault 
   { 
   }
+derive instance newtypeHsmClientCertificateAlreadyExistsFault :: Newtype HsmClientCertificateAlreadyExistsFault _
 
 
 newtype HsmClientCertificateList = HsmClientCertificateList (Array HsmClientCertificate)
+derive instance newtypeHsmClientCertificateList :: Newtype HsmClientCertificateList _
 
 
 -- | <p/>
@@ -1373,18 +1521,21 @@ newtype HsmClientCertificateMessage = HsmClientCertificateMessage
   { "Marker" :: NullOrUndefined (String)
   , "HsmClientCertificates" :: NullOrUndefined (HsmClientCertificateList)
   }
+derive instance newtypeHsmClientCertificateMessage :: Newtype HsmClientCertificateMessage _
 
 
 -- | <p>There is no Amazon Redshift HSM client certificate with the specified identifier.</p>
 newtype HsmClientCertificateNotFoundFault = HsmClientCertificateNotFoundFault 
   { 
   }
+derive instance newtypeHsmClientCertificateNotFoundFault :: Newtype HsmClientCertificateNotFoundFault _
 
 
 -- | <p>The quota for HSM client certificates has been reached. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype HsmClientCertificateQuotaExceededFault = HsmClientCertificateQuotaExceededFault 
   { 
   }
+derive instance newtypeHsmClientCertificateQuotaExceededFault :: Newtype HsmClientCertificateQuotaExceededFault _
 
 
 -- | <p>Returns information about an HSM configuration, which is an object that describes to Amazon Redshift clusters the information they require to connect to an HSM where they can store database encryption keys.</p>
@@ -1395,15 +1546,18 @@ newtype HsmConfiguration = HsmConfiguration
   , "HsmPartitionName" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeHsmConfiguration :: Newtype HsmConfiguration _
 
 
 -- | <p>There is already an existing Amazon Redshift HSM configuration with the specified identifier.</p>
 newtype HsmConfigurationAlreadyExistsFault = HsmConfigurationAlreadyExistsFault 
   { 
   }
+derive instance newtypeHsmConfigurationAlreadyExistsFault :: Newtype HsmConfigurationAlreadyExistsFault _
 
 
 newtype HsmConfigurationList = HsmConfigurationList (Array HsmConfiguration)
+derive instance newtypeHsmConfigurationList :: Newtype HsmConfigurationList _
 
 
 -- | <p/>
@@ -1411,18 +1565,21 @@ newtype HsmConfigurationMessage = HsmConfigurationMessage
   { "Marker" :: NullOrUndefined (String)
   , "HsmConfigurations" :: NullOrUndefined (HsmConfigurationList)
   }
+derive instance newtypeHsmConfigurationMessage :: Newtype HsmConfigurationMessage _
 
 
 -- | <p>There is no Amazon Redshift HSM configuration with the specified identifier.</p>
 newtype HsmConfigurationNotFoundFault = HsmConfigurationNotFoundFault 
   { 
   }
+derive instance newtypeHsmConfigurationNotFoundFault :: Newtype HsmConfigurationNotFoundFault _
 
 
 -- | <p>The quota for HSM configurations has been reached. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype HsmConfigurationQuotaExceededFault = HsmConfigurationQuotaExceededFault 
   { 
   }
+derive instance newtypeHsmConfigurationQuotaExceededFault :: Newtype HsmConfigurationQuotaExceededFault _
 
 
 -- | <p>Describes the status of changes to HSM settings.</p>
@@ -1431,6 +1588,7 @@ newtype HsmStatus = HsmStatus
   , "HsmConfigurationIdentifier" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeHsmStatus :: Newtype HsmStatus _
 
 
 -- | <p>Describes an IP range used in a security group.</p>
@@ -1439,162 +1597,192 @@ newtype IPRange = IPRange
   , "CIDRIP" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeIPRange :: Newtype IPRange _
 
 
 newtype IPRangeList = IPRangeList (Array IPRange)
+derive instance newtypeIPRangeList :: Newtype IPRangeList _
 
 
 newtype IamRoleArnList = IamRoleArnList (Array String)
+derive instance newtypeIamRoleArnList :: Newtype IamRoleArnList _
 
 
 newtype ImportTablesCompleted = ImportTablesCompleted (Array String)
+derive instance newtypeImportTablesCompleted :: Newtype ImportTablesCompleted _
 
 
 newtype ImportTablesInProgress = ImportTablesInProgress (Array String)
+derive instance newtypeImportTablesInProgress :: Newtype ImportTablesInProgress _
 
 
 newtype ImportTablesNotStarted = ImportTablesNotStarted (Array String)
+derive instance newtypeImportTablesNotStarted :: Newtype ImportTablesNotStarted _
 
 
 -- | <p>You have exceeded the allowed number of table restore requests. Wait for your current table restore requests to complete before making a new request.</p>
 newtype InProgressTableRestoreQuotaExceededFault = InProgressTableRestoreQuotaExceededFault 
   { 
   }
+derive instance newtypeInProgressTableRestoreQuotaExceededFault :: Newtype InProgressTableRestoreQuotaExceededFault _
 
 
 -- | <p>The specified options are incompatible.</p>
 newtype IncompatibleOrderableOptions = IncompatibleOrderableOptions 
   { 
   }
+derive instance newtypeIncompatibleOrderableOptions :: Newtype IncompatibleOrderableOptions _
 
 
 -- | <p>The number of nodes specified exceeds the allotted capacity of the cluster.</p>
 newtype InsufficientClusterCapacityFault = InsufficientClusterCapacityFault 
   { 
   }
+derive instance newtypeInsufficientClusterCapacityFault :: Newtype InsufficientClusterCapacityFault _
 
 
 -- | <p>The cluster does not have read bucket or put object permissions on the S3 bucket specified when enabling logging.</p>
 newtype InsufficientS3BucketPolicyFault = InsufficientS3BucketPolicyFault 
   { 
   }
+derive instance newtypeInsufficientS3BucketPolicyFault :: Newtype InsufficientS3BucketPolicyFault _
 
 
 newtype IntegerOptional = IntegerOptional Int
+derive instance newtypeIntegerOptional :: Newtype IntegerOptional _
 
 
 -- | <p>The cluster parameter group action can not be completed because another task is in progress that involves the parameter group. Wait a few moments and try the operation again.</p>
 newtype InvalidClusterParameterGroupStateFault = InvalidClusterParameterGroupStateFault 
   { 
   }
+derive instance newtypeInvalidClusterParameterGroupStateFault :: Newtype InvalidClusterParameterGroupStateFault _
 
 
 -- | <p>The state of the cluster security group is not <code>available</code>. </p>
 newtype InvalidClusterSecurityGroupStateFault = InvalidClusterSecurityGroupStateFault 
   { 
   }
+derive instance newtypeInvalidClusterSecurityGroupStateFault :: Newtype InvalidClusterSecurityGroupStateFault _
 
 
 -- | <p>The specified cluster snapshot is not in the <code>available</code> state, or other accounts are authorized to access the snapshot. </p>
 newtype InvalidClusterSnapshotStateFault = InvalidClusterSnapshotStateFault 
   { 
   }
+derive instance newtypeInvalidClusterSnapshotStateFault :: Newtype InvalidClusterSnapshotStateFault _
 
 
 -- | <p>The specified cluster is not in the <code>available</code> state. </p>
 newtype InvalidClusterStateFault = InvalidClusterStateFault 
   { 
   }
+derive instance newtypeInvalidClusterStateFault :: Newtype InvalidClusterStateFault _
 
 
 -- | <p>The cluster subnet group cannot be deleted because it is in use.</p>
 newtype InvalidClusterSubnetGroupStateFault = InvalidClusterSubnetGroupStateFault 
   { 
   }
+derive instance newtypeInvalidClusterSubnetGroupStateFault :: Newtype InvalidClusterSubnetGroupStateFault _
 
 
 -- | <p>The state of the subnet is invalid.</p>
 newtype InvalidClusterSubnetStateFault = InvalidClusterSubnetStateFault 
   { 
   }
+derive instance newtypeInvalidClusterSubnetStateFault :: Newtype InvalidClusterSubnetStateFault _
 
 
 -- | <p>The Elastic IP (EIP) is invalid or cannot be found.</p>
 newtype InvalidElasticIpFault = InvalidElasticIpFault 
   { 
   }
+derive instance newtypeInvalidElasticIpFault :: Newtype InvalidElasticIpFault _
 
 
 -- | <p>The specified HSM client certificate is not in the <code>available</code> state, or it is still in use by one or more Amazon Redshift clusters.</p>
 newtype InvalidHsmClientCertificateStateFault = InvalidHsmClientCertificateStateFault 
   { 
   }
+derive instance newtypeInvalidHsmClientCertificateStateFault :: Newtype InvalidHsmClientCertificateStateFault _
 
 
 -- | <p>The specified HSM configuration is not in the <code>available</code> state, or it is still in use by one or more Amazon Redshift clusters.</p>
 newtype InvalidHsmConfigurationStateFault = InvalidHsmConfigurationStateFault 
   { 
   }
+derive instance newtypeInvalidHsmConfigurationStateFault :: Newtype InvalidHsmConfigurationStateFault _
 
 
 -- | <p>The restore is invalid.</p>
 newtype InvalidRestoreFault = InvalidRestoreFault 
   { 
   }
+derive instance newtypeInvalidRestoreFault :: Newtype InvalidRestoreFault _
 
 
 -- | <p>The S3 bucket name is invalid. For more information about naming rules, go to <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html">Bucket Restrictions and Limitations</a> in the Amazon Simple Storage Service (S3) Developer Guide.</p>
 newtype InvalidS3BucketNameFault = InvalidS3BucketNameFault 
   { 
   }
+derive instance newtypeInvalidS3BucketNameFault :: Newtype InvalidS3BucketNameFault _
 
 
 -- | <p>The string specified for the logging S3 key prefix does not comply with the documented constraints.</p>
 newtype InvalidS3KeyPrefixFault = InvalidS3KeyPrefixFault 
   { 
   }
+derive instance newtypeInvalidS3KeyPrefixFault :: Newtype InvalidS3KeyPrefixFault _
 
 
 -- | <p>The snapshot copy grant can't be deleted because it is used by one or more clusters.</p>
 newtype InvalidSnapshotCopyGrantStateFault = InvalidSnapshotCopyGrantStateFault 
   { 
   }
+derive instance newtypeInvalidSnapshotCopyGrantStateFault :: Newtype InvalidSnapshotCopyGrantStateFault _
 
 
 -- | <p>The requested subnet is not valid, or not all of the subnets are in the same VPC.</p>
 newtype InvalidSubnet = InvalidSubnet 
   { 
   }
+derive instance newtypeInvalidSubnet :: Newtype InvalidSubnet _
 
 
 -- | <p>The subscription request is invalid because it is a duplicate request. This subscription request is already in progress.</p>
 newtype InvalidSubscriptionStateFault = InvalidSubscriptionStateFault 
   { 
   }
+derive instance newtypeInvalidSubscriptionStateFault :: Newtype InvalidSubscriptionStateFault _
 
 
 -- | <p>The value specified for the <code>sourceDatabaseName</code>, <code>sourceSchemaName</code>, or <code>sourceTableName</code> parameter, or a combination of these, doesn't exist in the snapshot.</p>
 newtype InvalidTableRestoreArgumentFault = InvalidTableRestoreArgumentFault 
   { 
   }
+derive instance newtypeInvalidTableRestoreArgumentFault :: Newtype InvalidTableRestoreArgumentFault _
 
 
 -- | <p>The tag is invalid.</p>
 newtype InvalidTagFault = InvalidTagFault 
   { 
   }
+derive instance newtypeInvalidTagFault :: Newtype InvalidTagFault _
 
 
 -- | <p>The cluster subnet group does not cover all Availability Zones.</p>
 newtype InvalidVPCNetworkStateFault = InvalidVPCNetworkStateFault 
   { 
   }
+derive instance newtypeInvalidVPCNetworkStateFault :: Newtype InvalidVPCNetworkStateFault _
 
 
 -- | <p>The encryption key has exceeded its grant limit in AWS KMS.</p>
 newtype LimitExceededFault = LimitExceededFault 
   { 
   }
+derive instance newtypeLimitExceededFault :: Newtype LimitExceededFault _
 
 
 -- | <p>Describes the status of logging for a cluster.</p>
@@ -1606,9 +1794,11 @@ newtype LoggingStatus = LoggingStatus
   , "LastFailureTime" :: NullOrUndefined (TStamp)
   , "LastFailureMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeLoggingStatus :: Newtype LoggingStatus _
 
 
 newtype LongOptional = LongOptional Number
+derive instance newtypeLongOptional :: Newtype LongOptional _
 
 
 -- | <p/>
@@ -1617,11 +1807,13 @@ newtype ModifyClusterIamRolesMessage = ModifyClusterIamRolesMessage
   , "AddIamRoles" :: NullOrUndefined (IamRoleArnList)
   , "RemoveIamRoles" :: NullOrUndefined (IamRoleArnList)
   }
+derive instance newtypeModifyClusterIamRolesMessage :: Newtype ModifyClusterIamRolesMessage _
 
 
 newtype ModifyClusterIamRolesResult = ModifyClusterIamRolesResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeModifyClusterIamRolesResult :: Newtype ModifyClusterIamRolesResult _
 
 
 -- | <p/>
@@ -1645,6 +1837,7 @@ newtype ModifyClusterMessage = ModifyClusterMessage
   , "ElasticIp" :: NullOrUndefined (String)
   , "EnhancedVpcRouting" :: NullOrUndefined (BooleanOptional)
   }
+derive instance newtypeModifyClusterMessage :: Newtype ModifyClusterMessage _
 
 
 -- | <p/>
@@ -1652,11 +1845,13 @@ newtype ModifyClusterParameterGroupMessage = ModifyClusterParameterGroupMessage
   { "ParameterGroupName" :: (String)
   , "Parameters" :: (ParametersList)
   }
+derive instance newtypeModifyClusterParameterGroupMessage :: Newtype ModifyClusterParameterGroupMessage _
 
 
 newtype ModifyClusterResult = ModifyClusterResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeModifyClusterResult :: Newtype ModifyClusterResult _
 
 
 -- | <p/>
@@ -1665,11 +1860,13 @@ newtype ModifyClusterSubnetGroupMessage = ModifyClusterSubnetGroupMessage
   , "Description" :: NullOrUndefined (String)
   , "SubnetIds" :: (SubnetIdentifierList)
   }
+derive instance newtypeModifyClusterSubnetGroupMessage :: Newtype ModifyClusterSubnetGroupMessage _
 
 
 newtype ModifyClusterSubnetGroupResult = ModifyClusterSubnetGroupResult 
   { "ClusterSubnetGroup" :: NullOrUndefined (ClusterSubnetGroup)
   }
+derive instance newtypeModifyClusterSubnetGroupResult :: Newtype ModifyClusterSubnetGroupResult _
 
 
 -- | <p/>
@@ -1682,11 +1879,13 @@ newtype ModifyEventSubscriptionMessage = ModifyEventSubscriptionMessage
   , "Severity" :: NullOrUndefined (String)
   , "Enabled" :: NullOrUndefined (BooleanOptional)
   }
+derive instance newtypeModifyEventSubscriptionMessage :: Newtype ModifyEventSubscriptionMessage _
 
 
 newtype ModifyEventSubscriptionResult = ModifyEventSubscriptionResult 
   { "EventSubscription" :: NullOrUndefined (EventSubscription)
   }
+derive instance newtypeModifyEventSubscriptionResult :: Newtype ModifyEventSubscriptionResult _
 
 
 -- | <p/>
@@ -1694,23 +1893,27 @@ newtype ModifySnapshotCopyRetentionPeriodMessage = ModifySnapshotCopyRetentionPe
   { "ClusterIdentifier" :: (String)
   , "RetentionPeriod" :: (Int)
   }
+derive instance newtypeModifySnapshotCopyRetentionPeriodMessage :: Newtype ModifySnapshotCopyRetentionPeriodMessage _
 
 
 newtype ModifySnapshotCopyRetentionPeriodResult = ModifySnapshotCopyRetentionPeriodResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeModifySnapshotCopyRetentionPeriodResult :: Newtype ModifySnapshotCopyRetentionPeriodResult _
 
 
 -- | <p>The operation would exceed the number of nodes allowed for a cluster.</p>
 newtype NumberOfNodesPerClusterLimitExceededFault = NumberOfNodesPerClusterLimitExceededFault 
   { 
   }
+derive instance newtypeNumberOfNodesPerClusterLimitExceededFault :: Newtype NumberOfNodesPerClusterLimitExceededFault _
 
 
 -- | <p>The operation would exceed the number of nodes allotted to the account. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype NumberOfNodesQuotaExceededFault = NumberOfNodesQuotaExceededFault 
   { 
   }
+derive instance newtypeNumberOfNodesQuotaExceededFault :: Newtype NumberOfNodesQuotaExceededFault _
 
 
 -- | <p>Describes an orderable cluster option.</p>
@@ -1720,9 +1923,11 @@ newtype OrderableClusterOption = OrderableClusterOption
   , "NodeType" :: NullOrUndefined (String)
   , "AvailabilityZones" :: NullOrUndefined (AvailabilityZoneList)
   }
+derive instance newtypeOrderableClusterOption :: Newtype OrderableClusterOption _
 
 
 newtype OrderableClusterOptionsList = OrderableClusterOptionsList (Array OrderableClusterOption)
+derive instance newtypeOrderableClusterOptionsList :: Newtype OrderableClusterOptionsList _
 
 
 -- | <p>Contains the output from the <a>DescribeOrderableClusterOptions</a> action. </p>
@@ -1730,6 +1935,7 @@ newtype OrderableClusterOptionsMessage = OrderableClusterOptionsMessage
   { "OrderableClusterOptions" :: NullOrUndefined (OrderableClusterOptionsList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeOrderableClusterOptionsMessage :: Newtype OrderableClusterOptionsMessage _
 
 
 -- | <p>Describes a parameter in a cluster parameter group.</p>
@@ -1744,15 +1950,19 @@ newtype Parameter = Parameter
   , "IsModifiable" :: NullOrUndefined (Boolean)
   , "MinimumEngineVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeParameter :: Newtype Parameter _
 
 
 newtype ParameterApplyType = ParameterApplyType String
+derive instance newtypeParameterApplyType :: Newtype ParameterApplyType _
 
 
 newtype ParameterGroupList = ParameterGroupList (Array ClusterParameterGroup)
+derive instance newtypeParameterGroupList :: Newtype ParameterGroupList _
 
 
 newtype ParametersList = ParametersList (Array Parameter)
+derive instance newtypeParametersList :: Newtype ParametersList _
 
 
 -- | <p>Describes cluster attributes that are in a pending state. A change to one or more the attributes was requested and is in progress or will be applied.</p>
@@ -1767,6 +1977,7 @@ newtype PendingModifiedValues = PendingModifiedValues
   , "PubliclyAccessible" :: NullOrUndefined (BooleanOptional)
   , "EnhancedVpcRouting" :: NullOrUndefined (BooleanOptional)
   }
+derive instance newtypePendingModifiedValues :: Newtype PendingModifiedValues _
 
 
 -- | <p/>
@@ -1774,22 +1985,26 @@ newtype PurchaseReservedNodeOfferingMessage = PurchaseReservedNodeOfferingMessag
   { "ReservedNodeOfferingId" :: (String)
   , "NodeCount" :: NullOrUndefined (IntegerOptional)
   }
+derive instance newtypePurchaseReservedNodeOfferingMessage :: Newtype PurchaseReservedNodeOfferingMessage _
 
 
 newtype PurchaseReservedNodeOfferingResult = PurchaseReservedNodeOfferingResult 
   { "ReservedNode" :: NullOrUndefined (ReservedNode)
   }
+derive instance newtypePurchaseReservedNodeOfferingResult :: Newtype PurchaseReservedNodeOfferingResult _
 
 
 -- | <p/>
 newtype RebootClusterMessage = RebootClusterMessage 
   { "ClusterIdentifier" :: (String)
   }
+derive instance newtypeRebootClusterMessage :: Newtype RebootClusterMessage _
 
 
 newtype RebootClusterResult = RebootClusterResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeRebootClusterResult :: Newtype RebootClusterResult _
 
 
 -- | <p>Describes a recurring charge.</p>
@@ -1797,9 +2012,11 @@ newtype RecurringCharge = RecurringCharge
   { "RecurringChargeAmount" :: NullOrUndefined (Number)
   , "RecurringChargeFrequency" :: NullOrUndefined (String)
   }
+derive instance newtypeRecurringCharge :: Newtype RecurringCharge _
 
 
 newtype RecurringChargeList = RecurringChargeList (Array RecurringCharge)
+derive instance newtypeRecurringChargeList :: Newtype RecurringChargeList _
 
 
 -- | <p>Describes a reserved node. You can call the <a>DescribeReservedNodeOfferings</a> API to obtain the available reserved node offerings. </p>
@@ -1817,21 +2034,25 @@ newtype ReservedNode = ReservedNode
   , "OfferingType" :: NullOrUndefined (String)
   , "RecurringCharges" :: NullOrUndefined (RecurringChargeList)
   }
+derive instance newtypeReservedNode :: Newtype ReservedNode _
 
 
 -- | <p>User already has a reservation with the given identifier.</p>
 newtype ReservedNodeAlreadyExistsFault = ReservedNodeAlreadyExistsFault 
   { 
   }
+derive instance newtypeReservedNodeAlreadyExistsFault :: Newtype ReservedNodeAlreadyExistsFault _
 
 
 newtype ReservedNodeList = ReservedNodeList (Array ReservedNode)
+derive instance newtypeReservedNodeList :: Newtype ReservedNodeList _
 
 
 -- | <p>The specified reserved compute node not found.</p>
 newtype ReservedNodeNotFoundFault = ReservedNodeNotFoundFault 
   { 
   }
+derive instance newtypeReservedNodeNotFoundFault :: Newtype ReservedNodeNotFoundFault _
 
 
 -- | <p>Describes a reserved node offering.</p>
@@ -1845,15 +2066,18 @@ newtype ReservedNodeOffering = ReservedNodeOffering
   , "OfferingType" :: NullOrUndefined (String)
   , "RecurringCharges" :: NullOrUndefined (RecurringChargeList)
   }
+derive instance newtypeReservedNodeOffering :: Newtype ReservedNodeOffering _
 
 
 newtype ReservedNodeOfferingList = ReservedNodeOfferingList (Array ReservedNodeOffering)
+derive instance newtypeReservedNodeOfferingList :: Newtype ReservedNodeOfferingList _
 
 
 -- | <p>Specified offering does not exist.</p>
 newtype ReservedNodeOfferingNotFoundFault = ReservedNodeOfferingNotFoundFault 
   { 
   }
+derive instance newtypeReservedNodeOfferingNotFoundFault :: Newtype ReservedNodeOfferingNotFoundFault _
 
 
 -- | <p/>
@@ -1861,12 +2085,14 @@ newtype ReservedNodeOfferingsMessage = ReservedNodeOfferingsMessage
   { "Marker" :: NullOrUndefined (String)
   , "ReservedNodeOfferings" :: NullOrUndefined (ReservedNodeOfferingList)
   }
+derive instance newtypeReservedNodeOfferingsMessage :: Newtype ReservedNodeOfferingsMessage _
 
 
 -- | <p>Request would exceed the user's compute node quota. For information about increasing your quota, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/amazon-redshift-limits.html">Limits in Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
 newtype ReservedNodeQuotaExceededFault = ReservedNodeQuotaExceededFault 
   { 
   }
+derive instance newtypeReservedNodeQuotaExceededFault :: Newtype ReservedNodeQuotaExceededFault _
 
 
 -- | <p/>
@@ -1874,6 +2100,7 @@ newtype ReservedNodesMessage = ReservedNodesMessage
   { "Marker" :: NullOrUndefined (String)
   , "ReservedNodes" :: NullOrUndefined (ReservedNodeList)
   }
+derive instance newtypeReservedNodesMessage :: Newtype ReservedNodesMessage _
 
 
 -- | <p/>
@@ -1882,12 +2109,14 @@ newtype ResetClusterParameterGroupMessage = ResetClusterParameterGroupMessage
   , "ResetAllParameters" :: NullOrUndefined (Boolean)
   , "Parameters" :: NullOrUndefined (ParametersList)
   }
+derive instance newtypeResetClusterParameterGroupMessage :: Newtype ResetClusterParameterGroupMessage _
 
 
 -- | <p>A resize operation for the specified cluster is not found.</p>
 newtype ResizeNotFoundFault = ResizeNotFoundFault 
   { 
   }
+derive instance newtypeResizeNotFoundFault :: Newtype ResizeNotFoundFault _
 
 
 -- | <p>Describes the result of a cluster resize operation.</p>
@@ -1905,15 +2134,18 @@ newtype ResizeProgressMessage = ResizeProgressMessage
   , "ElapsedTimeInSeconds" :: NullOrUndefined (LongOptional)
   , "EstimatedTimeToCompletionInSeconds" :: NullOrUndefined (LongOptional)
   }
+derive instance newtypeResizeProgressMessage :: Newtype ResizeProgressMessage _
 
 
 -- | <p>The resource could not be found.</p>
 newtype ResourceNotFoundFault = ResourceNotFoundFault 
   { 
   }
+derive instance newtypeResourceNotFoundFault :: Newtype ResourceNotFoundFault _
 
 
 newtype RestorableNodeTypeList = RestorableNodeTypeList (Array String)
+derive instance newtypeRestorableNodeTypeList :: Newtype RestorableNodeTypeList _
 
 
 -- | <p/>
@@ -1941,11 +2173,13 @@ newtype RestoreFromClusterSnapshotMessage = RestoreFromClusterSnapshotMessage
   , "AdditionalInfo" :: NullOrUndefined (String)
   , "IamRoles" :: NullOrUndefined (IamRoleArnList)
   }
+derive instance newtypeRestoreFromClusterSnapshotMessage :: Newtype RestoreFromClusterSnapshotMessage _
 
 
 newtype RestoreFromClusterSnapshotResult = RestoreFromClusterSnapshotResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeRestoreFromClusterSnapshotResult :: Newtype RestoreFromClusterSnapshotResult _
 
 
 -- | <p>Describes the status of a cluster restore action. Returns null if the cluster was not created by restoring a snapshot.</p>
@@ -1957,6 +2191,7 @@ newtype RestoreStatus = RestoreStatus
   , "ElapsedTimeInSeconds" :: NullOrUndefined (Number)
   , "EstimatedTimeToCompletionInSeconds" :: NullOrUndefined (Number)
   }
+derive instance newtypeRestoreStatus :: Newtype RestoreStatus _
 
 
 -- | <p/>
@@ -1970,11 +2205,13 @@ newtype RestoreTableFromClusterSnapshotMessage = RestoreTableFromClusterSnapshot
   , "TargetSchemaName" :: NullOrUndefined (String)
   , "NewTableName" :: (String)
   }
+derive instance newtypeRestoreTableFromClusterSnapshotMessage :: Newtype RestoreTableFromClusterSnapshotMessage _
 
 
 newtype RestoreTableFromClusterSnapshotResult = RestoreTableFromClusterSnapshotResult 
   { "TableRestoreStatus" :: NullOrUndefined (TableRestoreStatus)
   }
+derive instance newtypeRestoreTableFromClusterSnapshotResult :: Newtype RestoreTableFromClusterSnapshotResult _
 
 
 -- | <p/>
@@ -1984,11 +2221,13 @@ newtype RevokeClusterSecurityGroupIngressMessage = RevokeClusterSecurityGroupIng
   , "EC2SecurityGroupName" :: NullOrUndefined (String)
   , "EC2SecurityGroupOwnerId" :: NullOrUndefined (String)
   }
+derive instance newtypeRevokeClusterSecurityGroupIngressMessage :: Newtype RevokeClusterSecurityGroupIngressMessage _
 
 
 newtype RevokeClusterSecurityGroupIngressResult = RevokeClusterSecurityGroupIngressResult 
   { "ClusterSecurityGroup" :: NullOrUndefined (ClusterSecurityGroup)
   }
+derive instance newtypeRevokeClusterSecurityGroupIngressResult :: Newtype RevokeClusterSecurityGroupIngressResult _
 
 
 -- | <p/>
@@ -1997,43 +2236,51 @@ newtype RevokeSnapshotAccessMessage = RevokeSnapshotAccessMessage
   , "SnapshotClusterIdentifier" :: NullOrUndefined (String)
   , "AccountWithRestoreAccess" :: (String)
   }
+derive instance newtypeRevokeSnapshotAccessMessage :: Newtype RevokeSnapshotAccessMessage _
 
 
 newtype RevokeSnapshotAccessResult = RevokeSnapshotAccessResult 
   { "Snapshot" :: NullOrUndefined (Snapshot)
   }
+derive instance newtypeRevokeSnapshotAccessResult :: Newtype RevokeSnapshotAccessResult _
 
 
 -- | <p/>
 newtype RotateEncryptionKeyMessage = RotateEncryptionKeyMessage 
   { "ClusterIdentifier" :: (String)
   }
+derive instance newtypeRotateEncryptionKeyMessage :: Newtype RotateEncryptionKeyMessage _
 
 
 newtype RotateEncryptionKeyResult = RotateEncryptionKeyResult 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeRotateEncryptionKeyResult :: Newtype RotateEncryptionKeyResult _
 
 
 -- | <p>Amazon SNS has responded that there is a problem with the specified Amazon SNS topic.</p>
 newtype SNSInvalidTopicFault = SNSInvalidTopicFault 
   { 
   }
+derive instance newtypeSNSInvalidTopicFault :: Newtype SNSInvalidTopicFault _
 
 
 -- | <p>You do not have permission to publish to the specified Amazon SNS topic.</p>
 newtype SNSNoAuthorizationFault = SNSNoAuthorizationFault 
   { 
   }
+derive instance newtypeSNSNoAuthorizationFault :: Newtype SNSNoAuthorizationFault _
 
 
 -- | <p>An Amazon SNS topic with the specified Amazon Resource Name (ARN) does not exist.</p>
 newtype SNSTopicArnNotFoundFault = SNSTopicArnNotFoundFault 
   { 
   }
+derive instance newtypeSNSTopicArnNotFoundFault :: Newtype SNSTopicArnNotFoundFault _
 
 
 newtype SensitiveString = SensitiveString String
+derive instance newtypeSensitiveString :: Newtype SensitiveString _
 
 
 -- | <p>Describes a snapshot.</p>
@@ -2068,24 +2315,28 @@ newtype Snapshot = Snapshot
   , "RestorableNodeTypes" :: NullOrUndefined (RestorableNodeTypeList)
   , "EnhancedVpcRouting" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeSnapshot :: Newtype Snapshot _
 
 
 -- | <p>The cluster already has cross-region snapshot copy disabled.</p>
 newtype SnapshotCopyAlreadyDisabledFault = SnapshotCopyAlreadyDisabledFault 
   { 
   }
+derive instance newtypeSnapshotCopyAlreadyDisabledFault :: Newtype SnapshotCopyAlreadyDisabledFault _
 
 
 -- | <p>The cluster already has cross-region snapshot copy enabled.</p>
 newtype SnapshotCopyAlreadyEnabledFault = SnapshotCopyAlreadyEnabledFault 
   { 
   }
+derive instance newtypeSnapshotCopyAlreadyEnabledFault :: Newtype SnapshotCopyAlreadyEnabledFault _
 
 
 -- | <p>Cross-region snapshot copy was temporarily disabled. Try your request again.</p>
 newtype SnapshotCopyDisabledFault = SnapshotCopyDisabledFault 
   { 
   }
+derive instance newtypeSnapshotCopyDisabledFault :: Newtype SnapshotCopyDisabledFault _
 
 
 -- | <p>The snapshot copy grant that grants Amazon Redshift permission to encrypt copied snapshots with the specified customer master key (CMK) from AWS KMS in the destination region.</p> <p> For more information about managing snapshot copy grants, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html">Amazon Redshift Database Encryption</a> in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
@@ -2094,15 +2345,18 @@ newtype SnapshotCopyGrant = SnapshotCopyGrant
   , "KmsKeyId" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeSnapshotCopyGrant :: Newtype SnapshotCopyGrant _
 
 
 -- | <p>The snapshot copy grant can't be created because a grant with the same name already exists.</p>
 newtype SnapshotCopyGrantAlreadyExistsFault = SnapshotCopyGrantAlreadyExistsFault 
   { 
   }
+derive instance newtypeSnapshotCopyGrantAlreadyExistsFault :: Newtype SnapshotCopyGrantAlreadyExistsFault _
 
 
 newtype SnapshotCopyGrantList = SnapshotCopyGrantList (Array SnapshotCopyGrant)
+derive instance newtypeSnapshotCopyGrantList :: Newtype SnapshotCopyGrantList _
 
 
 -- | <p/>
@@ -2110,21 +2364,25 @@ newtype SnapshotCopyGrantMessage = SnapshotCopyGrantMessage
   { "Marker" :: NullOrUndefined (String)
   , "SnapshotCopyGrants" :: NullOrUndefined (SnapshotCopyGrantList)
   }
+derive instance newtypeSnapshotCopyGrantMessage :: Newtype SnapshotCopyGrantMessage _
 
 
 -- | <p>The specified snapshot copy grant can't be found. Make sure that the name is typed correctly and that the grant exists in the destination region.</p>
 newtype SnapshotCopyGrantNotFoundFault = SnapshotCopyGrantNotFoundFault 
   { 
   }
+derive instance newtypeSnapshotCopyGrantNotFoundFault :: Newtype SnapshotCopyGrantNotFoundFault _
 
 
 -- | <p>The AWS account has exceeded the maximum number of snapshot copy grants in this region.</p>
 newtype SnapshotCopyGrantQuotaExceededFault = SnapshotCopyGrantQuotaExceededFault 
   { 
   }
+derive instance newtypeSnapshotCopyGrantQuotaExceededFault :: Newtype SnapshotCopyGrantQuotaExceededFault _
 
 
 newtype SnapshotList = SnapshotList (Array Snapshot)
+derive instance newtypeSnapshotList :: Newtype SnapshotList _
 
 
 -- | <p>Contains the output from the <a>DescribeClusterSnapshots</a> action. </p>
@@ -2132,18 +2390,22 @@ newtype SnapshotMessage = SnapshotMessage
   { "Marker" :: NullOrUndefined (String)
   , "Snapshots" :: NullOrUndefined (SnapshotList)
   }
+derive instance newtypeSnapshotMessage :: Newtype SnapshotMessage _
 
 
 newtype SourceIdsList = SourceIdsList (Array String)
+derive instance newtypeSourceIdsList :: Newtype SourceIdsList _
 
 
 -- | <p>The specified Amazon Redshift event source could not be found.</p>
 newtype SourceNotFoundFault = SourceNotFoundFault 
   { 
   }
+derive instance newtypeSourceNotFoundFault :: Newtype SourceNotFoundFault _
 
 
 newtype SourceType = SourceType String
+derive instance newtypeSourceType :: Newtype SourceType _
 
 
 -- | <p>Describes a subnet.</p>
@@ -2152,57 +2414,68 @@ newtype Subnet = Subnet
   , "SubnetAvailabilityZone" :: NullOrUndefined (AvailabilityZone)
   , "SubnetStatus" :: NullOrUndefined (String)
   }
+derive instance newtypeSubnet :: Newtype Subnet _
 
 
 -- | <p>A specified subnet is already in use by another cluster.</p>
 newtype SubnetAlreadyInUse = SubnetAlreadyInUse 
   { 
   }
+derive instance newtypeSubnetAlreadyInUse :: Newtype SubnetAlreadyInUse _
 
 
 newtype SubnetIdentifierList = SubnetIdentifierList (Array String)
+derive instance newtypeSubnetIdentifierList :: Newtype SubnetIdentifierList _
 
 
 newtype SubnetList = SubnetList (Array Subnet)
+derive instance newtypeSubnetList :: Newtype SubnetList _
 
 
 -- | <p>There is already an existing event notification subscription with the specified name.</p>
 newtype SubscriptionAlreadyExistFault = SubscriptionAlreadyExistFault 
   { 
   }
+derive instance newtypeSubscriptionAlreadyExistFault :: Newtype SubscriptionAlreadyExistFault _
 
 
 -- | <p>The value specified for the event category was not one of the allowed values, or it specified a category that does not apply to the specified source type. The allowed values are Configuration, Management, Monitoring, and Security.</p>
 newtype SubscriptionCategoryNotFoundFault = SubscriptionCategoryNotFoundFault 
   { 
   }
+derive instance newtypeSubscriptionCategoryNotFoundFault :: Newtype SubscriptionCategoryNotFoundFault _
 
 
 -- | <p>An Amazon Redshift event with the specified event ID does not exist.</p>
 newtype SubscriptionEventIdNotFoundFault = SubscriptionEventIdNotFoundFault 
   { 
   }
+derive instance newtypeSubscriptionEventIdNotFoundFault :: Newtype SubscriptionEventIdNotFoundFault _
 
 
 -- | <p>An Amazon Redshift event notification subscription with the specified name does not exist.</p>
 newtype SubscriptionNotFoundFault = SubscriptionNotFoundFault 
   { 
   }
+derive instance newtypeSubscriptionNotFoundFault :: Newtype SubscriptionNotFoundFault _
 
 
 -- | <p>The value specified for the event severity was not one of the allowed values, or it specified a severity that does not apply to the specified source type. The allowed values are ERROR and INFO.</p>
 newtype SubscriptionSeverityNotFoundFault = SubscriptionSeverityNotFoundFault 
   { 
   }
+derive instance newtypeSubscriptionSeverityNotFoundFault :: Newtype SubscriptionSeverityNotFoundFault _
 
 
 newtype TStamp = TStamp Number
+derive instance newtypeTStamp :: Newtype TStamp _
 
 
 -- | <p>The specified <code>TableRestoreRequestId</code> value was not found.</p>
 newtype TableRestoreNotFoundFault = TableRestoreNotFoundFault 
   { 
   }
+derive instance newtypeTableRestoreNotFoundFault :: Newtype TableRestoreNotFoundFault _
 
 
 -- | <p>Describes the status of a <a>RestoreTableFromClusterSnapshot</a> operation.</p>
@@ -2222,9 +2495,11 @@ newtype TableRestoreStatus = TableRestoreStatus
   , "TargetSchemaName" :: NullOrUndefined (String)
   , "NewTableName" :: NullOrUndefined (String)
   }
+derive instance newtypeTableRestoreStatus :: Newtype TableRestoreStatus _
 
 
 newtype TableRestoreStatusList = TableRestoreStatusList (Array TableRestoreStatus)
+derive instance newtypeTableRestoreStatusList :: Newtype TableRestoreStatusList _
 
 
 -- | <p/>
@@ -2232,9 +2507,11 @@ newtype TableRestoreStatusMessage = TableRestoreStatusMessage
   { "TableRestoreStatusDetails" :: NullOrUndefined (TableRestoreStatusList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeTableRestoreStatusMessage :: Newtype TableRestoreStatusMessage _
 
 
 newtype TableRestoreStatusType = TableRestoreStatusType String
+derive instance newtypeTableRestoreStatusType :: Newtype TableRestoreStatusType _
 
 
 -- | <p>A tag consisting of a name/value pair for a resource.</p>
@@ -2242,21 +2519,26 @@ newtype Tag = Tag
   { "Key" :: NullOrUndefined (String)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKeyList = TagKeyList (Array String)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 -- | <p>The request exceeds the limit of 10 tags for the resource.</p>
 newtype TagLimitExceededFault = TagLimitExceededFault 
   { 
   }
+derive instance newtypeTagLimitExceededFault :: Newtype TagLimitExceededFault _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagValueList = TagValueList (Array String)
+derive instance newtypeTagValueList :: Newtype TagValueList _
 
 
 -- | <p>A tag and its associated resource.</p>
@@ -2265,9 +2547,11 @@ newtype TaggedResource = TaggedResource
   , "ResourceName" :: NullOrUndefined (String)
   , "ResourceType" :: NullOrUndefined (String)
   }
+derive instance newtypeTaggedResource :: Newtype TaggedResource _
 
 
 newtype TaggedResourceList = TaggedResourceList (Array TaggedResource)
+derive instance newtypeTaggedResourceList :: Newtype TaggedResourceList _
 
 
 -- | <p/>
@@ -2275,33 +2559,39 @@ newtype TaggedResourceListMessage = TaggedResourceListMessage
   { "TaggedResources" :: NullOrUndefined (TaggedResourceList)
   , "Marker" :: NullOrUndefined (String)
   }
+derive instance newtypeTaggedResourceListMessage :: Newtype TaggedResourceListMessage _
 
 
 -- | <p>Your account is not authorized to perform the requested operation.</p>
 newtype UnauthorizedOperation = UnauthorizedOperation 
   { 
   }
+derive instance newtypeUnauthorizedOperation :: Newtype UnauthorizedOperation _
 
 
 -- | <p>The specified region is incorrect or does not exist.</p>
 newtype UnknownSnapshotCopyRegionFault = UnknownSnapshotCopyRegionFault 
   { 
   }
+derive instance newtypeUnknownSnapshotCopyRegionFault :: Newtype UnknownSnapshotCopyRegionFault _
 
 
 -- | <p>The requested operation isn't supported.</p>
 newtype UnsupportedOperationFault = UnsupportedOperationFault 
   { 
   }
+derive instance newtypeUnsupportedOperationFault :: Newtype UnsupportedOperationFault _
 
 
 -- | <p>A request option was specified that is not supported.</p>
 newtype UnsupportedOptionFault = UnsupportedOptionFault 
   { 
   }
+derive instance newtypeUnsupportedOptionFault :: Newtype UnsupportedOptionFault _
 
 
 newtype VpcSecurityGroupIdList = VpcSecurityGroupIdList (Array String)
+derive instance newtypeVpcSecurityGroupIdList :: Newtype VpcSecurityGroupIdList _
 
 
 -- | <p>Describes the members of a VPC security group.</p>
@@ -2309,6 +2599,8 @@ newtype VpcSecurityGroupMembership = VpcSecurityGroupMembership
   { "VpcSecurityGroupId" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcSecurityGroupMembership :: Newtype VpcSecurityGroupMembership _
 
 
 newtype VpcSecurityGroupMembershipList = VpcSecurityGroupMembershipList (Array VpcSecurityGroupMembership)
+derive instance newtypeVpcSecurityGroupMembershipList :: Newtype VpcSecurityGroupMembershipList _

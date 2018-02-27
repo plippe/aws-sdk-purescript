@@ -6,6 +6,7 @@ module AWS.Firehose where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -49,12 +50,15 @@ updateDestination = AWS.request serviceName "UpdateDestination"
 
 
 newtype AWSKMSKeyARN = AWSKMSKeyARN String
+derive instance newtypeAWSKMSKeyARN :: Newtype AWSKMSKeyARN _
 
 
 newtype BooleanObject = BooleanObject Boolean
+derive instance newtypeBooleanObject :: Newtype BooleanObject _
 
 
 newtype BucketARN = BucketARN String
+derive instance newtypeBucketARN :: Newtype BucketARN _
 
 
 -- | <p>Describes hints for the buffering to perform before delivering data to the destination. Please note that these options are treated as hints, and therefore Kinesis Firehose may choose to use different values when it is optimal.</p>
@@ -62,6 +66,7 @@ newtype BufferingHints = BufferingHints
   { "SizeInMBs" :: NullOrUndefined (SizeInMBs)
   , "IntervalInSeconds" :: NullOrUndefined (IntervalInSeconds)
   }
+derive instance newtypeBufferingHints :: Newtype BufferingHints _
 
 
 -- | <p>Describes the Amazon CloudWatch logging options for your delivery stream.</p>
@@ -70,18 +75,22 @@ newtype CloudWatchLoggingOptions = CloudWatchLoggingOptions
   , "LogGroupName" :: NullOrUndefined (LogGroupName)
   , "LogStreamName" :: NullOrUndefined (LogStreamName)
   }
+derive instance newtypeCloudWatchLoggingOptions :: Newtype CloudWatchLoggingOptions _
 
 
 newtype ClusterJDBCURL = ClusterJDBCURL String
+derive instance newtypeClusterJDBCURL :: Newtype ClusterJDBCURL _
 
 
 newtype CompressionFormat = CompressionFormat String
+derive instance newtypeCompressionFormat :: Newtype CompressionFormat _
 
 
 -- | <p>Another modification has already happened. Fetch <b>VersionId</b> again and use it to update the destination.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 -- | <p>Describes a <code>COPY</code> command for Amazon Redshift.</p>
@@ -90,9 +99,11 @@ newtype CopyCommand = CopyCommand
   , "DataTableColumns" :: NullOrUndefined (DataTableColumns)
   , "CopyOptions" :: NullOrUndefined (CopyOptions)
   }
+derive instance newtypeCopyCommand :: Newtype CopyCommand _
 
 
 newtype CopyOptions = CopyOptions String
+derive instance newtypeCopyOptions :: Newtype CopyOptions _
 
 
 newtype CreateDeliveryStreamInput = CreateDeliveryStreamInput 
@@ -105,36 +116,45 @@ newtype CreateDeliveryStreamInput = CreateDeliveryStreamInput
   , "ElasticsearchDestinationConfiguration" :: NullOrUndefined (ElasticsearchDestinationConfiguration)
   , "SplunkDestinationConfiguration" :: NullOrUndefined (SplunkDestinationConfiguration)
   }
+derive instance newtypeCreateDeliveryStreamInput :: Newtype CreateDeliveryStreamInput _
 
 
 newtype CreateDeliveryStreamOutput = CreateDeliveryStreamOutput 
   { "DeliveryStreamARN" :: NullOrUndefined (DeliveryStreamARN)
   }
+derive instance newtypeCreateDeliveryStreamOutput :: Newtype CreateDeliveryStreamOutput _
 
 
 newtype Data = Data String
+derive instance newtypeData :: Newtype Data _
 
 
 newtype DataTableColumns = DataTableColumns String
+derive instance newtypeDataTableColumns :: Newtype DataTableColumns _
 
 
 newtype DataTableName = DataTableName String
+derive instance newtypeDataTableName :: Newtype DataTableName _
 
 
 newtype DeleteDeliveryStreamInput = DeleteDeliveryStreamInput 
   { "DeliveryStreamName" :: (DeliveryStreamName)
   }
+derive instance newtypeDeleteDeliveryStreamInput :: Newtype DeleteDeliveryStreamInput _
 
 
 newtype DeleteDeliveryStreamOutput = DeleteDeliveryStreamOutput 
   { 
   }
+derive instance newtypeDeleteDeliveryStreamOutput :: Newtype DeleteDeliveryStreamOutput _
 
 
 newtype DeliveryStartTimestamp = DeliveryStartTimestamp Number
+derive instance newtypeDeliveryStartTimestamp :: Newtype DeliveryStartTimestamp _
 
 
 newtype DeliveryStreamARN = DeliveryStreamARN String
+derive instance newtypeDeliveryStreamARN :: Newtype DeliveryStreamARN _
 
 
 -- | <p>Contains information about a delivery stream.</p>
@@ -150,21 +170,27 @@ newtype DeliveryStreamDescription = DeliveryStreamDescription
   , "Destinations" :: (DestinationDescriptionList)
   , "HasMoreDestinations" :: (BooleanObject)
   }
+derive instance newtypeDeliveryStreamDescription :: Newtype DeliveryStreamDescription _
 
 
 newtype DeliveryStreamName = DeliveryStreamName String
+derive instance newtypeDeliveryStreamName :: Newtype DeliveryStreamName _
 
 
 newtype DeliveryStreamNameList = DeliveryStreamNameList (Array DeliveryStreamName)
+derive instance newtypeDeliveryStreamNameList :: Newtype DeliveryStreamNameList _
 
 
 newtype DeliveryStreamStatus = DeliveryStreamStatus String
+derive instance newtypeDeliveryStreamStatus :: Newtype DeliveryStreamStatus _
 
 
 newtype DeliveryStreamType = DeliveryStreamType String
+derive instance newtypeDeliveryStreamType :: Newtype DeliveryStreamType _
 
 
 newtype DeliveryStreamVersionId = DeliveryStreamVersionId String
+derive instance newtypeDeliveryStreamVersionId :: Newtype DeliveryStreamVersionId _
 
 
 newtype DescribeDeliveryStreamInput = DescribeDeliveryStreamInput 
@@ -172,14 +198,17 @@ newtype DescribeDeliveryStreamInput = DescribeDeliveryStreamInput
   , "Limit" :: NullOrUndefined (DescribeDeliveryStreamInputLimit)
   , "ExclusiveStartDestinationId" :: NullOrUndefined (DestinationId)
   }
+derive instance newtypeDescribeDeliveryStreamInput :: Newtype DescribeDeliveryStreamInput _
 
 
 newtype DescribeDeliveryStreamInputLimit = DescribeDeliveryStreamInputLimit Int
+derive instance newtypeDescribeDeliveryStreamInputLimit :: Newtype DescribeDeliveryStreamInputLimit _
 
 
 newtype DescribeDeliveryStreamOutput = DescribeDeliveryStreamOutput 
   { "DeliveryStreamDescription" :: (DeliveryStreamDescription)
   }
+derive instance newtypeDescribeDeliveryStreamOutput :: Newtype DescribeDeliveryStreamOutput _
 
 
 -- | <p>Describes the destination for a delivery stream.</p>
@@ -191,12 +220,15 @@ newtype DestinationDescription = DestinationDescription
   , "ElasticsearchDestinationDescription" :: NullOrUndefined (ElasticsearchDestinationDescription)
   , "SplunkDestinationDescription" :: NullOrUndefined (SplunkDestinationDescription)
   }
+derive instance newtypeDestinationDescription :: Newtype DestinationDescription _
 
 
 newtype DestinationDescriptionList = DestinationDescriptionList (Array DestinationDescription)
+derive instance newtypeDestinationDescriptionList :: Newtype DestinationDescriptionList _
 
 
 newtype DestinationId = DestinationId String
+derive instance newtypeDestinationId :: Newtype DestinationId _
 
 
 -- | <p>Describes the buffering to perform before delivering data to the Amazon ES destination.</p>
@@ -204,12 +236,15 @@ newtype ElasticsearchBufferingHints = ElasticsearchBufferingHints
   { "IntervalInSeconds" :: NullOrUndefined (ElasticsearchBufferingIntervalInSeconds)
   , "SizeInMBs" :: NullOrUndefined (ElasticsearchBufferingSizeInMBs)
   }
+derive instance newtypeElasticsearchBufferingHints :: Newtype ElasticsearchBufferingHints _
 
 
 newtype ElasticsearchBufferingIntervalInSeconds = ElasticsearchBufferingIntervalInSeconds Int
+derive instance newtypeElasticsearchBufferingIntervalInSeconds :: Newtype ElasticsearchBufferingIntervalInSeconds _
 
 
 newtype ElasticsearchBufferingSizeInMBs = ElasticsearchBufferingSizeInMBs Int
+derive instance newtypeElasticsearchBufferingSizeInMBs :: Newtype ElasticsearchBufferingSizeInMBs _
 
 
 -- | <p>Describes the configuration of a destination in Amazon ES.</p>
@@ -226,6 +261,7 @@ newtype ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfigur
   , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeElasticsearchDestinationConfiguration :: Newtype ElasticsearchDestinationConfiguration _
 
 
 -- | <p>The destination description in Amazon ES.</p>
@@ -242,6 +278,7 @@ newtype ElasticsearchDestinationDescription = ElasticsearchDestinationDescriptio
   , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeElasticsearchDestinationDescription :: Newtype ElasticsearchDestinationDescription _
 
 
 -- | <p>Describes an update for a destination in Amazon ES.</p>
@@ -257,30 +294,38 @@ newtype ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate
   , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeElasticsearchDestinationUpdate :: Newtype ElasticsearchDestinationUpdate _
 
 
 newtype ElasticsearchDomainARN = ElasticsearchDomainARN String
+derive instance newtypeElasticsearchDomainARN :: Newtype ElasticsearchDomainARN _
 
 
 newtype ElasticsearchIndexName = ElasticsearchIndexName String
+derive instance newtypeElasticsearchIndexName :: Newtype ElasticsearchIndexName _
 
 
 newtype ElasticsearchIndexRotationPeriod = ElasticsearchIndexRotationPeriod String
+derive instance newtypeElasticsearchIndexRotationPeriod :: Newtype ElasticsearchIndexRotationPeriod _
 
 
 newtype ElasticsearchRetryDurationInSeconds = ElasticsearchRetryDurationInSeconds Int
+derive instance newtypeElasticsearchRetryDurationInSeconds :: Newtype ElasticsearchRetryDurationInSeconds _
 
 
 -- | <p>Configures retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon ES.</p>
 newtype ElasticsearchRetryOptions = ElasticsearchRetryOptions 
   { "DurationInSeconds" :: NullOrUndefined (ElasticsearchRetryDurationInSeconds)
   }
+derive instance newtypeElasticsearchRetryOptions :: Newtype ElasticsearchRetryOptions _
 
 
 newtype ElasticsearchS3BackupMode = ElasticsearchS3BackupMode String
+derive instance newtypeElasticsearchS3BackupMode :: Newtype ElasticsearchS3BackupMode _
 
 
 newtype ElasticsearchTypeName = ElasticsearchTypeName String
+derive instance newtypeElasticsearchTypeName :: Newtype ElasticsearchTypeName _
 
 
 -- | <p>Describes the encryption for a destination in Amazon S3.</p>
@@ -288,12 +333,15 @@ newtype EncryptionConfiguration = EncryptionConfiguration
   { "NoEncryptionConfig" :: NullOrUndefined (NoEncryptionConfig)
   , "KMSEncryptionConfig" :: NullOrUndefined (KMSEncryptionConfig)
   }
+derive instance newtypeEncryptionConfiguration :: Newtype EncryptionConfiguration _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>Describes the configuration of a destination in Amazon S3.</p>
@@ -309,6 +357,7 @@ newtype ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration
   , "S3BackupMode" :: NullOrUndefined (S3BackupMode)
   , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration)
   }
+derive instance newtypeExtendedS3DestinationConfiguration :: Newtype ExtendedS3DestinationConfiguration _
 
 
 -- | <p>Describes a destination in Amazon S3.</p>
@@ -324,6 +373,7 @@ newtype ExtendedS3DestinationDescription = ExtendedS3DestinationDescription
   , "S3BackupMode" :: NullOrUndefined (S3BackupMode)
   , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription)
   }
+derive instance newtypeExtendedS3DestinationDescription :: Newtype ExtendedS3DestinationDescription _
 
 
 -- | <p>Describes an update for a destination in Amazon S3.</p>
@@ -339,36 +389,45 @@ newtype ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate
   , "S3BackupMode" :: NullOrUndefined (S3BackupMode)
   , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate)
   }
+derive instance newtypeExtendedS3DestinationUpdate :: Newtype ExtendedS3DestinationUpdate _
 
 
 newtype HECAcknowledgmentTimeoutInSeconds = HECAcknowledgmentTimeoutInSeconds Int
+derive instance newtypeHECAcknowledgmentTimeoutInSeconds :: Newtype HECAcknowledgmentTimeoutInSeconds _
 
 
 newtype HECEndpoint = HECEndpoint String
+derive instance newtypeHECEndpoint :: Newtype HECEndpoint _
 
 
 newtype HECEndpointType = HECEndpointType String
+derive instance newtypeHECEndpointType :: Newtype HECEndpointType _
 
 
 newtype HECToken = HECToken String
+derive instance newtypeHECToken :: Newtype HECToken _
 
 
 newtype IntervalInSeconds = IntervalInSeconds Int
+derive instance newtypeIntervalInSeconds :: Newtype IntervalInSeconds _
 
 
 -- | <p>The specified input parameter has a value that is not valid.</p>
 newtype InvalidArgumentException = InvalidArgumentException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidArgumentException :: Newtype InvalidArgumentException _
 
 
 -- | <p>Describes an encryption key for a destination in Amazon S3.</p>
 newtype KMSEncryptionConfig = KMSEncryptionConfig 
   { "AWSKMSKeyARN" :: (AWSKMSKeyARN)
   }
+derive instance newtypeKMSEncryptionConfig :: Newtype KMSEncryptionConfig _
 
 
 newtype KinesisStreamARN = KinesisStreamARN String
+derive instance newtypeKinesisStreamARN :: Newtype KinesisStreamARN _
 
 
 -- | <p>The stream and role ARNs for a Kinesis stream used as the source for a delivery stream.</p>
@@ -376,6 +435,7 @@ newtype KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration
   { "KinesisStreamARN" :: (KinesisStreamARN)
   , "RoleARN" :: (RoleARN)
   }
+derive instance newtypeKinesisStreamSourceConfiguration :: Newtype KinesisStreamSourceConfiguration _
 
 
 -- | <p>Details about a Kinesis stream used as the source for a Kinesis Firehose delivery stream.</p>
@@ -384,12 +444,14 @@ newtype KinesisStreamSourceDescription = KinesisStreamSourceDescription
   , "RoleARN" :: NullOrUndefined (RoleARN)
   , "DeliveryStartTimestamp" :: NullOrUndefined (DeliveryStartTimestamp)
   }
+derive instance newtypeKinesisStreamSourceDescription :: Newtype KinesisStreamSourceDescription _
 
 
 -- | <p>You have already reached the limit for a requested resource.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListDeliveryStreamsInput = ListDeliveryStreamsInput 
@@ -397,33 +459,42 @@ newtype ListDeliveryStreamsInput = ListDeliveryStreamsInput
   , "DeliveryStreamType" :: NullOrUndefined (DeliveryStreamType)
   , "ExclusiveStartDeliveryStreamName" :: NullOrUndefined (DeliveryStreamName)
   }
+derive instance newtypeListDeliveryStreamsInput :: Newtype ListDeliveryStreamsInput _
 
 
 newtype ListDeliveryStreamsInputLimit = ListDeliveryStreamsInputLimit Int
+derive instance newtypeListDeliveryStreamsInputLimit :: Newtype ListDeliveryStreamsInputLimit _
 
 
 newtype ListDeliveryStreamsOutput = ListDeliveryStreamsOutput 
   { "DeliveryStreamNames" :: (DeliveryStreamNameList)
   , "HasMoreDeliveryStreams" :: (BooleanObject)
   }
+derive instance newtypeListDeliveryStreamsOutput :: Newtype ListDeliveryStreamsOutput _
 
 
 newtype LogGroupName = LogGroupName String
+derive instance newtypeLogGroupName :: Newtype LogGroupName _
 
 
 newtype LogStreamName = LogStreamName String
+derive instance newtypeLogStreamName :: Newtype LogStreamName _
 
 
 newtype NoEncryptionConfig = NoEncryptionConfig String
+derive instance newtypeNoEncryptionConfig :: Newtype NoEncryptionConfig _
 
 
 newtype NonNegativeIntegerObject = NonNegativeIntegerObject Int
+derive instance newtypeNonNegativeIntegerObject :: Newtype NonNegativeIntegerObject _
 
 
 newtype Password = Password String
+derive instance newtypePassword :: Newtype Password _
 
 
 newtype Prefix = Prefix String
+derive instance newtypePrefix :: Newtype Prefix _
 
 
 -- | <p>Describes a data processing configuration.</p>
@@ -431,6 +502,7 @@ newtype ProcessingConfiguration = ProcessingConfiguration
   { "Enabled" :: NullOrUndefined (BooleanObject)
   , "Processors" :: NullOrUndefined (ProcessorList)
   }
+derive instance newtypeProcessingConfiguration :: Newtype ProcessingConfiguration _
 
 
 -- | <p>Describes a data processor.</p>
@@ -438,9 +510,11 @@ newtype Processor = Processor
   { "Type" :: (ProcessorType)
   , "Parameters" :: NullOrUndefined (ProcessorParameterList)
   }
+derive instance newtypeProcessor :: Newtype Processor _
 
 
 newtype ProcessorList = ProcessorList (Array Processor)
+derive instance newtypeProcessorList :: Newtype ProcessorList _
 
 
 -- | <p>Describes the processor parameter.</p>
@@ -448,33 +522,41 @@ newtype ProcessorParameter = ProcessorParameter
   { "ParameterName" :: (ProcessorParameterName)
   , "ParameterValue" :: (ProcessorParameterValue)
   }
+derive instance newtypeProcessorParameter :: Newtype ProcessorParameter _
 
 
 newtype ProcessorParameterList = ProcessorParameterList (Array ProcessorParameter)
+derive instance newtypeProcessorParameterList :: Newtype ProcessorParameterList _
 
 
 newtype ProcessorParameterName = ProcessorParameterName String
+derive instance newtypeProcessorParameterName :: Newtype ProcessorParameterName _
 
 
 newtype ProcessorParameterValue = ProcessorParameterValue String
+derive instance newtypeProcessorParameterValue :: Newtype ProcessorParameterValue _
 
 
 newtype ProcessorType = ProcessorType String
+derive instance newtypeProcessorType :: Newtype ProcessorType _
 
 
 newtype PutRecordBatchInput = PutRecordBatchInput 
   { "DeliveryStreamName" :: (DeliveryStreamName)
   , "Records" :: (PutRecordBatchRequestEntryList)
   }
+derive instance newtypePutRecordBatchInput :: Newtype PutRecordBatchInput _
 
 
 newtype PutRecordBatchOutput = PutRecordBatchOutput 
   { "FailedPutCount" :: (NonNegativeIntegerObject)
   , "RequestResponses" :: (PutRecordBatchResponseEntryList)
   }
+derive instance newtypePutRecordBatchOutput :: Newtype PutRecordBatchOutput _
 
 
 newtype PutRecordBatchRequestEntryList = PutRecordBatchRequestEntryList (Array Record'')
+derive instance newtypePutRecordBatchRequestEntryList :: Newtype PutRecordBatchRequestEntryList _
 
 
 -- | <p>Contains the result for an individual record from a <a>PutRecordBatch</a> request. If the record is successfully added to your delivery stream, it receives a record ID. If the record fails to be added to your delivery stream, the result includes an error code and an error message.</p>
@@ -483,29 +565,35 @@ newtype PutRecordBatchResponseEntry = PutRecordBatchResponseEntry
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   , "ErrorMessage" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypePutRecordBatchResponseEntry :: Newtype PutRecordBatchResponseEntry _
 
 
 newtype PutRecordBatchResponseEntryList = PutRecordBatchResponseEntryList (Array PutRecordBatchResponseEntry)
+derive instance newtypePutRecordBatchResponseEntryList :: Newtype PutRecordBatchResponseEntryList _
 
 
 newtype PutRecordInput = PutRecordInput 
   { "DeliveryStreamName" :: (DeliveryStreamName)
   , "Record''" :: (Record'')
   }
+derive instance newtypePutRecordInput :: Newtype PutRecordInput _
 
 
 newtype PutRecordOutput = PutRecordOutput 
   { "RecordId" :: (PutResponseRecordId)
   }
+derive instance newtypePutRecordOutput :: Newtype PutRecordOutput _
 
 
 newtype PutResponseRecordId = PutResponseRecordId String
+derive instance newtypePutResponseRecordId :: Newtype PutResponseRecordId _
 
 
 -- | <p>The unit of data in a delivery stream.</p>
 newtype Record'' = Record'' 
   { "Data" :: (Data)
   }
+derive instance newtypeRecord'' :: Newtype Record'' _
 
 
 -- | <p>Describes the configuration of a destination in Amazon Redshift.</p>
@@ -522,6 +610,7 @@ newtype RedshiftDestinationConfiguration = RedshiftDestinationConfiguration
   , "S3BackupConfiguration" :: NullOrUndefined (S3DestinationConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeRedshiftDestinationConfiguration :: Newtype RedshiftDestinationConfiguration _
 
 
 -- | <p>Describes a destination in Amazon Redshift.</p>
@@ -537,6 +626,7 @@ newtype RedshiftDestinationDescription = RedshiftDestinationDescription
   , "S3BackupDescription" :: NullOrUndefined (S3DestinationDescription)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeRedshiftDestinationDescription :: Newtype RedshiftDestinationDescription _
 
 
 -- | <p>Describes an update for a destination in Amazon Redshift.</p>
@@ -553,36 +643,44 @@ newtype RedshiftDestinationUpdate = RedshiftDestinationUpdate
   , "S3BackupUpdate" :: NullOrUndefined (S3DestinationUpdate)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeRedshiftDestinationUpdate :: Newtype RedshiftDestinationUpdate _
 
 
 newtype RedshiftRetryDurationInSeconds = RedshiftRetryDurationInSeconds Int
+derive instance newtypeRedshiftRetryDurationInSeconds :: Newtype RedshiftRetryDurationInSeconds _
 
 
 -- | <p>Configures retry behavior in case Kinesis Firehose is unable to deliver documents to Amazon Redshift.</p>
 newtype RedshiftRetryOptions = RedshiftRetryOptions 
   { "DurationInSeconds" :: NullOrUndefined (RedshiftRetryDurationInSeconds)
   }
+derive instance newtypeRedshiftRetryOptions :: Newtype RedshiftRetryOptions _
 
 
 newtype RedshiftS3BackupMode = RedshiftS3BackupMode String
+derive instance newtypeRedshiftS3BackupMode :: Newtype RedshiftS3BackupMode _
 
 
 -- | <p>The resource is already in use and not available for this operation.</p>
 newtype ResourceInUseException = ResourceInUseException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>The specified resource could not be found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype RoleARN = RoleARN String
+derive instance newtypeRoleARN :: Newtype RoleARN _
 
 
 newtype S3BackupMode = S3BackupMode String
+derive instance newtypeS3BackupMode :: Newtype S3BackupMode _
 
 
 -- | <p>Describes the configuration of a destination in Amazon S3.</p>
@@ -595,6 +693,7 @@ newtype S3DestinationConfiguration = S3DestinationConfiguration
   , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeS3DestinationConfiguration :: Newtype S3DestinationConfiguration _
 
 
 -- | <p>Describes a destination in Amazon S3.</p>
@@ -607,6 +706,7 @@ newtype S3DestinationDescription = S3DestinationDescription
   , "EncryptionConfiguration" :: (EncryptionConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeS3DestinationDescription :: Newtype S3DestinationDescription _
 
 
 -- | <p>Describes an update for a destination in Amazon S3.</p>
@@ -619,21 +719,25 @@ newtype S3DestinationUpdate = S3DestinationUpdate
   , "EncryptionConfiguration" :: NullOrUndefined (EncryptionConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeS3DestinationUpdate :: Newtype S3DestinationUpdate _
 
 
 -- | <p>The service is unavailable, back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <a href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Firehose Limits</a>.</p>
 newtype ServiceUnavailableException = ServiceUnavailableException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 newtype SizeInMBs = SizeInMBs Int
+derive instance newtypeSizeInMBs :: Newtype SizeInMBs _
 
 
 -- | <p>Details about a Kinesis stream used as the source for a Kinesis Firehose delivery stream.</p>
 newtype SourceDescription = SourceDescription 
   { "KinesisStreamSourceDescription" :: NullOrUndefined (KinesisStreamSourceDescription)
   }
+derive instance newtypeSourceDescription :: Newtype SourceDescription _
 
 
 -- | <p>Describes the configuration of a destination in Splunk.</p>
@@ -648,6 +752,7 @@ newtype SplunkDestinationConfiguration = SplunkDestinationConfiguration
   , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeSplunkDestinationConfiguration :: Newtype SplunkDestinationConfiguration _
 
 
 -- | <p>Describes a destination in Splunk.</p>
@@ -662,6 +767,7 @@ newtype SplunkDestinationDescription = SplunkDestinationDescription
   , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeSplunkDestinationDescription :: Newtype SplunkDestinationDescription _
 
 
 -- | <p>Describes an update for a destination in Splunk.</p>
@@ -676,18 +782,22 @@ newtype SplunkDestinationUpdate = SplunkDestinationUpdate
   , "ProcessingConfiguration" :: NullOrUndefined (ProcessingConfiguration)
   , "CloudWatchLoggingOptions" :: NullOrUndefined (CloudWatchLoggingOptions)
   }
+derive instance newtypeSplunkDestinationUpdate :: Newtype SplunkDestinationUpdate _
 
 
 newtype SplunkRetryDurationInSeconds = SplunkRetryDurationInSeconds Int
+derive instance newtypeSplunkRetryDurationInSeconds :: Newtype SplunkRetryDurationInSeconds _
 
 
 -- | <p>Configures retry behavior in case Kinesis Firehose is unable to deliver documents to Splunk or if it doesn't receive an acknowledgment from Splunk.</p>
 newtype SplunkRetryOptions = SplunkRetryOptions 
   { "DurationInSeconds" :: NullOrUndefined (SplunkRetryDurationInSeconds)
   }
+derive instance newtypeSplunkRetryOptions :: Newtype SplunkRetryOptions _
 
 
 newtype SplunkS3BackupMode = SplunkS3BackupMode String
+derive instance newtypeSplunkS3BackupMode :: Newtype SplunkS3BackupMode _
 
 
 newtype UpdateDestinationInput = UpdateDestinationInput 
@@ -700,11 +810,14 @@ newtype UpdateDestinationInput = UpdateDestinationInput
   , "ElasticsearchDestinationUpdate" :: NullOrUndefined (ElasticsearchDestinationUpdate)
   , "SplunkDestinationUpdate" :: NullOrUndefined (SplunkDestinationUpdate)
   }
+derive instance newtypeUpdateDestinationInput :: Newtype UpdateDestinationInput _
 
 
 newtype UpdateDestinationOutput = UpdateDestinationOutput 
   { 
   }
+derive instance newtypeUpdateDestinationOutput :: Newtype UpdateDestinationOutput _
 
 
 newtype Username = Username String
+derive instance newtypeUsername :: Newtype Username _

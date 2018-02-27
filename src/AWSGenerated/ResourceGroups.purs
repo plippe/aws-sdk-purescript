@@ -6,6 +6,7 @@ module AWS.ResourceGroups where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -77,6 +78,7 @@ updateGroupQuery = AWS.request serviceName "UpdateGroupQuery"
 newtype BadRequestException = BadRequestException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 newtype CreateGroupInput = CreateGroupInput 
@@ -85,6 +87,7 @@ newtype CreateGroupInput = CreateGroupInput
   , "ResourceQuery" :: (ResourceQuery)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeCreateGroupInput :: Newtype CreateGroupInput _
 
 
 newtype CreateGroupOutput = CreateGroupOutput 
@@ -92,56 +95,67 @@ newtype CreateGroupOutput = CreateGroupOutput
   , "ResourceQuery" :: NullOrUndefined (ResourceQuery)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeCreateGroupOutput :: Newtype CreateGroupOutput _
 
 
 newtype DeleteGroupInput = DeleteGroupInput 
   { "GroupName" :: (GroupName)
   }
+derive instance newtypeDeleteGroupInput :: Newtype DeleteGroupInput _
 
 
 newtype DeleteGroupOutput = DeleteGroupOutput 
   { "Group" :: NullOrUndefined (Group)
   }
+derive instance newtypeDeleteGroupOutput :: Newtype DeleteGroupOutput _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>The caller is not authorized to make the request.</p>
 newtype ForbiddenException = ForbiddenException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeForbiddenException :: Newtype ForbiddenException _
 
 
 newtype GetGroupInput = GetGroupInput 
   { "GroupName" :: (GroupName)
   }
+derive instance newtypeGetGroupInput :: Newtype GetGroupInput _
 
 
 newtype GetGroupOutput = GetGroupOutput 
   { "Group" :: NullOrUndefined (Group)
   }
+derive instance newtypeGetGroupOutput :: Newtype GetGroupOutput _
 
 
 newtype GetGroupQueryInput = GetGroupQueryInput 
   { "GroupName" :: (GroupName)
   }
+derive instance newtypeGetGroupQueryInput :: Newtype GetGroupQueryInput _
 
 
 newtype GetGroupQueryOutput = GetGroupQueryOutput 
   { "GroupQuery" :: NullOrUndefined (GroupQuery)
   }
+derive instance newtypeGetGroupQueryOutput :: Newtype GetGroupQueryOutput _
 
 
 newtype GetTagsInput = GetTagsInput 
   { "Arn" :: (GroupArn)
   }
+derive instance newtypeGetTagsInput :: Newtype GetTagsInput _
 
 
 newtype GetTagsOutput = GetTagsOutput 
   { "Arn" :: NullOrUndefined (GroupArn)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeGetTagsOutput :: Newtype GetTagsOutput _
 
 
 -- | <p>A resource group.</p>
@@ -150,18 +164,23 @@ newtype Group = Group
   , "Name" :: (GroupName)
   , "Description" :: NullOrUndefined (GroupDescription)
   }
+derive instance newtypeGroup :: Newtype Group _
 
 
 newtype GroupArn = GroupArn String
+derive instance newtypeGroupArn :: Newtype GroupArn _
 
 
 newtype GroupDescription = GroupDescription String
+derive instance newtypeGroupDescription :: Newtype GroupDescription _
 
 
 newtype GroupList = GroupList (Array Group)
+derive instance newtypeGroupList :: Newtype GroupList _
 
 
 newtype GroupName = GroupName String
+derive instance newtypeGroupName :: Newtype GroupName _
 
 
 -- | <p>The underlying resource query of a resource group. Resources that match query results are part of the group.</p>
@@ -169,12 +188,14 @@ newtype GroupQuery = GroupQuery
   { "GroupName" :: (GroupName)
   , "ResourceQuery" :: (ResourceQuery)
   }
+derive instance newtypeGroupQuery :: Newtype GroupQuery _
 
 
 -- | <p>An internal error occurred while processing the request.</p>
 newtype InternalServerErrorException = InternalServerErrorException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInternalServerErrorException :: Newtype InternalServerErrorException _
 
 
 newtype ListGroupResourcesInput = ListGroupResourcesInput 
@@ -182,51 +203,62 @@ newtype ListGroupResourcesInput = ListGroupResourcesInput
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListGroupResourcesInput :: Newtype ListGroupResourcesInput _
 
 
 newtype ListGroupResourcesOutput = ListGroupResourcesOutput 
   { "ResourceIdentifiers" :: NullOrUndefined (ResourceIdentifierList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListGroupResourcesOutput :: Newtype ListGroupResourcesOutput _
 
 
 newtype ListGroupsInput = ListGroupsInput 
   { "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListGroupsInput :: Newtype ListGroupsInput _
 
 
 newtype ListGroupsOutput = ListGroupsOutput 
   { "Groups" :: NullOrUndefined (GroupList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListGroupsOutput :: Newtype ListGroupsOutput _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 -- | <p>The request uses an HTTP method which is not allowed for the specified resource.</p>
 newtype MethodNotAllowedException = MethodNotAllowedException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeMethodNotAllowedException :: Newtype MethodNotAllowedException _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>One or more resources specified in the request do not exist.</p>
 newtype NotFoundException = NotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype Query = Query String
+derive instance newtypeQuery :: Newtype Query _
 
 
 newtype QueryType = QueryType String
+derive instance newtypeQueryType :: Newtype QueryType _
 
 
 newtype ResourceArn = ResourceArn String
+derive instance newtypeResourceArn :: Newtype ResourceArn _
 
 
 -- | <p>The ARN of a resource, and its resource type.</p>
@@ -234,9 +266,11 @@ newtype ResourceIdentifier = ResourceIdentifier
   { "ResourceArn" :: NullOrUndefined (ResourceArn)
   , "ResourceType" :: NullOrUndefined (ResourceType)
   }
+derive instance newtypeResourceIdentifier :: Newtype ResourceIdentifier _
 
 
 newtype ResourceIdentifierList = ResourceIdentifierList (Array ResourceIdentifier)
+derive instance newtypeResourceIdentifierList :: Newtype ResourceIdentifierList _
 
 
 -- | <p>The query that is used to define a resource group or a search for resources.</p>
@@ -244,9 +278,11 @@ newtype ResourceQuery = ResourceQuery
   { "Type" :: (QueryType)
   , "Query" :: (Query)
   }
+derive instance newtypeResourceQuery :: Newtype ResourceQuery _
 
 
 newtype ResourceType = ResourceType String
+derive instance newtypeResourceType :: Newtype ResourceType _
 
 
 newtype SearchResourcesInput = SearchResourcesInput 
@@ -254,79 +290,95 @@ newtype SearchResourcesInput = SearchResourcesInput
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeSearchResourcesInput :: Newtype SearchResourcesInput _
 
 
 newtype SearchResourcesOutput = SearchResourcesOutput 
   { "ResourceIdentifiers" :: NullOrUndefined (ResourceIdentifierList)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeSearchResourcesOutput :: Newtype SearchResourcesOutput _
 
 
 newtype TagInput = TagInput 
   { "Arn" :: (GroupArn)
   , "Tags" :: (Tags)
   }
+derive instance newtypeTagInput :: Newtype TagInput _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagOutput = TagOutput 
   { "Arn" :: NullOrUndefined (GroupArn)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeTagOutput :: Newtype TagOutput _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Map TagKey TagValue)
+derive instance newtypeTags :: Newtype Tags _
 
 
 -- | <p>The caller has exceeded throttling limits.</p>
 newtype TooManyRequestsException = TooManyRequestsException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | <p>The request has not been applied because it lacks valid authentication credentials for the target resource.</p>
 newtype UnauthorizedException = UnauthorizedException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeUnauthorizedException :: Newtype UnauthorizedException _
 
 
 newtype UntagInput = UntagInput 
   { "Arn" :: (GroupArn)
   , "Keys" :: (TagKeyList)
   }
+derive instance newtypeUntagInput :: Newtype UntagInput _
 
 
 newtype UntagOutput = UntagOutput 
   { "Arn" :: NullOrUndefined (GroupArn)
   , "Keys" :: NullOrUndefined (TagKeyList)
   }
+derive instance newtypeUntagOutput :: Newtype UntagOutput _
 
 
 newtype UpdateGroupInput = UpdateGroupInput 
   { "GroupName" :: (GroupName)
   , "Description" :: NullOrUndefined (GroupDescription)
   }
+derive instance newtypeUpdateGroupInput :: Newtype UpdateGroupInput _
 
 
 newtype UpdateGroupOutput = UpdateGroupOutput 
   { "Group" :: NullOrUndefined (Group)
   }
+derive instance newtypeUpdateGroupOutput :: Newtype UpdateGroupOutput _
 
 
 newtype UpdateGroupQueryInput = UpdateGroupQueryInput 
   { "GroupName" :: (GroupName)
   , "ResourceQuery" :: (ResourceQuery)
   }
+derive instance newtypeUpdateGroupQueryInput :: Newtype UpdateGroupQueryInput _
 
 
 newtype UpdateGroupQueryOutput = UpdateGroupQueryOutput 
   { "GroupQuery" :: NullOrUndefined (GroupQuery)
   }
+derive instance newtypeUpdateGroupQueryOutput :: Newtype UpdateGroupQueryOutput _

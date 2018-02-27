@@ -6,6 +6,7 @@ module AWS.IoTJobsDataPlane where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -37,9 +38,11 @@ updateJobExecution = AWS.request serviceName "UpdateJobExecution"
 newtype CertificateValidationException = CertificateValidationException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeCertificateValidationException :: Newtype CertificateValidationException _
 
 
 newtype DescribeJobExecutionJobId = DescribeJobExecutionJobId String
+derive instance newtypeDescribeJobExecutionJobId :: Newtype DescribeJobExecutionJobId _
 
 
 newtype DescribeJobExecutionRequest = DescribeJobExecutionRequest 
@@ -48,58 +51,72 @@ newtype DescribeJobExecutionRequest = DescribeJobExecutionRequest
   , "IncludeJobDocument'" :: NullOrUndefined (IncludeJobDocument)
   , "ExecutionNumber'" :: NullOrUndefined (ExecutionNumber)
   }
+derive instance newtypeDescribeJobExecutionRequest :: Newtype DescribeJobExecutionRequest _
 
 
 newtype DescribeJobExecutionResponse = DescribeJobExecutionResponse 
   { "Execution'" :: NullOrUndefined (JobExecution)
   }
+derive instance newtypeDescribeJobExecutionResponse :: Newtype DescribeJobExecutionResponse _
 
 
 newtype DetailsKey = DetailsKey String
+derive instance newtypeDetailsKey :: Newtype DetailsKey _
 
 
 newtype DetailsMap = DetailsMap (Map DetailsKey DetailsValue)
+derive instance newtypeDetailsMap :: Newtype DetailsMap _
 
 
 newtype DetailsValue = DetailsValue String
+derive instance newtypeDetailsValue :: Newtype DetailsValue _
 
 
 newtype ExecutionNumber = ExecutionNumber Number
+derive instance newtypeExecutionNumber :: Newtype ExecutionNumber _
 
 
 newtype ExpectedVersion = ExpectedVersion Number
+derive instance newtypeExpectedVersion :: Newtype ExpectedVersion _
 
 
 newtype GetPendingJobExecutionsRequest = GetPendingJobExecutionsRequest 
   { "ThingName'" :: (ThingName)
   }
+derive instance newtypeGetPendingJobExecutionsRequest :: Newtype GetPendingJobExecutionsRequest _
 
 
 newtype GetPendingJobExecutionsResponse = GetPendingJobExecutionsResponse 
   { "InProgressJobs'" :: NullOrUndefined (JobExecutionSummaryList)
   , "QueuedJobs'" :: NullOrUndefined (JobExecutionSummaryList)
   }
+derive instance newtypeGetPendingJobExecutionsResponse :: Newtype GetPendingJobExecutionsResponse _
 
 
 newtype IncludeExecutionState = IncludeExecutionState Boolean
+derive instance newtypeIncludeExecutionState :: Newtype IncludeExecutionState _
 
 
 newtype IncludeJobDocument = IncludeJobDocument Boolean
+derive instance newtypeIncludeJobDocument :: Newtype IncludeJobDocument _
 
 
 -- | <p>The contents of the request were invalid. For example, this code is returned when an UpdateJobExecution request contains invalid status details. The message contains details about the error.</p>
 newtype InvalidRequestException = InvalidRequestException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInvalidRequestException :: Newtype InvalidRequestException _
 
 
 -- | <p>An update attempted to change the job execution to a state that is invalid because of the job execution's current state (for example, an attempt to change a request in state SUCCESS to state IN_PROGRESS). In this case, the body of the error message also contains the executionState field.</p>
 newtype InvalidStateTransitionException = InvalidStateTransitionException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInvalidStateTransitionException :: Newtype InvalidStateTransitionException _
 
 
 newtype JobDocument = JobDocument String
+derive instance newtypeJobDocument :: Newtype JobDocument _
 
 
 -- | <p>Contains data about a job execution.</p>
@@ -115,6 +132,7 @@ newtype JobExecution = JobExecution
   , "ExecutionNumber'" :: NullOrUndefined (ExecutionNumber)
   , "JobDocument'" :: NullOrUndefined (JobDocument)
   }
+derive instance newtypeJobExecution :: Newtype JobExecution _
 
 
 -- | <p>Contains data about the state of a job execution.</p>
@@ -123,9 +141,11 @@ newtype JobExecutionState = JobExecutionState
   , "StatusDetails'" :: NullOrUndefined (DetailsMap)
   , "VersionNumber'" :: NullOrUndefined (VersionNumber)
   }
+derive instance newtypeJobExecutionState :: Newtype JobExecutionState _
 
 
 newtype JobExecutionStatus = JobExecutionStatus String
+derive instance newtypeJobExecutionStatus :: Newtype JobExecutionStatus _
 
 
 -- | <p>Contains a subset of information about a job execution.</p>
@@ -137,59 +157,72 @@ newtype JobExecutionSummary = JobExecutionSummary
   , "VersionNumber'" :: NullOrUndefined (VersionNumber)
   , "ExecutionNumber'" :: NullOrUndefined (ExecutionNumber)
   }
+derive instance newtypeJobExecutionSummary :: Newtype JobExecutionSummary _
 
 
 newtype JobExecutionSummaryList = JobExecutionSummaryList (Array JobExecutionSummary)
+derive instance newtypeJobExecutionSummaryList :: Newtype JobExecutionSummaryList _
 
 
 newtype JobId = JobId String
+derive instance newtypeJobId :: Newtype JobId _
 
 
 newtype LastUpdatedAt = LastUpdatedAt Number
+derive instance newtypeLastUpdatedAt :: Newtype LastUpdatedAt _
 
 
 newtype QueuedAt = QueuedAt Number
+derive instance newtypeQueuedAt :: Newtype QueuedAt _
 
 
 -- | <p>The specified resource does not exist.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>The service is temporarily unavailable.</p>
 newtype ServiceUnavailableException = ServiceUnavailableException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 newtype StartNextPendingJobExecutionRequest = StartNextPendingJobExecutionRequest 
   { "ThingName'" :: (ThingName)
   , "StatusDetails'" :: NullOrUndefined (DetailsMap)
   }
+derive instance newtypeStartNextPendingJobExecutionRequest :: Newtype StartNextPendingJobExecutionRequest _
 
 
 newtype StartNextPendingJobExecutionResponse = StartNextPendingJobExecutionResponse 
   { "Execution'" :: NullOrUndefined (JobExecution)
   }
+derive instance newtypeStartNextPendingJobExecutionResponse :: Newtype StartNextPendingJobExecutionResponse _
 
 
 newtype StartedAt = StartedAt Number
+derive instance newtypeStartedAt :: Newtype StartedAt _
 
 
 -- | <p>The job is in a terminal state.</p>
 newtype TerminalStateException = TerminalStateException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeTerminalStateException :: Newtype TerminalStateException _
 
 
 newtype ThingName = ThingName String
+derive instance newtypeThingName :: Newtype ThingName _
 
 
 -- | <p>The rate exceeds the limit.</p>
 newtype ThrottlingException = ThrottlingException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeThrottlingException :: Newtype ThrottlingException _
 
 
 newtype UpdateJobExecutionRequest = UpdateJobExecutionRequest 
@@ -202,15 +235,19 @@ newtype UpdateJobExecutionRequest = UpdateJobExecutionRequest
   , "IncludeJobDocument'" :: NullOrUndefined (IncludeJobDocument)
   , "ExecutionNumber'" :: NullOrUndefined (ExecutionNumber)
   }
+derive instance newtypeUpdateJobExecutionRequest :: Newtype UpdateJobExecutionRequest _
 
 
 newtype UpdateJobExecutionResponse = UpdateJobExecutionResponse 
   { "ExecutionState'" :: NullOrUndefined (JobExecutionState)
   , "JobDocument'" :: NullOrUndefined (JobDocument)
   }
+derive instance newtypeUpdateJobExecutionResponse :: Newtype UpdateJobExecutionResponse _
 
 
 newtype VersionNumber = VersionNumber Number
+derive instance newtypeVersionNumber :: Newtype VersionNumber _
 
 
 newtype ErrorMessage' = ErrorMessage' String
+derive instance newtypeErrorMessage' :: Newtype ErrorMessage' _

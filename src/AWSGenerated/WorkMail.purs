@@ -6,6 +6,7 @@ module AWS.WorkMail where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -154,6 +155,7 @@ updateResource = AWS.request serviceName "UpdateResource"
 
 
 newtype Aliases = Aliases (Array EmailAddress)
+derive instance newtypeAliases :: Newtype Aliases _
 
 
 newtype AssociateDelegateToResourceRequest = AssociateDelegateToResourceRequest 
@@ -161,11 +163,13 @@ newtype AssociateDelegateToResourceRequest = AssociateDelegateToResourceRequest
   , "ResourceId" :: (ResourceId)
   , "EntityId" :: (WorkMailIdentifier)
   }
+derive instance newtypeAssociateDelegateToResourceRequest :: Newtype AssociateDelegateToResourceRequest _
 
 
 newtype AssociateDelegateToResourceResponse = AssociateDelegateToResourceResponse 
   { 
   }
+derive instance newtypeAssociateDelegateToResourceResponse :: Newtype AssociateDelegateToResourceResponse _
 
 
 newtype AssociateMemberToGroupRequest = AssociateMemberToGroupRequest 
@@ -173,11 +177,13 @@ newtype AssociateMemberToGroupRequest = AssociateMemberToGroupRequest
   , "GroupId" :: (WorkMailIdentifier)
   , "MemberId" :: (WorkMailIdentifier)
   }
+derive instance newtypeAssociateMemberToGroupRequest :: Newtype AssociateMemberToGroupRequest _
 
 
 newtype AssociateMemberToGroupResponse = AssociateMemberToGroupResponse 
   { 
   }
+derive instance newtypeAssociateMemberToGroupResponse :: Newtype AssociateMemberToGroupResponse _
 
 
 -- | <p>At least one delegate must be associated to the resource to disable automatic replies from the resource.</p>
@@ -186,6 +192,7 @@ newtype BookingOptions = BookingOptions
   , "AutoDeclineRecurringRequests" :: NullOrUndefined (Boolean)
   , "AutoDeclineConflictingRequests" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeBookingOptions :: Newtype BookingOptions _
 
 
 newtype CreateAliasRequest = CreateAliasRequest 
@@ -193,22 +200,26 @@ newtype CreateAliasRequest = CreateAliasRequest
   , "EntityId" :: (WorkMailIdentifier)
   , "Alias" :: (EmailAddress)
   }
+derive instance newtypeCreateAliasRequest :: Newtype CreateAliasRequest _
 
 
 newtype CreateAliasResponse = CreateAliasResponse 
   { 
   }
+derive instance newtypeCreateAliasResponse :: Newtype CreateAliasResponse _
 
 
 newtype CreateGroupRequest = CreateGroupRequest 
   { "OrganizationId" :: (OrganizationId)
   , "Name" :: (GroupName)
   }
+derive instance newtypeCreateGroupRequest :: Newtype CreateGroupRequest _
 
 
 newtype CreateGroupResponse = CreateGroupResponse 
   { "GroupId" :: NullOrUndefined (WorkMailIdentifier)
   }
+derive instance newtypeCreateGroupResponse :: Newtype CreateGroupResponse _
 
 
 newtype CreateResourceRequest = CreateResourceRequest 
@@ -216,11 +227,13 @@ newtype CreateResourceRequest = CreateResourceRequest
   , "Name" :: (ResourceName)
   , "Type" :: (ResourceType)
   }
+derive instance newtypeCreateResourceRequest :: Newtype CreateResourceRequest _
 
 
 newtype CreateResourceResponse = CreateResourceResponse 
   { "ResourceId" :: NullOrUndefined (ResourceId)
   }
+derive instance newtypeCreateResourceResponse :: Newtype CreateResourceResponse _
 
 
 newtype CreateUserRequest = CreateUserRequest 
@@ -229,11 +242,13 @@ newtype CreateUserRequest = CreateUserRequest
   , "DisplayName" :: (String)
   , "Password" :: (Password)
   }
+derive instance newtypeCreateUserRequest :: Newtype CreateUserRequest _
 
 
 newtype CreateUserResponse = CreateUserResponse 
   { "UserId" :: NullOrUndefined (WorkMailIdentifier)
   }
+derive instance newtypeCreateUserResponse :: Newtype CreateUserResponse _
 
 
 -- | <p>The name of the attribute, which is one of the values defined in the UserAttribute enumeration.</p>
@@ -241,6 +256,7 @@ newtype Delegate = Delegate
   { "Id" :: (String)
   , "Type" :: (MemberType)
   }
+derive instance newtypeDelegate :: Newtype Delegate _
 
 
 newtype DeleteAliasRequest = DeleteAliasRequest 
@@ -248,61 +264,72 @@ newtype DeleteAliasRequest = DeleteAliasRequest
   , "EntityId" :: (WorkMailIdentifier)
   , "Alias" :: (EmailAddress)
   }
+derive instance newtypeDeleteAliasRequest :: Newtype DeleteAliasRequest _
 
 
 newtype DeleteAliasResponse = DeleteAliasResponse 
   { 
   }
+derive instance newtypeDeleteAliasResponse :: Newtype DeleteAliasResponse _
 
 
 newtype DeleteGroupRequest = DeleteGroupRequest 
   { "OrganizationId" :: (OrganizationId)
   , "GroupId" :: (WorkMailIdentifier)
   }
+derive instance newtypeDeleteGroupRequest :: Newtype DeleteGroupRequest _
 
 
 newtype DeleteGroupResponse = DeleteGroupResponse 
   { 
   }
+derive instance newtypeDeleteGroupResponse :: Newtype DeleteGroupResponse _
 
 
 newtype DeleteResourceRequest = DeleteResourceRequest 
   { "OrganizationId" :: (OrganizationId)
   , "ResourceId" :: (ResourceId)
   }
+derive instance newtypeDeleteResourceRequest :: Newtype DeleteResourceRequest _
 
 
 newtype DeleteResourceResponse = DeleteResourceResponse 
   { 
   }
+derive instance newtypeDeleteResourceResponse :: Newtype DeleteResourceResponse _
 
 
 newtype DeleteUserRequest = DeleteUserRequest 
   { "OrganizationId" :: (OrganizationId)
   , "UserId" :: (WorkMailIdentifier)
   }
+derive instance newtypeDeleteUserRequest :: Newtype DeleteUserRequest _
 
 
 newtype DeleteUserResponse = DeleteUserResponse 
   { 
   }
+derive instance newtypeDeleteUserResponse :: Newtype DeleteUserResponse _
 
 
 newtype DeregisterFromWorkMailRequest = DeregisterFromWorkMailRequest 
   { "OrganizationId" :: (OrganizationId)
   , "EntityId" :: (WorkMailIdentifier)
   }
+derive instance newtypeDeregisterFromWorkMailRequest :: Newtype DeregisterFromWorkMailRequest _
 
 
 newtype DeregisterFromWorkMailResponse = DeregisterFromWorkMailResponse 
   { 
   }
+derive instance newtypeDeregisterFromWorkMailResponse :: Newtype DeregisterFromWorkMailResponse _
 
 
 newtype DescribeGroupRequest = DescribeGroupRequest 
   { "OrganizationId" :: (OrganizationId)
   , "GroupId" :: (WorkMailIdentifier)
   }
+derive instance newtypeDescribeGroupRequest :: Newtype DescribeGroupRequest _
 
 
 newtype DescribeGroupResponse = DescribeGroupResponse 
@@ -313,11 +340,13 @@ newtype DescribeGroupResponse = DescribeGroupResponse
   , "EnabledDate" :: NullOrUndefined (Number)
   , "DisabledDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeDescribeGroupResponse :: Newtype DescribeGroupResponse _
 
 
 newtype DescribeOrganizationRequest = DescribeOrganizationRequest 
   { "OrganizationId" :: (OrganizationId)
   }
+derive instance newtypeDescribeOrganizationRequest :: Newtype DescribeOrganizationRequest _
 
 
 newtype DescribeOrganizationResponse = DescribeOrganizationResponse 
@@ -330,12 +359,14 @@ newtype DescribeOrganizationResponse = DescribeOrganizationResponse
   , "CompletedDate" :: NullOrUndefined (Number)
   , "ErrorMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeOrganizationResponse :: Newtype DescribeOrganizationResponse _
 
 
 newtype DescribeResourceRequest = DescribeResourceRequest 
   { "OrganizationId" :: (OrganizationId)
   , "ResourceId" :: (ResourceId)
   }
+derive instance newtypeDescribeResourceRequest :: Newtype DescribeResourceRequest _
 
 
 newtype DescribeResourceResponse = DescribeResourceResponse 
@@ -348,12 +379,14 @@ newtype DescribeResourceResponse = DescribeResourceResponse
   , "EnabledDate" :: NullOrUndefined (Number)
   , "DisabledDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeDescribeResourceResponse :: Newtype DescribeResourceResponse _
 
 
 newtype DescribeUserRequest = DescribeUserRequest 
   { "OrganizationId" :: (OrganizationId)
   , "UserId" :: (WorkMailIdentifier)
   }
+derive instance newtypeDescribeUserRequest :: Newtype DescribeUserRequest _
 
 
 newtype DescribeUserResponse = DescribeUserResponse 
@@ -366,18 +399,21 @@ newtype DescribeUserResponse = DescribeUserResponse
   , "EnabledDate" :: NullOrUndefined (Number)
   , "DisabledDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeDescribeUserResponse :: Newtype DescribeUserResponse _
 
 
 -- | <p>The Directory Service doesn't recognize the credentials supplied by the Amazon WorkMail service.</p>
 newtype DirectoryServiceAuthenticationFailedException = DirectoryServiceAuthenticationFailedException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeDirectoryServiceAuthenticationFailedException :: Newtype DirectoryServiceAuthenticationFailedException _
 
 
 -- | <p>The directory that you are trying to perform operations on isn't available.</p>
 newtype DirectoryUnavailableException = DirectoryUnavailableException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeDirectoryUnavailableException :: Newtype DirectoryUnavailableException _
 
 
 newtype DisassociateDelegateFromResourceRequest = DisassociateDelegateFromResourceRequest 
@@ -385,11 +421,13 @@ newtype DisassociateDelegateFromResourceRequest = DisassociateDelegateFromResour
   , "ResourceId" :: (ResourceId)
   , "EntityId" :: (WorkMailIdentifier)
   }
+derive instance newtypeDisassociateDelegateFromResourceRequest :: Newtype DisassociateDelegateFromResourceRequest _
 
 
 newtype DisassociateDelegateFromResourceResponse = DisassociateDelegateFromResourceResponse 
   { 
   }
+derive instance newtypeDisassociateDelegateFromResourceResponse :: Newtype DisassociateDelegateFromResourceResponse _
 
 
 newtype DisassociateMemberFromGroupRequest = DisassociateMemberFromGroupRequest 
@@ -397,41 +435,49 @@ newtype DisassociateMemberFromGroupRequest = DisassociateMemberFromGroupRequest
   , "GroupId" :: (WorkMailIdentifier)
   , "MemberId" :: (WorkMailIdentifier)
   }
+derive instance newtypeDisassociateMemberFromGroupRequest :: Newtype DisassociateMemberFromGroupRequest _
 
 
 newtype DisassociateMemberFromGroupResponse = DisassociateMemberFromGroupResponse 
   { 
   }
+derive instance newtypeDisassociateMemberFromGroupResponse :: Newtype DisassociateMemberFromGroupResponse _
 
 
 newtype EmailAddress = EmailAddress String
+derive instance newtypeEmailAddress :: Newtype EmailAddress _
 
 
 -- | <p>The email address that you're trying to assign is already created for a different user, group, or resource.</p>
 newtype EmailAddressInUseException = EmailAddressInUseException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeEmailAddressInUseException :: Newtype EmailAddressInUseException _
 
 
 -- | <p>The user, group, or resource that you're trying to register is already registered.</p>
 newtype EntityAlreadyRegisteredException = EntityAlreadyRegisteredException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeEntityAlreadyRegisteredException :: Newtype EntityAlreadyRegisteredException _
 
 
 -- | <p>The identifier supplied for the entity is valid, but it does not exist in your organization.</p>
 newtype EntityNotFoundException = EntityNotFoundException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeEntityNotFoundException :: Newtype EntityNotFoundException _
 
 
 newtype EntityState = EntityState String
+derive instance newtypeEntityState :: Newtype EntityState _
 
 
 -- | <p>You are performing an operation on an entity that isn't in the expected state, such as trying to update a deleted user.</p>
 newtype EntityStateException = EntityStateException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeEntityStateException :: Newtype EntityStateException _
 
 
 -- | <p>The representation of an Amazon WorkMail group.</p>
@@ -443,30 +489,36 @@ newtype Group = Group
   , "EnabledDate" :: NullOrUndefined (Number)
   , "DisabledDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeGroup :: Newtype Group _
 
 
 newtype GroupName = GroupName String
+derive instance newtypeGroupName :: Newtype GroupName _
 
 
 newtype Groups = Groups (Array Group)
+derive instance newtypeGroups :: Newtype Groups _
 
 
 -- | <p>The configuration for a resource isn't valid. A resource must either be able to auto-respond to requests or have at least one delegate associated that can do it on its behalf.</p>
 newtype InvalidConfigurationException = InvalidConfigurationException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidConfigurationException :: Newtype InvalidConfigurationException _
 
 
 -- | <p>One or more of the input parameters don't match the service's restrictions.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>The supplied password doesn't match the minimum security constraints, such as length or use of special characters.</p>
 newtype InvalidPasswordException = InvalidPasswordException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidPasswordException :: Newtype InvalidPasswordException _
 
 
 newtype ListAliasesRequest = ListAliasesRequest 
@@ -475,12 +527,14 @@ newtype ListAliasesRequest = ListAliasesRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListAliasesRequest :: Newtype ListAliasesRequest _
 
 
 newtype ListAliasesResponse = ListAliasesResponse 
   { "Aliases" :: NullOrUndefined (Aliases)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListAliasesResponse :: Newtype ListAliasesResponse _
 
 
 newtype ListGroupMembersRequest = ListGroupMembersRequest 
@@ -489,12 +543,14 @@ newtype ListGroupMembersRequest = ListGroupMembersRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListGroupMembersRequest :: Newtype ListGroupMembersRequest _
 
 
 newtype ListGroupMembersResponse = ListGroupMembersResponse 
   { "Members" :: NullOrUndefined (Members)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListGroupMembersResponse :: Newtype ListGroupMembersResponse _
 
 
 newtype ListGroupsRequest = ListGroupsRequest 
@@ -502,24 +558,28 @@ newtype ListGroupsRequest = ListGroupsRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListGroupsRequest :: Newtype ListGroupsRequest _
 
 
 newtype ListGroupsResponse = ListGroupsResponse 
   { "Groups" :: NullOrUndefined (Groups)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListGroupsResponse :: Newtype ListGroupsResponse _
 
 
 newtype ListOrganizationsRequest = ListOrganizationsRequest 
   { "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListOrganizationsRequest :: Newtype ListOrganizationsRequest _
 
 
 newtype ListOrganizationsResponse = ListOrganizationsResponse 
   { "OrganizationSummaries" :: NullOrUndefined (OrganizationSummaries)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListOrganizationsResponse :: Newtype ListOrganizationsResponse _
 
 
 newtype ListResourceDelegatesRequest = ListResourceDelegatesRequest 
@@ -528,12 +588,14 @@ newtype ListResourceDelegatesRequest = ListResourceDelegatesRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListResourceDelegatesRequest :: Newtype ListResourceDelegatesRequest _
 
 
 newtype ListResourceDelegatesResponse = ListResourceDelegatesResponse 
   { "Delegates" :: NullOrUndefined (ResourceDelegates)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListResourceDelegatesResponse :: Newtype ListResourceDelegatesResponse _
 
 
 newtype ListResourcesRequest = ListResourcesRequest 
@@ -541,12 +603,14 @@ newtype ListResourcesRequest = ListResourcesRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListResourcesRequest :: Newtype ListResourcesRequest _
 
 
 newtype ListResourcesResponse = ListResourcesResponse 
   { "Resources" :: NullOrUndefined (Resources)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListResourcesResponse :: Newtype ListResourcesResponse _
 
 
 newtype ListUsersRequest = ListUsersRequest 
@@ -554,27 +618,32 @@ newtype ListUsersRequest = ListUsersRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListUsersRequest :: Newtype ListUsersRequest _
 
 
 newtype ListUsersResponse = ListUsersResponse 
   { "Users" :: NullOrUndefined (Users)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListUsersResponse :: Newtype ListUsersResponse _
 
 
 -- | <p>For an email or alias to be created in Amazon WorkMail, the included domain must be defined in the organization.</p>
 newtype MailDomainNotFoundException = MailDomainNotFoundException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeMailDomainNotFoundException :: Newtype MailDomainNotFoundException _
 
 
 -- | <p>After a domain has been added to the organization, it must be verified. The domain is not yet verified.</p>
 newtype MailDomainStateException = MailDomainStateException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeMailDomainStateException :: Newtype MailDomainStateException _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 -- | <p>The representation of a group member (user or group).</p>
@@ -586,42 +655,52 @@ newtype Member = Member
   , "EnabledDate" :: NullOrUndefined (Number)
   , "DisabledDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeMember :: Newtype Member _
 
 
 newtype MemberType = MemberType String
+derive instance newtypeMemberType :: Newtype MemberType _
 
 
 newtype Members = Members (Array Member)
+derive instance newtypeMembers :: Newtype Members _
 
 
 -- | <p>The entity (user, group, or user) name isn't unique in Amazon WorkMail.</p>
 newtype NameAvailabilityException = NameAvailabilityException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeNameAvailabilityException :: Newtype NameAvailabilityException _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 newtype OrganizationId = OrganizationId String
+derive instance newtypeOrganizationId :: Newtype OrganizationId _
 
 
 newtype OrganizationName = OrganizationName String
+derive instance newtypeOrganizationName :: Newtype OrganizationName _
 
 
 -- | <p>An operation received a valid organization identifier that either doesn't belong or exist in the system.</p>
 newtype OrganizationNotFoundException = OrganizationNotFoundException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeOrganizationNotFoundException :: Newtype OrganizationNotFoundException _
 
 
 -- | <p>The organization must have a valid state (Active or Synchronizing) to perform certain operations on the organization or its entities.</p>
 newtype OrganizationStateException = OrganizationStateException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeOrganizationStateException :: Newtype OrganizationStateException _
 
 
 newtype OrganizationSummaries = OrganizationSummaries (Array OrganizationSummary)
+derive instance newtypeOrganizationSummaries :: Newtype OrganizationSummaries _
 
 
 -- | <p>The brief overview associated with an organization.</p>
@@ -631,9 +710,11 @@ newtype OrganizationSummary = OrganizationSummary
   , "ErrorMessage" :: NullOrUndefined (String)
   , "State" :: NullOrUndefined (String)
   }
+derive instance newtypeOrganizationSummary :: Newtype OrganizationSummary _
 
 
 newtype Password = Password String
+derive instance newtypePassword :: Newtype Password _
 
 
 newtype RegisterToWorkMailRequest = RegisterToWorkMailRequest 
@@ -641,17 +722,20 @@ newtype RegisterToWorkMailRequest = RegisterToWorkMailRequest
   , "EntityId" :: (WorkMailIdentifier)
   , "Email" :: (EmailAddress)
   }
+derive instance newtypeRegisterToWorkMailRequest :: Newtype RegisterToWorkMailRequest _
 
 
 newtype RegisterToWorkMailResponse = RegisterToWorkMailResponse 
   { 
   }
+derive instance newtypeRegisterToWorkMailResponse :: Newtype RegisterToWorkMailResponse _
 
 
 -- | <p>This entity name is not allowed in Amazon WorkMail.</p>
 newtype ReservedNameException = ReservedNameException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeReservedNameException :: Newtype ReservedNameException _
 
 
 newtype ResetPasswordRequest = ResetPasswordRequest 
@@ -659,11 +743,13 @@ newtype ResetPasswordRequest = ResetPasswordRequest
   , "UserId" :: (WorkMailIdentifier)
   , "Password" :: (Password)
   }
+derive instance newtypeResetPasswordRequest :: Newtype ResetPasswordRequest _
 
 
 newtype ResetPasswordResponse = ResetPasswordResponse 
   { 
   }
+derive instance newtypeResetPasswordResponse :: Newtype ResetPasswordResponse _
 
 
 -- | <p>The overview for a resource containing relevant data regarding it.</p>
@@ -676,27 +762,34 @@ newtype Resource = Resource
   , "EnabledDate" :: NullOrUndefined (Number)
   , "DisabledDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeResource :: Newtype Resource _
 
 
 newtype ResourceDelegates = ResourceDelegates (Array Delegate)
+derive instance newtypeResourceDelegates :: Newtype ResourceDelegates _
 
 
 newtype ResourceId = ResourceId String
+derive instance newtypeResourceId :: Newtype ResourceId _
 
 
 newtype ResourceName = ResourceName String
+derive instance newtypeResourceName :: Newtype ResourceName _
 
 
 newtype ResourceType = ResourceType String
+derive instance newtypeResourceType :: Newtype ResourceType _
 
 
 newtype Resources = Resources (Array Resource)
+derive instance newtypeResources :: Newtype Resources _
 
 
 -- | <p>You can't perform a write operation against a read-only directory.</p>
 newtype UnsupportedOperationException = UnsupportedOperationException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeUnsupportedOperationException :: Newtype UnsupportedOperationException _
 
 
 newtype UpdatePrimaryEmailAddressRequest = UpdatePrimaryEmailAddressRequest 
@@ -704,11 +797,13 @@ newtype UpdatePrimaryEmailAddressRequest = UpdatePrimaryEmailAddressRequest
   , "EntityId" :: (WorkMailIdentifier)
   , "Email" :: (EmailAddress)
   }
+derive instance newtypeUpdatePrimaryEmailAddressRequest :: Newtype UpdatePrimaryEmailAddressRequest _
 
 
 newtype UpdatePrimaryEmailAddressResponse = UpdatePrimaryEmailAddressResponse 
   { 
   }
+derive instance newtypeUpdatePrimaryEmailAddressResponse :: Newtype UpdatePrimaryEmailAddressResponse _
 
 
 newtype UpdateResourceRequest = UpdateResourceRequest 
@@ -717,11 +812,13 @@ newtype UpdateResourceRequest = UpdateResourceRequest
   , "Name" :: NullOrUndefined (ResourceName)
   , "BookingOptions" :: NullOrUndefined (BookingOptions)
   }
+derive instance newtypeUpdateResourceRequest :: Newtype UpdateResourceRequest _
 
 
 newtype UpdateResourceResponse = UpdateResourceResponse 
   { 
   }
+derive instance newtypeUpdateResourceResponse :: Newtype UpdateResourceResponse _
 
 
 -- | <p>The representation of an Amazon WorkMail user.</p>
@@ -735,15 +832,20 @@ newtype User = User
   , "EnabledDate" :: NullOrUndefined (Number)
   , "DisabledDate" :: NullOrUndefined (Number)
   }
+derive instance newtypeUser :: Newtype User _
 
 
 newtype UserName = UserName String
+derive instance newtypeUserName :: Newtype UserName _
 
 
 newtype UserRole = UserRole String
+derive instance newtypeUserRole :: Newtype UserRole _
 
 
 newtype Users = Users (Array User)
+derive instance newtypeUsers :: Newtype Users _
 
 
 newtype WorkMailIdentifier = WorkMailIdentifier String
+derive instance newtypeWorkMailIdentifier :: Newtype WorkMailIdentifier _

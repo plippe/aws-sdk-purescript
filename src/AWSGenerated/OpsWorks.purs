@@ -6,6 +6,7 @@ module AWS.OpsWorks where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -388,9 +389,11 @@ newtype AgentVersion = AgentVersion
   { "Version" :: NullOrUndefined (String)
   , "ConfigurationManager" :: NullOrUndefined (StackConfigurationManager)
   }
+derive instance newtypeAgentVersion :: Newtype AgentVersion _
 
 
 newtype AgentVersions = AgentVersions (Array AgentVersion)
+derive instance newtypeAgentVersions :: Newtype AgentVersions _
 
 
 -- | <p>A description of the app.</p>
@@ -410,45 +413,55 @@ newtype App = App
   , "CreatedAt" :: NullOrUndefined (String)
   , "Environment" :: NullOrUndefined (EnvironmentVariables)
   }
+derive instance newtypeApp :: Newtype App _
 
 
 newtype AppAttributes = AppAttributes (Map AppAttributesKeys String)
+derive instance newtypeAppAttributes :: Newtype AppAttributes _
 
 
 newtype AppAttributesKeys = AppAttributesKeys String
+derive instance newtypeAppAttributesKeys :: Newtype AppAttributesKeys _
 
 
 newtype AppType = AppType String
+derive instance newtypeAppType :: Newtype AppType _
 
 
 newtype Apps = Apps (Array App)
+derive instance newtypeApps :: Newtype Apps _
 
 
 newtype Architecture = Architecture String
+derive instance newtypeArchitecture :: Newtype Architecture _
 
 
 newtype AssignInstanceRequest = AssignInstanceRequest 
   { "InstanceId" :: (String)
   , "LayerIds" :: (Strings)
   }
+derive instance newtypeAssignInstanceRequest :: Newtype AssignInstanceRequest _
 
 
 newtype AssignVolumeRequest = AssignVolumeRequest 
   { "VolumeId" :: (String)
   , "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeAssignVolumeRequest :: Newtype AssignVolumeRequest _
 
 
 newtype AssociateElasticIpRequest = AssociateElasticIpRequest 
   { "ElasticIp" :: (String)
   , "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeAssociateElasticIpRequest :: Newtype AssociateElasticIpRequest _
 
 
 newtype AttachElasticLoadBalancerRequest = AttachElasticLoadBalancerRequest 
   { "ElasticLoadBalancerName" :: (String)
   , "LayerId" :: (String)
   }
+derive instance newtypeAttachElasticLoadBalancerRequest :: Newtype AttachElasticLoadBalancerRequest _
 
 
 -- | <p>Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or stops load-based instances.</p>
@@ -461,9 +474,11 @@ newtype AutoScalingThresholds = AutoScalingThresholds
   , "LoadThreshold" :: NullOrUndefined (Number)
   , "Alarms" :: NullOrUndefined (Strings)
   }
+derive instance newtypeAutoScalingThresholds :: Newtype AutoScalingThresholds _
 
 
 newtype AutoScalingType = AutoScalingType String
+derive instance newtypeAutoScalingType :: Newtype AutoScalingType _
 
 
 -- | <p>Describes a block device mapping. This data type maps directly to the Amazon EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html">BlockDeviceMapping</a> data type. </p>
@@ -473,9 +488,11 @@ newtype BlockDeviceMapping = BlockDeviceMapping
   , "VirtualName" :: NullOrUndefined (String)
   , "Ebs" :: NullOrUndefined (EbsBlockDevice)
   }
+derive instance newtypeBlockDeviceMapping :: Newtype BlockDeviceMapping _
 
 
 newtype BlockDeviceMappings = BlockDeviceMappings (Array BlockDeviceMapping)
+derive instance newtypeBlockDeviceMappings :: Newtype BlockDeviceMappings _
 
 
 -- | <p>Describes the Chef configuration.</p>
@@ -483,6 +500,7 @@ newtype ChefConfiguration = ChefConfiguration
   { "ManageBerkshelf" :: NullOrUndefined (Boolean)
   , "BerkshelfVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeChefConfiguration :: Newtype ChefConfiguration _
 
 
 newtype CloneStackRequest = CloneStackRequest 
@@ -509,12 +527,14 @@ newtype CloneStackRequest = CloneStackRequest
   , "DefaultRootDeviceType" :: NullOrUndefined (RootDeviceType)
   , "AgentVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeCloneStackRequest :: Newtype CloneStackRequest _
 
 
 -- | <p>Contains the response to a <code>CloneStack</code> request.</p>
 newtype CloneStackResult = CloneStackResult 
   { "StackId" :: NullOrUndefined (String)
   }
+derive instance newtypeCloneStackResult :: Newtype CloneStackResult _
 
 
 -- | <p>Describes the Amazon CloudWatch logs configuration for a layer.</p>
@@ -522,14 +542,17 @@ newtype CloudWatchLogsConfiguration = CloudWatchLogsConfiguration
   { "Enabled" :: NullOrUndefined (Boolean)
   , "LogStreams" :: NullOrUndefined (CloudWatchLogsLogStreams)
   }
+derive instance newtypeCloudWatchLogsConfiguration :: Newtype CloudWatchLogsConfiguration _
 
 
 -- | <p>Specifies the encoding of the log file so that the file can be read correctly. The default is <code>utf_8</code>. Encodings supported by Python <code>codecs.decode()</code> can be used here.</p>
 newtype CloudWatchLogsEncoding = CloudWatchLogsEncoding String
+derive instance newtypeCloudWatchLogsEncoding :: Newtype CloudWatchLogsEncoding _
 
 
 -- | <p>Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. It's only used if there is no state persisted for that log stream.</p>
 newtype CloudWatchLogsInitialPosition = CloudWatchLogsInitialPosition String
+derive instance newtypeCloudWatchLogsInitialPosition :: Newtype CloudWatchLogsInitialPosition _
 
 
 -- | <p>Describes the Amazon CloudWatch logs configuration for a layer. For detailed information about members of this data type, see the <a href="http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html">CloudWatch Logs Agent Reference</a>.</p>
@@ -546,14 +569,17 @@ newtype CloudWatchLogsLogStream = CloudWatchLogsLogStream
   , "BatchCount" :: NullOrUndefined (Int)
   , "BatchSize" :: NullOrUndefined (Int)
   }
+derive instance newtypeCloudWatchLogsLogStream :: Newtype CloudWatchLogsLogStream _
 
 
 -- | <p>Describes the Amazon CloudWatch logs configuration for a layer.</p>
 newtype CloudWatchLogsLogStreams = CloudWatchLogsLogStreams (Array CloudWatchLogsLogStream)
+derive instance newtypeCloudWatchLogsLogStreams :: Newtype CloudWatchLogsLogStreams _
 
 
 -- | <p>The preferred time zone for logs streamed to CloudWatch Logs. Valid values are <code>LOCAL</code> and <code>UTC</code>, for Coordinated Universal Time.</p>
 newtype CloudWatchLogsTimeZone = CloudWatchLogsTimeZone String
+derive instance newtypeCloudWatchLogsTimeZone :: Newtype CloudWatchLogsTimeZone _
 
 
 -- | <p>Describes a command.</p>
@@ -569,9 +595,11 @@ newtype Command = Command
   , "LogUrl" :: NullOrUndefined (String)
   , "Type" :: NullOrUndefined (String)
   }
+derive instance newtypeCommand :: Newtype Command _
 
 
 newtype Commands = Commands (Array Command)
+derive instance newtypeCommands :: Newtype Commands _
 
 
 newtype CreateAppRequest = CreateAppRequest 
@@ -588,12 +616,14 @@ newtype CreateAppRequest = CreateAppRequest
   , "Attributes" :: NullOrUndefined (AppAttributes)
   , "Environment" :: NullOrUndefined (EnvironmentVariables)
   }
+derive instance newtypeCreateAppRequest :: Newtype CreateAppRequest _
 
 
 -- | <p>Contains the response to a <code>CreateApp</code> request.</p>
 newtype CreateAppResult = CreateAppResult 
   { "AppId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateAppResult :: Newtype CreateAppResult _
 
 
 newtype CreateDeploymentRequest = CreateDeploymentRequest 
@@ -605,12 +635,14 @@ newtype CreateDeploymentRequest = CreateDeploymentRequest
   , "Comment" :: NullOrUndefined (String)
   , "CustomJson" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateDeploymentRequest :: Newtype CreateDeploymentRequest _
 
 
 -- | <p>Contains the response to a <code>CreateDeployment</code> request.</p>
 newtype CreateDeploymentResult = CreateDeploymentResult 
   { "DeploymentId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateDeploymentResult :: Newtype CreateDeploymentResult _
 
 
 newtype CreateInstanceRequest = CreateInstanceRequest 
@@ -633,12 +665,14 @@ newtype CreateInstanceRequest = CreateInstanceRequest
   , "AgentVersion" :: NullOrUndefined (String)
   , "Tenancy" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateInstanceRequest :: Newtype CreateInstanceRequest _
 
 
 -- | <p>Contains the response to a <code>CreateInstance</code> request.</p>
 newtype CreateInstanceResult = CreateInstanceResult 
   { "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateInstanceResult :: Newtype CreateInstanceResult _
 
 
 newtype CreateLayerRequest = CreateLayerRequest 
@@ -661,12 +695,14 @@ newtype CreateLayerRequest = CreateLayerRequest
   , "UseEbsOptimizedInstances" :: NullOrUndefined (Boolean)
   , "LifecycleEventConfiguration" :: NullOrUndefined (LifecycleEventConfiguration)
   }
+derive instance newtypeCreateLayerRequest :: Newtype CreateLayerRequest _
 
 
 -- | <p>Contains the response to a <code>CreateLayer</code> request.</p>
 newtype CreateLayerResult = CreateLayerResult 
   { "LayerId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateLayerResult :: Newtype CreateLayerResult _
 
 
 newtype CreateStackRequest = CreateStackRequest 
@@ -690,12 +726,14 @@ newtype CreateStackRequest = CreateStackRequest
   , "DefaultRootDeviceType" :: NullOrUndefined (RootDeviceType)
   , "AgentVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateStackRequest :: Newtype CreateStackRequest _
 
 
 -- | <p>Contains the response to a <code>CreateStack</code> request.</p>
 newtype CreateStackResult = CreateStackResult 
   { "StackId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateStackResult :: Newtype CreateStackResult _
 
 
 newtype CreateUserProfileRequest = CreateUserProfileRequest 
@@ -704,15 +742,18 @@ newtype CreateUserProfileRequest = CreateUserProfileRequest
   , "SshPublicKey" :: NullOrUndefined (String)
   , "AllowSelfManagement" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateUserProfileRequest :: Newtype CreateUserProfileRequest _
 
 
 -- | <p>Contains the response to a <code>CreateUserProfile</code> request.</p>
 newtype CreateUserProfileResult = CreateUserProfileResult 
   { "IamUserArn" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateUserProfileResult :: Newtype CreateUserProfileResult _
 
 
 newtype DailyAutoScalingSchedule = DailyAutoScalingSchedule (Map Hour Switch)
+derive instance newtypeDailyAutoScalingSchedule :: Newtype DailyAutoScalingSchedule _
 
 
 -- | <p>Describes an app's data source.</p>
@@ -721,17 +762,21 @@ newtype DataSource = DataSource
   , "Arn" :: NullOrUndefined (String)
   , "DatabaseName" :: NullOrUndefined (String)
   }
+derive instance newtypeDataSource :: Newtype DataSource _
 
 
 newtype DataSources = DataSources (Array DataSource)
+derive instance newtypeDataSources :: Newtype DataSources _
 
 
 newtype DateTime = DateTime String
+derive instance newtypeDateTime :: Newtype DateTime _
 
 
 newtype DeleteAppRequest = DeleteAppRequest 
   { "AppId" :: (String)
   }
+derive instance newtypeDeleteAppRequest :: Newtype DeleteAppRequest _
 
 
 newtype DeleteInstanceRequest = DeleteInstanceRequest 
@@ -739,21 +784,25 @@ newtype DeleteInstanceRequest = DeleteInstanceRequest
   , "DeleteElasticIp" :: NullOrUndefined (Boolean)
   , "DeleteVolumes" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeleteInstanceRequest :: Newtype DeleteInstanceRequest _
 
 
 newtype DeleteLayerRequest = DeleteLayerRequest 
   { "LayerId" :: (String)
   }
+derive instance newtypeDeleteLayerRequest :: Newtype DeleteLayerRequest _
 
 
 newtype DeleteStackRequest = DeleteStackRequest 
   { "StackId" :: (String)
   }
+derive instance newtypeDeleteStackRequest :: Newtype DeleteStackRequest _
 
 
 newtype DeleteUserProfileRequest = DeleteUserProfileRequest 
   { "IamUserArn" :: (String)
   }
+derive instance newtypeDeleteUserProfileRequest :: Newtype DeleteUserProfileRequest _
 
 
 -- | <p>Describes a deployment of a stack or app.</p>
@@ -771,6 +820,7 @@ newtype Deployment = Deployment
   , "CustomJson" :: NullOrUndefined (String)
   , "InstanceIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDeployment :: Newtype Deployment _
 
 
 -- | <p>Used to specify a stack or deployment command.</p>
@@ -778,64 +828,77 @@ newtype DeploymentCommand = DeploymentCommand
   { "Name" :: (DeploymentCommandName)
   , "Args" :: NullOrUndefined (DeploymentCommandArgs)
   }
+derive instance newtypeDeploymentCommand :: Newtype DeploymentCommand _
 
 
 newtype DeploymentCommandArgs = DeploymentCommandArgs (Map String Strings)
+derive instance newtypeDeploymentCommandArgs :: Newtype DeploymentCommandArgs _
 
 
 newtype DeploymentCommandName = DeploymentCommandName String
+derive instance newtypeDeploymentCommandName :: Newtype DeploymentCommandName _
 
 
 newtype Deployments = Deployments (Array Deployment)
+derive instance newtypeDeployments :: Newtype Deployments _
 
 
 newtype DeregisterEcsClusterRequest = DeregisterEcsClusterRequest 
   { "EcsClusterArn" :: (String)
   }
+derive instance newtypeDeregisterEcsClusterRequest :: Newtype DeregisterEcsClusterRequest _
 
 
 newtype DeregisterElasticIpRequest = DeregisterElasticIpRequest 
   { "ElasticIp" :: (String)
   }
+derive instance newtypeDeregisterElasticIpRequest :: Newtype DeregisterElasticIpRequest _
 
 
 newtype DeregisterInstanceRequest = DeregisterInstanceRequest 
   { "InstanceId" :: (String)
   }
+derive instance newtypeDeregisterInstanceRequest :: Newtype DeregisterInstanceRequest _
 
 
 newtype DeregisterRdsDbInstanceRequest = DeregisterRdsDbInstanceRequest 
   { "RdsDbInstanceArn" :: (String)
   }
+derive instance newtypeDeregisterRdsDbInstanceRequest :: Newtype DeregisterRdsDbInstanceRequest _
 
 
 newtype DeregisterVolumeRequest = DeregisterVolumeRequest 
   { "VolumeId" :: (String)
   }
+derive instance newtypeDeregisterVolumeRequest :: Newtype DeregisterVolumeRequest _
 
 
 newtype DescribeAgentVersionsRequest = DescribeAgentVersionsRequest 
   { "StackId" :: NullOrUndefined (String)
   , "ConfigurationManager" :: NullOrUndefined (StackConfigurationManager)
   }
+derive instance newtypeDescribeAgentVersionsRequest :: Newtype DescribeAgentVersionsRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeAgentVersions</code> request.</p>
 newtype DescribeAgentVersionsResult = DescribeAgentVersionsResult 
   { "AgentVersions" :: NullOrUndefined (AgentVersions)
   }
+derive instance newtypeDescribeAgentVersionsResult :: Newtype DescribeAgentVersionsResult _
 
 
 newtype DescribeAppsRequest = DescribeAppsRequest 
   { "StackId" :: NullOrUndefined (String)
   , "AppIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeAppsRequest :: Newtype DescribeAppsRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeApps</code> request.</p>
 newtype DescribeAppsResult = DescribeAppsResult 
   { "Apps" :: NullOrUndefined (Apps)
   }
+derive instance newtypeDescribeAppsResult :: Newtype DescribeAppsResult _
 
 
 newtype DescribeCommandsRequest = DescribeCommandsRequest 
@@ -843,12 +906,14 @@ newtype DescribeCommandsRequest = DescribeCommandsRequest
   , "InstanceId" :: NullOrUndefined (String)
   , "CommandIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeCommandsRequest :: Newtype DescribeCommandsRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeCommands</code> request.</p>
 newtype DescribeCommandsResult = DescribeCommandsResult 
   { "Commands" :: NullOrUndefined (Commands)
   }
+derive instance newtypeDescribeCommandsResult :: Newtype DescribeCommandsResult _
 
 
 newtype DescribeDeploymentsRequest = DescribeDeploymentsRequest 
@@ -856,12 +921,14 @@ newtype DescribeDeploymentsRequest = DescribeDeploymentsRequest
   , "AppId" :: NullOrUndefined (String)
   , "DeploymentIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeDeploymentsRequest :: Newtype DescribeDeploymentsRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeDeployments</code> request.</p>
 newtype DescribeDeploymentsResult = DescribeDeploymentsResult 
   { "Deployments" :: NullOrUndefined (Deployments)
   }
+derive instance newtypeDescribeDeploymentsResult :: Newtype DescribeDeploymentsResult _
 
 
 newtype DescribeEcsClustersRequest = DescribeEcsClustersRequest 
@@ -870,6 +937,7 @@ newtype DescribeEcsClustersRequest = DescribeEcsClustersRequest
   , "NextToken" :: NullOrUndefined (String)
   , "MaxResults" :: NullOrUndefined (Int)
   }
+derive instance newtypeDescribeEcsClustersRequest :: Newtype DescribeEcsClustersRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeEcsClusters</code> request.</p>
@@ -877,6 +945,7 @@ newtype DescribeEcsClustersResult = DescribeEcsClustersResult
   { "EcsClusters" :: NullOrUndefined (EcsClusters)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEcsClustersResult :: Newtype DescribeEcsClustersResult _
 
 
 newtype DescribeElasticIpsRequest = DescribeElasticIpsRequest 
@@ -884,24 +953,28 @@ newtype DescribeElasticIpsRequest = DescribeElasticIpsRequest
   , "StackId" :: NullOrUndefined (String)
   , "Ips" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeElasticIpsRequest :: Newtype DescribeElasticIpsRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeElasticIps</code> request.</p>
 newtype DescribeElasticIpsResult = DescribeElasticIpsResult 
   { "ElasticIps" :: NullOrUndefined (ElasticIps)
   }
+derive instance newtypeDescribeElasticIpsResult :: Newtype DescribeElasticIpsResult _
 
 
 newtype DescribeElasticLoadBalancersRequest = DescribeElasticLoadBalancersRequest 
   { "StackId" :: NullOrUndefined (String)
   , "LayerIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeElasticLoadBalancersRequest :: Newtype DescribeElasticLoadBalancersRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeElasticLoadBalancers</code> request.</p>
 newtype DescribeElasticLoadBalancersResult = DescribeElasticLoadBalancersResult 
   { "ElasticLoadBalancers" :: NullOrUndefined (ElasticLoadBalancers)
   }
+derive instance newtypeDescribeElasticLoadBalancersResult :: Newtype DescribeElasticLoadBalancersResult _
 
 
 newtype DescribeInstancesRequest = DescribeInstancesRequest 
@@ -909,59 +982,69 @@ newtype DescribeInstancesRequest = DescribeInstancesRequest
   , "LayerId" :: NullOrUndefined (String)
   , "InstanceIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeInstancesRequest :: Newtype DescribeInstancesRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeInstances</code> request.</p>
 newtype DescribeInstancesResult = DescribeInstancesResult 
   { "Instances" :: NullOrUndefined (Instances)
   }
+derive instance newtypeDescribeInstancesResult :: Newtype DescribeInstancesResult _
 
 
 newtype DescribeLayersRequest = DescribeLayersRequest 
   { "StackId" :: NullOrUndefined (String)
   , "LayerIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeLayersRequest :: Newtype DescribeLayersRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeLayers</code> request.</p>
 newtype DescribeLayersResult = DescribeLayersResult 
   { "Layers" :: NullOrUndefined (Layers)
   }
+derive instance newtypeDescribeLayersResult :: Newtype DescribeLayersResult _
 
 
 newtype DescribeLoadBasedAutoScalingRequest = DescribeLoadBasedAutoScalingRequest 
   { "LayerIds" :: (Strings)
   }
+derive instance newtypeDescribeLoadBasedAutoScalingRequest :: Newtype DescribeLoadBasedAutoScalingRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeLoadBasedAutoScaling</code> request.</p>
 newtype DescribeLoadBasedAutoScalingResult = DescribeLoadBasedAutoScalingResult 
   { "LoadBasedAutoScalingConfigurations" :: NullOrUndefined (LoadBasedAutoScalingConfigurations)
   }
+derive instance newtypeDescribeLoadBasedAutoScalingResult :: Newtype DescribeLoadBasedAutoScalingResult _
 
 
 -- | <p>Contains the response to a <code>DescribeMyUserProfile</code> request.</p>
 newtype DescribeMyUserProfileResult = DescribeMyUserProfileResult 
   { "UserProfile" :: NullOrUndefined (SelfUserProfile)
   }
+derive instance newtypeDescribeMyUserProfileResult :: Newtype DescribeMyUserProfileResult _
 
 
 -- | <p>The response to a <code>DescribeOperatingSystems</code> request.</p>
 newtype DescribeOperatingSystemsResponse = DescribeOperatingSystemsResponse 
   { "OperatingSystems" :: NullOrUndefined (OperatingSystems)
   }
+derive instance newtypeDescribeOperatingSystemsResponse :: Newtype DescribeOperatingSystemsResponse _
 
 
 newtype DescribePermissionsRequest = DescribePermissionsRequest 
   { "IamUserArn" :: NullOrUndefined (String)
   , "StackId" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribePermissionsRequest :: Newtype DescribePermissionsRequest _
 
 
 -- | <p>Contains the response to a <code>DescribePermissions</code> request.</p>
 newtype DescribePermissionsResult = DescribePermissionsResult 
   { "Permissions" :: NullOrUndefined (Permissions)
   }
+derive instance newtypeDescribePermissionsResult :: Newtype DescribePermissionsResult _
 
 
 newtype DescribeRaidArraysRequest = DescribeRaidArraysRequest 
@@ -969,24 +1052,28 @@ newtype DescribeRaidArraysRequest = DescribeRaidArraysRequest
   , "StackId" :: NullOrUndefined (String)
   , "RaidArrayIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeRaidArraysRequest :: Newtype DescribeRaidArraysRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeRaidArrays</code> request.</p>
 newtype DescribeRaidArraysResult = DescribeRaidArraysResult 
   { "RaidArrays" :: NullOrUndefined (RaidArrays)
   }
+derive instance newtypeDescribeRaidArraysResult :: Newtype DescribeRaidArraysResult _
 
 
 newtype DescribeRdsDbInstancesRequest = DescribeRdsDbInstancesRequest 
   { "StackId" :: (String)
   , "RdsDbInstanceArns" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeRdsDbInstancesRequest :: Newtype DescribeRdsDbInstancesRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeRdsDbInstances</code> request.</p>
 newtype DescribeRdsDbInstancesResult = DescribeRdsDbInstancesResult 
   { "RdsDbInstances" :: NullOrUndefined (RdsDbInstances)
   }
+derive instance newtypeDescribeRdsDbInstancesResult :: Newtype DescribeRdsDbInstancesResult _
 
 
 newtype DescribeServiceErrorsRequest = DescribeServiceErrorsRequest 
@@ -994,17 +1081,20 @@ newtype DescribeServiceErrorsRequest = DescribeServiceErrorsRequest
   , "InstanceId" :: NullOrUndefined (String)
   , "ServiceErrorIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeServiceErrorsRequest :: Newtype DescribeServiceErrorsRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeServiceErrors</code> request.</p>
 newtype DescribeServiceErrorsResult = DescribeServiceErrorsResult 
   { "ServiceErrors" :: NullOrUndefined (ServiceErrors)
   }
+derive instance newtypeDescribeServiceErrorsResult :: Newtype DescribeServiceErrorsResult _
 
 
 newtype DescribeStackProvisioningParametersRequest = DescribeStackProvisioningParametersRequest 
   { "StackId" :: (String)
   }
+derive instance newtypeDescribeStackProvisioningParametersRequest :: Newtype DescribeStackProvisioningParametersRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeStackProvisioningParameters</code> request.</p>
@@ -1012,50 +1102,59 @@ newtype DescribeStackProvisioningParametersResult = DescribeStackProvisioningPar
   { "AgentInstallerUrl" :: NullOrUndefined (String)
   , "Parameters" :: NullOrUndefined (Parameters)
   }
+derive instance newtypeDescribeStackProvisioningParametersResult :: Newtype DescribeStackProvisioningParametersResult _
 
 
 newtype DescribeStackSummaryRequest = DescribeStackSummaryRequest 
   { "StackId" :: (String)
   }
+derive instance newtypeDescribeStackSummaryRequest :: Newtype DescribeStackSummaryRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeStackSummary</code> request.</p>
 newtype DescribeStackSummaryResult = DescribeStackSummaryResult 
   { "StackSummary" :: NullOrUndefined (StackSummary)
   }
+derive instance newtypeDescribeStackSummaryResult :: Newtype DescribeStackSummaryResult _
 
 
 newtype DescribeStacksRequest = DescribeStacksRequest 
   { "StackIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeStacksRequest :: Newtype DescribeStacksRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeStacks</code> request.</p>
 newtype DescribeStacksResult = DescribeStacksResult 
   { "Stacks" :: NullOrUndefined (Stacks)
   }
+derive instance newtypeDescribeStacksResult :: Newtype DescribeStacksResult _
 
 
 newtype DescribeTimeBasedAutoScalingRequest = DescribeTimeBasedAutoScalingRequest 
   { "InstanceIds" :: (Strings)
   }
+derive instance newtypeDescribeTimeBasedAutoScalingRequest :: Newtype DescribeTimeBasedAutoScalingRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeTimeBasedAutoScaling</code> request.</p>
 newtype DescribeTimeBasedAutoScalingResult = DescribeTimeBasedAutoScalingResult 
   { "TimeBasedAutoScalingConfigurations" :: NullOrUndefined (TimeBasedAutoScalingConfigurations)
   }
+derive instance newtypeDescribeTimeBasedAutoScalingResult :: Newtype DescribeTimeBasedAutoScalingResult _
 
 
 newtype DescribeUserProfilesRequest = DescribeUserProfilesRequest 
   { "IamUserArns" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeUserProfilesRequest :: Newtype DescribeUserProfilesRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeUserProfiles</code> request.</p>
 newtype DescribeUserProfilesResult = DescribeUserProfilesResult 
   { "UserProfiles" :: NullOrUndefined (UserProfiles)
   }
+derive instance newtypeDescribeUserProfilesResult :: Newtype DescribeUserProfilesResult _
 
 
 newtype DescribeVolumesRequest = DescribeVolumesRequest 
@@ -1064,23 +1163,27 @@ newtype DescribeVolumesRequest = DescribeVolumesRequest
   , "RaidArrayId" :: NullOrUndefined (String)
   , "VolumeIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeDescribeVolumesRequest :: Newtype DescribeVolumesRequest _
 
 
 -- | <p>Contains the response to a <code>DescribeVolumes</code> request.</p>
 newtype DescribeVolumesResult = DescribeVolumesResult 
   { "Volumes" :: NullOrUndefined (Volumes)
   }
+derive instance newtypeDescribeVolumesResult :: Newtype DescribeVolumesResult _
 
 
 newtype DetachElasticLoadBalancerRequest = DetachElasticLoadBalancerRequest 
   { "ElasticLoadBalancerName" :: (String)
   , "LayerId" :: (String)
   }
+derive instance newtypeDetachElasticLoadBalancerRequest :: Newtype DetachElasticLoadBalancerRequest _
 
 
 newtype DisassociateElasticIpRequest = DisassociateElasticIpRequest 
   { "ElasticIp" :: (String)
   }
+derive instance newtypeDisassociateElasticIpRequest :: Newtype DisassociateElasticIpRequest _
 
 
 -- | <p>Describes an Amazon EBS volume. This data type maps directly to the Amazon EC2 <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a> data type.</p>
@@ -1091,6 +1194,7 @@ newtype EbsBlockDevice = EbsBlockDevice
   , "VolumeType" :: NullOrUndefined (VolumeType)
   , "DeleteOnTermination" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeEbsBlockDevice :: Newtype EbsBlockDevice _
 
 
 -- | <p>Describes a registered Amazon ECS cluster.</p>
@@ -1100,9 +1204,11 @@ newtype EcsCluster = EcsCluster
   , "StackId" :: NullOrUndefined (String)
   , "RegisteredAt" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeEcsCluster :: Newtype EcsCluster _
 
 
 newtype EcsClusters = EcsClusters (Array EcsCluster)
+derive instance newtypeEcsClusters :: Newtype EcsClusters _
 
 
 -- | <p>Describes an Elastic IP address.</p>
@@ -1113,9 +1219,11 @@ newtype ElasticIp = ElasticIp
   , "Region" :: NullOrUndefined (String)
   , "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeElasticIp :: Newtype ElasticIp _
 
 
 newtype ElasticIps = ElasticIps (Array ElasticIp)
+derive instance newtypeElasticIps :: Newtype ElasticIps _
 
 
 -- | <p>Describes an Elastic Load Balancing instance.</p>
@@ -1130,9 +1238,11 @@ newtype ElasticLoadBalancer = ElasticLoadBalancer
   , "SubnetIds" :: NullOrUndefined (Strings)
   , "Ec2InstanceIds" :: NullOrUndefined (Strings)
   }
+derive instance newtypeElasticLoadBalancer :: Newtype ElasticLoadBalancer _
 
 
 newtype ElasticLoadBalancers = ElasticLoadBalancers (Array ElasticLoadBalancer)
+derive instance newtypeElasticLoadBalancers :: Newtype ElasticLoadBalancers _
 
 
 -- | <p>Represents an app's environment variable.</p>
@@ -1141,14 +1251,17 @@ newtype EnvironmentVariable = EnvironmentVariable
   , "Value" :: (String)
   , "Secure" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeEnvironmentVariable :: Newtype EnvironmentVariable _
 
 
 newtype EnvironmentVariables = EnvironmentVariables (Array EnvironmentVariable)
+derive instance newtypeEnvironmentVariables :: Newtype EnvironmentVariables _
 
 
 newtype GetHostnameSuggestionRequest = GetHostnameSuggestionRequest 
   { "LayerId" :: (String)
   }
+derive instance newtypeGetHostnameSuggestionRequest :: Newtype GetHostnameSuggestionRequest _
 
 
 -- | <p>Contains the response to a <code>GetHostnameSuggestion</code> request.</p>
@@ -1156,21 +1269,25 @@ newtype GetHostnameSuggestionResult = GetHostnameSuggestionResult
   { "LayerId" :: NullOrUndefined (String)
   , "Hostname" :: NullOrUndefined (String)
   }
+derive instance newtypeGetHostnameSuggestionResult :: Newtype GetHostnameSuggestionResult _
 
 
 newtype GrantAccessRequest = GrantAccessRequest 
   { "InstanceId" :: (String)
   , "ValidForInMinutes" :: NullOrUndefined (ValidForInMinutes)
   }
+derive instance newtypeGrantAccessRequest :: Newtype GrantAccessRequest _
 
 
 -- | <p>Contains the response to a <code>GrantAccess</code> request.</p>
 newtype GrantAccessResult = GrantAccessResult 
   { "TemporaryCredential" :: NullOrUndefined (TemporaryCredential)
   }
+derive instance newtypeGrantAccessResult :: Newtype GrantAccessResult _
 
 
 newtype Hour = Hour String
+derive instance newtypeHour :: Newtype Hour _
 
 
 -- | <p>Describes an instance.</p>
@@ -1217,6 +1334,7 @@ newtype Instance = Instance
   , "Tenancy" :: NullOrUndefined (String)
   , "VirtualizationType" :: NullOrUndefined (VirtualizationType)
   }
+derive instance newtypeInstance :: Newtype Instance _
 
 
 -- | <p>Contains a description of an Amazon EC2 instance from the Amazon EC2 metadata service. For more information, see <a href="http://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html">Instance Metadata and User Data</a>.</p>
@@ -1224,9 +1342,11 @@ newtype InstanceIdentity = InstanceIdentity
   { "Document" :: NullOrUndefined (String)
   , "Signature" :: NullOrUndefined (String)
   }
+derive instance newtypeInstanceIdentity :: Newtype InstanceIdentity _
 
 
 newtype Instances = Instances (Array Instance)
+derive instance newtypeInstances :: Newtype Instances _
 
 
 -- | <p>Describes how many instances a stack has for each status.</p>
@@ -1252,6 +1372,7 @@ newtype InstancesCount = InstancesCount
   , "Terminating" :: NullOrUndefined (Int)
   , "Unassigning" :: NullOrUndefined (Int)
   }
+derive instance newtypeInstancesCount :: Newtype InstancesCount _
 
 
 -- | <p>Describes a layer.</p>
@@ -1280,24 +1401,30 @@ newtype Layer = Layer
   , "UseEbsOptimizedInstances" :: NullOrUndefined (Boolean)
   , "LifecycleEventConfiguration" :: NullOrUndefined (LifecycleEventConfiguration)
   }
+derive instance newtypeLayer :: Newtype Layer _
 
 
 newtype LayerAttributes = LayerAttributes (Map LayerAttributesKeys String)
+derive instance newtypeLayerAttributes :: Newtype LayerAttributes _
 
 
 newtype LayerAttributesKeys = LayerAttributesKeys String
+derive instance newtypeLayerAttributesKeys :: Newtype LayerAttributesKeys _
 
 
 newtype LayerType = LayerType String
+derive instance newtypeLayerType :: Newtype LayerType _
 
 
 newtype Layers = Layers (Array Layer)
+derive instance newtypeLayers :: Newtype Layers _
 
 
 -- | <p>Specifies the lifecycle event configuration</p>
 newtype LifecycleEventConfiguration = LifecycleEventConfiguration 
   { "Shutdown" :: NullOrUndefined (ShutdownEventConfiguration)
   }
+derive instance newtypeLifecycleEventConfiguration :: Newtype LifecycleEventConfiguration _
 
 
 newtype ListTagsRequest = ListTagsRequest 
@@ -1305,6 +1432,7 @@ newtype ListTagsRequest = ListTagsRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListTagsRequest :: Newtype ListTagsRequest _
 
 
 -- | <p>Contains the response to a <code>ListTags</code> request.</p>
@@ -1312,6 +1440,7 @@ newtype ListTagsResult = ListTagsResult
   { "Tags" :: NullOrUndefined (Tags)
   , "NextToken" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListTagsResult :: Newtype ListTagsResult _
 
 
 -- | <p>Describes a layer's load-based auto scaling configuration.</p>
@@ -1321,18 +1450,23 @@ newtype LoadBasedAutoScalingConfiguration = LoadBasedAutoScalingConfiguration
   , "UpScaling" :: NullOrUndefined (AutoScalingThresholds)
   , "DownScaling" :: NullOrUndefined (AutoScalingThresholds)
   }
+derive instance newtypeLoadBasedAutoScalingConfiguration :: Newtype LoadBasedAutoScalingConfiguration _
 
 
 newtype LoadBasedAutoScalingConfigurations = LoadBasedAutoScalingConfigurations (Array LoadBasedAutoScalingConfiguration)
+derive instance newtypeLoadBasedAutoScalingConfigurations :: Newtype LoadBasedAutoScalingConfigurations _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype Minute = Minute Int
+derive instance newtypeMinute :: Newtype Minute _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>Describes supported operating systems in AWS OpsWorks Stacks.</p>
@@ -1345,6 +1479,7 @@ newtype OperatingSystem = OperatingSystem
   , "ReportedVersion" :: NullOrUndefined (String)
   , "Supported" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeOperatingSystem :: Newtype OperatingSystem _
 
 
 -- | <p>A block that contains information about the configuration manager (Chef) and the versions of the configuration manager that are supported for an operating system.</p>
@@ -1352,15 +1487,19 @@ newtype OperatingSystemConfigurationManager = OperatingSystemConfigurationManage
   { "Name" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (String)
   }
+derive instance newtypeOperatingSystemConfigurationManager :: Newtype OperatingSystemConfigurationManager _
 
 
 newtype OperatingSystemConfigurationManagers = OperatingSystemConfigurationManagers (Array OperatingSystemConfigurationManager)
+derive instance newtypeOperatingSystemConfigurationManagers :: Newtype OperatingSystemConfigurationManagers _
 
 
 newtype OperatingSystems = OperatingSystems (Array OperatingSystem)
+derive instance newtypeOperatingSystems :: Newtype OperatingSystems _
 
 
 newtype Parameters = Parameters (Map String String)
+derive instance newtypeParameters :: Newtype Parameters _
 
 
 -- | <p>Describes stack or user permissions.</p>
@@ -1371,9 +1510,11 @@ newtype Permission = Permission
   , "AllowSudo" :: NullOrUndefined (Boolean)
   , "Level" :: NullOrUndefined (String)
   }
+derive instance newtypePermission :: Newtype Permission _
 
 
 newtype Permissions = Permissions (Array Permission)
+derive instance newtypePermissions :: Newtype Permissions _
 
 
 -- | <p>Describes an instance's RAID array.</p>
@@ -1392,9 +1533,11 @@ newtype RaidArray = RaidArray
   , "VolumeType" :: NullOrUndefined (String)
   , "Iops" :: NullOrUndefined (Int)
   }
+derive instance newtypeRaidArray :: Newtype RaidArray _
 
 
 newtype RaidArrays = RaidArrays (Array RaidArray)
+derive instance newtypeRaidArrays :: Newtype RaidArrays _
 
 
 -- | <p>Describes an Amazon RDS instance.</p>
@@ -1409,14 +1552,17 @@ newtype RdsDbInstance = RdsDbInstance
   , "StackId" :: NullOrUndefined (String)
   , "MissingOnRds" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeRdsDbInstance :: Newtype RdsDbInstance _
 
 
 newtype RdsDbInstances = RdsDbInstances (Array RdsDbInstance)
+derive instance newtypeRdsDbInstances :: Newtype RdsDbInstances _
 
 
 newtype RebootInstanceRequest = RebootInstanceRequest 
   { "InstanceId" :: (String)
   }
+derive instance newtypeRebootInstanceRequest :: Newtype RebootInstanceRequest _
 
 
 -- | <p>AWS OpsWorks Stacks supports five lifecycle events: <b>setup</b>, <b>configuration</b>, <b>deploy</b>, <b>undeploy</b>, and <b>shutdown</b>. For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the standard recipes. <code>LayerCustomRecipes</code> specifies the custom recipes for a particular layer to be run in response to each of the five events. </p> <p>To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name, which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in the repository's phpapp2 folder.</p>
@@ -1427,30 +1573,35 @@ newtype Recipes = Recipes
   , "Undeploy" :: NullOrUndefined (Strings)
   , "Shutdown" :: NullOrUndefined (Strings)
   }
+derive instance newtypeRecipes :: Newtype Recipes _
 
 
 newtype RegisterEcsClusterRequest = RegisterEcsClusterRequest 
   { "EcsClusterArn" :: (String)
   , "StackId" :: (String)
   }
+derive instance newtypeRegisterEcsClusterRequest :: Newtype RegisterEcsClusterRequest _
 
 
 -- | <p>Contains the response to a <code>RegisterEcsCluster</code> request.</p>
 newtype RegisterEcsClusterResult = RegisterEcsClusterResult 
   { "EcsClusterArn" :: NullOrUndefined (String)
   }
+derive instance newtypeRegisterEcsClusterResult :: Newtype RegisterEcsClusterResult _
 
 
 newtype RegisterElasticIpRequest = RegisterElasticIpRequest 
   { "ElasticIp" :: (String)
   , "StackId" :: (String)
   }
+derive instance newtypeRegisterElasticIpRequest :: Newtype RegisterElasticIpRequest _
 
 
 -- | <p>Contains the response to a <code>RegisterElasticIp</code> request.</p>
 newtype RegisterElasticIpResult = RegisterElasticIpResult 
   { "ElasticIp" :: NullOrUndefined (String)
   }
+derive instance newtypeRegisterElasticIpResult :: Newtype RegisterElasticIpResult _
 
 
 newtype RegisterInstanceRequest = RegisterInstanceRequest 
@@ -1462,12 +1613,14 @@ newtype RegisterInstanceRequest = RegisterInstanceRequest
   , "RsaPublicKeyFingerprint" :: NullOrUndefined (String)
   , "InstanceIdentity" :: NullOrUndefined (InstanceIdentity)
   }
+derive instance newtypeRegisterInstanceRequest :: Newtype RegisterInstanceRequest _
 
 
 -- | <p>Contains the response to a <code>RegisterInstanceResult</code> request.</p>
 newtype RegisterInstanceResult = RegisterInstanceResult 
   { "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeRegisterInstanceResult :: Newtype RegisterInstanceResult _
 
 
 newtype RegisterRdsDbInstanceRequest = RegisterRdsDbInstanceRequest 
@@ -1476,18 +1629,21 @@ newtype RegisterRdsDbInstanceRequest = RegisterRdsDbInstanceRequest
   , "DbUser" :: (String)
   , "DbPassword" :: (String)
   }
+derive instance newtypeRegisterRdsDbInstanceRequest :: Newtype RegisterRdsDbInstanceRequest _
 
 
 newtype RegisterVolumeRequest = RegisterVolumeRequest 
   { "Ec2VolumeId" :: NullOrUndefined (String)
   , "StackId" :: (String)
   }
+derive instance newtypeRegisterVolumeRequest :: Newtype RegisterVolumeRequest _
 
 
 -- | <p>Contains the response to a <code>RegisterVolume</code> request.</p>
 newtype RegisterVolumeResult = RegisterVolumeResult 
   { "VolumeId" :: NullOrUndefined (String)
   }
+derive instance newtypeRegisterVolumeResult :: Newtype RegisterVolumeResult _
 
 
 -- | <p>A registered instance's reported operating system.</p>
@@ -1496,18 +1652,22 @@ newtype ReportedOs = ReportedOs
   , "Name" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (String)
   }
+derive instance newtypeReportedOs :: Newtype ReportedOs _
 
 
 newtype ResourceArn = ResourceArn String
+derive instance newtypeResourceArn :: Newtype ResourceArn _
 
 
 -- | <p>Indicates that a resource was not found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype RootDeviceType = RootDeviceType String
+derive instance newtypeRootDeviceType :: Newtype RootDeviceType _
 
 
 -- | <p>Describes a user's SSH information.</p>
@@ -1517,6 +1677,7 @@ newtype SelfUserProfile = SelfUserProfile
   , "SshUsername" :: NullOrUndefined (String)
   , "SshPublicKey" :: NullOrUndefined (String)
   }
+derive instance newtypeSelfUserProfile :: Newtype SelfUserProfile _
 
 
 -- | <p>Describes an AWS OpsWorks Stacks service error.</p>
@@ -1528,9 +1689,11 @@ newtype ServiceError = ServiceError
   , "Message" :: NullOrUndefined (String)
   , "CreatedAt" :: NullOrUndefined (DateTime)
   }
+derive instance newtypeServiceError :: Newtype ServiceError _
 
 
 newtype ServiceErrors = ServiceErrors (Array ServiceError)
+derive instance newtypeServiceErrors :: Newtype ServiceErrors _
 
 
 newtype SetLoadBasedAutoScalingRequest = SetLoadBasedAutoScalingRequest 
@@ -1539,6 +1702,7 @@ newtype SetLoadBasedAutoScalingRequest = SetLoadBasedAutoScalingRequest
   , "UpScaling" :: NullOrUndefined (AutoScalingThresholds)
   , "DownScaling" :: NullOrUndefined (AutoScalingThresholds)
   }
+derive instance newtypeSetLoadBasedAutoScalingRequest :: Newtype SetLoadBasedAutoScalingRequest _
 
 
 newtype SetPermissionRequest = SetPermissionRequest 
@@ -1548,12 +1712,14 @@ newtype SetPermissionRequest = SetPermissionRequest
   , "AllowSudo" :: NullOrUndefined (Boolean)
   , "Level" :: NullOrUndefined (String)
   }
+derive instance newtypeSetPermissionRequest :: Newtype SetPermissionRequest _
 
 
 newtype SetTimeBasedAutoScalingRequest = SetTimeBasedAutoScalingRequest 
   { "InstanceId" :: (String)
   , "AutoScalingSchedule" :: NullOrUndefined (WeeklyAutoScalingSchedule)
   }
+derive instance newtypeSetTimeBasedAutoScalingRequest :: Newtype SetTimeBasedAutoScalingRequest _
 
 
 -- | <p>The Shutdown event configuration.</p>
@@ -1561,6 +1727,7 @@ newtype ShutdownEventConfiguration = ShutdownEventConfiguration
   { "ExecutionTimeout" :: NullOrUndefined (Int)
   , "DelayUntilElbConnectionsDrained" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeShutdownEventConfiguration :: Newtype ShutdownEventConfiguration _
 
 
 -- | <p>Contains the information required to retrieve an app or cookbook from a repository. For more information, see <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html">Creating Apps</a> or <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html">Custom Recipes and Cookbooks</a>.</p>
@@ -1572,9 +1739,11 @@ newtype Source = Source
   , "SshKey" :: NullOrUndefined (String)
   , "Revision" :: NullOrUndefined (String)
   }
+derive instance newtypeSource :: Newtype Source _
 
 
 newtype SourceType = SourceType String
+derive instance newtypeSourceType :: Newtype SourceType _
 
 
 -- | <p>Describes an app's SSL configuration.</p>
@@ -1583,6 +1752,7 @@ newtype SslConfiguration = SslConfiguration
   , "PrivateKey" :: (String)
   , "Chain" :: NullOrUndefined (String)
   }
+derive instance newtypeSslConfiguration :: Newtype SslConfiguration _
 
 
 -- | <p>Describes a stack.</p>
@@ -1610,12 +1780,15 @@ newtype Stack = Stack
   , "DefaultRootDeviceType" :: NullOrUndefined (RootDeviceType)
   , "AgentVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeStack :: Newtype Stack _
 
 
 newtype StackAttributes = StackAttributes (Map StackAttributesKeys String)
+derive instance newtypeStackAttributes :: Newtype StackAttributes _
 
 
 newtype StackAttributesKeys = StackAttributesKeys String
+derive instance newtypeStackAttributesKeys :: Newtype StackAttributesKeys _
 
 
 -- | <p>Describes the configuration manager.</p>
@@ -1623,6 +1796,7 @@ newtype StackConfigurationManager = StackConfigurationManager
   { "Name" :: NullOrUndefined (String)
   , "Version" :: NullOrUndefined (String)
   }
+derive instance newtypeStackConfigurationManager :: Newtype StackConfigurationManager _
 
 
 -- | <p>Summarizes the number of layers, instances, and apps in a stack.</p>
@@ -1634,54 +1808,67 @@ newtype StackSummary = StackSummary
   , "AppsCount" :: NullOrUndefined (Int)
   , "InstancesCount" :: NullOrUndefined (InstancesCount)
   }
+derive instance newtypeStackSummary :: Newtype StackSummary _
 
 
 newtype Stacks = Stacks (Array Stack)
+derive instance newtypeStacks :: Newtype Stacks _
 
 
 newtype StartInstanceRequest = StartInstanceRequest 
   { "InstanceId" :: (String)
   }
+derive instance newtypeStartInstanceRequest :: Newtype StartInstanceRequest _
 
 
 newtype StartStackRequest = StartStackRequest 
   { "StackId" :: (String)
   }
+derive instance newtypeStartStackRequest :: Newtype StartStackRequest _
 
 
 newtype StopInstanceRequest = StopInstanceRequest 
   { "InstanceId" :: (String)
   , "Force" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeStopInstanceRequest :: Newtype StopInstanceRequest _
 
 
 newtype StopStackRequest = StopStackRequest 
   { "StackId" :: (String)
   }
+derive instance newtypeStopStackRequest :: Newtype StopStackRequest _
 
 
 newtype Strings = Strings (Array String)
+derive instance newtypeStrings :: Newtype Strings _
 
 
 newtype Switch = Switch String
+derive instance newtypeSwitch :: Newtype Switch _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeys = TagKeys (Array TagKey)
+derive instance newtypeTagKeys :: Newtype TagKeys _
 
 
 newtype TagResourceRequest = TagResourceRequest 
   { "ResourceArn" :: (ResourceArn)
   , "Tags" :: (Tags)
   }
+derive instance newtypeTagResourceRequest :: Newtype TagResourceRequest _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Map TagKey TagValue)
+derive instance newtypeTags :: Newtype Tags _
 
 
 -- | <p>Contains the data needed by RDP clients such as the Microsoft Remote Desktop Connection to log in to the instance.</p>
@@ -1691,6 +1878,7 @@ newtype TemporaryCredential = TemporaryCredential
   , "ValidForInMinutes" :: NullOrUndefined (Int)
   , "InstanceId" :: NullOrUndefined (String)
   }
+derive instance newtypeTemporaryCredential :: Newtype TemporaryCredential _
 
 
 -- | <p>Describes an instance's time-based auto scaling configuration.</p>
@@ -1698,25 +1886,30 @@ newtype TimeBasedAutoScalingConfiguration = TimeBasedAutoScalingConfiguration
   { "InstanceId" :: NullOrUndefined (String)
   , "AutoScalingSchedule" :: NullOrUndefined (WeeklyAutoScalingSchedule)
   }
+derive instance newtypeTimeBasedAutoScalingConfiguration :: Newtype TimeBasedAutoScalingConfiguration _
 
 
 newtype TimeBasedAutoScalingConfigurations = TimeBasedAutoScalingConfigurations (Array TimeBasedAutoScalingConfiguration)
+derive instance newtypeTimeBasedAutoScalingConfigurations :: Newtype TimeBasedAutoScalingConfigurations _
 
 
 newtype UnassignInstanceRequest = UnassignInstanceRequest 
   { "InstanceId" :: (String)
   }
+derive instance newtypeUnassignInstanceRequest :: Newtype UnassignInstanceRequest _
 
 
 newtype UnassignVolumeRequest = UnassignVolumeRequest 
   { "VolumeId" :: (String)
   }
+derive instance newtypeUnassignVolumeRequest :: Newtype UnassignVolumeRequest _
 
 
 newtype UntagResourceRequest = UntagResourceRequest 
   { "ResourceArn" :: (ResourceArn)
   , "TagKeys" :: (TagKeys)
   }
+derive instance newtypeUntagResourceRequest :: Newtype UntagResourceRequest _
 
 
 newtype UpdateAppRequest = UpdateAppRequest 
@@ -1732,12 +1925,14 @@ newtype UpdateAppRequest = UpdateAppRequest
   , "Attributes" :: NullOrUndefined (AppAttributes)
   , "Environment" :: NullOrUndefined (EnvironmentVariables)
   }
+derive instance newtypeUpdateAppRequest :: Newtype UpdateAppRequest _
 
 
 newtype UpdateElasticIpRequest = UpdateElasticIpRequest 
   { "ElasticIp" :: (String)
   , "Name" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateElasticIpRequest :: Newtype UpdateElasticIpRequest _
 
 
 newtype UpdateInstanceRequest = UpdateInstanceRequest 
@@ -1754,6 +1949,7 @@ newtype UpdateInstanceRequest = UpdateInstanceRequest
   , "EbsOptimized" :: NullOrUndefined (Boolean)
   , "AgentVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateInstanceRequest :: Newtype UpdateInstanceRequest _
 
 
 newtype UpdateLayerRequest = UpdateLayerRequest 
@@ -1775,11 +1971,13 @@ newtype UpdateLayerRequest = UpdateLayerRequest
   , "UseEbsOptimizedInstances" :: NullOrUndefined (Boolean)
   , "LifecycleEventConfiguration" :: NullOrUndefined (LifecycleEventConfiguration)
   }
+derive instance newtypeUpdateLayerRequest :: Newtype UpdateLayerRequest _
 
 
 newtype UpdateMyUserProfileRequest = UpdateMyUserProfileRequest 
   { "SshPublicKey" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateMyUserProfileRequest :: Newtype UpdateMyUserProfileRequest _
 
 
 newtype UpdateRdsDbInstanceRequest = UpdateRdsDbInstanceRequest 
@@ -1787,6 +1985,7 @@ newtype UpdateRdsDbInstanceRequest = UpdateRdsDbInstanceRequest
   , "DbUser" :: NullOrUndefined (String)
   , "DbPassword" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateRdsDbInstanceRequest :: Newtype UpdateRdsDbInstanceRequest _
 
 
 newtype UpdateStackRequest = UpdateStackRequest 
@@ -1809,6 +2008,7 @@ newtype UpdateStackRequest = UpdateStackRequest
   , "UseOpsworksSecurityGroups" :: NullOrUndefined (Boolean)
   , "AgentVersion" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateStackRequest :: Newtype UpdateStackRequest _
 
 
 newtype UpdateUserProfileRequest = UpdateUserProfileRequest 
@@ -1817,6 +2017,7 @@ newtype UpdateUserProfileRequest = UpdateUserProfileRequest
   , "SshPublicKey" :: NullOrUndefined (String)
   , "AllowSelfManagement" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateUserProfileRequest :: Newtype UpdateUserProfileRequest _
 
 
 newtype UpdateVolumeRequest = UpdateVolumeRequest 
@@ -1824,6 +2025,7 @@ newtype UpdateVolumeRequest = UpdateVolumeRequest
   , "Name" :: NullOrUndefined (String)
   , "MountPoint" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateVolumeRequest :: Newtype UpdateVolumeRequest _
 
 
 -- | <p>Describes a user's SSH information.</p>
@@ -1834,21 +2036,26 @@ newtype UserProfile = UserProfile
   , "SshPublicKey" :: NullOrUndefined (String)
   , "AllowSelfManagement" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUserProfile :: Newtype UserProfile _
 
 
 newtype UserProfiles = UserProfiles (Array UserProfile)
+derive instance newtypeUserProfiles :: Newtype UserProfiles _
 
 
 newtype ValidForInMinutes = ValidForInMinutes Int
+derive instance newtypeValidForInMinutes :: Newtype ValidForInMinutes _
 
 
 -- | <p>Indicates that a request was not valid.</p>
 newtype ValidationException = ValidationException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeValidationException :: Newtype ValidationException _
 
 
 newtype VirtualizationType = VirtualizationType String
+derive instance newtypeVirtualizationType :: Newtype VirtualizationType _
 
 
 -- | <p>Describes an instance's Amazon EBS volume.</p>
@@ -1868,6 +2075,7 @@ newtype Volume = Volume
   , "Iops" :: NullOrUndefined (Int)
   , "Encrypted" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeVolume :: Newtype Volume _
 
 
 -- | <p>Describes an Amazon EBS volume configuration.</p>
@@ -1880,15 +2088,19 @@ newtype VolumeConfiguration = VolumeConfiguration
   , "Iops" :: NullOrUndefined (Int)
   , "Encrypted" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeVolumeConfiguration :: Newtype VolumeConfiguration _
 
 
 newtype VolumeConfigurations = VolumeConfigurations (Array VolumeConfiguration)
+derive instance newtypeVolumeConfigurations :: Newtype VolumeConfigurations _
 
 
 newtype VolumeType = VolumeType String
+derive instance newtypeVolumeType :: Newtype VolumeType _
 
 
 newtype Volumes = Volumes (Array Volume)
+derive instance newtypeVolumes :: Newtype Volumes _
 
 
 -- | <p>Describes a time-based instance's auto scaling schedule. The schedule consists of a set of key-value pairs.</p> <ul> <li> <p>The key is the time period (a UTC hour) and must be an integer from 0 - 23.</p> </li> <li> <p>The value indicates whether the instance should be online or offline for the specified period, and must be set to "on" or "off"</p> </li> </ul> <p>The default setting for all time periods is off, so you use the following parameters primarily to specify the online periods. You don't have to explicitly specify offline periods unless you want to change an online period to an offline period.</p> <p>The following example specifies that the instance should be online for four hours, from UTC 1200 - 1600. It will be off for the remainder of the day.</p> <p> <code> { "12":"on", "13":"on", "14":"on", "15":"on" } </code> </p>
@@ -1901,3 +2113,4 @@ newtype WeeklyAutoScalingSchedule = WeeklyAutoScalingSchedule
   , "Saturday" :: NullOrUndefined (DailyAutoScalingSchedule)
   , "Sunday" :: NullOrUndefined (DailyAutoScalingSchedule)
   }
+derive instance newtypeWeeklyAutoScalingSchedule :: Newtype WeeklyAutoScalingSchedule _

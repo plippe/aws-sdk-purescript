@@ -6,6 +6,7 @@ module AWS.Snowball where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -115,41 +116,50 @@ newtype Address = Address
   , "PhoneNumber" :: NullOrUndefined (String)
   , "IsRestricted" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAddress :: Newtype Address _
 
 
 newtype AddressId = AddressId String
+derive instance newtypeAddressId :: Newtype AddressId _
 
 
 newtype AddressList = AddressList (Array Address)
+derive instance newtypeAddressList :: Newtype AddressList _
 
 
 newtype CancelClusterRequest = CancelClusterRequest 
   { "ClusterId" :: (ClusterId)
   }
+derive instance newtypeCancelClusterRequest :: Newtype CancelClusterRequest _
 
 
 newtype CancelClusterResult = CancelClusterResult 
   { 
   }
+derive instance newtypeCancelClusterResult :: Newtype CancelClusterResult _
 
 
 newtype CancelJobRequest = CancelJobRequest 
   { "JobId" :: (JobId)
   }
+derive instance newtypeCancelJobRequest :: Newtype CancelJobRequest _
 
 
 newtype CancelJobResult = CancelJobResult 
   { 
   }
+derive instance newtypeCancelJobResult :: Newtype CancelJobResult _
 
 
 newtype ClusterId = ClusterId String
+derive instance newtypeClusterId :: Newtype ClusterId _
 
 
 -- | <p>Job creation failed. Currently, clusters support five nodes. If you have less than five nodes for your cluster and you have more nodes to create for this cluster, try again and create jobs until your cluster has exactly five notes.</p>
 newtype ClusterLimitExceededException = ClusterLimitExceededException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterLimitExceededException :: Newtype ClusterLimitExceededException _
 
 
 -- | <p>Contains a cluster's state, a cluster's ID, and other important information.</p>
@@ -159,9 +169,11 @@ newtype ClusterListEntry = ClusterListEntry
   , "CreationDate" :: NullOrUndefined (Number)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeClusterListEntry :: Newtype ClusterListEntry _
 
 
 newtype ClusterListEntryList = ClusterListEntryList (Array ClusterListEntry)
+derive instance newtypeClusterListEntryList :: Newtype ClusterListEntryList _
 
 
 -- | <p>Contains metadata about a specific cluster.</p>
@@ -180,19 +192,23 @@ newtype ClusterMetadata = ClusterMetadata
   , "Notification" :: NullOrUndefined (Notification)
   , "ForwardingAddressId" :: NullOrUndefined (AddressId)
   }
+derive instance newtypeClusterMetadata :: Newtype ClusterMetadata _
 
 
 newtype ClusterState = ClusterState String
+derive instance newtypeClusterState :: Newtype ClusterState _
 
 
 newtype CreateAddressRequest = CreateAddressRequest 
   { "Address" :: (Address)
   }
+derive instance newtypeCreateAddressRequest :: Newtype CreateAddressRequest _
 
 
 newtype CreateAddressResult = CreateAddressResult 
   { "AddressId" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateAddressResult :: Newtype CreateAddressResult _
 
 
 newtype CreateClusterRequest = CreateClusterRequest 
@@ -207,11 +223,13 @@ newtype CreateClusterRequest = CreateClusterRequest
   , "Notification" :: NullOrUndefined (Notification)
   , "ForwardingAddressId" :: NullOrUndefined (AddressId)
   }
+derive instance newtypeCreateClusterRequest :: Newtype CreateClusterRequest _
 
 
 newtype CreateClusterResult = CreateClusterResult 
   { "ClusterId" :: NullOrUndefined (ClusterId)
   }
+derive instance newtypeCreateClusterResult :: Newtype CreateClusterResult _
 
 
 newtype CreateJobRequest = CreateJobRequest 
@@ -228,11 +246,13 @@ newtype CreateJobRequest = CreateJobRequest
   , "SnowballType" :: NullOrUndefined (SnowballType)
   , "ForwardingAddressId" :: NullOrUndefined (AddressId)
   }
+derive instance newtypeCreateJobRequest :: Newtype CreateJobRequest _
 
 
 newtype CreateJobResult = CreateJobResult 
   { "JobId" :: NullOrUndefined (JobId)
   }
+derive instance newtypeCreateJobResult :: Newtype CreateJobResult _
 
 
 -- | <p>Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a <code>JobState</code> value of <code>InProgress</code>, for both import and export jobs.</p>
@@ -242,122 +262,145 @@ newtype DataTransfer = DataTransfer
   , "TotalBytes" :: NullOrUndefined (Number)
   , "TotalObjects" :: NullOrUndefined (Number)
   }
+derive instance newtypeDataTransfer :: Newtype DataTransfer _
 
 
 newtype DescribeAddressRequest = DescribeAddressRequest 
   { "AddressId" :: (AddressId)
   }
+derive instance newtypeDescribeAddressRequest :: Newtype DescribeAddressRequest _
 
 
 newtype DescribeAddressResult = DescribeAddressResult 
   { "Address" :: NullOrUndefined (Address)
   }
+derive instance newtypeDescribeAddressResult :: Newtype DescribeAddressResult _
 
 
 newtype DescribeAddressesRequest = DescribeAddressesRequest 
   { "MaxResults" :: NullOrUndefined (ListLimit)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeAddressesRequest :: Newtype DescribeAddressesRequest _
 
 
 newtype DescribeAddressesResult = DescribeAddressesResult 
   { "Addresses" :: NullOrUndefined (AddressList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeAddressesResult :: Newtype DescribeAddressesResult _
 
 
 newtype DescribeClusterRequest = DescribeClusterRequest 
   { "ClusterId" :: (ClusterId)
   }
+derive instance newtypeDescribeClusterRequest :: Newtype DescribeClusterRequest _
 
 
 newtype DescribeClusterResult = DescribeClusterResult 
   { "ClusterMetadata" :: NullOrUndefined (ClusterMetadata)
   }
+derive instance newtypeDescribeClusterResult :: Newtype DescribeClusterResult _
 
 
 newtype DescribeJobRequest = DescribeJobRequest 
   { "JobId" :: (JobId)
   }
+derive instance newtypeDescribeJobRequest :: Newtype DescribeJobRequest _
 
 
 newtype DescribeJobResult = DescribeJobResult 
   { "JobMetadata" :: NullOrUndefined (JobMetadata)
   , "SubJobMetadata" :: NullOrUndefined (JobMetadataList)
   }
+derive instance newtypeDescribeJobResult :: Newtype DescribeJobResult _
 
 
 -- | <p>The container for the <a>EventTriggerDefinition$EventResourceARN</a>.</p>
 newtype EventTriggerDefinition = EventTriggerDefinition 
   { "EventResourceARN" :: NullOrUndefined (ResourceARN)
   }
+derive instance newtypeEventTriggerDefinition :: Newtype EventTriggerDefinition _
 
 
 newtype EventTriggerDefinitionList = EventTriggerDefinitionList (Array EventTriggerDefinition)
+derive instance newtypeEventTriggerDefinitionList :: Newtype EventTriggerDefinitionList _
 
 
 newtype GetJobManifestRequest = GetJobManifestRequest 
   { "JobId" :: (JobId)
   }
+derive instance newtypeGetJobManifestRequest :: Newtype GetJobManifestRequest _
 
 
 newtype GetJobManifestResult = GetJobManifestResult 
   { "ManifestURI" :: NullOrUndefined (String)
   }
+derive instance newtypeGetJobManifestResult :: Newtype GetJobManifestResult _
 
 
 newtype GetJobUnlockCodeRequest = GetJobUnlockCodeRequest 
   { "JobId" :: (JobId)
   }
+derive instance newtypeGetJobUnlockCodeRequest :: Newtype GetJobUnlockCodeRequest _
 
 
 newtype GetJobUnlockCodeResult = GetJobUnlockCodeResult 
   { "UnlockCode" :: NullOrUndefined (String)
   }
+derive instance newtypeGetJobUnlockCodeResult :: Newtype GetJobUnlockCodeResult _
 
 
 newtype GetSnowballUsageRequest = GetSnowballUsageRequest 
   { 
   }
+derive instance newtypeGetSnowballUsageRequest :: Newtype GetSnowballUsageRequest _
 
 
 newtype GetSnowballUsageResult = GetSnowballUsageResult 
   { "SnowballLimit" :: NullOrUndefined (Int)
   , "SnowballsInUse" :: NullOrUndefined (Int)
   }
+derive instance newtypeGetSnowballUsageResult :: Newtype GetSnowballUsageResult _
 
 
 -- | <p>The address provided was invalid. Check the address with your region's carrier, and try again.</p>
 newtype InvalidAddressException = InvalidAddressException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidAddressException :: Newtype InvalidAddressException _
 
 
 -- | <p>Job or cluster creation failed. One ore more inputs were invalid. Confirm that the <a>CreateClusterRequest$SnowballType</a> value supports your <a>CreateJobRequest$JobType</a>, and try again.</p>
 newtype InvalidInputCombinationException = InvalidInputCombinationException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidInputCombinationException :: Newtype InvalidInputCombinationException _
 
 
 -- | <p>The action can't be performed because the job's current state doesn't allow that action to be performed.</p>
 newtype InvalidJobStateException = InvalidJobStateException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidJobStateException :: Newtype InvalidJobStateException _
 
 
 -- | <p>The <code>NextToken</code> string was altered unexpectedly, and the operation has stopped. Run the operation without changing the <code>NextToken</code> string, and try again.</p>
 newtype InvalidNextTokenException = InvalidNextTokenException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidNextTokenException :: Newtype InvalidNextTokenException _
 
 
 -- | <p>The specified resource can't be found. Check the information you provided in your last request, and try again.</p>
 newtype InvalidResourceException = InvalidResourceException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidResourceException :: Newtype InvalidResourceException _
 
 
 newtype JobId = JobId String
+derive instance newtypeJobId :: Newtype JobId _
 
 
 -- | <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of an export job.</p>
@@ -370,9 +413,11 @@ newtype JobListEntry = JobListEntry
   , "CreationDate" :: NullOrUndefined (Number)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeJobListEntry :: Newtype JobListEntry _
 
 
 newtype JobListEntryList = JobListEntryList (Array JobListEntry)
+derive instance newtypeJobListEntryList :: Newtype JobListEntryList _
 
 
 -- | <p>Contains job logs. Whenever Snowball is used to import data into or export data out of Amazon S3, you'll have the option of downloading a PDF job report. Job logs are returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type. The job logs can be accessed for up to 60 minutes after this request has been made. To access any of the job logs after 60 minutes have passed, you'll have to make another call to the <code>DescribeJob</code> action.</p> <p>For import jobs, the PDF job report becomes available at the end of the import process. For export jobs, your job report typically becomes available while the Snowball for your job part is being delivered to you.</p> <p>The job report provides you insight into the state of your Amazon S3 data transfer. The report includes details about your job or job part for your records.</p> <p>For deeper visibility into the status of your transferred objects, you can look at the two associated logs: a success log and a failure log. The logs are saved in comma-separated value (CSV) format, and the name of each log includes the ID of the job or job part that the log describes.</p>
@@ -381,6 +426,7 @@ newtype JobLogs = JobLogs
   , "JobSuccessLogURI" :: NullOrUndefined (String)
   , "JobFailureLogURI" :: NullOrUndefined (String)
   }
+derive instance newtypeJobLogs :: Newtype JobLogs _
 
 
 -- | <p>Contains information about a specific job including shipping information, job status, and other important metadata. This information is returned as a part of the response syntax of the <code>DescribeJob</code> action.</p>
@@ -403,9 +449,11 @@ newtype JobMetadata = JobMetadata
   , "ClusterId" :: NullOrUndefined (String)
   , "ForwardingAddressId" :: NullOrUndefined (AddressId)
   }
+derive instance newtypeJobMetadata :: Newtype JobMetadata _
 
 
 newtype JobMetadataList = JobMetadataList (Array JobMetadata)
+derive instance newtypeJobMetadataList :: Newtype JobMetadataList _
 
 
 -- | <p>Contains an array of <code>S3Resource</code> objects. Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.</p>
@@ -413,21 +461,26 @@ newtype JobResource = JobResource
   { "S3Resources" :: NullOrUndefined (S3ResourceList)
   , "LambdaResources" :: NullOrUndefined (LambdaResourceList)
   }
+derive instance newtypeJobResource :: Newtype JobResource _
 
 
 newtype JobState = JobState String
+derive instance newtypeJobState :: Newtype JobState _
 
 
 newtype JobStateList = JobStateList (Array JobState)
+derive instance newtypeJobStateList :: Newtype JobStateList _
 
 
 newtype JobType = JobType String
+derive instance newtypeJobType :: Newtype JobType _
 
 
 -- | <p>The provided AWS Key Management Service key lacks the permissions to perform the specified <a>CreateJob</a> or <a>UpdateJob</a> action.</p>
 newtype KMSRequestFailedException = KMSRequestFailedException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeKMSRequestFailedException :: Newtype KMSRequestFailedException _
 
 
 -- | <p>Contains a key range. For export jobs, a <code>S3Resource</code> object can have an optional <code>KeyRange</code> value. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
@@ -435,9 +488,11 @@ newtype KeyRange = KeyRange
   { "BeginMarker" :: NullOrUndefined (String)
   , "EndMarker" :: NullOrUndefined (String)
   }
+derive instance newtypeKeyRange :: Newtype KeyRange _
 
 
 newtype KmsKeyARN = KmsKeyARN String
+derive instance newtypeKmsKeyARN :: Newtype KmsKeyARN _
 
 
 -- | <p>Identifies </p>
@@ -445,9 +500,11 @@ newtype LambdaResource = LambdaResource
   { "LambdaArn" :: NullOrUndefined (ResourceARN)
   , "EventTriggers" :: NullOrUndefined (EventTriggerDefinitionList)
   }
+derive instance newtypeLambdaResource :: Newtype LambdaResource _
 
 
 newtype LambdaResourceList = LambdaResourceList (Array LambdaResource)
+derive instance newtypeLambdaResourceList :: Newtype LambdaResourceList _
 
 
 newtype ListClusterJobsRequest = ListClusterJobsRequest 
@@ -455,39 +512,46 @@ newtype ListClusterJobsRequest = ListClusterJobsRequest
   , "MaxResults" :: NullOrUndefined (ListLimit)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListClusterJobsRequest :: Newtype ListClusterJobsRequest _
 
 
 newtype ListClusterJobsResult = ListClusterJobsResult 
   { "JobListEntries" :: NullOrUndefined (JobListEntryList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListClusterJobsResult :: Newtype ListClusterJobsResult _
 
 
 newtype ListClustersRequest = ListClustersRequest 
   { "MaxResults" :: NullOrUndefined (ListLimit)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListClustersRequest :: Newtype ListClustersRequest _
 
 
 newtype ListClustersResult = ListClustersResult 
   { "ClusterListEntries" :: NullOrUndefined (ClusterListEntryList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListClustersResult :: Newtype ListClustersResult _
 
 
 newtype ListJobsRequest = ListJobsRequest 
   { "MaxResults" :: NullOrUndefined (ListLimit)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListJobsRequest :: Newtype ListJobsRequest _
 
 
 newtype ListJobsResult = ListJobsResult 
   { "JobListEntries" :: NullOrUndefined (JobListEntryList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListJobsResult :: Newtype ListJobsResult _
 
 
 newtype ListLimit = ListLimit Int
+derive instance newtypeListLimit :: Newtype ListLimit _
 
 
 -- | <p>The Amazon Simple Notification Service (Amazon SNS) notification settings associated with a specific job. The <code>Notification</code> object is returned as a part of the response syntax of the <code>DescribeJob</code> action in the <code>JobMetadata</code> data type.</p> <p>When the notification settings are defined during job creation, you can choose to notify based on a specific set of job states using the <code>JobStatesToNotify</code> array of strings, or you can specify that you want to have Amazon SNS notifications sent out for all job states with <code>NotifyAll</code> set to true.</p>
@@ -496,12 +560,15 @@ newtype Notification = Notification
   , "JobStatesToNotify" :: NullOrUndefined (JobStateList)
   , "NotifyAll" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeNotification :: Newtype Notification _
 
 
 newtype ResourceARN = ResourceARN String
+derive instance newtypeResourceARN :: Newtype ResourceARN _
 
 
 newtype RoleARN = RoleARN String
+derive instance newtypeRoleARN :: Newtype RoleARN _
 
 
 -- | <p>Each <code>S3Resource</code> object represents an Amazon S3 bucket that your transferred data will be exported from or imported into. For export jobs, this object can have an optional <code>KeyRange</code> value. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
@@ -509,9 +576,11 @@ newtype S3Resource = S3Resource
   { "BucketArn" :: NullOrUndefined (ResourceARN)
   , "KeyRange" :: NullOrUndefined (KeyRange)
   }
+derive instance newtypeS3Resource :: Newtype S3Resource _
 
 
 newtype S3ResourceList = S3ResourceList (Array S3Resource)
+derive instance newtypeS3ResourceList :: Newtype S3ResourceList _
 
 
 -- | <p>The <code>Status</code> and <code>TrackingNumber</code> information for an inbound or outbound shipment.</p>
@@ -519,6 +588,7 @@ newtype Shipment = Shipment
   { "Status" :: NullOrUndefined (String)
   , "TrackingNumber" :: NullOrUndefined (String)
   }
+derive instance newtypeShipment :: Newtype Shipment _
 
 
 -- | <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
@@ -527,24 +597,30 @@ newtype ShippingDetails = ShippingDetails
   , "InboundShipment" :: NullOrUndefined (Shipment)
   , "OutboundShipment" :: NullOrUndefined (Shipment)
   }
+derive instance newtypeShippingDetails :: Newtype ShippingDetails _
 
 
 newtype ShippingOption = ShippingOption String
+derive instance newtypeShippingOption :: Newtype ShippingOption _
 
 
 newtype SnowballCapacity = SnowballCapacity String
+derive instance newtypeSnowballCapacity :: Newtype SnowballCapacity _
 
 
 newtype SnowballType = SnowballType String
+derive instance newtypeSnowballType :: Newtype SnowballType _
 
 
 newtype SnsTopicARN = SnsTopicARN String
+derive instance newtypeSnsTopicARN :: Newtype SnsTopicARN _
 
 
 -- | <p>The address is either outside the serviceable area for your region, or an error occurred. Check the address with your region's carrier and try again. If the issue persists, contact AWS Support.</p>
 newtype UnsupportedAddressException = UnsupportedAddressException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeUnsupportedAddressException :: Newtype UnsupportedAddressException _
 
 
 newtype UpdateClusterRequest = UpdateClusterRequest 
@@ -557,11 +633,13 @@ newtype UpdateClusterRequest = UpdateClusterRequest
   , "Notification" :: NullOrUndefined (Notification)
   , "ForwardingAddressId" :: NullOrUndefined (AddressId)
   }
+derive instance newtypeUpdateClusterRequest :: Newtype UpdateClusterRequest _
 
 
 newtype UpdateClusterResult = UpdateClusterResult 
   { 
   }
+derive instance newtypeUpdateClusterResult :: Newtype UpdateClusterResult _
 
 
 newtype UpdateJobRequest = UpdateJobRequest 
@@ -575,8 +653,10 @@ newtype UpdateJobRequest = UpdateJobRequest
   , "SnowballCapacityPreference" :: NullOrUndefined (SnowballCapacity)
   , "ForwardingAddressId" :: NullOrUndefined (AddressId)
   }
+derive instance newtypeUpdateJobRequest :: Newtype UpdateJobRequest _
 
 
 newtype UpdateJobResult = UpdateJobResult 
   { 
   }
+derive instance newtypeUpdateJobResult :: Newtype UpdateJobResult _

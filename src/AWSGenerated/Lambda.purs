@@ -6,6 +6,7 @@ module AWS.Lambda where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -75,14 +76,17 @@ newtype AddEventSourceRequest = AddEventSourceRequest
   , "BatchSize" :: NullOrUndefined (Int)
   , "Parameters" :: NullOrUndefined (Map'')
   }
+derive instance newtypeAddEventSourceRequest :: Newtype AddEventSourceRequest _
 
 
 newtype DeleteFunctionRequest = DeleteFunctionRequest 
   { "FunctionName" :: (FunctionName)
   }
+derive instance newtypeDeleteFunctionRequest :: Newtype DeleteFunctionRequest _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 -- | <p>Describes mapping between an Amazon Kinesis stream and a Lambda function.</p>
@@ -97,12 +101,15 @@ newtype EventSourceConfiguration = EventSourceConfiguration
   , "IsActive" :: NullOrUndefined (Boolean)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeEventSourceConfiguration :: Newtype EventSourceConfiguration _
 
 
 newtype EventSourceList = EventSourceList (Array EventSourceConfiguration)
+derive instance newtypeEventSourceList :: Newtype EventSourceList _
 
 
 newtype FunctionArn = FunctionArn String
+derive instance newtypeFunctionArn :: Newtype FunctionArn _
 
 
 -- | <p>The object for the Lambda function location.</p>
@@ -110,6 +117,7 @@ newtype FunctionCodeLocation = FunctionCodeLocation
   { "RepositoryType" :: NullOrUndefined (String)
   , "Location" :: NullOrUndefined (String)
   }
+derive instance newtypeFunctionCodeLocation :: Newtype FunctionCodeLocation _
 
 
 -- | <p>A complex type that describes function metadata.</p>
@@ -127,27 +135,33 @@ newtype FunctionConfiguration = FunctionConfiguration
   , "MemorySize" :: NullOrUndefined (MemorySize)
   , "LastModified" :: NullOrUndefined (Number)
   }
+derive instance newtypeFunctionConfiguration :: Newtype FunctionConfiguration _
 
 
 newtype FunctionList = FunctionList (Array FunctionConfiguration)
+derive instance newtypeFunctionList :: Newtype FunctionList _
 
 
 newtype FunctionName = FunctionName String
+derive instance newtypeFunctionName :: Newtype FunctionName _
 
 
 newtype GetEventSourceRequest = GetEventSourceRequest 
   { "UUID" :: (String)
   }
+derive instance newtypeGetEventSourceRequest :: Newtype GetEventSourceRequest _
 
 
 newtype GetFunctionConfigurationRequest = GetFunctionConfigurationRequest 
   { "FunctionName" :: (FunctionName)
   }
+derive instance newtypeGetFunctionConfigurationRequest :: Newtype GetFunctionConfigurationRequest _
 
 
 newtype GetFunctionRequest = GetFunctionRequest 
   { "FunctionName" :: (FunctionName)
   }
+derive instance newtypeGetFunctionRequest :: Newtype GetFunctionRequest _
 
 
 -- | <p>This response contains the object for AWS Lambda function location (see <a>API_FunctionCodeLocation</a></p>
@@ -155,12 +169,15 @@ newtype GetFunctionResponse = GetFunctionResponse
   { "Configuration" :: NullOrUndefined (FunctionConfiguration)
   , "Code" :: NullOrUndefined (FunctionCodeLocation)
   }
+derive instance newtypeGetFunctionResponse :: Newtype GetFunctionResponse _
 
 
 newtype Handler = Handler String
+derive instance newtypeHandler :: Newtype Handler _
 
 
 newtype HttpStatus = HttpStatus Int
+derive instance newtypeHttpStatus :: Newtype HttpStatus _
 
 
 -- | <p>One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the <code>UploadFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to assume you will get this exception. </p>
@@ -168,6 +185,7 @@ newtype InvalidParameterValueException = InvalidParameterValueException
   { "Type" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidParameterValueException :: Newtype InvalidParameterValueException _
 
 
 -- | <p>The request body could not be parsed as JSON.</p>
@@ -175,18 +193,21 @@ newtype InvalidRequestContentException = InvalidRequestContentException
   { "Type" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidRequestContentException :: Newtype InvalidRequestContentException _
 
 
 newtype InvokeAsyncRequest = InvokeAsyncRequest 
   { "FunctionName" :: (FunctionName)
   , "InvokeArgs" :: (String)
   }
+derive instance newtypeInvokeAsyncRequest :: Newtype InvokeAsyncRequest _
 
 
 -- | <p>Upon success, it returns empty response. Otherwise, throws an exception.</p>
 newtype InvokeAsyncResponse = InvokeAsyncResponse 
   { "Status" :: NullOrUndefined (HttpStatus)
   }
+derive instance newtypeInvokeAsyncResponse :: Newtype InvokeAsyncResponse _
 
 
 newtype ListEventSourcesRequest = ListEventSourcesRequest 
@@ -195,6 +216,7 @@ newtype ListEventSourcesRequest = ListEventSourcesRequest
   , "Marker" :: NullOrUndefined (String)
   , "MaxItems" :: NullOrUndefined (MaxListItems)
   }
+derive instance newtypeListEventSourcesRequest :: Newtype ListEventSourcesRequest _
 
 
 -- | <p>Contains a list of event sources (see <a>API_EventSourceConfiguration</a>)</p>
@@ -202,12 +224,14 @@ newtype ListEventSourcesResponse = ListEventSourcesResponse
   { "NextMarker" :: NullOrUndefined (String)
   , "EventSources" :: NullOrUndefined (EventSourceList)
   }
+derive instance newtypeListEventSourcesResponse :: Newtype ListEventSourcesResponse _
 
 
 newtype ListFunctionsRequest = ListFunctionsRequest 
   { "Marker" :: NullOrUndefined (String)
   , "MaxItems" :: NullOrUndefined (MaxListItems)
   }
+derive instance newtypeListFunctionsRequest :: Newtype ListFunctionsRequest _
 
 
 -- | <p>Contains a list of AWS Lambda function configurations (see <a>API_FunctionConfiguration</a>.</p>
@@ -215,23 +239,29 @@ newtype ListFunctionsResponse = ListFunctionsResponse
   { "NextMarker" :: NullOrUndefined (String)
   , "Functions" :: NullOrUndefined (FunctionList)
   }
+derive instance newtypeListFunctionsResponse :: Newtype ListFunctionsResponse _
 
 
 newtype Map'' = Map'' (Map String String)
+derive instance newtypeMap'' :: Newtype Map'' _
 
 
 newtype MaxListItems = MaxListItems Int
+derive instance newtypeMaxListItems :: Newtype MaxListItems _
 
 
 newtype MemorySize = MemorySize Int
+derive instance newtypeMemorySize :: Newtype MemorySize _
 
 
 newtype Mode = Mode String
+derive instance newtypeMode :: Newtype Mode _
 
 
 newtype RemoveEventSourceRequest = RemoveEventSourceRequest 
   { "UUID" :: (String)
   }
+derive instance newtypeRemoveEventSourceRequest :: Newtype RemoveEventSourceRequest _
 
 
 -- | <p>The function or the event source specified in the request does not exist.</p>
@@ -239,12 +269,15 @@ newtype ResourceNotFoundException = ResourceNotFoundException
   { "Type" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype RoleArn = RoleArn String
+derive instance newtypeRoleArn :: Newtype RoleArn _
 
 
 newtype Runtime = Runtime String
+derive instance newtypeRuntime :: Newtype Runtime _
 
 
 -- | <p>The AWS Lambda service encountered an internal error.</p>
@@ -252,9 +285,11 @@ newtype ServiceException = ServiceException
   { "Type" :: NullOrUndefined (String)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeServiceException :: Newtype ServiceException _
 
 
 newtype Timeout = Timeout Int
+derive instance newtypeTimeout :: Newtype Timeout _
 
 
 newtype UpdateFunctionConfigurationRequest = UpdateFunctionConfigurationRequest 
@@ -265,6 +300,7 @@ newtype UpdateFunctionConfigurationRequest = UpdateFunctionConfigurationRequest
   , "Timeout" :: NullOrUndefined (Timeout)
   , "MemorySize" :: NullOrUndefined (MemorySize)
   }
+derive instance newtypeUpdateFunctionConfigurationRequest :: Newtype UpdateFunctionConfigurationRequest _
 
 
 newtype UploadFunctionRequest = UploadFunctionRequest 
@@ -278,3 +314,4 @@ newtype UploadFunctionRequest = UploadFunctionRequest
   , "Timeout" :: NullOrUndefined (Timeout)
   , "MemorySize" :: NullOrUndefined (MemorySize)
   }
+derive instance newtypeUploadFunctionRequest :: Newtype UploadFunctionRequest _

@@ -6,6 +6,7 @@ module AWS.OpsWorksCM where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -94,10 +95,12 @@ newtype AccountAttribute = AccountAttribute
   , "Maximum" :: NullOrUndefined (Int)
   , "Used" :: NullOrUndefined (Int)
   }
+derive instance newtypeAccountAttribute :: Newtype AccountAttribute _
 
 
 -- | <p> A list of individual account attributes. </p>
 newtype AccountAttributes = AccountAttributes (Array AccountAttribute)
+derive instance newtypeAccountAttributes :: Newtype AccountAttributes _
 
 
 newtype AssociateNodeRequest = AssociateNodeRequest 
@@ -105,17 +108,21 @@ newtype AssociateNodeRequest = AssociateNodeRequest
   , "NodeName" :: (NodeName)
   , "EngineAttributes" :: (EngineAttributes)
   }
+derive instance newtypeAssociateNodeRequest :: Newtype AssociateNodeRequest _
 
 
 newtype AssociateNodeResponse = AssociateNodeResponse 
   { "NodeAssociationStatusToken" :: NullOrUndefined (NodeAssociationStatusToken)
   }
+derive instance newtypeAssociateNodeResponse :: Newtype AssociateNodeResponse _
 
 
 newtype AttributeName = AttributeName String
+derive instance newtypeAttributeName :: Newtype AttributeName _
 
 
 newtype AttributeValue = AttributeValue String
+derive instance newtypeAttributeValue :: Newtype AttributeValue _
 
 
 -- | <p>Describes a single backup. </p>
@@ -145,32 +152,40 @@ newtype Backup = Backup
   , "ToolsVersion" :: NullOrUndefined (String)
   , "UserArn" :: NullOrUndefined (String)
   }
+derive instance newtypeBackup :: Newtype Backup _
 
 
 newtype BackupId = BackupId String
+derive instance newtypeBackupId :: Newtype BackupId _
 
 
 newtype BackupRetentionCountDefinition = BackupRetentionCountDefinition Int
+derive instance newtypeBackupRetentionCountDefinition :: Newtype BackupRetentionCountDefinition _
 
 
 newtype BackupStatus = BackupStatus String
+derive instance newtypeBackupStatus :: Newtype BackupStatus _
 
 
 newtype BackupType = BackupType String
+derive instance newtypeBackupType :: Newtype BackupType _
 
 
 newtype Backups = Backups (Array Backup)
+derive instance newtypeBackups :: Newtype Backups _
 
 
 newtype CreateBackupRequest = CreateBackupRequest 
   { "ServerName" :: (ServerName)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateBackupRequest :: Newtype CreateBackupRequest _
 
 
 newtype CreateBackupResponse = CreateBackupResponse 
   { "Backup" :: NullOrUndefined (Backup)
   }
+derive instance newtypeCreateBackupResponse :: Newtype CreateBackupResponse _
 
 
 newtype CreateServerRequest = CreateServerRequest 
@@ -192,41 +207,49 @@ newtype CreateServerRequest = CreateServerRequest
   , "SubnetIds" :: NullOrUndefined (Strings)
   , "BackupId" :: NullOrUndefined (BackupId)
   }
+derive instance newtypeCreateServerRequest :: Newtype CreateServerRequest _
 
 
 newtype CreateServerResponse = CreateServerResponse 
   { "Server" :: NullOrUndefined (Server)
   }
+derive instance newtypeCreateServerResponse :: Newtype CreateServerResponse _
 
 
 newtype DeleteBackupRequest = DeleteBackupRequest 
   { "BackupId" :: (BackupId)
   }
+derive instance newtypeDeleteBackupRequest :: Newtype DeleteBackupRequest _
 
 
 newtype DeleteBackupResponse = DeleteBackupResponse 
   { 
   }
+derive instance newtypeDeleteBackupResponse :: Newtype DeleteBackupResponse _
 
 
 newtype DeleteServerRequest = DeleteServerRequest 
   { "ServerName" :: (ServerName)
   }
+derive instance newtypeDeleteServerRequest :: Newtype DeleteServerRequest _
 
 
 newtype DeleteServerResponse = DeleteServerResponse 
   { 
   }
+derive instance newtypeDeleteServerResponse :: Newtype DeleteServerResponse _
 
 
 newtype DescribeAccountAttributesRequest = DescribeAccountAttributesRequest 
   { 
   }
+derive instance newtypeDescribeAccountAttributesRequest :: Newtype DescribeAccountAttributesRequest _
 
 
 newtype DescribeAccountAttributesResponse = DescribeAccountAttributesResponse 
   { "Attributes" :: NullOrUndefined (AccountAttributes)
   }
+derive instance newtypeDescribeAccountAttributesResponse :: Newtype DescribeAccountAttributesResponse _
 
 
 newtype DescribeBackupsRequest = DescribeBackupsRequest 
@@ -235,12 +258,14 @@ newtype DescribeBackupsRequest = DescribeBackupsRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeDescribeBackupsRequest :: Newtype DescribeBackupsRequest _
 
 
 newtype DescribeBackupsResponse = DescribeBackupsResponse 
   { "Backups" :: NullOrUndefined (Backups)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeBackupsResponse :: Newtype DescribeBackupsResponse _
 
 
 newtype DescribeEventsRequest = DescribeEventsRequest 
@@ -248,24 +273,28 @@ newtype DescribeEventsRequest = DescribeEventsRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeDescribeEventsRequest :: Newtype DescribeEventsRequest _
 
 
 newtype DescribeEventsResponse = DescribeEventsResponse 
   { "ServerEvents" :: NullOrUndefined (ServerEvents)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEventsResponse :: Newtype DescribeEventsResponse _
 
 
 newtype DescribeNodeAssociationStatusRequest = DescribeNodeAssociationStatusRequest 
   { "NodeAssociationStatusToken" :: (NodeAssociationStatusToken)
   , "ServerName" :: (ServerName)
   }
+derive instance newtypeDescribeNodeAssociationStatusRequest :: Newtype DescribeNodeAssociationStatusRequest _
 
 
 newtype DescribeNodeAssociationStatusResponse = DescribeNodeAssociationStatusResponse 
   { "NodeAssociationStatus" :: NullOrUndefined (NodeAssociationStatus)
   , "EngineAttributes" :: NullOrUndefined (EngineAttributes)
   }
+derive instance newtypeDescribeNodeAssociationStatusResponse :: Newtype DescribeNodeAssociationStatusResponse _
 
 
 newtype DescribeServersRequest = DescribeServersRequest 
@@ -273,12 +302,14 @@ newtype DescribeServersRequest = DescribeServersRequest
   , "NextToken" :: NullOrUndefined (NextToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeDescribeServersRequest :: Newtype DescribeServersRequest _
 
 
 newtype DescribeServersResponse = DescribeServersResponse 
   { "Servers" :: NullOrUndefined (Servers)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeServersResponse :: Newtype DescribeServersResponse _
 
 
 newtype DisassociateNodeRequest = DisassociateNodeRequest 
@@ -286,11 +317,13 @@ newtype DisassociateNodeRequest = DisassociateNodeRequest
   , "NodeName" :: (NodeName)
   , "EngineAttributes" :: NullOrUndefined (EngineAttributes)
   }
+derive instance newtypeDisassociateNodeRequest :: Newtype DisassociateNodeRequest _
 
 
 newtype DisassociateNodeResponse = DisassociateNodeResponse 
   { "NodeAssociationStatusToken" :: NullOrUndefined (NodeAssociationStatusToken)
   }
+derive instance newtypeDisassociateNodeResponse :: Newtype DisassociateNodeResponse _
 
 
 -- | <p>A name and value pair that is specific to the engine of the server. </p>
@@ -298,71 +331,88 @@ newtype EngineAttribute = EngineAttribute
   { "Name" :: NullOrUndefined (EngineAttributeName)
   , "Value" :: NullOrUndefined (EngineAttributeValue)
   }
+derive instance newtypeEngineAttribute :: Newtype EngineAttribute _
 
 
 newtype EngineAttributeName = EngineAttributeName String
+derive instance newtypeEngineAttributeName :: Newtype EngineAttributeName _
 
 
 newtype EngineAttributeValue = EngineAttributeValue String
+derive instance newtypeEngineAttributeValue :: Newtype EngineAttributeValue _
 
 
 newtype EngineAttributes = EngineAttributes (Array EngineAttribute)
+derive instance newtypeEngineAttributes :: Newtype EngineAttributes _
 
 
 newtype InstanceProfileArn = InstanceProfileArn String
+derive instance newtypeInstanceProfileArn :: Newtype InstanceProfileArn _
 
 
 -- | <p>This occurs when the provided nextToken is not valid. </p>
 newtype InvalidNextTokenException = InvalidNextTokenException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidNextTokenException :: Newtype InvalidNextTokenException _
 
 
 -- | <p>The resource is in a state that does not allow you to perform a specified action. </p>
 newtype InvalidStateException = InvalidStateException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidStateException :: Newtype InvalidStateException _
 
 
 newtype KeyPair = KeyPair String
+derive instance newtypeKeyPair :: Newtype KeyPair _
 
 
 -- | <p>The limit of servers or backups has been reached. </p>
 newtype LimitExceededException = LimitExceededException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype MaintenanceStatus = MaintenanceStatus String
+derive instance newtypeMaintenanceStatus :: Newtype MaintenanceStatus _
 
 
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>The status of the association or disassociation request. </p> <p class="title"> <b>Possible values:</b> </p> <ul> <li> <p> <code>SUCCESS</code>: The association or disassociation succeeded. </p> </li> <li> <p> <code>FAILED</code>: The association or disassociation failed. </p> </li> <li> <p> <code>IN_PROGRESS</code>: The association or disassociation is still in progress. </p> </li> </ul>
 newtype NodeAssociationStatus = NodeAssociationStatus String
+derive instance newtypeNodeAssociationStatus :: Newtype NodeAssociationStatus _
 
 
 newtype NodeAssociationStatusToken = NodeAssociationStatusToken String
+derive instance newtypeNodeAssociationStatusToken :: Newtype NodeAssociationStatusToken _
 
 
 -- | <p>The node name that is used by <code>chef-client</code> or <code>puppet-agent</code>for a new node. We recommend to use a unique FQDN as hostname. For more information, see the <a href="http://docs.aws.amazon.com/https:/docs.chef.io/nodes.html#about-node-names">Chef</a> or <a href="http://docs.aws.amazon.com/https:/docs.puppet.com/puppet/4.10/man/agent.html">Puppet</a> documentation. </p>
 newtype NodeName = NodeName String
+derive instance newtypeNodeName :: Newtype NodeName _
 
 
 -- | <p>The requested resource cannot be created because it already exists. </p>
 newtype ResourceAlreadyExistsException = ResourceAlreadyExistsException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceAlreadyExistsException :: Newtype ResourceAlreadyExistsException _
 
 
 -- | <p>The requested resource does not exist, or access was denied. </p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype RestoreServerRequest = RestoreServerRequest 
@@ -371,11 +421,13 @@ newtype RestoreServerRequest = RestoreServerRequest
   , "InstanceType" :: NullOrUndefined (String)
   , "KeyPair" :: NullOrUndefined (KeyPair)
   }
+derive instance newtypeRestoreServerRequest :: Newtype RestoreServerRequest _
 
 
 newtype RestoreServerResponse = RestoreServerResponse 
   { 
   }
+derive instance newtypeRestoreServerResponse :: Newtype RestoreServerResponse _
 
 
 -- | <p>Describes a configuration management server. </p>
@@ -404,6 +456,7 @@ newtype Server = Server
   , "SubnetIds" :: NullOrUndefined (Strings)
   , "ServerArn" :: NullOrUndefined (String)
   }
+derive instance newtypeServer :: Newtype Server _
 
 
 -- | <p>An event that is related to the server, such as the start of maintenance or backup. </p>
@@ -413,39 +466,49 @@ newtype ServerEvent = ServerEvent
   , "Message" :: NullOrUndefined (String)
   , "LogUrl" :: NullOrUndefined (String)
   }
+derive instance newtypeServerEvent :: Newtype ServerEvent _
 
 
 newtype ServerEvents = ServerEvents (Array ServerEvent)
+derive instance newtypeServerEvents :: Newtype ServerEvents _
 
 
 newtype ServerName = ServerName String
+derive instance newtypeServerName :: Newtype ServerName _
 
 
 newtype ServerStatus = ServerStatus String
+derive instance newtypeServerStatus :: Newtype ServerStatus _
 
 
 newtype Servers = Servers (Array Server)
+derive instance newtypeServers :: Newtype Servers _
 
 
 newtype ServiceRoleArn = ServiceRoleArn String
+derive instance newtypeServiceRoleArn :: Newtype ServiceRoleArn _
 
 
 newtype StartMaintenanceRequest = StartMaintenanceRequest 
   { "ServerName" :: (ServerName)
   , "EngineAttributes" :: NullOrUndefined (EngineAttributes)
   }
+derive instance newtypeStartMaintenanceRequest :: Newtype StartMaintenanceRequest _
 
 
 newtype StartMaintenanceResponse = StartMaintenanceResponse 
   { "Server" :: NullOrUndefined (Server)
   }
+derive instance newtypeStartMaintenanceResponse :: Newtype StartMaintenanceResponse _
 
 
 newtype Strings = Strings (Array String)
+derive instance newtypeStrings :: Newtype Strings _
 
 
 -- | <p> <code>DDD:HH:MM</code> (weekly start time) or <code>HH:MM</code> (daily start time). </p> <p> Time windows always use coordinated universal time (UTC). Valid strings for day of week (<code>DDD</code>) are: <code>Mon</code>, <code>Tue</code>, <code>Wed</code>, <code>Thr</code>, <code>Fri</code>, <code>Sat</code>, or <code>Sun</code>.</p>
 newtype TimeWindowDefinition = TimeWindowDefinition String
+derive instance newtypeTimeWindowDefinition :: Newtype TimeWindowDefinition _
 
 
 newtype UpdateServerEngineAttributesRequest = UpdateServerEngineAttributesRequest 
@@ -453,11 +516,13 @@ newtype UpdateServerEngineAttributesRequest = UpdateServerEngineAttributesReques
   , "AttributeName" :: (AttributeName)
   , "AttributeValue" :: NullOrUndefined (AttributeValue)
   }
+derive instance newtypeUpdateServerEngineAttributesRequest :: Newtype UpdateServerEngineAttributesRequest _
 
 
 newtype UpdateServerEngineAttributesResponse = UpdateServerEngineAttributesResponse 
   { "Server" :: NullOrUndefined (Server)
   }
+derive instance newtypeUpdateServerEngineAttributesResponse :: Newtype UpdateServerEngineAttributesResponse _
 
 
 newtype UpdateServerRequest = UpdateServerRequest 
@@ -467,14 +532,17 @@ newtype UpdateServerRequest = UpdateServerRequest
   , "PreferredMaintenanceWindow" :: NullOrUndefined (TimeWindowDefinition)
   , "PreferredBackupWindow" :: NullOrUndefined (TimeWindowDefinition)
   }
+derive instance newtypeUpdateServerRequest :: Newtype UpdateServerRequest _
 
 
 newtype UpdateServerResponse = UpdateServerResponse 
   { "Server" :: NullOrUndefined (Server)
   }
+derive instance newtypeUpdateServerResponse :: Newtype UpdateServerResponse _
 
 
 -- | <p>One or more of the provided request parameters are not valid. </p>
 newtype ValidationException = ValidationException 
   { "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeValidationException :: Newtype ValidationException _

@@ -6,6 +6,7 @@ module AWS.Batch where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -94,15 +95,18 @@ updateJobQueue = AWS.request serviceName "UpdateJobQueue"
 
 
 newtype ArrayJobDependency = ArrayJobDependency String
+derive instance newtypeArrayJobDependency :: Newtype ArrayJobDependency _
 
 
 newtype ArrayJobStatusSummary = ArrayJobStatusSummary (Map String Int)
+derive instance newtypeArrayJobStatusSummary :: Newtype ArrayJobStatusSummary _
 
 
 -- | <p>An object representing an AWS Batch array job.</p>
 newtype ArrayProperties = ArrayProperties 
   { "Size'" :: NullOrUndefined (Int)
   }
+derive instance newtypeArrayProperties :: Newtype ArrayProperties _
 
 
 -- | <p>An object representing the array properties of a job.</p>
@@ -111,6 +115,7 @@ newtype ArrayPropertiesDetail = ArrayPropertiesDetail
   , "Size'" :: NullOrUndefined (Int)
   , "Index'" :: NullOrUndefined (Int)
   }
+derive instance newtypeArrayPropertiesDetail :: Newtype ArrayPropertiesDetail _
 
 
 -- | <p>An object representing the array properties of a job.</p>
@@ -118,6 +123,7 @@ newtype ArrayPropertiesSummary = ArrayPropertiesSummary
   { "Size'" :: NullOrUndefined (Int)
   , "Index'" :: NullOrUndefined (Int)
   }
+derive instance newtypeArrayPropertiesSummary :: Newtype ArrayPropertiesSummary _
 
 
 -- | <p>An object representing the details of a container that is part of a job attempt.</p>
@@ -128,6 +134,7 @@ newtype AttemptContainerDetail = AttemptContainerDetail
   , "Reason'" :: NullOrUndefined (String)
   , "LogStreamName'" :: NullOrUndefined (String)
   }
+derive instance newtypeAttemptContainerDetail :: Newtype AttemptContainerDetail _
 
 
 -- | <p>An object representing a job attempt.</p>
@@ -137,38 +144,47 @@ newtype AttemptDetail = AttemptDetail
   , "StoppedAt'" :: NullOrUndefined (Number)
   , "StatusReason'" :: NullOrUndefined (String)
   }
+derive instance newtypeAttemptDetail :: Newtype AttemptDetail _
 
 
 newtype AttemptDetails = AttemptDetails (Array AttemptDetail)
+derive instance newtypeAttemptDetails :: Newtype AttemptDetails _
 
 
 newtype CEState = CEState String
+derive instance newtypeCEState :: Newtype CEState _
 
 
 newtype CEStatus = CEStatus String
+derive instance newtypeCEStatus :: Newtype CEStatus _
 
 
 newtype CEType = CEType String
+derive instance newtypeCEType :: Newtype CEType _
 
 
 newtype CRType = CRType String
+derive instance newtypeCRType :: Newtype CRType _
 
 
 newtype CancelJobRequest = CancelJobRequest 
   { "JobId'" :: (String)
   , "Reason'" :: (String)
   }
+derive instance newtypeCancelJobRequest :: Newtype CancelJobRequest _
 
 
 newtype CancelJobResponse = CancelJobResponse 
   { 
   }
+derive instance newtypeCancelJobResponse :: Newtype CancelJobResponse _
 
 
 -- | <p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid. </p>
 newtype ClientException = ClientException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeClientException :: Newtype ClientException _
 
 
 -- | <p>An object representing an AWS Batch compute environment.</p>
@@ -183,9 +199,11 @@ newtype ComputeEnvironmentDetail = ComputeEnvironmentDetail
   , "ComputeResources'" :: NullOrUndefined (ComputeResource)
   , "ServiceRole'" :: NullOrUndefined (String)
   }
+derive instance newtypeComputeEnvironmentDetail :: Newtype ComputeEnvironmentDetail _
 
 
 newtype ComputeEnvironmentDetailList = ComputeEnvironmentDetailList (Array ComputeEnvironmentDetail)
+derive instance newtypeComputeEnvironmentDetailList :: Newtype ComputeEnvironmentDetailList _
 
 
 -- | <p>The order in which compute environments are tried for job placement within a queue. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.</p>
@@ -193,9 +211,11 @@ newtype ComputeEnvironmentOrder = ComputeEnvironmentOrder
   { "Order'" :: (Int)
   , "ComputeEnvironment'" :: (String)
   }
+derive instance newtypeComputeEnvironmentOrder :: Newtype ComputeEnvironmentOrder _
 
 
 newtype ComputeEnvironmentOrders = ComputeEnvironmentOrders (Array ComputeEnvironmentOrder)
+derive instance newtypeComputeEnvironmentOrders :: Newtype ComputeEnvironmentOrders _
 
 
 -- | <p>An object representing an AWS Batch compute resource.</p>
@@ -214,6 +234,7 @@ newtype ComputeResource = ComputeResource
   , "BidPercentage'" :: NullOrUndefined (Int)
   , "SpotIamFleetRole'" :: NullOrUndefined (String)
   }
+derive instance newtypeComputeResource :: Newtype ComputeResource _
 
 
 -- | <p>An object representing the attributes of a compute environment that can be updated.</p>
@@ -222,6 +243,7 @@ newtype ComputeResourceUpdate = ComputeResourceUpdate
   , "MaxvCpus'" :: NullOrUndefined (Int)
   , "DesiredvCpus'" :: NullOrUndefined (Int)
   }
+derive instance newtypeComputeResourceUpdate :: Newtype ComputeResourceUpdate _
 
 
 -- | <p>An object representing the details of a container that is part of a job.</p>
@@ -244,6 +266,7 @@ newtype ContainerDetail = ContainerDetail
   , "TaskArn'" :: NullOrUndefined (String)
   , "LogStreamName'" :: NullOrUndefined (String)
   }
+derive instance newtypeContainerDetail :: Newtype ContainerDetail _
 
 
 -- | <p>The overrides that should be sent to a container.</p>
@@ -253,6 +276,7 @@ newtype ContainerOverrides = ContainerOverrides
   , "Command'" :: NullOrUndefined (StringList)
   , "Environment'" :: NullOrUndefined (EnvironmentVariables)
   }
+derive instance newtypeContainerOverrides :: Newtype ContainerOverrides _
 
 
 -- | <p>Container properties are used in job definitions to describe the container that is launched as part of a job.</p>
@@ -270,6 +294,7 @@ newtype ContainerProperties = ContainerProperties
   , "Ulimits'" :: NullOrUndefined (Ulimits)
   , "User'" :: NullOrUndefined (String)
   }
+derive instance newtypeContainerProperties :: Newtype ContainerProperties _
 
 
 -- | <p>An object representing summary details of a container within a job.</p>
@@ -277,6 +302,7 @@ newtype ContainerSummary = ContainerSummary
   { "ExitCode'" :: NullOrUndefined (Int)
   , "Reason'" :: NullOrUndefined (String)
   }
+derive instance newtypeContainerSummary :: Newtype ContainerSummary _
 
 
 newtype CreateComputeEnvironmentRequest = CreateComputeEnvironmentRequest 
@@ -286,12 +312,14 @@ newtype CreateComputeEnvironmentRequest = CreateComputeEnvironmentRequest
   , "ComputeResources'" :: NullOrUndefined (ComputeResource)
   , "ServiceRole'" :: (String)
   }
+derive instance newtypeCreateComputeEnvironmentRequest :: Newtype CreateComputeEnvironmentRequest _
 
 
 newtype CreateComputeEnvironmentResponse = CreateComputeEnvironmentResponse 
   { "ComputeEnvironmentName'" :: NullOrUndefined (String)
   , "ComputeEnvironmentArn'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateComputeEnvironmentResponse :: Newtype CreateComputeEnvironmentResponse _
 
 
 newtype CreateJobQueueRequest = CreateJobQueueRequest 
@@ -300,42 +328,50 @@ newtype CreateJobQueueRequest = CreateJobQueueRequest
   , "Priority'" :: (Int)
   , "ComputeEnvironmentOrder'" :: (ComputeEnvironmentOrders)
   }
+derive instance newtypeCreateJobQueueRequest :: Newtype CreateJobQueueRequest _
 
 
 newtype CreateJobQueueResponse = CreateJobQueueResponse 
   { "JobQueueName'" :: (String)
   , "JobQueueArn'" :: (String)
   }
+derive instance newtypeCreateJobQueueResponse :: Newtype CreateJobQueueResponse _
 
 
 newtype DeleteComputeEnvironmentRequest = DeleteComputeEnvironmentRequest 
   { "ComputeEnvironment'" :: (String)
   }
+derive instance newtypeDeleteComputeEnvironmentRequest :: Newtype DeleteComputeEnvironmentRequest _
 
 
 newtype DeleteComputeEnvironmentResponse = DeleteComputeEnvironmentResponse 
   { 
   }
+derive instance newtypeDeleteComputeEnvironmentResponse :: Newtype DeleteComputeEnvironmentResponse _
 
 
 newtype DeleteJobQueueRequest = DeleteJobQueueRequest 
   { "JobQueue'" :: (String)
   }
+derive instance newtypeDeleteJobQueueRequest :: Newtype DeleteJobQueueRequest _
 
 
 newtype DeleteJobQueueResponse = DeleteJobQueueResponse 
   { 
   }
+derive instance newtypeDeleteJobQueueResponse :: Newtype DeleteJobQueueResponse _
 
 
 newtype DeregisterJobDefinitionRequest = DeregisterJobDefinitionRequest 
   { "JobDefinition'" :: (String)
   }
+derive instance newtypeDeregisterJobDefinitionRequest :: Newtype DeregisterJobDefinitionRequest _
 
 
 newtype DeregisterJobDefinitionResponse = DeregisterJobDefinitionResponse 
   { 
   }
+derive instance newtypeDeregisterJobDefinitionResponse :: Newtype DeregisterJobDefinitionResponse _
 
 
 newtype DescribeComputeEnvironmentsRequest = DescribeComputeEnvironmentsRequest 
@@ -343,12 +379,14 @@ newtype DescribeComputeEnvironmentsRequest = DescribeComputeEnvironmentsRequest
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeComputeEnvironmentsRequest :: Newtype DescribeComputeEnvironmentsRequest _
 
 
 newtype DescribeComputeEnvironmentsResponse = DescribeComputeEnvironmentsResponse 
   { "ComputeEnvironments'" :: NullOrUndefined (ComputeEnvironmentDetailList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeComputeEnvironmentsResponse :: Newtype DescribeComputeEnvironmentsResponse _
 
 
 newtype DescribeJobDefinitionsRequest = DescribeJobDefinitionsRequest 
@@ -358,12 +396,14 @@ newtype DescribeJobDefinitionsRequest = DescribeJobDefinitionsRequest
   , "Status'" :: NullOrUndefined (String)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeJobDefinitionsRequest :: Newtype DescribeJobDefinitionsRequest _
 
 
 newtype DescribeJobDefinitionsResponse = DescribeJobDefinitionsResponse 
   { "JobDefinitions'" :: NullOrUndefined (JobDefinitionList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeJobDefinitionsResponse :: Newtype DescribeJobDefinitionsResponse _
 
 
 newtype DescribeJobQueuesRequest = DescribeJobQueuesRequest 
@@ -371,37 +411,45 @@ newtype DescribeJobQueuesRequest = DescribeJobQueuesRequest
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeJobQueuesRequest :: Newtype DescribeJobQueuesRequest _
 
 
 newtype DescribeJobQueuesResponse = DescribeJobQueuesResponse 
   { "JobQueues'" :: NullOrUndefined (JobQueueDetailList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeJobQueuesResponse :: Newtype DescribeJobQueuesResponse _
 
 
 newtype DescribeJobsRequest = DescribeJobsRequest 
   { "Jobs'" :: (StringList)
   }
+derive instance newtypeDescribeJobsRequest :: Newtype DescribeJobsRequest _
 
 
 newtype DescribeJobsResponse = DescribeJobsResponse 
   { "Jobs'" :: NullOrUndefined (JobDetailList)
   }
+derive instance newtypeDescribeJobsResponse :: Newtype DescribeJobsResponse _
 
 
 newtype EnvironmentVariables = EnvironmentVariables (Array KeyValuePair)
+derive instance newtypeEnvironmentVariables :: Newtype EnvironmentVariables _
 
 
 -- | <p>The contents of the <code>host</code> parameter determine whether your data volume persists on the host container instance and where it is stored. If the host parameter is empty, then the Docker daemon assigns a host path for your data volume, but the data is not guaranteed to persist after the containers associated with it stop running.</p>
 newtype Host = Host 
   { "SourcePath'" :: NullOrUndefined (String)
   }
+derive instance newtypeHost :: Newtype Host _
 
 
 newtype JQState = JQState String
+derive instance newtypeJQState :: Newtype JQState _
 
 
 newtype JQStatus = JQStatus String
+derive instance newtypeJQStatus :: Newtype JQStatus _
 
 
 -- | <p>An object representing an AWS Batch job definition.</p>
@@ -415,12 +463,15 @@ newtype JobDefinition = JobDefinition
   , "RetryStrategy'" :: NullOrUndefined (RetryStrategy)
   , "ContainerProperties'" :: NullOrUndefined (ContainerProperties)
   }
+derive instance newtypeJobDefinition :: Newtype JobDefinition _
 
 
 newtype JobDefinitionList = JobDefinitionList (Array JobDefinition)
+derive instance newtypeJobDefinitionList :: Newtype JobDefinitionList _
 
 
 newtype JobDefinitionType = JobDefinitionType String
+derive instance newtypeJobDefinitionType :: Newtype JobDefinitionType _
 
 
 -- | <p>An object representing an AWS Batch job dependency.</p>
@@ -428,9 +479,11 @@ newtype JobDependency = JobDependency
   { "JobId'" :: NullOrUndefined (String)
   , "Type'" :: NullOrUndefined (ArrayJobDependency)
   }
+derive instance newtypeJobDependency :: Newtype JobDependency _
 
 
 newtype JobDependencyList = JobDependencyList (Array JobDependency)
+derive instance newtypeJobDependencyList :: Newtype JobDependencyList _
 
 
 -- | <p>An object representing an AWS Batch job.</p>
@@ -451,9 +504,11 @@ newtype JobDetail = JobDetail
   , "Container'" :: NullOrUndefined (ContainerDetail)
   , "ArrayProperties'" :: NullOrUndefined (ArrayPropertiesDetail)
   }
+derive instance newtypeJobDetail :: Newtype JobDetail _
 
 
 newtype JobDetailList = JobDetailList (Array JobDetail)
+derive instance newtypeJobDetailList :: Newtype JobDetailList _
 
 
 -- | <p>An object representing the details of an AWS Batch job queue.</p>
@@ -466,12 +521,15 @@ newtype JobQueueDetail = JobQueueDetail
   , "Priority'" :: (Int)
   , "ComputeEnvironmentOrder'" :: (ComputeEnvironmentOrders)
   }
+derive instance newtypeJobQueueDetail :: Newtype JobQueueDetail _
 
 
 newtype JobQueueDetailList = JobQueueDetailList (Array JobQueueDetail)
+derive instance newtypeJobQueueDetailList :: Newtype JobQueueDetailList _
 
 
 newtype JobStatus = JobStatus String
+derive instance newtypeJobStatus :: Newtype JobStatus _
 
 
 -- | <p>An object representing summary details of a job.</p>
@@ -486,9 +544,11 @@ newtype JobSummary = JobSummary
   , "Container'" :: NullOrUndefined (ContainerSummary)
   , "ArrayProperties'" :: NullOrUndefined (ArrayPropertiesSummary)
   }
+derive instance newtypeJobSummary :: Newtype JobSummary _
 
 
 newtype JobSummaryList = JobSummaryList (Array JobSummary)
+derive instance newtypeJobSummaryList :: Newtype JobSummaryList _
 
 
 -- | <p>A key-value pair object.</p>
@@ -496,6 +556,7 @@ newtype KeyValuePair = KeyValuePair
   { "Name'" :: NullOrUndefined (String)
   , "Value'" :: NullOrUndefined (String)
   }
+derive instance newtypeKeyValuePair :: Newtype KeyValuePair _
 
 
 newtype ListJobsRequest = ListJobsRequest 
@@ -505,12 +566,14 @@ newtype ListJobsRequest = ListJobsRequest
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListJobsRequest :: Newtype ListJobsRequest _
 
 
 newtype ListJobsResponse = ListJobsResponse 
   { "JobSummaryList'" :: (JobSummaryList)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListJobsResponse :: Newtype ListJobsResponse _
 
 
 -- | <p>Details on a Docker volume mount point that is used in a job's container properties.</p>
@@ -519,12 +582,15 @@ newtype MountPoint = MountPoint
   , "ReadOnly'" :: NullOrUndefined (Boolean)
   , "SourceVolume'" :: NullOrUndefined (String)
   }
+derive instance newtypeMountPoint :: Newtype MountPoint _
 
 
 newtype MountPoints = MountPoints (Array MountPoint)
+derive instance newtypeMountPoints :: Newtype MountPoints _
 
 
 newtype ParametersMap = ParametersMap (Map String String)
+derive instance newtypeParametersMap :: Newtype ParametersMap _
 
 
 newtype RegisterJobDefinitionRequest = RegisterJobDefinitionRequest 
@@ -534,6 +600,7 @@ newtype RegisterJobDefinitionRequest = RegisterJobDefinitionRequest
   , "ContainerProperties'" :: NullOrUndefined (ContainerProperties)
   , "RetryStrategy'" :: NullOrUndefined (RetryStrategy)
   }
+derive instance newtypeRegisterJobDefinitionRequest :: Newtype RegisterJobDefinitionRequest _
 
 
 newtype RegisterJobDefinitionResponse = RegisterJobDefinitionResponse 
@@ -541,21 +608,25 @@ newtype RegisterJobDefinitionResponse = RegisterJobDefinitionResponse
   , "JobDefinitionArn'" :: (String)
   , "Revision'" :: (Int)
   }
+derive instance newtypeRegisterJobDefinitionResponse :: Newtype RegisterJobDefinitionResponse _
 
 
 -- | <p>The retry strategy associated with a job.</p>
 newtype RetryStrategy = RetryStrategy 
   { "Attempts'" :: NullOrUndefined (Int)
   }
+derive instance newtypeRetryStrategy :: Newtype RetryStrategy _
 
 
 -- | <p>These errors are usually caused by a server issue.</p>
 newtype ServerException = ServerException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeServerException :: Newtype ServerException _
 
 
 newtype StringList = StringList (Array String)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 newtype SubmitJobRequest = SubmitJobRequest 
@@ -568,26 +639,31 @@ newtype SubmitJobRequest = SubmitJobRequest
   , "ContainerOverrides'" :: NullOrUndefined (ContainerOverrides)
   , "RetryStrategy'" :: NullOrUndefined (RetryStrategy)
   }
+derive instance newtypeSubmitJobRequest :: Newtype SubmitJobRequest _
 
 
 newtype SubmitJobResponse = SubmitJobResponse 
   { "JobName'" :: (String)
   , "JobId'" :: (String)
   }
+derive instance newtypeSubmitJobResponse :: Newtype SubmitJobResponse _
 
 
 newtype TagsMap = TagsMap (Map String String)
+derive instance newtypeTagsMap :: Newtype TagsMap _
 
 
 newtype TerminateJobRequest = TerminateJobRequest 
   { "JobId'" :: (String)
   , "Reason'" :: (String)
   }
+derive instance newtypeTerminateJobRequest :: Newtype TerminateJobRequest _
 
 
 newtype TerminateJobResponse = TerminateJobResponse 
   { 
   }
+derive instance newtypeTerminateJobResponse :: Newtype TerminateJobResponse _
 
 
 -- | <p>The <code>ulimit</code> settings to pass to the container.</p>
@@ -596,9 +672,11 @@ newtype Ulimit = Ulimit
   , "Name'" :: (String)
   , "SoftLimit'" :: (Int)
   }
+derive instance newtypeUlimit :: Newtype Ulimit _
 
 
 newtype Ulimits = Ulimits (Array Ulimit)
+derive instance newtypeUlimits :: Newtype Ulimits _
 
 
 newtype UpdateComputeEnvironmentRequest = UpdateComputeEnvironmentRequest 
@@ -607,12 +685,14 @@ newtype UpdateComputeEnvironmentRequest = UpdateComputeEnvironmentRequest
   , "ComputeResources'" :: NullOrUndefined (ComputeResourceUpdate)
   , "ServiceRole'" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateComputeEnvironmentRequest :: Newtype UpdateComputeEnvironmentRequest _
 
 
 newtype UpdateComputeEnvironmentResponse = UpdateComputeEnvironmentResponse 
   { "ComputeEnvironmentName'" :: NullOrUndefined (String)
   , "ComputeEnvironmentArn'" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateComputeEnvironmentResponse :: Newtype UpdateComputeEnvironmentResponse _
 
 
 newtype UpdateJobQueueRequest = UpdateJobQueueRequest 
@@ -621,12 +701,14 @@ newtype UpdateJobQueueRequest = UpdateJobQueueRequest
   , "Priority'" :: NullOrUndefined (Int)
   , "ComputeEnvironmentOrder'" :: NullOrUndefined (ComputeEnvironmentOrders)
   }
+derive instance newtypeUpdateJobQueueRequest :: Newtype UpdateJobQueueRequest _
 
 
 newtype UpdateJobQueueResponse = UpdateJobQueueResponse 
   { "JobQueueName'" :: NullOrUndefined (String)
   , "JobQueueArn'" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateJobQueueResponse :: Newtype UpdateJobQueueResponse _
 
 
 -- | <p>A data volume used in a job's container properties.</p>
@@ -634,6 +716,8 @@ newtype Volume = Volume
   { "Host'" :: NullOrUndefined (Host)
   , "Name'" :: NullOrUndefined (String)
   }
+derive instance newtypeVolume :: Newtype Volume _
 
 
 newtype Volumes = Volumes (Array Volume)
+derive instance newtypeVolumes :: Newtype Volumes _

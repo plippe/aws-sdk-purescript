@@ -5,6 +5,7 @@ module AWS.Route53 where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -297,9 +298,11 @@ newtype AccountLimit = AccountLimit
   { "Type" :: (AccountLimitType)
   , "Value" :: (LimitValue)
   }
+derive instance newtypeAccountLimit :: Newtype AccountLimit _
 
 
 newtype AccountLimitType = AccountLimitType String
+derive instance newtypeAccountLimitType :: Newtype AccountLimitType _
 
 
 -- | <p>A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.</p>
@@ -307,12 +310,15 @@ newtype AlarmIdentifier = AlarmIdentifier
   { "Region" :: (CloudWatchRegion)
   , "Name" :: (AlarmName)
   }
+derive instance newtypeAlarmIdentifier :: Newtype AlarmIdentifier _
 
 
 newtype AlarmName = AlarmName String
+derive instance newtypeAlarmName :: Newtype AlarmName _
 
 
 newtype AliasHealthEnabled = AliasHealthEnabled Boolean
+derive instance newtypeAliasHealthEnabled :: Newtype AliasHealthEnabled _
 
 
 -- | <p> <i>Alias resource record sets only:</i> Information about the CloudFront distribution, Elastic Beanstalk environment, ELB load balancer, Amazon S3 bucket, or Amazon Route 53 resource record set that you're redirecting queries to. An Elastic Beanstalk environment must have a regionalized subdomain.</p> <p>When creating resource record sets for a private hosted zone, note the following:</p> <ul> <li> <p>Resource record sets can't be created for CloudFront distributions in a private hosted zone.</p> </li> <li> <p>Creating geolocation alias resource record sets or latency alias resource record sets in a private hosted zone is unsupported.</p> </li> <li> <p>For information about creating failover resource record sets in a private hosted zone, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html">Configuring Failover in a Private Hosted Zone</a>.</p> </li> </ul>
@@ -321,9 +327,11 @@ newtype AliasTarget = AliasTarget
   , "DNSName" :: (DNSName)
   , "EvaluateTargetHealth" :: (AliasHealthEnabled)
   }
+derive instance newtypeAliasTarget :: Newtype AliasTarget _
 
 
 newtype AssociateVPCComment = AssociateVPCComment String
+derive instance newtypeAssociateVPCComment :: Newtype AssociateVPCComment _
 
 
 -- | <p>A complex type that contains information about the request to associate a VPC with a private hosted zone.</p>
@@ -332,12 +340,14 @@ newtype AssociateVPCWithHostedZoneRequest = AssociateVPCWithHostedZoneRequest
   , "VPC" :: (VPC)
   , "Comment" :: NullOrUndefined (AssociateVPCComment)
   }
+derive instance newtypeAssociateVPCWithHostedZoneRequest :: Newtype AssociateVPCWithHostedZoneRequest _
 
 
 -- | <p>A complex type that contains the response information for the <code>AssociateVPCWithHostedZone</code> request.</p>
 newtype AssociateVPCWithHostedZoneResponse = AssociateVPCWithHostedZoneResponse 
   { "ChangeInfo" :: (ChangeInfo)
   }
+derive instance newtypeAssociateVPCWithHostedZoneResponse :: Newtype AssociateVPCWithHostedZoneResponse _
 
 
 -- | <p>The information for each resource record set that you want to change.</p>
@@ -345,9 +355,11 @@ newtype Change = Change
   { "Action" :: (ChangeAction)
   , "ResourceRecordSet" :: (ResourceRecordSet)
   }
+derive instance newtypeChange :: Newtype Change _
 
 
 newtype ChangeAction = ChangeAction String
+derive instance newtypeChangeAction :: Newtype ChangeAction _
 
 
 -- | <p>The information for a change request.</p>
@@ -355,6 +367,7 @@ newtype ChangeBatch = ChangeBatch
   { "Comment" :: NullOrUndefined (ResourceDescription)
   , "Changes" :: (Changes)
   }
+derive instance newtypeChangeBatch :: Newtype ChangeBatch _
 
 
 -- | <p>A complex type that describes change information about changes made to your hosted zone.</p>
@@ -364,6 +377,7 @@ newtype ChangeInfo = ChangeInfo
   , "SubmittedAt" :: (TimeStamp)
   , "Comment" :: NullOrUndefined (ResourceDescription)
   }
+derive instance newtypeChangeInfo :: Newtype ChangeInfo _
 
 
 -- | <p>A complex type that contains change information for the resource record set.</p>
@@ -371,15 +385,18 @@ newtype ChangeResourceRecordSetsRequest = ChangeResourceRecordSetsRequest
   { "HostedZoneId" :: (ResourceId)
   , "ChangeBatch" :: (ChangeBatch)
   }
+derive instance newtypeChangeResourceRecordSetsRequest :: Newtype ChangeResourceRecordSetsRequest _
 
 
 -- | <p>A complex type containing the response for the request.</p>
 newtype ChangeResourceRecordSetsResponse = ChangeResourceRecordSetsResponse 
   { "ChangeInfo" :: (ChangeInfo)
   }
+derive instance newtypeChangeResourceRecordSetsResponse :: Newtype ChangeResourceRecordSetsResponse _
 
 
 newtype ChangeStatus = ChangeStatus String
+derive instance newtypeChangeStatus :: Newtype ChangeStatus _
 
 
 -- | <p>A complex type that contains information about the tags that you want to add, edit, or delete.</p>
@@ -389,21 +406,26 @@ newtype ChangeTagsForResourceRequest = ChangeTagsForResourceRequest
   , "AddTags" :: NullOrUndefined (TagList)
   , "RemoveTagKeys" :: NullOrUndefined (TagKeyList)
   }
+derive instance newtypeChangeTagsForResourceRequest :: Newtype ChangeTagsForResourceRequest _
 
 
 -- | <p>Empty response for the request.</p>
 newtype ChangeTagsForResourceResponse = ChangeTagsForResourceResponse 
   { 
   }
+derive instance newtypeChangeTagsForResourceResponse :: Newtype ChangeTagsForResourceResponse _
 
 
 newtype Changes = Changes (Array Change)
+derive instance newtypeChanges :: Newtype Changes _
 
 
 newtype CheckerIpRanges = CheckerIpRanges (Array IPAddressCidr)
+derive instance newtypeCheckerIpRanges :: Newtype CheckerIpRanges _
 
 
 newtype ChildHealthCheckList = ChildHealthCheckList (Array HealthCheckId)
+derive instance newtypeChildHealthCheckList :: Newtype ChildHealthCheckList _
 
 
 -- | <p>A complex type that contains information about the CloudWatch alarm that Amazon Route 53 is monitoring for this health check.</p>
@@ -417,33 +439,40 @@ newtype CloudWatchAlarmConfiguration = CloudWatchAlarmConfiguration
   , "Statistic" :: (Statistic)
   , "Dimensions" :: NullOrUndefined (DimensionList)
   }
+derive instance newtypeCloudWatchAlarmConfiguration :: Newtype CloudWatchAlarmConfiguration _
 
 
 newtype CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn String
+derive instance newtypeCloudWatchLogsLogGroupArn :: Newtype CloudWatchLogsLogGroupArn _
 
 
 newtype CloudWatchRegion = CloudWatchRegion String
+derive instance newtypeCloudWatchRegion :: Newtype CloudWatchRegion _
 
 
 newtype ComparisonOperator = ComparisonOperator String
+derive instance newtypeComparisonOperator :: Newtype ComparisonOperator _
 
 
 -- | <p>Another user submitted a request to create, update, or delete the object at the same time that you did. Retry the request. </p>
 newtype ConcurrentModification = ConcurrentModification 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConcurrentModification :: Newtype ConcurrentModification _
 
 
 -- | <p>The cause of this error depends on whether you're trying to create a public or a private hosted zone:</p> <ul> <li> <p> <b>Public hosted zone:</b> Two hosted zones that have the same name or that have a parent/child relationship (example.com and test.example.com) can't have any common name servers. You tried to create a hosted zone that has the same name as an existing hosted zone or that's the parent or child of an existing hosted zone, and you specified a delegation set that shares one or more name servers with the existing hosted zone. For more information, see <a>CreateReusableDelegationSet</a>.</p> </li> <li> <p> <b>Private hosted zone:</b> You specified an Amazon VPC that you're already using for another hosted zone, and the domain that you specified for one of the hosted zones is a subdomain of the domain that you specified for the other hosted zone. For example, you can't use the same Amazon VPC for the hosted zones for example.com and test.example.com.</p> </li> </ul>
 newtype ConflictingDomainExists = ConflictingDomainExists 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConflictingDomainExists :: Newtype ConflictingDomainExists _
 
 
 -- | <p>You tried to update a traffic policy instance by using a traffic policy version that has a different DNS type than the current type for the instance. You specified the type in the JSON document in the <code>CreateTrafficPolicy</code> or <code>CreateTrafficPolicyVersion</code>request. </p>
 newtype ConflictingTypes = ConflictingTypes 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConflictingTypes :: Newtype ConflictingTypes _
 
 
 -- | <p>A complex type that contains the health check request information.</p>
@@ -451,6 +480,7 @@ newtype CreateHealthCheckRequest = CreateHealthCheckRequest
   { "CallerReference" :: (HealthCheckNonce)
   , "HealthCheckConfig" :: (HealthCheckConfig)
   }
+derive instance newtypeCreateHealthCheckRequest :: Newtype CreateHealthCheckRequest _
 
 
 -- | <p>A complex type containing the response information for the new health check.</p>
@@ -458,6 +488,7 @@ newtype CreateHealthCheckResponse = CreateHealthCheckResponse
   { "HealthCheck" :: (HealthCheck)
   , "Location" :: (ResourceURI)
   }
+derive instance newtypeCreateHealthCheckResponse :: Newtype CreateHealthCheckResponse _
 
 
 -- | <p>A complex type that contains information about the request to create a hosted zone.</p>
@@ -468,6 +499,7 @@ newtype CreateHostedZoneRequest = CreateHostedZoneRequest
   , "HostedZoneConfig" :: NullOrUndefined (HostedZoneConfig)
   , "DelegationSetId" :: NullOrUndefined (ResourceId)
   }
+derive instance newtypeCreateHostedZoneRequest :: Newtype CreateHostedZoneRequest _
 
 
 -- | <p>A complex type containing the response information for the hosted zone.</p>
@@ -478,30 +510,35 @@ newtype CreateHostedZoneResponse = CreateHostedZoneResponse
   , "VPC" :: NullOrUndefined (VPC)
   , "Location" :: (ResourceURI)
   }
+derive instance newtypeCreateHostedZoneResponse :: Newtype CreateHostedZoneResponse _
 
 
 newtype CreateQueryLoggingConfigRequest = CreateQueryLoggingConfigRequest 
   { "HostedZoneId" :: (ResourceId)
   , "CloudWatchLogsLogGroupArn" :: (CloudWatchLogsLogGroupArn)
   }
+derive instance newtypeCreateQueryLoggingConfigRequest :: Newtype CreateQueryLoggingConfigRequest _
 
 
 newtype CreateQueryLoggingConfigResponse = CreateQueryLoggingConfigResponse 
   { "QueryLoggingConfig" :: (QueryLoggingConfig)
   , "Location" :: (ResourceURI)
   }
+derive instance newtypeCreateQueryLoggingConfigResponse :: Newtype CreateQueryLoggingConfigResponse _
 
 
 newtype CreateReusableDelegationSetRequest = CreateReusableDelegationSetRequest 
   { "CallerReference" :: (Nonce)
   , "HostedZoneId" :: NullOrUndefined (ResourceId)
   }
+derive instance newtypeCreateReusableDelegationSetRequest :: Newtype CreateReusableDelegationSetRequest _
 
 
 newtype CreateReusableDelegationSetResponse = CreateReusableDelegationSetResponse 
   { "DelegationSet" :: (DelegationSet)
   , "Location" :: (ResourceURI)
   }
+derive instance newtypeCreateReusableDelegationSetResponse :: Newtype CreateReusableDelegationSetResponse _
 
 
 -- | <p>A complex type that contains information about the resource record sets that you want to create based on a specified traffic policy.</p>
@@ -512,6 +549,7 @@ newtype CreateTrafficPolicyInstanceRequest = CreateTrafficPolicyInstanceRequest
   , "TrafficPolicyId" :: (TrafficPolicyId)
   , "TrafficPolicyVersion" :: (TrafficPolicyVersion)
   }
+derive instance newtypeCreateTrafficPolicyInstanceRequest :: Newtype CreateTrafficPolicyInstanceRequest _
 
 
 -- | <p>A complex type that contains the response information for the <code>CreateTrafficPolicyInstance</code> request.</p>
@@ -519,6 +557,7 @@ newtype CreateTrafficPolicyInstanceResponse = CreateTrafficPolicyInstanceRespons
   { "TrafficPolicyInstance" :: (TrafficPolicyInstance)
   , "Location" :: (ResourceURI)
   }
+derive instance newtypeCreateTrafficPolicyInstanceResponse :: Newtype CreateTrafficPolicyInstanceResponse _
 
 
 -- | <p>A complex type that contains information about the traffic policy that you want to create.</p>
@@ -527,6 +566,7 @@ newtype CreateTrafficPolicyRequest = CreateTrafficPolicyRequest
   , "Document" :: (TrafficPolicyDocument)
   , "Comment" :: NullOrUndefined (TrafficPolicyComment)
   }
+derive instance newtypeCreateTrafficPolicyRequest :: Newtype CreateTrafficPolicyRequest _
 
 
 -- | <p>A complex type that contains the response information for the <code>CreateTrafficPolicy</code> request.</p>
@@ -534,6 +574,7 @@ newtype CreateTrafficPolicyResponse = CreateTrafficPolicyResponse
   { "TrafficPolicy" :: (TrafficPolicy)
   , "Location" :: (ResourceURI)
   }
+derive instance newtypeCreateTrafficPolicyResponse :: Newtype CreateTrafficPolicyResponse _
 
 
 -- | <p>A complex type that contains information about the traffic policy that you want to create a new version for.</p>
@@ -542,6 +583,7 @@ newtype CreateTrafficPolicyVersionRequest = CreateTrafficPolicyVersionRequest
   , "Document" :: (TrafficPolicyDocument)
   , "Comment" :: NullOrUndefined (TrafficPolicyComment)
   }
+derive instance newtypeCreateTrafficPolicyVersionRequest :: Newtype CreateTrafficPolicyVersionRequest _
 
 
 -- | <p>A complex type that contains the response information for the <code>CreateTrafficPolicyVersion</code> request.</p>
@@ -549,6 +591,7 @@ newtype CreateTrafficPolicyVersionResponse = CreateTrafficPolicyVersionResponse
   { "TrafficPolicy" :: (TrafficPolicy)
   , "Location" :: (ResourceURI)
   }
+derive instance newtypeCreateTrafficPolicyVersionResponse :: Newtype CreateTrafficPolicyVersionResponse _
 
 
 -- | <p>A complex type that contains information about the request to authorize associating a VPC with your private hosted zone. Authorization is only required when a private hosted zone and a VPC were created by using different accounts.</p>
@@ -556,6 +599,7 @@ newtype CreateVPCAssociationAuthorizationRequest = CreateVPCAssociationAuthoriza
   { "HostedZoneId" :: (ResourceId)
   , "VPC" :: (VPC)
   }
+derive instance newtypeCreateVPCAssociationAuthorizationRequest :: Newtype CreateVPCAssociationAuthorizationRequest _
 
 
 -- | <p>A complex type that contains the response information from a <code>CreateVPCAssociationAuthorization</code> request.</p>
@@ -563,12 +607,15 @@ newtype CreateVPCAssociationAuthorizationResponse = CreateVPCAssociationAuthoriz
   { "HostedZoneId" :: (ResourceId)
   , "VPC" :: (VPC)
   }
+derive instance newtypeCreateVPCAssociationAuthorizationResponse :: Newtype CreateVPCAssociationAuthorizationResponse _
 
 
 newtype DNSName = DNSName String
+derive instance newtypeDNSName :: Newtype DNSName _
 
 
 newtype DNSRCode = DNSRCode String
+derive instance newtypeDNSRCode :: Newtype DNSRCode _
 
 
 -- | <p>A complex type that lists the name servers in a delegation set, as well as the <code>CallerReference</code> and the <code>ID</code> for the delegation set.</p>
@@ -577,100 +624,118 @@ newtype DelegationSet = DelegationSet
   , "CallerReference" :: NullOrUndefined (Nonce)
   , "NameServers" :: (DelegationSetNameServers)
   }
+derive instance newtypeDelegationSet :: Newtype DelegationSet _
 
 
 -- | <p>A delegation set with the same owner and caller reference combination has already been created.</p>
 newtype DelegationSetAlreadyCreated = DelegationSetAlreadyCreated 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDelegationSetAlreadyCreated :: Newtype DelegationSetAlreadyCreated _
 
 
 -- | <p>The specified delegation set has already been marked as reusable.</p>
 newtype DelegationSetAlreadyReusable = DelegationSetAlreadyReusable 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDelegationSetAlreadyReusable :: Newtype DelegationSetAlreadyReusable _
 
 
 -- | <p>The specified delegation contains associated hosted zones which must be deleted before the reusable delegation set can be deleted.</p>
 newtype DelegationSetInUse = DelegationSetInUse 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDelegationSetInUse :: Newtype DelegationSetInUse _
 
 
 newtype DelegationSetNameServers = DelegationSetNameServers (Array DNSName)
+derive instance newtypeDelegationSetNameServers :: Newtype DelegationSetNameServers _
 
 
 -- | <p>You can create a hosted zone that has the same name as an existing hosted zone (example.com is common), but there is a limit to the number of hosted zones that have the same name. If you get this error, Amazon Route 53 has reached that limit. If you own the domain name and Amazon Route 53 generates this error, contact Customer Support.</p>
 newtype DelegationSetNotAvailable = DelegationSetNotAvailable 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDelegationSetNotAvailable :: Newtype DelegationSetNotAvailable _
 
 
 -- | <p>A reusable delegation set with the specified ID does not exist.</p>
 newtype DelegationSetNotReusable = DelegationSetNotReusable 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDelegationSetNotReusable :: Newtype DelegationSetNotReusable _
 
 
 newtype DelegationSets = DelegationSets (Array DelegationSet)
+derive instance newtypeDelegationSets :: Newtype DelegationSets _
 
 
 -- | <p>This action deletes a health check.</p>
 newtype DeleteHealthCheckRequest = DeleteHealthCheckRequest 
   { "HealthCheckId" :: (HealthCheckId)
   }
+derive instance newtypeDeleteHealthCheckRequest :: Newtype DeleteHealthCheckRequest _
 
 
 -- | <p>An empty element.</p>
 newtype DeleteHealthCheckResponse = DeleteHealthCheckResponse 
   { 
   }
+derive instance newtypeDeleteHealthCheckResponse :: Newtype DeleteHealthCheckResponse _
 
 
 -- | <p>A request to delete a hosted zone.</p>
 newtype DeleteHostedZoneRequest = DeleteHostedZoneRequest 
   { "Id" :: (ResourceId)
   }
+derive instance newtypeDeleteHostedZoneRequest :: Newtype DeleteHostedZoneRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>DeleteHostedZone</code> request.</p>
 newtype DeleteHostedZoneResponse = DeleteHostedZoneResponse 
   { "ChangeInfo" :: (ChangeInfo)
   }
+derive instance newtypeDeleteHostedZoneResponse :: Newtype DeleteHostedZoneResponse _
 
 
 newtype DeleteQueryLoggingConfigRequest = DeleteQueryLoggingConfigRequest 
   { "Id" :: (QueryLoggingConfigId)
   }
+derive instance newtypeDeleteQueryLoggingConfigRequest :: Newtype DeleteQueryLoggingConfigRequest _
 
 
 newtype DeleteQueryLoggingConfigResponse = DeleteQueryLoggingConfigResponse 
   { 
   }
+derive instance newtypeDeleteQueryLoggingConfigResponse :: Newtype DeleteQueryLoggingConfigResponse _
 
 
 -- | <p>A request to delete a reusable delegation set.</p>
 newtype DeleteReusableDelegationSetRequest = DeleteReusableDelegationSetRequest 
   { "Id" :: (ResourceId)
   }
+derive instance newtypeDeleteReusableDelegationSetRequest :: Newtype DeleteReusableDelegationSetRequest _
 
 
 -- | <p>An empty element.</p>
 newtype DeleteReusableDelegationSetResponse = DeleteReusableDelegationSetResponse 
   { 
   }
+derive instance newtypeDeleteReusableDelegationSetResponse :: Newtype DeleteReusableDelegationSetResponse _
 
 
 -- | <p>A request to delete a specified traffic policy instance.</p>
 newtype DeleteTrafficPolicyInstanceRequest = DeleteTrafficPolicyInstanceRequest 
   { "Id" :: (TrafficPolicyInstanceId)
   }
+derive instance newtypeDeleteTrafficPolicyInstanceRequest :: Newtype DeleteTrafficPolicyInstanceRequest _
 
 
 -- | <p>An empty element.</p>
 newtype DeleteTrafficPolicyInstanceResponse = DeleteTrafficPolicyInstanceResponse 
   { 
   }
+derive instance newtypeDeleteTrafficPolicyInstanceResponse :: Newtype DeleteTrafficPolicyInstanceResponse _
 
 
 -- | <p>A request to delete a specified traffic policy version.</p>
@@ -678,12 +743,14 @@ newtype DeleteTrafficPolicyRequest = DeleteTrafficPolicyRequest
   { "Id" :: (TrafficPolicyId)
   , "Version" :: (TrafficPolicyVersion)
   }
+derive instance newtypeDeleteTrafficPolicyRequest :: Newtype DeleteTrafficPolicyRequest _
 
 
 -- | <p>An empty element.</p>
 newtype DeleteTrafficPolicyResponse = DeleteTrafficPolicyResponse 
   { 
   }
+derive instance newtypeDeleteTrafficPolicyResponse :: Newtype DeleteTrafficPolicyResponse _
 
 
 -- | <p>A complex type that contains information about the request to remove authorization to associate a VPC that was created by one AWS account with a hosted zone that was created with a different AWS account. </p>
@@ -691,12 +758,14 @@ newtype DeleteVPCAssociationAuthorizationRequest = DeleteVPCAssociationAuthoriza
   { "HostedZoneId" :: (ResourceId)
   , "VPC" :: (VPC)
   }
+derive instance newtypeDeleteVPCAssociationAuthorizationRequest :: Newtype DeleteVPCAssociationAuthorizationRequest _
 
 
 -- | <p>Empty response for the request.</p>
 newtype DeleteVPCAssociationAuthorizationResponse = DeleteVPCAssociationAuthorizationResponse 
   { 
   }
+derive instance newtypeDeleteVPCAssociationAuthorizationResponse :: Newtype DeleteVPCAssociationAuthorizationResponse _
 
 
 -- | <p>For the metric that the CloudWatch alarm is associated with, a complex type that contains information about one dimension.</p>
@@ -704,15 +773,19 @@ newtype Dimension = Dimension
   { "Name" :: (DimensionField)
   , "Value" :: (DimensionField)
   }
+derive instance newtypeDimension :: Newtype Dimension _
 
 
 newtype DimensionField = DimensionField String
+derive instance newtypeDimensionField :: Newtype DimensionField _
 
 
 newtype DimensionList = DimensionList (Array Dimension)
+derive instance newtypeDimensionList :: Newtype DimensionList _
 
 
 newtype DisassociateVPCComment = DisassociateVPCComment String
+derive instance newtypeDisassociateVPCComment :: Newtype DisassociateVPCComment _
 
 
 -- | <p>A complex type that contains information about the VPC that you want to disassociate from a specified private hosted zone.</p>
@@ -721,30 +794,38 @@ newtype DisassociateVPCFromHostedZoneRequest = DisassociateVPCFromHostedZoneRequ
   , "VPC" :: (VPC)
   , "Comment" :: NullOrUndefined (DisassociateVPCComment)
   }
+derive instance newtypeDisassociateVPCFromHostedZoneRequest :: Newtype DisassociateVPCFromHostedZoneRequest _
 
 
 -- | <p>A complex type that contains the response information for the disassociate request.</p>
 newtype DisassociateVPCFromHostedZoneResponse = DisassociateVPCFromHostedZoneResponse 
   { "ChangeInfo" :: (ChangeInfo)
   }
+derive instance newtypeDisassociateVPCFromHostedZoneResponse :: Newtype DisassociateVPCFromHostedZoneResponse _
 
 
 newtype EnableSNI = EnableSNI Boolean
+derive instance newtypeEnableSNI :: Newtype EnableSNI _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype ErrorMessages = ErrorMessages (Array ErrorMessage)
+derive instance newtypeErrorMessages :: Newtype ErrorMessages _
 
 
 newtype EvaluationPeriods = EvaluationPeriods Int
+derive instance newtypeEvaluationPeriods :: Newtype EvaluationPeriods _
 
 
 newtype FailureThreshold = FailureThreshold Int
+derive instance newtypeFailureThreshold :: Newtype FailureThreshold _
 
 
 newtype FullyQualifiedDomainName = FullyQualifiedDomainName String
+derive instance newtypeFullyQualifiedDomainName :: Newtype FullyQualifiedDomainName _
 
 
 -- | <p>A complex type that contains information about a geo location.</p>
@@ -753,18 +834,23 @@ newtype GeoLocation = GeoLocation
   , "CountryCode" :: NullOrUndefined (GeoLocationCountryCode)
   , "SubdivisionCode" :: NullOrUndefined (GeoLocationSubdivisionCode)
   }
+derive instance newtypeGeoLocation :: Newtype GeoLocation _
 
 
 newtype GeoLocationContinentCode = GeoLocationContinentCode String
+derive instance newtypeGeoLocationContinentCode :: Newtype GeoLocationContinentCode _
 
 
 newtype GeoLocationContinentName = GeoLocationContinentName String
+derive instance newtypeGeoLocationContinentName :: Newtype GeoLocationContinentName _
 
 
 newtype GeoLocationCountryCode = GeoLocationCountryCode String
+derive instance newtypeGeoLocationCountryCode :: Newtype GeoLocationCountryCode _
 
 
 newtype GeoLocationCountryName = GeoLocationCountryName String
+derive instance newtypeGeoLocationCountryName :: Newtype GeoLocationCountryName _
 
 
 -- | <p>A complex type that contains the codes and full continent, country, and subdivision names for the specified <code>geolocation</code> code.</p>
@@ -776,21 +862,26 @@ newtype GeoLocationDetails = GeoLocationDetails
   , "SubdivisionCode" :: NullOrUndefined (GeoLocationSubdivisionCode)
   , "SubdivisionName" :: NullOrUndefined (GeoLocationSubdivisionName)
   }
+derive instance newtypeGeoLocationDetails :: Newtype GeoLocationDetails _
 
 
 newtype GeoLocationDetailsList = GeoLocationDetailsList (Array GeoLocationDetails)
+derive instance newtypeGeoLocationDetailsList :: Newtype GeoLocationDetailsList _
 
 
 newtype GeoLocationSubdivisionCode = GeoLocationSubdivisionCode String
+derive instance newtypeGeoLocationSubdivisionCode :: Newtype GeoLocationSubdivisionCode _
 
 
 newtype GeoLocationSubdivisionName = GeoLocationSubdivisionName String
+derive instance newtypeGeoLocationSubdivisionName :: Newtype GeoLocationSubdivisionName _
 
 
 -- | <p>A complex type that contains information about the request to create a hosted zone.</p>
 newtype GetAccountLimitRequest = GetAccountLimitRequest 
   { "Type" :: (AccountLimitType)
   }
+derive instance newtypeGetAccountLimitRequest :: Newtype GetAccountLimitRequest _
 
 
 -- | <p>A complex type that contains the requested limit. </p>
@@ -798,28 +889,33 @@ newtype GetAccountLimitResponse = GetAccountLimitResponse
   { "Limit" :: (AccountLimit)
   , "Count" :: (UsageCount)
   }
+derive instance newtypeGetAccountLimitResponse :: Newtype GetAccountLimitResponse _
 
 
 -- | <p>The input for a GetChange request.</p>
 newtype GetChangeRequest = GetChangeRequest 
   { "Id" :: (ResourceId)
   }
+derive instance newtypeGetChangeRequest :: Newtype GetChangeRequest _
 
 
 -- | <p>A complex type that contains the <code>ChangeInfo</code> element.</p>
 newtype GetChangeResponse = GetChangeResponse 
   { "ChangeInfo" :: (ChangeInfo)
   }
+derive instance newtypeGetChangeResponse :: Newtype GetChangeResponse _
 
 
 newtype GetCheckerIpRangesRequest = GetCheckerIpRangesRequest 
   { 
   }
+derive instance newtypeGetCheckerIpRangesRequest :: Newtype GetCheckerIpRangesRequest _
 
 
 newtype GetCheckerIpRangesResponse = GetCheckerIpRangesResponse 
   { "CheckerIpRanges" :: (CheckerIpRanges)
   }
+derive instance newtypeGetCheckerIpRangesResponse :: Newtype GetCheckerIpRangesResponse _
 
 
 -- | <p>A request for information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets.</p>
@@ -828,72 +924,84 @@ newtype GetGeoLocationRequest = GetGeoLocationRequest
   , "CountryCode" :: NullOrUndefined (GeoLocationCountryCode)
   , "SubdivisionCode" :: NullOrUndefined (GeoLocationSubdivisionCode)
   }
+derive instance newtypeGetGeoLocationRequest :: Newtype GetGeoLocationRequest _
 
 
 -- | <p>A complex type that contains the response information for the specified geolocation code.</p>
 newtype GetGeoLocationResponse = GetGeoLocationResponse 
   { "GeoLocationDetails" :: (GeoLocationDetails)
   }
+derive instance newtypeGetGeoLocationResponse :: Newtype GetGeoLocationResponse _
 
 
 -- | <p>A request for the number of health checks that are associated with the current AWS account.</p>
 newtype GetHealthCheckCountRequest = GetHealthCheckCountRequest 
   { 
   }
+derive instance newtypeGetHealthCheckCountRequest :: Newtype GetHealthCheckCountRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>GetHealthCheckCount</code> request.</p>
 newtype GetHealthCheckCountResponse = GetHealthCheckCountResponse 
   { "HealthCheckCount" :: (HealthCheckCount)
   }
+derive instance newtypeGetHealthCheckCountResponse :: Newtype GetHealthCheckCountResponse _
 
 
 -- | <p>A request for the reason that a health check failed most recently.</p>
 newtype GetHealthCheckLastFailureReasonRequest = GetHealthCheckLastFailureReasonRequest 
   { "HealthCheckId" :: (HealthCheckId)
   }
+derive instance newtypeGetHealthCheckLastFailureReasonRequest :: Newtype GetHealthCheckLastFailureReasonRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>GetHealthCheckLastFailureReason</code> request.</p>
 newtype GetHealthCheckLastFailureReasonResponse = GetHealthCheckLastFailureReasonResponse 
   { "HealthCheckObservations" :: (HealthCheckObservations)
   }
+derive instance newtypeGetHealthCheckLastFailureReasonResponse :: Newtype GetHealthCheckLastFailureReasonResponse _
 
 
 -- | <p>A request to get information about a specified health check. </p>
 newtype GetHealthCheckRequest = GetHealthCheckRequest 
   { "HealthCheckId" :: (HealthCheckId)
   }
+derive instance newtypeGetHealthCheckRequest :: Newtype GetHealthCheckRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>GetHealthCheck</code> request.</p>
 newtype GetHealthCheckResponse = GetHealthCheckResponse 
   { "HealthCheck" :: (HealthCheck)
   }
+derive instance newtypeGetHealthCheckResponse :: Newtype GetHealthCheckResponse _
 
 
 -- | <p>A request to get the status for a health check.</p>
 newtype GetHealthCheckStatusRequest = GetHealthCheckStatusRequest 
   { "HealthCheckId" :: (HealthCheckId)
   }
+derive instance newtypeGetHealthCheckStatusRequest :: Newtype GetHealthCheckStatusRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>GetHealthCheck</code> request.</p>
 newtype GetHealthCheckStatusResponse = GetHealthCheckStatusResponse 
   { "HealthCheckObservations" :: (HealthCheckObservations)
   }
+derive instance newtypeGetHealthCheckStatusResponse :: Newtype GetHealthCheckStatusResponse _
 
 
 -- | <p>A request to retrieve a count of all the hosted zones that are associated with the current AWS account.</p>
 newtype GetHostedZoneCountRequest = GetHostedZoneCountRequest 
   { 
   }
+derive instance newtypeGetHostedZoneCountRequest :: Newtype GetHostedZoneCountRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>GetHostedZoneCount</code> request.</p>
 newtype GetHostedZoneCountResponse = GetHostedZoneCountResponse 
   { "HostedZoneCount" :: (HostedZoneCount)
   }
+derive instance newtypeGetHostedZoneCountResponse :: Newtype GetHostedZoneCountResponse _
 
 
 -- | <p>A complex type that contains information about the request to create a hosted zone.</p>
@@ -901,6 +1009,7 @@ newtype GetHostedZoneLimitRequest = GetHostedZoneLimitRequest
   { "Type" :: (HostedZoneLimitType)
   , "HostedZoneId" :: (ResourceId)
   }
+derive instance newtypeGetHostedZoneLimitRequest :: Newtype GetHostedZoneLimitRequest _
 
 
 -- | <p>A complex type that contains the requested limit. </p>
@@ -908,12 +1017,14 @@ newtype GetHostedZoneLimitResponse = GetHostedZoneLimitResponse
   { "Limit" :: (HostedZoneLimit)
   , "Count" :: (UsageCount)
   }
+derive instance newtypeGetHostedZoneLimitResponse :: Newtype GetHostedZoneLimitResponse _
 
 
 -- | <p>A request to get information about a specified hosted zone. </p>
 newtype GetHostedZoneRequest = GetHostedZoneRequest 
   { "Id" :: (ResourceId)
   }
+derive instance newtypeGetHostedZoneRequest :: Newtype GetHostedZoneRequest _
 
 
 -- | <p>A complex type that contain the response to a <code>GetHostedZone</code> request.</p>
@@ -922,16 +1033,19 @@ newtype GetHostedZoneResponse = GetHostedZoneResponse
   , "DelegationSet" :: NullOrUndefined (DelegationSet)
   , "VPCs" :: NullOrUndefined (VPCs)
   }
+derive instance newtypeGetHostedZoneResponse :: Newtype GetHostedZoneResponse _
 
 
 newtype GetQueryLoggingConfigRequest = GetQueryLoggingConfigRequest 
   { "Id" :: (QueryLoggingConfigId)
   }
+derive instance newtypeGetQueryLoggingConfigRequest :: Newtype GetQueryLoggingConfigRequest _
 
 
 newtype GetQueryLoggingConfigResponse = GetQueryLoggingConfigResponse 
   { "QueryLoggingConfig" :: (QueryLoggingConfig)
   }
+derive instance newtypeGetQueryLoggingConfigResponse :: Newtype GetQueryLoggingConfigResponse _
 
 
 -- | <p>A complex type that contains information about the request to create a hosted zone.</p>
@@ -939,6 +1053,7 @@ newtype GetReusableDelegationSetLimitRequest = GetReusableDelegationSetLimitRequ
   { "Type" :: (ReusableDelegationSetLimitType)
   , "DelegationSetId" :: (ResourceId)
   }
+derive instance newtypeGetReusableDelegationSetLimitRequest :: Newtype GetReusableDelegationSetLimitRequest _
 
 
 -- | <p>A complex type that contains the requested limit. </p>
@@ -946,42 +1061,49 @@ newtype GetReusableDelegationSetLimitResponse = GetReusableDelegationSetLimitRes
   { "Limit" :: (ReusableDelegationSetLimit)
   , "Count" :: (UsageCount)
   }
+derive instance newtypeGetReusableDelegationSetLimitResponse :: Newtype GetReusableDelegationSetLimitResponse _
 
 
 -- | <p>A request to get information about a specified reusable delegation set.</p>
 newtype GetReusableDelegationSetRequest = GetReusableDelegationSetRequest 
   { "Id" :: (ResourceId)
   }
+derive instance newtypeGetReusableDelegationSetRequest :: Newtype GetReusableDelegationSetRequest _
 
 
 -- | <p>A complex type that contains the response to the <code>GetReusableDelegationSet</code> request.</p>
 newtype GetReusableDelegationSetResponse = GetReusableDelegationSetResponse 
   { "DelegationSet" :: (DelegationSet)
   }
+derive instance newtypeGetReusableDelegationSetResponse :: Newtype GetReusableDelegationSetResponse _
 
 
 -- | <p>Request to get the number of traffic policy instances that are associated with the current AWS account.</p>
 newtype GetTrafficPolicyInstanceCountRequest = GetTrafficPolicyInstanceCountRequest 
   { 
   }
+derive instance newtypeGetTrafficPolicyInstanceCountRequest :: Newtype GetTrafficPolicyInstanceCountRequest _
 
 
 -- | <p>A complex type that contains information about the resource record sets that Amazon Route 53 created based on a specified traffic policy.</p>
 newtype GetTrafficPolicyInstanceCountResponse = GetTrafficPolicyInstanceCountResponse 
   { "TrafficPolicyInstanceCount" :: (TrafficPolicyInstanceCount)
   }
+derive instance newtypeGetTrafficPolicyInstanceCountResponse :: Newtype GetTrafficPolicyInstanceCountResponse _
 
 
 -- | <p>Gets information about a specified traffic policy instance.</p>
 newtype GetTrafficPolicyInstanceRequest = GetTrafficPolicyInstanceRequest 
   { "Id" :: (TrafficPolicyInstanceId)
   }
+derive instance newtypeGetTrafficPolicyInstanceRequest :: Newtype GetTrafficPolicyInstanceRequest _
 
 
 -- | <p>A complex type that contains information about the resource record sets that Amazon Route 53 created based on a specified traffic policy.</p>
 newtype GetTrafficPolicyInstanceResponse = GetTrafficPolicyInstanceResponse 
   { "TrafficPolicyInstance" :: (TrafficPolicyInstance)
   }
+derive instance newtypeGetTrafficPolicyInstanceResponse :: Newtype GetTrafficPolicyInstanceResponse _
 
 
 -- | <p>Gets information about a specific traffic policy version.</p>
@@ -989,12 +1111,14 @@ newtype GetTrafficPolicyRequest = GetTrafficPolicyRequest
   { "Id" :: (TrafficPolicyId)
   , "Version" :: (TrafficPolicyVersion)
   }
+derive instance newtypeGetTrafficPolicyRequest :: Newtype GetTrafficPolicyRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
 newtype GetTrafficPolicyResponse = GetTrafficPolicyResponse 
   { "TrafficPolicy" :: (TrafficPolicy)
   }
+derive instance newtypeGetTrafficPolicyResponse :: Newtype GetTrafficPolicyResponse _
 
 
 -- | <p>A complex type that contains information about one health check that is associated with the current AWS account.</p>
@@ -1006,12 +1130,14 @@ newtype HealthCheck = HealthCheck
   , "HealthCheckVersion" :: (HealthCheckVersion)
   , "CloudWatchAlarmConfiguration" :: NullOrUndefined (CloudWatchAlarmConfiguration)
   }
+derive instance newtypeHealthCheck :: Newtype HealthCheck _
 
 
 -- | <p> The health check you're attempting to create already exists. Amazon Route 53 returns this error when you submit a request that has the following values:</p> <ul> <li> <p>The same value for <code>CallerReference</code> as an existing health check, and one or more values that differ from the existing health check that has the same caller reference.</p> </li> <li> <p>The same value for <code>CallerReference</code> as a health check that you created and later deleted, regardless of the other settings in the request.</p> </li> </ul>
 newtype HealthCheckAlreadyExists = HealthCheckAlreadyExists 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeHealthCheckAlreadyExists :: Newtype HealthCheckAlreadyExists _
 
 
 -- | <p>A complex type that contains information about the health check.</p>
@@ -1033,21 +1159,26 @@ newtype HealthCheckConfig = HealthCheckConfig
   , "AlarmIdentifier" :: NullOrUndefined (AlarmIdentifier)
   , "InsufficientDataHealthStatus" :: NullOrUndefined (InsufficientDataHealthStatus)
   }
+derive instance newtypeHealthCheckConfig :: Newtype HealthCheckConfig _
 
 
 newtype HealthCheckCount = HealthCheckCount Number
+derive instance newtypeHealthCheckCount :: Newtype HealthCheckCount _
 
 
 newtype HealthCheckId = HealthCheckId String
+derive instance newtypeHealthCheckId :: Newtype HealthCheckId _
 
 
 -- | <p>This error code is not in use.</p>
 newtype HealthCheckInUse = HealthCheckInUse 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeHealthCheckInUse :: Newtype HealthCheckInUse _
 
 
 newtype HealthCheckNonce = HealthCheckNonce String
+derive instance newtypeHealthCheckNonce :: Newtype HealthCheckNonce _
 
 
 -- | <p>A complex type that contains the last failure reason as reported by one Amazon Route 53 health checker.</p>
@@ -1056,33 +1187,42 @@ newtype HealthCheckObservation = HealthCheckObservation
   , "IPAddress" :: NullOrUndefined (IPAddress)
   , "StatusReport" :: NullOrUndefined (StatusReport)
   }
+derive instance newtypeHealthCheckObservation :: Newtype HealthCheckObservation _
 
 
 newtype HealthCheckObservations = HealthCheckObservations (Array HealthCheckObservation)
+derive instance newtypeHealthCheckObservations :: Newtype HealthCheckObservations _
 
 
 newtype HealthCheckRegion = HealthCheckRegion String
+derive instance newtypeHealthCheckRegion :: Newtype HealthCheckRegion _
 
 
 newtype HealthCheckRegionList = HealthCheckRegionList (Array HealthCheckRegion)
+derive instance newtypeHealthCheckRegionList :: Newtype HealthCheckRegionList _
 
 
 newtype HealthCheckType = HealthCheckType String
+derive instance newtypeHealthCheckType :: Newtype HealthCheckType _
 
 
 newtype HealthCheckVersion = HealthCheckVersion Number
+derive instance newtypeHealthCheckVersion :: Newtype HealthCheckVersion _
 
 
 -- | <p>The value of <code>HealthCheckVersion</code> in the request doesn't match the value of <code>HealthCheckVersion</code> in the health check.</p>
 newtype HealthCheckVersionMismatch = HealthCheckVersionMismatch 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeHealthCheckVersionMismatch :: Newtype HealthCheckVersionMismatch _
 
 
 newtype HealthChecks = HealthChecks (Array HealthCheck)
+derive instance newtypeHealthChecks :: Newtype HealthChecks _
 
 
 newtype HealthThreshold = HealthThreshold Int
+derive instance newtypeHealthThreshold :: Newtype HealthThreshold _
 
 
 -- | <p>A complex type that contains general information about the hosted zone.</p>
@@ -1094,12 +1234,14 @@ newtype HostedZone = HostedZone
   , "ResourceRecordSetCount" :: NullOrUndefined (HostedZoneRRSetCount)
   , "LinkedService" :: NullOrUndefined (LinkedService)
   }
+derive instance newtypeHostedZone :: Newtype HostedZone _
 
 
 -- | <p>The hosted zone you're trying to create already exists. Amazon Route 53 returns this error when a hosted zone has already been created with the specified <code>CallerReference</code>.</p>
 newtype HostedZoneAlreadyExists = HostedZoneAlreadyExists 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeHostedZoneAlreadyExists :: Newtype HostedZoneAlreadyExists _
 
 
 -- | <p>A complex type that contains an optional comment about your hosted zone. If you don't want to specify a comment, omit both the <code>HostedZoneConfig</code> and <code>Comment</code> elements.</p>
@@ -1107,9 +1249,11 @@ newtype HostedZoneConfig = HostedZoneConfig
   { "Comment" :: NullOrUndefined (ResourceDescription)
   , "PrivateZone" :: NullOrUndefined (IsPrivateZone)
   }
+derive instance newtypeHostedZoneConfig :: Newtype HostedZoneConfig _
 
 
 newtype HostedZoneCount = HostedZoneCount Number
+derive instance newtypeHostedZoneCount :: Newtype HostedZoneCount _
 
 
 -- | <p>A complex type that contains the type of limit that you specified in the request and the current value for that limit.</p>
@@ -1117,60 +1261,73 @@ newtype HostedZoneLimit = HostedZoneLimit
   { "Type" :: (HostedZoneLimitType)
   , "Value" :: (LimitValue)
   }
+derive instance newtypeHostedZoneLimit :: Newtype HostedZoneLimit _
 
 
 newtype HostedZoneLimitType = HostedZoneLimitType String
+derive instance newtypeHostedZoneLimitType :: Newtype HostedZoneLimitType _
 
 
 -- | <p>The hosted zone contains resource records that are not SOA or NS records.</p>
 newtype HostedZoneNotEmpty = HostedZoneNotEmpty 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeHostedZoneNotEmpty :: Newtype HostedZoneNotEmpty _
 
 
 -- | <p>The specified HostedZone can't be found.</p>
 newtype HostedZoneNotFound = HostedZoneNotFound 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeHostedZoneNotFound :: Newtype HostedZoneNotFound _
 
 
 -- | <p>The specified hosted zone is a public hosted zone, not a private hosted zone.</p>
 newtype HostedZoneNotPrivate = HostedZoneNotPrivate 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeHostedZoneNotPrivate :: Newtype HostedZoneNotPrivate _
 
 
 newtype HostedZoneRRSetCount = HostedZoneRRSetCount Number
+derive instance newtypeHostedZoneRRSetCount :: Newtype HostedZoneRRSetCount _
 
 
 newtype HostedZones = HostedZones (Array HostedZone)
+derive instance newtypeHostedZones :: Newtype HostedZones _
 
 
 newtype IPAddress = IPAddress String
+derive instance newtypeIPAddress :: Newtype IPAddress _
 
 
 newtype IPAddressCidr = IPAddressCidr String
+derive instance newtypeIPAddressCidr :: Newtype IPAddressCidr _
 
 
 -- | <p>The resource you're trying to access is unsupported on this Amazon Route 53 endpoint.</p>
 newtype IncompatibleVersion = IncompatibleVersion 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeIncompatibleVersion :: Newtype IncompatibleVersion _
 
 
 -- | <p>Amazon Route 53 doesn't have the permissions required to create log streams and send query logs to log streams. Possible causes include the following:</p> <ul> <li> <p>There is no resource policy that specifies the log group ARN in the value for <code>Resource</code>.</p> </li> <li> <p>The resource policy that includes the log group ARN in the value for <code>Resource</code> doesn't have the necessary permissions.</p> </li> <li> <p>The resource policy hasn't finished propagating yet.</p> </li> </ul>
 newtype InsufficientCloudWatchLogsResourcePolicy = InsufficientCloudWatchLogsResourcePolicy 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInsufficientCloudWatchLogsResourcePolicy :: Newtype InsufficientCloudWatchLogsResourcePolicy _
 
 
 newtype InsufficientDataHealthStatus = InsufficientDataHealthStatus String
+derive instance newtypeInsufficientDataHealthStatus :: Newtype InsufficientDataHealthStatus _
 
 
 -- | <p>Parameter name is invalid.</p>
 newtype InvalidArgument = InvalidArgument 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidArgument :: Newtype InvalidArgument _
 
 
 -- | <p>This exception contains a list of messages that might contain one or more error messages. Each error message indicates one error in the change batch.</p>
@@ -1178,57 +1335,68 @@ newtype InvalidChangeBatch = InvalidChangeBatch
   { "Messages'" :: NullOrUndefined (ErrorMessages)
   , "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidChangeBatch :: Newtype InvalidChangeBatch _
 
 
 -- | <p>The specified domain name is not valid.</p>
 newtype InvalidDomainName = InvalidDomainName 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidDomainName :: Newtype InvalidDomainName _
 
 
 -- | <p>The input is not valid.</p>
 newtype InvalidInput = InvalidInput 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidInput :: Newtype InvalidInput _
 
 
 -- | <p>The value that you specified to get the second or subsequent page of results is invalid.</p>
 newtype InvalidPaginationToken = InvalidPaginationToken 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidPaginationToken :: Newtype InvalidPaginationToken _
 
 
 -- | <p>The format of the traffic policy document that you specified in the <code>Document</code> element is invalid.</p>
 newtype InvalidTrafficPolicyDocument = InvalidTrafficPolicyDocument 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidTrafficPolicyDocument :: Newtype InvalidTrafficPolicyDocument _
 
 
 -- | <p>The VPC ID that you specified either isn't a valid ID or the current account is not authorized to access this VPC.</p>
 newtype InvalidVPCId = InvalidVPCId 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidVPCId :: Newtype InvalidVPCId _
 
 
 newtype Inverted = Inverted Boolean
+derive instance newtypeInverted :: Newtype Inverted _
 
 
 newtype IsPrivateZone = IsPrivateZone Boolean
+derive instance newtypeIsPrivateZone :: Newtype IsPrivateZone _
 
 
 -- | <p>The VPC that you're trying to disassociate from the private hosted zone is the last VPC that is associated with the hosted zone. Amazon Route 53 doesn't support disassociating the last VPC from a hosted zone.</p>
 newtype LastVPCAssociation = LastVPCAssociation 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLastVPCAssociation :: Newtype LastVPCAssociation _
 
 
 newtype LimitValue = LimitValue Number
+derive instance newtypeLimitValue :: Newtype LimitValue _
 
 
 -- | <p>This operation can't be completed either because the current account has reached the limit on reusable delegation sets that it can create or because you've reached the limit on the number of Amazon VPCs that you can associate with a private hosted zone. To get the current limit on the number of reusable delegation sets, see <a>GetAccountLimit</a>. To get the current limit on the number of Amazon VPCs that you can associate with a private hosted zone, see <a>GetHostedZoneLimit</a>. To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.</p>
 newtype LimitsExceeded = LimitsExceeded 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLimitsExceeded :: Newtype LimitsExceeded _
 
 
 -- | <p>If a health check or hosted zone was created by another service, <code>LinkedService</code> is a complex type that describes the service that created the resource. When a resource is created by another service, you can't edit or delete it using Amazon Route 53. </p>
@@ -1236,6 +1404,7 @@ newtype LinkedService = LinkedService
   { "ServicePrincipal" :: NullOrUndefined (ServicePrincipal)
   , "Description" :: NullOrUndefined (ResourceDescription)
   }
+derive instance newtypeLinkedService :: Newtype LinkedService _
 
 
 -- | <p>A request to get a list of geographic locations that Amazon Route 53 supports for geolocation resource record sets. </p>
@@ -1245,6 +1414,7 @@ newtype ListGeoLocationsRequest = ListGeoLocationsRequest
   , "StartSubdivisionCode" :: NullOrUndefined (GeoLocationSubdivisionCode)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListGeoLocationsRequest :: Newtype ListGeoLocationsRequest _
 
 
 -- | <p>A complex type containing the response information for the request.</p>
@@ -1256,6 +1426,7 @@ newtype ListGeoLocationsResponse = ListGeoLocationsResponse
   , "NextSubdivisionCode" :: NullOrUndefined (GeoLocationSubdivisionCode)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListGeoLocationsResponse :: Newtype ListGeoLocationsResponse _
 
 
 -- | <p>A request to retrieve a list of the health checks that are associated with the current AWS account.</p>
@@ -1263,6 +1434,7 @@ newtype ListHealthChecksRequest = ListHealthChecksRequest
   { "Marker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListHealthChecksRequest :: Newtype ListHealthChecksRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>ListHealthChecks</code> request.</p>
@@ -1273,6 +1445,7 @@ newtype ListHealthChecksResponse = ListHealthChecksResponse
   , "NextMarker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListHealthChecksResponse :: Newtype ListHealthChecksResponse _
 
 
 -- | <p>Retrieves a list of the public and private hosted zones that are associated with the current AWS account in ASCII order by domain name. </p>
@@ -1281,6 +1454,7 @@ newtype ListHostedZonesByNameRequest = ListHostedZonesByNameRequest
   , "HostedZoneId" :: NullOrUndefined (ResourceId)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListHostedZonesByNameRequest :: Newtype ListHostedZonesByNameRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
@@ -1293,6 +1467,7 @@ newtype ListHostedZonesByNameResponse = ListHostedZonesByNameResponse
   , "NextHostedZoneId" :: NullOrUndefined (ResourceId)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListHostedZonesByNameResponse :: Newtype ListHostedZonesByNameResponse _
 
 
 -- | <p>A request to retrieve a list of the public and private hosted zones that are associated with the current AWS account.</p>
@@ -1301,6 +1476,7 @@ newtype ListHostedZonesRequest = ListHostedZonesRequest
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   , "DelegationSetId" :: NullOrUndefined (ResourceId)
   }
+derive instance newtypeListHostedZonesRequest :: Newtype ListHostedZonesRequest _
 
 
 newtype ListHostedZonesResponse = ListHostedZonesResponse 
@@ -1310,6 +1486,7 @@ newtype ListHostedZonesResponse = ListHostedZonesResponse
   , "NextMarker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListHostedZonesResponse :: Newtype ListHostedZonesResponse _
 
 
 newtype ListQueryLoggingConfigsRequest = ListQueryLoggingConfigsRequest 
@@ -1317,12 +1494,14 @@ newtype ListQueryLoggingConfigsRequest = ListQueryLoggingConfigsRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListQueryLoggingConfigsRequest :: Newtype ListQueryLoggingConfigsRequest _
 
 
 newtype ListQueryLoggingConfigsResponse = ListQueryLoggingConfigsResponse 
   { "QueryLoggingConfigs" :: (QueryLoggingConfigs)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListQueryLoggingConfigsResponse :: Newtype ListQueryLoggingConfigsResponse _
 
 
 -- | <p>A request for the resource record sets that are associated with a specified hosted zone.</p>
@@ -1333,6 +1512,7 @@ newtype ListResourceRecordSetsRequest = ListResourceRecordSetsRequest
   , "StartRecordIdentifier" :: NullOrUndefined (ResourceRecordSetIdentifier)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListResourceRecordSetsRequest :: Newtype ListResourceRecordSetsRequest _
 
 
 -- | <p>A complex type that contains list information for the resource record set.</p>
@@ -1344,6 +1524,7 @@ newtype ListResourceRecordSetsResponse = ListResourceRecordSetsResponse
   , "NextRecordIdentifier" :: NullOrUndefined (ResourceRecordSetIdentifier)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListResourceRecordSetsResponse :: Newtype ListResourceRecordSetsResponse _
 
 
 -- | <p>A request to get a list of the reusable delegation sets that are associated with the current AWS account.</p>
@@ -1351,6 +1532,7 @@ newtype ListReusableDelegationSetsRequest = ListReusableDelegationSetsRequest
   { "Marker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListReusableDelegationSetsRequest :: Newtype ListReusableDelegationSetsRequest _
 
 
 -- | <p>A complex type that contains information about the reusable delegation sets that are associated with the current AWS account.</p>
@@ -1361,6 +1543,7 @@ newtype ListReusableDelegationSetsResponse = ListReusableDelegationSetsResponse
   , "NextMarker" :: NullOrUndefined (PageMarker)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListReusableDelegationSetsResponse :: Newtype ListReusableDelegationSetsResponse _
 
 
 -- | <p>A complex type containing information about a request for a list of the tags that are associated with an individual resource.</p>
@@ -1368,12 +1551,14 @@ newtype ListTagsForResourceRequest = ListTagsForResourceRequest
   { "ResourceType" :: (TagResourceType)
   , "ResourceId" :: (TagResourceId)
   }
+derive instance newtypeListTagsForResourceRequest :: Newtype ListTagsForResourceRequest _
 
 
 -- | <p>A complex type that contains information about the health checks or hosted zones for which you want to list tags.</p>
 newtype ListTagsForResourceResponse = ListTagsForResourceResponse 
   { "ResourceTagSet" :: (ResourceTagSet)
   }
+derive instance newtypeListTagsForResourceResponse :: Newtype ListTagsForResourceResponse _
 
 
 -- | <p>A complex type that contains information about the health checks or hosted zones for which you want to list tags.</p>
@@ -1381,12 +1566,14 @@ newtype ListTagsForResourcesRequest = ListTagsForResourcesRequest
   { "ResourceType" :: (TagResourceType)
   , "ResourceIds" :: (TagResourceIdList)
   }
+derive instance newtypeListTagsForResourcesRequest :: Newtype ListTagsForResourcesRequest _
 
 
 -- | <p>A complex type containing tags for the specified resources.</p>
 newtype ListTagsForResourcesResponse = ListTagsForResourcesResponse 
   { "ResourceTagSets" :: (ResourceTagSetList)
   }
+derive instance newtypeListTagsForResourcesResponse :: Newtype ListTagsForResourcesResponse _
 
 
 -- | <p>A complex type that contains the information about the request to list the traffic policies that are associated with the current AWS account.</p>
@@ -1394,6 +1581,7 @@ newtype ListTrafficPoliciesRequest = ListTrafficPoliciesRequest
   { "TrafficPolicyIdMarker" :: NullOrUndefined (TrafficPolicyId)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListTrafficPoliciesRequest :: Newtype ListTrafficPoliciesRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
@@ -1403,6 +1591,7 @@ newtype ListTrafficPoliciesResponse = ListTrafficPoliciesResponse
   , "TrafficPolicyIdMarker" :: (TrafficPolicyId)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListTrafficPoliciesResponse :: Newtype ListTrafficPoliciesResponse _
 
 
 -- | <p>A request for the traffic policy instances that you created in a specified hosted zone.</p>
@@ -1412,6 +1601,7 @@ newtype ListTrafficPolicyInstancesByHostedZoneRequest = ListTrafficPolicyInstanc
   , "TrafficPolicyInstanceTypeMarker" :: NullOrUndefined (RRType)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyInstancesByHostedZoneRequest :: Newtype ListTrafficPolicyInstancesByHostedZoneRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
@@ -1422,6 +1612,7 @@ newtype ListTrafficPolicyInstancesByHostedZoneResponse = ListTrafficPolicyInstan
   , "IsTruncated" :: (PageTruncated)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyInstancesByHostedZoneResponse :: Newtype ListTrafficPolicyInstancesByHostedZoneResponse _
 
 
 -- | <p>A complex type that contains the information about the request to list your traffic policy instances.</p>
@@ -1433,6 +1624,7 @@ newtype ListTrafficPolicyInstancesByPolicyRequest = ListTrafficPolicyInstancesBy
   , "TrafficPolicyInstanceTypeMarker" :: NullOrUndefined (RRType)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyInstancesByPolicyRequest :: Newtype ListTrafficPolicyInstancesByPolicyRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
@@ -1444,6 +1636,7 @@ newtype ListTrafficPolicyInstancesByPolicyResponse = ListTrafficPolicyInstancesB
   , "IsTruncated" :: (PageTruncated)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyInstancesByPolicyResponse :: Newtype ListTrafficPolicyInstancesByPolicyResponse _
 
 
 -- | <p>A request to get information about the traffic policy instances that you created by using the current AWS account.</p>
@@ -1453,6 +1646,7 @@ newtype ListTrafficPolicyInstancesRequest = ListTrafficPolicyInstancesRequest
   , "TrafficPolicyInstanceTypeMarker" :: NullOrUndefined (RRType)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyInstancesRequest :: Newtype ListTrafficPolicyInstancesRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
@@ -1464,6 +1658,7 @@ newtype ListTrafficPolicyInstancesResponse = ListTrafficPolicyInstancesResponse
   , "IsTruncated" :: (PageTruncated)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyInstancesResponse :: Newtype ListTrafficPolicyInstancesResponse _
 
 
 -- | <p>A complex type that contains the information about the request to list your traffic policies.</p>
@@ -1472,6 +1667,7 @@ newtype ListTrafficPolicyVersionsRequest = ListTrafficPolicyVersionsRequest
   , "TrafficPolicyVersionMarker" :: NullOrUndefined (TrafficPolicyVersionMarker)
   , "MaxItems" :: NullOrUndefined (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyVersionsRequest :: Newtype ListTrafficPolicyVersionsRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
@@ -1481,6 +1677,7 @@ newtype ListTrafficPolicyVersionsResponse = ListTrafficPolicyVersionsResponse
   , "TrafficPolicyVersionMarker" :: (TrafficPolicyVersionMarker)
   , "MaxItems" :: (PageMaxItems)
   }
+derive instance newtypeListTrafficPolicyVersionsResponse :: Newtype ListTrafficPolicyVersionsResponse _
 
 
 -- | <p>A complex type that contains information about that can be associated with your hosted zone.</p>
@@ -1489,6 +1686,7 @@ newtype ListVPCAssociationAuthorizationsRequest = ListVPCAssociationAuthorizatio
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (MaxResults)
   }
+derive instance newtypeListVPCAssociationAuthorizationsRequest :: Newtype ListVPCAssociationAuthorizationsRequest _
 
 
 -- | <p>A complex type that contains the response information for the request.</p>
@@ -1497,117 +1695,143 @@ newtype ListVPCAssociationAuthorizationsResponse = ListVPCAssociationAuthorizati
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "VPCs" :: (VPCs)
   }
+derive instance newtypeListVPCAssociationAuthorizationsResponse :: Newtype ListVPCAssociationAuthorizationsResponse _
 
 
 newtype MaxResults = MaxResults String
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 newtype MeasureLatency = MeasureLatency Boolean
+derive instance newtypeMeasureLatency :: Newtype MeasureLatency _
 
 
 newtype Message = Message String
+derive instance newtypeMessage :: Newtype Message _
 
 
 newtype MetricName = MetricName String
+derive instance newtypeMetricName :: Newtype MetricName _
 
 
 newtype Nameserver = Nameserver String
+derive instance newtypeNameserver :: Newtype Nameserver _
 
 
 newtype Namespace = Namespace String
+derive instance newtypeNamespace :: Newtype Namespace _
 
 
 -- | <p>A change with the specified change ID does not exist.</p>
 newtype NoSuchChange = NoSuchChange 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchChange :: Newtype NoSuchChange _
 
 
 -- | <p>There is no CloudWatch Logs log group with the specified ARN.</p>
 newtype NoSuchCloudWatchLogsLogGroup = NoSuchCloudWatchLogsLogGroup 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchCloudWatchLogsLogGroup :: Newtype NoSuchCloudWatchLogsLogGroup _
 
 
 -- | <p>A reusable delegation set with the specified ID does not exist.</p>
 newtype NoSuchDelegationSet = NoSuchDelegationSet 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchDelegationSet :: Newtype NoSuchDelegationSet _
 
 
 -- | <p>Amazon Route 53 doesn't support the specified geolocation.</p>
 newtype NoSuchGeoLocation = NoSuchGeoLocation 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchGeoLocation :: Newtype NoSuchGeoLocation _
 
 
 -- | <p>No health check exists with the ID that you specified in the <code>DeleteHealthCheck</code> request.</p>
 newtype NoSuchHealthCheck = NoSuchHealthCheck 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchHealthCheck :: Newtype NoSuchHealthCheck _
 
 
 -- | <p>No hosted zone exists with the ID that you specified.</p>
 newtype NoSuchHostedZone = NoSuchHostedZone 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchHostedZone :: Newtype NoSuchHostedZone _
 
 
 -- | <p>There is no DNS query logging configuration with the specified ID.</p>
 newtype NoSuchQueryLoggingConfig = NoSuchQueryLoggingConfig 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchQueryLoggingConfig :: Newtype NoSuchQueryLoggingConfig _
 
 
 -- | <p>No traffic policy exists with the specified ID.</p>
 newtype NoSuchTrafficPolicy = NoSuchTrafficPolicy 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchTrafficPolicy :: Newtype NoSuchTrafficPolicy _
 
 
 -- | <p>No traffic policy instance exists with the specified ID.</p>
 newtype NoSuchTrafficPolicyInstance = NoSuchTrafficPolicyInstance 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNoSuchTrafficPolicyInstance :: Newtype NoSuchTrafficPolicyInstance _
 
 
 newtype Nonce = Nonce String
+derive instance newtypeNonce :: Newtype Nonce _
 
 
 -- | <p>Associating the specified VPC with the specified hosted zone has not been authorized.</p>
 newtype NotAuthorizedException = NotAuthorizedException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeNotAuthorizedException :: Newtype NotAuthorizedException _
 
 
 newtype PageMarker = PageMarker String
+derive instance newtypePageMarker :: Newtype PageMarker _
 
 
 newtype PageMaxItems = PageMaxItems String
+derive instance newtypePageMaxItems :: Newtype PageMaxItems _
 
 
 newtype PageTruncated = PageTruncated Boolean
+derive instance newtypePageTruncated :: Newtype PageTruncated _
 
 
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 newtype Period = Period Int
+derive instance newtypePeriod :: Newtype Period _
 
 
 newtype Port = Port Int
+derive instance newtypePort :: Newtype Port _
 
 
 -- | <p>If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent requests for the same hosted zone and return an <code>HTTP 400 error</code> (<code>Bad request</code>). If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals of increasing duration, before you try the request again.</p>
 newtype PriorRequestNotComplete = PriorRequestNotComplete 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypePriorRequestNotComplete :: Newtype PriorRequestNotComplete _
 
 
 -- | <p>You're trying to associate a VPC with a public hosted zone. Amazon Route 53 doesn't support associating a VPC with a public hosted zone.</p>
 newtype PublicZoneVPCAssociation = PublicZoneVPCAssociation 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypePublicZoneVPCAssociation :: Newtype PublicZoneVPCAssociation _
 
 
 -- | <p>A complex type that contains information about a configuration for DNS query logging.</p>
@@ -1616,55 +1840,70 @@ newtype QueryLoggingConfig = QueryLoggingConfig
   , "HostedZoneId" :: (ResourceId)
   , "CloudWatchLogsLogGroupArn" :: (CloudWatchLogsLogGroupArn)
   }
+derive instance newtypeQueryLoggingConfig :: Newtype QueryLoggingConfig _
 
 
 -- | <p>You can create only one query logging configuration for a hosted zone, and a query logging configuration already exists for this hosted zone.</p>
 newtype QueryLoggingConfigAlreadyExists = QueryLoggingConfigAlreadyExists 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeQueryLoggingConfigAlreadyExists :: Newtype QueryLoggingConfigAlreadyExists _
 
 
 newtype QueryLoggingConfigId = QueryLoggingConfigId String
+derive instance newtypeQueryLoggingConfigId :: Newtype QueryLoggingConfigId _
 
 
 newtype QueryLoggingConfigs = QueryLoggingConfigs (Array QueryLoggingConfig)
+derive instance newtypeQueryLoggingConfigs :: Newtype QueryLoggingConfigs _
 
 
 newtype RData = RData String
+derive instance newtypeRData :: Newtype RData _
 
 
 newtype RRType = RRType String
+derive instance newtypeRRType :: Newtype RRType _
 
 
 newtype RecordData = RecordData (Array RecordDataEntry)
+derive instance newtypeRecordData :: Newtype RecordData _
 
 
 -- | <p>A value that Amazon Route 53 returned for this resource record set. A <code>RecordDataEntry</code> element is one of the following:</p> <ul> <li> <p>For non-alias resource record sets, a <code>RecordDataEntry</code> element contains one value in the resource record set. If the resource record set contains multiple values, the response includes one <code>RecordDataEntry</code> element for each value.</p> </li> <li> <p>For multiple resource record sets that have the same name and type, which includes weighted, latency, geolocation, and failover, a <code>RecordDataEntry</code> element contains the value from the appropriate resource record set based on the request.</p> </li> <li> <p>For alias resource record sets that refer to AWS resources other than another resource record set, the <code>RecordDataEntry</code> element contains an IP address or a domain name for the AWS resource, depending on the type of resource.</p> </li> <li> <p>For alias resource record sets that refer to other resource record sets, a <code>RecordDataEntry</code> element contains one value from the referenced resource record set. If the referenced resource record set contains multiple values, the response includes one <code>RecordDataEntry</code> element for each value.</p> </li> </ul>
 newtype RecordDataEntry = RecordDataEntry String
+derive instance newtypeRecordDataEntry :: Newtype RecordDataEntry _
 
 
 newtype RequestInterval = RequestInterval Int
+derive instance newtypeRequestInterval :: Newtype RequestInterval _
 
 
 newtype ResettableElementName = ResettableElementName String
+derive instance newtypeResettableElementName :: Newtype ResettableElementName _
 
 
 newtype ResettableElementNameList = ResettableElementNameList (Array ResettableElementName)
+derive instance newtypeResettableElementNameList :: Newtype ResettableElementNameList _
 
 
 newtype ResourceDescription = ResourceDescription String
+derive instance newtypeResourceDescription :: Newtype ResourceDescription _
 
 
 newtype ResourceId = ResourceId String
+derive instance newtypeResourceId :: Newtype ResourceId _
 
 
 newtype ResourcePath = ResourcePath String
+derive instance newtypeResourcePath :: Newtype ResourcePath _
 
 
 -- | <p>Information specific to the resource record.</p> <note> <p>If you're creating an alias resource record set, omit <code>ResourceRecord</code>.</p> </note>
 newtype ResourceRecord = ResourceRecord 
   { "Value" :: (RData)
   }
+derive instance newtypeResourceRecord :: Newtype ResourceRecord _
 
 
 -- | <p>Information about the resource record set to create or delete.</p>
@@ -1683,27 +1922,35 @@ newtype ResourceRecordSet = ResourceRecordSet
   , "HealthCheckId" :: NullOrUndefined (HealthCheckId)
   , "TrafficPolicyInstanceId" :: NullOrUndefined (TrafficPolicyInstanceId)
   }
+derive instance newtypeResourceRecordSet :: Newtype ResourceRecordSet _
 
 
 newtype ResourceRecordSetFailover = ResourceRecordSetFailover String
+derive instance newtypeResourceRecordSetFailover :: Newtype ResourceRecordSetFailover _
 
 
 newtype ResourceRecordSetIdentifier = ResourceRecordSetIdentifier String
+derive instance newtypeResourceRecordSetIdentifier :: Newtype ResourceRecordSetIdentifier _
 
 
 newtype ResourceRecordSetMultiValueAnswer = ResourceRecordSetMultiValueAnswer Boolean
+derive instance newtypeResourceRecordSetMultiValueAnswer :: Newtype ResourceRecordSetMultiValueAnswer _
 
 
 newtype ResourceRecordSetRegion = ResourceRecordSetRegion String
+derive instance newtypeResourceRecordSetRegion :: Newtype ResourceRecordSetRegion _
 
 
 newtype ResourceRecordSetWeight = ResourceRecordSetWeight Number
+derive instance newtypeResourceRecordSetWeight :: Newtype ResourceRecordSetWeight _
 
 
 newtype ResourceRecordSets = ResourceRecordSets (Array ResourceRecordSet)
+derive instance newtypeResourceRecordSets :: Newtype ResourceRecordSets _
 
 
 newtype ResourceRecords = ResourceRecords (Array ResourceRecord)
+derive instance newtypeResourceRecords :: Newtype ResourceRecords _
 
 
 -- | <p>A complex type containing a resource and its associated tags.</p>
@@ -1712,12 +1959,15 @@ newtype ResourceTagSet = ResourceTagSet
   , "ResourceId" :: NullOrUndefined (TagResourceId)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeResourceTagSet :: Newtype ResourceTagSet _
 
 
 newtype ResourceTagSetList = ResourceTagSetList (Array ResourceTagSet)
+derive instance newtypeResourceTagSetList :: Newtype ResourceTagSetList _
 
 
 newtype ResourceURI = ResourceURI String
+derive instance newtypeResourceURI :: Newtype ResourceURI _
 
 
 -- | <p>A complex type that contains the type of limit that you specified in the request and the current value for that limit.</p>
@@ -1725,21 +1975,27 @@ newtype ReusableDelegationSetLimit = ReusableDelegationSetLimit
   { "Type" :: (ReusableDelegationSetLimitType)
   , "Value" :: (LimitValue)
   }
+derive instance newtypeReusableDelegationSetLimit :: Newtype ReusableDelegationSetLimit _
 
 
 newtype ReusableDelegationSetLimitType = ReusableDelegationSetLimitType String
+derive instance newtypeReusableDelegationSetLimitType :: Newtype ReusableDelegationSetLimitType _
 
 
 newtype SearchString = SearchString String
+derive instance newtypeSearchString :: Newtype SearchString _
 
 
 newtype ServicePrincipal = ServicePrincipal String
+derive instance newtypeServicePrincipal :: Newtype ServicePrincipal _
 
 
 newtype Statistic = Statistic String
+derive instance newtypeStatistic :: Newtype Statistic _
 
 
 newtype Status = Status String
+derive instance newtypeStatus :: Newtype Status _
 
 
 -- | <p>A complex type that contains the status that one Amazon Route 53 health checker reports and the time of the health check.</p>
@@ -1747,12 +2003,15 @@ newtype StatusReport = StatusReport
   { "Status" :: NullOrUndefined (Status)
   , "CheckedTime" :: NullOrUndefined (TimeStamp)
   }
+derive instance newtypeStatusReport :: Newtype StatusReport _
 
 
 newtype SubnetMask = SubnetMask String
+derive instance newtypeSubnetMask :: Newtype SubnetMask _
 
 
 newtype TTL = TTL Number
+derive instance newtypeTTL :: Newtype TTL _
 
 
 -- | <p>A complex type that contains information about a tag that you want to add or edit for the specified health check or hosted zone.</p>
@@ -1760,27 +2019,35 @@ newtype Tag = Tag
   { "Key" :: NullOrUndefined (TagKey)
   , "Value" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagResourceId = TagResourceId String
+derive instance newtypeTagResourceId :: Newtype TagResourceId _
 
 
 newtype TagResourceIdList = TagResourceIdList (Array TagResourceId)
+derive instance newtypeTagResourceIdList :: Newtype TagResourceIdList _
 
 
 newtype TagResourceType = TagResourceType String
+derive instance newtypeTagResourceType :: Newtype TagResourceType _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type. You can optionally specify the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a subnet mask. </p>
@@ -1792,6 +2059,7 @@ newtype TestDNSAnswerRequest = TestDNSAnswerRequest
   , "EDNS0ClientSubnetIP" :: NullOrUndefined (IPAddress)
   , "EDNS0ClientSubnetMask" :: NullOrUndefined (SubnetMask)
   }
+derive instance newtypeTestDNSAnswerRequest :: Newtype TestDNSAnswerRequest _
 
 
 -- | <p>A complex type that contains the response to a <code>TestDNSAnswer</code> request. </p>
@@ -1803,57 +2071,68 @@ newtype TestDNSAnswerResponse = TestDNSAnswerResponse
   , "ResponseCode" :: (DNSRCode)
   , "Protocol" :: (TransportProtocol)
   }
+derive instance newtypeTestDNSAnswerResponse :: Newtype TestDNSAnswerResponse _
 
 
 newtype Threshold = Threshold Number
+derive instance newtypeThreshold :: Newtype Threshold _
 
 
 -- | <p>The limit on the number of requests per second was exceeded.</p>
 newtype ThrottlingException = ThrottlingException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeThrottlingException :: Newtype ThrottlingException _
 
 
 newtype TimeStamp = TimeStamp Number
+derive instance newtypeTimeStamp :: Newtype TimeStamp _
 
 
 -- | <p>This health check can't be created because the current account has reached the limit on the number of active health checks.</p> <p>For information about default limits, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>For information about how to get the current limit for an account, see <a>GetAccountLimit</a>. To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.</p> <p>You have reached the maximum number of active health checks for an AWS account. To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.</p>
 newtype TooManyHealthChecks = TooManyHealthChecks 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTooManyHealthChecks :: Newtype TooManyHealthChecks _
 
 
 -- | <p>This operation can't be completed either because the current account has reached the limit on the number of hosted zones or because you've reached the limit on the number of hosted zones that can be associated with a reusable delegation set.</p> <p>For information about default limits, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>To get the current limit on hosted zones that can be created by an account, see <a>GetAccountLimit</a>.</p> <p>To get the current limit on hosted zones that can be associated with a reusable delegation set, see <a>GetReusableDelegationSetLimit</a>.</p> <p>To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.</p>
 newtype TooManyHostedZones = TooManyHostedZones 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTooManyHostedZones :: Newtype TooManyHostedZones _
 
 
 -- | <p>This traffic policy can't be created because the current account has reached the limit on the number of traffic policies.</p> <p>For information about default limits, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>To get the current limit for an account, see <a>GetAccountLimit</a>. </p> <p>To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.</p>
 newtype TooManyTrafficPolicies = TooManyTrafficPolicies 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTooManyTrafficPolicies :: Newtype TooManyTrafficPolicies _
 
 
 -- | <p>This traffic policy instance can't be created because the current account has reached the limit on the number of traffic policy instances.</p> <p>For information about default limits, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html">Limits</a> in the <i>Amazon Route 53 Developer Guide</i>.</p> <p>For information about how to get the current limit for an account, see <a>GetAccountLimit</a>.</p> <p>To request a higher limit, <a href="http://aws.amazon.com/route53-request">create a case</a> with the AWS Support Center.</p>
 newtype TooManyTrafficPolicyInstances = TooManyTrafficPolicyInstances 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTooManyTrafficPolicyInstances :: Newtype TooManyTrafficPolicyInstances _
 
 
 -- | <p>This traffic policy version can't be created because you've reached the limit of 1000 on the number of versions that you can create for the current traffic policy.</p> <p>To create more traffic policy versions, you can use <a>GetTrafficPolicy</a> to get the traffic policy document for a specified traffic policy version, and then use <a>CreateTrafficPolicy</a> to create a new traffic policy using the traffic policy document.</p>
 newtype TooManyTrafficPolicyVersionsForCurrentPolicy = TooManyTrafficPolicyVersionsForCurrentPolicy 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTooManyTrafficPolicyVersionsForCurrentPolicy :: Newtype TooManyTrafficPolicyVersionsForCurrentPolicy _
 
 
 -- | <p>You've created the maximum number of authorizations that can be created for the specified hosted zone. To authorize another VPC to be associated with the hosted zone, submit a <code>DeleteVPCAssociationAuthorization</code> request to remove an existing authorization. To get a list of existing authorizations, submit a <code>ListVPCAssociationAuthorizations</code> request.</p>
 newtype TooManyVPCAssociationAuthorizations = TooManyVPCAssociationAuthorizations 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTooManyVPCAssociationAuthorizations :: Newtype TooManyVPCAssociationAuthorizations _
 
 
 newtype TrafficPolicies = TrafficPolicies (Array TrafficPolicy)
+derive instance newtypeTrafficPolicies :: Newtype TrafficPolicies _
 
 
 -- | <p>A complex type that contains settings for a traffic policy.</p>
@@ -1865,27 +2144,33 @@ newtype TrafficPolicy = TrafficPolicy
   , "Document" :: (TrafficPolicyDocument)
   , "Comment" :: NullOrUndefined (TrafficPolicyComment)
   }
+derive instance newtypeTrafficPolicy :: Newtype TrafficPolicy _
 
 
 -- | <p>A traffic policy that has the same value for <code>Name</code> already exists.</p>
 newtype TrafficPolicyAlreadyExists = TrafficPolicyAlreadyExists 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTrafficPolicyAlreadyExists :: Newtype TrafficPolicyAlreadyExists _
 
 
 newtype TrafficPolicyComment = TrafficPolicyComment String
+derive instance newtypeTrafficPolicyComment :: Newtype TrafficPolicyComment _
 
 
 newtype TrafficPolicyDocument = TrafficPolicyDocument String
+derive instance newtypeTrafficPolicyDocument :: Newtype TrafficPolicyDocument _
 
 
 newtype TrafficPolicyId = TrafficPolicyId String
+derive instance newtypeTrafficPolicyId :: Newtype TrafficPolicyId _
 
 
 -- | <p>One or more traffic policy instances were created by using the specified traffic policy.</p>
 newtype TrafficPolicyInUse = TrafficPolicyInUse 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTrafficPolicyInUse :: Newtype TrafficPolicyInUse _
 
 
 -- | <p>A complex type that contains settings for the new traffic policy instance.</p>
@@ -1900,30 +2185,38 @@ newtype TrafficPolicyInstance = TrafficPolicyInstance
   , "TrafficPolicyVersion" :: (TrafficPolicyVersion)
   , "TrafficPolicyType" :: (RRType)
   }
+derive instance newtypeTrafficPolicyInstance :: Newtype TrafficPolicyInstance _
 
 
 -- | <p>There is already a traffic policy instance with the specified ID.</p>
 newtype TrafficPolicyInstanceAlreadyExists = TrafficPolicyInstanceAlreadyExists 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeTrafficPolicyInstanceAlreadyExists :: Newtype TrafficPolicyInstanceAlreadyExists _
 
 
 newtype TrafficPolicyInstanceCount = TrafficPolicyInstanceCount Int
+derive instance newtypeTrafficPolicyInstanceCount :: Newtype TrafficPolicyInstanceCount _
 
 
 newtype TrafficPolicyInstanceId = TrafficPolicyInstanceId String
+derive instance newtypeTrafficPolicyInstanceId :: Newtype TrafficPolicyInstanceId _
 
 
 newtype TrafficPolicyInstanceState = TrafficPolicyInstanceState String
+derive instance newtypeTrafficPolicyInstanceState :: Newtype TrafficPolicyInstanceState _
 
 
 newtype TrafficPolicyInstances = TrafficPolicyInstances (Array TrafficPolicyInstance)
+derive instance newtypeTrafficPolicyInstances :: Newtype TrafficPolicyInstances _
 
 
 newtype TrafficPolicyName = TrafficPolicyName String
+derive instance newtypeTrafficPolicyName :: Newtype TrafficPolicyName _
 
 
 newtype TrafficPolicySummaries = TrafficPolicySummaries (Array TrafficPolicySummary)
+derive instance newtypeTrafficPolicySummaries :: Newtype TrafficPolicySummaries _
 
 
 -- | <p>A complex type that contains information about the latest version of one traffic policy that is associated with the current AWS account.</p>
@@ -1934,15 +2227,19 @@ newtype TrafficPolicySummary = TrafficPolicySummary
   , "LatestVersion" :: (TrafficPolicyVersion)
   , "TrafficPolicyCount" :: (TrafficPolicyVersion)
   }
+derive instance newtypeTrafficPolicySummary :: Newtype TrafficPolicySummary _
 
 
 newtype TrafficPolicyVersion = TrafficPolicyVersion Int
+derive instance newtypeTrafficPolicyVersion :: Newtype TrafficPolicyVersion _
 
 
 newtype TrafficPolicyVersionMarker = TrafficPolicyVersionMarker String
+derive instance newtypeTrafficPolicyVersionMarker :: Newtype TrafficPolicyVersionMarker _
 
 
 newtype TransportProtocol = TransportProtocol String
+derive instance newtypeTransportProtocol :: Newtype TransportProtocol _
 
 
 -- | <p>A complex type that contains information about a request to update a health check.</p>
@@ -1964,11 +2261,13 @@ newtype UpdateHealthCheckRequest = UpdateHealthCheckRequest
   , "InsufficientDataHealthStatus" :: NullOrUndefined (InsufficientDataHealthStatus)
   , "ResetElements" :: NullOrUndefined (ResettableElementNameList)
   }
+derive instance newtypeUpdateHealthCheckRequest :: Newtype UpdateHealthCheckRequest _
 
 
 newtype UpdateHealthCheckResponse = UpdateHealthCheckResponse 
   { "HealthCheck" :: (HealthCheck)
   }
+derive instance newtypeUpdateHealthCheckResponse :: Newtype UpdateHealthCheckResponse _
 
 
 -- | <p>A request to update the comment for a hosted zone.</p>
@@ -1976,12 +2275,14 @@ newtype UpdateHostedZoneCommentRequest = UpdateHostedZoneCommentRequest
   { "Id" :: (ResourceId)
   , "Comment" :: NullOrUndefined (ResourceDescription)
   }
+derive instance newtypeUpdateHostedZoneCommentRequest :: Newtype UpdateHostedZoneCommentRequest _
 
 
 -- | <p>A complex type that contains the response to the <code>UpdateHostedZoneComment</code> request.</p>
 newtype UpdateHostedZoneCommentResponse = UpdateHostedZoneCommentResponse 
   { "HostedZone" :: (HostedZone)
   }
+derive instance newtypeUpdateHostedZoneCommentResponse :: Newtype UpdateHostedZoneCommentResponse _
 
 
 -- | <p>A complex type that contains information about the traffic policy that you want to update the comment for.</p>
@@ -1990,12 +2291,14 @@ newtype UpdateTrafficPolicyCommentRequest = UpdateTrafficPolicyCommentRequest
   , "Version" :: (TrafficPolicyVersion)
   , "Comment" :: (TrafficPolicyComment)
   }
+derive instance newtypeUpdateTrafficPolicyCommentRequest :: Newtype UpdateTrafficPolicyCommentRequest _
 
 
 -- | <p>A complex type that contains the response information for the traffic policy.</p>
 newtype UpdateTrafficPolicyCommentResponse = UpdateTrafficPolicyCommentResponse 
   { "TrafficPolicy" :: (TrafficPolicy)
   }
+derive instance newtypeUpdateTrafficPolicyCommentResponse :: Newtype UpdateTrafficPolicyCommentResponse _
 
 
 -- | <p>A complex type that contains information about the resource record sets that you want to update based on a specified traffic policy instance.</p>
@@ -2005,15 +2308,18 @@ newtype UpdateTrafficPolicyInstanceRequest = UpdateTrafficPolicyInstanceRequest
   , "TrafficPolicyId" :: (TrafficPolicyId)
   , "TrafficPolicyVersion" :: (TrafficPolicyVersion)
   }
+derive instance newtypeUpdateTrafficPolicyInstanceRequest :: Newtype UpdateTrafficPolicyInstanceRequest _
 
 
 -- | <p>A complex type that contains information about the resource record sets that Amazon Route 53 created based on a specified traffic policy.</p>
 newtype UpdateTrafficPolicyInstanceResponse = UpdateTrafficPolicyInstanceResponse 
   { "TrafficPolicyInstance" :: (TrafficPolicyInstance)
   }
+derive instance newtypeUpdateTrafficPolicyInstanceResponse :: Newtype UpdateTrafficPolicyInstanceResponse _
 
 
 newtype UsageCount = UsageCount Number
+derive instance newtypeUsageCount :: Newtype UsageCount _
 
 
 -- | <p>(Private hosted zones only) A complex type that contains information about an Amazon VPC.</p>
@@ -2021,26 +2327,32 @@ newtype VPC = VPC
   { "VPCRegion" :: NullOrUndefined (VPCRegion)
   , "VPCId" :: NullOrUndefined (VPCId)
   }
+derive instance newtypeVPC :: Newtype VPC _
 
 
 -- | <p>The VPC that you specified is not authorized to be associated with the hosted zone.</p>
 newtype VPCAssociationAuthorizationNotFound = VPCAssociationAuthorizationNotFound 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeVPCAssociationAuthorizationNotFound :: Newtype VPCAssociationAuthorizationNotFound _
 
 
 -- | <p>The specified VPC and hosted zone are not currently associated.</p>
 newtype VPCAssociationNotFound = VPCAssociationNotFound 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeVPCAssociationNotFound :: Newtype VPCAssociationNotFound _
 
 
 -- | <p>(Private hosted zones only) The ID of an Amazon VPC. </p>
 newtype VPCId = VPCId String
+derive instance newtypeVPCId :: Newtype VPCId _
 
 
 newtype VPCRegion = VPCRegion String
+derive instance newtypeVPCRegion :: Newtype VPCRegion _
 
 
 -- | <p>(Private hosted zones only) A list of <code>VPC</code> elements.</p>
 newtype VPCs = VPCs (Array VPC)
+derive instance newtypeVPCs :: Newtype VPCs _

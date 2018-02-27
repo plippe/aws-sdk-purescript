@@ -6,6 +6,7 @@ module AWS.CodeBuild where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -92,48 +93,58 @@ updateProject = AWS.request serviceName "UpdateProject"
 newtype AccountLimitExceededException = AccountLimitExceededException 
   { 
   }
+derive instance newtypeAccountLimitExceededException :: Newtype AccountLimitExceededException _
 
 
 newtype ArtifactNamespace = ArtifactNamespace String
+derive instance newtypeArtifactNamespace :: Newtype ArtifactNamespace _
 
 
 newtype ArtifactPackaging = ArtifactPackaging String
+derive instance newtypeArtifactPackaging :: Newtype ArtifactPackaging _
 
 
 newtype ArtifactsType = ArtifactsType String
+derive instance newtypeArtifactsType :: Newtype ArtifactsType _
 
 
 newtype BatchDeleteBuildsInput = BatchDeleteBuildsInput 
   { "Ids'" :: (BuildIds)
   }
+derive instance newtypeBatchDeleteBuildsInput :: Newtype BatchDeleteBuildsInput _
 
 
 newtype BatchDeleteBuildsOutput = BatchDeleteBuildsOutput 
   { "BuildsDeleted'" :: NullOrUndefined (BuildIds)
   , "BuildsNotDeleted'" :: NullOrUndefined (BuildsNotDeleted)
   }
+derive instance newtypeBatchDeleteBuildsOutput :: Newtype BatchDeleteBuildsOutput _
 
 
 newtype BatchGetBuildsInput = BatchGetBuildsInput 
   { "Ids'" :: (BuildIds)
   }
+derive instance newtypeBatchGetBuildsInput :: Newtype BatchGetBuildsInput _
 
 
 newtype BatchGetBuildsOutput = BatchGetBuildsOutput 
   { "Builds'" :: NullOrUndefined (Builds)
   , "BuildsNotFound'" :: NullOrUndefined (BuildIds)
   }
+derive instance newtypeBatchGetBuildsOutput :: Newtype BatchGetBuildsOutput _
 
 
 newtype BatchGetProjectsInput = BatchGetProjectsInput 
   { "Names'" :: (ProjectNames)
   }
+derive instance newtypeBatchGetProjectsInput :: Newtype BatchGetProjectsInput _
 
 
 newtype BatchGetProjectsOutput = BatchGetProjectsOutput 
   { "Projects'" :: NullOrUndefined (Projects)
   , "ProjectsNotFound'" :: NullOrUndefined (ProjectNames)
   }
+derive instance newtypeBatchGetProjectsOutput :: Newtype BatchGetProjectsOutput _
 
 
 -- | <p>Information about a build.</p>
@@ -158,6 +169,7 @@ newtype Build = Build
   , "VpcConfig'" :: NullOrUndefined (VpcConfig)
   , "NetworkInterface'" :: NullOrUndefined (NetworkInterface)
   }
+derive instance newtypeBuild :: Newtype Build _
 
 
 -- | <p>Information about build output artifacts.</p>
@@ -166,9 +178,11 @@ newtype BuildArtifacts = BuildArtifacts
   , "Sha256sum'" :: NullOrUndefined (String)
   , "Md5sum'" :: NullOrUndefined (String)
   }
+derive instance newtypeBuildArtifacts :: Newtype BuildArtifacts _
 
 
 newtype BuildIds = BuildIds (Array NonEmptyString)
+derive instance newtypeBuildIds :: Newtype BuildIds _
 
 
 -- | <p>Information about a build that could not be successfully deleted.</p>
@@ -176,6 +190,7 @@ newtype BuildNotDeleted = BuildNotDeleted
   { "Id'" :: NullOrUndefined (NonEmptyString)
   , "StatusCode'" :: NullOrUndefined (String)
   }
+derive instance newtypeBuildNotDeleted :: Newtype BuildNotDeleted _
 
 
 -- | <p>Information about a stage for a build.</p>
@@ -187,24 +202,31 @@ newtype BuildPhase = BuildPhase
   , "DurationInSeconds'" :: NullOrUndefined (WrapperLong)
   , "Contexts'" :: NullOrUndefined (PhaseContexts)
   }
+derive instance newtypeBuildPhase :: Newtype BuildPhase _
 
 
 newtype BuildPhaseType = BuildPhaseType String
+derive instance newtypeBuildPhaseType :: Newtype BuildPhaseType _
 
 
 newtype BuildPhases = BuildPhases (Array BuildPhase)
+derive instance newtypeBuildPhases :: Newtype BuildPhases _
 
 
 newtype Builds = Builds (Array Build)
+derive instance newtypeBuilds :: Newtype Builds _
 
 
 newtype BuildsNotDeleted = BuildsNotDeleted (Array BuildNotDeleted)
+derive instance newtypeBuildsNotDeleted :: Newtype BuildsNotDeleted _
 
 
 newtype CacheType = CacheType String
+derive instance newtypeCacheType :: Newtype CacheType _
 
 
 newtype ComputeType = ComputeType String
+derive instance newtypeComputeType :: Newtype ComputeType _
 
 
 newtype CreateProjectInput = CreateProjectInput 
@@ -221,41 +243,49 @@ newtype CreateProjectInput = CreateProjectInput
   , "VpcConfig'" :: NullOrUndefined (VpcConfig)
   , "BadgeEnabled'" :: NullOrUndefined (WrapperBoolean)
   }
+derive instance newtypeCreateProjectInput :: Newtype CreateProjectInput _
 
 
 newtype CreateProjectOutput = CreateProjectOutput 
   { "Project'" :: NullOrUndefined (Project)
   }
+derive instance newtypeCreateProjectOutput :: Newtype CreateProjectOutput _
 
 
 newtype CreateWebhookInput = CreateWebhookInput 
   { "ProjectName'" :: (ProjectName)
   }
+derive instance newtypeCreateWebhookInput :: Newtype CreateWebhookInput _
 
 
 newtype CreateWebhookOutput = CreateWebhookOutput 
   { "Webhook'" :: NullOrUndefined (Webhook)
   }
+derive instance newtypeCreateWebhookOutput :: Newtype CreateWebhookOutput _
 
 
 newtype DeleteProjectInput = DeleteProjectInput 
   { "Name'" :: (NonEmptyString)
   }
+derive instance newtypeDeleteProjectInput :: Newtype DeleteProjectInput _
 
 
 newtype DeleteProjectOutput = DeleteProjectOutput 
   { 
   }
+derive instance newtypeDeleteProjectOutput :: Newtype DeleteProjectOutput _
 
 
 newtype DeleteWebhookInput = DeleteWebhookInput 
   { "ProjectName'" :: (ProjectName)
   }
+derive instance newtypeDeleteWebhookInput :: Newtype DeleteWebhookInput _
 
 
 newtype DeleteWebhookOutput = DeleteWebhookOutput 
   { 
   }
+derive instance newtypeDeleteWebhookOutput :: Newtype DeleteWebhookOutput _
 
 
 -- | <p>Information about a Docker image that is managed by AWS CodeBuild.</p>
@@ -264,9 +294,11 @@ newtype EnvironmentImage = EnvironmentImage
   , "Description'" :: NullOrUndefined (String)
   , "Versions'" :: NullOrUndefined (ImageVersions)
   }
+derive instance newtypeEnvironmentImage :: Newtype EnvironmentImage _
 
 
 newtype EnvironmentImages = EnvironmentImages (Array EnvironmentImage)
+derive instance newtypeEnvironmentImages :: Newtype EnvironmentImages _
 
 
 -- | <p>A set of Docker images that are related by programming language and are managed by AWS CodeBuild.</p>
@@ -274,9 +306,11 @@ newtype EnvironmentLanguage = EnvironmentLanguage
   { "Language'" :: NullOrUndefined (LanguageType)
   , "Images'" :: NullOrUndefined (EnvironmentImages)
   }
+derive instance newtypeEnvironmentLanguage :: Newtype EnvironmentLanguage _
 
 
 newtype EnvironmentLanguages = EnvironmentLanguages (Array EnvironmentLanguage)
+derive instance newtypeEnvironmentLanguages :: Newtype EnvironmentLanguages _
 
 
 -- | <p>A set of Docker images that are related by platform and are managed by AWS CodeBuild.</p>
@@ -284,12 +318,15 @@ newtype EnvironmentPlatform = EnvironmentPlatform
   { "Platform'" :: NullOrUndefined (PlatformType)
   , "Languages'" :: NullOrUndefined (EnvironmentLanguages)
   }
+derive instance newtypeEnvironmentPlatform :: Newtype EnvironmentPlatform _
 
 
 newtype EnvironmentPlatforms = EnvironmentPlatforms (Array EnvironmentPlatform)
+derive instance newtypeEnvironmentPlatforms :: Newtype EnvironmentPlatforms _
 
 
 newtype EnvironmentType = EnvironmentType String
+derive instance newtypeEnvironmentType :: Newtype EnvironmentType _
 
 
 -- | <p>Information about an environment variable for a build project or a build.</p>
@@ -298,40 +335,50 @@ newtype EnvironmentVariable = EnvironmentVariable
   , "Value'" :: (String)
   , "Type'" :: NullOrUndefined (EnvironmentVariableType)
   }
+derive instance newtypeEnvironmentVariable :: Newtype EnvironmentVariable _
 
 
 newtype EnvironmentVariableType = EnvironmentVariableType String
+derive instance newtypeEnvironmentVariableType :: Newtype EnvironmentVariableType _
 
 
 newtype EnvironmentVariables = EnvironmentVariables (Array EnvironmentVariable)
+derive instance newtypeEnvironmentVariables :: Newtype EnvironmentVariables _
 
 
 newtype GitCloneDepth = GitCloneDepth Int
+derive instance newtypeGitCloneDepth :: Newtype GitCloneDepth _
 
 
 newtype ImageVersions = ImageVersions (Array String)
+derive instance newtypeImageVersions :: Newtype ImageVersions _
 
 
 -- | <p>The input value that was provided is not valid.</p>
 newtype InvalidInputException = InvalidInputException 
   { 
   }
+derive instance newtypeInvalidInputException :: Newtype InvalidInputException _
 
 
 newtype InvalidateProjectCacheInput = InvalidateProjectCacheInput 
   { "ProjectName'" :: (NonEmptyString)
   }
+derive instance newtypeInvalidateProjectCacheInput :: Newtype InvalidateProjectCacheInput _
 
 
 newtype InvalidateProjectCacheOutput = InvalidateProjectCacheOutput 
   { 
   }
+derive instance newtypeInvalidateProjectCacheOutput :: Newtype InvalidateProjectCacheOutput _
 
 
 newtype KeyInput = KeyInput String
+derive instance newtypeKeyInput :: Newtype KeyInput _
 
 
 newtype LanguageType = LanguageType String
+derive instance newtypeLanguageType :: Newtype LanguageType _
 
 
 newtype ListBuildsForProjectInput = ListBuildsForProjectInput 
@@ -339,34 +386,40 @@ newtype ListBuildsForProjectInput = ListBuildsForProjectInput
   , "SortOrder'" :: NullOrUndefined (SortOrderType)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListBuildsForProjectInput :: Newtype ListBuildsForProjectInput _
 
 
 newtype ListBuildsForProjectOutput = ListBuildsForProjectOutput 
   { "Ids'" :: NullOrUndefined (BuildIds)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListBuildsForProjectOutput :: Newtype ListBuildsForProjectOutput _
 
 
 newtype ListBuildsInput = ListBuildsInput 
   { "SortOrder'" :: NullOrUndefined (SortOrderType)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListBuildsInput :: Newtype ListBuildsInput _
 
 
 newtype ListBuildsOutput = ListBuildsOutput 
   { "Ids'" :: NullOrUndefined (BuildIds)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListBuildsOutput :: Newtype ListBuildsOutput _
 
 
 newtype ListCuratedEnvironmentImagesInput = ListCuratedEnvironmentImagesInput 
   { 
   }
+derive instance newtypeListCuratedEnvironmentImagesInput :: Newtype ListCuratedEnvironmentImagesInput _
 
 
 newtype ListCuratedEnvironmentImagesOutput = ListCuratedEnvironmentImagesOutput 
   { "Platforms'" :: NullOrUndefined (EnvironmentPlatforms)
   }
+derive instance newtypeListCuratedEnvironmentImagesOutput :: Newtype ListCuratedEnvironmentImagesOutput _
 
 
 newtype ListProjectsInput = ListProjectsInput 
@@ -374,12 +427,14 @@ newtype ListProjectsInput = ListProjectsInput
   , "SortOrder'" :: NullOrUndefined (SortOrderType)
   , "NextToken'" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeListProjectsInput :: Newtype ListProjectsInput _
 
 
 newtype ListProjectsOutput = ListProjectsOutput 
   { "NextToken'" :: NullOrUndefined (String)
   , "Projects'" :: NullOrUndefined (ProjectNames)
   }
+derive instance newtypeListProjectsOutput :: Newtype ListProjectsOutput _
 
 
 -- | <p>Information about build logs in Amazon CloudWatch Logs.</p>
@@ -388,6 +443,7 @@ newtype LogsLocation = LogsLocation
   , "StreamName'" :: NullOrUndefined (String)
   , "DeepLink'" :: NullOrUndefined (String)
   }
+derive instance newtypeLogsLocation :: Newtype LogsLocation _
 
 
 -- | <p>Describes a network interface.</p>
@@ -395,15 +451,18 @@ newtype NetworkInterface = NetworkInterface
   { "SubnetId'" :: NullOrUndefined (NonEmptyString)
   , "NetworkInterfaceId'" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeNetworkInterface :: Newtype NetworkInterface _
 
 
 newtype NonEmptyString = NonEmptyString String
+derive instance newtypeNonEmptyString :: Newtype NonEmptyString _
 
 
 -- | <p>There was a problem with the underlying OAuth provider.</p>
 newtype OAuthProviderException = OAuthProviderException 
   { 
   }
+derive instance newtypeOAuthProviderException :: Newtype OAuthProviderException _
 
 
 -- | <p>Additional information about a build phase that has an error. You can use this information to help troubleshoot a failed build.</p>
@@ -411,12 +470,15 @@ newtype PhaseContext = PhaseContext
   { "StatusCode'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypePhaseContext :: Newtype PhaseContext _
 
 
 newtype PhaseContexts = PhaseContexts (Array PhaseContext)
+derive instance newtypePhaseContexts :: Newtype PhaseContexts _
 
 
 newtype PlatformType = PlatformType String
+derive instance newtypePlatformType :: Newtype PlatformType _
 
 
 -- | <p>Information about a build project.</p>
@@ -438,6 +500,7 @@ newtype Project = Project
   , "VpcConfig'" :: NullOrUndefined (VpcConfig)
   , "Badge'" :: NullOrUndefined (ProjectBadge)
   }
+derive instance newtypeProject :: Newtype Project _
 
 
 -- | <p>Information about the build output artifacts for the build project.</p>
@@ -449,6 +512,7 @@ newtype ProjectArtifacts = ProjectArtifacts
   , "Name'" :: NullOrUndefined (String)
   , "Packaging'" :: NullOrUndefined (ArtifactPackaging)
   }
+derive instance newtypeProjectArtifacts :: Newtype ProjectArtifacts _
 
 
 -- | <p>Information about the build badge for the build project.</p>
@@ -456,6 +520,7 @@ newtype ProjectBadge = ProjectBadge
   { "BadgeEnabled'" :: NullOrUndefined (Boolean)
   , "BadgeRequestUrl'" :: NullOrUndefined (String)
   }
+derive instance newtypeProjectBadge :: Newtype ProjectBadge _
 
 
 -- | <p>Information about the cache for the build project.</p>
@@ -463,9 +528,11 @@ newtype ProjectCache = ProjectCache
   { "Type'" :: (CacheType)
   , "Location'" :: NullOrUndefined (String)
   }
+derive instance newtypeProjectCache :: Newtype ProjectCache _
 
 
 newtype ProjectDescription = ProjectDescription String
+derive instance newtypeProjectDescription :: Newtype ProjectDescription _
 
 
 -- | <p>Information about the build environment of the build project.</p>
@@ -477,15 +544,19 @@ newtype ProjectEnvironment = ProjectEnvironment
   , "PrivilegedMode'" :: NullOrUndefined (WrapperBoolean)
   , "Certificate'" :: NullOrUndefined (String)
   }
+derive instance newtypeProjectEnvironment :: Newtype ProjectEnvironment _
 
 
 newtype ProjectName = ProjectName String
+derive instance newtypeProjectName :: Newtype ProjectName _
 
 
 newtype ProjectNames = ProjectNames (Array NonEmptyString)
+derive instance newtypeProjectNames :: Newtype ProjectNames _
 
 
 newtype ProjectSortByType = ProjectSortByType String
+derive instance newtypeProjectSortByType :: Newtype ProjectSortByType _
 
 
 -- | <p>Information about the build input source code for the build project.</p>
@@ -497,27 +568,33 @@ newtype ProjectSource = ProjectSource
   , "Auth'" :: NullOrUndefined (SourceAuth)
   , "InsecureSsl'" :: NullOrUndefined (WrapperBoolean)
   }
+derive instance newtypeProjectSource :: Newtype ProjectSource _
 
 
 newtype Projects = Projects (Array Project)
+derive instance newtypeProjects :: Newtype Projects _
 
 
 -- | <p>The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.</p>
 newtype ResourceAlreadyExistsException = ResourceAlreadyExistsException 
   { 
   }
+derive instance newtypeResourceAlreadyExistsException :: Newtype ResourceAlreadyExistsException _
 
 
 -- | <p>The specified AWS resource cannot be found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { 
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype SecurityGroupIds = SecurityGroupIds (Array NonEmptyString)
+derive instance newtypeSecurityGroupIds :: Newtype SecurityGroupIds _
 
 
 newtype SortOrderType = SortOrderType String
+derive instance newtypeSortOrderType :: Newtype SortOrderType _
 
 
 -- | <p>Information about the authorization settings for AWS CodeBuild to access the source code to be built.</p> <p>This information is for the AWS CodeBuild console's use only. Your code should not get or set this information directly (unless the build project's source <code>type</code> value is <code>BITBUCKET</code> or <code>GITHUB</code>).</p>
@@ -525,12 +602,15 @@ newtype SourceAuth = SourceAuth
   { "Type'" :: (SourceAuthType)
   , "Resource'" :: NullOrUndefined (String)
   }
+derive instance newtypeSourceAuth :: Newtype SourceAuth _
 
 
 newtype SourceAuthType = SourceAuthType String
+derive instance newtypeSourceAuthType :: Newtype SourceAuthType _
 
 
 newtype SourceType = SourceType String
+derive instance newtypeSourceType :: Newtype SourceType _
 
 
 newtype StartBuildInput = StartBuildInput 
@@ -542,27 +622,33 @@ newtype StartBuildInput = StartBuildInput
   , "BuildspecOverride'" :: NullOrUndefined (String)
   , "TimeoutInMinutesOverride'" :: NullOrUndefined (TimeOut)
   }
+derive instance newtypeStartBuildInput :: Newtype StartBuildInput _
 
 
 newtype StartBuildOutput = StartBuildOutput 
   { "Build'" :: NullOrUndefined (Build)
   }
+derive instance newtypeStartBuildOutput :: Newtype StartBuildOutput _
 
 
 newtype StatusType = StatusType String
+derive instance newtypeStatusType :: Newtype StatusType _
 
 
 newtype StopBuildInput = StopBuildInput 
   { "Id'" :: (NonEmptyString)
   }
+derive instance newtypeStopBuildInput :: Newtype StopBuildInput _
 
 
 newtype StopBuildOutput = StopBuildOutput 
   { "Build'" :: NullOrUndefined (Build)
   }
+derive instance newtypeStopBuildOutput :: Newtype StopBuildOutput _
 
 
 newtype Subnets = Subnets (Array NonEmptyString)
+derive instance newtypeSubnets :: Newtype Subnets _
 
 
 -- | <p>A tag, consisting of a key and a value.</p> <p>This tag is available for use by AWS services that support tags in AWS CodeBuild.</p>
@@ -570,12 +656,15 @@ newtype Tag = Tag
   { "Key'" :: NullOrUndefined (KeyInput)
   , "Value'" :: NullOrUndefined (ValueInput)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TimeOut = TimeOut Int
+derive instance newtypeTimeOut :: Newtype TimeOut _
 
 
 newtype UpdateProjectInput = UpdateProjectInput 
@@ -592,14 +681,17 @@ newtype UpdateProjectInput = UpdateProjectInput
   , "VpcConfig'" :: NullOrUndefined (VpcConfig)
   , "BadgeEnabled'" :: NullOrUndefined (WrapperBoolean)
   }
+derive instance newtypeUpdateProjectInput :: Newtype UpdateProjectInput _
 
 
 newtype UpdateProjectOutput = UpdateProjectOutput 
   { "Project'" :: NullOrUndefined (Project)
   }
+derive instance newtypeUpdateProjectOutput :: Newtype UpdateProjectOutput _
 
 
 newtype ValueInput = ValueInput String
+derive instance newtypeValueInput :: Newtype ValueInput _
 
 
 -- | <p>Information about the VPC configuration that AWS CodeBuild will access.</p>
@@ -608,6 +700,7 @@ newtype VpcConfig = VpcConfig
   , "Subnets'" :: NullOrUndefined (Subnets)
   , "SecurityGroupIds'" :: NullOrUndefined (SecurityGroupIds)
   }
+derive instance newtypeVpcConfig :: Newtype VpcConfig _
 
 
 -- | <p>Information about a webhook in GitHub that connects repository events to a build project in AWS CodeBuild.</p>
@@ -616,12 +709,16 @@ newtype Webhook = Webhook
   , "PayloadUrl'" :: NullOrUndefined (NonEmptyString)
   , "Secret'" :: NullOrUndefined (NonEmptyString)
   }
+derive instance newtypeWebhook :: Newtype Webhook _
 
 
 newtype WrapperBoolean = WrapperBoolean Boolean
+derive instance newtypeWrapperBoolean :: Newtype WrapperBoolean _
 
 
 newtype WrapperInt = WrapperInt Int
+derive instance newtypeWrapperInt :: Newtype WrapperInt _
 
 
 newtype WrapperLong = WrapperLong Number
+derive instance newtypeWrapperLong :: Newtype WrapperLong _

@@ -6,6 +6,7 @@ module AWS.CognitoIdentity where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -104,21 +105,27 @@ updateIdentityPool = AWS.request serviceName "UpdateIdentityPool"
 
 
 newtype ARNString = ARNString String
+derive instance newtypeARNString :: Newtype ARNString _
 
 
 newtype AccessKeyString = AccessKeyString String
+derive instance newtypeAccessKeyString :: Newtype AccessKeyString _
 
 
 newtype AccountId = AccountId String
+derive instance newtypeAccountId :: Newtype AccountId _
 
 
 newtype AmbiguousRoleResolutionType = AmbiguousRoleResolutionType String
+derive instance newtypeAmbiguousRoleResolutionType :: Newtype AmbiguousRoleResolutionType _
 
 
 newtype ClaimName = ClaimName String
+derive instance newtypeClaimName :: Newtype ClaimName _
 
 
 newtype ClaimValue = ClaimValue String
+derive instance newtypeClaimValue :: Newtype ClaimValue _
 
 
 -- | <p>A provider representing an Amazon Cognito Identity User Pool and its client ID.</p>
@@ -127,24 +134,30 @@ newtype CognitoIdentityProvider = CognitoIdentityProvider
   , "ClientId" :: NullOrUndefined (CognitoIdentityProviderClientId)
   , "ServerSideTokenCheck" :: NullOrUndefined (CognitoIdentityProviderTokenCheck)
   }
+derive instance newtypeCognitoIdentityProvider :: Newtype CognitoIdentityProvider _
 
 
 newtype CognitoIdentityProviderClientId = CognitoIdentityProviderClientId String
+derive instance newtypeCognitoIdentityProviderClientId :: Newtype CognitoIdentityProviderClientId _
 
 
 newtype CognitoIdentityProviderList = CognitoIdentityProviderList (Array CognitoIdentityProvider)
+derive instance newtypeCognitoIdentityProviderList :: Newtype CognitoIdentityProviderList _
 
 
 newtype CognitoIdentityProviderName = CognitoIdentityProviderName String
+derive instance newtypeCognitoIdentityProviderName :: Newtype CognitoIdentityProviderName _
 
 
 newtype CognitoIdentityProviderTokenCheck = CognitoIdentityProviderTokenCheck Boolean
+derive instance newtypeCognitoIdentityProviderTokenCheck :: Newtype CognitoIdentityProviderTokenCheck _
 
 
 -- | <p>Thrown if there are parallel requests to modify a resource.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 -- | <p>Input to the CreateIdentityPool action.</p>
@@ -157,6 +170,7 @@ newtype CreateIdentityPoolInput = CreateIdentityPoolInput
   , "CognitoIdentityProviders" :: NullOrUndefined (CognitoIdentityProviderList)
   , "SamlProviderARNs" :: NullOrUndefined (SAMLProviderList)
   }
+derive instance newtypeCreateIdentityPoolInput :: Newtype CreateIdentityPoolInput _
 
 
 -- | <p>Credentials for the provided identity ID.</p>
@@ -166,63 +180,76 @@ newtype Credentials = Credentials
   , "SessionToken" :: NullOrUndefined (SessionTokenString)
   , "Expiration" :: NullOrUndefined (DateType)
   }
+derive instance newtypeCredentials :: Newtype Credentials _
 
 
 newtype DateType = DateType Number
+derive instance newtypeDateType :: Newtype DateType _
 
 
 -- | <p>Input to the <code>DeleteIdentities</code> action.</p>
 newtype DeleteIdentitiesInput = DeleteIdentitiesInput 
   { "IdentityIdsToDelete" :: (IdentityIdList)
   }
+derive instance newtypeDeleteIdentitiesInput :: Newtype DeleteIdentitiesInput _
 
 
 -- | <p>Returned in response to a successful <code>DeleteIdentities</code> operation.</p>
 newtype DeleteIdentitiesResponse = DeleteIdentitiesResponse 
   { "UnprocessedIdentityIds" :: NullOrUndefined (UnprocessedIdentityIdList)
   }
+derive instance newtypeDeleteIdentitiesResponse :: Newtype DeleteIdentitiesResponse _
 
 
 -- | <p>Input to the DeleteIdentityPool action.</p>
 newtype DeleteIdentityPoolInput = DeleteIdentityPoolInput 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeDeleteIdentityPoolInput :: Newtype DeleteIdentityPoolInput _
 
 
 -- | <p>Input to the <code>DescribeIdentity</code> action.</p>
 newtype DescribeIdentityInput = DescribeIdentityInput 
   { "IdentityId" :: (IdentityId)
   }
+derive instance newtypeDescribeIdentityInput :: Newtype DescribeIdentityInput _
 
 
 -- | <p>Input to the DescribeIdentityPool action.</p>
 newtype DescribeIdentityPoolInput = DescribeIdentityPoolInput 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeDescribeIdentityPoolInput :: Newtype DescribeIdentityPoolInput _
 
 
 newtype DeveloperProviderName = DeveloperProviderName String
+derive instance newtypeDeveloperProviderName :: Newtype DeveloperProviderName _
 
 
 -- | <p>The provided developer user identifier is already registered with Cognito under a different identity ID.</p>
 newtype DeveloperUserAlreadyRegisteredException = DeveloperUserAlreadyRegisteredException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeDeveloperUserAlreadyRegisteredException :: Newtype DeveloperUserAlreadyRegisteredException _
 
 
 newtype DeveloperUserIdentifier = DeveloperUserIdentifier String
+derive instance newtypeDeveloperUserIdentifier :: Newtype DeveloperUserIdentifier _
 
 
 newtype DeveloperUserIdentifierList = DeveloperUserIdentifierList (Array DeveloperUserIdentifier)
+derive instance newtypeDeveloperUserIdentifierList :: Newtype DeveloperUserIdentifierList _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 -- | <p>An exception thrown when a dependent service such as Facebook or Twitter is not responding</p>
 newtype ExternalServiceException = ExternalServiceException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeExternalServiceException :: Newtype ExternalServiceException _
 
 
 -- | <p>Input to the <code>GetCredentialsForIdentity</code> action.</p>
@@ -231,6 +258,7 @@ newtype GetCredentialsForIdentityInput = GetCredentialsForIdentityInput
   , "Logins" :: NullOrUndefined (LoginsMap)
   , "CustomRoleArn" :: NullOrUndefined (ARNString)
   }
+derive instance newtypeGetCredentialsForIdentityInput :: Newtype GetCredentialsForIdentityInput _
 
 
 -- | <p>Returned in response to a successful <code>GetCredentialsForIdentity</code> operation.</p>
@@ -238,6 +266,7 @@ newtype GetCredentialsForIdentityResponse = GetCredentialsForIdentityResponse
   { "IdentityId" :: NullOrUndefined (IdentityId)
   , "Credentials" :: NullOrUndefined (Credentials)
   }
+derive instance newtypeGetCredentialsForIdentityResponse :: Newtype GetCredentialsForIdentityResponse _
 
 
 -- | <p>Input to the GetId action.</p>
@@ -246,18 +275,21 @@ newtype GetIdInput = GetIdInput
   , "IdentityPoolId" :: (IdentityPoolId)
   , "Logins" :: NullOrUndefined (LoginsMap)
   }
+derive instance newtypeGetIdInput :: Newtype GetIdInput _
 
 
 -- | <p>Returned in response to a GetId request.</p>
 newtype GetIdResponse = GetIdResponse 
   { "IdentityId" :: NullOrUndefined (IdentityId)
   }
+derive instance newtypeGetIdResponse :: Newtype GetIdResponse _
 
 
 -- | <p>Input to the <code>GetIdentityPoolRoles</code> action.</p>
 newtype GetIdentityPoolRolesInput = GetIdentityPoolRolesInput 
   { "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeGetIdentityPoolRolesInput :: Newtype GetIdentityPoolRolesInput _
 
 
 -- | <p>Returned in response to a successful <code>GetIdentityPoolRoles</code> operation.</p>
@@ -266,6 +298,7 @@ newtype GetIdentityPoolRolesResponse = GetIdentityPoolRolesResponse
   , "Roles" :: NullOrUndefined (RolesMap)
   , "RoleMappings" :: NullOrUndefined (RoleMappingMap)
   }
+derive instance newtypeGetIdentityPoolRolesResponse :: Newtype GetIdentityPoolRolesResponse _
 
 
 -- | <p>Input to the <code>GetOpenIdTokenForDeveloperIdentity</code> action.</p>
@@ -275,6 +308,7 @@ newtype GetOpenIdTokenForDeveloperIdentityInput = GetOpenIdTokenForDeveloperIden
   , "Logins" :: (LoginsMap)
   , "TokenDuration" :: NullOrUndefined (TokenDuration)
   }
+derive instance newtypeGetOpenIdTokenForDeveloperIdentityInput :: Newtype GetOpenIdTokenForDeveloperIdentityInput _
 
 
 -- | <p>Returned in response to a successful <code>GetOpenIdTokenForDeveloperIdentity</code> request.</p>
@@ -282,6 +316,7 @@ newtype GetOpenIdTokenForDeveloperIdentityResponse = GetOpenIdTokenForDeveloperI
   { "IdentityId" :: NullOrUndefined (IdentityId)
   , "Token" :: NullOrUndefined (OIDCToken)
   }
+derive instance newtypeGetOpenIdTokenForDeveloperIdentityResponse :: Newtype GetOpenIdTokenForDeveloperIdentityResponse _
 
 
 -- | <p>Input to the GetOpenIdToken action.</p>
@@ -289,6 +324,7 @@ newtype GetOpenIdTokenInput = GetOpenIdTokenInput
   { "IdentityId" :: (IdentityId)
   , "Logins" :: NullOrUndefined (LoginsMap)
   }
+derive instance newtypeGetOpenIdTokenInput :: Newtype GetOpenIdTokenInput _
 
 
 -- | <p>Returned in response to a successful GetOpenIdToken request.</p>
@@ -296,12 +332,15 @@ newtype GetOpenIdTokenResponse = GetOpenIdTokenResponse
   { "IdentityId" :: NullOrUndefined (IdentityId)
   , "Token" :: NullOrUndefined (OIDCToken)
   }
+derive instance newtypeGetOpenIdTokenResponse :: Newtype GetOpenIdTokenResponse _
 
 
 newtype HideDisabled = HideDisabled Boolean
+derive instance newtypeHideDisabled :: Newtype HideDisabled _
 
 
 newtype IdentitiesList = IdentitiesList (Array IdentityDescription)
+derive instance newtypeIdentitiesList :: Newtype IdentitiesList _
 
 
 -- | <p>A description of the identity.</p>
@@ -311,12 +350,15 @@ newtype IdentityDescription = IdentityDescription
   , "CreationDate" :: NullOrUndefined (DateType)
   , "LastModifiedDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeIdentityDescription :: Newtype IdentityDescription _
 
 
 newtype IdentityId = IdentityId String
+derive instance newtypeIdentityId :: Newtype IdentityId _
 
 
 newtype IdentityIdList = IdentityIdList (Array IdentityId)
+derive instance newtypeIdentityIdList :: Newtype IdentityIdList _
 
 
 -- | <p>An object representing an Amazon Cognito identity pool.</p>
@@ -330,12 +372,15 @@ newtype IdentityPool = IdentityPool
   , "CognitoIdentityProviders" :: NullOrUndefined (CognitoIdentityProviderList)
   , "SamlProviderARNs" :: NullOrUndefined (SAMLProviderList)
   }
+derive instance newtypeIdentityPool :: Newtype IdentityPool _
 
 
 newtype IdentityPoolId = IdentityPoolId String
+derive instance newtypeIdentityPoolId :: Newtype IdentityPoolId _
 
 
 newtype IdentityPoolName = IdentityPoolName String
+derive instance newtypeIdentityPoolName :: Newtype IdentityPoolName _
 
 
 -- | <p>A description of the identity pool.</p>
@@ -343,48 +388,59 @@ newtype IdentityPoolShortDescription = IdentityPoolShortDescription
   { "IdentityPoolId" :: NullOrUndefined (IdentityPoolId)
   , "IdentityPoolName" :: NullOrUndefined (IdentityPoolName)
   }
+derive instance newtypeIdentityPoolShortDescription :: Newtype IdentityPoolShortDescription _
 
 
 newtype IdentityPoolUnauthenticated = IdentityPoolUnauthenticated Boolean
+derive instance newtypeIdentityPoolUnauthenticated :: Newtype IdentityPoolUnauthenticated _
 
 
 newtype IdentityPoolsList = IdentityPoolsList (Array IdentityPoolShortDescription)
+derive instance newtypeIdentityPoolsList :: Newtype IdentityPoolsList _
 
 
 newtype IdentityProviderId = IdentityProviderId String
+derive instance newtypeIdentityProviderId :: Newtype IdentityProviderId _
 
 
 newtype IdentityProviderName = IdentityProviderName String
+derive instance newtypeIdentityProviderName :: Newtype IdentityProviderName _
 
 
 newtype IdentityProviderToken = IdentityProviderToken String
+derive instance newtypeIdentityProviderToken :: Newtype IdentityProviderToken _
 
 
 newtype IdentityProviders = IdentityProviders (Map IdentityProviderName IdentityProviderId)
+derive instance newtypeIdentityProviders :: Newtype IdentityProviders _
 
 
 -- | <p>Thrown when the service encounters an error during processing the request.</p>
 newtype InternalErrorException = InternalErrorException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInternalErrorException :: Newtype InternalErrorException _
 
 
 -- | <p>Thrown if the identity pool has no role associated for the given auth type (auth/unauth) or if the AssumeRole fails.</p>
 newtype InvalidIdentityPoolConfigurationException = InvalidIdentityPoolConfigurationException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidIdentityPoolConfigurationException :: Newtype InvalidIdentityPoolConfigurationException _
 
 
 -- | <p>Thrown for missing or bad input parameter(s).</p>
 newtype InvalidParameterException = InvalidParameterException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>Thrown when the total number of user pools has exceeded a preset limit.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 -- | <p>Input to the ListIdentities action.</p>
@@ -394,6 +450,7 @@ newtype ListIdentitiesInput = ListIdentitiesInput
   , "NextToken" :: NullOrUndefined (PaginationKey)
   , "HideDisabled" :: NullOrUndefined (HideDisabled)
   }
+derive instance newtypeListIdentitiesInput :: Newtype ListIdentitiesInput _
 
 
 -- | <p>The response to a ListIdentities request.</p>
@@ -402,6 +459,7 @@ newtype ListIdentitiesResponse = ListIdentitiesResponse
   , "Identities" :: NullOrUndefined (IdentitiesList)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListIdentitiesResponse :: Newtype ListIdentitiesResponse _
 
 
 -- | <p>Input to the ListIdentityPools action.</p>
@@ -409,6 +467,7 @@ newtype ListIdentityPoolsInput = ListIdentityPoolsInput
   { "MaxResults" :: (QueryLimit)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListIdentityPoolsInput :: Newtype ListIdentityPoolsInput _
 
 
 -- | <p>The result of a successful ListIdentityPools action.</p>
@@ -416,12 +475,15 @@ newtype ListIdentityPoolsResponse = ListIdentityPoolsResponse
   { "IdentityPools" :: NullOrUndefined (IdentityPoolsList)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListIdentityPoolsResponse :: Newtype ListIdentityPoolsResponse _
 
 
 newtype LoginsList = LoginsList (Array IdentityProviderName)
+derive instance newtypeLoginsList :: Newtype LoginsList _
 
 
 newtype LoginsMap = LoginsMap (Map IdentityProviderName IdentityProviderToken)
+derive instance newtypeLoginsMap :: Newtype LoginsMap _
 
 
 -- | <p>Input to the <code>LookupDeveloperIdentityInput</code> action.</p>
@@ -432,6 +494,7 @@ newtype LookupDeveloperIdentityInput = LookupDeveloperIdentityInput
   , "MaxResults" :: NullOrUndefined (QueryLimit)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeLookupDeveloperIdentityInput :: Newtype LookupDeveloperIdentityInput _
 
 
 -- | <p>Returned in response to a successful <code>LookupDeveloperIdentity</code> action.</p>
@@ -440,6 +503,7 @@ newtype LookupDeveloperIdentityResponse = LookupDeveloperIdentityResponse
   , "DeveloperUserIdentifierList" :: NullOrUndefined (DeveloperUserIdentifierList)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeLookupDeveloperIdentityResponse :: Newtype LookupDeveloperIdentityResponse _
 
 
 -- | <p>A rule that maps a claim name, a claim value, and a match type to a role ARN.</p>
@@ -449,12 +513,15 @@ newtype MappingRule = MappingRule
   , "Value" :: (ClaimValue)
   , "RoleARN" :: (ARNString)
   }
+derive instance newtypeMappingRule :: Newtype MappingRule _
 
 
 newtype MappingRuleMatchType = MappingRuleMatchType String
+derive instance newtypeMappingRuleMatchType :: Newtype MappingRuleMatchType _
 
 
 newtype MappingRulesList = MappingRulesList (Array MappingRule)
+derive instance newtypeMappingRulesList :: Newtype MappingRulesList _
 
 
 -- | <p>Input to the <code>MergeDeveloperIdentities</code> action.</p>
@@ -464,42 +531,51 @@ newtype MergeDeveloperIdentitiesInput = MergeDeveloperIdentitiesInput
   , "DeveloperProviderName" :: (DeveloperProviderName)
   , "IdentityPoolId" :: (IdentityPoolId)
   }
+derive instance newtypeMergeDeveloperIdentitiesInput :: Newtype MergeDeveloperIdentitiesInput _
 
 
 -- | <p>Returned in response to a successful <code>MergeDeveloperIdentities</code> action.</p>
 newtype MergeDeveloperIdentitiesResponse = MergeDeveloperIdentitiesResponse 
   { "IdentityId" :: NullOrUndefined (IdentityId)
   }
+derive instance newtypeMergeDeveloperIdentitiesResponse :: Newtype MergeDeveloperIdentitiesResponse _
 
 
 -- | <p>Thrown when a user is not authorized to access the requested resource.</p>
 newtype NotAuthorizedException = NotAuthorizedException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeNotAuthorizedException :: Newtype NotAuthorizedException _
 
 
 newtype OIDCProviderList = OIDCProviderList (Array ARNString)
+derive instance newtypeOIDCProviderList :: Newtype OIDCProviderList _
 
 
 newtype OIDCToken = OIDCToken String
+derive instance newtypeOIDCToken :: Newtype OIDCToken _
 
 
 newtype PaginationKey = PaginationKey String
+derive instance newtypePaginationKey :: Newtype PaginationKey _
 
 
 newtype QueryLimit = QueryLimit Int
+derive instance newtypeQueryLimit :: Newtype QueryLimit _
 
 
 -- | <p>Thrown when a user tries to use a login which is already linked to another account.</p>
 newtype ResourceConflictException = ResourceConflictException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceConflictException :: Newtype ResourceConflictException _
 
 
 -- | <p>Thrown when the requested resource (for example, a dataset or record) does not exist.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>A role mapping.</p>
@@ -508,33 +584,42 @@ newtype RoleMapping = RoleMapping
   , "AmbiguousRoleResolution" :: NullOrUndefined (AmbiguousRoleResolutionType)
   , "RulesConfiguration" :: NullOrUndefined (RulesConfigurationType)
   }
+derive instance newtypeRoleMapping :: Newtype RoleMapping _
 
 
 newtype RoleMappingMap = RoleMappingMap (Map IdentityProviderName RoleMapping)
+derive instance newtypeRoleMappingMap :: Newtype RoleMappingMap _
 
 
 newtype RoleMappingType = RoleMappingType String
+derive instance newtypeRoleMappingType :: Newtype RoleMappingType _
 
 
 newtype RoleType = RoleType String
+derive instance newtypeRoleType :: Newtype RoleType _
 
 
 newtype RolesMap = RolesMap (Map RoleType ARNString)
+derive instance newtypeRolesMap :: Newtype RolesMap _
 
 
 -- | <p>A container for rules.</p>
 newtype RulesConfigurationType = RulesConfigurationType 
   { "Rules" :: (MappingRulesList)
   }
+derive instance newtypeRulesConfigurationType :: Newtype RulesConfigurationType _
 
 
 newtype SAMLProviderList = SAMLProviderList (Array ARNString)
+derive instance newtypeSAMLProviderList :: Newtype SAMLProviderList _
 
 
 newtype SecretKeyString = SecretKeyString String
+derive instance newtypeSecretKeyString :: Newtype SecretKeyString _
 
 
 newtype SessionTokenString = SessionTokenString String
+derive instance newtypeSessionTokenString :: Newtype SessionTokenString _
 
 
 -- | <p>Input to the <code>SetIdentityPoolRoles</code> action.</p>
@@ -543,15 +628,18 @@ newtype SetIdentityPoolRolesInput = SetIdentityPoolRolesInput
   , "Roles" :: (RolesMap)
   , "RoleMappings" :: NullOrUndefined (RoleMappingMap)
   }
+derive instance newtypeSetIdentityPoolRolesInput :: Newtype SetIdentityPoolRolesInput _
 
 
 newtype TokenDuration = TokenDuration Number
+derive instance newtypeTokenDuration :: Newtype TokenDuration _
 
 
 -- | <p>Thrown when a request is throttled.</p>
 newtype TooManyRequestsException = TooManyRequestsException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | <p>Input to the <code>UnlinkDeveloperIdentity</code> action.</p>
@@ -561,6 +649,7 @@ newtype UnlinkDeveloperIdentityInput = UnlinkDeveloperIdentityInput
   , "DeveloperProviderName" :: (DeveloperProviderName)
   , "DeveloperUserIdentifier" :: (DeveloperUserIdentifier)
   }
+derive instance newtypeUnlinkDeveloperIdentityInput :: Newtype UnlinkDeveloperIdentityInput _
 
 
 -- | <p>Input to the UnlinkIdentity action.</p>
@@ -569,6 +658,7 @@ newtype UnlinkIdentityInput = UnlinkIdentityInput
   , "Logins" :: (LoginsMap)
   , "LoginsToRemove" :: (LoginsList)
   }
+derive instance newtypeUnlinkIdentityInput :: Newtype UnlinkIdentityInput _
 
 
 -- | <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
@@ -576,6 +666,8 @@ newtype UnprocessedIdentityId = UnprocessedIdentityId
   { "IdentityId" :: NullOrUndefined (IdentityId)
   , "ErrorCode" :: NullOrUndefined (ErrorCode)
   }
+derive instance newtypeUnprocessedIdentityId :: Newtype UnprocessedIdentityId _
 
 
 newtype UnprocessedIdentityIdList = UnprocessedIdentityIdList (Array UnprocessedIdentityId)
+derive instance newtypeUnprocessedIdentityIdList :: Newtype UnprocessedIdentityIdList _

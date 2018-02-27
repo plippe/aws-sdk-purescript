@@ -6,6 +6,7 @@ module AWS.DAX where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -119,12 +120,15 @@ updateSubnetGroup = AWS.request serviceName "UpdateSubnetGroup"
 
 
 newtype AvailabilityZoneList = AvailabilityZoneList (Array String)
+derive instance newtypeAvailabilityZoneList :: Newtype AvailabilityZoneList _
 
 
 newtype AwsQueryErrorMessage = AwsQueryErrorMessage String
+derive instance newtypeAwsQueryErrorMessage :: Newtype AwsQueryErrorMessage _
 
 
 newtype ChangeType = ChangeType String
+derive instance newtypeChangeType :: Newtype ChangeType _
 
 
 -- | <p>Contains all of the attributes of a specific DAX cluster.</p>
@@ -146,30 +150,36 @@ newtype Cluster = Cluster
   , "IamRoleArn" :: NullOrUndefined (String)
   , "ParameterGroup" :: NullOrUndefined (ParameterGroupStatus)
   }
+derive instance newtypeCluster :: Newtype Cluster _
 
 
 -- | <p>You already have a DAX cluster with the given identifier.</p>
 newtype ClusterAlreadyExistsFault = ClusterAlreadyExistsFault 
   { 
   }
+derive instance newtypeClusterAlreadyExistsFault :: Newtype ClusterAlreadyExistsFault _
 
 
 newtype ClusterList = ClusterList (Array Cluster)
+derive instance newtypeClusterList :: Newtype ClusterList _
 
 
 newtype ClusterNameList = ClusterNameList (Array String)
+derive instance newtypeClusterNameList :: Newtype ClusterNameList _
 
 
 -- | <p>The requested cluster ID does not refer to an existing DAX cluster.</p>
 newtype ClusterNotFoundFault = ClusterNotFoundFault 
   { 
   }
+derive instance newtypeClusterNotFoundFault :: Newtype ClusterNotFoundFault _
 
 
 -- | <p>You have attempted to exceed the maximum number of DAX clusters for your AWS account.</p>
 newtype ClusterQuotaForCustomerExceededFault = ClusterQuotaForCustomerExceededFault 
   { 
   }
+derive instance newtypeClusterQuotaForCustomerExceededFault :: Newtype ClusterQuotaForCustomerExceededFault _
 
 
 newtype CreateClusterRequest = CreateClusterRequest 
@@ -186,22 +196,26 @@ newtype CreateClusterRequest = CreateClusterRequest
   , "ParameterGroupName" :: NullOrUndefined (String)
   , "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeCreateClusterRequest :: Newtype CreateClusterRequest _
 
 
 newtype CreateClusterResponse = CreateClusterResponse 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeCreateClusterResponse :: Newtype CreateClusterResponse _
 
 
 newtype CreateParameterGroupRequest = CreateParameterGroupRequest 
   { "ParameterGroupName" :: (String)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateParameterGroupRequest :: Newtype CreateParameterGroupRequest _
 
 
 newtype CreateParameterGroupResponse = CreateParameterGroupResponse 
   { "ParameterGroup" :: NullOrUndefined (ParameterGroup)
   }
+derive instance newtypeCreateParameterGroupResponse :: Newtype CreateParameterGroupResponse _
 
 
 newtype CreateSubnetGroupRequest = CreateSubnetGroupRequest 
@@ -209,11 +223,13 @@ newtype CreateSubnetGroupRequest = CreateSubnetGroupRequest
   , "Description" :: NullOrUndefined (String)
   , "SubnetIds" :: (SubnetIdentifierList)
   }
+derive instance newtypeCreateSubnetGroupRequest :: Newtype CreateSubnetGroupRequest _
 
 
 newtype CreateSubnetGroupResponse = CreateSubnetGroupResponse 
   { "SubnetGroup" :: NullOrUndefined (SubnetGroup)
   }
+derive instance newtypeCreateSubnetGroupResponse :: Newtype CreateSubnetGroupResponse _
 
 
 newtype DecreaseReplicationFactorRequest = DecreaseReplicationFactorRequest 
@@ -222,41 +238,49 @@ newtype DecreaseReplicationFactorRequest = DecreaseReplicationFactorRequest
   , "AvailabilityZones" :: NullOrUndefined (AvailabilityZoneList)
   , "NodeIdsToRemove" :: NullOrUndefined (NodeIdentifierList)
   }
+derive instance newtypeDecreaseReplicationFactorRequest :: Newtype DecreaseReplicationFactorRequest _
 
 
 newtype DecreaseReplicationFactorResponse = DecreaseReplicationFactorResponse 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeDecreaseReplicationFactorResponse :: Newtype DecreaseReplicationFactorResponse _
 
 
 newtype DeleteClusterRequest = DeleteClusterRequest 
   { "ClusterName" :: (String)
   }
+derive instance newtypeDeleteClusterRequest :: Newtype DeleteClusterRequest _
 
 
 newtype DeleteClusterResponse = DeleteClusterResponse 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeDeleteClusterResponse :: Newtype DeleteClusterResponse _
 
 
 newtype DeleteParameterGroupRequest = DeleteParameterGroupRequest 
   { "ParameterGroupName" :: (String)
   }
+derive instance newtypeDeleteParameterGroupRequest :: Newtype DeleteParameterGroupRequest _
 
 
 newtype DeleteParameterGroupResponse = DeleteParameterGroupResponse 
   { "DeletionMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeDeleteParameterGroupResponse :: Newtype DeleteParameterGroupResponse _
 
 
 newtype DeleteSubnetGroupRequest = DeleteSubnetGroupRequest 
   { "SubnetGroupName" :: (String)
   }
+derive instance newtypeDeleteSubnetGroupRequest :: Newtype DeleteSubnetGroupRequest _
 
 
 newtype DeleteSubnetGroupResponse = DeleteSubnetGroupResponse 
   { "DeletionMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeDeleteSubnetGroupResponse :: Newtype DeleteSubnetGroupResponse _
 
 
 newtype DescribeClustersRequest = DescribeClustersRequest 
@@ -264,24 +288,28 @@ newtype DescribeClustersRequest = DescribeClustersRequest
   , "MaxResults" :: NullOrUndefined (IntegerOptional)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeClustersRequest :: Newtype DescribeClustersRequest _
 
 
 newtype DescribeClustersResponse = DescribeClustersResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "Clusters" :: NullOrUndefined (ClusterList)
   }
+derive instance newtypeDescribeClustersResponse :: Newtype DescribeClustersResponse _
 
 
 newtype DescribeDefaultParametersRequest = DescribeDefaultParametersRequest 
   { "MaxResults" :: NullOrUndefined (IntegerOptional)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeDefaultParametersRequest :: Newtype DescribeDefaultParametersRequest _
 
 
 newtype DescribeDefaultParametersResponse = DescribeDefaultParametersResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "Parameters" :: NullOrUndefined (ParameterList)
   }
+derive instance newtypeDescribeDefaultParametersResponse :: Newtype DescribeDefaultParametersResponse _
 
 
 newtype DescribeEventsRequest = DescribeEventsRequest 
@@ -293,12 +321,14 @@ newtype DescribeEventsRequest = DescribeEventsRequest
   , "MaxResults" :: NullOrUndefined (IntegerOptional)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeEventsRequest :: Newtype DescribeEventsRequest _
 
 
 newtype DescribeEventsResponse = DescribeEventsResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "Events" :: NullOrUndefined (EventList)
   }
+derive instance newtypeDescribeEventsResponse :: Newtype DescribeEventsResponse _
 
 
 newtype DescribeParameterGroupsRequest = DescribeParameterGroupsRequest 
@@ -306,12 +336,14 @@ newtype DescribeParameterGroupsRequest = DescribeParameterGroupsRequest
   , "MaxResults" :: NullOrUndefined (IntegerOptional)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeParameterGroupsRequest :: Newtype DescribeParameterGroupsRequest _
 
 
 newtype DescribeParameterGroupsResponse = DescribeParameterGroupsResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "ParameterGroups" :: NullOrUndefined (ParameterGroupList)
   }
+derive instance newtypeDescribeParameterGroupsResponse :: Newtype DescribeParameterGroupsResponse _
 
 
 newtype DescribeParametersRequest = DescribeParametersRequest 
@@ -320,12 +352,14 @@ newtype DescribeParametersRequest = DescribeParametersRequest
   , "MaxResults" :: NullOrUndefined (IntegerOptional)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeParametersRequest :: Newtype DescribeParametersRequest _
 
 
 newtype DescribeParametersResponse = DescribeParametersResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "Parameters" :: NullOrUndefined (ParameterList)
   }
+derive instance newtypeDescribeParametersResponse :: Newtype DescribeParametersResponse _
 
 
 newtype DescribeSubnetGroupsRequest = DescribeSubnetGroupsRequest 
@@ -333,12 +367,14 @@ newtype DescribeSubnetGroupsRequest = DescribeSubnetGroupsRequest
   , "MaxResults" :: NullOrUndefined (IntegerOptional)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeSubnetGroupsRequest :: Newtype DescribeSubnetGroupsRequest _
 
 
 newtype DescribeSubnetGroupsResponse = DescribeSubnetGroupsResponse 
   { "NextToken" :: NullOrUndefined (String)
   , "SubnetGroups" :: NullOrUndefined (SubnetGroupList)
   }
+derive instance newtypeDescribeSubnetGroupsResponse :: Newtype DescribeSubnetGroupsResponse _
 
 
 -- | <p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>
@@ -346,6 +382,7 @@ newtype Endpoint = Endpoint
   { "Address" :: NullOrUndefined (String)
   , "Port" :: NullOrUndefined (Int)
   }
+derive instance newtypeEndpoint :: Newtype Endpoint _
 
 
 -- | <p>Represents a single occurrence of something interesting within the system. Some examples of events are creating a DAX cluster, adding or removing a node, or rebooting a node.</p>
@@ -355,9 +392,11 @@ newtype Event = Event
   , "Message" :: NullOrUndefined (String)
   , "Date" :: NullOrUndefined (TStamp)
   }
+derive instance newtypeEvent :: Newtype Event _
 
 
 newtype EventList = EventList (Array Event)
+derive instance newtypeEventList :: Newtype EventList _
 
 
 newtype IncreaseReplicationFactorRequest = IncreaseReplicationFactorRequest 
@@ -365,80 +404,95 @@ newtype IncreaseReplicationFactorRequest = IncreaseReplicationFactorRequest
   , "NewReplicationFactor" :: (Int)
   , "AvailabilityZones" :: NullOrUndefined (AvailabilityZoneList)
   }
+derive instance newtypeIncreaseReplicationFactorRequest :: Newtype IncreaseReplicationFactorRequest _
 
 
 newtype IncreaseReplicationFactorResponse = IncreaseReplicationFactorResponse 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeIncreaseReplicationFactorResponse :: Newtype IncreaseReplicationFactorResponse _
 
 
 -- | <p>There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). </p>
 newtype InsufficientClusterCapacityFault = InsufficientClusterCapacityFault 
   { 
   }
+derive instance newtypeInsufficientClusterCapacityFault :: Newtype InsufficientClusterCapacityFault _
 
 
 newtype IntegerOptional = IntegerOptional Int
+derive instance newtypeIntegerOptional :: Newtype IntegerOptional _
 
 
 -- | <p>The Amazon Resource Name (ARN) supplied in the request is not valid.</p>
 newtype InvalidARNFault = InvalidARNFault 
   { 
   }
+derive instance newtypeInvalidARNFault :: Newtype InvalidARNFault _
 
 
 -- | <p>The requested DAX cluster is not in the <i>available</i> state.</p>
 newtype InvalidClusterStateFault = InvalidClusterStateFault 
   { 
   }
+derive instance newtypeInvalidClusterStateFault :: Newtype InvalidClusterStateFault _
 
 
 -- | <p>Two or more incompatible parameters were specified.</p>
 newtype InvalidParameterCombinationException = InvalidParameterCombinationException 
   { "Message'" :: NullOrUndefined (AwsQueryErrorMessage)
   }
+derive instance newtypeInvalidParameterCombinationException :: Newtype InvalidParameterCombinationException _
 
 
 -- | <p>One or more parameters in a parameter group are in an invalid state.</p>
 newtype InvalidParameterGroupStateFault = InvalidParameterGroupStateFault 
   { 
   }
+derive instance newtypeInvalidParameterGroupStateFault :: Newtype InvalidParameterGroupStateFault _
 
 
 -- | <p>The value for a parameter is invalid.</p>
 newtype InvalidParameterValueException = InvalidParameterValueException 
   { "Message'" :: NullOrUndefined (AwsQueryErrorMessage)
   }
+derive instance newtypeInvalidParameterValueException :: Newtype InvalidParameterValueException _
 
 
 -- | <p>An invalid subnet identifier was specified.</p>
 newtype InvalidSubnet = InvalidSubnet 
   { 
   }
+derive instance newtypeInvalidSubnet :: Newtype InvalidSubnet _
 
 
 -- | <p>The VPC network is in an invalid state.</p>
 newtype InvalidVPCNetworkStateFault = InvalidVPCNetworkStateFault 
   { 
   }
+derive instance newtypeInvalidVPCNetworkStateFault :: Newtype InvalidVPCNetworkStateFault _
 
 
 newtype IsModifiable = IsModifiable String
+derive instance newtypeIsModifiable :: Newtype IsModifiable _
 
 
 newtype KeyList = KeyList (Array String)
+derive instance newtypeKeyList :: Newtype KeyList _
 
 
 newtype ListTagsRequest = ListTagsRequest 
   { "ResourceName" :: (String)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListTagsRequest :: Newtype ListTagsRequest _
 
 
 newtype ListTagsResponse = ListTagsResponse 
   { "Tags" :: NullOrUndefined (TagList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListTagsResponse :: Newtype ListTagsResponse _
 
 
 -- | <p>Represents an individual node within a DAX cluster.</p>
@@ -450,30 +504,36 @@ newtype Node = Node
   , "NodeStatus" :: NullOrUndefined (String)
   , "ParameterGroupStatus" :: NullOrUndefined (String)
   }
+derive instance newtypeNode :: Newtype Node _
 
 
 newtype NodeIdentifierList = NodeIdentifierList (Array String)
+derive instance newtypeNodeIdentifierList :: Newtype NodeIdentifierList _
 
 
 newtype NodeList = NodeList (Array Node)
+derive instance newtypeNodeList :: Newtype NodeList _
 
 
 -- | <p>None of the nodes in the cluster have the given node ID.</p>
 newtype NodeNotFoundFault = NodeNotFoundFault 
   { 
   }
+derive instance newtypeNodeNotFoundFault :: Newtype NodeNotFoundFault _
 
 
 -- | <p>You have attempted to exceed the maximum number of nodes for a DAX cluster.</p>
 newtype NodeQuotaForClusterExceededFault = NodeQuotaForClusterExceededFault 
   { 
   }
+derive instance newtypeNodeQuotaForClusterExceededFault :: Newtype NodeQuotaForClusterExceededFault _
 
 
 -- | <p>You have attempted to exceed the maximum number of nodes for your AWS account.</p>
 newtype NodeQuotaForCustomerExceededFault = NodeQuotaForCustomerExceededFault 
   { 
   }
+derive instance newtypeNodeQuotaForCustomerExceededFault :: Newtype NodeQuotaForCustomerExceededFault _
 
 
 -- | <p>Represents a parameter value that is applicable to a particular node type.</p>
@@ -481,9 +541,11 @@ newtype NodeTypeSpecificValue = NodeTypeSpecificValue
   { "NodeType" :: NullOrUndefined (String)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeNodeTypeSpecificValue :: Newtype NodeTypeSpecificValue _
 
 
 newtype NodeTypeSpecificValueList = NodeTypeSpecificValueList (Array NodeTypeSpecificValue)
+derive instance newtypeNodeTypeSpecificValueList :: Newtype NodeTypeSpecificValueList _
 
 
 -- | <p>Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).</p>
@@ -491,6 +553,7 @@ newtype NotificationConfiguration = NotificationConfiguration
   { "TopicArn" :: NullOrUndefined (String)
   , "TopicStatus" :: NullOrUndefined (String)
   }
+derive instance newtypeNotificationConfiguration :: Newtype NotificationConfiguration _
 
 
 -- | <p>Describes an individual setting that controls some aspect of DAX behavior.</p>
@@ -506,6 +569,7 @@ newtype Parameter = Parameter
   , "IsModifiable" :: NullOrUndefined (IsModifiable)
   , "ChangeType" :: NullOrUndefined (ChangeType)
   }
+derive instance newtypeParameter :: Newtype Parameter _
 
 
 -- | <p>A named set of parameters that are applied to all of the nodes in a DAX cluster.</p>
@@ -513,30 +577,36 @@ newtype ParameterGroup = ParameterGroup
   { "ParameterGroupName" :: NullOrUndefined (String)
   , "Description" :: NullOrUndefined (String)
   }
+derive instance newtypeParameterGroup :: Newtype ParameterGroup _
 
 
 -- | <p>The specified parameter group already exists.</p>
 newtype ParameterGroupAlreadyExistsFault = ParameterGroupAlreadyExistsFault 
   { 
   }
+derive instance newtypeParameterGroupAlreadyExistsFault :: Newtype ParameterGroupAlreadyExistsFault _
 
 
 newtype ParameterGroupList = ParameterGroupList (Array ParameterGroup)
+derive instance newtypeParameterGroupList :: Newtype ParameterGroupList _
 
 
 newtype ParameterGroupNameList = ParameterGroupNameList (Array String)
+derive instance newtypeParameterGroupNameList :: Newtype ParameterGroupNameList _
 
 
 -- | <p>The specified parameter group does not exist.</p>
 newtype ParameterGroupNotFoundFault = ParameterGroupNotFoundFault 
   { 
   }
+derive instance newtypeParameterGroupNotFoundFault :: Newtype ParameterGroupNotFoundFault _
 
 
 -- | <p>You have attempted to exceed the maximum number of parameter groups.</p>
 newtype ParameterGroupQuotaExceededFault = ParameterGroupQuotaExceededFault 
   { 
   }
+derive instance newtypeParameterGroupQuotaExceededFault :: Newtype ParameterGroupQuotaExceededFault _
 
 
 -- | <p>The status of a parameter group.</p>
@@ -545,9 +615,11 @@ newtype ParameterGroupStatus = ParameterGroupStatus
   , "ParameterApplyStatus" :: NullOrUndefined (String)
   , "NodeIdsToReboot" :: NullOrUndefined (NodeIdentifierList)
   }
+derive instance newtypeParameterGroupStatus :: Newtype ParameterGroupStatus _
 
 
 newtype ParameterList = ParameterList (Array Parameter)
+derive instance newtypeParameterList :: Newtype ParameterList _
 
 
 -- | <p>An individual DAX parameter.</p>
@@ -555,26 +627,32 @@ newtype ParameterNameValue = ParameterNameValue
   { "ParameterName" :: NullOrUndefined (String)
   , "ParameterValue" :: NullOrUndefined (String)
   }
+derive instance newtypeParameterNameValue :: Newtype ParameterNameValue _
 
 
 newtype ParameterNameValueList = ParameterNameValueList (Array ParameterNameValue)
+derive instance newtypeParameterNameValueList :: Newtype ParameterNameValueList _
 
 
 newtype ParameterType = ParameterType String
+derive instance newtypeParameterType :: Newtype ParameterType _
 
 
 newtype RebootNodeRequest = RebootNodeRequest 
   { "ClusterName" :: (String)
   , "NodeId" :: (String)
   }
+derive instance newtypeRebootNodeRequest :: Newtype RebootNodeRequest _
 
 
 newtype RebootNodeResponse = RebootNodeResponse 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeRebootNodeResponse :: Newtype RebootNodeResponse _
 
 
 newtype SecurityGroupIdentifierList = SecurityGroupIdentifierList (Array String)
+derive instance newtypeSecurityGroupIdentifierList :: Newtype SecurityGroupIdentifierList _
 
 
 -- | <p>An individual VPC security group and its status.</p>
@@ -582,12 +660,15 @@ newtype SecurityGroupMembership = SecurityGroupMembership
   { "SecurityGroupIdentifier" :: NullOrUndefined (String)
   , "Status" :: NullOrUndefined (String)
   }
+derive instance newtypeSecurityGroupMembership :: Newtype SecurityGroupMembership _
 
 
 newtype SecurityGroupMembershipList = SecurityGroupMembershipList (Array SecurityGroupMembership)
+derive instance newtypeSecurityGroupMembershipList :: Newtype SecurityGroupMembershipList _
 
 
 newtype SourceType = SourceType String
+derive instance newtypeSourceType :: Newtype SourceType _
 
 
 -- | <p>Represents the subnet associated with a DAX cluster. This parameter refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC) and used with DAX.</p>
@@ -595,6 +676,7 @@ newtype Subnet = Subnet
   { "SubnetIdentifier" :: NullOrUndefined (String)
   , "SubnetAvailabilityZone" :: NullOrUndefined (String)
   }
+derive instance newtypeSubnet :: Newtype Subnet _
 
 
 -- | <p>Represents the output of one of the following actions:</p> <ul> <li> <p> <i>CreateSubnetGroup</i> </p> </li> <li> <p> <i>ModifySubnetGroup</i> </p> </li> </ul>
@@ -604,57 +686,69 @@ newtype SubnetGroup = SubnetGroup
   , "VpcId" :: NullOrUndefined (String)
   , "Subnets" :: NullOrUndefined (SubnetList)
   }
+derive instance newtypeSubnetGroup :: Newtype SubnetGroup _
 
 
 -- | <p>The specified subnet group already exists.</p>
 newtype SubnetGroupAlreadyExistsFault = SubnetGroupAlreadyExistsFault 
   { 
   }
+derive instance newtypeSubnetGroupAlreadyExistsFault :: Newtype SubnetGroupAlreadyExistsFault _
 
 
 -- | <p>The specified subnet group is currently in use.</p>
 newtype SubnetGroupInUseFault = SubnetGroupInUseFault 
   { 
   }
+derive instance newtypeSubnetGroupInUseFault :: Newtype SubnetGroupInUseFault _
 
 
 newtype SubnetGroupList = SubnetGroupList (Array SubnetGroup)
+derive instance newtypeSubnetGroupList :: Newtype SubnetGroupList _
 
 
 newtype SubnetGroupNameList = SubnetGroupNameList (Array String)
+derive instance newtypeSubnetGroupNameList :: Newtype SubnetGroupNameList _
 
 
 -- | <p>The requested subnet group name does not refer to an existing subnet group.</p>
 newtype SubnetGroupNotFoundFault = SubnetGroupNotFoundFault 
   { 
   }
+derive instance newtypeSubnetGroupNotFoundFault :: Newtype SubnetGroupNotFoundFault _
 
 
 -- | <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
 newtype SubnetGroupQuotaExceededFault = SubnetGroupQuotaExceededFault 
   { 
   }
+derive instance newtypeSubnetGroupQuotaExceededFault :: Newtype SubnetGroupQuotaExceededFault _
 
 
 newtype SubnetIdentifierList = SubnetIdentifierList (Array String)
+derive instance newtypeSubnetIdentifierList :: Newtype SubnetIdentifierList _
 
 
 -- | <p>The requested subnet is being used by another subnet group.</p>
 newtype SubnetInUse = SubnetInUse 
   { 
   }
+derive instance newtypeSubnetInUse :: Newtype SubnetInUse _
 
 
 newtype SubnetList = SubnetList (Array Subnet)
+derive instance newtypeSubnetList :: Newtype SubnetList _
 
 
 -- | <p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>
 newtype SubnetQuotaExceededFault = SubnetQuotaExceededFault 
   { 
   }
+derive instance newtypeSubnetQuotaExceededFault :: Newtype SubnetQuotaExceededFault _
 
 
 newtype TStamp = TStamp Number
+derive instance newtypeTStamp :: Newtype TStamp _
 
 
 -- | <p>A description of a tag. Every tag is a key-value pair. You can add up to 50 tags to a single DAX cluster.</p> <p>AWS-assigned tag names and values are automatically assigned the <code>aws:</code> prefix, which the user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50. User-assigned tag names have the prefix <code>user:</code>.</p> <p>You cannot backdate the application of a tag.</p>
@@ -662,43 +756,51 @@ newtype Tag = Tag
   { "Key" :: NullOrUndefined (String)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 -- | <p>The tag does not exist.</p>
 newtype TagNotFoundFault = TagNotFoundFault 
   { 
   }
+derive instance newtypeTagNotFoundFault :: Newtype TagNotFoundFault _
 
 
 -- | <p>You have exceeded the maximum number of tags for this DAX cluster.</p>
 newtype TagQuotaPerResourceExceeded = TagQuotaPerResourceExceeded 
   { 
   }
+derive instance newtypeTagQuotaPerResourceExceeded :: Newtype TagQuotaPerResourceExceeded _
 
 
 newtype TagResourceRequest = TagResourceRequest 
   { "ResourceName" :: (String)
   , "Tags" :: (TagList)
   }
+derive instance newtypeTagResourceRequest :: Newtype TagResourceRequest _
 
 
 newtype TagResourceResponse = TagResourceResponse 
   { "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeTagResourceResponse :: Newtype TagResourceResponse _
 
 
 newtype UntagResourceRequest = UntagResourceRequest 
   { "ResourceName" :: (String)
   , "TagKeys" :: (KeyList)
   }
+derive instance newtypeUntagResourceRequest :: Newtype UntagResourceRequest _
 
 
 newtype UntagResourceResponse = UntagResourceResponse 
   { "Tags" :: NullOrUndefined (TagList)
   }
+derive instance newtypeUntagResourceResponse :: Newtype UntagResourceResponse _
 
 
 newtype UpdateClusterRequest = UpdateClusterRequest 
@@ -710,22 +812,26 @@ newtype UpdateClusterRequest = UpdateClusterRequest
   , "ParameterGroupName" :: NullOrUndefined (String)
   , "SecurityGroupIds" :: NullOrUndefined (SecurityGroupIdentifierList)
   }
+derive instance newtypeUpdateClusterRequest :: Newtype UpdateClusterRequest _
 
 
 newtype UpdateClusterResponse = UpdateClusterResponse 
   { "Cluster" :: NullOrUndefined (Cluster)
   }
+derive instance newtypeUpdateClusterResponse :: Newtype UpdateClusterResponse _
 
 
 newtype UpdateParameterGroupRequest = UpdateParameterGroupRequest 
   { "ParameterGroupName" :: (String)
   , "ParameterNameValues" :: (ParameterNameValueList)
   }
+derive instance newtypeUpdateParameterGroupRequest :: Newtype UpdateParameterGroupRequest _
 
 
 newtype UpdateParameterGroupResponse = UpdateParameterGroupResponse 
   { "ParameterGroup" :: NullOrUndefined (ParameterGroup)
   }
+derive instance newtypeUpdateParameterGroupResponse :: Newtype UpdateParameterGroupResponse _
 
 
 newtype UpdateSubnetGroupRequest = UpdateSubnetGroupRequest 
@@ -733,8 +839,10 @@ newtype UpdateSubnetGroupRequest = UpdateSubnetGroupRequest
   , "Description" :: NullOrUndefined (String)
   , "SubnetIds" :: NullOrUndefined (SubnetIdentifierList)
   }
+derive instance newtypeUpdateSubnetGroupRequest :: Newtype UpdateSubnetGroupRequest _
 
 
 newtype UpdateSubnetGroupResponse = UpdateSubnetGroupResponse 
   { "SubnetGroup" :: NullOrUndefined (SubnetGroup)
   }
+derive instance newtypeUpdateSubnetGroupResponse :: Newtype UpdateSubnetGroupResponse _

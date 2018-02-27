@@ -6,6 +6,7 @@ module AWS.ServiceCatalog where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -309,17 +310,20 @@ updateTagOption = AWS.request serviceName "UpdateTagOption"
 
 
 newtype AcceptLanguage = AcceptLanguage String
+derive instance newtypeAcceptLanguage :: Newtype AcceptLanguage _
 
 
 newtype AcceptPortfolioShareInput = AcceptPortfolioShareInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "PortfolioId" :: (Id)
   }
+derive instance newtypeAcceptPortfolioShareInput :: Newtype AcceptPortfolioShareInput _
 
 
 newtype AcceptPortfolioShareOutput = AcceptPortfolioShareOutput 
   { 
   }
+derive instance newtypeAcceptPortfolioShareOutput :: Newtype AcceptPortfolioShareOutput _
 
 
 -- | <p>The access level to use to filter results.</p>
@@ -327,30 +331,39 @@ newtype AccessLevelFilter = AccessLevelFilter
   { "Key" :: NullOrUndefined (AccessLevelFilterKey)
   , "Value" :: NullOrUndefined (AccessLevelFilterValue)
   }
+derive instance newtypeAccessLevelFilter :: Newtype AccessLevelFilter _
 
 
 newtype AccessLevelFilterKey = AccessLevelFilterKey String
+derive instance newtypeAccessLevelFilterKey :: Newtype AccessLevelFilterKey _
 
 
 newtype AccessLevelFilterValue = AccessLevelFilterValue String
+derive instance newtypeAccessLevelFilterValue :: Newtype AccessLevelFilterValue _
 
 
 newtype AccountId = AccountId String
+derive instance newtypeAccountId :: Newtype AccountId _
 
 
 newtype AccountIds = AccountIds (Array AccountId)
+derive instance newtypeAccountIds :: Newtype AccountIds _
 
 
 newtype AddTags = AddTags (Array Tag)
+derive instance newtypeAddTags :: Newtype AddTags _
 
 
 newtype AllowedValue = AllowedValue String
+derive instance newtypeAllowedValue :: Newtype AllowedValue _
 
 
 newtype AllowedValues = AllowedValues (Array AllowedValue)
+derive instance newtypeAllowedValues :: Newtype AllowedValues _
 
 
 newtype ApproximateCount = ApproximateCount Int
+derive instance newtypeApproximateCount :: Newtype ApproximateCount _
 
 
 newtype AssociatePrincipalWithPortfolioInput = AssociatePrincipalWithPortfolioInput 
@@ -359,11 +372,13 @@ newtype AssociatePrincipalWithPortfolioInput = AssociatePrincipalWithPortfolioIn
   , "PrincipalARN" :: (PrincipalARN)
   , "PrincipalType" :: (PrincipalType)
   }
+derive instance newtypeAssociatePrincipalWithPortfolioInput :: Newtype AssociatePrincipalWithPortfolioInput _
 
 
 newtype AssociatePrincipalWithPortfolioOutput = AssociatePrincipalWithPortfolioOutput 
   { 
   }
+derive instance newtypeAssociatePrincipalWithPortfolioOutput :: Newtype AssociatePrincipalWithPortfolioOutput _
 
 
 newtype AssociateProductWithPortfolioInput = AssociateProductWithPortfolioInput 
@@ -372,46 +387,57 @@ newtype AssociateProductWithPortfolioInput = AssociateProductWithPortfolioInput
   , "PortfolioId" :: (Id)
   , "SourcePortfolioId" :: NullOrUndefined (Id)
   }
+derive instance newtypeAssociateProductWithPortfolioInput :: Newtype AssociateProductWithPortfolioInput _
 
 
 newtype AssociateProductWithPortfolioOutput = AssociateProductWithPortfolioOutput 
   { 
   }
+derive instance newtypeAssociateProductWithPortfolioOutput :: Newtype AssociateProductWithPortfolioOutput _
 
 
 newtype AssociateTagOptionWithResourceInput = AssociateTagOptionWithResourceInput 
   { "ResourceId" :: (ResourceId)
   , "TagOptionId" :: (TagOptionId)
   }
+derive instance newtypeAssociateTagOptionWithResourceInput :: Newtype AssociateTagOptionWithResourceInput _
 
 
 newtype AssociateTagOptionWithResourceOutput = AssociateTagOptionWithResourceOutput 
   { 
   }
+derive instance newtypeAssociateTagOptionWithResourceOutput :: Newtype AssociateTagOptionWithResourceOutput _
 
 
 newtype AttributeValue = AttributeValue String
+derive instance newtypeAttributeValue :: Newtype AttributeValue _
 
 
 newtype CausingEntity = CausingEntity String
+derive instance newtypeCausingEntity :: Newtype CausingEntity _
 
 
 newtype ChangeAction = ChangeAction String
+derive instance newtypeChangeAction :: Newtype ChangeAction _
 
 
 -- | <p>Information about a CloudWatch dashboard.</p>
 newtype CloudWatchDashboard = CloudWatchDashboard 
   { "Name" :: NullOrUndefined (CloudWatchDashboardName)
   }
+derive instance newtypeCloudWatchDashboard :: Newtype CloudWatchDashboard _
 
 
 newtype CloudWatchDashboardName = CloudWatchDashboardName String
+derive instance newtypeCloudWatchDashboardName :: Newtype CloudWatchDashboardName _
 
 
 newtype CloudWatchDashboards = CloudWatchDashboards (Array CloudWatchDashboard)
+derive instance newtypeCloudWatchDashboards :: Newtype CloudWatchDashboards _
 
 
 newtype ConstraintDescription = ConstraintDescription String
+derive instance newtypeConstraintDescription :: Newtype ConstraintDescription _
 
 
 -- | <p>Information about a constraint.</p>
@@ -421,15 +447,19 @@ newtype ConstraintDetail = ConstraintDetail
   , "Description" :: NullOrUndefined (ConstraintDescription)
   , "Owner" :: NullOrUndefined (AccountId)
   }
+derive instance newtypeConstraintDetail :: Newtype ConstraintDetail _
 
 
 newtype ConstraintDetails = ConstraintDetails (Array ConstraintDetail)
+derive instance newtypeConstraintDetails :: Newtype ConstraintDetails _
 
 
 newtype ConstraintParameters = ConstraintParameters String
+derive instance newtypeConstraintParameters :: Newtype ConstraintParameters _
 
 
 newtype ConstraintSummaries = ConstraintSummaries (Array ConstraintSummary)
+derive instance newtypeConstraintSummaries :: Newtype ConstraintSummaries _
 
 
 -- | <p>Summary information about a constraint.</p>
@@ -437,15 +467,19 @@ newtype ConstraintSummary = ConstraintSummary
   { "Type" :: NullOrUndefined (ConstraintType)
   , "Description" :: NullOrUndefined (ConstraintDescription)
   }
+derive instance newtypeConstraintSummary :: Newtype ConstraintSummary _
 
 
 newtype ConstraintType = ConstraintType String
+derive instance newtypeConstraintType :: Newtype ConstraintType _
 
 
 newtype CopyOption = CopyOption String
+derive instance newtypeCopyOption :: Newtype CopyOption _
 
 
 newtype CopyOptions = CopyOptions (Array CopyOption)
+derive instance newtypeCopyOptions :: Newtype CopyOptions _
 
 
 newtype CopyProductInput = CopyProductInput 
@@ -457,14 +491,17 @@ newtype CopyProductInput = CopyProductInput
   , "CopyOptions" :: NullOrUndefined (CopyOptions)
   , "IdempotencyToken" :: (IdempotencyToken)
   }
+derive instance newtypeCopyProductInput :: Newtype CopyProductInput _
 
 
 newtype CopyProductOutput = CopyProductOutput 
   { "CopyProductToken" :: NullOrUndefined (Id)
   }
+derive instance newtypeCopyProductOutput :: Newtype CopyProductOutput _
 
 
 newtype CopyProductStatus = CopyProductStatus String
+derive instance newtypeCopyProductStatus :: Newtype CopyProductStatus _
 
 
 newtype CreateConstraintInput = CreateConstraintInput 
@@ -476,6 +513,7 @@ newtype CreateConstraintInput = CreateConstraintInput
   , "Description" :: NullOrUndefined (ConstraintDescription)
   , "IdempotencyToken" :: (IdempotencyToken)
   }
+derive instance newtypeCreateConstraintInput :: Newtype CreateConstraintInput _
 
 
 newtype CreateConstraintOutput = CreateConstraintOutput 
@@ -483,6 +521,7 @@ newtype CreateConstraintOutput = CreateConstraintOutput
   , "ConstraintParameters" :: NullOrUndefined (ConstraintParameters)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeCreateConstraintOutput :: Newtype CreateConstraintOutput _
 
 
 newtype CreatePortfolioInput = CreatePortfolioInput 
@@ -493,12 +532,14 @@ newtype CreatePortfolioInput = CreatePortfolioInput
   , "Tags" :: NullOrUndefined (AddTags)
   , "IdempotencyToken" :: (IdempotencyToken)
   }
+derive instance newtypeCreatePortfolioInput :: Newtype CreatePortfolioInput _
 
 
 newtype CreatePortfolioOutput = CreatePortfolioOutput 
   { "PortfolioDetail" :: NullOrUndefined (PortfolioDetail)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeCreatePortfolioOutput :: Newtype CreatePortfolioOutput _
 
 
 newtype CreatePortfolioShareInput = CreatePortfolioShareInput 
@@ -506,11 +547,13 @@ newtype CreatePortfolioShareInput = CreatePortfolioShareInput
   , "PortfolioId" :: (Id)
   , "AccountId" :: (AccountId)
   }
+derive instance newtypeCreatePortfolioShareInput :: Newtype CreatePortfolioShareInput _
 
 
 newtype CreatePortfolioShareOutput = CreatePortfolioShareOutput 
   { 
   }
+derive instance newtypeCreatePortfolioShareOutput :: Newtype CreatePortfolioShareOutput _
 
 
 newtype CreateProductInput = CreateProductInput 
@@ -527,6 +570,7 @@ newtype CreateProductInput = CreateProductInput
   , "ProvisioningArtifactParameters" :: (ProvisioningArtifactProperties)
   , "IdempotencyToken" :: (IdempotencyToken)
   }
+derive instance newtypeCreateProductInput :: Newtype CreateProductInput _
 
 
 newtype CreateProductOutput = CreateProductOutput 
@@ -534,6 +578,7 @@ newtype CreateProductOutput = CreateProductOutput
   , "ProvisioningArtifactDetail" :: NullOrUndefined (ProvisioningArtifactDetail)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeCreateProductOutput :: Newtype CreateProductOutput _
 
 
 newtype CreateProvisionedProductPlanInput = CreateProvisionedProductPlanInput 
@@ -549,6 +594,7 @@ newtype CreateProvisionedProductPlanInput = CreateProvisionedProductPlanInput
   , "IdempotencyToken" :: (IdempotencyToken)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeCreateProvisionedProductPlanInput :: Newtype CreateProvisionedProductPlanInput _
 
 
 newtype CreateProvisionedProductPlanOutput = CreateProvisionedProductPlanOutput 
@@ -558,6 +604,7 @@ newtype CreateProvisionedProductPlanOutput = CreateProvisionedProductPlanOutput
   , "ProvisionedProductName" :: NullOrUndefined (ProvisionedProductName)
   , "ProvisioningArtifactId" :: NullOrUndefined (Id)
   }
+derive instance newtypeCreateProvisionedProductPlanOutput :: Newtype CreateProvisionedProductPlanOutput _
 
 
 newtype CreateProvisioningArtifactInput = CreateProvisioningArtifactInput 
@@ -566,6 +613,7 @@ newtype CreateProvisioningArtifactInput = CreateProvisioningArtifactInput
   , "Parameters" :: (ProvisioningArtifactProperties)
   , "IdempotencyToken" :: (IdempotencyToken)
   }
+derive instance newtypeCreateProvisioningArtifactInput :: Newtype CreateProvisioningArtifactInput _
 
 
 newtype CreateProvisioningArtifactOutput = CreateProvisioningArtifactOutput 
@@ -573,48 +621,58 @@ newtype CreateProvisioningArtifactOutput = CreateProvisioningArtifactOutput
   , "Info" :: NullOrUndefined (ProvisioningArtifactInfo)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeCreateProvisioningArtifactOutput :: Newtype CreateProvisioningArtifactOutput _
 
 
 newtype CreateTagOptionInput = CreateTagOptionInput 
   { "Key" :: (TagOptionKey)
   , "Value" :: (TagOptionValue)
   }
+derive instance newtypeCreateTagOptionInput :: Newtype CreateTagOptionInput _
 
 
 newtype CreateTagOptionOutput = CreateTagOptionOutput 
   { "TagOptionDetail" :: NullOrUndefined (TagOptionDetail)
   }
+derive instance newtypeCreateTagOptionOutput :: Newtype CreateTagOptionOutput _
 
 
 newtype CreatedTime = CreatedTime Number
+derive instance newtypeCreatedTime :: Newtype CreatedTime _
 
 
 newtype CreationTime = CreationTime Number
+derive instance newtypeCreationTime :: Newtype CreationTime _
 
 
 newtype DefaultValue = DefaultValue String
+derive instance newtypeDefaultValue :: Newtype DefaultValue _
 
 
 newtype DeleteConstraintInput = DeleteConstraintInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDeleteConstraintInput :: Newtype DeleteConstraintInput _
 
 
 newtype DeleteConstraintOutput = DeleteConstraintOutput 
   { 
   }
+derive instance newtypeDeleteConstraintOutput :: Newtype DeleteConstraintOutput _
 
 
 newtype DeletePortfolioInput = DeletePortfolioInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDeletePortfolioInput :: Newtype DeletePortfolioInput _
 
 
 newtype DeletePortfolioOutput = DeletePortfolioOutput 
   { 
   }
+derive instance newtypeDeletePortfolioOutput :: Newtype DeletePortfolioOutput _
 
 
 newtype DeletePortfolioShareInput = DeletePortfolioShareInput 
@@ -622,22 +680,26 @@ newtype DeletePortfolioShareInput = DeletePortfolioShareInput
   , "PortfolioId" :: (Id)
   , "AccountId" :: (AccountId)
   }
+derive instance newtypeDeletePortfolioShareInput :: Newtype DeletePortfolioShareInput _
 
 
 newtype DeletePortfolioShareOutput = DeletePortfolioShareOutput 
   { 
   }
+derive instance newtypeDeletePortfolioShareOutput :: Newtype DeletePortfolioShareOutput _
 
 
 newtype DeleteProductInput = DeleteProductInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDeleteProductInput :: Newtype DeleteProductInput _
 
 
 newtype DeleteProductOutput = DeleteProductOutput 
   { 
   }
+derive instance newtypeDeleteProductOutput :: Newtype DeleteProductOutput _
 
 
 newtype DeleteProvisionedProductPlanInput = DeleteProvisionedProductPlanInput 
@@ -645,11 +707,13 @@ newtype DeleteProvisionedProductPlanInput = DeleteProvisionedProductPlanInput
   , "PlanId" :: (Id)
   , "IgnoreErrors" :: NullOrUndefined (IgnoreErrors)
   }
+derive instance newtypeDeleteProvisionedProductPlanInput :: Newtype DeleteProvisionedProductPlanInput _
 
 
 newtype DeleteProvisionedProductPlanOutput = DeleteProvisionedProductPlanOutput 
   { 
   }
+derive instance newtypeDeleteProvisionedProductPlanOutput :: Newtype DeleteProvisionedProductPlanOutput _
 
 
 newtype DeleteProvisioningArtifactInput = DeleteProvisioningArtifactInput 
@@ -657,17 +721,20 @@ newtype DeleteProvisioningArtifactInput = DeleteProvisioningArtifactInput
   , "ProductId" :: (Id)
   , "ProvisioningArtifactId" :: (Id)
   }
+derive instance newtypeDeleteProvisioningArtifactInput :: Newtype DeleteProvisioningArtifactInput _
 
 
 newtype DeleteProvisioningArtifactOutput = DeleteProvisioningArtifactOutput 
   { 
   }
+derive instance newtypeDeleteProvisioningArtifactOutput :: Newtype DeleteProvisioningArtifactOutput _
 
 
 newtype DescribeConstraintInput = DescribeConstraintInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDescribeConstraintInput :: Newtype DescribeConstraintInput _
 
 
 newtype DescribeConstraintOutput = DescribeConstraintOutput 
@@ -675,12 +742,14 @@ newtype DescribeConstraintOutput = DescribeConstraintOutput
   , "ConstraintParameters" :: NullOrUndefined (ConstraintParameters)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeDescribeConstraintOutput :: Newtype DescribeConstraintOutput _
 
 
 newtype DescribeCopyProductStatusInput = DescribeCopyProductStatusInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "CopyProductToken" :: (Id)
   }
+derive instance newtypeDescribeCopyProductStatusInput :: Newtype DescribeCopyProductStatusInput _
 
 
 newtype DescribeCopyProductStatusOutput = DescribeCopyProductStatusOutput 
@@ -688,12 +757,14 @@ newtype DescribeCopyProductStatusOutput = DescribeCopyProductStatusOutput
   , "TargetProductId" :: NullOrUndefined (Id)
   , "StatusDetail" :: NullOrUndefined (StatusDetail)
   }
+derive instance newtypeDescribeCopyProductStatusOutput :: Newtype DescribeCopyProductStatusOutput _
 
 
 newtype DescribePortfolioInput = DescribePortfolioInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDescribePortfolioInput :: Newtype DescribePortfolioInput _
 
 
 newtype DescribePortfolioOutput = DescribePortfolioOutput 
@@ -701,12 +772,14 @@ newtype DescribePortfolioOutput = DescribePortfolioOutput
   , "Tags" :: NullOrUndefined (Tags)
   , "TagOptions" :: NullOrUndefined (TagOptionDetails)
   }
+derive instance newtypeDescribePortfolioOutput :: Newtype DescribePortfolioOutput _
 
 
 newtype DescribeProductAsAdminInput = DescribeProductAsAdminInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDescribeProductAsAdminInput :: Newtype DescribeProductAsAdminInput _
 
 
 newtype DescribeProductAsAdminOutput = DescribeProductAsAdminOutput 
@@ -715,42 +788,49 @@ newtype DescribeProductAsAdminOutput = DescribeProductAsAdminOutput
   , "Tags" :: NullOrUndefined (Tags)
   , "TagOptions" :: NullOrUndefined (TagOptionDetails)
   }
+derive instance newtypeDescribeProductAsAdminOutput :: Newtype DescribeProductAsAdminOutput _
 
 
 newtype DescribeProductInput = DescribeProductInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDescribeProductInput :: Newtype DescribeProductInput _
 
 
 newtype DescribeProductOutput = DescribeProductOutput 
   { "ProductViewSummary" :: NullOrUndefined (ProductViewSummary)
   , "ProvisioningArtifacts" :: NullOrUndefined (ProvisioningArtifacts)
   }
+derive instance newtypeDescribeProductOutput :: Newtype DescribeProductOutput _
 
 
 newtype DescribeProductViewInput = DescribeProductViewInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDescribeProductViewInput :: Newtype DescribeProductViewInput _
 
 
 newtype DescribeProductViewOutput = DescribeProductViewOutput 
   { "ProductViewSummary" :: NullOrUndefined (ProductViewSummary)
   , "ProvisioningArtifacts" :: NullOrUndefined (ProvisioningArtifacts)
   }
+derive instance newtypeDescribeProductViewOutput :: Newtype DescribeProductViewOutput _
 
 
 newtype DescribeProvisionedProductInput = DescribeProvisionedProductInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "Id" :: (Id)
   }
+derive instance newtypeDescribeProvisionedProductInput :: Newtype DescribeProvisionedProductInput _
 
 
 newtype DescribeProvisionedProductOutput = DescribeProvisionedProductOutput 
   { "ProvisionedProductDetail" :: NullOrUndefined (ProvisionedProductDetail)
   , "CloudWatchDashboards" :: NullOrUndefined (CloudWatchDashboards)
   }
+derive instance newtypeDescribeProvisionedProductOutput :: Newtype DescribeProvisionedProductOutput _
 
 
 newtype DescribeProvisionedProductPlanInput = DescribeProvisionedProductPlanInput 
@@ -759,6 +839,7 @@ newtype DescribeProvisionedProductPlanInput = DescribeProvisionedProductPlanInpu
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeDescribeProvisionedProductPlanInput :: Newtype DescribeProvisionedProductPlanInput _
 
 
 newtype DescribeProvisionedProductPlanOutput = DescribeProvisionedProductPlanOutput 
@@ -766,6 +847,7 @@ newtype DescribeProvisionedProductPlanOutput = DescribeProvisionedProductPlanOut
   , "ResourceChanges" :: NullOrUndefined (ResourceChanges)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeDescribeProvisionedProductPlanOutput :: Newtype DescribeProvisionedProductPlanOutput _
 
 
 newtype DescribeProvisioningArtifactInput = DescribeProvisioningArtifactInput 
@@ -774,6 +856,7 @@ newtype DescribeProvisioningArtifactInput = DescribeProvisioningArtifactInput
   , "ProductId" :: (Id)
   , "Verbose" :: NullOrUndefined (Verbose)
   }
+derive instance newtypeDescribeProvisioningArtifactInput :: Newtype DescribeProvisioningArtifactInput _
 
 
 newtype DescribeProvisioningArtifactOutput = DescribeProvisioningArtifactOutput 
@@ -781,6 +864,7 @@ newtype DescribeProvisioningArtifactOutput = DescribeProvisioningArtifactOutput
   , "Info" :: NullOrUndefined (ProvisioningArtifactInfo)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeDescribeProvisioningArtifactOutput :: Newtype DescribeProvisioningArtifactOutput _
 
 
 newtype DescribeProvisioningParametersInput = DescribeProvisioningParametersInput 
@@ -789,6 +873,7 @@ newtype DescribeProvisioningParametersInput = DescribeProvisioningParametersInpu
   , "ProvisioningArtifactId" :: (Id)
   , "PathId" :: NullOrUndefined (Id)
   }
+derive instance newtypeDescribeProvisioningParametersInput :: Newtype DescribeProvisioningParametersInput _
 
 
 newtype DescribeProvisioningParametersOutput = DescribeProvisioningParametersOutput 
@@ -797,6 +882,7 @@ newtype DescribeProvisioningParametersOutput = DescribeProvisioningParametersOut
   , "UsageInstructions" :: NullOrUndefined (UsageInstructions)
   , "TagOptions" :: NullOrUndefined (TagOptionSummaries)
   }
+derive instance newtypeDescribeProvisioningParametersOutput :: Newtype DescribeProvisioningParametersOutput _
 
 
 newtype DescribeRecordInput = DescribeRecordInput 
@@ -805,6 +891,7 @@ newtype DescribeRecordInput = DescribeRecordInput
   , "PageToken" :: NullOrUndefined (PageToken)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeDescribeRecordInput :: Newtype DescribeRecordInput _
 
 
 newtype DescribeRecordOutput = DescribeRecordOutput 
@@ -812,19 +899,23 @@ newtype DescribeRecordOutput = DescribeRecordOutput
   , "RecordOutputs" :: NullOrUndefined (RecordOutputs)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeDescribeRecordOutput :: Newtype DescribeRecordOutput _
 
 
 newtype DescribeTagOptionInput = DescribeTagOptionInput 
   { "Id" :: (TagOptionId)
   }
+derive instance newtypeDescribeTagOptionInput :: Newtype DescribeTagOptionInput _
 
 
 newtype DescribeTagOptionOutput = DescribeTagOptionOutput 
   { "TagOptionDetail" :: NullOrUndefined (TagOptionDetail)
   }
+derive instance newtypeDescribeTagOptionOutput :: Newtype DescribeTagOptionOutput _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 newtype DisassociatePrincipalFromPortfolioInput = DisassociatePrincipalFromPortfolioInput 
@@ -832,11 +923,13 @@ newtype DisassociatePrincipalFromPortfolioInput = DisassociatePrincipalFromPortf
   , "PortfolioId" :: (Id)
   , "PrincipalARN" :: (PrincipalARN)
   }
+derive instance newtypeDisassociatePrincipalFromPortfolioInput :: Newtype DisassociatePrincipalFromPortfolioInput _
 
 
 newtype DisassociatePrincipalFromPortfolioOutput = DisassociatePrincipalFromPortfolioOutput 
   { 
   }
+derive instance newtypeDisassociatePrincipalFromPortfolioOutput :: Newtype DisassociatePrincipalFromPortfolioOutput _
 
 
 newtype DisassociateProductFromPortfolioInput = DisassociateProductFromPortfolioInput 
@@ -844,37 +937,45 @@ newtype DisassociateProductFromPortfolioInput = DisassociateProductFromPortfolio
   , "ProductId" :: (Id)
   , "PortfolioId" :: (Id)
   }
+derive instance newtypeDisassociateProductFromPortfolioInput :: Newtype DisassociateProductFromPortfolioInput _
 
 
 newtype DisassociateProductFromPortfolioOutput = DisassociateProductFromPortfolioOutput 
   { 
   }
+derive instance newtypeDisassociateProductFromPortfolioOutput :: Newtype DisassociateProductFromPortfolioOutput _
 
 
 newtype DisassociateTagOptionFromResourceInput = DisassociateTagOptionFromResourceInput 
   { "ResourceId" :: (ResourceId)
   , "TagOptionId" :: (TagOptionId)
   }
+derive instance newtypeDisassociateTagOptionFromResourceInput :: Newtype DisassociateTagOptionFromResourceInput _
 
 
 newtype DisassociateTagOptionFromResourceOutput = DisassociateTagOptionFromResourceOutput 
   { 
   }
+derive instance newtypeDisassociateTagOptionFromResourceOutput :: Newtype DisassociateTagOptionFromResourceOutput _
 
 
 -- | <p>The specified resource is a duplicate.</p>
 newtype DuplicateResourceException = DuplicateResourceException 
   { 
   }
+derive instance newtypeDuplicateResourceException :: Newtype DuplicateResourceException _
 
 
 newtype ErrorCode = ErrorCode String
+derive instance newtypeErrorCode :: Newtype ErrorCode _
 
 
 newtype ErrorDescription = ErrorDescription String
+derive instance newtypeErrorDescription :: Newtype ErrorDescription _
 
 
 newtype EvaluationType = EvaluationType String
+derive instance newtypeEvaluationType :: Newtype EvaluationType _
 
 
 newtype ExecuteProvisionedProductPlanInput = ExecuteProvisionedProductPlanInput 
@@ -882,47 +983,59 @@ newtype ExecuteProvisionedProductPlanInput = ExecuteProvisionedProductPlanInput
   , "PlanId" :: (Id)
   , "IdempotencyToken" :: (IdempotencyToken)
   }
+derive instance newtypeExecuteProvisionedProductPlanInput :: Newtype ExecuteProvisionedProductPlanInput _
 
 
 newtype ExecuteProvisionedProductPlanOutput = ExecuteProvisionedProductPlanOutput 
   { "RecordDetail" :: NullOrUndefined (RecordDetail)
   }
+derive instance newtypeExecuteProvisionedProductPlanOutput :: Newtype ExecuteProvisionedProductPlanOutput _
 
 
 newtype HasDefaultPath = HasDefaultPath Boolean
+derive instance newtypeHasDefaultPath :: Newtype HasDefaultPath _
 
 
 newtype Id = Id String
+derive instance newtypeId :: Newtype Id _
 
 
 newtype IdempotencyToken = IdempotencyToken String
+derive instance newtypeIdempotencyToken :: Newtype IdempotencyToken _
 
 
 newtype IgnoreErrors = IgnoreErrors Boolean
+derive instance newtypeIgnoreErrors :: Newtype IgnoreErrors _
 
 
 newtype InstructionType = InstructionType String
+derive instance newtypeInstructionType :: Newtype InstructionType _
 
 
 newtype InstructionValue = InstructionValue String
+derive instance newtypeInstructionValue :: Newtype InstructionValue _
 
 
 -- | <p>One or more parameters provided to the operation are not valid.</p>
 newtype InvalidParametersException = InvalidParametersException 
   { 
   }
+derive instance newtypeInvalidParametersException :: Newtype InvalidParametersException _
 
 
 -- | <p>An attempt was made to modify a resource that is in a state that is not valid. Check your resources to ensure that they are in valid states before retrying the operation.</p>
 newtype InvalidStateException = InvalidStateException 
   { 
   }
+derive instance newtypeInvalidStateException :: Newtype InvalidStateException _
 
 
 newtype LastRequestId = LastRequestId String
+derive instance newtypeLastRequestId :: Newtype LastRequestId _
 
 
 newtype LaunchPathSummaries = LaunchPathSummaries (Array LaunchPathSummary)
+derive instance newtypeLaunchPathSummaries :: Newtype LaunchPathSummaries _
 
 
 -- | <p>Summary information about a product path for a user.</p>
@@ -932,12 +1045,14 @@ newtype LaunchPathSummary = LaunchPathSummary
   , "Tags" :: NullOrUndefined (Tags)
   , "Name" :: NullOrUndefined (PortfolioName)
   }
+derive instance newtypeLaunchPathSummary :: Newtype LaunchPathSummary _
 
 
 -- | <p>The current limits of the service would have been exceeded by this operation. Decrease your resource use or increase your service limits and retry the operation.</p>
 newtype LimitExceededException = LimitExceededException 
   { 
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListAcceptedPortfolioSharesInput = ListAcceptedPortfolioSharesInput 
@@ -945,12 +1060,14 @@ newtype ListAcceptedPortfolioSharesInput = ListAcceptedPortfolioSharesInput
   , "PageToken" :: NullOrUndefined (PageToken)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeListAcceptedPortfolioSharesInput :: Newtype ListAcceptedPortfolioSharesInput _
 
 
 newtype ListAcceptedPortfolioSharesOutput = ListAcceptedPortfolioSharesOutput 
   { "PortfolioDetails" :: NullOrUndefined (PortfolioDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListAcceptedPortfolioSharesOutput :: Newtype ListAcceptedPortfolioSharesOutput _
 
 
 newtype ListConstraintsForPortfolioInput = ListConstraintsForPortfolioInput 
@@ -960,12 +1077,14 @@ newtype ListConstraintsForPortfolioInput = ListConstraintsForPortfolioInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListConstraintsForPortfolioInput :: Newtype ListConstraintsForPortfolioInput _
 
 
 newtype ListConstraintsForPortfolioOutput = ListConstraintsForPortfolioOutput 
   { "ConstraintDetails" :: NullOrUndefined (ConstraintDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListConstraintsForPortfolioOutput :: Newtype ListConstraintsForPortfolioOutput _
 
 
 newtype ListLaunchPathsInput = ListLaunchPathsInput 
@@ -974,24 +1093,28 @@ newtype ListLaunchPathsInput = ListLaunchPathsInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListLaunchPathsInput :: Newtype ListLaunchPathsInput _
 
 
 newtype ListLaunchPathsOutput = ListLaunchPathsOutput 
   { "LaunchPathSummaries" :: NullOrUndefined (LaunchPathSummaries)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListLaunchPathsOutput :: Newtype ListLaunchPathsOutput _
 
 
 newtype ListPortfolioAccessInput = ListPortfolioAccessInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "PortfolioId" :: (Id)
   }
+derive instance newtypeListPortfolioAccessInput :: Newtype ListPortfolioAccessInput _
 
 
 newtype ListPortfolioAccessOutput = ListPortfolioAccessOutput 
   { "AccountIds" :: NullOrUndefined (AccountIds)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListPortfolioAccessOutput :: Newtype ListPortfolioAccessOutput _
 
 
 newtype ListPortfoliosForProductInput = ListPortfoliosForProductInput 
@@ -1000,12 +1123,14 @@ newtype ListPortfoliosForProductInput = ListPortfoliosForProductInput
   , "PageToken" :: NullOrUndefined (PageToken)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeListPortfoliosForProductInput :: Newtype ListPortfoliosForProductInput _
 
 
 newtype ListPortfoliosForProductOutput = ListPortfoliosForProductOutput 
   { "PortfolioDetails" :: NullOrUndefined (PortfolioDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListPortfoliosForProductOutput :: Newtype ListPortfoliosForProductOutput _
 
 
 newtype ListPortfoliosInput = ListPortfoliosInput 
@@ -1013,12 +1138,14 @@ newtype ListPortfoliosInput = ListPortfoliosInput
   , "PageToken" :: NullOrUndefined (PageToken)
   , "PageSize" :: NullOrUndefined (PageSize)
   }
+derive instance newtypeListPortfoliosInput :: Newtype ListPortfoliosInput _
 
 
 newtype ListPortfoliosOutput = ListPortfoliosOutput 
   { "PortfolioDetails" :: NullOrUndefined (PortfolioDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListPortfoliosOutput :: Newtype ListPortfoliosOutput _
 
 
 newtype ListPrincipalsForPortfolioInput = ListPrincipalsForPortfolioInput 
@@ -1027,12 +1154,14 @@ newtype ListPrincipalsForPortfolioInput = ListPrincipalsForPortfolioInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListPrincipalsForPortfolioInput :: Newtype ListPrincipalsForPortfolioInput _
 
 
 newtype ListPrincipalsForPortfolioOutput = ListPrincipalsForPortfolioOutput 
   { "Principals" :: NullOrUndefined (Principals)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListPrincipalsForPortfolioOutput :: Newtype ListPrincipalsForPortfolioOutput _
 
 
 newtype ListProvisionedProductPlansInput = ListProvisionedProductPlansInput 
@@ -1042,24 +1171,28 @@ newtype ListProvisionedProductPlansInput = ListProvisionedProductPlansInput
   , "PageToken" :: NullOrUndefined (PageToken)
   , "AccessLevelFilter" :: NullOrUndefined (AccessLevelFilter)
   }
+derive instance newtypeListProvisionedProductPlansInput :: Newtype ListProvisionedProductPlansInput _
 
 
 newtype ListProvisionedProductPlansOutput = ListProvisionedProductPlansOutput 
   { "ProvisionedProductPlans" :: NullOrUndefined (ProvisionedProductPlans)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListProvisionedProductPlansOutput :: Newtype ListProvisionedProductPlansOutput _
 
 
 newtype ListProvisioningArtifactsInput = ListProvisioningArtifactsInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "ProductId" :: (Id)
   }
+derive instance newtypeListProvisioningArtifactsInput :: Newtype ListProvisioningArtifactsInput _
 
 
 newtype ListProvisioningArtifactsOutput = ListProvisioningArtifactsOutput 
   { "ProvisioningArtifactDetails" :: NullOrUndefined (ProvisioningArtifactDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListProvisioningArtifactsOutput :: Newtype ListProvisioningArtifactsOutput _
 
 
 newtype ListRecordHistoryInput = ListRecordHistoryInput 
@@ -1069,12 +1202,14 @@ newtype ListRecordHistoryInput = ListRecordHistoryInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListRecordHistoryInput :: Newtype ListRecordHistoryInput _
 
 
 newtype ListRecordHistoryOutput = ListRecordHistoryOutput 
   { "RecordDetails" :: NullOrUndefined (RecordDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListRecordHistoryOutput :: Newtype ListRecordHistoryOutput _
 
 
 -- | <p>The search filter to use when listing history records.</p>
@@ -1082,6 +1217,7 @@ newtype ListRecordHistorySearchFilter = ListRecordHistorySearchFilter
   { "Key" :: NullOrUndefined (SearchFilterKey)
   , "Value" :: NullOrUndefined (SearchFilterValue)
   }
+derive instance newtypeListRecordHistorySearchFilter :: Newtype ListRecordHistorySearchFilter _
 
 
 newtype ListResourcesForTagOptionInput = ListResourcesForTagOptionInput 
@@ -1090,12 +1226,14 @@ newtype ListResourcesForTagOptionInput = ListResourcesForTagOptionInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListResourcesForTagOptionInput :: Newtype ListResourcesForTagOptionInput _
 
 
 newtype ListResourcesForTagOptionOutput = ListResourcesForTagOptionOutput 
   { "ResourceDetails" :: NullOrUndefined (ResourceDetails)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListResourcesForTagOptionOutput :: Newtype ListResourcesForTagOptionOutput _
 
 
 -- | <p>Filters to use when listing TagOptions.</p>
@@ -1104,6 +1242,7 @@ newtype ListTagOptionsFilters = ListTagOptionsFilters
   , "Value" :: NullOrUndefined (TagOptionValue)
   , "Active" :: NullOrUndefined (TagOptionActive)
   }
+derive instance newtypeListTagOptionsFilters :: Newtype ListTagOptionsFilters _
 
 
 newtype ListTagOptionsInput = ListTagOptionsInput 
@@ -1111,63 +1250,81 @@ newtype ListTagOptionsInput = ListTagOptionsInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListTagOptionsInput :: Newtype ListTagOptionsInput _
 
 
 newtype ListTagOptionsOutput = ListTagOptionsOutput 
   { "TagOptionDetails" :: NullOrUndefined (TagOptionDetails)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeListTagOptionsOutput :: Newtype ListTagOptionsOutput _
 
 
 newtype LogicalResourceId = LogicalResourceId String
+derive instance newtypeLogicalResourceId :: Newtype LogicalResourceId _
 
 
 newtype NoEcho = NoEcho Boolean
+derive instance newtypeNoEcho :: Newtype NoEcho _
 
 
 newtype NotificationArn = NotificationArn String
+derive instance newtypeNotificationArn :: Newtype NotificationArn _
 
 
 newtype NotificationArns = NotificationArns (Array NotificationArn)
+derive instance newtypeNotificationArns :: Newtype NotificationArns _
 
 
 newtype OutputKey = OutputKey String
+derive instance newtypeOutputKey :: Newtype OutputKey _
 
 
 newtype OutputValue = OutputValue String
+derive instance newtypeOutputValue :: Newtype OutputValue _
 
 
 newtype PageSize = PageSize Int
+derive instance newtypePageSize :: Newtype PageSize _
 
 
 newtype PageToken = PageToken String
+derive instance newtypePageToken :: Newtype PageToken _
 
 
 -- | <p>The constraints that the administrator has put on the parameter.</p>
 newtype ParameterConstraints = ParameterConstraints 
   { "AllowedValues" :: NullOrUndefined (AllowedValues)
   }
+derive instance newtypeParameterConstraints :: Newtype ParameterConstraints _
 
 
 newtype ParameterKey = ParameterKey String
+derive instance newtypeParameterKey :: Newtype ParameterKey _
 
 
 newtype ParameterType = ParameterType String
+derive instance newtypeParameterType :: Newtype ParameterType _
 
 
 newtype ParameterValue = ParameterValue String
+derive instance newtypeParameterValue :: Newtype ParameterValue _
 
 
 newtype PhysicalId = PhysicalId String
+derive instance newtypePhysicalId :: Newtype PhysicalId _
 
 
 newtype PhysicalResourceId = PhysicalResourceId String
+derive instance newtypePhysicalResourceId :: Newtype PhysicalResourceId _
 
 
 newtype PlanResourceType = PlanResourceType String
+derive instance newtypePlanResourceType :: Newtype PlanResourceType _
 
 
 newtype PortfolioDescription = PortfolioDescription String
+derive instance newtypePortfolioDescription :: Newtype PortfolioDescription _
 
 
 -- | <p>Information about a portfolio.</p>
@@ -1179,15 +1336,19 @@ newtype PortfolioDetail = PortfolioDetail
   , "CreatedTime" :: NullOrUndefined (CreationTime)
   , "ProviderName" :: NullOrUndefined (ProviderName)
   }
+derive instance newtypePortfolioDetail :: Newtype PortfolioDetail _
 
 
 newtype PortfolioDetails = PortfolioDetails (Array PortfolioDetail)
+derive instance newtypePortfolioDetails :: Newtype PortfolioDetails _
 
 
 newtype PortfolioDisplayName = PortfolioDisplayName String
+derive instance newtypePortfolioDisplayName :: Newtype PortfolioDisplayName _
 
 
 newtype PortfolioName = PortfolioName String
+derive instance newtypePortfolioName :: Newtype PortfolioName _
 
 
 -- | <p>Information about a principal.</p>
@@ -1195,27 +1356,35 @@ newtype Principal = Principal
   { "PrincipalARN" :: NullOrUndefined (PrincipalARN)
   , "PrincipalType" :: NullOrUndefined (PrincipalType)
   }
+derive instance newtypePrincipal :: Newtype Principal _
 
 
 newtype PrincipalARN = PrincipalARN String
+derive instance newtypePrincipalARN :: Newtype PrincipalARN _
 
 
 newtype PrincipalType = PrincipalType String
+derive instance newtypePrincipalType :: Newtype PrincipalType _
 
 
 newtype Principals = Principals (Array Principal)
+derive instance newtypePrincipals :: Newtype Principals _
 
 
 newtype ProductArn = ProductArn String
+derive instance newtypeProductArn :: Newtype ProductArn _
 
 
 newtype ProductSource = ProductSource String
+derive instance newtypeProductSource :: Newtype ProductSource _
 
 
 newtype ProductType = ProductType String
+derive instance newtypeProductType :: Newtype ProductType _
 
 
 newtype ProductViewAggregationType = ProductViewAggregationType String
+derive instance newtypeProductViewAggregationType :: Newtype ProductViewAggregationType _
 
 
 -- | <p>A single product view aggregation value/count pair, containing metadata about each product to which the calling user has access.</p>
@@ -1223,12 +1392,15 @@ newtype ProductViewAggregationValue = ProductViewAggregationValue
   { "Value" :: NullOrUndefined (AttributeValue)
   , "ApproximateCount" :: NullOrUndefined (ApproximateCount)
   }
+derive instance newtypeProductViewAggregationValue :: Newtype ProductViewAggregationValue _
 
 
 newtype ProductViewAggregationValues = ProductViewAggregationValues (Array ProductViewAggregationValue)
+derive instance newtypeProductViewAggregationValues :: Newtype ProductViewAggregationValues _
 
 
 newtype ProductViewAggregations = ProductViewAggregations (Map ProductViewAggregationType ProductViewAggregationValues)
+derive instance newtypeProductViewAggregations :: Newtype ProductViewAggregations _
 
 
 -- | <p>Information about a product view.</p>
@@ -1238,39 +1410,51 @@ newtype ProductViewDetail = ProductViewDetail
   , "ProductARN" :: NullOrUndefined (ResourceARN)
   , "CreatedTime" :: NullOrUndefined (CreatedTime)
   }
+derive instance newtypeProductViewDetail :: Newtype ProductViewDetail _
 
 
 newtype ProductViewDetails = ProductViewDetails (Array ProductViewDetail)
+derive instance newtypeProductViewDetails :: Newtype ProductViewDetails _
 
 
 newtype ProductViewDistributor = ProductViewDistributor String
+derive instance newtypeProductViewDistributor :: Newtype ProductViewDistributor _
 
 
 newtype ProductViewFilterBy = ProductViewFilterBy String
+derive instance newtypeProductViewFilterBy :: Newtype ProductViewFilterBy _
 
 
 newtype ProductViewFilterValue = ProductViewFilterValue String
+derive instance newtypeProductViewFilterValue :: Newtype ProductViewFilterValue _
 
 
 newtype ProductViewFilterValues = ProductViewFilterValues (Array ProductViewFilterValue)
+derive instance newtypeProductViewFilterValues :: Newtype ProductViewFilterValues _
 
 
 newtype ProductViewFilters = ProductViewFilters (Map ProductViewFilterBy ProductViewFilterValues)
+derive instance newtypeProductViewFilters :: Newtype ProductViewFilters _
 
 
 newtype ProductViewName = ProductViewName String
+derive instance newtypeProductViewName :: Newtype ProductViewName _
 
 
 newtype ProductViewOwner = ProductViewOwner String
+derive instance newtypeProductViewOwner :: Newtype ProductViewOwner _
 
 
 newtype ProductViewShortDescription = ProductViewShortDescription String
+derive instance newtypeProductViewShortDescription :: Newtype ProductViewShortDescription _
 
 
 newtype ProductViewSortBy = ProductViewSortBy String
+derive instance newtypeProductViewSortBy :: Newtype ProductViewSortBy _
 
 
 newtype ProductViewSummaries = ProductViewSummaries (Array ProductViewSummary)
+derive instance newtypeProductViewSummaries :: Newtype ProductViewSummaries _
 
 
 -- | <p>Summary information about a product view.</p>
@@ -1287,12 +1471,15 @@ newtype ProductViewSummary = ProductViewSummary
   , "SupportDescription" :: NullOrUndefined (SupportDescription)
   , "SupportUrl" :: NullOrUndefined (SupportUrl)
   }
+derive instance newtypeProductViewSummary :: Newtype ProductViewSummary _
 
 
 newtype PropertyName = PropertyName String
+derive instance newtypePropertyName :: Newtype PropertyName _
 
 
 newtype ProviderName = ProviderName String
+derive instance newtypeProviderName :: Newtype ProviderName _
 
 
 newtype ProvisionProductInput = ProvisionProductInput 
@@ -1306,11 +1493,13 @@ newtype ProvisionProductInput = ProvisionProductInput
   , "NotificationArns" :: NullOrUndefined (NotificationArns)
   , "ProvisionToken" :: (IdempotencyToken)
   }
+derive instance newtypeProvisionProductInput :: Newtype ProvisionProductInput _
 
 
 newtype ProvisionProductOutput = ProvisionProductOutput 
   { "RecordDetail" :: NullOrUndefined (RecordDetail)
   }
+derive instance newtypeProvisionProductOutput :: Newtype ProvisionProductOutput _
 
 
 -- | <p>Information about a provisioned product.</p>
@@ -1331,9 +1520,11 @@ newtype ProvisionedProductAttribute = ProvisionedProductAttribute
   , "UserArn" :: NullOrUndefined (UserArn)
   , "UserArnSession" :: NullOrUndefined (UserArnSession)
   }
+derive instance newtypeProvisionedProductAttribute :: Newtype ProvisionedProductAttribute _
 
 
 newtype ProvisionedProductAttributes = ProvisionedProductAttributes (Array ProvisionedProductAttribute)
+derive instance newtypeProvisionedProductAttributes :: Newtype ProvisionedProductAttributes _
 
 
 -- | <p>Information about a provisioned product.</p>
@@ -1348,21 +1539,27 @@ newtype ProvisionedProductDetail = ProvisionedProductDetail
   , "IdempotencyToken" :: NullOrUndefined (IdempotencyToken)
   , "LastRecordId" :: NullOrUndefined (LastRequestId)
   }
+derive instance newtypeProvisionedProductDetail :: Newtype ProvisionedProductDetail _
 
 
 newtype ProvisionedProductDetails = ProvisionedProductDetails (Array ProvisionedProductDetail)
+derive instance newtypeProvisionedProductDetails :: Newtype ProvisionedProductDetails _
 
 
 newtype ProvisionedProductFilters = ProvisionedProductFilters (Map ProvisionedProductViewFilterBy ProvisionedProductViewFilterValues)
+derive instance newtypeProvisionedProductFilters :: Newtype ProvisionedProductFilters _
 
 
 newtype ProvisionedProductId = ProvisionedProductId String
+derive instance newtypeProvisionedProductId :: Newtype ProvisionedProductId _
 
 
 newtype ProvisionedProductName = ProvisionedProductName String
+derive instance newtypeProvisionedProductName :: Newtype ProvisionedProductName _
 
 
 newtype ProvisionedProductNameOrArn = ProvisionedProductNameOrArn String
+derive instance newtypeProvisionedProductNameOrArn :: Newtype ProvisionedProductNameOrArn _
 
 
 -- | <p>Information about a plan.</p>
@@ -1383,12 +1580,15 @@ newtype ProvisionedProductPlanDetails = ProvisionedProductPlanDetails
   , "Tags" :: NullOrUndefined (Tags)
   , "StatusMessage" :: NullOrUndefined (StatusMessage)
   }
+derive instance newtypeProvisionedProductPlanDetails :: Newtype ProvisionedProductPlanDetails _
 
 
 newtype ProvisionedProductPlanName = ProvisionedProductPlanName String
+derive instance newtypeProvisionedProductPlanName :: Newtype ProvisionedProductPlanName _
 
 
 newtype ProvisionedProductPlanStatus = ProvisionedProductPlanStatus String
+derive instance newtypeProvisionedProductPlanStatus :: Newtype ProvisionedProductPlanStatus _
 
 
 -- | <p>Summary information about a plan.</p>
@@ -1400,30 +1600,39 @@ newtype ProvisionedProductPlanSummary = ProvisionedProductPlanSummary
   , "PlanType" :: NullOrUndefined (ProvisionedProductPlanType)
   , "ProvisioningArtifactId" :: NullOrUndefined (Id)
   }
+derive instance newtypeProvisionedProductPlanSummary :: Newtype ProvisionedProductPlanSummary _
 
 
 newtype ProvisionedProductPlanType = ProvisionedProductPlanType String
+derive instance newtypeProvisionedProductPlanType :: Newtype ProvisionedProductPlanType _
 
 
 newtype ProvisionedProductPlans = ProvisionedProductPlans (Array ProvisionedProductPlanSummary)
+derive instance newtypeProvisionedProductPlans :: Newtype ProvisionedProductPlans _
 
 
 newtype ProvisionedProductStatus = ProvisionedProductStatus String
+derive instance newtypeProvisionedProductStatus :: Newtype ProvisionedProductStatus _
 
 
 newtype ProvisionedProductStatusMessage = ProvisionedProductStatusMessage String
+derive instance newtypeProvisionedProductStatusMessage :: Newtype ProvisionedProductStatusMessage _
 
 
 newtype ProvisionedProductType = ProvisionedProductType String
+derive instance newtypeProvisionedProductType :: Newtype ProvisionedProductType _
 
 
 newtype ProvisionedProductViewFilterBy = ProvisionedProductViewFilterBy String
+derive instance newtypeProvisionedProductViewFilterBy :: Newtype ProvisionedProductViewFilterBy _
 
 
 newtype ProvisionedProductViewFilterValue = ProvisionedProductViewFilterValue String
+derive instance newtypeProvisionedProductViewFilterValue :: Newtype ProvisionedProductViewFilterValue _
 
 
 newtype ProvisionedProductViewFilterValues = ProvisionedProductViewFilterValues (Array ProvisionedProductViewFilterValue)
+derive instance newtypeProvisionedProductViewFilterValues :: Newtype ProvisionedProductViewFilterValues _
 
 
 -- | <p>Information about a provisioning artifact. A provisioning artifact is also known as a product version.</p>
@@ -1433,15 +1642,19 @@ newtype ProvisioningArtifact = ProvisioningArtifact
   , "Description" :: NullOrUndefined (ProvisioningArtifactDescription)
   , "CreatedTime" :: NullOrUndefined (ProvisioningArtifactCreatedTime)
   }
+derive instance newtypeProvisioningArtifact :: Newtype ProvisioningArtifact _
 
 
 newtype ProvisioningArtifactActive = ProvisioningArtifactActive Boolean
+derive instance newtypeProvisioningArtifactActive :: Newtype ProvisioningArtifactActive _
 
 
 newtype ProvisioningArtifactCreatedTime = ProvisioningArtifactCreatedTime Number
+derive instance newtypeProvisioningArtifactCreatedTime :: Newtype ProvisioningArtifactCreatedTime _
 
 
 newtype ProvisioningArtifactDescription = ProvisioningArtifactDescription String
+derive instance newtypeProvisioningArtifactDescription :: Newtype ProvisioningArtifactDescription _
 
 
 -- | <p>Information about a provisioning artifact (also known as a version) for a product.</p>
@@ -1453,21 +1666,27 @@ newtype ProvisioningArtifactDetail = ProvisioningArtifactDetail
   , "CreatedTime" :: NullOrUndefined (CreationTime)
   , "Active" :: NullOrUndefined (ProvisioningArtifactActive)
   }
+derive instance newtypeProvisioningArtifactDetail :: Newtype ProvisioningArtifactDetail _
 
 
 newtype ProvisioningArtifactDetails = ProvisioningArtifactDetails (Array ProvisioningArtifactDetail)
+derive instance newtypeProvisioningArtifactDetails :: Newtype ProvisioningArtifactDetails _
 
 
 newtype ProvisioningArtifactInfo = ProvisioningArtifactInfo (Map ProvisioningArtifactInfoKey ProvisioningArtifactInfoValue)
+derive instance newtypeProvisioningArtifactInfo :: Newtype ProvisioningArtifactInfo _
 
 
 newtype ProvisioningArtifactInfoKey = ProvisioningArtifactInfoKey String
+derive instance newtypeProvisioningArtifactInfoKey :: Newtype ProvisioningArtifactInfoKey _
 
 
 newtype ProvisioningArtifactInfoValue = ProvisioningArtifactInfoValue String
+derive instance newtypeProvisioningArtifactInfoValue :: Newtype ProvisioningArtifactInfoValue _
 
 
 newtype ProvisioningArtifactName = ProvisioningArtifactName String
+derive instance newtypeProvisioningArtifactName :: Newtype ProvisioningArtifactName _
 
 
 -- | <p>Information about a parameter used to provision a product.</p>
@@ -1479,9 +1698,11 @@ newtype ProvisioningArtifactParameter = ProvisioningArtifactParameter
   , "Description" :: NullOrUndefined (Description)
   , "ParameterConstraints" :: NullOrUndefined (ParameterConstraints)
   }
+derive instance newtypeProvisioningArtifactParameter :: Newtype ProvisioningArtifactParameter _
 
 
 newtype ProvisioningArtifactParameters = ProvisioningArtifactParameters (Array ProvisioningArtifactParameter)
+derive instance newtypeProvisioningArtifactParameters :: Newtype ProvisioningArtifactParameters _
 
 
 -- | <p>Information about a provisioning artifact (also known as a version) for a product.</p>
@@ -1491,15 +1712,19 @@ newtype ProvisioningArtifactProperties = ProvisioningArtifactProperties
   , "Info" :: (ProvisioningArtifactInfo)
   , "Type" :: NullOrUndefined (ProvisioningArtifactType)
   }
+derive instance newtypeProvisioningArtifactProperties :: Newtype ProvisioningArtifactProperties _
 
 
 newtype ProvisioningArtifactPropertyName = ProvisioningArtifactPropertyName String
+derive instance newtypeProvisioningArtifactPropertyName :: Newtype ProvisioningArtifactPropertyName _
 
 
 newtype ProvisioningArtifactPropertyValue = ProvisioningArtifactPropertyValue String
+derive instance newtypeProvisioningArtifactPropertyValue :: Newtype ProvisioningArtifactPropertyValue _
 
 
 newtype ProvisioningArtifactSummaries = ProvisioningArtifactSummaries (Array ProvisioningArtifactSummary)
+derive instance newtypeProvisioningArtifactSummaries :: Newtype ProvisioningArtifactSummaries _
 
 
 -- | <p>Summary information about a provisioning artifact (also known as a version) for a product.</p>
@@ -1510,12 +1735,15 @@ newtype ProvisioningArtifactSummary = ProvisioningArtifactSummary
   , "CreatedTime" :: NullOrUndefined (ProvisioningArtifactCreatedTime)
   , "ProvisioningArtifactMetadata" :: NullOrUndefined (ProvisioningArtifactInfo)
   }
+derive instance newtypeProvisioningArtifactSummary :: Newtype ProvisioningArtifactSummary _
 
 
 newtype ProvisioningArtifactType = ProvisioningArtifactType String
+derive instance newtypeProvisioningArtifactType :: Newtype ProvisioningArtifactType _
 
 
 newtype ProvisioningArtifacts = ProvisioningArtifacts (Array ProvisioningArtifact)
+derive instance newtypeProvisioningArtifacts :: Newtype ProvisioningArtifacts _
 
 
 -- | <p>Information about a parameter used to provision a product.</p>
@@ -1523,9 +1751,11 @@ newtype ProvisioningParameter = ProvisioningParameter
   { "Key" :: NullOrUndefined (ParameterKey)
   , "Value" :: NullOrUndefined (ParameterValue)
   }
+derive instance newtypeProvisioningParameter :: Newtype ProvisioningParameter _
 
 
 newtype ProvisioningParameters = ProvisioningParameters (Array ProvisioningParameter)
+derive instance newtypeProvisioningParameters :: Newtype ProvisioningParameters _
 
 
 -- | <p>Information about a request operation.</p>
@@ -1544,9 +1774,11 @@ newtype RecordDetail = RecordDetail
   , "RecordErrors" :: NullOrUndefined (RecordErrors)
   , "RecordTags" :: NullOrUndefined (RecordTags)
   }
+derive instance newtypeRecordDetail :: Newtype RecordDetail _
 
 
 newtype RecordDetails = RecordDetails (Array RecordDetail)
+derive instance newtypeRecordDetails :: Newtype RecordDetails _
 
 
 -- | <p>The error code and description resulting from an operation.</p>
@@ -1554,9 +1786,11 @@ newtype RecordError = RecordError
   { "Code" :: NullOrUndefined (ErrorCode)
   , "Description" :: NullOrUndefined (ErrorDescription)
   }
+derive instance newtypeRecordError :: Newtype RecordError _
 
 
 newtype RecordErrors = RecordErrors (Array RecordError)
+derive instance newtypeRecordErrors :: Newtype RecordErrors _
 
 
 -- | <p>The output for the product created as the result of a request. For example, the output for a CloudFormation-backed product that creates an S3 bucket would include the S3 bucket URL.</p>
@@ -1565,12 +1799,15 @@ newtype RecordOutput = RecordOutput
   , "OutputValue" :: NullOrUndefined (OutputValue)
   , "Description" :: NullOrUndefined (Description)
   }
+derive instance newtypeRecordOutput :: Newtype RecordOutput _
 
 
 newtype RecordOutputs = RecordOutputs (Array RecordOutput)
+derive instance newtypeRecordOutputs :: Newtype RecordOutputs _
 
 
 newtype RecordStatus = RecordStatus String
+derive instance newtypeRecordStatus :: Newtype RecordStatus _
 
 
 -- | <p>Information about a tag, which is a key-value pair.</p>
@@ -1578,41 +1815,52 @@ newtype RecordTag = RecordTag
   { "Key" :: NullOrUndefined (RecordTagKey)
   , "Value" :: NullOrUndefined (RecordTagValue)
   }
+derive instance newtypeRecordTag :: Newtype RecordTag _
 
 
 newtype RecordTagKey = RecordTagKey String
+derive instance newtypeRecordTagKey :: Newtype RecordTagKey _
 
 
 newtype RecordTagValue = RecordTagValue String
+derive instance newtypeRecordTagValue :: Newtype RecordTagValue _
 
 
 newtype RecordTags = RecordTags (Array RecordTag)
+derive instance newtypeRecordTags :: Newtype RecordTags _
 
 
 newtype RecordType = RecordType String
+derive instance newtypeRecordType :: Newtype RecordType _
 
 
 newtype RejectPortfolioShareInput = RejectPortfolioShareInput 
   { "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   , "PortfolioId" :: (Id)
   }
+derive instance newtypeRejectPortfolioShareInput :: Newtype RejectPortfolioShareInput _
 
 
 newtype RejectPortfolioShareOutput = RejectPortfolioShareOutput 
   { 
   }
+derive instance newtypeRejectPortfolioShareOutput :: Newtype RejectPortfolioShareOutput _
 
 
 newtype Replacement = Replacement String
+derive instance newtypeReplacement :: Newtype Replacement _
 
 
 newtype RequiresRecreation = RequiresRecreation String
+derive instance newtypeRequiresRecreation :: Newtype RequiresRecreation _
 
 
 newtype ResourceARN = ResourceARN String
+derive instance newtypeResourceARN :: Newtype ResourceARN _
 
 
 newtype ResourceAttribute = ResourceAttribute String
+derive instance newtypeResourceAttribute :: Newtype ResourceAttribute _
 
 
 -- | <p>Information about a resource change that will occur when a plan is executed.</p>
@@ -1625,6 +1873,7 @@ newtype ResourceChange = ResourceChange
   , "Scope" :: NullOrUndefined (Scope)
   , "Details" :: NullOrUndefined (ResourceChangeDetails)
   }
+derive instance newtypeResourceChange :: Newtype ResourceChange _
 
 
 -- | <p>Information about a change to a resource attribute.</p>
@@ -1633,12 +1882,15 @@ newtype ResourceChangeDetail = ResourceChangeDetail
   , "Evaluation" :: NullOrUndefined (EvaluationType)
   , "CausingEntity" :: NullOrUndefined (CausingEntity)
   }
+derive instance newtypeResourceChangeDetail :: Newtype ResourceChangeDetail _
 
 
 newtype ResourceChangeDetails = ResourceChangeDetails (Array ResourceChangeDetail)
+derive instance newtypeResourceChangeDetails :: Newtype ResourceChangeDetails _
 
 
 newtype ResourceChanges = ResourceChanges (Array ResourceChange)
+derive instance newtypeResourceChanges :: Newtype ResourceChanges _
 
 
 -- | <p>Information about a resource.</p>
@@ -1649,39 +1901,49 @@ newtype ResourceDetail = ResourceDetail
   , "Description" :: NullOrUndefined (ResourceDetailDescription)
   , "CreatedTime" :: NullOrUndefined (ResourceDetailCreatedTime)
   }
+derive instance newtypeResourceDetail :: Newtype ResourceDetail _
 
 
 newtype ResourceDetailARN = ResourceDetailARN String
+derive instance newtypeResourceDetailARN :: Newtype ResourceDetailARN _
 
 
 newtype ResourceDetailCreatedTime = ResourceDetailCreatedTime Number
+derive instance newtypeResourceDetailCreatedTime :: Newtype ResourceDetailCreatedTime _
 
 
 newtype ResourceDetailDescription = ResourceDetailDescription String
+derive instance newtypeResourceDetailDescription :: Newtype ResourceDetailDescription _
 
 
 newtype ResourceDetailId = ResourceDetailId String
+derive instance newtypeResourceDetailId :: Newtype ResourceDetailId _
 
 
 newtype ResourceDetailName = ResourceDetailName String
+derive instance newtypeResourceDetailName :: Newtype ResourceDetailName _
 
 
 newtype ResourceDetails = ResourceDetails (Array ResourceDetail)
+derive instance newtypeResourceDetails :: Newtype ResourceDetails _
 
 
 newtype ResourceId = ResourceId String
+derive instance newtypeResourceId :: Newtype ResourceId _
 
 
 -- | <p>A resource that is currently in use. Ensure that the resource is not in use and retry the operation.</p>
 newtype ResourceInUseException = ResourceInUseException 
   { 
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>The specified resource was not found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { 
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>Information about a change to a resource attribute.</p>
@@ -1690,9 +1952,11 @@ newtype ResourceTargetDefinition = ResourceTargetDefinition
   , "Name" :: NullOrUndefined (PropertyName)
   , "RequiresRecreation" :: NullOrUndefined (RequiresRecreation)
   }
+derive instance newtypeResourceTargetDefinition :: Newtype ResourceTargetDefinition _
 
 
 newtype ResourceType = ResourceType String
+derive instance newtypeResourceType :: Newtype ResourceType _
 
 
 newtype ScanProvisionedProductsInput = ScanProvisionedProductsInput 
@@ -1701,21 +1965,26 @@ newtype ScanProvisionedProductsInput = ScanProvisionedProductsInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeScanProvisionedProductsInput :: Newtype ScanProvisionedProductsInput _
 
 
 newtype ScanProvisionedProductsOutput = ScanProvisionedProductsOutput 
   { "ProvisionedProducts" :: NullOrUndefined (ProvisionedProductDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeScanProvisionedProductsOutput :: Newtype ScanProvisionedProductsOutput _
 
 
 newtype Scope = Scope (Array ResourceAttribute)
+derive instance newtypeScope :: Newtype Scope _
 
 
 newtype SearchFilterKey = SearchFilterKey String
+derive instance newtypeSearchFilterKey :: Newtype SearchFilterKey _
 
 
 newtype SearchFilterValue = SearchFilterValue String
+derive instance newtypeSearchFilterValue :: Newtype SearchFilterValue _
 
 
 newtype SearchProductsAsAdminInput = SearchProductsAsAdminInput 
@@ -1728,12 +1997,14 @@ newtype SearchProductsAsAdminInput = SearchProductsAsAdminInput
   , "PageSize" :: NullOrUndefined (PageSize)
   , "ProductSource" :: NullOrUndefined (ProductSource)
   }
+derive instance newtypeSearchProductsAsAdminInput :: Newtype SearchProductsAsAdminInput _
 
 
 newtype SearchProductsAsAdminOutput = SearchProductsAsAdminOutput 
   { "ProductViewDetails" :: NullOrUndefined (ProductViewDetails)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeSearchProductsAsAdminOutput :: Newtype SearchProductsAsAdminOutput _
 
 
 newtype SearchProductsInput = SearchProductsInput 
@@ -1744,6 +2015,7 @@ newtype SearchProductsInput = SearchProductsInput
   , "SortOrder" :: NullOrUndefined (SortOrder)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeSearchProductsInput :: Newtype SearchProductsInput _
 
 
 newtype SearchProductsOutput = SearchProductsOutput 
@@ -1751,6 +2023,7 @@ newtype SearchProductsOutput = SearchProductsOutput
   , "ProductViewAggregations" :: NullOrUndefined (ProductViewAggregations)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeSearchProductsOutput :: Newtype SearchProductsOutput _
 
 
 newtype SearchProvisionedProductsInput = SearchProvisionedProductsInput 
@@ -1762,6 +2035,7 @@ newtype SearchProvisionedProductsInput = SearchProvisionedProductsInput
   , "PageSize" :: NullOrUndefined (SearchProvisionedProductsPageSize)
   , "PageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeSearchProvisionedProductsInput :: Newtype SearchProvisionedProductsInput _
 
 
 newtype SearchProvisionedProductsOutput = SearchProvisionedProductsOutput 
@@ -1769,39 +2043,51 @@ newtype SearchProvisionedProductsOutput = SearchProvisionedProductsOutput
   , "TotalResultsCount" :: NullOrUndefined (TotalResultsCount)
   , "NextPageToken" :: NullOrUndefined (PageToken)
   }
+derive instance newtypeSearchProvisionedProductsOutput :: Newtype SearchProvisionedProductsOutput _
 
 
 newtype SearchProvisionedProductsPageSize = SearchProvisionedProductsPageSize Int
+derive instance newtypeSearchProvisionedProductsPageSize :: Newtype SearchProvisionedProductsPageSize _
 
 
 newtype SortField = SortField String
+derive instance newtypeSortField :: Newtype SortField _
 
 
 newtype SortOrder = SortOrder String
+derive instance newtypeSortOrder :: Newtype SortOrder _
 
 
 newtype SourceProvisioningArtifactProperties = SourceProvisioningArtifactProperties (Array SourceProvisioningArtifactPropertiesMap)
+derive instance newtypeSourceProvisioningArtifactProperties :: Newtype SourceProvisioningArtifactProperties _
 
 
 newtype SourceProvisioningArtifactPropertiesMap = SourceProvisioningArtifactPropertiesMap (Map ProvisioningArtifactPropertyName ProvisioningArtifactPropertyValue)
+derive instance newtypeSourceProvisioningArtifactPropertiesMap :: Newtype SourceProvisioningArtifactPropertiesMap _
 
 
 newtype Status = Status String
+derive instance newtypeStatus :: Newtype Status _
 
 
 newtype StatusDetail = StatusDetail String
+derive instance newtypeStatusDetail :: Newtype StatusDetail _
 
 
 newtype StatusMessage = StatusMessage String
+derive instance newtypeStatusMessage :: Newtype StatusMessage _
 
 
 newtype SupportDescription = SupportDescription String
+derive instance newtypeSupportDescription :: Newtype SupportDescription _
 
 
 newtype SupportEmail = SupportEmail String
+derive instance newtypeSupportEmail :: Newtype SupportEmail _
 
 
 newtype SupportUrl = SupportUrl String
+derive instance newtypeSupportUrl :: Newtype SupportUrl _
 
 
 -- | <p>Information about a tag. A tag is a key-value pair. Tags are propagated to the resources created when provisioning a product.</p>
@@ -1809,15 +2095,19 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeys = TagKeys (Array TagKey)
+derive instance newtypeTagKeys :: Newtype TagKeys _
 
 
 newtype TagOptionActive = TagOptionActive Boolean
+derive instance newtypeTagOptionActive :: Newtype TagOptionActive _
 
 
 -- | <p>Information about a TagOption.</p>
@@ -1827,24 +2117,30 @@ newtype TagOptionDetail = TagOptionDetail
   , "Active" :: NullOrUndefined (TagOptionActive)
   , "Id" :: NullOrUndefined (TagOptionId)
   }
+derive instance newtypeTagOptionDetail :: Newtype TagOptionDetail _
 
 
 newtype TagOptionDetails = TagOptionDetails (Array TagOptionDetail)
+derive instance newtypeTagOptionDetails :: Newtype TagOptionDetails _
 
 
 newtype TagOptionId = TagOptionId String
+derive instance newtypeTagOptionId :: Newtype TagOptionId _
 
 
 newtype TagOptionKey = TagOptionKey String
+derive instance newtypeTagOptionKey :: Newtype TagOptionKey _
 
 
 -- | <p>An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.</p>
 newtype TagOptionNotMigratedException = TagOptionNotMigratedException 
   { 
   }
+derive instance newtypeTagOptionNotMigratedException :: Newtype TagOptionNotMigratedException _
 
 
 newtype TagOptionSummaries = TagOptionSummaries (Array TagOptionSummary)
+derive instance newtypeTagOptionSummaries :: Newtype TagOptionSummaries _
 
 
 -- | <p>Summary information about a TagOption.</p>
@@ -1852,18 +2148,23 @@ newtype TagOptionSummary = TagOptionSummary
   { "Key" :: NullOrUndefined (TagOptionKey)
   , "Values" :: NullOrUndefined (TagOptionValues)
   }
+derive instance newtypeTagOptionSummary :: Newtype TagOptionSummary _
 
 
 newtype TagOptionValue = TagOptionValue String
+derive instance newtypeTagOptionValue :: Newtype TagOptionValue _
 
 
 newtype TagOptionValues = TagOptionValues (Array TagOptionValue)
+derive instance newtypeTagOptionValues :: Newtype TagOptionValues _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Array Tag)
+derive instance newtypeTags :: Newtype Tags _
 
 
 newtype TerminateProvisionedProductInput = TerminateProvisionedProductInput 
@@ -1873,14 +2174,17 @@ newtype TerminateProvisionedProductInput = TerminateProvisionedProductInput
   , "IgnoreErrors" :: NullOrUndefined (IgnoreErrors)
   , "AcceptLanguage" :: NullOrUndefined (AcceptLanguage)
   }
+derive instance newtypeTerminateProvisionedProductInput :: Newtype TerminateProvisionedProductInput _
 
 
 newtype TerminateProvisionedProductOutput = TerminateProvisionedProductOutput 
   { "RecordDetail" :: NullOrUndefined (RecordDetail)
   }
+derive instance newtypeTerminateProvisionedProductOutput :: Newtype TerminateProvisionedProductOutput _
 
 
 newtype TotalResultsCount = TotalResultsCount Int
+derive instance newtypeTotalResultsCount :: Newtype TotalResultsCount _
 
 
 newtype UpdateConstraintInput = UpdateConstraintInput 
@@ -1888,6 +2192,7 @@ newtype UpdateConstraintInput = UpdateConstraintInput
   , "Id" :: (Id)
   , "Description" :: NullOrUndefined (ConstraintDescription)
   }
+derive instance newtypeUpdateConstraintInput :: Newtype UpdateConstraintInput _
 
 
 newtype UpdateConstraintOutput = UpdateConstraintOutput 
@@ -1895,6 +2200,7 @@ newtype UpdateConstraintOutput = UpdateConstraintOutput
   , "ConstraintParameters" :: NullOrUndefined (ConstraintParameters)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeUpdateConstraintOutput :: Newtype UpdateConstraintOutput _
 
 
 newtype UpdatePortfolioInput = UpdatePortfolioInput 
@@ -1906,12 +2212,14 @@ newtype UpdatePortfolioInput = UpdatePortfolioInput
   , "AddTags" :: NullOrUndefined (AddTags)
   , "RemoveTags" :: NullOrUndefined (TagKeys)
   }
+derive instance newtypeUpdatePortfolioInput :: Newtype UpdatePortfolioInput _
 
 
 newtype UpdatePortfolioOutput = UpdatePortfolioOutput 
   { "PortfolioDetail" :: NullOrUndefined (PortfolioDetail)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeUpdatePortfolioOutput :: Newtype UpdatePortfolioOutput _
 
 
 newtype UpdateProductInput = UpdateProductInput 
@@ -1927,12 +2235,14 @@ newtype UpdateProductInput = UpdateProductInput
   , "AddTags" :: NullOrUndefined (AddTags)
   , "RemoveTags" :: NullOrUndefined (TagKeys)
   }
+derive instance newtypeUpdateProductInput :: Newtype UpdateProductInput _
 
 
 newtype UpdateProductOutput = UpdateProductOutput 
   { "ProductViewDetail" :: NullOrUndefined (ProductViewDetail)
   , "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeUpdateProductOutput :: Newtype UpdateProductOutput _
 
 
 newtype UpdateProvisionedProductInput = UpdateProvisionedProductInput 
@@ -1945,11 +2255,13 @@ newtype UpdateProvisionedProductInput = UpdateProvisionedProductInput
   , "ProvisioningParameters" :: NullOrUndefined (UpdateProvisioningParameters)
   , "UpdateToken" :: (IdempotencyToken)
   }
+derive instance newtypeUpdateProvisionedProductInput :: Newtype UpdateProvisionedProductInput _
 
 
 newtype UpdateProvisionedProductOutput = UpdateProvisionedProductOutput 
   { "RecordDetail" :: NullOrUndefined (RecordDetail)
   }
+derive instance newtypeUpdateProvisionedProductOutput :: Newtype UpdateProvisionedProductOutput _
 
 
 newtype UpdateProvisioningArtifactInput = UpdateProvisioningArtifactInput 
@@ -1960,6 +2272,7 @@ newtype UpdateProvisioningArtifactInput = UpdateProvisioningArtifactInput
   , "Description" :: NullOrUndefined (ProvisioningArtifactDescription)
   , "Active" :: NullOrUndefined (ProvisioningArtifactActive)
   }
+derive instance newtypeUpdateProvisioningArtifactInput :: Newtype UpdateProvisioningArtifactInput _
 
 
 newtype UpdateProvisioningArtifactOutput = UpdateProvisioningArtifactOutput 
@@ -1967,6 +2280,7 @@ newtype UpdateProvisioningArtifactOutput = UpdateProvisioningArtifactOutput
   , "Info" :: NullOrUndefined (ProvisioningArtifactInfo)
   , "Status" :: NullOrUndefined (Status)
   }
+derive instance newtypeUpdateProvisioningArtifactOutput :: Newtype UpdateProvisioningArtifactOutput _
 
 
 -- | <p>The parameter key-value pair used to update a provisioned product.</p>
@@ -1975,9 +2289,11 @@ newtype UpdateProvisioningParameter = UpdateProvisioningParameter
   , "Value" :: NullOrUndefined (ParameterValue)
   , "UsePreviousValue" :: NullOrUndefined (UsePreviousValue)
   }
+derive instance newtypeUpdateProvisioningParameter :: Newtype UpdateProvisioningParameter _
 
 
 newtype UpdateProvisioningParameters = UpdateProvisioningParameters (Array UpdateProvisioningParameter)
+derive instance newtypeUpdateProvisioningParameters :: Newtype UpdateProvisioningParameters _
 
 
 newtype UpdateTagOptionInput = UpdateTagOptionInput 
@@ -1985,14 +2301,17 @@ newtype UpdateTagOptionInput = UpdateTagOptionInput
   , "Value" :: NullOrUndefined (TagOptionValue)
   , "Active" :: NullOrUndefined (TagOptionActive)
   }
+derive instance newtypeUpdateTagOptionInput :: Newtype UpdateTagOptionInput _
 
 
 newtype UpdateTagOptionOutput = UpdateTagOptionOutput 
   { "TagOptionDetail" :: NullOrUndefined (TagOptionDetail)
   }
+derive instance newtypeUpdateTagOptionOutput :: Newtype UpdateTagOptionOutput _
 
 
 newtype UpdatedTime = UpdatedTime Number
+derive instance newtypeUpdatedTime :: Newtype UpdatedTime _
 
 
 -- | <p>Additional information provided by the administrator.</p>
@@ -2000,18 +2319,24 @@ newtype UsageInstruction = UsageInstruction
   { "Type" :: NullOrUndefined (InstructionType)
   , "Value" :: NullOrUndefined (InstructionValue)
   }
+derive instance newtypeUsageInstruction :: Newtype UsageInstruction _
 
 
 newtype UsageInstructions = UsageInstructions (Array UsageInstruction)
+derive instance newtypeUsageInstructions :: Newtype UsageInstructions _
 
 
 newtype UsePreviousValue = UsePreviousValue Boolean
+derive instance newtypeUsePreviousValue :: Newtype UsePreviousValue _
 
 
 newtype UserArn = UserArn String
+derive instance newtypeUserArn :: Newtype UserArn _
 
 
 newtype UserArnSession = UserArnSession String
+derive instance newtypeUserArnSession :: Newtype UserArnSession _
 
 
 newtype Verbose = Verbose Boolean
+derive instance newtypeVerbose :: Newtype Verbose _

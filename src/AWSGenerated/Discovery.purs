@@ -6,6 +6,7 @@ module AWS.Discovery where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -114,15 +115,19 @@ newtype AgentConfigurationStatus = AgentConfigurationStatus
   , "OperationSucceeded'" :: NullOrUndefined (Boolean)
   , "Description'" :: NullOrUndefined (String)
   }
+derive instance newtypeAgentConfigurationStatus :: Newtype AgentConfigurationStatus _
 
 
 newtype AgentConfigurationStatusList = AgentConfigurationStatusList (Array AgentConfigurationStatus)
+derive instance newtypeAgentConfigurationStatusList :: Newtype AgentConfigurationStatusList _
 
 
 newtype AgentId = AgentId String
+derive instance newtypeAgentId :: Newtype AgentId _
 
 
 newtype AgentIds = AgentIds (Array AgentId)
+derive instance newtypeAgentIds :: Newtype AgentIds _
 
 
 -- | <p>Information about agents or connectors associated with the user’s AWS account. Information includes agent or connector IDs, IP addresses, media access control (MAC) addresses, agent or connector health, hostname where the agent or connector resides, and agent version for each agent.</p>
@@ -138,6 +143,7 @@ newtype AgentInfo = AgentInfo
   , "AgentType'" :: NullOrUndefined (String)
   , "RegisteredTime'" :: NullOrUndefined (String)
   }
+derive instance newtypeAgentInfo :: Newtype AgentInfo _
 
 
 -- | <p>Network details about the host where the agent/connector resides.</p>
@@ -145,56 +151,71 @@ newtype AgentNetworkInfo = AgentNetworkInfo
   { "IpAddress'" :: NullOrUndefined (String)
   , "MacAddress'" :: NullOrUndefined (String)
   }
+derive instance newtypeAgentNetworkInfo :: Newtype AgentNetworkInfo _
 
 
 newtype AgentNetworkInfoList = AgentNetworkInfoList (Array AgentNetworkInfo)
+derive instance newtypeAgentNetworkInfoList :: Newtype AgentNetworkInfoList _
 
 
 newtype AgentStatus = AgentStatus String
+derive instance newtypeAgentStatus :: Newtype AgentStatus _
 
 
 newtype AgentsInfo = AgentsInfo (Array AgentInfo)
+derive instance newtypeAgentsInfo :: Newtype AgentsInfo _
 
 
 newtype ApplicationId = ApplicationId String
+derive instance newtypeApplicationId :: Newtype ApplicationId _
 
 
 newtype ApplicationIdsList = ApplicationIdsList (Array ApplicationId)
+derive instance newtypeApplicationIdsList :: Newtype ApplicationIdsList _
 
 
 newtype AssociateConfigurationItemsToApplicationRequest = AssociateConfigurationItemsToApplicationRequest 
   { "ApplicationConfigurationId'" :: (ApplicationId)
   , "ConfigurationIds'" :: (ConfigurationIdList)
   }
+derive instance newtypeAssociateConfigurationItemsToApplicationRequest :: Newtype AssociateConfigurationItemsToApplicationRequest _
 
 
 newtype AssociateConfigurationItemsToApplicationResponse = AssociateConfigurationItemsToApplicationResponse 
   { 
   }
+derive instance newtypeAssociateConfigurationItemsToApplicationResponse :: Newtype AssociateConfigurationItemsToApplicationResponse _
 
 
 -- | <p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>
 newtype AuthorizationErrorException = AuthorizationErrorException 
   { "Message'" :: NullOrUndefined (Message)
   }
+derive instance newtypeAuthorizationErrorException :: Newtype AuthorizationErrorException _
 
 
 newtype BoxedInteger = BoxedInteger Int
+derive instance newtypeBoxedInteger :: Newtype BoxedInteger _
 
 
 newtype Condition = Condition String
+derive instance newtypeCondition :: Newtype Condition _
 
 
 newtype Configuration = Configuration (Map String String)
+derive instance newtypeConfiguration :: Newtype Configuration _
 
 
 newtype ConfigurationId = ConfigurationId String
+derive instance newtypeConfigurationId :: Newtype ConfigurationId _
 
 
 newtype ConfigurationIdList = ConfigurationIdList (Array ConfigurationId)
+derive instance newtypeConfigurationIdList :: Newtype ConfigurationIdList _
 
 
 newtype ConfigurationItemType = ConfigurationItemType String
+derive instance newtypeConfigurationItemType :: Newtype ConfigurationItemType _
 
 
 -- | <p>Tags for a configuration item. Tags are metadata that help you categorize IT assets.</p>
@@ -205,40 +226,49 @@ newtype ConfigurationTag = ConfigurationTag
   , "Value'" :: NullOrUndefined (TagValue)
   , "TimeOfCreation'" :: NullOrUndefined (TimeStamp)
   }
+derive instance newtypeConfigurationTag :: Newtype ConfigurationTag _
 
 
 newtype ConfigurationTagSet = ConfigurationTagSet (Array ConfigurationTag)
+derive instance newtypeConfigurationTagSet :: Newtype ConfigurationTagSet _
 
 
 newtype Configurations = Configurations (Array Configuration)
+derive instance newtypeConfigurations :: Newtype Configurations _
 
 
 newtype ConfigurationsDownloadUrl = ConfigurationsDownloadUrl String
+derive instance newtypeConfigurationsDownloadUrl :: Newtype ConfigurationsDownloadUrl _
 
 
 newtype ConfigurationsExportId = ConfigurationsExportId String
+derive instance newtypeConfigurationsExportId :: Newtype ConfigurationsExportId _
 
 
 newtype CreateApplicationRequest = CreateApplicationRequest 
   { "Name'" :: (String)
   , "Description'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationRequest :: Newtype CreateApplicationRequest _
 
 
 newtype CreateApplicationResponse = CreateApplicationResponse 
   { "ConfigurationId'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApplicationResponse :: Newtype CreateApplicationResponse _
 
 
 newtype CreateTagsRequest = CreateTagsRequest 
   { "ConfigurationIds'" :: (ConfigurationIdList)
   , "Tags'" :: (TagSet)
   }
+derive instance newtypeCreateTagsRequest :: Newtype CreateTagsRequest _
 
 
 newtype CreateTagsResponse = CreateTagsResponse 
   { 
   }
+derive instance newtypeCreateTagsResponse :: Newtype CreateTagsResponse _
 
 
 -- | <p>Inventory data for installed discovery agents.</p>
@@ -251,6 +281,7 @@ newtype CustomerAgentInfo = CustomerAgentInfo
   , "TotalAgents'" :: (Int)
   , "UnknownAgents'" :: (Int)
   }
+derive instance newtypeCustomerAgentInfo :: Newtype CustomerAgentInfo _
 
 
 -- | <p>Inventory data for installed discovery connectors.</p>
@@ -263,27 +294,32 @@ newtype CustomerConnectorInfo = CustomerConnectorInfo
   , "TotalConnectors'" :: (Int)
   , "UnknownConnectors'" :: (Int)
   }
+derive instance newtypeCustomerConnectorInfo :: Newtype CustomerConnectorInfo _
 
 
 newtype DeleteApplicationsRequest = DeleteApplicationsRequest 
   { "ConfigurationIds'" :: (ApplicationIdsList)
   }
+derive instance newtypeDeleteApplicationsRequest :: Newtype DeleteApplicationsRequest _
 
 
 newtype DeleteApplicationsResponse = DeleteApplicationsResponse 
   { 
   }
+derive instance newtypeDeleteApplicationsResponse :: Newtype DeleteApplicationsResponse _
 
 
 newtype DeleteTagsRequest = DeleteTagsRequest 
   { "ConfigurationIds'" :: (ConfigurationIdList)
   , "Tags'" :: NullOrUndefined (TagSet)
   }
+derive instance newtypeDeleteTagsRequest :: Newtype DeleteTagsRequest _
 
 
 newtype DeleteTagsResponse = DeleteTagsResponse 
   { 
   }
+derive instance newtypeDeleteTagsResponse :: Newtype DeleteTagsResponse _
 
 
 newtype DescribeAgentsRequest = DescribeAgentsRequest 
@@ -292,28 +328,34 @@ newtype DescribeAgentsRequest = DescribeAgentsRequest
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAgentsRequest :: Newtype DescribeAgentsRequest _
 
 
 newtype DescribeAgentsResponse = DescribeAgentsResponse 
   { "AgentsInfo'" :: NullOrUndefined (AgentsInfo)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeAgentsResponse :: Newtype DescribeAgentsResponse _
 
 
 newtype DescribeConfigurationsAttribute = DescribeConfigurationsAttribute (Map String String)
+derive instance newtypeDescribeConfigurationsAttribute :: Newtype DescribeConfigurationsAttribute _
 
 
 newtype DescribeConfigurationsAttributes = DescribeConfigurationsAttributes (Array DescribeConfigurationsAttribute)
+derive instance newtypeDescribeConfigurationsAttributes :: Newtype DescribeConfigurationsAttributes _
 
 
 newtype DescribeConfigurationsRequest = DescribeConfigurationsRequest 
   { "ConfigurationIds'" :: (ConfigurationIdList)
   }
+derive instance newtypeDescribeConfigurationsRequest :: Newtype DescribeConfigurationsRequest _
 
 
 newtype DescribeConfigurationsResponse = DescribeConfigurationsResponse 
   { "Configurations'" :: NullOrUndefined (DescribeConfigurationsAttributes)
   }
+derive instance newtypeDescribeConfigurationsResponse :: Newtype DescribeConfigurationsResponse _
 
 
 newtype DescribeExportConfigurationsRequest = DescribeExportConfigurationsRequest 
@@ -321,12 +363,14 @@ newtype DescribeExportConfigurationsRequest = DescribeExportConfigurationsReques
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeExportConfigurationsRequest :: Newtype DescribeExportConfigurationsRequest _
 
 
 newtype DescribeExportConfigurationsResponse = DescribeExportConfigurationsResponse 
   { "ExportsInfo'" :: NullOrUndefined (ExportsInfo)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeExportConfigurationsResponse :: Newtype DescribeExportConfigurationsResponse _
 
 
 newtype DescribeExportTasksRequest = DescribeExportTasksRequest 
@@ -335,12 +379,14 @@ newtype DescribeExportTasksRequest = DescribeExportTasksRequest
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeExportTasksRequest :: Newtype DescribeExportTasksRequest _
 
 
 newtype DescribeExportTasksResponse = DescribeExportTasksResponse 
   { "ExportsInfo'" :: NullOrUndefined (ExportsInfo)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeExportTasksResponse :: Newtype DescribeExportTasksResponse _
 
 
 newtype DescribeTagsRequest = DescribeTagsRequest 
@@ -348,34 +394,41 @@ newtype DescribeTagsRequest = DescribeTagsRequest
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeTagsRequest :: Newtype DescribeTagsRequest _
 
 
 newtype DescribeTagsResponse = DescribeTagsResponse 
   { "Tags'" :: NullOrUndefined (ConfigurationTagSet)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeDescribeTagsResponse :: Newtype DescribeTagsResponse _
 
 
 newtype DisassociateConfigurationItemsFromApplicationRequest = DisassociateConfigurationItemsFromApplicationRequest 
   { "ApplicationConfigurationId'" :: (ApplicationId)
   , "ConfigurationIds'" :: (ConfigurationIdList)
   }
+derive instance newtypeDisassociateConfigurationItemsFromApplicationRequest :: Newtype DisassociateConfigurationItemsFromApplicationRequest _
 
 
 newtype DisassociateConfigurationItemsFromApplicationResponse = DisassociateConfigurationItemsFromApplicationResponse 
   { 
   }
+derive instance newtypeDisassociateConfigurationItemsFromApplicationResponse :: Newtype DisassociateConfigurationItemsFromApplicationResponse _
 
 
 newtype ExportConfigurationsResponse = ExportConfigurationsResponse 
   { "ExportId'" :: NullOrUndefined (ConfigurationsExportId)
   }
+derive instance newtypeExportConfigurationsResponse :: Newtype ExportConfigurationsResponse _
 
 
 newtype ExportDataFormat = ExportDataFormat String
+derive instance newtypeExportDataFormat :: Newtype ExportDataFormat _
 
 
 newtype ExportDataFormats = ExportDataFormats (Array ExportDataFormat)
+derive instance newtypeExportDataFormats :: Newtype ExportDataFormats _
 
 
 -- | <p>Used to select which agent's data is to be exported. A single agent ID may be selected for export using the <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/API_StartExportTask.html">StartExportTask</a> action.</p>
@@ -384,12 +437,15 @@ newtype ExportFilter = ExportFilter
   , "Values'" :: (FilterValues)
   , "Condition'" :: (Condition)
   }
+derive instance newtypeExportFilter :: Newtype ExportFilter _
 
 
 newtype ExportFilters = ExportFilters (Array ExportFilter)
+derive instance newtypeExportFilters :: Newtype ExportFilters _
 
 
 newtype ExportIds = ExportIds (Array ConfigurationsExportId)
+derive instance newtypeExportIds :: Newtype ExportIds _
 
 
 -- | <p>Information regarding the export status of discovered data. The value is an array of objects.</p>
@@ -403,18 +459,23 @@ newtype ExportInfo = ExportInfo
   , "RequestedStartTime'" :: NullOrUndefined (TimeStamp)
   , "RequestedEndTime'" :: NullOrUndefined (TimeStamp)
   }
+derive instance newtypeExportInfo :: Newtype ExportInfo _
 
 
 newtype ExportRequestTime = ExportRequestTime Number
+derive instance newtypeExportRequestTime :: Newtype ExportRequestTime _
 
 
 newtype ExportStatus = ExportStatus String
+derive instance newtypeExportStatus :: Newtype ExportStatus _
 
 
 newtype ExportStatusMessage = ExportStatusMessage String
+derive instance newtypeExportStatusMessage :: Newtype ExportStatusMessage _
 
 
 newtype ExportsInfo = ExportsInfo (Array ExportInfo)
+derive instance newtypeExportsInfo :: Newtype ExportsInfo _
 
 
 -- | <p>A filter that can use conditional operators.</p> <p>For more information about filters, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html">Querying Discovered Configuration Items</a>. </p>
@@ -423,23 +484,29 @@ newtype Filter = Filter
   , "Values'" :: (FilterValues)
   , "Condition'" :: (Condition)
   }
+derive instance newtypeFilter :: Newtype Filter _
 
 
 newtype FilterName = FilterName String
+derive instance newtypeFilterName :: Newtype FilterName _
 
 
 newtype FilterValue = FilterValue String
+derive instance newtypeFilterValue :: Newtype FilterValue _
 
 
 newtype FilterValues = FilterValues (Array FilterValue)
+derive instance newtypeFilterValues :: Newtype FilterValues _
 
 
 newtype Filters = Filters (Array Filter)
+derive instance newtypeFilters :: Newtype Filters _
 
 
 newtype GetDiscoverySummaryRequest = GetDiscoverySummaryRequest 
   { 
   }
+derive instance newtypeGetDiscoverySummaryRequest :: Newtype GetDiscoverySummaryRequest _
 
 
 newtype GetDiscoverySummaryResponse = GetDiscoverySummaryResponse 
@@ -450,18 +517,21 @@ newtype GetDiscoverySummaryResponse = GetDiscoverySummaryResponse
   , "AgentSummary'" :: NullOrUndefined (CustomerAgentInfo)
   , "ConnectorSummary'" :: NullOrUndefined (CustomerConnectorInfo)
   }
+derive instance newtypeGetDiscoverySummaryResponse :: Newtype GetDiscoverySummaryResponse _
 
 
 -- | <p>One or more parameters are not valid. Verify the parameters and try again.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { "Message'" :: NullOrUndefined (Message)
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>
 newtype InvalidParameterValueException = InvalidParameterValueException 
   { "Message'" :: NullOrUndefined (Message)
   }
+derive instance newtypeInvalidParameterValueException :: Newtype InvalidParameterValueException _
 
 
 newtype ListConfigurationsRequest = ListConfigurationsRequest 
@@ -471,12 +541,14 @@ newtype ListConfigurationsRequest = ListConfigurationsRequest
   , "NextToken'" :: NullOrUndefined (NextToken)
   , "OrderBy'" :: NullOrUndefined (OrderByList)
   }
+derive instance newtypeListConfigurationsRequest :: Newtype ListConfigurationsRequest _
 
 
 newtype ListConfigurationsResponse = ListConfigurationsResponse 
   { "Configurations'" :: NullOrUndefined (Configurations)
   , "NextToken'" :: NullOrUndefined (NextToken)
   }
+derive instance newtypeListConfigurationsResponse :: Newtype ListConfigurationsResponse _
 
 
 newtype ListServerNeighborsRequest = ListServerNeighborsRequest 
@@ -486,6 +558,7 @@ newtype ListServerNeighborsRequest = ListServerNeighborsRequest
   , "MaxResults'" :: NullOrUndefined (Int)
   , "NextToken'" :: NullOrUndefined (String)
   }
+derive instance newtypeListServerNeighborsRequest :: Newtype ListServerNeighborsRequest _
 
 
 newtype ListServerNeighborsResponse = ListServerNeighborsResponse 
@@ -493,9 +566,11 @@ newtype ListServerNeighborsResponse = ListServerNeighborsResponse
   , "NextToken'" :: NullOrUndefined (String)
   , "KnownDependencyCount'" :: NullOrUndefined (Number)
   }
+derive instance newtypeListServerNeighborsResponse :: Newtype ListServerNeighborsResponse _
 
 
 newtype Message = Message String
+derive instance newtypeMessage :: Newtype Message _
 
 
 -- | <p>Details about neighboring servers.</p>
@@ -506,18 +581,22 @@ newtype NeighborConnectionDetail = NeighborConnectionDetail
   , "TransportProtocol'" :: NullOrUndefined (String)
   , "ConnectionsCount'" :: (Number)
   }
+derive instance newtypeNeighborConnectionDetail :: Newtype NeighborConnectionDetail _
 
 
 newtype NeighborDetailsList = NeighborDetailsList (Array NeighborConnectionDetail)
+derive instance newtypeNeighborDetailsList :: Newtype NeighborDetailsList _
 
 
 newtype NextToken = NextToken String
+derive instance newtypeNextToken :: Newtype NextToken _
 
 
 -- | <p>This operation is not permitted.</p>
 newtype OperationNotPermittedException = OperationNotPermittedException 
   { "Message'" :: NullOrUndefined (Message)
   }
+derive instance newtypeOperationNotPermittedException :: Newtype OperationNotPermittedException _
 
 
 -- | <p>A field and direction for ordered output.</p>
@@ -525,31 +604,37 @@ newtype OrderByElement = OrderByElement
   { "FieldName'" :: (String)
   , "SortOrder'" :: NullOrUndefined (OrderString')
   }
+derive instance newtypeOrderByElement :: Newtype OrderByElement _
 
 
 newtype OrderByList = OrderByList (Array OrderByElement)
+derive instance newtypeOrderByList :: Newtype OrderByList _
 
 
 -- | <p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (Message)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>The server experienced an internal error. Try again.</p>
 newtype ServerInternalErrorException = ServerInternalErrorException 
   { "Message'" :: NullOrUndefined (Message)
   }
+derive instance newtypeServerInternalErrorException :: Newtype ServerInternalErrorException _
 
 
 newtype StartDataCollectionByAgentIdsRequest = StartDataCollectionByAgentIdsRequest 
   { "AgentIds'" :: (AgentIds)
   }
+derive instance newtypeStartDataCollectionByAgentIdsRequest :: Newtype StartDataCollectionByAgentIdsRequest _
 
 
 newtype StartDataCollectionByAgentIdsResponse = StartDataCollectionByAgentIdsResponse 
   { "AgentsConfigurationStatus'" :: NullOrUndefined (AgentConfigurationStatusList)
   }
+derive instance newtypeStartDataCollectionByAgentIdsResponse :: Newtype StartDataCollectionByAgentIdsResponse _
 
 
 newtype StartExportTaskRequest = StartExportTaskRequest 
@@ -558,21 +643,25 @@ newtype StartExportTaskRequest = StartExportTaskRequest
   , "StartTime'" :: NullOrUndefined (TimeStamp)
   , "EndTime'" :: NullOrUndefined (TimeStamp)
   }
+derive instance newtypeStartExportTaskRequest :: Newtype StartExportTaskRequest _
 
 
 newtype StartExportTaskResponse = StartExportTaskResponse 
   { "ExportId'" :: NullOrUndefined (ConfigurationsExportId)
   }
+derive instance newtypeStartExportTaskResponse :: Newtype StartExportTaskResponse _
 
 
 newtype StopDataCollectionByAgentIdsRequest = StopDataCollectionByAgentIdsRequest 
   { "AgentIds'" :: (AgentIds)
   }
+derive instance newtypeStopDataCollectionByAgentIdsRequest :: Newtype StopDataCollectionByAgentIdsRequest _
 
 
 newtype StopDataCollectionByAgentIdsResponse = StopDataCollectionByAgentIdsResponse 
   { "AgentsConfigurationStatus'" :: NullOrUndefined (AgentConfigurationStatusList)
   }
+derive instance newtypeStopDataCollectionByAgentIdsResponse :: Newtype StopDataCollectionByAgentIdsResponse _
 
 
 -- | <p>Metadata that help you categorize IT assets.</p>
@@ -580,6 +669,7 @@ newtype Tag = Tag
   { "Key'" :: (TagKey)
   , "Value'" :: (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 -- | <p>The tag filter. Valid names are: <code>tagKey</code>, <code>tagValue</code>, <code>configurationId</code>.</p>
@@ -587,21 +677,27 @@ newtype TagFilter = TagFilter
   { "Name'" :: (FilterName)
   , "Values'" :: (FilterValues)
   }
+derive instance newtypeTagFilter :: Newtype TagFilter _
 
 
 newtype TagFilters = TagFilters (Array TagFilter)
+derive instance newtypeTagFilters :: Newtype TagFilters _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagSet = TagSet (Array Tag)
+derive instance newtypeTagSet :: Newtype TagSet _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype TimeStamp = TimeStamp Number
+derive instance newtypeTimeStamp :: Newtype TimeStamp _
 
 
 newtype UpdateApplicationRequest = UpdateApplicationRequest 
@@ -609,11 +705,14 @@ newtype UpdateApplicationRequest = UpdateApplicationRequest
   , "Name'" :: NullOrUndefined (String)
   , "Description'" :: NullOrUndefined (String)
   }
+derive instance newtypeUpdateApplicationRequest :: Newtype UpdateApplicationRequest _
 
 
 newtype UpdateApplicationResponse = UpdateApplicationResponse 
   { 
   }
+derive instance newtypeUpdateApplicationResponse :: Newtype UpdateApplicationResponse _
 
 
 newtype OrderString' = OrderString' String
+derive instance newtypeOrderString' :: Newtype OrderString' _

@@ -6,6 +6,7 @@ module AWS.AppStream where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -179,9 +180,11 @@ updateStack = AWS.request serviceName "UpdateStack"
 
 
 newtype AccountName = AccountName String
+derive instance newtypeAccountName :: Newtype AccountName _
 
 
 newtype AccountPassword = AccountPassword String
+derive instance newtypeAccountPassword :: Newtype AccountPassword _
 
 
 -- | <p>Describes an application in the application catalog.</p>
@@ -194,38 +197,47 @@ newtype Application = Application
   , "Enabled" :: NullOrUndefined (Boolean)
   , "Metadata" :: NullOrUndefined (Metadata)
   }
+derive instance newtypeApplication :: Newtype Application _
 
 
 newtype Applications = Applications (Array Application)
+derive instance newtypeApplications :: Newtype Applications _
 
 
 newtype AppstreamAgentVersion = AppstreamAgentVersion String
+derive instance newtypeAppstreamAgentVersion :: Newtype AppstreamAgentVersion _
 
 
 newtype Arn = Arn String
+derive instance newtypeArn :: Newtype Arn _
 
 
 newtype AssociateFleetRequest = AssociateFleetRequest 
   { "FleetName" :: (String)
   , "StackName" :: (String)
   }
+derive instance newtypeAssociateFleetRequest :: Newtype AssociateFleetRequest _
 
 
 newtype AssociateFleetResult = AssociateFleetResult 
   { 
   }
+derive instance newtypeAssociateFleetResult :: Newtype AssociateFleetResult _
 
 
 newtype AuthenticationType = AuthenticationType String
+derive instance newtypeAuthenticationType :: Newtype AuthenticationType _
 
 
 newtype BooleanObject = BooleanObject Boolean
+derive instance newtypeBooleanObject :: Newtype BooleanObject _
 
 
 -- | <p>Describes the capacity for a fleet.</p>
 newtype ComputeCapacity = ComputeCapacity 
   { "DesiredInstances" :: (Int)
   }
+derive instance newtypeComputeCapacity :: Newtype ComputeCapacity _
 
 
 -- | <p>Describes the capacity status for a fleet.</p>
@@ -235,12 +247,14 @@ newtype ComputeCapacityStatus = ComputeCapacityStatus
   , "InUse" :: NullOrUndefined (Int)
   , "Available" :: NullOrUndefined (Int)
   }
+derive instance newtypeComputeCapacityStatus :: Newtype ComputeCapacityStatus _
 
 
 -- | <p>An API error occurred. Wait a few minutes and try again.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 newtype CopyImageRequest = CopyImageRequest 
@@ -249,11 +263,13 @@ newtype CopyImageRequest = CopyImageRequest
   , "DestinationRegion" :: (RegionName)
   , "DestinationImageDescription" :: NullOrUndefined (Description)
   }
+derive instance newtypeCopyImageRequest :: Newtype CopyImageRequest _
 
 
 newtype CopyImageResponse = CopyImageResponse 
   { "DestinationImageName" :: NullOrUndefined (Name)
   }
+derive instance newtypeCopyImageResponse :: Newtype CopyImageResponse _
 
 
 newtype CreateDirectoryConfigRequest = CreateDirectoryConfigRequest 
@@ -261,11 +277,13 @@ newtype CreateDirectoryConfigRequest = CreateDirectoryConfigRequest
   , "OrganizationalUnitDistinguishedNames" :: (OrganizationalUnitDistinguishedNamesList)
   , "ServiceAccountCredentials" :: (ServiceAccountCredentials)
   }
+derive instance newtypeCreateDirectoryConfigRequest :: Newtype CreateDirectoryConfigRequest _
 
 
 newtype CreateDirectoryConfigResult = CreateDirectoryConfigResult 
   { "DirectoryConfig" :: NullOrUndefined (DirectoryConfig)
   }
+derive instance newtypeCreateDirectoryConfigResult :: Newtype CreateDirectoryConfigResult _
 
 
 newtype CreateFleetRequest = CreateFleetRequest 
@@ -282,11 +300,13 @@ newtype CreateFleetRequest = CreateFleetRequest
   , "EnableDefaultInternetAccess" :: NullOrUndefined (BooleanObject)
   , "DomainJoinInfo" :: NullOrUndefined (DomainJoinInfo)
   }
+derive instance newtypeCreateFleetRequest :: Newtype CreateFleetRequest _
 
 
 newtype CreateFleetResult = CreateFleetResult 
   { "Fleet" :: NullOrUndefined (Fleet)
   }
+derive instance newtypeCreateFleetResult :: Newtype CreateFleetResult _
 
 
 newtype CreateImageBuilderRequest = CreateImageBuilderRequest 
@@ -300,23 +320,27 @@ newtype CreateImageBuilderRequest = CreateImageBuilderRequest
   , "DomainJoinInfo" :: NullOrUndefined (DomainJoinInfo)
   , "AppstreamAgentVersion" :: NullOrUndefined (AppstreamAgentVersion)
   }
+derive instance newtypeCreateImageBuilderRequest :: Newtype CreateImageBuilderRequest _
 
 
 newtype CreateImageBuilderResult = CreateImageBuilderResult 
   { "ImageBuilder" :: NullOrUndefined (ImageBuilder)
   }
+derive instance newtypeCreateImageBuilderResult :: Newtype CreateImageBuilderResult _
 
 
 newtype CreateImageBuilderStreamingURLRequest = CreateImageBuilderStreamingURLRequest 
   { "Name" :: (String)
   , "Validity" :: NullOrUndefined (Number)
   }
+derive instance newtypeCreateImageBuilderStreamingURLRequest :: Newtype CreateImageBuilderStreamingURLRequest _
 
 
 newtype CreateImageBuilderStreamingURLResult = CreateImageBuilderStreamingURLResult 
   { "StreamingURL" :: NullOrUndefined (String)
   , "Expires" :: NullOrUndefined (Number)
   }
+derive instance newtypeCreateImageBuilderStreamingURLResult :: Newtype CreateImageBuilderStreamingURLResult _
 
 
 newtype CreateStackRequest = CreateStackRequest 
@@ -326,11 +350,13 @@ newtype CreateStackRequest = CreateStackRequest
   , "StorageConnectors" :: NullOrUndefined (StorageConnectorList)
   , "RedirectURL" :: NullOrUndefined (RedirectURL)
   }
+derive instance newtypeCreateStackRequest :: Newtype CreateStackRequest _
 
 
 newtype CreateStackResult = CreateStackResult 
   { "Stack" :: NullOrUndefined (Stack)
   }
+derive instance newtypeCreateStackResult :: Newtype CreateStackResult _
 
 
 newtype CreateStreamingURLRequest = CreateStreamingURLRequest 
@@ -341,62 +367,74 @@ newtype CreateStreamingURLRequest = CreateStreamingURLRequest
   , "Validity" :: NullOrUndefined (Number)
   , "SessionContext" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateStreamingURLRequest :: Newtype CreateStreamingURLRequest _
 
 
 newtype CreateStreamingURLResult = CreateStreamingURLResult 
   { "StreamingURL" :: NullOrUndefined (String)
   , "Expires" :: NullOrUndefined (Number)
   }
+derive instance newtypeCreateStreamingURLResult :: Newtype CreateStreamingURLResult _
 
 
 newtype DeleteDirectoryConfigRequest = DeleteDirectoryConfigRequest 
   { "DirectoryName" :: (DirectoryName)
   }
+derive instance newtypeDeleteDirectoryConfigRequest :: Newtype DeleteDirectoryConfigRequest _
 
 
 newtype DeleteDirectoryConfigResult = DeleteDirectoryConfigResult 
   { 
   }
+derive instance newtypeDeleteDirectoryConfigResult :: Newtype DeleteDirectoryConfigResult _
 
 
 newtype DeleteFleetRequest = DeleteFleetRequest 
   { "Name" :: (String)
   }
+derive instance newtypeDeleteFleetRequest :: Newtype DeleteFleetRequest _
 
 
 newtype DeleteFleetResult = DeleteFleetResult 
   { 
   }
+derive instance newtypeDeleteFleetResult :: Newtype DeleteFleetResult _
 
 
 newtype DeleteImageBuilderRequest = DeleteImageBuilderRequest 
   { "Name" :: (Name)
   }
+derive instance newtypeDeleteImageBuilderRequest :: Newtype DeleteImageBuilderRequest _
 
 
 newtype DeleteImageBuilderResult = DeleteImageBuilderResult 
   { "ImageBuilder" :: NullOrUndefined (ImageBuilder)
   }
+derive instance newtypeDeleteImageBuilderResult :: Newtype DeleteImageBuilderResult _
 
 
 newtype DeleteImageRequest = DeleteImageRequest 
   { "Name" :: (Name)
   }
+derive instance newtypeDeleteImageRequest :: Newtype DeleteImageRequest _
 
 
 newtype DeleteImageResult = DeleteImageResult 
   { "Image" :: NullOrUndefined (Image)
   }
+derive instance newtypeDeleteImageResult :: Newtype DeleteImageResult _
 
 
 newtype DeleteStackRequest = DeleteStackRequest 
   { "Name" :: (String)
   }
+derive instance newtypeDeleteStackRequest :: Newtype DeleteStackRequest _
 
 
 newtype DeleteStackResult = DeleteStackResult 
   { 
   }
+derive instance newtypeDeleteStackResult :: Newtype DeleteStackResult _
 
 
 newtype DescribeDirectoryConfigsRequest = DescribeDirectoryConfigsRequest 
@@ -404,24 +442,28 @@ newtype DescribeDirectoryConfigsRequest = DescribeDirectoryConfigsRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeDirectoryConfigsRequest :: Newtype DescribeDirectoryConfigsRequest _
 
 
 newtype DescribeDirectoryConfigsResult = DescribeDirectoryConfigsResult 
   { "DirectoryConfigs" :: NullOrUndefined (DirectoryConfigList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeDirectoryConfigsResult :: Newtype DescribeDirectoryConfigsResult _
 
 
 newtype DescribeFleetsRequest = DescribeFleetsRequest 
   { "Names" :: NullOrUndefined (StringList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeFleetsRequest :: Newtype DescribeFleetsRequest _
 
 
 newtype DescribeFleetsResult = DescribeFleetsResult 
   { "Fleets" :: NullOrUndefined (FleetList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeFleetsResult :: Newtype DescribeFleetsResult _
 
 
 newtype DescribeImageBuildersRequest = DescribeImageBuildersRequest 
@@ -429,22 +471,26 @@ newtype DescribeImageBuildersRequest = DescribeImageBuildersRequest
   , "MaxResults" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeImageBuildersRequest :: Newtype DescribeImageBuildersRequest _
 
 
 newtype DescribeImageBuildersResult = DescribeImageBuildersResult 
   { "ImageBuilders" :: NullOrUndefined (ImageBuilderList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeImageBuildersResult :: Newtype DescribeImageBuildersResult _
 
 
 newtype DescribeImagesRequest = DescribeImagesRequest 
   { "Names" :: NullOrUndefined (StringList)
   }
+derive instance newtypeDescribeImagesRequest :: Newtype DescribeImagesRequest _
 
 
 newtype DescribeImagesResult = DescribeImagesResult 
   { "Images" :: NullOrUndefined (ImageList)
   }
+derive instance newtypeDescribeImagesResult :: Newtype DescribeImagesResult _
 
 
 newtype DescribeSessionsRequest = DescribeSessionsRequest 
@@ -455,27 +501,32 @@ newtype DescribeSessionsRequest = DescribeSessionsRequest
   , "Limit" :: NullOrUndefined (Int)
   , "AuthenticationType" :: NullOrUndefined (AuthenticationType)
   }
+derive instance newtypeDescribeSessionsRequest :: Newtype DescribeSessionsRequest _
 
 
 newtype DescribeSessionsResult = DescribeSessionsResult 
   { "Sessions" :: NullOrUndefined (SessionList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeSessionsResult :: Newtype DescribeSessionsResult _
 
 
 newtype DescribeStacksRequest = DescribeStacksRequest 
   { "Names" :: NullOrUndefined (StringList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeStacksRequest :: Newtype DescribeStacksRequest _
 
 
 newtype DescribeStacksResult = DescribeStacksResult 
   { "Stacks" :: NullOrUndefined (StackList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeDescribeStacksResult :: Newtype DescribeStacksResult _
 
 
 newtype Description = Description String
+derive instance newtypeDescription :: Newtype Description _
 
 
 -- | <p>Configuration information for the directory used to join domains.</p>
@@ -485,29 +536,36 @@ newtype DirectoryConfig = DirectoryConfig
   , "ServiceAccountCredentials" :: NullOrUndefined (ServiceAccountCredentials)
   , "CreatedTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeDirectoryConfig :: Newtype DirectoryConfig _
 
 
 newtype DirectoryConfigList = DirectoryConfigList (Array DirectoryConfig)
+derive instance newtypeDirectoryConfigList :: Newtype DirectoryConfigList _
 
 
 newtype DirectoryName = DirectoryName String
+derive instance newtypeDirectoryName :: Newtype DirectoryName _
 
 
 newtype DirectoryNameList = DirectoryNameList (Array DirectoryName)
+derive instance newtypeDirectoryNameList :: Newtype DirectoryNameList _
 
 
 newtype DisassociateFleetRequest = DisassociateFleetRequest 
   { "FleetName" :: (String)
   , "StackName" :: (String)
   }
+derive instance newtypeDisassociateFleetRequest :: Newtype DisassociateFleetRequest _
 
 
 newtype DisassociateFleetResult = DisassociateFleetResult 
   { 
   }
+derive instance newtypeDisassociateFleetResult :: Newtype DisassociateFleetResult _
 
 
 newtype DisplayName = DisplayName String
+derive instance newtypeDisplayName :: Newtype DisplayName _
 
 
 -- | <p>Contains the information needed to join a Microsoft Active Directory domain.</p>
@@ -515,20 +573,24 @@ newtype DomainJoinInfo = DomainJoinInfo
   { "DirectoryName" :: NullOrUndefined (DirectoryName)
   , "OrganizationalUnitDistinguishedName" :: NullOrUndefined (OrganizationalUnitDistinguishedName)
   }
+derive instance newtypeDomainJoinInfo :: Newtype DomainJoinInfo _
 
 
 -- | <p>The error message in the exception.</p>
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 newtype ExpireSessionRequest = ExpireSessionRequest 
   { "SessionId" :: (String)
   }
+derive instance newtypeExpireSessionRequest :: Newtype ExpireSessionRequest _
 
 
 newtype ExpireSessionResult = ExpireSessionResult 
   { 
   }
+derive instance newtypeExpireSessionResult :: Newtype ExpireSessionResult _
 
 
 -- | <p>Contains the parameters for a fleet.</p>
@@ -550,14 +612,17 @@ newtype Fleet = Fleet
   , "EnableDefaultInternetAccess" :: NullOrUndefined (BooleanObject)
   , "DomainJoinInfo" :: NullOrUndefined (DomainJoinInfo)
   }
+derive instance newtypeFleet :: Newtype Fleet _
 
 
 -- | <p>The fleet attribute.</p>
 newtype FleetAttribute = FleetAttribute String
+derive instance newtypeFleetAttribute :: Newtype FleetAttribute _
 
 
 -- | <p>The fleet attributes.</p>
 newtype FleetAttributes = FleetAttributes (Array FleetAttribute)
+derive instance newtypeFleetAttributes :: Newtype FleetAttributes _
 
 
 -- | <p>Describes a fleet error.</p>
@@ -565,22 +630,28 @@ newtype FleetError = FleetError
   { "ErrorCode" :: NullOrUndefined (FleetErrorCode)
   , "ErrorMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeFleetError :: Newtype FleetError _
 
 
 newtype FleetErrorCode = FleetErrorCode String
+derive instance newtypeFleetErrorCode :: Newtype FleetErrorCode _
 
 
 newtype FleetErrors = FleetErrors (Array FleetError)
+derive instance newtypeFleetErrors :: Newtype FleetErrors _
 
 
 -- | <p>The fleets.</p>
 newtype FleetList = FleetList (Array Fleet)
+derive instance newtypeFleetList :: Newtype FleetList _
 
 
 newtype FleetState = FleetState String
+derive instance newtypeFleetState :: Newtype FleetState _
 
 
 newtype FleetType = FleetType String
+derive instance newtypeFleetType :: Newtype FleetType _
 
 
 -- | <p>Describes an image.</p>
@@ -600,6 +671,7 @@ newtype Image = Image
   , "PublicBaseImageReleasedDate" :: NullOrUndefined (Number)
   , "AppstreamAgentVersion" :: NullOrUndefined (AppstreamAgentVersion)
   }
+derive instance newtypeImage :: Newtype Image _
 
 
 -- | <p>Describes a streaming instance used for editing an image. New images are created from a snapshot through an image builder.</p>
@@ -620,12 +692,15 @@ newtype ImageBuilder = ImageBuilder
   , "ImageBuilderErrors" :: NullOrUndefined (ResourceErrors)
   , "AppstreamAgentVersion" :: NullOrUndefined (AppstreamAgentVersion)
   }
+derive instance newtypeImageBuilder :: Newtype ImageBuilder _
 
 
 newtype ImageBuilderList = ImageBuilderList (Array ImageBuilder)
+derive instance newtypeImageBuilderList :: Newtype ImageBuilderList _
 
 
 newtype ImageBuilderState = ImageBuilderState String
+derive instance newtypeImageBuilderState :: Newtype ImageBuilderState _
 
 
 -- | <p>Describes the reason why the last image builder state change occurred.</p>
@@ -633,15 +708,19 @@ newtype ImageBuilderStateChangeReason = ImageBuilderStateChangeReason
   { "Code" :: NullOrUndefined (ImageBuilderStateChangeReasonCode)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeImageBuilderStateChangeReason :: Newtype ImageBuilderStateChangeReason _
 
 
 newtype ImageBuilderStateChangeReasonCode = ImageBuilderStateChangeReasonCode String
+derive instance newtypeImageBuilderStateChangeReasonCode :: Newtype ImageBuilderStateChangeReasonCode _
 
 
 newtype ImageList = ImageList (Array Image)
+derive instance newtypeImageList :: Newtype ImageList _
 
 
 newtype ImageState = ImageState String
+derive instance newtypeImageState :: Newtype ImageState _
 
 
 -- | <p>Describes the reason why the last image state change occurred.</p>
@@ -649,100 +728,121 @@ newtype ImageStateChangeReason = ImageStateChangeReason
   { "Code" :: NullOrUndefined (ImageStateChangeReasonCode)
   , "Message" :: NullOrUndefined (String)
   }
+derive instance newtypeImageStateChangeReason :: Newtype ImageStateChangeReason _
 
 
 newtype ImageStateChangeReasonCode = ImageStateChangeReasonCode String
+derive instance newtypeImageStateChangeReasonCode :: Newtype ImageStateChangeReasonCode _
 
 
 -- | <p>The image does not support storage connectors.</p>
 newtype IncompatibleImageException = IncompatibleImageException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeIncompatibleImageException :: Newtype IncompatibleImageException _
 
 
 -- | <p>Indicates an incorrect combination of parameters, or a missing parameter.</p>
 newtype InvalidParameterCombinationException = InvalidParameterCombinationException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidParameterCombinationException :: Newtype InvalidParameterCombinationException _
 
 
 -- | <p>The specified role is invalid.</p>
 newtype InvalidRoleException = InvalidRoleException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeInvalidRoleException :: Newtype InvalidRoleException _
 
 
 -- | <p>The requested limit exceeds the permitted limit for an account.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListAssociatedFleetsRequest = ListAssociatedFleetsRequest 
   { "StackName" :: (String)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListAssociatedFleetsRequest :: Newtype ListAssociatedFleetsRequest _
 
 
 newtype ListAssociatedFleetsResult = ListAssociatedFleetsResult 
   { "Names" :: NullOrUndefined (StringList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListAssociatedFleetsResult :: Newtype ListAssociatedFleetsResult _
 
 
 newtype ListAssociatedStacksRequest = ListAssociatedStacksRequest 
   { "FleetName" :: (String)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListAssociatedStacksRequest :: Newtype ListAssociatedStacksRequest _
 
 
 newtype ListAssociatedStacksResult = ListAssociatedStacksResult 
   { "Names" :: NullOrUndefined (StringList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListAssociatedStacksResult :: Newtype ListAssociatedStacksResult _
 
 
 newtype ListTagsForResourceRequest = ListTagsForResourceRequest 
   { "ResourceArn" :: (Arn)
   }
+derive instance newtypeListTagsForResourceRequest :: Newtype ListTagsForResourceRequest _
 
 
 newtype ListTagsForResourceResponse = ListTagsForResourceResponse 
   { "Tags" :: NullOrUndefined (Tags)
   }
+derive instance newtypeListTagsForResourceResponse :: Newtype ListTagsForResourceResponse _
 
 
 newtype Metadata = Metadata (Map String String)
+derive instance newtypeMetadata :: Newtype Metadata _
 
 
 newtype Name = Name String
+derive instance newtypeName :: Newtype Name _
 
 
 -- | <p>The attempted operation is not permitted.</p>
 newtype OperationNotPermittedException = OperationNotPermittedException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeOperationNotPermittedException :: Newtype OperationNotPermittedException _
 
 
 newtype OrganizationalUnitDistinguishedName = OrganizationalUnitDistinguishedName String
+derive instance newtypeOrganizationalUnitDistinguishedName :: Newtype OrganizationalUnitDistinguishedName _
 
 
 newtype OrganizationalUnitDistinguishedNamesList = OrganizationalUnitDistinguishedNamesList (Array OrganizationalUnitDistinguishedName)
+derive instance newtypeOrganizationalUnitDistinguishedNamesList :: Newtype OrganizationalUnitDistinguishedNamesList _
 
 
 newtype PlatformType = PlatformType String
+derive instance newtypePlatformType :: Newtype PlatformType _
 
 
 newtype RedirectURL = RedirectURL String
+derive instance newtypeRedirectURL :: Newtype RedirectURL _
 
 
 newtype RegionName = RegionName String
+derive instance newtypeRegionName :: Newtype RegionName _
 
 
 -- | <p>The specified resource already exists.</p>
 newtype ResourceAlreadyExistsException = ResourceAlreadyExistsException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceAlreadyExistsException :: Newtype ResourceAlreadyExistsException _
 
 
 -- | <p>Describes a resource error.</p>
@@ -751,35 +851,42 @@ newtype ResourceError = ResourceError
   , "ErrorMessage" :: NullOrUndefined (String)
   , "ErrorTimestamp" :: NullOrUndefined (Number)
   }
+derive instance newtypeResourceError :: Newtype ResourceError _
 
 
 newtype ResourceErrors = ResourceErrors (Array ResourceError)
+derive instance newtypeResourceErrors :: Newtype ResourceErrors _
 
 
 -- | <p>The ARN of the resource.</p>
 newtype ResourceIdentifier = ResourceIdentifier String
+derive instance newtypeResourceIdentifier :: Newtype ResourceIdentifier _
 
 
 -- | <p>The specified resource is in use.</p>
 newtype ResourceInUseException = ResourceInUseException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceInUseException :: Newtype ResourceInUseException _
 
 
 -- | <p>The specified resource exists and is not in use, but isn't available.</p>
 newtype ResourceNotAvailableException = ResourceNotAvailableException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceNotAvailableException :: Newtype ResourceNotAvailableException _
 
 
 -- | <p>The specified resource was not found.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 -- | <p>The security group IDs.</p>
 newtype SecurityGroupIdList = SecurityGroupIdList (Array String)
+derive instance newtypeSecurityGroupIdList :: Newtype SecurityGroupIdList _
 
 
 -- | <p>Describes the credentials for the service account used by the streaming instance to connect to the directory.</p>
@@ -787,6 +894,7 @@ newtype ServiceAccountCredentials = ServiceAccountCredentials
   { "AccountName" :: (AccountName)
   , "AccountPassword" :: (AccountPassword)
   }
+derive instance newtypeServiceAccountCredentials :: Newtype ServiceAccountCredentials _
 
 
 -- | <p>Describes a streaming session.</p>
@@ -798,14 +906,17 @@ newtype Session = Session
   , "State" :: (SessionState)
   , "AuthenticationType" :: NullOrUndefined (AuthenticationType)
   }
+derive instance newtypeSession :: Newtype Session _
 
 
 -- | <p>List of sessions.</p>
 newtype SessionList = SessionList (Array Session)
+derive instance newtypeSessionList :: Newtype SessionList _
 
 
 -- | <p>Possible values for the state of a streaming session.</p>
 newtype SessionState = SessionState String
+derive instance newtypeSessionState :: Newtype SessionState _
 
 
 -- | <p>Describes a stack.</p>
@@ -819,12 +930,15 @@ newtype Stack = Stack
   , "RedirectURL" :: NullOrUndefined (RedirectURL)
   , "StackErrors" :: NullOrUndefined (StackErrors)
   }
+derive instance newtypeStack :: Newtype Stack _
 
 
 newtype StackAttribute = StackAttribute String
+derive instance newtypeStackAttribute :: Newtype StackAttribute _
 
 
 newtype StackAttributes = StackAttributes (Array StackAttribute)
+derive instance newtypeStackAttributes :: Newtype StackAttributes _
 
 
 -- | <p>Describes a stack error.</p>
@@ -832,58 +946,70 @@ newtype StackError = StackError
   { "ErrorCode" :: NullOrUndefined (StackErrorCode)
   , "ErrorMessage" :: NullOrUndefined (String)
   }
+derive instance newtypeStackError :: Newtype StackError _
 
 
 newtype StackErrorCode = StackErrorCode String
+derive instance newtypeStackErrorCode :: Newtype StackErrorCode _
 
 
 -- | <p>The stack errors.</p>
 newtype StackErrors = StackErrors (Array StackError)
+derive instance newtypeStackErrors :: Newtype StackErrors _
 
 
 -- | <p>The stacks.</p>
 newtype StackList = StackList (Array Stack)
+derive instance newtypeStackList :: Newtype StackList _
 
 
 newtype StartFleetRequest = StartFleetRequest 
   { "Name" :: (String)
   }
+derive instance newtypeStartFleetRequest :: Newtype StartFleetRequest _
 
 
 newtype StartFleetResult = StartFleetResult 
   { 
   }
+derive instance newtypeStartFleetResult :: Newtype StartFleetResult _
 
 
 newtype StartImageBuilderRequest = StartImageBuilderRequest 
   { "Name" :: (String)
   , "AppstreamAgentVersion" :: NullOrUndefined (AppstreamAgentVersion)
   }
+derive instance newtypeStartImageBuilderRequest :: Newtype StartImageBuilderRequest _
 
 
 newtype StartImageBuilderResult = StartImageBuilderResult 
   { "ImageBuilder" :: NullOrUndefined (ImageBuilder)
   }
+derive instance newtypeStartImageBuilderResult :: Newtype StartImageBuilderResult _
 
 
 newtype StopFleetRequest = StopFleetRequest 
   { "Name" :: (String)
   }
+derive instance newtypeStopFleetRequest :: Newtype StopFleetRequest _
 
 
 newtype StopFleetResult = StopFleetResult 
   { 
   }
+derive instance newtypeStopFleetResult :: Newtype StopFleetResult _
 
 
 newtype StopImageBuilderRequest = StopImageBuilderRequest 
   { "Name" :: (String)
   }
+derive instance newtypeStopImageBuilderRequest :: Newtype StopImageBuilderRequest _
 
 
 newtype StopImageBuilderResult = StopImageBuilderResult 
   { "ImageBuilder" :: NullOrUndefined (ImageBuilder)
   }
+derive instance newtypeStopImageBuilderResult :: Newtype StopImageBuilderResult _
 
 
 -- | <p>Describes a storage connector.</p>
@@ -891,58 +1017,72 @@ newtype StorageConnector = StorageConnector
   { "ConnectorType" :: (StorageConnectorType)
   , "ResourceIdentifier" :: NullOrUndefined (ResourceIdentifier)
   }
+derive instance newtypeStorageConnector :: Newtype StorageConnector _
 
 
 -- | <p>The storage connectors.</p>
 newtype StorageConnectorList = StorageConnectorList (Array StorageConnector)
+derive instance newtypeStorageConnectorList :: Newtype StorageConnectorList _
 
 
 -- | <p>The type of storage connector.</p>
 newtype StorageConnectorType = StorageConnectorType String
+derive instance newtypeStorageConnectorType :: Newtype StorageConnectorType _
 
 
 newtype StreamingUrlUserId = StreamingUrlUserId String
+derive instance newtypeStreamingUrlUserId :: Newtype StreamingUrlUserId _
 
 
 newtype StringList = StringList (Array String)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 -- | <p>The subnet IDs.</p>
 newtype SubnetIdList = SubnetIdList (Array String)
+derive instance newtypeSubnetIdList :: Newtype SubnetIdList _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagResourceRequest = TagResourceRequest 
   { "ResourceArn" :: (Arn)
   , "Tags" :: (Tags)
   }
+derive instance newtypeTagResourceRequest :: Newtype TagResourceRequest _
 
 
 newtype TagResourceResponse = TagResourceResponse 
   { 
   }
+derive instance newtypeTagResourceResponse :: Newtype TagResourceResponse _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype Tags = Tags (Map TagKey TagValue)
+derive instance newtypeTags :: Newtype Tags _
 
 
 newtype UntagResourceRequest = UntagResourceRequest 
   { "ResourceArn" :: (Arn)
   , "TagKeys" :: (TagKeyList)
   }
+derive instance newtypeUntagResourceRequest :: Newtype UntagResourceRequest _
 
 
 newtype UntagResourceResponse = UntagResourceResponse 
   { 
   }
+derive instance newtypeUntagResourceResponse :: Newtype UntagResourceResponse _
 
 
 newtype UpdateDirectoryConfigRequest = UpdateDirectoryConfigRequest 
@@ -950,11 +1090,13 @@ newtype UpdateDirectoryConfigRequest = UpdateDirectoryConfigRequest
   , "OrganizationalUnitDistinguishedNames" :: NullOrUndefined (OrganizationalUnitDistinguishedNamesList)
   , "ServiceAccountCredentials" :: NullOrUndefined (ServiceAccountCredentials)
   }
+derive instance newtypeUpdateDirectoryConfigRequest :: Newtype UpdateDirectoryConfigRequest _
 
 
 newtype UpdateDirectoryConfigResult = UpdateDirectoryConfigResult 
   { "DirectoryConfig" :: NullOrUndefined (DirectoryConfig)
   }
+derive instance newtypeUpdateDirectoryConfigResult :: Newtype UpdateDirectoryConfigResult _
 
 
 newtype UpdateFleetRequest = UpdateFleetRequest 
@@ -972,11 +1114,13 @@ newtype UpdateFleetRequest = UpdateFleetRequest
   , "DomainJoinInfo" :: NullOrUndefined (DomainJoinInfo)
   , "AttributesToDelete" :: NullOrUndefined (FleetAttributes)
   }
+derive instance newtypeUpdateFleetRequest :: Newtype UpdateFleetRequest _
 
 
 newtype UpdateFleetResult = UpdateFleetResult 
   { "Fleet" :: NullOrUndefined (Fleet)
   }
+derive instance newtypeUpdateFleetResult :: Newtype UpdateFleetResult _
 
 
 newtype UpdateStackRequest = UpdateStackRequest 
@@ -988,17 +1132,21 @@ newtype UpdateStackRequest = UpdateStackRequest
   , "RedirectURL" :: NullOrUndefined (RedirectURL)
   , "AttributesToDelete" :: NullOrUndefined (StackAttributes)
   }
+derive instance newtypeUpdateStackRequest :: Newtype UpdateStackRequest _
 
 
 newtype UpdateStackResult = UpdateStackResult 
   { "Stack" :: NullOrUndefined (Stack)
   }
+derive instance newtypeUpdateStackResult :: Newtype UpdateStackResult _
 
 
 newtype UserId = UserId String
+derive instance newtypeUserId :: Newtype UserId _
 
 
 newtype VisibilityType = VisibilityType String
+derive instance newtypeVisibilityType :: Newtype VisibilityType _
 
 
 -- | <p>Describes VPC configuration information.</p>
@@ -1006,3 +1154,4 @@ newtype VpcConfig = VpcConfig
   { "SubnetIds" :: NullOrUndefined (SubnetIdList)
   , "SecurityGroupIds" :: NullOrUndefined (SecurityGroupIdList)
   }
+derive instance newtypeVpcConfig :: Newtype VpcConfig _

@@ -6,6 +6,7 @@ module AWS.MTurk where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -212,11 +213,13 @@ newtype AcceptQualificationRequestRequest = AcceptQualificationRequestRequest
   { "QualificationRequestId" :: (String)
   , "IntegerValue" :: NullOrUndefined (Int)
   }
+derive instance newtypeAcceptQualificationRequestRequest :: Newtype AcceptQualificationRequestRequest _
 
 
 newtype AcceptQualificationRequestResponse = AcceptQualificationRequestResponse 
   { 
   }
+derive instance newtypeAcceptQualificationRequestResponse :: Newtype AcceptQualificationRequestResponse _
 
 
 newtype ApproveAssignmentRequest = ApproveAssignmentRequest 
@@ -224,11 +227,13 @@ newtype ApproveAssignmentRequest = ApproveAssignmentRequest
   , "RequesterFeedback" :: NullOrUndefined (String)
   , "OverrideRejection" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeApproveAssignmentRequest :: Newtype ApproveAssignmentRequest _
 
 
 newtype ApproveAssignmentResponse = ApproveAssignmentResponse 
   { 
   }
+derive instance newtypeApproveAssignmentResponse :: Newtype ApproveAssignmentResponse _
 
 
 -- | <p> The Assignment data structure represents a single assignment of a HIT to a Worker. The assignment tracks the Worker's efforts to complete the HIT, and contains the results for later retrieval. </p>
@@ -246,15 +251,19 @@ newtype Assignment = Assignment
   , "Answer" :: NullOrUndefined (String)
   , "RequesterFeedback" :: NullOrUndefined (String)
   }
+derive instance newtypeAssignment :: Newtype Assignment _
 
 
 newtype AssignmentList = AssignmentList (Array Assignment)
+derive instance newtypeAssignmentList :: Newtype AssignmentList _
 
 
 newtype AssignmentStatus = AssignmentStatus String
+derive instance newtypeAssignmentStatus :: Newtype AssignmentStatus _
 
 
 newtype AssignmentStatusList = AssignmentStatusList (Array AssignmentStatus)
+derive instance newtypeAssignmentStatusList :: Newtype AssignmentStatusList _
 
 
 newtype AssociateQualificationWithWorkerRequest = AssociateQualificationWithWorkerRequest 
@@ -263,11 +272,13 @@ newtype AssociateQualificationWithWorkerRequest = AssociateQualificationWithWork
   , "IntegerValue" :: NullOrUndefined (Int)
   , "SendNotification" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeAssociateQualificationWithWorkerRequest :: Newtype AssociateQualificationWithWorkerRequest _
 
 
 newtype AssociateQualificationWithWorkerResponse = AssociateQualificationWithWorkerResponse 
   { 
   }
+derive instance newtypeAssociateQualificationWithWorkerResponse :: Newtype AssociateQualificationWithWorkerResponse _
 
 
 -- | <p>An object representing a Bonus payment paid to a Worker.</p>
@@ -278,15 +289,19 @@ newtype BonusPayment = BonusPayment
   , "Reason" :: NullOrUndefined (String)
   , "GrantTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeBonusPayment :: Newtype BonusPayment _
 
 
 newtype BonusPaymentList = BonusPaymentList (Array BonusPayment)
+derive instance newtypeBonusPaymentList :: Newtype BonusPaymentList _
 
 
 newtype Comparator = Comparator String
+derive instance newtypeComparator :: Newtype Comparator _
 
 
 newtype CountryParameters = CountryParameters String
+derive instance newtypeCountryParameters :: Newtype CountryParameters _
 
 
 newtype CreateAdditionalAssignmentsForHITRequest = CreateAdditionalAssignmentsForHITRequest 
@@ -294,11 +309,13 @@ newtype CreateAdditionalAssignmentsForHITRequest = CreateAdditionalAssignmentsFo
   , "NumberOfAdditionalAssignments" :: (Int)
   , "UniqueRequestToken" :: NullOrUndefined (IdempotencyToken)
   }
+derive instance newtypeCreateAdditionalAssignmentsForHITRequest :: Newtype CreateAdditionalAssignmentsForHITRequest _
 
 
 newtype CreateAdditionalAssignmentsForHITResponse = CreateAdditionalAssignmentsForHITResponse 
   { 
   }
+derive instance newtypeCreateAdditionalAssignmentsForHITResponse :: Newtype CreateAdditionalAssignmentsForHITResponse _
 
 
 newtype CreateHITRequest = CreateHITRequest 
@@ -319,11 +336,13 @@ newtype CreateHITRequest = CreateHITRequest
   , "HITLayoutId" :: NullOrUndefined (EntityId)
   , "HITLayoutParameters" :: NullOrUndefined (HITLayoutParameterList)
   }
+derive instance newtypeCreateHITRequest :: Newtype CreateHITRequest _
 
 
 newtype CreateHITResponse = CreateHITResponse 
   { "HIT" :: NullOrUndefined (HIT)
   }
+derive instance newtypeCreateHITResponse :: Newtype CreateHITResponse _
 
 
 newtype CreateHITTypeRequest = CreateHITTypeRequest 
@@ -335,11 +354,13 @@ newtype CreateHITTypeRequest = CreateHITTypeRequest
   , "Description" :: (String)
   , "QualificationRequirements" :: NullOrUndefined (QualificationRequirementList)
   }
+derive instance newtypeCreateHITTypeRequest :: Newtype CreateHITTypeRequest _
 
 
 newtype CreateHITTypeResponse = CreateHITTypeResponse 
   { "HITTypeId" :: NullOrUndefined (EntityId)
   }
+derive instance newtypeCreateHITTypeResponse :: Newtype CreateHITTypeResponse _
 
 
 newtype CreateHITWithHITTypeRequest = CreateHITWithHITTypeRequest 
@@ -354,11 +375,13 @@ newtype CreateHITWithHITTypeRequest = CreateHITWithHITTypeRequest
   , "HITLayoutId" :: NullOrUndefined (EntityId)
   , "HITLayoutParameters" :: NullOrUndefined (HITLayoutParameterList)
   }
+derive instance newtypeCreateHITWithHITTypeRequest :: Newtype CreateHITWithHITTypeRequest _
 
 
 newtype CreateHITWithHITTypeResponse = CreateHITWithHITTypeResponse 
   { "HIT" :: NullOrUndefined (HIT)
   }
+derive instance newtypeCreateHITWithHITTypeResponse :: Newtype CreateHITWithHITTypeResponse _
 
 
 newtype CreateQualificationTypeRequest = CreateQualificationTypeRequest 
@@ -373,63 +396,76 @@ newtype CreateQualificationTypeRequest = CreateQualificationTypeRequest
   , "AutoGranted" :: NullOrUndefined (Boolean)
   , "AutoGrantedValue" :: NullOrUndefined (Int)
   }
+derive instance newtypeCreateQualificationTypeRequest :: Newtype CreateQualificationTypeRequest _
 
 
 newtype CreateQualificationTypeResponse = CreateQualificationTypeResponse 
   { "QualificationType" :: NullOrUndefined (QualificationType)
   }
+derive instance newtypeCreateQualificationTypeResponse :: Newtype CreateQualificationTypeResponse _
 
 
 newtype CreateWorkerBlockRequest = CreateWorkerBlockRequest 
   { "WorkerId" :: (CustomerId)
   , "Reason" :: (String)
   }
+derive instance newtypeCreateWorkerBlockRequest :: Newtype CreateWorkerBlockRequest _
 
 
 newtype CreateWorkerBlockResponse = CreateWorkerBlockResponse 
   { 
   }
+derive instance newtypeCreateWorkerBlockResponse :: Newtype CreateWorkerBlockResponse _
 
 
 -- | <p>A string representing a currency amount.</p>
 newtype CurrencyAmount = CurrencyAmount String
+derive instance newtypeCurrencyAmount :: Newtype CurrencyAmount _
 
 
 newtype CustomerId = CustomerId String
+derive instance newtypeCustomerId :: Newtype CustomerId _
 
 
 newtype CustomerIdList = CustomerIdList (Array CustomerId)
+derive instance newtypeCustomerIdList :: Newtype CustomerIdList _
 
 
 newtype DeleteHITRequest = DeleteHITRequest 
   { "HITId" :: (EntityId)
   }
+derive instance newtypeDeleteHITRequest :: Newtype DeleteHITRequest _
 
 
 newtype DeleteHITResponse = DeleteHITResponse 
   { 
   }
+derive instance newtypeDeleteHITResponse :: Newtype DeleteHITResponse _
 
 
 newtype DeleteQualificationTypeRequest = DeleteQualificationTypeRequest 
   { "QualificationTypeId" :: (EntityId)
   }
+derive instance newtypeDeleteQualificationTypeRequest :: Newtype DeleteQualificationTypeRequest _
 
 
 newtype DeleteQualificationTypeResponse = DeleteQualificationTypeResponse 
   { 
   }
+derive instance newtypeDeleteQualificationTypeResponse :: Newtype DeleteQualificationTypeResponse _
 
 
 newtype DeleteWorkerBlockRequest = DeleteWorkerBlockRequest 
   { "WorkerId" :: (CustomerId)
   , "Reason" :: NullOrUndefined (String)
   }
+derive instance newtypeDeleteWorkerBlockRequest :: Newtype DeleteWorkerBlockRequest _
 
 
 newtype DeleteWorkerBlockResponse = DeleteWorkerBlockResponse 
   { 
   }
+derive instance newtypeDeleteWorkerBlockResponse :: Newtype DeleteWorkerBlockResponse _
 
 
 newtype DisassociateQualificationFromWorkerRequest = DisassociateQualificationFromWorkerRequest 
@@ -437,87 +473,105 @@ newtype DisassociateQualificationFromWorkerRequest = DisassociateQualificationFr
   , "QualificationTypeId" :: (EntityId)
   , "Reason" :: NullOrUndefined (String)
   }
+derive instance newtypeDisassociateQualificationFromWorkerRequest :: Newtype DisassociateQualificationFromWorkerRequest _
 
 
 newtype DisassociateQualificationFromWorkerResponse = DisassociateQualificationFromWorkerResponse 
   { 
   }
+derive instance newtypeDisassociateQualificationFromWorkerResponse :: Newtype DisassociateQualificationFromWorkerResponse _
 
 
 newtype EntityId = EntityId String
+derive instance newtypeEntityId :: Newtype EntityId _
 
 
 newtype EventType = EventType String
+derive instance newtypeEventType :: Newtype EventType _
 
 
 newtype EventTypeList = EventTypeList (Array EventType)
+derive instance newtypeEventTypeList :: Newtype EventTypeList _
 
 
 newtype ExceptionMessage = ExceptionMessage String
+derive instance newtypeExceptionMessage :: Newtype ExceptionMessage _
 
 
 newtype GetAccountBalanceRequest = GetAccountBalanceRequest 
   { 
   }
+derive instance newtypeGetAccountBalanceRequest :: Newtype GetAccountBalanceRequest _
 
 
 newtype GetAccountBalanceResponse = GetAccountBalanceResponse 
   { "AvailableBalance" :: NullOrUndefined (CurrencyAmount)
   , "OnHoldBalance" :: NullOrUndefined (CurrencyAmount)
   }
+derive instance newtypeGetAccountBalanceResponse :: Newtype GetAccountBalanceResponse _
 
 
 newtype GetAssignmentRequest = GetAssignmentRequest 
   { "AssignmentId" :: (EntityId)
   }
+derive instance newtypeGetAssignmentRequest :: Newtype GetAssignmentRequest _
 
 
 newtype GetAssignmentResponse = GetAssignmentResponse 
   { "Assignment" :: NullOrUndefined (Assignment)
   , "HIT" :: NullOrUndefined (HIT)
   }
+derive instance newtypeGetAssignmentResponse :: Newtype GetAssignmentResponse _
 
 
 newtype GetFileUploadURLRequest = GetFileUploadURLRequest 
   { "AssignmentId" :: (EntityId)
   , "QuestionIdentifier" :: (String)
   }
+derive instance newtypeGetFileUploadURLRequest :: Newtype GetFileUploadURLRequest _
 
 
 newtype GetFileUploadURLResponse = GetFileUploadURLResponse 
   { "FileUploadURL" :: NullOrUndefined (String)
   }
+derive instance newtypeGetFileUploadURLResponse :: Newtype GetFileUploadURLResponse _
 
 
 newtype GetHITRequest = GetHITRequest 
   { "HITId" :: (EntityId)
   }
+derive instance newtypeGetHITRequest :: Newtype GetHITRequest _
 
 
 newtype GetHITResponse = GetHITResponse 
   { "HIT" :: NullOrUndefined (HIT)
   }
+derive instance newtypeGetHITResponse :: Newtype GetHITResponse _
 
 
 newtype GetQualificationScoreRequest = GetQualificationScoreRequest 
   { "QualificationTypeId" :: (EntityId)
   , "WorkerId" :: (CustomerId)
   }
+derive instance newtypeGetQualificationScoreRequest :: Newtype GetQualificationScoreRequest _
 
 
 newtype GetQualificationScoreResponse = GetQualificationScoreResponse 
   { "Qualification" :: NullOrUndefined (Qualification)
   }
+derive instance newtypeGetQualificationScoreResponse :: Newtype GetQualificationScoreResponse _
 
 
 newtype GetQualificationTypeRequest = GetQualificationTypeRequest 
   { "QualificationTypeId" :: (EntityId)
   }
+derive instance newtypeGetQualificationTypeRequest :: Newtype GetQualificationTypeRequest _
 
 
 newtype GetQualificationTypeResponse = GetQualificationTypeResponse 
   { "QualificationType" :: NullOrUndefined (QualificationType)
   }
+derive instance newtypeGetQualificationTypeResponse :: Newtype GetQualificationTypeResponse _
 
 
 -- | <p> The HIT data structure represents a single HIT, including all the information necessary for a Worker to accept and complete the HIT.</p>
@@ -544,6 +598,7 @@ newtype HIT = HIT
   , "NumberOfAssignmentsAvailable" :: NullOrUndefined (Int)
   , "NumberOfAssignmentsCompleted" :: NullOrUndefined (Int)
   }
+derive instance newtypeHIT :: Newtype HIT _
 
 
 -- | <p> The HITLayoutParameter data structure defines parameter values used with a HITLayout. A HITLayout is a reusable Amazon Mechanical Turk project template used to provide Human Intelligence Task (HIT) question data for CreateHIT. </p>
@@ -551,24 +606,31 @@ newtype HITLayoutParameter = HITLayoutParameter
   { "Name" :: (String)
   , "Value" :: (String)
   }
+derive instance newtypeHITLayoutParameter :: Newtype HITLayoutParameter _
 
 
 newtype HITLayoutParameterList = HITLayoutParameterList (Array HITLayoutParameter)
+derive instance newtypeHITLayoutParameterList :: Newtype HITLayoutParameterList _
 
 
 newtype HITList = HITList (Array HIT)
+derive instance newtypeHITList :: Newtype HITList _
 
 
 newtype HITReviewStatus = HITReviewStatus String
+derive instance newtypeHITReviewStatus :: Newtype HITReviewStatus _
 
 
 newtype HITStatus = HITStatus String
+derive instance newtypeHITStatus :: Newtype HITStatus _
 
 
 newtype IdempotencyToken = IdempotencyToken String
+derive instance newtypeIdempotencyToken :: Newtype IdempotencyToken _
 
 
 newtype IntegerList = IntegerList (Array Int)
+derive instance newtypeIntegerList :: Newtype IntegerList _
 
 
 newtype ListAssignmentsForHITRequest = ListAssignmentsForHITRequest 
@@ -577,6 +639,7 @@ newtype ListAssignmentsForHITRequest = ListAssignmentsForHITRequest
   , "MaxResults" :: NullOrUndefined (ResultSize)
   , "AssignmentStatuses" :: NullOrUndefined (AssignmentStatusList)
   }
+derive instance newtypeListAssignmentsForHITRequest :: Newtype ListAssignmentsForHITRequest _
 
 
 newtype ListAssignmentsForHITResponse = ListAssignmentsForHITResponse 
@@ -584,6 +647,7 @@ newtype ListAssignmentsForHITResponse = ListAssignmentsForHITResponse
   , "NumResults" :: NullOrUndefined (Int)
   , "Assignments" :: NullOrUndefined (AssignmentList)
   }
+derive instance newtypeListAssignmentsForHITResponse :: Newtype ListAssignmentsForHITResponse _
 
 
 newtype ListBonusPaymentsRequest = ListBonusPaymentsRequest 
@@ -592,6 +656,7 @@ newtype ListBonusPaymentsRequest = ListBonusPaymentsRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListBonusPaymentsRequest :: Newtype ListBonusPaymentsRequest _
 
 
 newtype ListBonusPaymentsResponse = ListBonusPaymentsResponse 
@@ -599,6 +664,7 @@ newtype ListBonusPaymentsResponse = ListBonusPaymentsResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "BonusPayments" :: NullOrUndefined (BonusPaymentList)
   }
+derive instance newtypeListBonusPaymentsResponse :: Newtype ListBonusPaymentsResponse _
 
 
 newtype ListHITsForQualificationTypeRequest = ListHITsForQualificationTypeRequest 
@@ -606,6 +672,7 @@ newtype ListHITsForQualificationTypeRequest = ListHITsForQualificationTypeReques
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListHITsForQualificationTypeRequest :: Newtype ListHITsForQualificationTypeRequest _
 
 
 newtype ListHITsForQualificationTypeResponse = ListHITsForQualificationTypeResponse 
@@ -613,12 +680,14 @@ newtype ListHITsForQualificationTypeResponse = ListHITsForQualificationTypeRespo
   , "NumResults" :: NullOrUndefined (Int)
   , "HITs" :: NullOrUndefined (HITList)
   }
+derive instance newtypeListHITsForQualificationTypeResponse :: Newtype ListHITsForQualificationTypeResponse _
 
 
 newtype ListHITsRequest = ListHITsRequest 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListHITsRequest :: Newtype ListHITsRequest _
 
 
 newtype ListHITsResponse = ListHITsResponse 
@@ -626,6 +695,7 @@ newtype ListHITsResponse = ListHITsResponse
   , "NumResults" :: NullOrUndefined (Int)
   , "HITs" :: NullOrUndefined (HITList)
   }
+derive instance newtypeListHITsResponse :: Newtype ListHITsResponse _
 
 
 newtype ListQualificationRequestsRequest = ListQualificationRequestsRequest 
@@ -633,6 +703,7 @@ newtype ListQualificationRequestsRequest = ListQualificationRequestsRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListQualificationRequestsRequest :: Newtype ListQualificationRequestsRequest _
 
 
 newtype ListQualificationRequestsResponse = ListQualificationRequestsResponse 
@@ -640,6 +711,7 @@ newtype ListQualificationRequestsResponse = ListQualificationRequestsResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "QualificationRequests" :: NullOrUndefined (QualificationRequestList)
   }
+derive instance newtypeListQualificationRequestsResponse :: Newtype ListQualificationRequestsResponse _
 
 
 newtype ListQualificationTypesRequest = ListQualificationTypesRequest 
@@ -649,6 +721,7 @@ newtype ListQualificationTypesRequest = ListQualificationTypesRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListQualificationTypesRequest :: Newtype ListQualificationTypesRequest _
 
 
 newtype ListQualificationTypesResponse = ListQualificationTypesResponse 
@@ -656,6 +729,7 @@ newtype ListQualificationTypesResponse = ListQualificationTypesResponse
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "QualificationTypes" :: NullOrUndefined (QualificationTypeList)
   }
+derive instance newtypeListQualificationTypesResponse :: Newtype ListQualificationTypesResponse _
 
 
 newtype ListReviewPolicyResultsForHITRequest = ListReviewPolicyResultsForHITRequest 
@@ -666,6 +740,7 @@ newtype ListReviewPolicyResultsForHITRequest = ListReviewPolicyResultsForHITRequ
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListReviewPolicyResultsForHITRequest :: Newtype ListReviewPolicyResultsForHITRequest _
 
 
 newtype ListReviewPolicyResultsForHITResponse = ListReviewPolicyResultsForHITResponse 
@@ -676,6 +751,7 @@ newtype ListReviewPolicyResultsForHITResponse = ListReviewPolicyResultsForHITRes
   , "HITReviewReport" :: NullOrUndefined (ReviewReport)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListReviewPolicyResultsForHITResponse :: Newtype ListReviewPolicyResultsForHITResponse _
 
 
 newtype ListReviewableHITsRequest = ListReviewableHITsRequest 
@@ -684,6 +760,7 @@ newtype ListReviewableHITsRequest = ListReviewableHITsRequest
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListReviewableHITsRequest :: Newtype ListReviewableHITsRequest _
 
 
 newtype ListReviewableHITsResponse = ListReviewableHITsResponse 
@@ -691,12 +768,14 @@ newtype ListReviewableHITsResponse = ListReviewableHITsResponse
   , "NumResults" :: NullOrUndefined (Int)
   , "HITs" :: NullOrUndefined (HITList)
   }
+derive instance newtypeListReviewableHITsResponse :: Newtype ListReviewableHITsResponse _
 
 
 newtype ListWorkerBlocksRequest = ListWorkerBlocksRequest 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListWorkerBlocksRequest :: Newtype ListWorkerBlocksRequest _
 
 
 newtype ListWorkerBlocksResponse = ListWorkerBlocksResponse 
@@ -704,6 +783,7 @@ newtype ListWorkerBlocksResponse = ListWorkerBlocksResponse
   , "NumResults" :: NullOrUndefined (Int)
   , "WorkerBlocks" :: NullOrUndefined (WorkerBlockList)
   }
+derive instance newtypeListWorkerBlocksResponse :: Newtype ListWorkerBlocksResponse _
 
 
 newtype ListWorkersWithQualificationTypeRequest = ListWorkersWithQualificationTypeRequest 
@@ -712,6 +792,7 @@ newtype ListWorkersWithQualificationTypeRequest = ListWorkersWithQualificationTy
   , "NextToken" :: NullOrUndefined (PaginationToken)
   , "MaxResults" :: NullOrUndefined (ResultSize)
   }
+derive instance newtypeListWorkersWithQualificationTypeRequest :: Newtype ListWorkersWithQualificationTypeRequest _
 
 
 newtype ListWorkersWithQualificationTypeResponse = ListWorkersWithQualificationTypeResponse 
@@ -719,6 +800,7 @@ newtype ListWorkersWithQualificationTypeResponse = ListWorkersWithQualificationT
   , "NumResults" :: NullOrUndefined (Int)
   , "Qualifications" :: NullOrUndefined (QualificationList)
   }
+derive instance newtypeListWorkersWithQualificationTypeResponse :: Newtype ListWorkersWithQualificationTypeResponse _
 
 
 -- | <p>The Locale data structure represents a geographical region or location.</p>
@@ -726,9 +808,11 @@ newtype Locale = Locale
   { "Country" :: (CountryParameters)
   , "Subdivision" :: NullOrUndefined (CountryParameters)
   }
+derive instance newtypeLocale :: Newtype Locale _
 
 
 newtype LocaleList = LocaleList (Array Locale)
+derive instance newtypeLocaleList :: Newtype LocaleList _
 
 
 -- | <p>The NotificationSpecification data structure describes a HIT event notification for a HIT type.</p>
@@ -738,12 +822,15 @@ newtype NotificationSpecification = NotificationSpecification
   , "Version" :: (String)
   , "EventTypes" :: (EventTypeList)
   }
+derive instance newtypeNotificationSpecification :: Newtype NotificationSpecification _
 
 
 newtype NotificationTransport = NotificationTransport String
+derive instance newtypeNotificationTransport :: Newtype NotificationTransport _
 
 
 newtype NotifyWorkersFailureCode = NotifyWorkersFailureCode String
+derive instance newtypeNotifyWorkersFailureCode :: Newtype NotifyWorkersFailureCode _
 
 
 -- | <p> When MTurk encounters an issue with notifying the Workers you specified, it returns back this object with failure details. </p>
@@ -752,9 +839,11 @@ newtype NotifyWorkersFailureStatus = NotifyWorkersFailureStatus
   , "NotifyWorkersFailureMessage" :: NullOrUndefined (String)
   , "WorkerId" :: NullOrUndefined (CustomerId)
   }
+derive instance newtypeNotifyWorkersFailureStatus :: Newtype NotifyWorkersFailureStatus _
 
 
 newtype NotifyWorkersFailureStatusList = NotifyWorkersFailureStatusList (Array NotifyWorkersFailureStatus)
+derive instance newtypeNotifyWorkersFailureStatusList :: Newtype NotifyWorkersFailureStatusList _
 
 
 newtype NotifyWorkersRequest = NotifyWorkersRequest 
@@ -762,15 +851,18 @@ newtype NotifyWorkersRequest = NotifyWorkersRequest
   , "MessageText" :: (String)
   , "WorkerIds" :: (CustomerIdList)
   }
+derive instance newtypeNotifyWorkersRequest :: Newtype NotifyWorkersRequest _
 
 
 newtype NotifyWorkersResponse = NotifyWorkersResponse 
   { "NotifyWorkersFailureStatuses" :: NullOrUndefined (NotifyWorkersFailureStatusList)
   }
+derive instance newtypeNotifyWorkersResponse :: Newtype NotifyWorkersResponse _
 
 
 -- | <p>If the previous response was incomplete (because there is more data to retrieve), Amazon Mechanical Turk returns a pagination token in the response. You can use this pagination token to retrieve the next set of results. </p>
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 -- | <p> This data structure is the data type for the AnswerKey parameter of the ScoreMyKnownAnswers/2011-09-01 Review Policy. </p>
@@ -778,9 +870,11 @@ newtype ParameterMapEntry = ParameterMapEntry
   { "Key" :: NullOrUndefined (String)
   , "Values" :: NullOrUndefined (StringList)
   }
+derive instance newtypeParameterMapEntry :: Newtype ParameterMapEntry _
 
 
 newtype ParameterMapEntryList = ParameterMapEntryList (Array ParameterMapEntry)
+derive instance newtypeParameterMapEntryList :: Newtype ParameterMapEntryList _
 
 
 -- | <p> Name of the parameter from the Review policy. </p>
@@ -789,9 +883,11 @@ newtype PolicyParameter = PolicyParameter
   , "Values" :: NullOrUndefined (StringList)
   , "MapEntries" :: NullOrUndefined (ParameterMapEntryList)
   }
+derive instance newtypePolicyParameter :: Newtype PolicyParameter _
 
 
 newtype PolicyParameterList = PolicyParameterList (Array PolicyParameter)
+derive instance newtypePolicyParameterList :: Newtype PolicyParameterList _
 
 
 -- | <p>The Qualification data structure represents a Qualification assigned to a user, including the Qualification type and the value (score).</p>
@@ -803,9 +899,11 @@ newtype Qualification = Qualification
   , "LocaleValue" :: NullOrUndefined (Locale)
   , "Status" :: NullOrUndefined (QualificationStatus)
   }
+derive instance newtypeQualification :: Newtype Qualification _
 
 
 newtype QualificationList = QualificationList (Array Qualification)
+derive instance newtypeQualificationList :: Newtype QualificationList _
 
 
 -- | <p> The QualificationRequest data structure represents a request a Worker has made for a Qualification. </p>
@@ -817,9 +915,11 @@ newtype QualificationRequest = QualificationRequest
   , "Answer" :: NullOrUndefined (String)
   , "SubmitTime" :: NullOrUndefined (Number)
   }
+derive instance newtypeQualificationRequest :: Newtype QualificationRequest _
 
 
 newtype QualificationRequestList = QualificationRequestList (Array QualificationRequest)
+derive instance newtypeQualificationRequestList :: Newtype QualificationRequestList _
 
 
 -- | <p> The QualificationRequirement data structure describes a Qualification that a Worker must have before the Worker is allowed to accept a HIT. A requirement may optionally state that a Worker must have the Qualification in order to preview the HIT. </p>
@@ -830,12 +930,15 @@ newtype QualificationRequirement = QualificationRequirement
   , "LocaleValues" :: NullOrUndefined (LocaleList)
   , "RequiredToPreview" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeQualificationRequirement :: Newtype QualificationRequirement _
 
 
 newtype QualificationRequirementList = QualificationRequirementList (Array QualificationRequirement)
+derive instance newtypeQualificationRequirementList :: Newtype QualificationRequirementList _
 
 
 newtype QualificationStatus = QualificationStatus String
+derive instance newtypeQualificationStatus :: Newtype QualificationStatus _
 
 
 -- | <p> The QualificationType data structure represents a Qualification type, a description of a property of a Worker that must match the requirements of a HIT for the Worker to be able to accept the HIT. The type also describes how a Worker can obtain a Qualification of that type, such as through a Qualification test. </p>
@@ -854,34 +957,41 @@ newtype QualificationType = QualificationType
   , "AutoGranted" :: NullOrUndefined (Boolean)
   , "AutoGrantedValue" :: NullOrUndefined (Int)
   }
+derive instance newtypeQualificationType :: Newtype QualificationType _
 
 
 newtype QualificationTypeList = QualificationTypeList (Array QualificationType)
+derive instance newtypeQualificationTypeList :: Newtype QualificationTypeList _
 
 
 newtype QualificationTypeStatus = QualificationTypeStatus String
+derive instance newtypeQualificationTypeStatus :: Newtype QualificationTypeStatus _
 
 
 newtype RejectAssignmentRequest = RejectAssignmentRequest 
   { "AssignmentId" :: (EntityId)
   , "RequesterFeedback" :: (String)
   }
+derive instance newtypeRejectAssignmentRequest :: Newtype RejectAssignmentRequest _
 
 
 newtype RejectAssignmentResponse = RejectAssignmentResponse 
   { 
   }
+derive instance newtypeRejectAssignmentResponse :: Newtype RejectAssignmentResponse _
 
 
 newtype RejectQualificationRequestRequest = RejectQualificationRequestRequest 
   { "QualificationRequestId" :: (String)
   , "Reason" :: NullOrUndefined (String)
   }
+derive instance newtypeRejectQualificationRequestRequest :: Newtype RejectQualificationRequestRequest _
 
 
 newtype RejectQualificationRequestResponse = RejectQualificationRequestResponse 
   { 
   }
+derive instance newtypeRejectQualificationRequestResponse :: Newtype RejectQualificationRequestResponse _
 
 
 -- | <p>Your request is invalid.</p>
@@ -889,9 +999,11 @@ newtype RequestError = RequestError
   { "Message" :: NullOrUndefined (ExceptionMessage)
   , "TurkErrorCode" :: NullOrUndefined (TurkErrorCode)
   }
+derive instance newtypeRequestError :: Newtype RequestError _
 
 
 newtype ResultSize = ResultSize Int
+derive instance newtypeResultSize :: Newtype ResultSize _
 
 
 -- | <p> Both the AssignmentReviewReport and the HITReviewReport elements contains the ReviewActionDetail data structure. This structure is returned multiple times for each action specified in the Review Policy. </p>
@@ -905,12 +1017,15 @@ newtype ReviewActionDetail = ReviewActionDetail
   , "Result" :: NullOrUndefined (String)
   , "ErrorCode" :: NullOrUndefined (String)
   }
+derive instance newtypeReviewActionDetail :: Newtype ReviewActionDetail _
 
 
 newtype ReviewActionDetailList = ReviewActionDetailList (Array ReviewActionDetail)
+derive instance newtypeReviewActionDetailList :: Newtype ReviewActionDetailList _
 
 
 newtype ReviewActionStatus = ReviewActionStatus String
+derive instance newtypeReviewActionStatus :: Newtype ReviewActionStatus _
 
 
 -- | <p> HIT Review Policy data structures represent HIT review policies, which you specify when you create a HIT. </p>
@@ -918,12 +1033,15 @@ newtype ReviewPolicy = ReviewPolicy
   { "PolicyName" :: (String)
   , "Parameters" :: NullOrUndefined (PolicyParameterList)
   }
+derive instance newtypeReviewPolicy :: Newtype ReviewPolicy _
 
 
 newtype ReviewPolicyLevel = ReviewPolicyLevel String
+derive instance newtypeReviewPolicyLevel :: Newtype ReviewPolicyLevel _
 
 
 newtype ReviewPolicyLevelList = ReviewPolicyLevelList (Array ReviewPolicyLevel)
+derive instance newtypeReviewPolicyLevelList :: Newtype ReviewPolicyLevelList _
 
 
 -- | <p> Contains both ReviewResult and ReviewAction elements for a particular HIT. </p>
@@ -931,6 +1049,7 @@ newtype ReviewReport = ReviewReport
   { "ReviewResults" :: NullOrUndefined (ReviewResultDetailList)
   , "ReviewActions" :: NullOrUndefined (ReviewActionDetailList)
   }
+derive instance newtypeReviewReport :: Newtype ReviewReport _
 
 
 -- | <p> This data structure is returned multiple times for each result specified in the Review Policy. </p>
@@ -942,12 +1061,15 @@ newtype ReviewResultDetail = ReviewResultDetail
   , "Key" :: NullOrUndefined (String)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeReviewResultDetail :: Newtype ReviewResultDetail _
 
 
 newtype ReviewResultDetailList = ReviewResultDetailList (Array ReviewResultDetail)
+derive instance newtypeReviewResultDetailList :: Newtype ReviewResultDetailList _
 
 
 newtype ReviewableHITStatus = ReviewableHITStatus String
+derive instance newtypeReviewableHITStatus :: Newtype ReviewableHITStatus _
 
 
 newtype SendBonusRequest = SendBonusRequest 
@@ -957,22 +1079,26 @@ newtype SendBonusRequest = SendBonusRequest
   , "Reason" :: (String)
   , "UniqueRequestToken" :: NullOrUndefined (IdempotencyToken)
   }
+derive instance newtypeSendBonusRequest :: Newtype SendBonusRequest _
 
 
 newtype SendBonusResponse = SendBonusResponse 
   { 
   }
+derive instance newtypeSendBonusResponse :: Newtype SendBonusResponse _
 
 
 newtype SendTestEventNotificationRequest = SendTestEventNotificationRequest 
   { "Notification" :: (NotificationSpecification)
   , "TestEventType" :: (EventType)
   }
+derive instance newtypeSendTestEventNotificationRequest :: Newtype SendTestEventNotificationRequest _
 
 
 newtype SendTestEventNotificationResponse = SendTestEventNotificationResponse 
   { 
   }
+derive instance newtypeSendTestEventNotificationResponse :: Newtype SendTestEventNotificationResponse _
 
 
 -- | <p>Amazon Mechanical Turk is temporarily unable to process your request. Try your call again.</p>
@@ -980,45 +1106,54 @@ newtype ServiceFault = ServiceFault
   { "Message" :: NullOrUndefined (ExceptionMessage)
   , "TurkErrorCode" :: NullOrUndefined (TurkErrorCode)
   }
+derive instance newtypeServiceFault :: Newtype ServiceFault _
 
 
 newtype StringList = StringList (Array String)
+derive instance newtypeStringList :: Newtype StringList _
 
 
 newtype TurkErrorCode = TurkErrorCode String
+derive instance newtypeTurkErrorCode :: Newtype TurkErrorCode _
 
 
 newtype UpdateExpirationForHITRequest = UpdateExpirationForHITRequest 
   { "HITId" :: (EntityId)
   , "ExpireAt" :: (Number)
   }
+derive instance newtypeUpdateExpirationForHITRequest :: Newtype UpdateExpirationForHITRequest _
 
 
 newtype UpdateExpirationForHITResponse = UpdateExpirationForHITResponse 
   { 
   }
+derive instance newtypeUpdateExpirationForHITResponse :: Newtype UpdateExpirationForHITResponse _
 
 
 newtype UpdateHITReviewStatusRequest = UpdateHITReviewStatusRequest 
   { "HITId" :: (EntityId)
   , "Revert" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateHITReviewStatusRequest :: Newtype UpdateHITReviewStatusRequest _
 
 
 newtype UpdateHITReviewStatusResponse = UpdateHITReviewStatusResponse 
   { 
   }
+derive instance newtypeUpdateHITReviewStatusResponse :: Newtype UpdateHITReviewStatusResponse _
 
 
 newtype UpdateHITTypeOfHITRequest = UpdateHITTypeOfHITRequest 
   { "HITId" :: (EntityId)
   , "HITTypeId" :: (EntityId)
   }
+derive instance newtypeUpdateHITTypeOfHITRequest :: Newtype UpdateHITTypeOfHITRequest _
 
 
 newtype UpdateHITTypeOfHITResponse = UpdateHITTypeOfHITResponse 
   { 
   }
+derive instance newtypeUpdateHITTypeOfHITResponse :: Newtype UpdateHITTypeOfHITResponse _
 
 
 newtype UpdateNotificationSettingsRequest = UpdateNotificationSettingsRequest 
@@ -1026,11 +1161,13 @@ newtype UpdateNotificationSettingsRequest = UpdateNotificationSettingsRequest
   , "Notification" :: NullOrUndefined (NotificationSpecification)
   , "Active" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateNotificationSettingsRequest :: Newtype UpdateNotificationSettingsRequest _
 
 
 newtype UpdateNotificationSettingsResponse = UpdateNotificationSettingsResponse 
   { 
   }
+derive instance newtypeUpdateNotificationSettingsResponse :: Newtype UpdateNotificationSettingsResponse _
 
 
 newtype UpdateQualificationTypeRequest = UpdateQualificationTypeRequest 
@@ -1044,11 +1181,13 @@ newtype UpdateQualificationTypeRequest = UpdateQualificationTypeRequest
   , "AutoGranted" :: NullOrUndefined (Boolean)
   , "AutoGrantedValue" :: NullOrUndefined (Int)
   }
+derive instance newtypeUpdateQualificationTypeRequest :: Newtype UpdateQualificationTypeRequest _
 
 
 newtype UpdateQualificationTypeResponse = UpdateQualificationTypeResponse 
   { "QualificationType" :: NullOrUndefined (QualificationType)
   }
+derive instance newtypeUpdateQualificationTypeResponse :: Newtype UpdateQualificationTypeResponse _
 
 
 -- | <p> The WorkerBlock data structure represents a Worker who has been blocked. It has two elements: the WorkerId and the Reason for the block. </p>
@@ -1056,6 +1195,8 @@ newtype WorkerBlock = WorkerBlock
   { "WorkerId" :: NullOrUndefined (CustomerId)
   , "Reason" :: NullOrUndefined (String)
   }
+derive instance newtypeWorkerBlock :: Newtype WorkerBlock _
 
 
 newtype WorkerBlockList = WorkerBlockList (Array WorkerBlock)
+derive instance newtypeWorkerBlockList :: Newtype WorkerBlockList _

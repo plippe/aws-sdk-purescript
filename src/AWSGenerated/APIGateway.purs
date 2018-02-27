@@ -6,6 +6,7 @@ module AWS.APIGateway where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -605,6 +606,7 @@ newtype AccessLogSettings = AccessLogSettings
   { "Format'" :: NullOrUndefined (String)
   , "DestinationArn'" :: NullOrUndefined (String)
   }
+derive instance newtypeAccessLogSettings :: Newtype AccessLogSettings _
 
 
 -- | <p>Represents an AWS account that is associated with API Gateway.</p> <div class="remarks"> <p>To view the account info, call <code>GET</code> on this resource.</p> <h4>Error Codes</h4> <p>The following exception may be thrown when the request fails.</p> <ul> <li>UnauthorizedException</li> <li>NotFoundException</li> <li>TooManyRequestsException</li> </ul> <p>For detailed error code information, including the corresponding HTTP Status Codes, see <a href="http://docs.aws.amazon.com/apigateway/api-reference/handling-errors/#api-error-codes">API Gateway Error Codes</a></p> <h4>Example: Get the information about an account.</h4> <h5>Request</h5> <pre><code>GET /account HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160531T184618Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash} </code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/account-apigateway-{rel}.html", "name": "account", "templated": true }, "self": { "href": "/account" }, "account:update": { "href": "/account" } }, "cloudwatchRoleArn": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "throttleSettings": { "rateLimit": 500, "burstLimit": 1000 } } </code></pre> <p>In addition to making the REST API call directly, you can use the AWS CLI and an AWS SDK to access this resource.</p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-limits.html">API Gateway Limits</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html">Developer Guide</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-account.html">AWS CLI</a> </div>
@@ -614,6 +616,7 @@ newtype Account = Account
   , "Features'" :: NullOrUndefined (ListOfString)
   , "ApiKeyVersion'" :: NullOrUndefined (String)
   }
+derive instance newtypeAccount :: Newtype Account _
 
 
 -- | <p>A resource that can be distributed to callers for executing <a>Method</a> resources that require an API key. API keys can be mapped to any <a>Stage</a> on any <a>RestApi</a>, which indicates that the callers with the API key can make requests to that stage.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
@@ -628,6 +631,7 @@ newtype ApiKey = ApiKey
   , "LastUpdatedDate'" :: NullOrUndefined (Number)
   , "StageKeys'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeApiKey :: Newtype ApiKey _
 
 
 -- | <p>The identifier of an <a>ApiKey</a> used in a <a>UsagePlan</a>.</p>
@@ -635,9 +639,11 @@ newtype ApiKeyIds = ApiKeyIds
   { "Ids'" :: NullOrUndefined (ListOfString)
   , "Warnings'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeApiKeyIds :: Newtype ApiKeyIds _
 
 
 newtype ApiKeySourceType = ApiKeySourceType String
+derive instance newtypeApiKeySourceType :: Newtype ApiKeySourceType _
 
 
 -- | <p>Represents a collection of API keys as represented by an <a>ApiKeys</a> resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-api-keys.html">Use API Keys</a> </div>
@@ -646,9 +652,11 @@ newtype ApiKeys = ApiKeys
   , "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfApiKey)
   }
+derive instance newtypeApiKeys :: Newtype ApiKeys _
 
 
 newtype ApiKeysFormat = ApiKeysFormat String
+derive instance newtypeApiKeysFormat :: Newtype ApiKeysFormat _
 
 
 -- | <p>API stage name of the associated API stage in a usage plan.</p>
@@ -656,6 +664,7 @@ newtype ApiStage = ApiStage
   { "ApiId'" :: NullOrUndefined (String)
   , "Stage'" :: NullOrUndefined (String)
   }
+derive instance newtypeApiStage :: Newtype ApiStage _
 
 
 -- | <p>Represents an authorization layer for methods. If enabled on a method, API Gateway will activate the authorizer when a client calls the method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
@@ -671,10 +680,12 @@ newtype Authorizer = Authorizer
   , "IdentityValidationExpression'" :: NullOrUndefined (String)
   , "AuthorizerResultTtlInSeconds'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeAuthorizer :: Newtype Authorizer _
 
 
 -- | <p>[Required] The authorizer type. Valid values are <code>TOKEN</code> for a Lambda function using a single authorization token submitted in a custom header, <code>REQUEST</code> for a Lambda function using incoming request parameters, and <code>COGNITO_USER_POOLS</code> for using an Amazon Cognito user pool.</p>
 newtype AuthorizerType = AuthorizerType String
+derive instance newtypeAuthorizerType :: Newtype AuthorizerType _
 
 
 -- | <p>Represents a collection of <a>Authorizer</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorization</a> </div>
@@ -682,12 +693,14 @@ newtype Authorizers = Authorizers
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfAuthorizer)
   }
+derive instance newtypeAuthorizers :: Newtype Authorizers _
 
 
 -- | <p>The submitted request is not valid, for example, the input is incomplete or incorrect. See the accompanying error message for details.</p>
 newtype BadRequestException = BadRequestException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeBadRequestException :: Newtype BadRequestException _
 
 
 -- | <p>Represents the base path that callers of the API must provide as part of the URL after the domain name.</p> <div class="remarks">A custom domain name plus a <code>BasePathMapping</code> specification identifies a deployed <a>RestApi</a> in a given stage of the owner <a>Account</a>.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
@@ -696,6 +709,7 @@ newtype BasePathMapping = BasePathMapping
   , "RestApiId'" :: NullOrUndefined (String)
   , "Stage'" :: NullOrUndefined (String)
   }
+derive instance newtypeBasePathMapping :: Newtype BasePathMapping _
 
 
 -- | <p>Represents a collection of <a>BasePathMapping</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Custom Domain Names</a> </div>
@@ -703,14 +717,17 @@ newtype BasePathMappings = BasePathMappings
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfBasePathMapping)
   }
+derive instance newtypeBasePathMappings :: Newtype BasePathMappings _
 
 
 -- | <p>Returns the size of the <b>CacheCluster</b>.</p>
 newtype CacheClusterSize = CacheClusterSize String
+derive instance newtypeCacheClusterSize :: Newtype CacheClusterSize _
 
 
 -- | <p>Returns the status of the <b>CacheCluster</b>.</p>
 newtype CacheClusterStatus = CacheClusterStatus String
+derive instance newtypeCacheClusterStatus :: Newtype CacheClusterStatus _
 
 
 -- | <p>Configuration settings of a canary deployment.</p>
@@ -720,6 +737,7 @@ newtype CanarySettings = CanarySettings
   , "StageVariableOverrides'" :: NullOrUndefined (MapOfStringToString)
   , "UseStageCache'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCanarySettings :: Newtype CanarySettings _
 
 
 -- | <p>Represents a client certificate used to configure client-side SSL authentication while sending requests to the integration endpoint.</p> <div class="remarks">Client certificates are used to authenticate an API by the backend server. To authenticate an API client (or user), use IAM roles and policies, a custom <a>Authorizer</a> or an Amazon Cognito user pool.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
@@ -730,6 +748,7 @@ newtype ClientCertificate = ClientCertificate
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "ExpirationDate'" :: NullOrUndefined (Number)
   }
+derive instance newtypeClientCertificate :: Newtype ClientCertificate _
 
 
 -- | <p>Represents a collection of <a>ClientCertificate</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-client-side-ssl-authentication.html">Use Client-Side Certificate</a> </div>
@@ -737,18 +756,22 @@ newtype ClientCertificates = ClientCertificates
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfClientCertificate)
   }
+derive instance newtypeClientCertificates :: Newtype ClientCertificates _
 
 
 -- | <p>The request configuration has conflicts. For details, see the accompanying error message.</p>
 newtype ConflictException = ConflictException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeConflictException :: Newtype ConflictException _
 
 
 newtype ConnectionType = ConnectionType String
+derive instance newtypeConnectionType :: Newtype ConnectionType _
 
 
 newtype ContentHandlingStrategy = ContentHandlingStrategy String
+derive instance newtypeContentHandlingStrategy :: Newtype ContentHandlingStrategy _
 
 
 -- | <p>Request to create an <a>ApiKey</a> resource.</p>
@@ -761,6 +784,7 @@ newtype CreateApiKeyRequest = CreateApiKeyRequest
   , "StageKeys'" :: NullOrUndefined (ListOfStageKeys)
   , "CustomerId'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateApiKeyRequest :: Newtype CreateApiKeyRequest _
 
 
 -- | <p>Request to add a new <a>Authorizer</a> to an existing <a>RestApi</a> resource.</p>
@@ -776,6 +800,7 @@ newtype CreateAuthorizerRequest = CreateAuthorizerRequest
   , "IdentityValidationExpression'" :: NullOrUndefined (String)
   , "AuthorizerResultTtlInSeconds'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeCreateAuthorizerRequest :: Newtype CreateAuthorizerRequest _
 
 
 -- | <p>Requests API Gateway to create a new <a>BasePathMapping</a> resource.</p>
@@ -785,6 +810,7 @@ newtype CreateBasePathMappingRequest = CreateBasePathMappingRequest
   , "RestApiId'" :: (String)
   , "Stage'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateBasePathMappingRequest :: Newtype CreateBasePathMappingRequest _
 
 
 -- | <p>Requests API Gateway to create a <a>Deployment</a> resource.</p>
@@ -798,6 +824,7 @@ newtype CreateDeploymentRequest = CreateDeploymentRequest
   , "Variables'" :: NullOrUndefined (MapOfStringToString)
   , "CanarySettings'" :: NullOrUndefined (DeploymentCanarySettings)
   }
+derive instance newtypeCreateDeploymentRequest :: Newtype CreateDeploymentRequest _
 
 
 -- | <p>Creates a new documentation part of a given API.</p>
@@ -806,6 +833,7 @@ newtype CreateDocumentationPartRequest = CreateDocumentationPartRequest
   , "Location'" :: (DocumentationPartLocation)
   , "Properties'" :: (String)
   }
+derive instance newtypeCreateDocumentationPartRequest :: Newtype CreateDocumentationPartRequest _
 
 
 -- | <p>Creates a new documentation version of a given API.</p>
@@ -815,6 +843,7 @@ newtype CreateDocumentationVersionRequest = CreateDocumentationVersionRequest
   , "StageName'" :: NullOrUndefined (String)
   , "Description'" :: NullOrUndefined (String)
   }
+derive instance newtypeCreateDocumentationVersionRequest :: Newtype CreateDocumentationVersionRequest _
 
 
 -- | <p>A request to create a new domain name.</p>
@@ -829,6 +858,7 @@ newtype CreateDomainNameRequest = CreateDomainNameRequest
   , "RegionalCertificateArn'" :: NullOrUndefined (String)
   , "EndpointConfiguration'" :: NullOrUndefined (EndpointConfiguration)
   }
+derive instance newtypeCreateDomainNameRequest :: Newtype CreateDomainNameRequest _
 
 
 -- | <p>Request to add a new <a>Model</a> to an existing <a>RestApi</a> resource.</p>
@@ -839,6 +869,7 @@ newtype CreateModelRequest = CreateModelRequest
   , "Schema'" :: NullOrUndefined (String)
   , "ContentType'" :: (String)
   }
+derive instance newtypeCreateModelRequest :: Newtype CreateModelRequest _
 
 
 -- | <p>Creates a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
@@ -848,6 +879,7 @@ newtype CreateRequestValidatorRequest = CreateRequestValidatorRequest
   , "ValidateRequestBody'" :: NullOrUndefined (Boolean)
   , "ValidateRequestParameters'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCreateRequestValidatorRequest :: Newtype CreateRequestValidatorRequest _
 
 
 -- | <p>Requests API Gateway to create a <a>Resource</a> resource.</p>
@@ -856,6 +888,7 @@ newtype CreateResourceRequest = CreateResourceRequest
   , "ParentId'" :: (String)
   , "PathPart'" :: (String)
   }
+derive instance newtypeCreateResourceRequest :: Newtype CreateResourceRequest _
 
 
 -- | <p>The POST Request to add a new <a>RestApi</a> resource to your collection.</p>
@@ -869,6 +902,7 @@ newtype CreateRestApiRequest = CreateRestApiRequest
   , "ApiKeySource'" :: NullOrUndefined (ApiKeySourceType)
   , "EndpointConfiguration'" :: NullOrUndefined (EndpointConfiguration)
   }
+derive instance newtypeCreateRestApiRequest :: Newtype CreateRestApiRequest _
 
 
 -- | <p>Requests API Gateway to create a <a>Stage</a> resource.</p>
@@ -884,6 +918,7 @@ newtype CreateStageRequest = CreateStageRequest
   , "CanarySettings'" :: NullOrUndefined (CanarySettings)
   , "Tags'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeCreateStageRequest :: Newtype CreateStageRequest _
 
 
 -- | <p>The POST request to create a usage plan key for adding an existing API key to a usage plan.</p>
@@ -892,6 +927,7 @@ newtype CreateUsagePlanKeyRequest = CreateUsagePlanKeyRequest
   , "KeyId'" :: (String)
   , "KeyType'" :: (String)
   }
+derive instance newtypeCreateUsagePlanKeyRequest :: Newtype CreateUsagePlanKeyRequest _
 
 
 -- | <p>The POST request to create a usage plan with the name, description, throttle limits and quota limits, as well as the associated API stages, specified in the payload.</p>
@@ -902,6 +938,7 @@ newtype CreateUsagePlanRequest = CreateUsagePlanRequest
   , "Throttle'" :: NullOrUndefined (ThrottleSettings)
   , "Quota'" :: NullOrUndefined (QuotaSettings)
   }
+derive instance newtypeCreateUsagePlanRequest :: Newtype CreateUsagePlanRequest _
 
 
 -- | <p>Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.</p>
@@ -910,12 +947,14 @@ newtype CreateVpcLinkRequest = CreateVpcLinkRequest
   , "Description'" :: NullOrUndefined (String)
   , "TargetArns'" :: (ListOfString)
   }
+derive instance newtypeCreateVpcLinkRequest :: Newtype CreateVpcLinkRequest _
 
 
 -- | <p>A request to delete the <a>ApiKey</a> resource.</p>
 newtype DeleteApiKeyRequest = DeleteApiKeyRequest 
   { "ApiKey'" :: (String)
   }
+derive instance newtypeDeleteApiKeyRequest :: Newtype DeleteApiKeyRequest _
 
 
 -- | <p>Request to delete an existing <a>Authorizer</a> resource.</p>
@@ -923,6 +962,7 @@ newtype DeleteAuthorizerRequest = DeleteAuthorizerRequest
   { "RestApiId'" :: (String)
   , "AuthorizerId'" :: (String)
   }
+derive instance newtypeDeleteAuthorizerRequest :: Newtype DeleteAuthorizerRequest _
 
 
 -- | <p>A request to delete the <a>BasePathMapping</a> resource.</p>
@@ -930,12 +970,14 @@ newtype DeleteBasePathMappingRequest = DeleteBasePathMappingRequest
   { "DomainName'" :: (String)
   , "BasePath'" :: (String)
   }
+derive instance newtypeDeleteBasePathMappingRequest :: Newtype DeleteBasePathMappingRequest _
 
 
 -- | <p>A request to delete the <a>ClientCertificate</a> resource.</p>
 newtype DeleteClientCertificateRequest = DeleteClientCertificateRequest 
   { "ClientCertificateId'" :: (String)
   }
+derive instance newtypeDeleteClientCertificateRequest :: Newtype DeleteClientCertificateRequest _
 
 
 -- | <p>Requests API Gateway to delete a <a>Deployment</a> resource.</p>
@@ -943,6 +985,7 @@ newtype DeleteDeploymentRequest = DeleteDeploymentRequest
   { "RestApiId'" :: (String)
   , "DeploymentId'" :: (String)
   }
+derive instance newtypeDeleteDeploymentRequest :: Newtype DeleteDeploymentRequest _
 
 
 -- | <p>Deletes an existing documentation part of an API.</p>
@@ -950,6 +993,7 @@ newtype DeleteDocumentationPartRequest = DeleteDocumentationPartRequest
   { "RestApiId'" :: (String)
   , "DocumentationPartId'" :: (String)
   }
+derive instance newtypeDeleteDocumentationPartRequest :: Newtype DeleteDocumentationPartRequest _
 
 
 -- | <p>Deletes an existing documentation version of an API.</p>
@@ -957,12 +1001,14 @@ newtype DeleteDocumentationVersionRequest = DeleteDocumentationVersionRequest
   { "RestApiId'" :: (String)
   , "DocumentationVersion'" :: (String)
   }
+derive instance newtypeDeleteDocumentationVersionRequest :: Newtype DeleteDocumentationVersionRequest _
 
 
 -- | <p>A request to delete the <a>DomainName</a> resource.</p>
 newtype DeleteDomainNameRequest = DeleteDomainNameRequest 
   { "DomainName'" :: (String)
   }
+derive instance newtypeDeleteDomainNameRequest :: Newtype DeleteDomainNameRequest _
 
 
 -- | <p>Clears any customization of a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a> and resets it with the default settings.</p>
@@ -970,6 +1016,7 @@ newtype DeleteGatewayResponseRequest = DeleteGatewayResponseRequest
   { "RestApiId'" :: (String)
   , "ResponseType'" :: (GatewayResponseType)
   }
+derive instance newtypeDeleteGatewayResponseRequest :: Newtype DeleteGatewayResponseRequest _
 
 
 -- | <p>Represents a delete integration request.</p>
@@ -978,6 +1025,7 @@ newtype DeleteIntegrationRequest = DeleteIntegrationRequest
   , "ResourceId'" :: (String)
   , "HttpMethod'" :: (String)
   }
+derive instance newtypeDeleteIntegrationRequest :: Newtype DeleteIntegrationRequest _
 
 
 -- | <p>Represents a delete integration response request.</p>
@@ -987,6 +1035,7 @@ newtype DeleteIntegrationResponseRequest = DeleteIntegrationResponseRequest
   , "HttpMethod'" :: (String)
   , "StatusCode'" :: (StatusCode)
   }
+derive instance newtypeDeleteIntegrationResponseRequest :: Newtype DeleteIntegrationResponseRequest _
 
 
 -- | <p>Request to delete an existing <a>Method</a> resource.</p>
@@ -995,6 +1044,7 @@ newtype DeleteMethodRequest = DeleteMethodRequest
   , "ResourceId'" :: (String)
   , "HttpMethod'" :: (String)
   }
+derive instance newtypeDeleteMethodRequest :: Newtype DeleteMethodRequest _
 
 
 -- | <p>A request to delete an existing <a>MethodResponse</a> resource.</p>
@@ -1004,6 +1054,7 @@ newtype DeleteMethodResponseRequest = DeleteMethodResponseRequest
   , "HttpMethod'" :: (String)
   , "StatusCode'" :: (StatusCode)
   }
+derive instance newtypeDeleteMethodResponseRequest :: Newtype DeleteMethodResponseRequest _
 
 
 -- | <p>Request to delete an existing model in an existing <a>RestApi</a> resource.</p>
@@ -1011,6 +1062,7 @@ newtype DeleteModelRequest = DeleteModelRequest
   { "RestApiId'" :: (String)
   , "ModelName'" :: (String)
   }
+derive instance newtypeDeleteModelRequest :: Newtype DeleteModelRequest _
 
 
 -- | <p>Deletes a specified <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
@@ -1018,6 +1070,7 @@ newtype DeleteRequestValidatorRequest = DeleteRequestValidatorRequest
   { "RestApiId'" :: (String)
   , "RequestValidatorId'" :: (String)
   }
+derive instance newtypeDeleteRequestValidatorRequest :: Newtype DeleteRequestValidatorRequest _
 
 
 -- | <p>Request to delete a <a>Resource</a>.</p>
@@ -1025,12 +1078,14 @@ newtype DeleteResourceRequest = DeleteResourceRequest
   { "RestApiId'" :: (String)
   , "ResourceId'" :: (String)
   }
+derive instance newtypeDeleteResourceRequest :: Newtype DeleteResourceRequest _
 
 
 -- | <p>Request to delete the specified API from your collection.</p>
 newtype DeleteRestApiRequest = DeleteRestApiRequest 
   { "RestApiId'" :: (String)
   }
+derive instance newtypeDeleteRestApiRequest :: Newtype DeleteRestApiRequest _
 
 
 -- | <p>Requests API Gateway to delete a <a>Stage</a> resource.</p>
@@ -1038,6 +1093,7 @@ newtype DeleteStageRequest = DeleteStageRequest
   { "RestApiId'" :: (String)
   , "StageName'" :: (String)
   }
+derive instance newtypeDeleteStageRequest :: Newtype DeleteStageRequest _
 
 
 -- | <p>The DELETE request to delete a usage plan key and remove the underlying API key from the associated usage plan.</p>
@@ -1045,18 +1101,21 @@ newtype DeleteUsagePlanKeyRequest = DeleteUsagePlanKeyRequest
   { "UsagePlanId'" :: (String)
   , "KeyId'" :: (String)
   }
+derive instance newtypeDeleteUsagePlanKeyRequest :: Newtype DeleteUsagePlanKeyRequest _
 
 
 -- | <p>The DELETE request to delete a usage plan of a given plan Id.</p>
 newtype DeleteUsagePlanRequest = DeleteUsagePlanRequest 
   { "UsagePlanId'" :: (String)
   }
+derive instance newtypeDeleteUsagePlanRequest :: Newtype DeleteUsagePlanRequest _
 
 
 -- | <p>Deletes an existing <a>VpcLink</a> of a specified identifier.</p>
 newtype DeleteVpcLinkRequest = DeleteVpcLinkRequest 
   { "VpcLinkId'" :: (String)
   }
+derive instance newtypeDeleteVpcLinkRequest :: Newtype DeleteVpcLinkRequest _
 
 
 -- | <p>An immutable representation of a <a>RestApi</a> resource that can be called by users using <a>Stages</a>. A deployment must be associated with a <a>Stage</a> for it to be callable over the Internet.</p> <div class="remarks">To create a deployment, call <code>POST</code> on the <a>Deployments</a> resource of a <a>RestApi</a>. To view, update, or delete a deployment, call <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> on the specified deployment resource (<code>/restapis/{restapi_id}/deployments/{deployment_id}</code>).</div> <div class="seeAlso"><a>RestApi</a>, <a>Deployments</a>, <a>Stage</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
@@ -1066,6 +1125,7 @@ newtype Deployment = Deployment
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "ApiSummary'" :: NullOrUndefined (PathToMapOfMethodSnapshot)
   }
+derive instance newtypeDeployment :: Newtype Deployment _
 
 
 -- | <p>The input configuration for a canary deployment.</p>
@@ -1074,6 +1134,7 @@ newtype DeploymentCanarySettings = DeploymentCanarySettings
   , "StageVariableOverrides'" :: NullOrUndefined (MapOfStringToString)
   , "UseStageCache'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeDeploymentCanarySettings :: Newtype DeploymentCanarySettings _
 
 
 -- | <p>Represents a collection resource that contains zero or more references to your existing deployments, and links that guide you on how to interact with your collection. The collection offers a paginated view of the contained deployments.</p> <div class="remarks">To create a new deployment of a <a>RestApi</a>, make a <code>POST</code> request against this resource. To view, update, or delete an existing deployment, make a <code>GET</code>, <code>PATCH</code>, or <code>DELETE</code> request, respectively, on a specified <a>Deployment</a> resource.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploying an API</a>, <a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-deployment.html">AWS CLI</a>, <a href="https://aws.amazon.com/tools/">AWS SDKs</a> </div>
@@ -1081,6 +1142,7 @@ newtype Deployments = Deployments
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfDeployment)
   }
+derive instance newtypeDeployments :: Newtype Deployments _
 
 
 -- | <p>A documentation part for a targeted API entity.</p> <div class="remarks"> <p>A documentation part consists of a content map (<code>properties</code>) and a target (<code>location</code>). The target specifies an API entity to which the documentation content applies. The supported API entity types are <code>API</code>, <code>AUTHORIZER</code>, <code>MODEL</code>, <code>RESOURCE</code>, <code>METHOD</code>, <code>PATH_PARAMETER</code>, <code>QUERY_PARAMETER</code>, <code>REQUEST_HEADER</code>, <code>REQUEST_BODY</code>, <code>RESPONSE</code>, <code>RESPONSE_HEADER</code>, and <code>RESPONSE_BODY</code>. Valid <code>location</code> fields depend on the API entity type. All valid fields are not required.</p> <p>The content map is a JSON string of API-specific key-value pairs. Although an API can use any shape for the content map, only the Swagger-compliant documentation fields will be injected into the associated API entity definition in the exported Swagger definition file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationParts</a> </div>
@@ -1089,6 +1151,7 @@ newtype DocumentationPart = DocumentationPart
   , "Location'" :: NullOrUndefined (DocumentationPartLocation)
   , "Properties'" :: NullOrUndefined (String)
   }
+derive instance newtypeDocumentationPart :: Newtype DocumentationPart _
 
 
 -- | <p>A collection of the imported <a>DocumentationPart</a> identifiers.</p> <div class="remarks">This is used to return the result when documentation parts in an external (e.g., Swagger) file are imported into API Gateway</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a href="http://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/">documentationpart:import</a>, <a>DocumentationPart</a> </div>
@@ -1096,6 +1159,7 @@ newtype DocumentationPartIds = DocumentationPartIds
   { "Ids'" :: NullOrUndefined (ListOfString)
   , "Warnings'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeDocumentationPartIds :: Newtype DocumentationPartIds _
 
 
 -- | <p>Specifies the target API entity to which the documentation applies.</p>
@@ -1106,12 +1170,15 @@ newtype DocumentationPartLocation = DocumentationPartLocation
   , "StatusCode'" :: NullOrUndefined (DocumentationPartLocationStatusCode)
   , "Name'" :: NullOrUndefined (String)
   }
+derive instance newtypeDocumentationPartLocation :: Newtype DocumentationPartLocation _
 
 
 newtype DocumentationPartLocationStatusCode = DocumentationPartLocationStatusCode String
+derive instance newtypeDocumentationPartLocationStatusCode :: Newtype DocumentationPartLocationStatusCode _
 
 
 newtype DocumentationPartType = DocumentationPartType String
+derive instance newtypeDocumentationPartType :: Newtype DocumentationPartType _
 
 
 -- | <p>The collection of documentation parts of an API.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a> </div>
@@ -1119,6 +1186,7 @@ newtype DocumentationParts = DocumentationParts
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfDocumentationPart)
   }
+derive instance newtypeDocumentationParts :: Newtype DocumentationParts _
 
 
 -- | <p>A snapshot of the documentation of an API.</p> <div class="remarks"><p>Publishing API documentation involves creating a documentation version associated with an API stage and exporting the versioned documentation to an external (e.g., Swagger) file.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersions</a> </div>
@@ -1127,6 +1195,7 @@ newtype DocumentationVersion = DocumentationVersion
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "Description'" :: NullOrUndefined (String)
   }
+derive instance newtypeDocumentationVersion :: Newtype DocumentationVersion _
 
 
 -- | <p>The collection of documentation snapshots of an API. </p> <div class="remarks"><p>Use the <a>DocumentationVersions</a> to manage documentation snapshots associated with various API stages.</p></div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html">Documenting an API</a>, <a>DocumentationPart</a>, <a>DocumentationVersion</a> </div>
@@ -1134,6 +1203,7 @@ newtype DocumentationVersions = DocumentationVersions
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfDocumentationVersion)
   }
+derive instance newtypeDocumentationVersions :: Newtype DocumentationVersions _
 
 
 -- | <p>Represents a custom domain name as a user-friendly host name of an API (<a>RestApi</a>).</p> <div class="Remarks"> <p>When you deploy an API, API Gateway creates a default host name for the API. This default API host name is of the <code>{restapi-id}.execute-api.{region}.amazonaws.com</code> format. With the default host name, you can access the API's root resource with the URL of <code>https://{restapi-id}.execute-api.{region}.amazonaws.com/{stage}/</code>. When you set up a custom domain name of <code>apis.example.com</code> for this API, you can then access the same resource using the URL of the <code>https://apis.examples.com/myApi</code>, where <code>myApi</code> is the base path mapping (<a>BasePathMapping</a>) of your API under the custom domain name. </p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Set a Custom Host Name for an API</a> </div>
@@ -1150,6 +1220,7 @@ newtype DomainName = DomainName
   , "DistributionHostedZoneId'" :: NullOrUndefined (String)
   , "EndpointConfiguration'" :: NullOrUndefined (EndpointConfiguration)
   }
+derive instance newtypeDomainName :: Newtype DomainName _
 
 
 -- | <p>Represents a collection of <a>DomainName</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html">Use Client-Side Certificate</a> </div>
@@ -1157,16 +1228,19 @@ newtype DomainNames = DomainNames
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfDomainName)
   }
+derive instance newtypeDomainNames :: Newtype DomainNames _
 
 
 -- | <p>The endpoint configuration to indicate the types of endpoints an API (<a>RestApi</a>) or its custom domain name (<a>DomainName</a>) has. </p>
 newtype EndpointConfiguration = EndpointConfiguration 
   { "Types'" :: NullOrUndefined (ListOfEndpointType)
   }
+derive instance newtypeEndpointConfiguration :: Newtype EndpointConfiguration _
 
 
 -- | <p>The endpoint type. The valid value is <code>EDGE</code> for edge-optimized API setup, most suitable for mobile applications, <code>REGIONAL</code> for regional API endpoint setup, most suitable for calling from AWS Region</p>
 newtype EndpointType = EndpointType String
+derive instance newtypeEndpointType :: Newtype EndpointType _
 
 
 -- | <p>The binary blob response to <a>GetExport</a>, which contains the generated SDK.</p>
@@ -1175,6 +1249,7 @@ newtype ExportResponse = ExportResponse
   , "ContentDisposition'" :: NullOrUndefined (String)
   , "Body'" :: NullOrUndefined (String)
   }
+derive instance newtypeExportResponse :: Newtype ExportResponse _
 
 
 -- | <p>Request to flush authorizer cache entries on a specified stage.</p>
@@ -1182,6 +1257,7 @@ newtype FlushStageAuthorizersCacheRequest = FlushStageAuthorizersCacheRequest
   { "RestApiId'" :: (String)
   , "StageName'" :: (String)
   }
+derive instance newtypeFlushStageAuthorizersCacheRequest :: Newtype FlushStageAuthorizersCacheRequest _
 
 
 -- | <p>Requests API Gateway to flush a stage's cache.</p>
@@ -1189,6 +1265,7 @@ newtype FlushStageCacheRequest = FlushStageCacheRequest
   { "RestApiId'" :: (String)
   , "StageName'" :: (String)
   }
+derive instance newtypeFlushStageCacheRequest :: Newtype FlushStageCacheRequest _
 
 
 -- | <p>A gateway response of a given response type and status code, with optional response parameters and mapping templates.</p> <div class="remarks"> For more information about valid gateway response types, see <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html">Gateway Response Types Supported by API Gateway</a> <div class="example"> <h4>Example: Get a Gateway Response of a given response type</h4> <h5>Request</h5> <p>This example shows how to get a gateway response of the <code>MISSING_AUTHENTICATION_TOKEN</code> type.</p> <pre><code>GET /restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN HTTP/1.1 Host: beta-apigateway.us-east-1.amazonaws.com Content-Type: application/json X-Amz-Date: 20170503T202516Z Authorization: AWS4-HMAC-SHA256 Credential={access-key-id}/20170503/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=1b52460e3159c1a26cff29093855d50ea141c1c5b937528fecaf60f51129697a Cache-Control: no-cache Postman-Token: 3b2a1ce9-c848-2e26-2e2f-9c2caefbed45 </code></pre> <p>The response type is specified as a URL path.</p> <h5>Response</h5> <p>The successful operation returns the <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-gatewayresponse-{rel}.html", "name": "gatewayresponse", "templated": true }, "self": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:delete": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" } }, "defaultResponse": false, "responseParameters": { "gatewayresponse.header.x-request-path": "method.request.path.petId", "gatewayresponse.header.Access-Control-Allow-Origin": "&apos;a.b.c&apos;", "gatewayresponse.header.x-request-query": "method.request.querystring.q", "gatewayresponse.header.x-request-header": "method.request.header.Accept" }, "responseTemplates": { "application/json": "{\n \"message\": $context.error.messageString,\n \"type\": \"$context.error.responseType\",\n \"stage\": \"$context.stage\",\n \"resourcePath\": \"$context.resourcePath\",\n \"stageVariables.a\": \"$stageVariables.a\",\n \"statusCode\": \"&apos;404&apos;\"\n}" }, "responseType": "MISSING_AUTHENTICATION_TOKEN", "statusCode": "404" }</code></pre> <p></p> </div> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a> </div>
@@ -1199,9 +1276,11 @@ newtype GatewayResponse = GatewayResponse
   , "ResponseTemplates'" :: NullOrUndefined (MapOfStringToString)
   , "DefaultResponse'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGatewayResponse :: Newtype GatewayResponse _
 
 
 newtype GatewayResponseType = GatewayResponseType String
+derive instance newtypeGatewayResponseType :: Newtype GatewayResponseType _
 
 
 -- | <p>The collection of the <a>GatewayResponse</a> instances of a <a>RestApi</a> as a <code>responseType</code>-to-<a>GatewayResponse</a> object map of key-value pairs. As such, pagination is not supported for querying this collection.</p> <div class="remarks"> For more information about valid gateway response types, see <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html">Gateway Response Types Supported by API Gateway</a> <div class="example"> <h4>Example: Get the collection of gateway responses of an API</h4> <h5>Request</h5> <p>This example request shows how to retrieve the <a>GatewayResponses</a> collection from an API.</p> <pre><code>GET /restapis/o81lxisefl/gatewayresponses HTTP/1.1 Host: beta-apigateway.us-east-1.amazonaws.com Content-Type: application/json X-Amz-Date: 20170503T220604Z Authorization: AWS4-HMAC-SHA256 Credential={access-key-id}/20170503/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=59b42fe54a76a5de8adf2c67baa6d39206f8e9ad49a1d77ccc6a5da3103a398a Cache-Control: no-cache Postman-Token: 5637af27-dc29-fc5c-9dfe-0645d52cb515 </code></pre> <p></p> <h5>Response</h5> <p>The successful operation returns the <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-gatewayresponse-{rel}.html", "name": "gatewayresponse", "templated": true }, "self": { "href": "/restapis/o81lxisefl/gatewayresponses" }, "first": { "href": "/restapis/o81lxisefl/gatewayresponses" }, "gatewayresponse:by-type": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "item": [ { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_FAILURE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND" }, { "href": "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/THROTTLED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" }, { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" }, { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" }, { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" }, { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" }, { "href": "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" }, { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" }, { "href": "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" }, { "href": "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" }, { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" }, { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE" }, { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE" } ] }, "_embedded": { "item": [ { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_FAILURE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_FAILURE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INTEGRATION_FAILURE", "statusCode": "504" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "RESOURCE_NOT_FOUND", "statusCode": "404" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "REQUEST_TOO_LARGE", "statusCode": "413" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/THROTTLED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/THROTTLED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "THROTTLED", "statusCode": "429" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "UNSUPPORTED_MEDIA_TYPE", "statusCode": "415" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "AUTHORIZER_CONFIGURATION_ERROR", "statusCode": "500" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "DEFAULT_5XX" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "DEFAULT_4XX" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "BAD_REQUEST_PARAMETERS", "statusCode": "400" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "BAD_REQUEST_BODY", "statusCode": "400" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "EXPIRED_TOKEN", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "ACCESS_DENIED", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INVALID_API_KEY", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "UNAUTHORIZED", "statusCode": "401" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "API_CONFIGURATION_ERROR", "statusCode": "500" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "QUOTA_EXCEEDED", "statusCode": "429" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INTEGRATION_TIMEOUT", "statusCode": "504" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "MISSING_AUTHENTICATION_TOKEN", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "INVALID_SIGNATURE", "statusCode": "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE" }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true }, "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE" } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json": "{\"message\":$context.error.messageString}" }, "responseType": "AUTHORIZER_FAILURE", "statusCode": "500" } ] } }</code></pre> <p></p> </div> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html">Customize Gateway Responses</a> </div>
@@ -1209,18 +1288,21 @@ newtype GatewayResponses = GatewayResponses
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfGatewayResponse)
   }
+derive instance newtypeGatewayResponses :: Newtype GatewayResponses _
 
 
 -- | <p>A request to generate a <a>ClientCertificate</a> resource.</p>
 newtype GenerateClientCertificateRequest = GenerateClientCertificateRequest 
   { "Description'" :: NullOrUndefined (String)
   }
+derive instance newtypeGenerateClientCertificateRequest :: Newtype GenerateClientCertificateRequest _
 
 
 -- | <p>Requests API Gateway to get information about the current <a>Account</a> resource.</p>
 newtype GetAccountRequest = GetAccountRequest 
   { 
   }
+derive instance newtypeGetAccountRequest :: Newtype GetAccountRequest _
 
 
 -- | <p>A request to get information about the current <a>ApiKey</a> resource.</p>
@@ -1228,6 +1310,7 @@ newtype GetApiKeyRequest = GetApiKeyRequest
   { "ApiKey'" :: (String)
   , "IncludeValue'" :: NullOrUndefined (NullableBoolean)
   }
+derive instance newtypeGetApiKeyRequest :: Newtype GetApiKeyRequest _
 
 
 -- | <p>A request to get information about the current <a>ApiKeys</a> resource.</p>
@@ -1238,6 +1321,7 @@ newtype GetApiKeysRequest = GetApiKeysRequest
   , "CustomerId'" :: NullOrUndefined (String)
   , "IncludeValues'" :: NullOrUndefined (NullableBoolean)
   }
+derive instance newtypeGetApiKeysRequest :: Newtype GetApiKeysRequest _
 
 
 -- | <p>Request to describe an existing <a>Authorizer</a> resource.</p>
@@ -1245,6 +1329,7 @@ newtype GetAuthorizerRequest = GetAuthorizerRequest
   { "RestApiId'" :: (String)
   , "AuthorizerId'" :: (String)
   }
+derive instance newtypeGetAuthorizerRequest :: Newtype GetAuthorizerRequest _
 
 
 -- | <p>Request to describe an existing <a>Authorizers</a> resource.</p>
@@ -1253,6 +1338,7 @@ newtype GetAuthorizersRequest = GetAuthorizersRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetAuthorizersRequest :: Newtype GetAuthorizersRequest _
 
 
 -- | <p>Request to describe a <a>BasePathMapping</a> resource.</p>
@@ -1260,6 +1346,7 @@ newtype GetBasePathMappingRequest = GetBasePathMappingRequest
   { "DomainName'" :: (String)
   , "BasePath'" :: (String)
   }
+derive instance newtypeGetBasePathMappingRequest :: Newtype GetBasePathMappingRequest _
 
 
 -- | <p>A request to get information about a collection of <a>BasePathMapping</a> resources.</p>
@@ -1268,12 +1355,14 @@ newtype GetBasePathMappingsRequest = GetBasePathMappingsRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetBasePathMappingsRequest :: Newtype GetBasePathMappingsRequest _
 
 
 -- | <p>A request to get information about the current <a>ClientCertificate</a> resource.</p>
 newtype GetClientCertificateRequest = GetClientCertificateRequest 
   { "ClientCertificateId'" :: (String)
   }
+derive instance newtypeGetClientCertificateRequest :: Newtype GetClientCertificateRequest _
 
 
 -- | <p>A request to get information about a collection of <a>ClientCertificate</a> resources.</p>
@@ -1281,6 +1370,7 @@ newtype GetClientCertificatesRequest = GetClientCertificatesRequest
   { "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetClientCertificatesRequest :: Newtype GetClientCertificatesRequest _
 
 
 -- | <p>Requests API Gateway to get information about a <a>Deployment</a> resource.</p>
@@ -1289,6 +1379,7 @@ newtype GetDeploymentRequest = GetDeploymentRequest
   , "DeploymentId'" :: (String)
   , "Embed'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeGetDeploymentRequest :: Newtype GetDeploymentRequest _
 
 
 -- | <p>Requests API Gateway to get information about a <a>Deployments</a> collection.</p>
@@ -1297,6 +1388,7 @@ newtype GetDeploymentsRequest = GetDeploymentsRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetDeploymentsRequest :: Newtype GetDeploymentsRequest _
 
 
 -- | <p>Gets a specified documentation part of a given API.</p>
@@ -1304,6 +1396,7 @@ newtype GetDocumentationPartRequest = GetDocumentationPartRequest
   { "RestApiId'" :: (String)
   , "DocumentationPartId'" :: (String)
   }
+derive instance newtypeGetDocumentationPartRequest :: Newtype GetDocumentationPartRequest _
 
 
 -- | <p>Gets the documentation parts of an API. The result may be filtered by the type, name, or path of API entities (targets).</p>
@@ -1316,6 +1409,7 @@ newtype GetDocumentationPartsRequest = GetDocumentationPartsRequest
   , "Limit'" :: NullOrUndefined (NullableInteger)
   , "LocationStatus'" :: NullOrUndefined (LocationStatusType)
   }
+derive instance newtypeGetDocumentationPartsRequest :: Newtype GetDocumentationPartsRequest _
 
 
 -- | <p>Gets a documentation snapshot of an API.</p>
@@ -1323,6 +1417,7 @@ newtype GetDocumentationVersionRequest = GetDocumentationVersionRequest
   { "RestApiId'" :: (String)
   , "DocumentationVersion'" :: (String)
   }
+derive instance newtypeGetDocumentationVersionRequest :: Newtype GetDocumentationVersionRequest _
 
 
 -- | <p>Gets the documentation versions of an API.</p>
@@ -1331,12 +1426,14 @@ newtype GetDocumentationVersionsRequest = GetDocumentationVersionsRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetDocumentationVersionsRequest :: Newtype GetDocumentationVersionsRequest _
 
 
 -- | <p>Request to get the name of a <a>DomainName</a> resource.</p>
 newtype GetDomainNameRequest = GetDomainNameRequest 
   { "DomainName'" :: (String)
   }
+derive instance newtypeGetDomainNameRequest :: Newtype GetDomainNameRequest _
 
 
 -- | <p>Request to describe a collection of <a>DomainName</a> resources.</p>
@@ -1344,6 +1441,7 @@ newtype GetDomainNamesRequest = GetDomainNamesRequest
   { "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetDomainNamesRequest :: Newtype GetDomainNamesRequest _
 
 
 -- | <p>Request a new export of a <a>RestApi</a> for a particular <a>Stage</a>.</p>
@@ -1354,6 +1452,7 @@ newtype GetExportRequest = GetExportRequest
   , "Parameters'" :: NullOrUndefined (MapOfStringToString)
   , "Accepts'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetExportRequest :: Newtype GetExportRequest _
 
 
 -- | <p>Gets a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a>.</p>
@@ -1361,6 +1460,7 @@ newtype GetGatewayResponseRequest = GetGatewayResponseRequest
   { "RestApiId'" :: (String)
   , "ResponseType'" :: (GatewayResponseType)
   }
+derive instance newtypeGetGatewayResponseRequest :: Newtype GetGatewayResponseRequest _
 
 
 -- | <p>Gets the <a>GatewayResponses</a> collection on the given <a>RestApi</a>. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default <a>GatewayResponses</a> collection for the supported response types.</p>
@@ -1369,6 +1469,7 @@ newtype GetGatewayResponsesRequest = GetGatewayResponsesRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetGatewayResponsesRequest :: Newtype GetGatewayResponsesRequest _
 
 
 -- | <p>Represents a request to get the integration configuration.</p>
@@ -1377,6 +1478,7 @@ newtype GetIntegrationRequest = GetIntegrationRequest
   , "ResourceId'" :: (String)
   , "HttpMethod'" :: (String)
   }
+derive instance newtypeGetIntegrationRequest :: Newtype GetIntegrationRequest _
 
 
 -- | <p>Represents a get integration response request.</p>
@@ -1386,6 +1488,7 @@ newtype GetIntegrationResponseRequest = GetIntegrationResponseRequest
   , "HttpMethod'" :: (String)
   , "StatusCode'" :: (StatusCode)
   }
+derive instance newtypeGetIntegrationResponseRequest :: Newtype GetIntegrationResponseRequest _
 
 
 -- | <p>Request to describe an existing <a>Method</a> resource.</p>
@@ -1394,6 +1497,7 @@ newtype GetMethodRequest = GetMethodRequest
   , "ResourceId'" :: (String)
   , "HttpMethod'" :: (String)
   }
+derive instance newtypeGetMethodRequest :: Newtype GetMethodRequest _
 
 
 -- | <p>Request to describe a <a>MethodResponse</a> resource.</p>
@@ -1403,6 +1507,7 @@ newtype GetMethodResponseRequest = GetMethodResponseRequest
   , "HttpMethod'" :: (String)
   , "StatusCode'" :: (StatusCode)
   }
+derive instance newtypeGetMethodResponseRequest :: Newtype GetMethodResponseRequest _
 
 
 -- | <p>Request to list information about a model in an existing <a>RestApi</a> resource.</p>
@@ -1411,6 +1516,7 @@ newtype GetModelRequest = GetModelRequest
   , "ModelName'" :: (String)
   , "Flatten'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGetModelRequest :: Newtype GetModelRequest _
 
 
 -- | <p>Request to generate a sample mapping template used to transform the payload.</p>
@@ -1418,6 +1524,7 @@ newtype GetModelTemplateRequest = GetModelTemplateRequest
   { "RestApiId'" :: (String)
   , "ModelName'" :: (String)
   }
+derive instance newtypeGetModelTemplateRequest :: Newtype GetModelTemplateRequest _
 
 
 -- | <p>Request to list existing <a>Models</a> defined for a <a>RestApi</a> resource.</p>
@@ -1426,6 +1533,7 @@ newtype GetModelsRequest = GetModelsRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetModelsRequest :: Newtype GetModelsRequest _
 
 
 -- | <p>Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
@@ -1433,6 +1541,7 @@ newtype GetRequestValidatorRequest = GetRequestValidatorRequest
   { "RestApiId'" :: (String)
   , "RequestValidatorId'" :: (String)
   }
+derive instance newtypeGetRequestValidatorRequest :: Newtype GetRequestValidatorRequest _
 
 
 -- | <p>Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.</p>
@@ -1441,6 +1550,7 @@ newtype GetRequestValidatorsRequest = GetRequestValidatorsRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetRequestValidatorsRequest :: Newtype GetRequestValidatorsRequest _
 
 
 -- | <p>Request to list information about a resource.</p>
@@ -1449,6 +1559,7 @@ newtype GetResourceRequest = GetResourceRequest
   , "ResourceId'" :: (String)
   , "Embed'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeGetResourceRequest :: Newtype GetResourceRequest _
 
 
 -- | <p>Request to list information about a collection of resources.</p>
@@ -1458,12 +1569,14 @@ newtype GetResourcesRequest = GetResourcesRequest
   , "Limit'" :: NullOrUndefined (NullableInteger)
   , "Embed'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeGetResourcesRequest :: Newtype GetResourcesRequest _
 
 
 -- | <p>The GET request to list an existing <a>RestApi</a> defined for your collection. </p>
 newtype GetRestApiRequest = GetRestApiRequest 
   { "RestApiId'" :: (String)
   }
+derive instance newtypeGetRestApiRequest :: Newtype GetRestApiRequest _
 
 
 -- | <p>The GET request to list existing <a>RestApis</a> defined for your collection.</p>
@@ -1471,6 +1584,7 @@ newtype GetRestApisRequest = GetRestApisRequest
   { "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetRestApisRequest :: Newtype GetRestApisRequest _
 
 
 -- | <p>Request a new generated client SDK for a <a>RestApi</a> and <a>Stage</a>.</p>
@@ -1480,12 +1594,14 @@ newtype GetSdkRequest = GetSdkRequest
   , "SdkType'" :: (String)
   , "Parameters'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeGetSdkRequest :: Newtype GetSdkRequest _
 
 
 -- | <p>Get an <a>SdkType</a> instance.</p>
 newtype GetSdkTypeRequest = GetSdkTypeRequest 
   { "Id'" :: (String)
   }
+derive instance newtypeGetSdkTypeRequest :: Newtype GetSdkTypeRequest _
 
 
 -- | <p>Get the <a>SdkTypes</a> collection.</p>
@@ -1493,6 +1609,7 @@ newtype GetSdkTypesRequest = GetSdkTypesRequest
   { "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetSdkTypesRequest :: Newtype GetSdkTypesRequest _
 
 
 -- | <p>Requests API Gateway to get information about a <a>Stage</a> resource.</p>
@@ -1500,6 +1617,7 @@ newtype GetStageRequest = GetStageRequest
   { "RestApiId'" :: (String)
   , "StageName'" :: (String)
   }
+derive instance newtypeGetStageRequest :: Newtype GetStageRequest _
 
 
 -- | <p>Requests API Gateway to get information about one or more <a>Stage</a> resources.</p>
@@ -1507,6 +1625,7 @@ newtype GetStagesRequest = GetStagesRequest
   { "RestApiId'" :: (String)
   , "DeploymentId'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetStagesRequest :: Newtype GetStagesRequest _
 
 
 -- | <p>Gets the Tags collection for a given resource.</p>
@@ -1515,6 +1634,7 @@ newtype GetTagsRequest = GetTagsRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetTagsRequest :: Newtype GetTagsRequest _
 
 
 -- | <p>The GET request to get a usage plan key of a given key identifier.</p>
@@ -1522,6 +1642,7 @@ newtype GetUsagePlanKeyRequest = GetUsagePlanKeyRequest
   { "UsagePlanId'" :: (String)
   , "KeyId'" :: (String)
   }
+derive instance newtypeGetUsagePlanKeyRequest :: Newtype GetUsagePlanKeyRequest _
 
 
 -- | <p>The GET request to get all the usage plan keys representing the API keys added to a specified usage plan.</p>
@@ -1531,12 +1652,14 @@ newtype GetUsagePlanKeysRequest = GetUsagePlanKeysRequest
   , "Limit'" :: NullOrUndefined (NullableInteger)
   , "NameQuery'" :: NullOrUndefined (String)
   }
+derive instance newtypeGetUsagePlanKeysRequest :: Newtype GetUsagePlanKeysRequest _
 
 
 -- | <p>The GET request to get a usage plan of a given plan identifier.</p>
 newtype GetUsagePlanRequest = GetUsagePlanRequest 
   { "UsagePlanId'" :: (String)
   }
+derive instance newtypeGetUsagePlanRequest :: Newtype GetUsagePlanRequest _
 
 
 -- | <p>The GET request to get all the usage plans of the caller's account.</p>
@@ -1545,6 +1668,7 @@ newtype GetUsagePlansRequest = GetUsagePlansRequest
   , "KeyId'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetUsagePlansRequest :: Newtype GetUsagePlansRequest _
 
 
 -- | <p>The GET request to get the usage data of a usage plan in a specified time interval.</p>
@@ -1556,12 +1680,14 @@ newtype GetUsageRequest = GetUsageRequest
   , "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetUsageRequest :: Newtype GetUsageRequest _
 
 
 -- | <p>Gets a specified VPC link under the caller's account in a region.</p>
 newtype GetVpcLinkRequest = GetVpcLinkRequest 
   { "VpcLinkId'" :: (String)
   }
+derive instance newtypeGetVpcLinkRequest :: Newtype GetVpcLinkRequest _
 
 
 -- | <p>Gets the <a>VpcLinks</a> collection under the caller's account in a selected region.</p>
@@ -1569,6 +1695,7 @@ newtype GetVpcLinksRequest = GetVpcLinksRequest
   { "Position'" :: NullOrUndefined (String)
   , "Limit'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypeGetVpcLinksRequest :: Newtype GetVpcLinksRequest _
 
 
 -- | <p>The POST request to import API keys from an external source, such as a CSV-formatted file.</p>
@@ -1577,6 +1704,7 @@ newtype ImportApiKeysRequest = ImportApiKeysRequest
   , "Format'" :: (ApiKeysFormat)
   , "FailOnWarnings'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeImportApiKeysRequest :: Newtype ImportApiKeysRequest _
 
 
 -- | <p>Import documentation parts from an external (e.g., Swagger) definition file. </p>
@@ -1586,6 +1714,7 @@ newtype ImportDocumentationPartsRequest = ImportDocumentationPartsRequest
   , "FailOnWarnings'" :: NullOrUndefined (Boolean)
   , "Body'" :: (String)
   }
+derive instance newtypeImportDocumentationPartsRequest :: Newtype ImportDocumentationPartsRequest _
 
 
 -- | <p>A POST request to import an API to API Gateway using an input of an API definition file.</p>
@@ -1594,6 +1723,7 @@ newtype ImportRestApiRequest = ImportRestApiRequest
   , "Parameters'" :: NullOrUndefined (MapOfStringToString)
   , "Body'" :: (String)
   }
+derive instance newtypeImportRestApiRequest :: Newtype ImportRestApiRequest _
 
 
 -- | <p>Represents an HTTP, HTTP_PROXY, AWS, AWS_PROXY, or Mock integration.</p> <div class="remarks">In the API Gateway console, the built-in Lambda integration is an AWS integration.</div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
@@ -1613,6 +1743,7 @@ newtype Integration = Integration
   , "CacheKeyParameters'" :: NullOrUndefined (ListOfString)
   , "IntegrationResponses'" :: NullOrUndefined (MapOfIntegrationResponse)
   }
+derive instance newtypeIntegration :: Newtype Integration _
 
 
 -- | <p>Represents an integration response. The status code must map to an existing <a>MethodResponse</a>, and parameters and templates can be used to transform the back-end response.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
@@ -1623,10 +1754,12 @@ newtype IntegrationResponse = IntegrationResponse
   , "ResponseTemplates'" :: NullOrUndefined (MapOfStringToString)
   , "ContentHandling'" :: NullOrUndefined (ContentHandlingStrategy)
   }
+derive instance newtypeIntegrationResponse :: Newtype IntegrationResponse _
 
 
 -- | <p>The integration type. The valid value is <code>HTTP</code> for integrating an API method with an HTTP backend; <code>AWS</code> with any AWS service endpoints; <code>MOCK</code> for testing without actually invoking the backend; <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration; <code>AWS_PROXY</code> for integrating with the Lambda proxy integration. </p>
 newtype IntegrationType = IntegrationType String
+derive instance newtypeIntegrationType :: Newtype IntegrationType _
 
 
 -- | <p>The request exceeded the rate limit. Retry after the specified time period.</p>
@@ -1634,121 +1767,160 @@ newtype LimitExceededException = LimitExceededException
   { "RetryAfterSeconds'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 newtype ListOfARNs = ListOfARNs (Array ProviderARN)
+derive instance newtypeListOfARNs :: Newtype ListOfARNs _
 
 
 newtype ListOfApiKey = ListOfApiKey (Array ApiKey)
+derive instance newtypeListOfApiKey :: Newtype ListOfApiKey _
 
 
 newtype ListOfApiStage = ListOfApiStage (Array ApiStage)
+derive instance newtypeListOfApiStage :: Newtype ListOfApiStage _
 
 
 newtype ListOfAuthorizer = ListOfAuthorizer (Array Authorizer)
+derive instance newtypeListOfAuthorizer :: Newtype ListOfAuthorizer _
 
 
 newtype ListOfBasePathMapping = ListOfBasePathMapping (Array BasePathMapping)
+derive instance newtypeListOfBasePathMapping :: Newtype ListOfBasePathMapping _
 
 
 newtype ListOfClientCertificate = ListOfClientCertificate (Array ClientCertificate)
+derive instance newtypeListOfClientCertificate :: Newtype ListOfClientCertificate _
 
 
 newtype ListOfDeployment = ListOfDeployment (Array Deployment)
+derive instance newtypeListOfDeployment :: Newtype ListOfDeployment _
 
 
 newtype ListOfDocumentationPart = ListOfDocumentationPart (Array DocumentationPart)
+derive instance newtypeListOfDocumentationPart :: Newtype ListOfDocumentationPart _
 
 
 newtype ListOfDocumentationVersion = ListOfDocumentationVersion (Array DocumentationVersion)
+derive instance newtypeListOfDocumentationVersion :: Newtype ListOfDocumentationVersion _
 
 
 newtype ListOfDomainName = ListOfDomainName (Array DomainName)
+derive instance newtypeListOfDomainName :: Newtype ListOfDomainName _
 
 
 newtype ListOfEndpointType = ListOfEndpointType (Array EndpointType)
+derive instance newtypeListOfEndpointType :: Newtype ListOfEndpointType _
 
 
 newtype ListOfGatewayResponse = ListOfGatewayResponse (Array GatewayResponse)
+derive instance newtypeListOfGatewayResponse :: Newtype ListOfGatewayResponse _
 
 
 newtype ListOfLong = ListOfLong (Array Number)
+derive instance newtypeListOfLong :: Newtype ListOfLong _
 
 
 newtype ListOfModel = ListOfModel (Array Model)
+derive instance newtypeListOfModel :: Newtype ListOfModel _
 
 
 -- | A list of operations describing the updates to apply to the specified resource. The patches are applied in the order specified in the list.
 newtype ListOfPatchOperation = ListOfPatchOperation (Array PatchOperation)
+derive instance newtypeListOfPatchOperation :: Newtype ListOfPatchOperation _
 
 
 newtype ListOfRequestValidator = ListOfRequestValidator (Array RequestValidator)
+derive instance newtypeListOfRequestValidator :: Newtype ListOfRequestValidator _
 
 
 newtype ListOfResource = ListOfResource (Array Resource)
+derive instance newtypeListOfResource :: Newtype ListOfResource _
 
 
 newtype ListOfRestApi = ListOfRestApi (Array RestApi)
+derive instance newtypeListOfRestApi :: Newtype ListOfRestApi _
 
 
 newtype ListOfSdkConfigurationProperty = ListOfSdkConfigurationProperty (Array SdkConfigurationProperty)
+derive instance newtypeListOfSdkConfigurationProperty :: Newtype ListOfSdkConfigurationProperty _
 
 
 newtype ListOfSdkType = ListOfSdkType (Array SdkType)
+derive instance newtypeListOfSdkType :: Newtype ListOfSdkType _
 
 
 newtype ListOfStage = ListOfStage (Array Stage)
+derive instance newtypeListOfStage :: Newtype ListOfStage _
 
 
 newtype ListOfStageKeys = ListOfStageKeys (Array StageKey)
+derive instance newtypeListOfStageKeys :: Newtype ListOfStageKeys _
 
 
 newtype ListOfString = ListOfString (Array String)
+derive instance newtypeListOfString :: Newtype ListOfString _
 
 
 newtype ListOfUsage = ListOfUsage (Array ListOfLong)
+derive instance newtypeListOfUsage :: Newtype ListOfUsage _
 
 
 newtype ListOfUsagePlan = ListOfUsagePlan (Array UsagePlan)
+derive instance newtypeListOfUsagePlan :: Newtype ListOfUsagePlan _
 
 
 newtype ListOfUsagePlanKey = ListOfUsagePlanKey (Array UsagePlanKey)
+derive instance newtypeListOfUsagePlanKey :: Newtype ListOfUsagePlanKey _
 
 
 newtype ListOfVpcLink = ListOfVpcLink (Array VpcLink)
+derive instance newtypeListOfVpcLink :: Newtype ListOfVpcLink _
 
 
 newtype LocationStatusType = LocationStatusType String
+derive instance newtypeLocationStatusType :: Newtype LocationStatusType _
 
 
 newtype MapOfHeaderValues = MapOfHeaderValues (Map String String)
+derive instance newtypeMapOfHeaderValues :: Newtype MapOfHeaderValues _
 
 
 newtype MapOfIntegrationResponse = MapOfIntegrationResponse (Map String IntegrationResponse)
+derive instance newtypeMapOfIntegrationResponse :: Newtype MapOfIntegrationResponse _
 
 
 newtype MapOfKeyUsages = MapOfKeyUsages (Map String ListOfUsage)
+derive instance newtypeMapOfKeyUsages :: Newtype MapOfKeyUsages _
 
 
 newtype MapOfMethod = MapOfMethod (Map String Method)
+derive instance newtypeMapOfMethod :: Newtype MapOfMethod _
 
 
 newtype MapOfMethodResponse = MapOfMethodResponse (Map String MethodResponse)
+derive instance newtypeMapOfMethodResponse :: Newtype MapOfMethodResponse _
 
 
 newtype MapOfMethodSettings = MapOfMethodSettings (Map String MethodSetting)
+derive instance newtypeMapOfMethodSettings :: Newtype MapOfMethodSettings _
 
 
 newtype MapOfMethodSnapshot = MapOfMethodSnapshot (Map String MethodSnapshot)
+derive instance newtypeMapOfMethodSnapshot :: Newtype MapOfMethodSnapshot _
 
 
 newtype MapOfStringToBoolean = MapOfStringToBoolean (Map String NullableBoolean)
+derive instance newtypeMapOfStringToBoolean :: Newtype MapOfStringToBoolean _
 
 
 newtype MapOfStringToList = MapOfStringToList (Map String ListOfString)
+derive instance newtypeMapOfStringToList :: Newtype MapOfStringToList _
 
 
 newtype MapOfStringToString = MapOfStringToString (Map String String)
+derive instance newtypeMapOfStringToString :: Newtype MapOfStringToString _
 
 
 -- | <p> Represents a client-facing interface by which the client calls the API to access back-end resources. A <b>Method</b> resource is integrated with an <a>Integration</a> resource. Both consist of a request and one or more responses. The method request takes the client input that is passed to the back end through the integration request. A method response returns the output from the back end to the client through an integration response. A method request is embodied in a <b>Method</b> resource, whereas an integration request is embodied in an <a>Integration</a> resource. On the other hand, a method response is represented by a <a>MethodResponse</a> resource, whereas an integration response is represented by an <a>IntegrationResponse</a> resource. </p> <div class="remarks"> <p/> <h4>Example: Retrive the GET method on a specified resource</h4> <h5>Request</h5> <p>The following example request retrieves the information about the GET method on an API resource (<code>3kzxbg5sa2</code>) of an API (<code>fugvjdxtri</code>). </p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T210259Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns a <code>200 OK</code> status code and a payload similar to the following:</p> <pre><code>{ "_links": { "curies": [ { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-{rel}.html", "name": "integration", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-integration-response-{rel}.html", "name": "integrationresponse", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-{rel}.html", "name": "method", "templated": true }, { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true } ], "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET", "name": "GET", "title": "GET" }, "integration:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "method:integration": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "method:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "method:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET" }, "methodresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/{status_code}", "templated": true } }, "apiKeyRequired": true, "authorizationType": "NONE", "httpMethod": "GET", "_embedded": { "method:integration": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integration:responses": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integration:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration" }, "integrationresponse:put": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/{status_code}", "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "3kzxbg5sa2", "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": { "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" }, "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri": "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": { "integration:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200", "name": "200", "title": "200" }, "integrationresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }, "integrationresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } }, "responseParameters": { "method.response.header.Content-Type": "'application/xml'" }, "responseTemplates": { "application/json": "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")" }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" } } }</code></pre> <p>In the example above, the response template for the <code>200 OK</code> response maps the JSON output from the <code>ListStreams</code> action in the back end to an XML output. The mapping template is URL-encoded as <code>%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E</code> and the output is decoded using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html#util-templat-reference">$util.urlDecode()</a> helper function.</p> </div> <div class="seeAlso"> <a>MethodResponse</a>, <a>Integration</a>, <a>IntegrationResponse</a>, <a>Resource</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html">Set up an API's method</a> </div>
@@ -1765,6 +1937,7 @@ newtype Method = Method
   , "MethodIntegration'" :: NullOrUndefined (Integration)
   , "AuthorizationScopes'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypeMethod :: Newtype Method _
 
 
 -- | <p>Represents a method response of a given HTTP status code returned to the client. The method response is passed from the back end through the associated integration response that can be transformed using a mapping template. </p> <div class="remarks"> <p/> <h4>Example: A <b>MethodResponse</b> instance of an API</h4> <h5>Request</h5> <p>The example request retrieves a <b>MethodResponse</b> of the 200 status code.</p> <pre><code>GET /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200 HTTP/1.1 Content-Type: application/json Host: apigateway.us-east-1.amazonaws.com X-Amz-Date: 20160603T222952Z Authorization: AWS4-HMAC-SHA256 Credential={access_key_ID}/20160603/us-east-1/apigateway/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature={sig4_hash}</code></pre> <h5>Response</h5> <p>The successful response returns <code>200 OK</code> status and a payload as follows:</p> <pre><code>{ "_links": { "curies": { "href": "http://docs.aws.amazon.com/apigateway/latest/developerguide/restapi-method-response-{rel}.html", "name": "methodresponse", "templated": true }, "self": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "title": "200" }, "methodresponse:delete": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" }, "methodresponse:update": { "href": "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200" } }, "responseModels": { "application/json": "Empty" }, "responseParameters": { "method.response.header.Content-Type": false }, "statusCode": "200" }</code></pre> <p/> </div> <div class="seeAlso"> <a>Method</a>, <a>IntegrationResponse</a>, <a>Integration</a> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Creating an API</a> </div>
@@ -1773,6 +1946,7 @@ newtype MethodResponse = MethodResponse
   , "ResponseParameters'" :: NullOrUndefined (MapOfStringToBoolean)
   , "ResponseModels'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeMethodResponse :: Newtype MethodResponse _
 
 
 -- | <p>Specifies the method setting properties.</p>
@@ -1788,6 +1962,7 @@ newtype MethodSetting = MethodSetting
   , "RequireAuthorizationForCacheControl'" :: NullOrUndefined (Boolean)
   , "UnauthorizedCacheControlHeaderStrategy'" :: NullOrUndefined (UnauthorizedCacheControlHeaderStrategy)
   }
+derive instance newtypeMethodSetting :: Newtype MethodSetting _
 
 
 -- | <p>Represents a summary of a <a>Method</a> resource, given a particular date and time.</p>
@@ -1795,6 +1970,7 @@ newtype MethodSnapshot = MethodSnapshot
   { "AuthorizationType'" :: NullOrUndefined (String)
   , "ApiKeyRequired'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeMethodSnapshot :: Newtype MethodSnapshot _
 
 
 -- | <p>Represents the data structure of a method's request or response payload.</p> <div class="remarks"> <p>A request model defines the data structure of the client-supplied request payload. A response model defines the data structure of the response payload returned by the back end. Although not required, models are useful for mapping payloads between the front end and back end.</p> <p>A model is used for generating an API's SDK, validating the input request body, and creating a skeletal mapping template.</p> </div> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
@@ -1805,6 +1981,7 @@ newtype Model = Model
   , "Schema'" :: NullOrUndefined (String)
   , "ContentType'" :: NullOrUndefined (String)
   }
+derive instance newtypeModel :: Newtype Model _
 
 
 -- | <p>Represents a collection of <a>Model</a> resources.</p> <div class="seeAlso"> <a>Method</a>, <a>MethodResponse</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html">Models and Mappings</a> </div>
@@ -1812,21 +1989,26 @@ newtype Models = Models
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfModel)
   }
+derive instance newtypeModels :: Newtype Models _
 
 
 -- | <p>The requested resource is not found. Make sure that the request URI is correct.</p>
 newtype NotFoundException = NotFoundException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 newtype NullableBoolean = NullableBoolean Boolean
+derive instance newtypeNullableBoolean :: Newtype NullableBoolean _
 
 
 newtype NullableInteger = NullableInteger Int
+derive instance newtypeNullableInteger :: Newtype NullableInteger _
 
 
 newtype Op = Op String
+derive instance newtypeOp :: Newtype Op _
 
 
 -- | A single patch operation to apply to the specified resource. Please refer to http://tools.ietf.org/html/rfc6902#section-4 for an explanation of how each operation is used.
@@ -1836,12 +2018,15 @@ newtype PatchOperation = PatchOperation
   , "Value'" :: NullOrUndefined (String)
   , "From'" :: NullOrUndefined (String)
   }
+derive instance newtypePatchOperation :: Newtype PatchOperation _
 
 
 newtype PathToMapOfMethodSnapshot = PathToMapOfMethodSnapshot (Map String MapOfMethodSnapshot)
+derive instance newtypePathToMapOfMethodSnapshot :: Newtype PathToMapOfMethodSnapshot _
 
 
 newtype ProviderARN = ProviderARN String
+derive instance newtypeProviderARN :: Newtype ProviderARN _
 
 
 -- | <p>Creates a customization of a <a>GatewayResponse</a> of a specified response type and status code on the given <a>RestApi</a>.</p>
@@ -1852,6 +2037,7 @@ newtype PutGatewayResponseRequest = PutGatewayResponseRequest
   , "ResponseParameters'" :: NullOrUndefined (MapOfStringToString)
   , "ResponseTemplates'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypePutGatewayResponseRequest :: Newtype PutGatewayResponseRequest _
 
 
 -- | <p>Sets up a method's integration.</p>
@@ -1873,6 +2059,7 @@ newtype PutIntegrationRequest = PutIntegrationRequest
   , "ContentHandling'" :: NullOrUndefined (ContentHandlingStrategy)
   , "TimeoutInMillis'" :: NullOrUndefined (NullableInteger)
   }
+derive instance newtypePutIntegrationRequest :: Newtype PutIntegrationRequest _
 
 
 -- | <p>Represents a put integration response request.</p>
@@ -1886,6 +2073,7 @@ newtype PutIntegrationResponseRequest = PutIntegrationResponseRequest
   , "ResponseTemplates'" :: NullOrUndefined (MapOfStringToString)
   , "ContentHandling'" :: NullOrUndefined (ContentHandlingStrategy)
   }
+derive instance newtypePutIntegrationResponseRequest :: Newtype PutIntegrationResponseRequest _
 
 
 -- | <p>Request to add a method to an existing <a>Resource</a> resource.</p>
@@ -1902,6 +2090,7 @@ newtype PutMethodRequest = PutMethodRequest
   , "RequestValidatorId'" :: NullOrUndefined (String)
   , "AuthorizationScopes'" :: NullOrUndefined (ListOfString)
   }
+derive instance newtypePutMethodRequest :: Newtype PutMethodRequest _
 
 
 -- | <p>Request to add a <a>MethodResponse</a> to an existing <a>Method</a> resource.</p>
@@ -1913,9 +2102,11 @@ newtype PutMethodResponseRequest = PutMethodResponseRequest
   , "ResponseParameters'" :: NullOrUndefined (MapOfStringToBoolean)
   , "ResponseModels'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypePutMethodResponseRequest :: Newtype PutMethodResponseRequest _
 
 
 newtype PutMode = PutMode String
+derive instance newtypePutMode :: Newtype PutMode _
 
 
 -- | <p>A PUT request to update an existing API, with external API definitions specified as the request body.</p>
@@ -1926,9 +2117,11 @@ newtype PutRestApiRequest = PutRestApiRequest
   , "Parameters'" :: NullOrUndefined (MapOfStringToString)
   , "Body'" :: (String)
   }
+derive instance newtypePutRestApiRequest :: Newtype PutRestApiRequest _
 
 
 newtype QuotaPeriodType = QuotaPeriodType String
+derive instance newtypeQuotaPeriodType :: Newtype QuotaPeriodType _
 
 
 -- | <p>Quotas configured for a usage plan.</p>
@@ -1937,6 +2130,7 @@ newtype QuotaSettings = QuotaSettings
   , "Offset'" :: NullOrUndefined (Int)
   , "Period'" :: NullOrUndefined (QuotaPeriodType)
   }
+derive instance newtypeQuotaSettings :: Newtype QuotaSettings _
 
 
 -- | <p>A set of validation rules for incoming <a>Method</a> requests.</p> <div class="remarks"> <p>In Swagger, a <a>RequestValidator</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.requestValidator.html">x-amazon-apigateway-request-validators.requestValidator</a> object. It the referenced using the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validator">x-amazon-apigateway-request-validator</a> property.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
@@ -1946,6 +2140,7 @@ newtype RequestValidator = RequestValidator
   , "ValidateRequestBody'" :: NullOrUndefined (Boolean)
   , "ValidateRequestParameters'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeRequestValidator :: Newtype RequestValidator _
 
 
 -- | <p>A collection of <a>RequestValidator</a> resources of a given <a>RestApi</a>.</p> <div class="remarks"> <p>In Swagger, the <a>RequestValidators</a> of an API is defined by the <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html">x-amazon-apigateway-request-validators</a> extension.</p> </div> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html">Enable Basic Request Validation in API Gateway</a></div>
@@ -1953,6 +2148,7 @@ newtype RequestValidators = RequestValidators
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfRequestValidator)
   }
+derive instance newtypeRequestValidators :: Newtype RequestValidators _
 
 
 -- | <p>Represents an API resource.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
@@ -1963,6 +2159,7 @@ newtype Resource = Resource
   , "Path'" :: NullOrUndefined (String)
   , "ResourceMethods'" :: NullOrUndefined (MapOfMethod)
   }
+derive instance newtypeResource :: Newtype Resource _
 
 
 -- | <p>Represents a collection of <a>Resource</a> resources.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
@@ -1970,6 +2167,7 @@ newtype Resources = Resources
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfResource)
   }
+derive instance newtypeResources :: Newtype Resources _
 
 
 -- | <p>Represents a REST API.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
@@ -1985,6 +2183,7 @@ newtype RestApi = RestApi
   , "ApiKeySource'" :: NullOrUndefined (ApiKeySourceType)
   , "EndpointConfiguration'" :: NullOrUndefined (EndpointConfiguration)
   }
+derive instance newtypeRestApi :: Newtype RestApi _
 
 
 -- | <p>Contains references to your APIs and links that guide you in how to interact with your collection. A collection offers a paginated view of your APIs.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-create-api.html">Create an API</a> </div>
@@ -1992,6 +2191,7 @@ newtype RestApis = RestApis
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfRestApi)
   }
+derive instance newtypeRestApis :: Newtype RestApis _
 
 
 -- | <p>A configuration property of an SDK type.</p>
@@ -2002,6 +2202,7 @@ newtype SdkConfigurationProperty = SdkConfigurationProperty
   , "Required'" :: NullOrUndefined (Boolean)
   , "DefaultValue'" :: NullOrUndefined (String)
   }
+derive instance newtypeSdkConfigurationProperty :: Newtype SdkConfigurationProperty _
 
 
 -- | <p>The binary blob response to <a>GetSdk</a>, which contains the generated SDK.</p>
@@ -2010,6 +2211,7 @@ newtype SdkResponse = SdkResponse
   , "ContentDisposition'" :: NullOrUndefined (String)
   , "Body'" :: NullOrUndefined (String)
   }
+derive instance newtypeSdkResponse :: Newtype SdkResponse _
 
 
 -- | <p>A type of SDK that API Gateway can generate.</p>
@@ -2019,6 +2221,7 @@ newtype SdkType = SdkType
   , "Description'" :: NullOrUndefined (String)
   , "ConfigurationProperties'" :: NullOrUndefined (ListOfSdkConfigurationProperty)
   }
+derive instance newtypeSdkType :: Newtype SdkType _
 
 
 -- | <p>The collection of <a>SdkType</a> instances.</p>
@@ -2026,6 +2229,7 @@ newtype SdkTypes = SdkTypes
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfSdkType)
   }
+derive instance newtypeSdkTypes :: Newtype SdkTypes _
 
 
 -- | <p>The requested service is not available. For details see the accompanying error message. Retry after the specified time period.</p>
@@ -2033,6 +2237,7 @@ newtype ServiceUnavailableException = ServiceUnavailableException
   { "RetryAfterSeconds'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeServiceUnavailableException :: Newtype ServiceUnavailableException _
 
 
 -- | <p>Represents a unique identifier for a version of a deployed <a>RestApi</a> that is callable by users.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html">Deploy an API</a> </div>
@@ -2053,6 +2258,7 @@ newtype Stage = Stage
   , "CreatedDate'" :: NullOrUndefined (Number)
   , "LastUpdatedDate'" :: NullOrUndefined (Number)
   }
+derive instance newtypeStage :: Newtype Stage _
 
 
 -- | <p>A reference to a unique stage identified in the format <code>{restApiId}/{stage}</code>.</p>
@@ -2060,16 +2266,19 @@ newtype StageKey = StageKey
   { "RestApiId'" :: NullOrUndefined (String)
   , "StageName'" :: NullOrUndefined (String)
   }
+derive instance newtypeStageKey :: Newtype StageKey _
 
 
 -- | <p>A list of <a>Stage</a> resources that are associated with the <a>ApiKey</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/stages.html">Deploying API in Stages</a></div>
 newtype Stages = Stages 
   { "Item'" :: NullOrUndefined (ListOfStage)
   }
+derive instance newtypeStages :: Newtype Stages _
 
 
 -- | <p>The status code.</p>
 newtype StatusCode = StatusCode String
+derive instance newtypeStatusCode :: Newtype StatusCode _
 
 
 -- | <p>Adds or updates Tags on a gievn resource.</p>
@@ -2077,18 +2286,21 @@ newtype TagResourceRequest = TagResourceRequest
   { "ResourceArn'" :: (String)
   , "Tags'" :: (MapOfStringToString)
   }
+derive instance newtypeTagResourceRequest :: Newtype TagResourceRequest _
 
 
 -- | <p>A collection of Tags associated with a given resource.</p>
 newtype Tags = Tags 
   { "Tags'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeTags :: Newtype Tags _
 
 
 -- | <p>Represents a mapping template used to transform a payload.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/models-mappings.html#models-mappings-mappings">Mapping Templates</a> </div>
 newtype Template = Template 
   { "Value'" :: NullOrUndefined (String)
   }
+derive instance newtypeTemplate :: Newtype Template _
 
 
 -- | <p>Make a request to simulate the execution of an <a>Authorizer</a>.</p>
@@ -2101,6 +2313,7 @@ newtype TestInvokeAuthorizerRequest = TestInvokeAuthorizerRequest
   , "StageVariables'" :: NullOrUndefined (MapOfStringToString)
   , "AdditionalContext'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeTestInvokeAuthorizerRequest :: Newtype TestInvokeAuthorizerRequest _
 
 
 -- | <p>Represents the response of the test invoke request for a custom <a>Authorizer</a></p>
@@ -2113,6 +2326,7 @@ newtype TestInvokeAuthorizerResponse = TestInvokeAuthorizerResponse
   , "Authorization'" :: NullOrUndefined (MapOfStringToList)
   , "Claims'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeTestInvokeAuthorizerResponse :: Newtype TestInvokeAuthorizerResponse _
 
 
 -- | <p>Make a request to simulate the execution of a <a>Method</a>.</p>
@@ -2126,6 +2340,7 @@ newtype TestInvokeMethodRequest = TestInvokeMethodRequest
   , "ClientCertificateId'" :: NullOrUndefined (String)
   , "StageVariables'" :: NullOrUndefined (MapOfStringToString)
   }
+derive instance newtypeTestInvokeMethodRequest :: Newtype TestInvokeMethodRequest _
 
 
 -- | <p>Represents the response of the test invoke request in the HTTP method.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console">Test API using the API Gateway console</a> </div>
@@ -2136,6 +2351,7 @@ newtype TestInvokeMethodResponse = TestInvokeMethodResponse
   , "Log'" :: NullOrUndefined (String)
   , "Latency'" :: NullOrUndefined (Number)
   }
+derive instance newtypeTestInvokeMethodResponse :: Newtype TestInvokeMethodResponse _
 
 
 -- | <p> The API request rate limits.</p>
@@ -2143,6 +2359,7 @@ newtype ThrottleSettings = ThrottleSettings
   { "BurstLimit'" :: NullOrUndefined (Int)
   , "RateLimit'" :: NullOrUndefined (Number)
   }
+derive instance newtypeThrottleSettings :: Newtype ThrottleSettings _
 
 
 -- | <p>The request has reached its throttling limit. Retry after the specified time period.</p>
@@ -2150,15 +2367,18 @@ newtype TooManyRequestsException = TooManyRequestsException
   { "RetryAfterSeconds'" :: NullOrUndefined (String)
   , "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 newtype UnauthorizedCacheControlHeaderStrategy = UnauthorizedCacheControlHeaderStrategy String
+derive instance newtypeUnauthorizedCacheControlHeaderStrategy :: Newtype UnauthorizedCacheControlHeaderStrategy _
 
 
 -- | <p>The request is denied because the caller has insufficient permissions.</p>
 newtype UnauthorizedException = UnauthorizedException 
   { "Message'" :: NullOrUndefined (String)
   }
+derive instance newtypeUnauthorizedException :: Newtype UnauthorizedException _
 
 
 -- | <p>Removes Tags from a given resource.</p>
@@ -2166,12 +2386,14 @@ newtype UntagResourceRequest = UntagResourceRequest
   { "ResourceArn'" :: (String)
   , "TagKeys'" :: (ListOfString)
   }
+derive instance newtypeUntagResourceRequest :: Newtype UntagResourceRequest _
 
 
 -- | <p>Requests API Gateway to change information about the current <a>Account</a> resource.</p>
 newtype UpdateAccountRequest = UpdateAccountRequest 
   { "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateAccountRequest :: Newtype UpdateAccountRequest _
 
 
 -- | <p>A request to change information about an <a>ApiKey</a> resource.</p>
@@ -2179,6 +2401,7 @@ newtype UpdateApiKeyRequest = UpdateApiKeyRequest
   { "ApiKey'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateApiKeyRequest :: Newtype UpdateApiKeyRequest _
 
 
 -- | <p>Request to update an existing <a>Authorizer</a> resource.</p>
@@ -2187,6 +2410,7 @@ newtype UpdateAuthorizerRequest = UpdateAuthorizerRequest
   , "AuthorizerId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateAuthorizerRequest :: Newtype UpdateAuthorizerRequest _
 
 
 -- | <p>A request to change information about the <a>BasePathMapping</a> resource.</p>
@@ -2195,6 +2419,7 @@ newtype UpdateBasePathMappingRequest = UpdateBasePathMappingRequest
   , "BasePath'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateBasePathMappingRequest :: Newtype UpdateBasePathMappingRequest _
 
 
 -- | <p>A request to change information about an <a>ClientCertificate</a> resource.</p>
@@ -2202,6 +2427,7 @@ newtype UpdateClientCertificateRequest = UpdateClientCertificateRequest
   { "ClientCertificateId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateClientCertificateRequest :: Newtype UpdateClientCertificateRequest _
 
 
 -- | <p>Requests API Gateway to change information about a <a>Deployment</a> resource.</p>
@@ -2210,6 +2436,7 @@ newtype UpdateDeploymentRequest = UpdateDeploymentRequest
   , "DeploymentId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateDeploymentRequest :: Newtype UpdateDeploymentRequest _
 
 
 -- | <p>Updates an existing documentation part of a given API.</p>
@@ -2218,6 +2445,7 @@ newtype UpdateDocumentationPartRequest = UpdateDocumentationPartRequest
   , "DocumentationPartId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateDocumentationPartRequest :: Newtype UpdateDocumentationPartRequest _
 
 
 -- | <p>Updates an existing documentation version of an API.</p>
@@ -2226,6 +2454,7 @@ newtype UpdateDocumentationVersionRequest = UpdateDocumentationVersionRequest
   , "DocumentationVersion'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateDocumentationVersionRequest :: Newtype UpdateDocumentationVersionRequest _
 
 
 -- | <p>A request to change information about the <a>DomainName</a> resource.</p>
@@ -2233,6 +2462,7 @@ newtype UpdateDomainNameRequest = UpdateDomainNameRequest
   { "DomainName'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateDomainNameRequest :: Newtype UpdateDomainNameRequest _
 
 
 -- | <p>Updates a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a>.</p>
@@ -2241,6 +2471,7 @@ newtype UpdateGatewayResponseRequest = UpdateGatewayResponseRequest
   , "ResponseType'" :: (GatewayResponseType)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateGatewayResponseRequest :: Newtype UpdateGatewayResponseRequest _
 
 
 -- | <p>Represents an update integration request.</p>
@@ -2250,6 +2481,7 @@ newtype UpdateIntegrationRequest = UpdateIntegrationRequest
   , "HttpMethod'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateIntegrationRequest :: Newtype UpdateIntegrationRequest _
 
 
 -- | <p>Represents an update integration response request.</p>
@@ -2260,6 +2492,7 @@ newtype UpdateIntegrationResponseRequest = UpdateIntegrationResponseRequest
   , "StatusCode'" :: (StatusCode)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateIntegrationResponseRequest :: Newtype UpdateIntegrationResponseRequest _
 
 
 -- | <p>Request to update an existing <a>Method</a> resource.</p>
@@ -2269,6 +2502,7 @@ newtype UpdateMethodRequest = UpdateMethodRequest
   , "HttpMethod'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateMethodRequest :: Newtype UpdateMethodRequest _
 
 
 -- | <p>A request to update an existing <a>MethodResponse</a> resource.</p>
@@ -2279,6 +2513,7 @@ newtype UpdateMethodResponseRequest = UpdateMethodResponseRequest
   , "StatusCode'" :: (StatusCode)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateMethodResponseRequest :: Newtype UpdateMethodResponseRequest _
 
 
 -- | <p>Request to update an existing model in an existing <a>RestApi</a> resource.</p>
@@ -2287,6 +2522,7 @@ newtype UpdateModelRequest = UpdateModelRequest
   , "ModelName'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateModelRequest :: Newtype UpdateModelRequest _
 
 
 -- | <p>Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
@@ -2295,6 +2531,7 @@ newtype UpdateRequestValidatorRequest = UpdateRequestValidatorRequest
   , "RequestValidatorId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateRequestValidatorRequest :: Newtype UpdateRequestValidatorRequest _
 
 
 -- | <p>Request to change information about a <a>Resource</a> resource.</p>
@@ -2303,6 +2540,7 @@ newtype UpdateResourceRequest = UpdateResourceRequest
   , "ResourceId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateResourceRequest :: Newtype UpdateResourceRequest _
 
 
 -- | <p>Request to update an existing <a>RestApi</a> resource in your collection.</p>
@@ -2310,6 +2548,7 @@ newtype UpdateRestApiRequest = UpdateRestApiRequest
   { "RestApiId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateRestApiRequest :: Newtype UpdateRestApiRequest _
 
 
 -- | <p>Requests API Gateway to change information about a <a>Stage</a> resource.</p>
@@ -2318,6 +2557,7 @@ newtype UpdateStageRequest = UpdateStageRequest
   , "StageName'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateStageRequest :: Newtype UpdateStageRequest _
 
 
 -- | <p>The PATCH request to update a usage plan of a given plan Id.</p>
@@ -2325,6 +2565,7 @@ newtype UpdateUsagePlanRequest = UpdateUsagePlanRequest
   { "UsagePlanId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateUsagePlanRequest :: Newtype UpdateUsagePlanRequest _
 
 
 -- | <p>The PATCH request to grant a temporary extension to the remaining quota of a usage plan associated with a specified API key.</p>
@@ -2333,6 +2574,7 @@ newtype UpdateUsageRequest = UpdateUsageRequest
   , "KeyId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateUsageRequest :: Newtype UpdateUsageRequest _
 
 
 -- | <p>Updates an existing <a>VpcLink</a> of a specified identifier.</p>
@@ -2340,6 +2582,7 @@ newtype UpdateVpcLinkRequest = UpdateVpcLinkRequest
   { "VpcLinkId'" :: (String)
   , "PatchOperations'" :: NullOrUndefined (ListOfPatchOperation)
   }
+derive instance newtypeUpdateVpcLinkRequest :: Newtype UpdateVpcLinkRequest _
 
 
 -- | <p>Represents the usage data of a usage plan.</p> <div class="remarks"/> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-usage-plans-with-console.html#api-gateway-usage-plan-manage-usage">Manage Usage in a Usage Plan</a> </div>
@@ -2350,6 +2593,7 @@ newtype Usage = Usage
   , "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (MapOfKeyUsages)
   }
+derive instance newtypeUsage :: Newtype Usage _
 
 
 -- | <p>Represents a usage plan than can specify who can assess associated API stages with specified request limits and quotas.</p> <div class="remarks"> <p>In a usage plan, you associate an API by specifying the API's Id and a stage name of the specified API. You add plan customers by adding API keys to the plan. </p> </div> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
@@ -2362,6 +2606,7 @@ newtype UsagePlan = UsagePlan
   , "Quota'" :: NullOrUndefined (QuotaSettings)
   , "ProductCode'" :: NullOrUndefined (String)
   }
+derive instance newtypeUsagePlan :: Newtype UsagePlan _
 
 
 -- | <p>Represents a usage plan key to identify a plan customer.</p> <div class="remarks"> <p>To associate an API stage with a selected API key in a usage plan, you must create a UsagePlanKey resource to represent the selected <a>ApiKey</a>.</p> </div>" <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
@@ -2371,6 +2616,7 @@ newtype UsagePlanKey = UsagePlanKey
   , "Value'" :: NullOrUndefined (String)
   , "Name'" :: NullOrUndefined (String)
   }
+derive instance newtypeUsagePlanKey :: Newtype UsagePlanKey _
 
 
 -- | <p>Represents the collection of usage plan keys added to usage plans for the associated API keys and, possibly, other types of keys.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
@@ -2378,6 +2624,7 @@ newtype UsagePlanKeys = UsagePlanKeys
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfUsagePlanKey)
   }
+derive instance newtypeUsagePlanKeys :: Newtype UsagePlanKeys _
 
 
 -- | <p>Represents a collection of usage plans for an AWS account.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-usage-plans.html">Create and Use Usage Plans</a> </div>
@@ -2385,6 +2632,7 @@ newtype UsagePlans = UsagePlans
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfUsagePlan)
   }
+derive instance newtypeUsagePlans :: Newtype UsagePlans _
 
 
 -- | <p>A API Gateway VPC link for a <a>RestApi</a> to access resources in an Amazon Virtual Private Cloud (VPC).</p> <div class="remarks"> <p><p>To enable access to a resource in an Amazon Virtual Private Cloud through Amazon API Gateway, you, as an API developer, create a <a>VpcLink</a> resource targeted for one or more network load balancers of the VPC and then integrate an API method with a private integration that uses the <a>VpcLink</a>. The private integration has an integration type of <code>HTTP</code> or <code>HTTP_PROXY</code> and has a connection type of <code>VPC_LINK</code>. The integration uses the <code>connectionId</code> property to identify the <a>VpcLink</a> used.</p> </p> </div>
@@ -2396,9 +2644,11 @@ newtype VpcLink = VpcLink
   , "Status'" :: NullOrUndefined (VpcLinkStatus)
   , "StatusMessage'" :: NullOrUndefined (String)
   }
+derive instance newtypeVpcLink :: Newtype VpcLink _
 
 
 newtype VpcLinkStatus = VpcLinkStatus String
+derive instance newtypeVpcLinkStatus :: Newtype VpcLinkStatus _
 
 
 -- | <p>The collection of VPC links under the caller's account in a region.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-private-integration.html">Getting Started with Private Integrations</a>, <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html">Set up Private Integrations</a> </div>
@@ -2406,3 +2656,4 @@ newtype VpcLinks = VpcLinks
   { "Position'" :: NullOrUndefined (String)
   , "Items'" :: NullOrUndefined (ListOfVpcLink)
   }
+derive instance newtypeVpcLinks :: Newtype VpcLinks _

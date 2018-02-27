@@ -6,6 +6,7 @@ module AWS.DirectConnect where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -235,10 +236,12 @@ updateLag = AWS.request serviceName "UpdateLag"
 
 -- | <p>The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p> <p>Example: 65000</p>
 newtype ASN = ASN Int
+derive instance newtypeASN :: Newtype ASN _
 
 
 -- | <p>Indicates the address family for the BGP peer.</p> <ul> <li> <p> <b>ipv4</b>: IPv4 address family</p> </li> <li> <p> <b>ipv6</b>: IPv6 address family</p> </li> </ul>
 newtype AddressFamily = AddressFamily String
+derive instance newtypeAddressFamily :: Newtype AddressFamily _
 
 
 -- | <p>Container for the parameters to the AllocateConnectionOnInterconnect operation.</p>
@@ -249,6 +252,7 @@ newtype AllocateConnectionOnInterconnectRequest = AllocateConnectionOnInterconne
   , "InterconnectId'" :: (InterconnectId)
   , "Vlan'" :: (VLAN)
   }
+derive instance newtypeAllocateConnectionOnInterconnectRequest :: Newtype AllocateConnectionOnInterconnectRequest _
 
 
 -- | <p>Container for the parameters to theHostedConnection operation.</p>
@@ -259,6 +263,7 @@ newtype AllocateHostedConnectionRequest = AllocateHostedConnectionRequest
   , "ConnectionName'" :: (ConnectionName)
   , "Vlan'" :: (VLAN)
   }
+derive instance newtypeAllocateHostedConnectionRequest :: Newtype AllocateHostedConnectionRequest _
 
 
 -- | <p>Container for the parameters to the AllocatePrivateVirtualInterface operation.</p>
@@ -267,6 +272,7 @@ newtype AllocatePrivateVirtualInterfaceRequest = AllocatePrivateVirtualInterface
   , "OwnerAccount'" :: (OwnerAccount)
   , "NewPrivateVirtualInterfaceAllocation'" :: (NewPrivateVirtualInterfaceAllocation)
   }
+derive instance newtypeAllocatePrivateVirtualInterfaceRequest :: Newtype AllocatePrivateVirtualInterfaceRequest _
 
 
 -- | <p>Container for the parameters to the AllocatePublicVirtualInterface operation.</p>
@@ -275,10 +281,12 @@ newtype AllocatePublicVirtualInterfaceRequest = AllocatePublicVirtualInterfaceRe
   , "OwnerAccount'" :: (OwnerAccount)
   , "NewPublicVirtualInterfaceAllocation'" :: (NewPublicVirtualInterfaceAllocation)
   }
+derive instance newtypeAllocatePublicVirtualInterfaceRequest :: Newtype AllocatePublicVirtualInterfaceRequest _
 
 
 -- | <p>IP address assigned to the Amazon interface.</p> <p>Example: 192.168.1.1/30 or 2001:db8::1/125</p>
 newtype AmazonAddress = AmazonAddress String
+derive instance newtypeAmazonAddress :: Newtype AmazonAddress _
 
 
 -- | <p>Container for the parameters to the AssociateConnectionWithLag operation.</p>
@@ -286,6 +294,7 @@ newtype AssociateConnectionWithLagRequest = AssociateConnectionWithLagRequest
   { "ConnectionId'" :: (ConnectionId)
   , "LagId'" :: (LagId)
   }
+derive instance newtypeAssociateConnectionWithLagRequest :: Newtype AssociateConnectionWithLagRequest _
 
 
 -- | <p>Container for the parameters to the AssociateHostedConnection operation.</p>
@@ -293,6 +302,7 @@ newtype AssociateHostedConnectionRequest = AssociateHostedConnectionRequest
   { "ConnectionId'" :: (ConnectionId)
   , "ParentConnectionId'" :: (ConnectionId)
   }
+derive instance newtypeAssociateHostedConnectionRequest :: Newtype AssociateHostedConnectionRequest _
 
 
 -- | <p>Container for the parameters to the AssociateVirtualInterface operation.</p>
@@ -300,14 +310,17 @@ newtype AssociateVirtualInterfaceRequest = AssociateVirtualInterfaceRequest
   { "VirtualInterfaceId'" :: (VirtualInterfaceId)
   , "ConnectionId'" :: (ConnectionId)
   }
+derive instance newtypeAssociateVirtualInterfaceRequest :: Newtype AssociateVirtualInterfaceRequest _
 
 
 -- | <p>An abstract ID for the physical Direct Connect endpoint.</p> <p>Example: EQC50-abcdef123456</p>
 newtype AwsDevice = AwsDevice String
+derive instance newtypeAwsDevice :: Newtype AwsDevice _
 
 
 -- | <p>The authentication key for BGP configuration.</p> <p>Example: asdf34example</p>
 newtype BGPAuthKey = BGPAuthKey String
+derive instance newtypeBGPAuthKey :: Newtype BGPAuthKey _
 
 
 -- | <p>A structure containing information about a BGP peer.</p>
@@ -320,40 +333,49 @@ newtype BGPPeer = BGPPeer
   , "BgpPeerState'" :: NullOrUndefined (BGPPeerState)
   , "BgpStatus'" :: NullOrUndefined (BGPStatus)
   }
+derive instance newtypeBGPPeer :: Newtype BGPPeer _
 
 
 -- | <p>A list of the BGP peers configured on this virtual interface.</p>
 newtype BGPPeerList = BGPPeerList (Array BGPPeer)
+derive instance newtypeBGPPeerList :: Newtype BGPPeerList _
 
 
 -- | <p>The state of the BGP peer.</p> <ul> <li> <p> <b>Verifying</b>: The BGP peering addresses or ASN require validation before the BGP peer can be created. This state only applies to BGP peers on a public virtual interface. </p> </li> <li> <p> <b>Pending</b>: The BGP peer has been created, and is in this state until it is ready to be established.</p> </li> <li> <p> <b>Available</b>: The BGP peer can be established.</p> </li> <li> <p> <b>Deleting</b>: The BGP peer is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The BGP peer has been deleted and cannot be established.</p> </li> </ul>
 newtype BGPPeerState = BGPPeerState String
+derive instance newtypeBGPPeerState :: Newtype BGPPeerState _
 
 
 -- | <p>The Up/Down state of the BGP peer.</p> <ul> <li> <p> <b>Up</b>: The BGP peer is established.</p> </li> <li> <p> <b>Down</b>: The BGP peer is down.</p> </li> </ul>
 newtype BGPStatus = BGPStatus String
+derive instance newtypeBGPStatus :: Newtype BGPStatus _
 
 
 -- | <p>Bandwidth of the connection.</p> <p>Example: 1Gbps</p> <p>Default: None</p>
 newtype Bandwidth = Bandwidth String
+derive instance newtypeBandwidth :: Newtype Bandwidth _
 
 
 newtype BooleanFlag = BooleanFlag Boolean
+derive instance newtypeBooleanFlag :: Newtype BooleanFlag _
 
 
 newtype CIDR = CIDR String
+derive instance newtypeCIDR :: Newtype CIDR _
 
 
 -- | <p>Container for the parameters to the ConfirmConnection operation.</p>
 newtype ConfirmConnectionRequest = ConfirmConnectionRequest 
   { "ConnectionId'" :: (ConnectionId)
   }
+derive instance newtypeConfirmConnectionRequest :: Newtype ConfirmConnectionRequest _
 
 
 -- | <p>The response received when ConfirmConnection is called.</p>
 newtype ConfirmConnectionResponse = ConfirmConnectionResponse 
   { "ConnectionState'" :: NullOrUndefined (ConnectionState)
   }
+derive instance newtypeConfirmConnectionResponse :: Newtype ConfirmConnectionResponse _
 
 
 -- | <p>Container for the parameters to the ConfirmPrivateVirtualInterface operation.</p>
@@ -362,24 +384,28 @@ newtype ConfirmPrivateVirtualInterfaceRequest = ConfirmPrivateVirtualInterfaceRe
   , "VirtualGatewayId'" :: NullOrUndefined (VirtualGatewayId)
   , "DirectConnectGatewayId'" :: NullOrUndefined (DirectConnectGatewayId)
   }
+derive instance newtypeConfirmPrivateVirtualInterfaceRequest :: Newtype ConfirmPrivateVirtualInterfaceRequest _
 
 
 -- | <p>The response received when ConfirmPrivateVirtualInterface is called.</p>
 newtype ConfirmPrivateVirtualInterfaceResponse = ConfirmPrivateVirtualInterfaceResponse 
   { "VirtualInterfaceState'" :: NullOrUndefined (VirtualInterfaceState)
   }
+derive instance newtypeConfirmPrivateVirtualInterfaceResponse :: Newtype ConfirmPrivateVirtualInterfaceResponse _
 
 
 -- | <p>Container for the parameters to the ConfirmPublicVirtualInterface operation.</p>
 newtype ConfirmPublicVirtualInterfaceRequest = ConfirmPublicVirtualInterfaceRequest 
   { "VirtualInterfaceId'" :: (VirtualInterfaceId)
   }
+derive instance newtypeConfirmPublicVirtualInterfaceRequest :: Newtype ConfirmPublicVirtualInterfaceRequest _
 
 
 -- | <p>The response received when ConfirmPublicVirtualInterface is called.</p>
 newtype ConfirmPublicVirtualInterfaceResponse = ConfirmPublicVirtualInterfaceResponse 
   { "VirtualInterfaceState'" :: NullOrUndefined (VirtualInterfaceState)
   }
+derive instance newtypeConfirmPublicVirtualInterfaceResponse :: Newtype ConfirmPublicVirtualInterfaceResponse _
 
 
 -- | <p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>
@@ -397,31 +423,38 @@ newtype Connection = Connection
   , "LagId'" :: NullOrUndefined (LagId)
   , "AwsDevice'" :: NullOrUndefined (AwsDevice)
   }
+derive instance newtypeConnection :: Newtype Connection _
 
 
 -- | <p>The ID of the connection. This field is also used as the ID type for operations that use multiple connection types (LAG, interconnect, and/or connection).</p> <p>Example: dxcon-fg5678gh</p> <p>Default: None</p>
 newtype ConnectionId = ConnectionId String
+derive instance newtypeConnectionId :: Newtype ConnectionId _
 
 
 -- | <p>A list of connections.</p>
 newtype ConnectionList = ConnectionList (Array Connection)
+derive instance newtypeConnectionList :: Newtype ConnectionList _
 
 
 -- | <p>The name of the connection.</p> <p>Example: "<i>My Connection to AWS</i>"</p> <p>Default: None</p>
 newtype ConnectionName = ConnectionName String
+derive instance newtypeConnectionName :: Newtype ConnectionName _
 
 
 -- | <p>State of the connection.</p> <ul> <li> <p> <b>Ordering</b>: The initial state of a hosted connection provisioned on an interconnect. The connection stays in the ordering state until the owner of the hosted connection confirms or declines the connection order.</p> </li> <li> <p> <b>Requested</b>: The initial state of a standard connection. The connection stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <b>Pending</b>: The connection has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is up, and the connection is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The connection is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The connection has been deleted.</p> </li> <li> <p> <b>Rejected</b>: A hosted connection in the 'Ordering' state will enter the 'Rejected' state if it is deleted by the end customer.</p> </li> </ul>
 newtype ConnectionState = ConnectionState String
+derive instance newtypeConnectionState :: Newtype ConnectionState _
 
 
 -- | <p>A structure containing a list of connections.</p>
 newtype Connections = Connections 
   { "Connections'" :: NullOrUndefined (ConnectionList)
   }
+derive instance newtypeConnections :: Newtype Connections _
 
 
 newtype Count = Count Int
+derive instance newtypeCount :: Newtype Count _
 
 
 -- | <p>Container for the parameters to the CreateBGPPeer operation.</p>
@@ -429,12 +462,14 @@ newtype CreateBGPPeerRequest = CreateBGPPeerRequest
   { "VirtualInterfaceId'" :: NullOrUndefined (VirtualInterfaceId)
   , "NewBGPPeer'" :: NullOrUndefined (NewBGPPeer)
   }
+derive instance newtypeCreateBGPPeerRequest :: Newtype CreateBGPPeerRequest _
 
 
 -- | <p>The response received when CreateBGPPeer is called.</p>
 newtype CreateBGPPeerResponse = CreateBGPPeerResponse 
   { "VirtualInterface'" :: NullOrUndefined (VirtualInterface)
   }
+derive instance newtypeCreateBGPPeerResponse :: Newtype CreateBGPPeerResponse _
 
 
 -- | <p>Container for the parameters to the CreateConnection operation.</p>
@@ -444,6 +479,7 @@ newtype CreateConnectionRequest = CreateConnectionRequest
   , "ConnectionName'" :: (ConnectionName)
   , "LagId'" :: NullOrUndefined (LagId)
   }
+derive instance newtypeCreateConnectionRequest :: Newtype CreateConnectionRequest _
 
 
 -- | <p>Container for the parameters to the CreateDirectConnectGatewayAssociation operation.</p>
@@ -451,12 +487,14 @@ newtype CreateDirectConnectGatewayAssociationRequest = CreateDirectConnectGatewa
   { "DirectConnectGatewayId'" :: (DirectConnectGatewayId)
   , "VirtualGatewayId'" :: (VirtualGatewayId)
   }
+derive instance newtypeCreateDirectConnectGatewayAssociationRequest :: Newtype CreateDirectConnectGatewayAssociationRequest _
 
 
 -- | <p>Container for the response from the CreateDirectConnectGatewayAssociation API call</p>
 newtype CreateDirectConnectGatewayAssociationResult = CreateDirectConnectGatewayAssociationResult 
   { "DirectConnectGatewayAssociation'" :: NullOrUndefined (DirectConnectGatewayAssociation)
   }
+derive instance newtypeCreateDirectConnectGatewayAssociationResult :: Newtype CreateDirectConnectGatewayAssociationResult _
 
 
 -- | <p>Container for the parameters to the CreateDirectConnectGateway operation.</p>
@@ -464,12 +502,14 @@ newtype CreateDirectConnectGatewayRequest = CreateDirectConnectGatewayRequest
   { "DirectConnectGatewayName'" :: (DirectConnectGatewayName)
   , "AmazonSideAsn'" :: NullOrUndefined (LongAsn)
   }
+derive instance newtypeCreateDirectConnectGatewayRequest :: Newtype CreateDirectConnectGatewayRequest _
 
 
 -- | <p>Container for the response from the CreateDirectConnectGateway API call</p>
 newtype CreateDirectConnectGatewayResult = CreateDirectConnectGatewayResult 
   { "DirectConnectGateway'" :: NullOrUndefined (DirectConnectGateway)
   }
+derive instance newtypeCreateDirectConnectGatewayResult :: Newtype CreateDirectConnectGatewayResult _
 
 
 -- | <p>Container for the parameters to the CreateInterconnect operation.</p>
@@ -479,6 +519,7 @@ newtype CreateInterconnectRequest = CreateInterconnectRequest
   , "Location'" :: (LocationCode)
   , "LagId'" :: NullOrUndefined (LagId)
   }
+derive instance newtypeCreateInterconnectRequest :: Newtype CreateInterconnectRequest _
 
 
 -- | <p>Container for the parameters to the CreateLag operation.</p>
@@ -489,6 +530,7 @@ newtype CreateLagRequest = CreateLagRequest
   , "LagName'" :: (LagName)
   , "ConnectionId'" :: NullOrUndefined (ConnectionId)
   }
+derive instance newtypeCreateLagRequest :: Newtype CreateLagRequest _
 
 
 -- | <p>Container for the parameters to the CreatePrivateVirtualInterface operation.</p>
@@ -496,6 +538,7 @@ newtype CreatePrivateVirtualInterfaceRequest = CreatePrivateVirtualInterfaceRequ
   { "ConnectionId'" :: (ConnectionId)
   , "NewPrivateVirtualInterface'" :: (NewPrivateVirtualInterface)
   }
+derive instance newtypeCreatePrivateVirtualInterfaceRequest :: Newtype CreatePrivateVirtualInterfaceRequest _
 
 
 -- | <p>Container for the parameters to the CreatePublicVirtualInterface operation.</p>
@@ -503,10 +546,12 @@ newtype CreatePublicVirtualInterfaceRequest = CreatePublicVirtualInterfaceReques
   { "ConnectionId'" :: (ConnectionId)
   , "NewPublicVirtualInterface'" :: (NewPublicVirtualInterface)
   }
+derive instance newtypeCreatePublicVirtualInterfaceRequest :: Newtype CreatePublicVirtualInterfaceRequest _
 
 
 -- | <p>IP address assigned to the customer interface.</p> <p>Example: 192.168.1.2/30 or 2001:db8::2/125</p>
 newtype CustomerAddress = CustomerAddress String
+derive instance newtypeCustomerAddress :: Newtype CustomerAddress _
 
 
 -- | <p>Container for the parameters to the DeleteBGPPeer operation.</p>
@@ -515,18 +560,21 @@ newtype DeleteBGPPeerRequest = DeleteBGPPeerRequest
   , "Asn'" :: NullOrUndefined (ASN)
   , "CustomerAddress'" :: NullOrUndefined (CustomerAddress)
   }
+derive instance newtypeDeleteBGPPeerRequest :: Newtype DeleteBGPPeerRequest _
 
 
 -- | <p>The response received when DeleteBGPPeer is called.</p>
 newtype DeleteBGPPeerResponse = DeleteBGPPeerResponse 
   { "VirtualInterface'" :: NullOrUndefined (VirtualInterface)
   }
+derive instance newtypeDeleteBGPPeerResponse :: Newtype DeleteBGPPeerResponse _
 
 
 -- | <p>Container for the parameters to the DeleteConnection operation.</p>
 newtype DeleteConnectionRequest = DeleteConnectionRequest 
   { "ConnectionId'" :: (ConnectionId)
   }
+derive instance newtypeDeleteConnectionRequest :: Newtype DeleteConnectionRequest _
 
 
 -- | <p>Container for the parameters to the DeleteDirectConnectGatewayAssociation operation.</p>
@@ -534,54 +582,63 @@ newtype DeleteDirectConnectGatewayAssociationRequest = DeleteDirectConnectGatewa
   { "DirectConnectGatewayId'" :: (DirectConnectGatewayId)
   , "VirtualGatewayId'" :: (VirtualGatewayId)
   }
+derive instance newtypeDeleteDirectConnectGatewayAssociationRequest :: Newtype DeleteDirectConnectGatewayAssociationRequest _
 
 
 -- | <p>Container for the response from the DeleteDirectConnectGatewayAssociation API call</p>
 newtype DeleteDirectConnectGatewayAssociationResult = DeleteDirectConnectGatewayAssociationResult 
   { "DirectConnectGatewayAssociation'" :: NullOrUndefined (DirectConnectGatewayAssociation)
   }
+derive instance newtypeDeleteDirectConnectGatewayAssociationResult :: Newtype DeleteDirectConnectGatewayAssociationResult _
 
 
 -- | <p>Container for the parameters to the DeleteDirectConnectGateway operation.</p>
 newtype DeleteDirectConnectGatewayRequest = DeleteDirectConnectGatewayRequest 
   { "DirectConnectGatewayId'" :: (DirectConnectGatewayId)
   }
+derive instance newtypeDeleteDirectConnectGatewayRequest :: Newtype DeleteDirectConnectGatewayRequest _
 
 
 -- | <p>Container for the response from the DeleteDirectConnectGateway API call</p>
 newtype DeleteDirectConnectGatewayResult = DeleteDirectConnectGatewayResult 
   { "DirectConnectGateway'" :: NullOrUndefined (DirectConnectGateway)
   }
+derive instance newtypeDeleteDirectConnectGatewayResult :: Newtype DeleteDirectConnectGatewayResult _
 
 
 -- | <p>Container for the parameters to the DeleteInterconnect operation.</p>
 newtype DeleteInterconnectRequest = DeleteInterconnectRequest 
   { "InterconnectId'" :: (InterconnectId)
   }
+derive instance newtypeDeleteInterconnectRequest :: Newtype DeleteInterconnectRequest _
 
 
 -- | <p>The response received when DeleteInterconnect is called.</p>
 newtype DeleteInterconnectResponse = DeleteInterconnectResponse 
   { "InterconnectState'" :: NullOrUndefined (InterconnectState)
   }
+derive instance newtypeDeleteInterconnectResponse :: Newtype DeleteInterconnectResponse _
 
 
 -- | <p>Container for the parameters to the DeleteLag operation.</p>
 newtype DeleteLagRequest = DeleteLagRequest 
   { "LagId'" :: (LagId)
   }
+derive instance newtypeDeleteLagRequest :: Newtype DeleteLagRequest _
 
 
 -- | <p>Container for the parameters to the DeleteVirtualInterface operation.</p>
 newtype DeleteVirtualInterfaceRequest = DeleteVirtualInterfaceRequest 
   { "VirtualInterfaceId'" :: (VirtualInterfaceId)
   }
+derive instance newtypeDeleteVirtualInterfaceRequest :: Newtype DeleteVirtualInterfaceRequest _
 
 
 -- | <p>The response received when DeleteVirtualInterface is called.</p>
 newtype DeleteVirtualInterfaceResponse = DeleteVirtualInterfaceResponse 
   { "VirtualInterfaceState'" :: NullOrUndefined (VirtualInterfaceState)
   }
+derive instance newtypeDeleteVirtualInterfaceResponse :: Newtype DeleteVirtualInterfaceResponse _
 
 
 -- | <p>Container for the parameters to the DescribeConnectionLoa operation.</p>
@@ -590,24 +647,28 @@ newtype DescribeConnectionLoaRequest = DescribeConnectionLoaRequest
   , "ProviderName'" :: NullOrUndefined (ProviderName)
   , "LoaContentType'" :: NullOrUndefined (LoaContentType)
   }
+derive instance newtypeDescribeConnectionLoaRequest :: Newtype DescribeConnectionLoaRequest _
 
 
 -- | <p>The response received when DescribeConnectionLoa is called.</p>
 newtype DescribeConnectionLoaResponse = DescribeConnectionLoaResponse 
   { "Loa'" :: NullOrUndefined (Loa)
   }
+derive instance newtypeDescribeConnectionLoaResponse :: Newtype DescribeConnectionLoaResponse _
 
 
 -- | <p>Container for the parameters to the DescribeConnectionsOnInterconnect operation.</p>
 newtype DescribeConnectionsOnInterconnectRequest = DescribeConnectionsOnInterconnectRequest 
   { "InterconnectId'" :: (InterconnectId)
   }
+derive instance newtypeDescribeConnectionsOnInterconnectRequest :: Newtype DescribeConnectionsOnInterconnectRequest _
 
 
 -- | <p>Container for the parameters to the DescribeConnections operation.</p>
 newtype DescribeConnectionsRequest = DescribeConnectionsRequest 
   { "ConnectionId'" :: NullOrUndefined (ConnectionId)
   }
+derive instance newtypeDescribeConnectionsRequest :: Newtype DescribeConnectionsRequest _
 
 
 -- | <p>Container for the parameters to the DescribeDirectConnectGatewayAssociations operation.</p>
@@ -617,6 +678,7 @@ newtype DescribeDirectConnectGatewayAssociationsRequest = DescribeDirectConnectG
   , "MaxResults'" :: NullOrUndefined (MaxResultSetSize)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeDescribeDirectConnectGatewayAssociationsRequest :: Newtype DescribeDirectConnectGatewayAssociationsRequest _
 
 
 -- | <p>Container for the response from the DescribeDirectConnectGatewayAssociations API call</p>
@@ -624,6 +686,7 @@ newtype DescribeDirectConnectGatewayAssociationsResult = DescribeDirectConnectGa
   { "DirectConnectGatewayAssociations'" :: NullOrUndefined (DirectConnectGatewayAssociationList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeDescribeDirectConnectGatewayAssociationsResult :: Newtype DescribeDirectConnectGatewayAssociationsResult _
 
 
 -- | <p>Container for the parameters to the DescribeDirectConnectGatewayAttachments operation.</p>
@@ -633,6 +696,7 @@ newtype DescribeDirectConnectGatewayAttachmentsRequest = DescribeDirectConnectGa
   , "MaxResults'" :: NullOrUndefined (MaxResultSetSize)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeDescribeDirectConnectGatewayAttachmentsRequest :: Newtype DescribeDirectConnectGatewayAttachmentsRequest _
 
 
 -- | <p>Container for the response from the DescribeDirectConnectGatewayAttachments API call</p>
@@ -640,6 +704,7 @@ newtype DescribeDirectConnectGatewayAttachmentsResult = DescribeDirectConnectGat
   { "DirectConnectGatewayAttachments'" :: NullOrUndefined (DirectConnectGatewayAttachmentList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeDescribeDirectConnectGatewayAttachmentsResult :: Newtype DescribeDirectConnectGatewayAttachmentsResult _
 
 
 -- | <p>Container for the parameters to the DescribeDirectConnectGateways operation.</p>
@@ -648,6 +713,7 @@ newtype DescribeDirectConnectGatewaysRequest = DescribeDirectConnectGatewaysRequ
   , "MaxResults'" :: NullOrUndefined (MaxResultSetSize)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeDescribeDirectConnectGatewaysRequest :: Newtype DescribeDirectConnectGatewaysRequest _
 
 
 -- | <p>Container for the response from the DescribeDirectConnectGateways API call</p>
@@ -655,12 +721,14 @@ newtype DescribeDirectConnectGatewaysResult = DescribeDirectConnectGatewaysResul
   { "DirectConnectGateways'" :: NullOrUndefined (DirectConnectGatewayList)
   , "NextToken'" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeDescribeDirectConnectGatewaysResult :: Newtype DescribeDirectConnectGatewaysResult _
 
 
 -- | <p>Container for the parameters to the DescribeHostedConnections operation.</p>
 newtype DescribeHostedConnectionsRequest = DescribeHostedConnectionsRequest 
   { "ConnectionId'" :: (ConnectionId)
   }
+derive instance newtypeDescribeHostedConnectionsRequest :: Newtype DescribeHostedConnectionsRequest _
 
 
 -- | <p>Container for the parameters to the DescribeInterconnectLoa operation.</p>
@@ -669,24 +737,28 @@ newtype DescribeInterconnectLoaRequest = DescribeInterconnectLoaRequest
   , "ProviderName'" :: NullOrUndefined (ProviderName)
   , "LoaContentType'" :: NullOrUndefined (LoaContentType)
   }
+derive instance newtypeDescribeInterconnectLoaRequest :: Newtype DescribeInterconnectLoaRequest _
 
 
 -- | <p>The response received when DescribeInterconnectLoa is called.</p>
 newtype DescribeInterconnectLoaResponse = DescribeInterconnectLoaResponse 
   { "Loa'" :: NullOrUndefined (Loa)
   }
+derive instance newtypeDescribeInterconnectLoaResponse :: Newtype DescribeInterconnectLoaResponse _
 
 
 -- | <p>Container for the parameters to the DescribeInterconnects operation.</p>
 newtype DescribeInterconnectsRequest = DescribeInterconnectsRequest 
   { "InterconnectId'" :: NullOrUndefined (InterconnectId)
   }
+derive instance newtypeDescribeInterconnectsRequest :: Newtype DescribeInterconnectsRequest _
 
 
 -- | <p>Container for the parameters to the DescribeLags operation.</p>
 newtype DescribeLagsRequest = DescribeLagsRequest 
   { "LagId'" :: NullOrUndefined (LagId)
   }
+derive instance newtypeDescribeLagsRequest :: Newtype DescribeLagsRequest _
 
 
 -- | <p>Container for the parameters to the DescribeLoa operation.</p>
@@ -695,18 +767,21 @@ newtype DescribeLoaRequest = DescribeLoaRequest
   , "ProviderName'" :: NullOrUndefined (ProviderName)
   , "LoaContentType'" :: NullOrUndefined (LoaContentType)
   }
+derive instance newtypeDescribeLoaRequest :: Newtype DescribeLoaRequest _
 
 
 -- | <p>Container for the parameters to the DescribeTags operation.</p>
 newtype DescribeTagsRequest = DescribeTagsRequest 
   { "ResourceArns'" :: (ResourceArnList)
   }
+derive instance newtypeDescribeTagsRequest :: Newtype DescribeTagsRequest _
 
 
 -- | <p>The response received when DescribeTags is called.</p>
 newtype DescribeTagsResponse = DescribeTagsResponse 
   { "ResourceTags'" :: NullOrUndefined (ResourceTagList)
   }
+derive instance newtypeDescribeTagsResponse :: Newtype DescribeTagsResponse _
 
 
 -- | <p>Container for the parameters to the DescribeVirtualInterfaces operation.</p>
@@ -714,12 +789,14 @@ newtype DescribeVirtualInterfacesRequest = DescribeVirtualInterfacesRequest
   { "ConnectionId'" :: NullOrUndefined (ConnectionId)
   , "VirtualInterfaceId'" :: NullOrUndefined (VirtualInterfaceId)
   }
+derive instance newtypeDescribeVirtualInterfacesRequest :: Newtype DescribeVirtualInterfacesRequest _
 
 
 -- | <p>The API was called with invalid parameters. The error message will contain additional details about the cause.</p>
 newtype DirectConnectClientException = DirectConnectClientException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDirectConnectClientException :: Newtype DirectConnectClientException _
 
 
 -- | <p>A direct connect gateway is an intermediate object that enables you to connect virtual interfaces and virtual private gateways.</p>
@@ -731,6 +808,7 @@ newtype DirectConnectGateway = DirectConnectGateway
   , "DirectConnectGatewayState'" :: NullOrUndefined (DirectConnectGatewayState)
   , "StateChangeError'" :: NullOrUndefined (StateChangeError)
   }
+derive instance newtypeDirectConnectGateway :: Newtype DirectConnectGateway _
 
 
 -- | <p>The association between a direct connect gateway and virtual private gateway.</p>
@@ -742,14 +820,17 @@ newtype DirectConnectGatewayAssociation = DirectConnectGatewayAssociation
   , "AssociationState'" :: NullOrUndefined (DirectConnectGatewayAssociationState)
   , "StateChangeError'" :: NullOrUndefined (StateChangeError)
   }
+derive instance newtypeDirectConnectGatewayAssociation :: Newtype DirectConnectGatewayAssociation _
 
 
 -- | <p>A list of direct connect gateway associations.</p>
 newtype DirectConnectGatewayAssociationList = DirectConnectGatewayAssociationList (Array DirectConnectGatewayAssociation)
+derive instance newtypeDirectConnectGatewayAssociationList :: Newtype DirectConnectGatewayAssociationList _
 
 
 -- | <p>State of the direct connect gateway association.</p> <ul> <li> <p> <b>Associating</b>: The initial state after calling <a>CreateDirectConnectGatewayAssociation</a>.</p> </li> <li> <p> <b>Associated</b>: The direct connect gateway and virtual private gateway are successfully associated and ready to pass traffic.</p> </li> <li> <p> <b>Disassociating</b>: The initial state after calling <a>DeleteDirectConnectGatewayAssociation</a>.</p> </li> <li> <p> <b>Disassociated</b>: The virtual private gateway is successfully disassociated from the direct connect gateway. Traffic flow between the direct connect gateway and virtual private gateway stops.</p> </li> </ul>
 newtype DirectConnectGatewayAssociationState = DirectConnectGatewayAssociationState String
+derive instance newtypeDirectConnectGatewayAssociationState :: Newtype DirectConnectGatewayAssociationState _
 
 
 -- | <p>The association between a direct connect gateway and virtual interface.</p>
@@ -761,36 +842,44 @@ newtype DirectConnectGatewayAttachment = DirectConnectGatewayAttachment
   , "AttachmentState'" :: NullOrUndefined (DirectConnectGatewayAttachmentState)
   , "StateChangeError'" :: NullOrUndefined (StateChangeError)
   }
+derive instance newtypeDirectConnectGatewayAttachment :: Newtype DirectConnectGatewayAttachment _
 
 
 -- | <p>A list of direct connect gateway attachments.</p>
 newtype DirectConnectGatewayAttachmentList = DirectConnectGatewayAttachmentList (Array DirectConnectGatewayAttachment)
+derive instance newtypeDirectConnectGatewayAttachmentList :: Newtype DirectConnectGatewayAttachmentList _
 
 
 -- | <p>State of the direct connect gateway attachment.</p> <ul> <li> <p> <b>Attaching</b>: The initial state after a virtual interface is created using the direct connect gateway.</p> </li> <li> <p> <b>Attached</b>: The direct connect gateway and virtual interface are successfully attached and ready to pass traffic.</p> </li> <li> <p> <b>Detaching</b>: The initial state after calling <a>DeleteVirtualInterface</a> on a virtual interface that is attached to a direct connect gateway.</p> </li> <li> <p> <b>Detached</b>: The virtual interface is successfully detached from the direct connect gateway. Traffic flow between the direct connect gateway and virtual interface stops.</p> </li> </ul>
 newtype DirectConnectGatewayAttachmentState = DirectConnectGatewayAttachmentState String
+derive instance newtypeDirectConnectGatewayAttachmentState :: Newtype DirectConnectGatewayAttachmentState _
 
 
 -- | <p>The ID of the direct connect gateway.</p> <p>Example: "abcd1234-dcba-5678-be23-cdef9876ab45"</p>
 newtype DirectConnectGatewayId = DirectConnectGatewayId String
+derive instance newtypeDirectConnectGatewayId :: Newtype DirectConnectGatewayId _
 
 
 -- | <p>A list of direct connect gateways.</p>
 newtype DirectConnectGatewayList = DirectConnectGatewayList (Array DirectConnectGateway)
+derive instance newtypeDirectConnectGatewayList :: Newtype DirectConnectGatewayList _
 
 
 -- | <p>The name of the direct connect gateway.</p> <p>Example: "My direct connect gateway"</p> <p>Default: None</p>
 newtype DirectConnectGatewayName = DirectConnectGatewayName String
+derive instance newtypeDirectConnectGatewayName :: Newtype DirectConnectGatewayName _
 
 
 -- | <p>State of the direct connect gateway.</p> <ul> <li> <p> <b>Pending</b>: The initial state after calling <a>CreateDirectConnectGateway</a>.</p> </li> <li> <p> <b>Available</b>: The direct connect gateway is ready for use.</p> </li> <li> <p> <b>Deleting</b>: The initial state after calling <a>DeleteDirectConnectGateway</a>.</p> </li> <li> <p> <b>Deleted</b>: The direct connect gateway is deleted and cannot pass traffic.</p> </li> </ul>
 newtype DirectConnectGatewayState = DirectConnectGatewayState String
+derive instance newtypeDirectConnectGatewayState :: Newtype DirectConnectGatewayState _
 
 
 -- | <p>A server-side error occurred during the API call. The error message will contain additional details about the cause.</p>
 newtype DirectConnectServerException = DirectConnectServerException 
   { "Message'" :: NullOrUndefined (ErrorMessage)
   }
+derive instance newtypeDirectConnectServerException :: Newtype DirectConnectServerException _
 
 
 -- | <p>Container for the parameters to the DisassociateConnectionFromLag operation.</p>
@@ -798,15 +887,18 @@ newtype DisassociateConnectionFromLagRequest = DisassociateConnectionFromLagRequ
   { "ConnectionId'" :: (ConnectionId)
   , "LagId'" :: (LagId)
   }
+derive instance newtypeDisassociateConnectionFromLagRequest :: Newtype DisassociateConnectionFromLagRequest _
 
 
 -- | <p>A tag key was specified more than once.</p>
 newtype DuplicateTagKeysException = DuplicateTagKeysException 
   { 
   }
+derive instance newtypeDuplicateTagKeysException :: Newtype DuplicateTagKeysException _
 
 
 newtype ErrorMessage = ErrorMessage String
+derive instance newtypeErrorMessage :: Newtype ErrorMessage _
 
 
 -- | <p>An interconnect is a connection that can host other connections.</p> <p>Like a standard AWS Direct Connect connection, an interconnect represents the physical connection between an AWS Direct Connect partner's network and a specific Direct Connect location. An AWS Direct Connect partner who owns an interconnect can provision hosted connections on the interconnect for their end customers, thereby providing the end customers with connectivity to AWS services.</p> <p>The resources of the interconnect, including bandwidth and VLAN numbers, are shared by all of the hosted connections on the interconnect, and the owner of the interconnect determines how these resources are assigned.</p>
@@ -821,28 +913,34 @@ newtype Interconnect = Interconnect
   , "LagId'" :: NullOrUndefined (LagId)
   , "AwsDevice'" :: NullOrUndefined (AwsDevice)
   }
+derive instance newtypeInterconnect :: Newtype Interconnect _
 
 
 -- | <p>The ID of the interconnect.</p> <p>Example: dxcon-abc123</p>
 newtype InterconnectId = InterconnectId String
+derive instance newtypeInterconnectId :: Newtype InterconnectId _
 
 
 -- | <p>A list of interconnects.</p>
 newtype InterconnectList = InterconnectList (Array Interconnect)
+derive instance newtypeInterconnectList :: Newtype InterconnectList _
 
 
 -- | <p>The name of the interconnect.</p> <p>Example: "<i>1G Interconnect to AWS</i>"</p>
 newtype InterconnectName = InterconnectName String
+derive instance newtypeInterconnectName :: Newtype InterconnectName _
 
 
 -- | <p>State of the interconnect.</p> <ul> <li> <p> <b>Requested</b>: The initial state of an interconnect. The interconnect stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.</p> </li> <li> <p> <b>Pending</b>: The interconnect has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is up, and the interconnect is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The interconnect is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The interconnect has been deleted.</p> </li> </ul>
 newtype InterconnectState = InterconnectState String
+derive instance newtypeInterconnectState :: Newtype InterconnectState _
 
 
 -- | <p>A structure containing a list of interconnects.</p>
 newtype Interconnects = Interconnects 
   { "Interconnects'" :: NullOrUndefined (InterconnectList)
   }
+derive instance newtypeInterconnects :: Newtype Interconnects _
 
 
 -- | <p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>
@@ -860,27 +958,33 @@ newtype Lag = Lag
   , "Connections'" :: NullOrUndefined (ConnectionList)
   , "AllowsHostedConnections'" :: NullOrUndefined (BooleanFlag)
   }
+derive instance newtypeLag :: Newtype Lag _
 
 
 -- | <p>The ID of the LAG.</p> <p>Example: dxlag-fg5678gh</p>
 newtype LagId = LagId String
+derive instance newtypeLagId :: Newtype LagId _
 
 
 -- | <p>A list of LAGs.</p>
 newtype LagList = LagList (Array Lag)
+derive instance newtypeLagList :: Newtype LagList _
 
 
 newtype LagName = LagName String
+derive instance newtypeLagName :: Newtype LagName _
 
 
 -- | <p>The state of the LAG.</p> <ul> <li> <p> <b>Requested</b>: The initial state of a LAG. The LAG stays in the requested state until the Letter of Authorization (LOA) is available.</p> </li> <li> <p> <b>Pending</b>: The LAG has been approved, and is being initialized.</p> </li> <li> <p> <b>Available</b>: The network link is established, and the LAG is ready for use.</p> </li> <li> <p> <b>Down</b>: The network link is down.</p> </li> <li> <p> <b>Deleting</b>: The LAG is in the process of being deleted.</p> </li> <li> <p> <b>Deleted</b>: The LAG has been deleted.</p> </li> </ul>
 newtype LagState = LagState String
+derive instance newtypeLagState :: Newtype LagState _
 
 
 -- | <p>A structure containing a list of LAGs.</p>
 newtype Lags = Lags 
   { "Lags'" :: NullOrUndefined (LagList)
   }
+derive instance newtypeLags :: Newtype Lags _
 
 
 -- | <p>A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>
@@ -888,17 +992,21 @@ newtype Loa = Loa
   { "LoaContent'" :: NullOrUndefined (LoaContent)
   , "LoaContentType'" :: NullOrUndefined (LoaContentType)
   }
+derive instance newtypeLoa :: Newtype Loa _
 
 
 -- | <p>The binary contents of the LOA-CFA document.</p>
 newtype LoaContent = LoaContent String
+derive instance newtypeLoaContent :: Newtype LoaContent _
 
 
 -- | <p>A standard media type indicating the content type of the LOA-CFA document. Currently, the only supported value is "application/pdf".</p> <p>Default: application/pdf</p>
 newtype LoaContentType = LoaContentType String
+derive instance newtypeLoaContentType :: Newtype LoaContentType _
 
 
 newtype LoaIssueTime = LoaIssueTime Number
+derive instance newtypeLoaIssueTime :: Newtype LoaIssueTime _
 
 
 -- | <p>An AWS Direct Connect location where connections and interconnects can be requested.</p>
@@ -906,29 +1014,36 @@ newtype Location = Location
   { "LocationCode'" :: NullOrUndefined (LocationCode)
   , "LocationName'" :: NullOrUndefined (LocationName)
   }
+derive instance newtypeLocation :: Newtype Location _
 
 
 -- | <p>Where the connection is located.</p> <p>Example: EqSV5</p> <p>Default: None</p>
 newtype LocationCode = LocationCode String
+derive instance newtypeLocationCode :: Newtype LocationCode _
 
 
 newtype LocationList = LocationList (Array Location)
+derive instance newtypeLocationList :: Newtype LocationList _
 
 
 newtype LocationName = LocationName String
+derive instance newtypeLocationName :: Newtype LocationName _
 
 
 -- | <p>A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.</p>
 newtype Locations = Locations 
   { "Locations'" :: NullOrUndefined (LocationList)
   }
+derive instance newtypeLocations :: Newtype Locations _
 
 
 newtype LongAsn = LongAsn Number
+derive instance newtypeLongAsn :: Newtype LongAsn _
 
 
 -- | <p>Maximum number of objects to return per page.</p>
 newtype MaxResultSetSize = MaxResultSetSize Int
+derive instance newtypeMaxResultSetSize :: Newtype MaxResultSetSize _
 
 
 -- | <p>A structure containing information about a new BGP peer.</p>
@@ -939,6 +1054,7 @@ newtype NewBGPPeer = NewBGPPeer
   , "AmazonAddress'" :: NullOrUndefined (AmazonAddress)
   , "CustomerAddress'" :: NullOrUndefined (CustomerAddress)
   }
+derive instance newtypeNewBGPPeer :: Newtype NewBGPPeer _
 
 
 -- | <p>A structure containing information about a new private virtual interface.</p>
@@ -953,6 +1069,7 @@ newtype NewPrivateVirtualInterface = NewPrivateVirtualInterface
   , "VirtualGatewayId'" :: NullOrUndefined (VirtualGatewayId)
   , "DirectConnectGatewayId'" :: NullOrUndefined (DirectConnectGatewayId)
   }
+derive instance newtypeNewPrivateVirtualInterface :: Newtype NewPrivateVirtualInterface _
 
 
 -- | <p>A structure containing information about a private virtual interface that will be provisioned on a connection.</p>
@@ -965,6 +1082,7 @@ newtype NewPrivateVirtualInterfaceAllocation = NewPrivateVirtualInterfaceAllocat
   , "AddressFamily'" :: NullOrUndefined (AddressFamily)
   , "CustomerAddress'" :: NullOrUndefined (CustomerAddress)
   }
+derive instance newtypeNewPrivateVirtualInterfaceAllocation :: Newtype NewPrivateVirtualInterfaceAllocation _
 
 
 -- | <p>A structure containing information about a new public virtual interface.</p>
@@ -978,6 +1096,7 @@ newtype NewPublicVirtualInterface = NewPublicVirtualInterface
   , "AddressFamily'" :: NullOrUndefined (AddressFamily)
   , "RouteFilterPrefixes'" :: NullOrUndefined (RouteFilterPrefixList)
   }
+derive instance newtypeNewPublicVirtualInterface :: Newtype NewPublicVirtualInterface _
 
 
 -- | <p>A structure containing information about a public virtual interface that will be provisioned on a connection.</p>
@@ -991,29 +1110,37 @@ newtype NewPublicVirtualInterfaceAllocation = NewPublicVirtualInterfaceAllocatio
   , "AddressFamily'" :: NullOrUndefined (AddressFamily)
   , "RouteFilterPrefixes'" :: NullOrUndefined (RouteFilterPrefixList)
   }
+derive instance newtypeNewPublicVirtualInterfaceAllocation :: Newtype NewPublicVirtualInterfaceAllocation _
 
 
 newtype OwnerAccount = OwnerAccount String
+derive instance newtypeOwnerAccount :: Newtype OwnerAccount _
 
 
 -- | <p>Token to retrieve the next page of the result.</p>
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 newtype PartnerName = PartnerName String
+derive instance newtypePartnerName :: Newtype PartnerName _
 
 
 newtype ProviderName = ProviderName String
+derive instance newtypeProviderName :: Newtype ProviderName _
 
 
 -- | <p>The AWS region where the connection is located.</p> <p>Example: us-east-1</p> <p>Default: None</p>
 newtype Region = Region String
+derive instance newtypeRegion :: Newtype Region _
 
 
 newtype ResourceArn = ResourceArn String
+derive instance newtypeResourceArn :: Newtype ResourceArn _
 
 
 newtype ResourceArnList = ResourceArnList (Array ResourceArn)
+derive instance newtypeResourceArnList :: Newtype ResourceArnList _
 
 
 -- | <p>The tags associated with a Direct Connect resource.</p>
@@ -1021,26 +1148,32 @@ newtype ResourceTag = ResourceTag
   { "ResourceArn'" :: NullOrUndefined (ResourceArn)
   , "Tags'" :: NullOrUndefined (TagList)
   }
+derive instance newtypeResourceTag :: Newtype ResourceTag _
 
 
 newtype ResourceTagList = ResourceTagList (Array ResourceTag)
+derive instance newtypeResourceTagList :: Newtype ResourceTagList _
 
 
 -- | <p>A route filter prefix that the customer can advertise through Border Gateway Protocol (BGP) over a public virtual interface.</p>
 newtype RouteFilterPrefix = RouteFilterPrefix 
   { "Cidr'" :: NullOrUndefined (CIDR)
   }
+derive instance newtypeRouteFilterPrefix :: Newtype RouteFilterPrefix _
 
 
 -- | <p>A list of routes to be advertised to the AWS network in this region (public virtual interface).</p>
 newtype RouteFilterPrefixList = RouteFilterPrefixList (Array RouteFilterPrefix)
+derive instance newtypeRouteFilterPrefixList :: Newtype RouteFilterPrefixList _
 
 
 newtype RouterConfig = RouterConfig String
+derive instance newtypeRouterConfig :: Newtype RouterConfig _
 
 
 -- | <p>Error message when the state of an object fails to advance.</p>
 newtype StateChangeError = StateChangeError String
+derive instance newtypeStateChangeError :: Newtype StateChangeError _
 
 
 -- | <p>Information about a tag.</p>
@@ -1048,15 +1181,19 @@ newtype Tag = Tag
   { "Key'" :: (TagKey)
   , "Value'" :: NullOrUndefined (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 -- | <p>Container for the parameters to the TagResource operation.</p>
@@ -1064,21 +1201,25 @@ newtype TagResourceRequest = TagResourceRequest
   { "ResourceArn'" :: (ResourceArn)
   , "Tags'" :: (TagList)
   }
+derive instance newtypeTagResourceRequest :: Newtype TagResourceRequest _
 
 
 -- | <p>The response received when TagResource is called.</p>
 newtype TagResourceResponse = TagResourceResponse 
   { 
   }
+derive instance newtypeTagResourceResponse :: Newtype TagResourceResponse _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 -- | <p>You have reached the limit on the number of tags that can be assigned to a Direct Connect resource.</p>
 newtype TooManyTagsException = TooManyTagsException 
   { 
   }
+derive instance newtypeTooManyTagsException :: Newtype TooManyTagsException _
 
 
 -- | <p>Container for the parameters to the UntagResource operation.</p>
@@ -1086,12 +1227,14 @@ newtype UntagResourceRequest = UntagResourceRequest
   { "ResourceArn'" :: (ResourceArn)
   , "TagKeys'" :: (TagKeyList)
   }
+derive instance newtypeUntagResourceRequest :: Newtype UntagResourceRequest _
 
 
 -- | <p>The response received when UntagResource is called.</p>
 newtype UntagResourceResponse = UntagResourceResponse 
   { 
   }
+derive instance newtypeUntagResourceResponse :: Newtype UntagResourceResponse _
 
 
 -- | <p>Container for the parameters to the UpdateLag operation.</p>
@@ -1100,10 +1243,12 @@ newtype UpdateLagRequest = UpdateLagRequest
   , "LagName'" :: NullOrUndefined (LagName)
   , "MinimumLinks'" :: NullOrUndefined (Count)
   }
+derive instance newtypeUpdateLagRequest :: Newtype UpdateLagRequest _
 
 
 -- | <p>The VLAN ID.</p> <p>Example: 101</p>
 newtype VLAN = VLAN Int
+derive instance newtypeVLAN :: Newtype VLAN _
 
 
 -- | <p>You can create one or more AWS Direct Connect private virtual interfaces linking to your virtual private gateway.</p> <p>Virtual private gateways can be managed using the Amazon Virtual Private Cloud (Amazon VPC) console or the <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-CreateVpnGateway.html">Amazon EC2 CreateVpnGateway action</a>.</p>
@@ -1111,28 +1256,34 @@ newtype VirtualGateway = VirtualGateway
   { "VirtualGatewayId'" :: NullOrUndefined (VirtualGatewayId)
   , "VirtualGatewayState'" :: NullOrUndefined (VirtualGatewayState)
   }
+derive instance newtypeVirtualGateway :: Newtype VirtualGateway _
 
 
 -- | <p>The ID of the virtual private gateway to a VPC. This only applies to private virtual interfaces.</p> <p>Example: vgw-123er56</p>
 newtype VirtualGatewayId = VirtualGatewayId String
+derive instance newtypeVirtualGatewayId :: Newtype VirtualGatewayId _
 
 
 -- | <p>A list of virtual private gateways.</p>
 newtype VirtualGatewayList = VirtualGatewayList (Array VirtualGateway)
+derive instance newtypeVirtualGatewayList :: Newtype VirtualGatewayList _
 
 
 -- | <p>The region in which the virtual private gateway is located.</p> <p>Example: us-east-1</p>
 newtype VirtualGatewayRegion = VirtualGatewayRegion String
+derive instance newtypeVirtualGatewayRegion :: Newtype VirtualGatewayRegion _
 
 
 -- | <p>State of the virtual private gateway.</p> <ul> <li> <p> <b>Pending</b>: This is the initial state after calling <i>CreateVpnGateway</i>.</p> </li> <li> <p> <b>Available</b>: Ready for use by a private virtual interface.</p> </li> <li> <p> <b>Deleting</b>: This is the initial state after calling <i>DeleteVpnGateway</i>.</p> </li> <li> <p> <b>Deleted</b>: In this state, a private virtual interface is unable to send traffic over this gateway.</p> </li> </ul>
 newtype VirtualGatewayState = VirtualGatewayState String
+derive instance newtypeVirtualGatewayState :: Newtype VirtualGatewayState _
 
 
 -- | <p>A structure containing a list of virtual private gateways.</p>
 newtype VirtualGateways = VirtualGateways 
   { "VirtualGateways'" :: NullOrUndefined (VirtualGatewayList)
   }
+derive instance newtypeVirtualGateways :: Newtype VirtualGateways _
 
 
 -- | <p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>
@@ -1157,33 +1308,41 @@ newtype VirtualInterface = VirtualInterface
   , "RouteFilterPrefixes'" :: NullOrUndefined (RouteFilterPrefixList)
   , "BgpPeers'" :: NullOrUndefined (BGPPeerList)
   }
+derive instance newtypeVirtualInterface :: Newtype VirtualInterface _
 
 
 -- | <p>The ID of the virtual interface.</p> <p>Example: dxvif-123dfg56</p> <p>Default: None</p>
 newtype VirtualInterfaceId = VirtualInterfaceId String
+derive instance newtypeVirtualInterfaceId :: Newtype VirtualInterfaceId _
 
 
 -- | <p>A list of virtual interfaces.</p>
 newtype VirtualInterfaceList = VirtualInterfaceList (Array VirtualInterface)
+derive instance newtypeVirtualInterfaceList :: Newtype VirtualInterfaceList _
 
 
 -- | <p>The name of the virtual interface assigned by the customer.</p> <p>Example: "My VPC"</p>
 newtype VirtualInterfaceName = VirtualInterfaceName String
+derive instance newtypeVirtualInterfaceName :: Newtype VirtualInterfaceName _
 
 
 -- | <p>The region in which the virtual interface is located.</p> <p>Example: us-east-1</p>
 newtype VirtualInterfaceRegion = VirtualInterfaceRegion String
+derive instance newtypeVirtualInterfaceRegion :: Newtype VirtualInterfaceRegion _
 
 
 -- | <p>State of the virtual interface.</p> <ul> <li> <p> <b>Confirming</b>: The creation of the virtual interface is pending confirmation from the virtual interface owner. If the owner of the virtual interface is different from the owner of the connection on which it is provisioned, then the virtual interface will remain in this state until it is confirmed by the virtual interface owner.</p> </li> <li> <p> <b>Verifying</b>: This state only applies to public virtual interfaces. Each public virtual interface needs validation before the virtual interface can be created.</p> </li> <li> <p> <b>Pending</b>: A virtual interface is in this state from the time that it is created until the virtual interface is ready to forward traffic.</p> </li> <li> <p> <b>Available</b>: A virtual interface that is able to forward traffic.</p> </li> <li> <p> <b>Down</b>: A virtual interface that is BGP down.</p> </li> <li> <p> <b>Deleting</b>: A virtual interface is in this state immediately after calling <a>DeleteVirtualInterface</a> until it can no longer forward traffic.</p> </li> <li> <p> <b>Deleted</b>: A virtual interface that cannot forward traffic.</p> </li> <li> <p> <b>Rejected</b>: The virtual interface owner has declined creation of the virtual interface. If a virtual interface in the 'Confirming' state is deleted by the virtual interface owner, the virtual interface will enter the 'Rejected' state.</p> </li> </ul>
 newtype VirtualInterfaceState = VirtualInterfaceState String
+derive instance newtypeVirtualInterfaceState :: Newtype VirtualInterfaceState _
 
 
 -- | <p>The type of virtual interface.</p> <p>Example: private (Amazon VPC) or public (Amazon S3, Amazon DynamoDB, and so on.)</p>
 newtype VirtualInterfaceType = VirtualInterfaceType String
+derive instance newtypeVirtualInterfaceType :: Newtype VirtualInterfaceType _
 
 
 -- | <p>A structure containing a list of virtual interfaces.</p>
 newtype VirtualInterfaces = VirtualInterfaces 
   { "VirtualInterfaces'" :: NullOrUndefined (VirtualInterfaceList)
   }
+derive instance newtypeVirtualInterfaces :: Newtype VirtualInterfaces _

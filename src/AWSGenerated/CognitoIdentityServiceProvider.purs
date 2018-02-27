@@ -6,6 +6,7 @@ module AWS.CognitoIdentityServiceProvider where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -489,9 +490,11 @@ verifyUserAttribute = AWS.request serviceName "VerifyUserAttribute"
 
 
 newtype AWSAccountIdType = AWSAccountIdType String
+derive instance newtypeAWSAccountIdType :: Newtype AWSAccountIdType _
 
 
 newtype AccountTakeoverActionNotifyType = AccountTakeoverActionNotifyType Boolean
+derive instance newtypeAccountTakeoverActionNotifyType :: Newtype AccountTakeoverActionNotifyType _
 
 
 -- | <p>Account takeover action type.</p>
@@ -499,6 +502,7 @@ newtype AccountTakeoverActionType = AccountTakeoverActionType
   { "Notify" :: (AccountTakeoverActionNotifyType)
   , "EventAction" :: (AccountTakeoverEventActionType)
   }
+derive instance newtypeAccountTakeoverActionType :: Newtype AccountTakeoverActionType _
 
 
 -- | <p>Account takeover actions type.</p>
@@ -507,9 +511,11 @@ newtype AccountTakeoverActionsType = AccountTakeoverActionsType
   , "MediumAction" :: NullOrUndefined (AccountTakeoverActionType)
   , "HighAction" :: NullOrUndefined (AccountTakeoverActionType)
   }
+derive instance newtypeAccountTakeoverActionsType :: Newtype AccountTakeoverActionsType _
 
 
 newtype AccountTakeoverEventActionType = AccountTakeoverEventActionType String
+derive instance newtypeAccountTakeoverEventActionType :: Newtype AccountTakeoverEventActionType _
 
 
 -- | <p>Configuration for mitigation actions and notification for different levels of risk detected for a potential account takeover.</p>
@@ -517,6 +523,7 @@ newtype AccountTakeoverRiskConfigurationType = AccountTakeoverRiskConfigurationT
   { "NotifyConfiguration" :: NullOrUndefined (NotifyConfigurationType)
   , "Actions" :: (AccountTakeoverActionsType)
   }
+derive instance newtypeAccountTakeoverRiskConfigurationType :: Newtype AccountTakeoverRiskConfigurationType _
 
 
 -- | <p>Represents the request to add custom attributes.</p>
@@ -524,12 +531,14 @@ newtype AddCustomAttributesRequest = AddCustomAttributesRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "CustomAttributes" :: (CustomAttributesListType)
   }
+derive instance newtypeAddCustomAttributesRequest :: Newtype AddCustomAttributesRequest _
 
 
 -- | <p>Represents the response from the server for the request to add custom attributes.</p>
 newtype AddCustomAttributesResponse = AddCustomAttributesResponse 
   { 
   }
+derive instance newtypeAddCustomAttributesResponse :: Newtype AddCustomAttributesResponse _
 
 
 newtype AdminAddUserToGroupRequest = AdminAddUserToGroupRequest 
@@ -537,6 +546,7 @@ newtype AdminAddUserToGroupRequest = AdminAddUserToGroupRequest
   , "Username" :: (UsernameType)
   , "GroupName" :: (GroupNameType)
   }
+derive instance newtypeAdminAddUserToGroupRequest :: Newtype AdminAddUserToGroupRequest _
 
 
 -- | <p>Represents the request to confirm user registration.</p>
@@ -544,12 +554,14 @@ newtype AdminConfirmSignUpRequest = AdminConfirmSignUpRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminConfirmSignUpRequest :: Newtype AdminConfirmSignUpRequest _
 
 
 -- | <p>Represents the response from the server for the request to confirm registration.</p>
 newtype AdminConfirmSignUpResponse = AdminConfirmSignUpResponse 
   { 
   }
+derive instance newtypeAdminConfirmSignUpResponse :: Newtype AdminConfirmSignUpResponse _
 
 
 -- | <p>The configuration for creating a new user profile.</p>
@@ -558,6 +570,7 @@ newtype AdminCreateUserConfigType = AdminCreateUserConfigType
   , "UnusedAccountValidityDays" :: NullOrUndefined (AdminCreateUserUnusedAccountValidityDaysType)
   , "InviteMessageTemplate" :: NullOrUndefined (MessageTemplateType)
   }
+derive instance newtypeAdminCreateUserConfigType :: Newtype AdminCreateUserConfigType _
 
 
 -- | <p>Represents the request to create a user in the specified user pool.</p>
@@ -571,15 +584,18 @@ newtype AdminCreateUserRequest = AdminCreateUserRequest
   , "MessageAction" :: NullOrUndefined (MessageActionType)
   , "DesiredDeliveryMediums" :: NullOrUndefined (DeliveryMediumListType)
   }
+derive instance newtypeAdminCreateUserRequest :: Newtype AdminCreateUserRequest _
 
 
 -- | <p>Represents the response from the server to the request to create the user.</p>
 newtype AdminCreateUserResponse = AdminCreateUserResponse 
   { "User" :: NullOrUndefined (UserType)
   }
+derive instance newtypeAdminCreateUserResponse :: Newtype AdminCreateUserResponse _
 
 
 newtype AdminCreateUserUnusedAccountValidityDaysType = AdminCreateUserUnusedAccountValidityDaysType Int
+derive instance newtypeAdminCreateUserUnusedAccountValidityDaysType :: Newtype AdminCreateUserUnusedAccountValidityDaysType _
 
 
 -- | <p>Represents the request to delete user attributes as an administrator.</p>
@@ -588,12 +604,14 @@ newtype AdminDeleteUserAttributesRequest = AdminDeleteUserAttributesRequest
   , "Username" :: (UsernameType)
   , "UserAttributeNames" :: (AttributeNameListType)
   }
+derive instance newtypeAdminDeleteUserAttributesRequest :: Newtype AdminDeleteUserAttributesRequest _
 
 
 -- | <p>Represents the response received from the server for a request to delete user attributes.</p>
 newtype AdminDeleteUserAttributesResponse = AdminDeleteUserAttributesResponse 
   { 
   }
+derive instance newtypeAdminDeleteUserAttributesResponse :: Newtype AdminDeleteUserAttributesResponse _
 
 
 -- | <p>Represents the request to delete a user as an administrator.</p>
@@ -601,17 +619,20 @@ newtype AdminDeleteUserRequest = AdminDeleteUserRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminDeleteUserRequest :: Newtype AdminDeleteUserRequest _
 
 
 newtype AdminDisableProviderForUserRequest = AdminDisableProviderForUserRequest 
   { "UserPoolId" :: (StringType)
   , "User" :: (ProviderUserIdentifierType)
   }
+derive instance newtypeAdminDisableProviderForUserRequest :: Newtype AdminDisableProviderForUserRequest _
 
 
 newtype AdminDisableProviderForUserResponse = AdminDisableProviderForUserResponse 
   { 
   }
+derive instance newtypeAdminDisableProviderForUserResponse :: Newtype AdminDisableProviderForUserResponse _
 
 
 -- | <p>Represents the request to disable any user as an administrator.</p>
@@ -619,12 +640,14 @@ newtype AdminDisableUserRequest = AdminDisableUserRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminDisableUserRequest :: Newtype AdminDisableUserRequest _
 
 
 -- | <p>Represents the response received from the server to disable the user as an administrator.</p>
 newtype AdminDisableUserResponse = AdminDisableUserResponse 
   { 
   }
+derive instance newtypeAdminDisableUserResponse :: Newtype AdminDisableUserResponse _
 
 
 -- | <p>Represents the request that enables the user as an administrator.</p>
@@ -632,12 +655,14 @@ newtype AdminEnableUserRequest = AdminEnableUserRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminEnableUserRequest :: Newtype AdminEnableUserRequest _
 
 
 -- | <p>Represents the response from the server for the request to enable a user as an administrator.</p>
 newtype AdminEnableUserResponse = AdminEnableUserResponse 
   { 
   }
+derive instance newtypeAdminEnableUserResponse :: Newtype AdminEnableUserResponse _
 
 
 -- | <p>Sends the forgot device request, as an administrator.</p>
@@ -646,6 +671,7 @@ newtype AdminForgetDeviceRequest = AdminForgetDeviceRequest
   , "Username" :: (UsernameType)
   , "DeviceKey" :: (DeviceKeyType)
   }
+derive instance newtypeAdminForgetDeviceRequest :: Newtype AdminForgetDeviceRequest _
 
 
 -- | <p>Represents the request to get the device, as an administrator.</p>
@@ -654,12 +680,14 @@ newtype AdminGetDeviceRequest = AdminGetDeviceRequest
   , "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminGetDeviceRequest :: Newtype AdminGetDeviceRequest _
 
 
 -- | <p>Gets the device response, as an administrator.</p>
 newtype AdminGetDeviceResponse = AdminGetDeviceResponse 
   { "Device" :: (DeviceType)
   }
+derive instance newtypeAdminGetDeviceResponse :: Newtype AdminGetDeviceResponse _
 
 
 -- | <p>Represents the request to get the specified user as an administrator.</p>
@@ -667,6 +695,7 @@ newtype AdminGetUserRequest = AdminGetUserRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminGetUserRequest :: Newtype AdminGetUserRequest _
 
 
 -- | <p>Represents the response from the server from the request to get the specified user as an administrator.</p>
@@ -681,6 +710,7 @@ newtype AdminGetUserResponse = AdminGetUserResponse
   , "PreferredMfaSetting" :: NullOrUndefined (StringType)
   , "UserMFASettingList" :: NullOrUndefined (UserMFASettingListType)
   }
+derive instance newtypeAdminGetUserResponse :: Newtype AdminGetUserResponse _
 
 
 -- | <p>Initiates the authorization request, as an administrator.</p>
@@ -693,6 +723,7 @@ newtype AdminInitiateAuthRequest = AdminInitiateAuthRequest
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   , "ContextData" :: NullOrUndefined (ContextDataType)
   }
+derive instance newtypeAdminInitiateAuthRequest :: Newtype AdminInitiateAuthRequest _
 
 
 -- | <p>Initiates the authentication response, as an administrator.</p>
@@ -702,6 +733,7 @@ newtype AdminInitiateAuthResponse = AdminInitiateAuthResponse
   , "ChallengeParameters" :: NullOrUndefined (ChallengeParametersType)
   , "AuthenticationResult" :: NullOrUndefined (AuthenticationResultType)
   }
+derive instance newtypeAdminInitiateAuthResponse :: Newtype AdminInitiateAuthResponse _
 
 
 newtype AdminLinkProviderForUserRequest = AdminLinkProviderForUserRequest 
@@ -709,11 +741,13 @@ newtype AdminLinkProviderForUserRequest = AdminLinkProviderForUserRequest
   , "DestinationUser" :: (ProviderUserIdentifierType)
   , "SourceUser" :: (ProviderUserIdentifierType)
   }
+derive instance newtypeAdminLinkProviderForUserRequest :: Newtype AdminLinkProviderForUserRequest _
 
 
 newtype AdminLinkProviderForUserResponse = AdminLinkProviderForUserResponse 
   { 
   }
+derive instance newtypeAdminLinkProviderForUserResponse :: Newtype AdminLinkProviderForUserResponse _
 
 
 -- | <p>Represents the request to list devices, as an administrator.</p>
@@ -723,6 +757,7 @@ newtype AdminListDevicesRequest = AdminListDevicesRequest
   , "Limit" :: NullOrUndefined (QueryLimitType)
   , "PaginationToken" :: NullOrUndefined (SearchPaginationTokenType)
   }
+derive instance newtypeAdminListDevicesRequest :: Newtype AdminListDevicesRequest _
 
 
 -- | <p>Lists the device's response, as an administrator.</p>
@@ -730,6 +765,7 @@ newtype AdminListDevicesResponse = AdminListDevicesResponse
   { "Devices" :: NullOrUndefined (DeviceListType)
   , "PaginationToken" :: NullOrUndefined (SearchPaginationTokenType)
   }
+derive instance newtypeAdminListDevicesResponse :: Newtype AdminListDevicesResponse _
 
 
 newtype AdminListGroupsForUserRequest = AdminListGroupsForUserRequest 
@@ -738,12 +774,14 @@ newtype AdminListGroupsForUserRequest = AdminListGroupsForUserRequest
   , "Limit" :: NullOrUndefined (QueryLimitType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeAdminListGroupsForUserRequest :: Newtype AdminListGroupsForUserRequest _
 
 
 newtype AdminListGroupsForUserResponse = AdminListGroupsForUserResponse 
   { "Groups" :: NullOrUndefined (GroupListType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeAdminListGroupsForUserResponse :: Newtype AdminListGroupsForUserResponse _
 
 
 newtype AdminListUserAuthEventsRequest = AdminListUserAuthEventsRequest 
@@ -752,12 +790,14 @@ newtype AdminListUserAuthEventsRequest = AdminListUserAuthEventsRequest
   , "MaxResults" :: NullOrUndefined (QueryLimitType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeAdminListUserAuthEventsRequest :: Newtype AdminListUserAuthEventsRequest _
 
 
 newtype AdminListUserAuthEventsResponse = AdminListUserAuthEventsResponse 
   { "AuthEvents" :: NullOrUndefined (AuthEventsType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeAdminListUserAuthEventsResponse :: Newtype AdminListUserAuthEventsResponse _
 
 
 newtype AdminRemoveUserFromGroupRequest = AdminRemoveUserFromGroupRequest 
@@ -765,6 +805,7 @@ newtype AdminRemoveUserFromGroupRequest = AdminRemoveUserFromGroupRequest
   , "Username" :: (UsernameType)
   , "GroupName" :: (GroupNameType)
   }
+derive instance newtypeAdminRemoveUserFromGroupRequest :: Newtype AdminRemoveUserFromGroupRequest _
 
 
 -- | <p>Represents the request to reset a user's password as an administrator.</p>
@@ -772,12 +813,14 @@ newtype AdminResetUserPasswordRequest = AdminResetUserPasswordRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminResetUserPasswordRequest :: Newtype AdminResetUserPasswordRequest _
 
 
 -- | <p>Represents the response from the server to reset a user password as an administrator.</p>
 newtype AdminResetUserPasswordResponse = AdminResetUserPasswordResponse 
   { 
   }
+derive instance newtypeAdminResetUserPasswordResponse :: Newtype AdminResetUserPasswordResponse _
 
 
 -- | <p>The request to respond to the authentication challenge, as an administrator.</p>
@@ -790,6 +833,7 @@ newtype AdminRespondToAuthChallengeRequest = AdminRespondToAuthChallengeRequest
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   , "ContextData" :: NullOrUndefined (ContextDataType)
   }
+derive instance newtypeAdminRespondToAuthChallengeRequest :: Newtype AdminRespondToAuthChallengeRequest _
 
 
 -- | <p>Responds to the authentication challenge, as an administrator.</p>
@@ -799,6 +843,7 @@ newtype AdminRespondToAuthChallengeResponse = AdminRespondToAuthChallengeRespons
   , "ChallengeParameters" :: NullOrUndefined (ChallengeParametersType)
   , "AuthenticationResult" :: NullOrUndefined (AuthenticationResultType)
   }
+derive instance newtypeAdminRespondToAuthChallengeResponse :: Newtype AdminRespondToAuthChallengeResponse _
 
 
 newtype AdminSetUserMFAPreferenceRequest = AdminSetUserMFAPreferenceRequest 
@@ -807,11 +852,13 @@ newtype AdminSetUserMFAPreferenceRequest = AdminSetUserMFAPreferenceRequest
   , "Username" :: (UsernameType)
   , "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeAdminSetUserMFAPreferenceRequest :: Newtype AdminSetUserMFAPreferenceRequest _
 
 
 newtype AdminSetUserMFAPreferenceResponse = AdminSetUserMFAPreferenceResponse 
   { 
   }
+derive instance newtypeAdminSetUserMFAPreferenceResponse :: Newtype AdminSetUserMFAPreferenceResponse _
 
 
 -- | <p>Represents the request to set user settings as an administrator.</p>
@@ -820,12 +867,14 @@ newtype AdminSetUserSettingsRequest = AdminSetUserSettingsRequest
   , "Username" :: (UsernameType)
   , "MFAOptions" :: (MFAOptionListType)
   }
+derive instance newtypeAdminSetUserSettingsRequest :: Newtype AdminSetUserSettingsRequest _
 
 
 -- | <p>Represents the response from the server to set user settings as an administrator.</p>
 newtype AdminSetUserSettingsResponse = AdminSetUserSettingsResponse 
   { 
   }
+derive instance newtypeAdminSetUserSettingsResponse :: Newtype AdminSetUserSettingsResponse _
 
 
 newtype AdminUpdateAuthEventFeedbackRequest = AdminUpdateAuthEventFeedbackRequest 
@@ -834,11 +883,13 @@ newtype AdminUpdateAuthEventFeedbackRequest = AdminUpdateAuthEventFeedbackReques
   , "EventId" :: (EventIdType)
   , "FeedbackValue" :: (FeedbackValueType)
   }
+derive instance newtypeAdminUpdateAuthEventFeedbackRequest :: Newtype AdminUpdateAuthEventFeedbackRequest _
 
 
 newtype AdminUpdateAuthEventFeedbackResponse = AdminUpdateAuthEventFeedbackResponse 
   { 
   }
+derive instance newtypeAdminUpdateAuthEventFeedbackResponse :: Newtype AdminUpdateAuthEventFeedbackResponse _
 
 
 -- | <p>The request to update the device status, as an administrator.</p>
@@ -848,12 +899,14 @@ newtype AdminUpdateDeviceStatusRequest = AdminUpdateDeviceStatusRequest
   , "DeviceKey" :: (DeviceKeyType)
   , "DeviceRememberedStatus" :: NullOrUndefined (DeviceRememberedStatusType)
   }
+derive instance newtypeAdminUpdateDeviceStatusRequest :: Newtype AdminUpdateDeviceStatusRequest _
 
 
 -- | <p>The status response from the request to update the device, as an administrator.</p>
 newtype AdminUpdateDeviceStatusResponse = AdminUpdateDeviceStatusResponse 
   { 
   }
+derive instance newtypeAdminUpdateDeviceStatusResponse :: Newtype AdminUpdateDeviceStatusResponse _
 
 
 -- | <p>Represents the request to update the user's attributes as an administrator.</p>
@@ -862,12 +915,14 @@ newtype AdminUpdateUserAttributesRequest = AdminUpdateUserAttributesRequest
   , "Username" :: (UsernameType)
   , "UserAttributes" :: (AttributeListType)
   }
+derive instance newtypeAdminUpdateUserAttributesRequest :: Newtype AdminUpdateUserAttributesRequest _
 
 
 -- | <p>Represents the response from the server for the request to update user attributes as an administrator.</p>
 newtype AdminUpdateUserAttributesResponse = AdminUpdateUserAttributesResponse 
   { 
   }
+derive instance newtypeAdminUpdateUserAttributesResponse :: Newtype AdminUpdateUserAttributesResponse _
 
 
 -- | <p>The request to sign out of all devices, as an administrator.</p>
@@ -875,27 +930,33 @@ newtype AdminUserGlobalSignOutRequest = AdminUserGlobalSignOutRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "Username" :: (UsernameType)
   }
+derive instance newtypeAdminUserGlobalSignOutRequest :: Newtype AdminUserGlobalSignOutRequest _
 
 
 -- | <p>The global sign-out response, as an administrator.</p>
 newtype AdminUserGlobalSignOutResponse = AdminUserGlobalSignOutResponse 
   { 
   }
+derive instance newtypeAdminUserGlobalSignOutResponse :: Newtype AdminUserGlobalSignOutResponse _
 
 
 newtype AdvancedSecurityModeType = AdvancedSecurityModeType String
+derive instance newtypeAdvancedSecurityModeType :: Newtype AdvancedSecurityModeType _
 
 
 newtype AliasAttributeType = AliasAttributeType String
+derive instance newtypeAliasAttributeType :: Newtype AliasAttributeType _
 
 
 newtype AliasAttributesListType = AliasAttributesListType (Array AliasAttributeType)
+derive instance newtypeAliasAttributesListType :: Newtype AliasAttributesListType _
 
 
 -- | <p>This exception is thrown when a user tries to confirm the account with an email or phone number that has already been supplied as an alias from a different account. This exception tells user that an account with this email or phone already exists.</p>
 newtype AliasExistsException = AliasExistsException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeAliasExistsException :: Newtype AliasExistsException _
 
 
 -- | <p>The Amazon Pinpoint analytics configuration for collecting metrics for a user pool.</p>
@@ -905,45 +966,56 @@ newtype AnalyticsConfigurationType = AnalyticsConfigurationType
   , "ExternalId" :: (StringType)
   , "UserDataShared" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeAnalyticsConfigurationType :: Newtype AnalyticsConfigurationType _
 
 
 -- | <p>An Amazon Pinpoint analytics endpoint.</p> <p>An endpoint uniquely identifies a mobile device, email address, or phone number that can receive messages from Amazon Pinpoint analytics.</p>
 newtype AnalyticsMetadataType = AnalyticsMetadataType 
   { "AnalyticsEndpointId" :: NullOrUndefined (StringType)
   }
+derive instance newtypeAnalyticsMetadataType :: Newtype AnalyticsMetadataType _
 
 
 newtype ArnType = ArnType String
+derive instance newtypeArnType :: Newtype ArnType _
 
 
 newtype AssociateSoftwareTokenRequest = AssociateSoftwareTokenRequest 
   { "AccessToken" :: NullOrUndefined (TokenModelType)
   , "Session" :: NullOrUndefined (SessionType)
   }
+derive instance newtypeAssociateSoftwareTokenRequest :: Newtype AssociateSoftwareTokenRequest _
 
 
 newtype AssociateSoftwareTokenResponse = AssociateSoftwareTokenResponse 
   { "SecretCode" :: NullOrUndefined (SecretCodeType)
   , "Session" :: NullOrUndefined (SessionType)
   }
+derive instance newtypeAssociateSoftwareTokenResponse :: Newtype AssociateSoftwareTokenResponse _
 
 
 newtype AttributeDataType = AttributeDataType String
+derive instance newtypeAttributeDataType :: Newtype AttributeDataType _
 
 
 newtype AttributeListType = AttributeListType (Array AttributeType)
+derive instance newtypeAttributeListType :: Newtype AttributeListType _
 
 
 newtype AttributeMappingKeyType = AttributeMappingKeyType String
+derive instance newtypeAttributeMappingKeyType :: Newtype AttributeMappingKeyType _
 
 
 newtype AttributeMappingType = AttributeMappingType (Map AttributeMappingKeyType StringType)
+derive instance newtypeAttributeMappingType :: Newtype AttributeMappingType _
 
 
 newtype AttributeNameListType = AttributeNameListType (Array AttributeNameType)
+derive instance newtypeAttributeNameListType :: Newtype AttributeNameListType _
 
 
 newtype AttributeNameType = AttributeNameType String
+derive instance newtypeAttributeNameType :: Newtype AttributeNameType _
 
 
 -- | <p>Specifies whether the attribute is standard or custom.</p>
@@ -951,9 +1023,11 @@ newtype AttributeType = AttributeType
   { "Name" :: (AttributeNameType)
   , "Value" :: NullOrUndefined (AttributeValueType)
   }
+derive instance newtypeAttributeType :: Newtype AttributeType _
 
 
 newtype AttributeValueType = AttributeValueType String
+derive instance newtypeAttributeValueType :: Newtype AttributeValueType _
 
 
 -- | <p>The authentication event type.</p>
@@ -967,15 +1041,19 @@ newtype AuthEventType = AuthEventType
   , "EventContextData" :: NullOrUndefined (EventContextDataType)
   , "EventFeedback" :: NullOrUndefined (EventFeedbackType)
   }
+derive instance newtypeAuthEventType :: Newtype AuthEventType _
 
 
 newtype AuthEventsType = AuthEventsType (Array AuthEventType)
+derive instance newtypeAuthEventsType :: Newtype AuthEventsType _
 
 
 newtype AuthFlowType = AuthFlowType String
+derive instance newtypeAuthFlowType :: Newtype AuthFlowType _
 
 
 newtype AuthParametersType = AuthParametersType (Map StringType StringType)
+derive instance newtypeAuthParametersType :: Newtype AuthParametersType _
 
 
 -- | <p>The authentication result.</p>
@@ -987,36 +1065,47 @@ newtype AuthenticationResultType = AuthenticationResultType
   , "IdToken" :: NullOrUndefined (TokenModelType)
   , "NewDeviceMetadata" :: NullOrUndefined (NewDeviceMetadataType)
   }
+derive instance newtypeAuthenticationResultType :: Newtype AuthenticationResultType _
 
 
 newtype BlockedIPRangeListType = BlockedIPRangeListType (Array StringType)
+derive instance newtypeBlockedIPRangeListType :: Newtype BlockedIPRangeListType _
 
 
 newtype BooleanType = BooleanType Boolean
+derive instance newtypeBooleanType :: Newtype BooleanType _
 
 
 newtype CSSType = CSSType String
+derive instance newtypeCSSType :: Newtype CSSType _
 
 
 newtype CSSVersionType = CSSVersionType String
+derive instance newtypeCSSVersionType :: Newtype CSSVersionType _
 
 
 newtype CallbackURLsListType = CallbackURLsListType (Array RedirectUrlType)
+derive instance newtypeCallbackURLsListType :: Newtype CallbackURLsListType _
 
 
 newtype ChallengeName = ChallengeName String
+derive instance newtypeChallengeName :: Newtype ChallengeName _
 
 
 newtype ChallengeNameType = ChallengeNameType String
+derive instance newtypeChallengeNameType :: Newtype ChallengeNameType _
 
 
 newtype ChallengeParametersType = ChallengeParametersType (Map StringType StringType)
+derive instance newtypeChallengeParametersType :: Newtype ChallengeParametersType _
 
 
 newtype ChallengeResponse = ChallengeResponse String
+derive instance newtypeChallengeResponse :: Newtype ChallengeResponse _
 
 
 newtype ChallengeResponseListType = ChallengeResponseListType (Array ChallengeResponseType)
+derive instance newtypeChallengeResponseListType :: Newtype ChallengeResponseListType _
 
 
 -- | <p>The challenge response type.</p>
@@ -1024,9 +1113,11 @@ newtype ChallengeResponseType = ChallengeResponseType
   { "ChallengeName" :: NullOrUndefined (ChallengeName)
   , "ChallengeResponse" :: NullOrUndefined (ChallengeResponse)
   }
+derive instance newtypeChallengeResponseType :: Newtype ChallengeResponseType _
 
 
 newtype ChallengeResponsesType = ChallengeResponsesType (Map StringType StringType)
+derive instance newtypeChallengeResponsesType :: Newtype ChallengeResponsesType _
 
 
 -- | <p>Represents the request to change a user password.</p>
@@ -1035,33 +1126,42 @@ newtype ChangePasswordRequest = ChangePasswordRequest
   , "ProposedPassword" :: (PasswordType)
   , "AccessToken" :: (TokenModelType)
   }
+derive instance newtypeChangePasswordRequest :: Newtype ChangePasswordRequest _
 
 
 -- | <p>The response from the server to the change password request.</p>
 newtype ChangePasswordResponse = ChangePasswordResponse 
   { 
   }
+derive instance newtypeChangePasswordResponse :: Newtype ChangePasswordResponse _
 
 
 newtype ClientIdType = ClientIdType String
+derive instance newtypeClientIdType :: Newtype ClientIdType _
 
 
 newtype ClientMetadataType = ClientMetadataType (Map StringType StringType)
+derive instance newtypeClientMetadataType :: Newtype ClientMetadataType _
 
 
 newtype ClientNameType = ClientNameType String
+derive instance newtypeClientNameType :: Newtype ClientNameType _
 
 
 newtype ClientPermissionListType = ClientPermissionListType (Array ClientPermissionType)
+derive instance newtypeClientPermissionListType :: Newtype ClientPermissionListType _
 
 
 newtype ClientPermissionType = ClientPermissionType String
+derive instance newtypeClientPermissionType :: Newtype ClientPermissionType _
 
 
 newtype ClientSecretType = ClientSecretType String
+derive instance newtypeClientSecretType :: Newtype ClientSecretType _
 
 
 newtype CodeDeliveryDetailsListType = CodeDeliveryDetailsListType (Array CodeDeliveryDetailsType)
+derive instance newtypeCodeDeliveryDetailsListType :: Newtype CodeDeliveryDetailsListType _
 
 
 -- | <p>The code delivery details being returned from the server.</p>
@@ -1070,30 +1170,36 @@ newtype CodeDeliveryDetailsType = CodeDeliveryDetailsType
   , "DeliveryMedium" :: NullOrUndefined (DeliveryMediumType)
   , "AttributeName" :: NullOrUndefined (AttributeNameType)
   }
+derive instance newtypeCodeDeliveryDetailsType :: Newtype CodeDeliveryDetailsType _
 
 
 -- | <p>This exception is thrown when a verification code fails to deliver successfully.</p>
 newtype CodeDeliveryFailureException = CodeDeliveryFailureException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeCodeDeliveryFailureException :: Newtype CodeDeliveryFailureException _
 
 
 -- | <p>This exception is thrown if the provided code does not match what the server was expecting.</p>
 newtype CodeMismatchException = CodeMismatchException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeCodeMismatchException :: Newtype CodeMismatchException _
 
 
 newtype CompletionMessageType = CompletionMessageType String
+derive instance newtypeCompletionMessageType :: Newtype CompletionMessageType _
 
 
 -- | <p>The compromised credentials actions type</p>
 newtype CompromisedCredentialsActionsType = CompromisedCredentialsActionsType 
   { "EventAction" :: (CompromisedCredentialsEventActionType)
   }
+derive instance newtypeCompromisedCredentialsActionsType :: Newtype CompromisedCredentialsActionsType _
 
 
 newtype CompromisedCredentialsEventActionType = CompromisedCredentialsEventActionType String
+derive instance newtypeCompromisedCredentialsEventActionType :: Newtype CompromisedCredentialsEventActionType _
 
 
 -- | <p>The compromised credentials risk configuration type.</p>
@@ -1101,12 +1207,14 @@ newtype CompromisedCredentialsRiskConfigurationType = CompromisedCredentialsRisk
   { "EventFilter" :: NullOrUndefined (EventFiltersType)
   , "Actions" :: (CompromisedCredentialsActionsType)
   }
+derive instance newtypeCompromisedCredentialsRiskConfigurationType :: Newtype CompromisedCredentialsRiskConfigurationType _
 
 
 -- | <p>This exception is thrown if two or more modifications are happening concurrently.</p>
 newtype ConcurrentModificationException = ConcurrentModificationException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeConcurrentModificationException :: Newtype ConcurrentModificationException _
 
 
 -- | <p>Confirms the device request.</p>
@@ -1116,12 +1224,14 @@ newtype ConfirmDeviceRequest = ConfirmDeviceRequest
   , "DeviceSecretVerifierConfig" :: NullOrUndefined (DeviceSecretVerifierConfigType)
   , "DeviceName" :: NullOrUndefined (DeviceNameType)
   }
+derive instance newtypeConfirmDeviceRequest :: Newtype ConfirmDeviceRequest _
 
 
 -- | <p>Confirms the device response.</p>
 newtype ConfirmDeviceResponse = ConfirmDeviceResponse 
   { "UserConfirmationNecessary" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeConfirmDeviceResponse :: Newtype ConfirmDeviceResponse _
 
 
 -- | <p>The request representing the confirmation for a password reset.</p>
@@ -1134,12 +1244,14 @@ newtype ConfirmForgotPasswordRequest = ConfirmForgotPasswordRequest
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   , "UserContextData" :: NullOrUndefined (UserContextDataType)
   }
+derive instance newtypeConfirmForgotPasswordRequest :: Newtype ConfirmForgotPasswordRequest _
 
 
 -- | <p>The response from the server that results from a user's request to retrieve a forgotten password.</p>
 newtype ConfirmForgotPasswordResponse = ConfirmForgotPasswordResponse 
   { 
   }
+derive instance newtypeConfirmForgotPasswordResponse :: Newtype ConfirmForgotPasswordResponse _
 
 
 -- | <p>Represents the request to confirm registration of a user.</p>
@@ -1152,15 +1264,18 @@ newtype ConfirmSignUpRequest = ConfirmSignUpRequest
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   , "UserContextData" :: NullOrUndefined (UserContextDataType)
   }
+derive instance newtypeConfirmSignUpRequest :: Newtype ConfirmSignUpRequest _
 
 
 -- | <p>Represents the response from the server for the registration confirmation.</p>
 newtype ConfirmSignUpResponse = ConfirmSignUpResponse 
   { 
   }
+derive instance newtypeConfirmSignUpResponse :: Newtype ConfirmSignUpResponse _
 
 
 newtype ConfirmationCodeType = ConfirmationCodeType String
+derive instance newtypeConfirmationCodeType :: Newtype ConfirmationCodeType _
 
 
 -- | <p>Contextual user data type used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.</p>
@@ -1171,6 +1286,7 @@ newtype ContextDataType = ContextDataType
   , "HttpHeaders" :: (HttpHeaderList)
   , "EncodedData" :: NullOrUndefined (StringType)
   }
+derive instance newtypeContextDataType :: Newtype ContextDataType _
 
 
 newtype CreateGroupRequest = CreateGroupRequest 
@@ -1180,11 +1296,13 @@ newtype CreateGroupRequest = CreateGroupRequest
   , "RoleArn" :: NullOrUndefined (ArnType)
   , "Precedence" :: NullOrUndefined (PrecedenceType)
   }
+derive instance newtypeCreateGroupRequest :: Newtype CreateGroupRequest _
 
 
 newtype CreateGroupResponse = CreateGroupResponse 
   { "Group" :: NullOrUndefined (GroupType)
   }
+derive instance newtypeCreateGroupResponse :: Newtype CreateGroupResponse _
 
 
 newtype CreateIdentityProviderRequest = CreateIdentityProviderRequest 
@@ -1195,11 +1313,13 @@ newtype CreateIdentityProviderRequest = CreateIdentityProviderRequest
   , "AttributeMapping" :: NullOrUndefined (AttributeMappingType)
   , "IdpIdentifiers" :: NullOrUndefined (IdpIdentifiersListType)
   }
+derive instance newtypeCreateIdentityProviderRequest :: Newtype CreateIdentityProviderRequest _
 
 
 newtype CreateIdentityProviderResponse = CreateIdentityProviderResponse 
   { "IdentityProvider" :: (IdentityProviderType)
   }
+derive instance newtypeCreateIdentityProviderResponse :: Newtype CreateIdentityProviderResponse _
 
 
 newtype CreateResourceServerRequest = CreateResourceServerRequest 
@@ -1208,11 +1328,13 @@ newtype CreateResourceServerRequest = CreateResourceServerRequest
   , "Name" :: (ResourceServerNameType)
   , "Scopes" :: NullOrUndefined (ResourceServerScopeListType)
   }
+derive instance newtypeCreateResourceServerRequest :: Newtype CreateResourceServerRequest _
 
 
 newtype CreateResourceServerResponse = CreateResourceServerResponse 
   { "ResourceServer" :: (ResourceServerType)
   }
+derive instance newtypeCreateResourceServerResponse :: Newtype CreateResourceServerResponse _
 
 
 -- | <p>Represents the request to create the user import job.</p>
@@ -1221,12 +1343,14 @@ newtype CreateUserImportJobRequest = CreateUserImportJobRequest
   , "UserPoolId" :: (UserPoolIdType)
   , "CloudWatchLogsRoleArn" :: (ArnType)
   }
+derive instance newtypeCreateUserImportJobRequest :: Newtype CreateUserImportJobRequest _
 
 
 -- | <p>Represents the response from the server to the request to create the user import job.</p>
 newtype CreateUserImportJobResponse = CreateUserImportJobResponse 
   { "UserImportJob" :: NullOrUndefined (UserImportJobType)
   }
+derive instance newtypeCreateUserImportJobResponse :: Newtype CreateUserImportJobResponse _
 
 
 -- | <p>Represents the request to create a user pool client.</p>
@@ -1247,23 +1371,27 @@ newtype CreateUserPoolClientRequest = CreateUserPoolClientRequest
   , "AllowedOAuthFlowsUserPoolClient" :: NullOrUndefined (BooleanType)
   , "AnalyticsConfiguration" :: NullOrUndefined (AnalyticsConfigurationType)
   }
+derive instance newtypeCreateUserPoolClientRequest :: Newtype CreateUserPoolClientRequest _
 
 
 -- | <p>Represents the response from the server to create a user pool client.</p>
 newtype CreateUserPoolClientResponse = CreateUserPoolClientResponse 
   { "UserPoolClient" :: NullOrUndefined (UserPoolClientType)
   }
+derive instance newtypeCreateUserPoolClientResponse :: Newtype CreateUserPoolClientResponse _
 
 
 newtype CreateUserPoolDomainRequest = CreateUserPoolDomainRequest 
   { "Domain" :: (DomainType)
   , "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeCreateUserPoolDomainRequest :: Newtype CreateUserPoolDomainRequest _
 
 
 newtype CreateUserPoolDomainResponse = CreateUserPoolDomainResponse 
   { 
   }
+derive instance newtypeCreateUserPoolDomainResponse :: Newtype CreateUserPoolDomainResponse _
 
 
 -- | <p>Represents the request to create a user pool.</p>
@@ -1288,42 +1416,51 @@ newtype CreateUserPoolRequest = CreateUserPoolRequest
   , "Schema" :: NullOrUndefined (SchemaAttributesListType)
   , "UserPoolAddOns" :: NullOrUndefined (UserPoolAddOnsType)
   }
+derive instance newtypeCreateUserPoolRequest :: Newtype CreateUserPoolRequest _
 
 
 -- | <p>Represents the response from the server for the request to create a user pool.</p>
 newtype CreateUserPoolResponse = CreateUserPoolResponse 
   { "UserPool" :: NullOrUndefined (UserPoolType)
   }
+derive instance newtypeCreateUserPoolResponse :: Newtype CreateUserPoolResponse _
 
 
 newtype CustomAttributeNameType = CustomAttributeNameType String
+derive instance newtypeCustomAttributeNameType :: Newtype CustomAttributeNameType _
 
 
 newtype CustomAttributesListType = CustomAttributesListType (Array SchemaAttributeType)
+derive instance newtypeCustomAttributesListType :: Newtype CustomAttributesListType _
 
 
 newtype DateType = DateType Number
+derive instance newtypeDateType :: Newtype DateType _
 
 
 newtype DefaultEmailOptionType = DefaultEmailOptionType String
+derive instance newtypeDefaultEmailOptionType :: Newtype DefaultEmailOptionType _
 
 
 newtype DeleteGroupRequest = DeleteGroupRequest 
   { "GroupName" :: (GroupNameType)
   , "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeDeleteGroupRequest :: Newtype DeleteGroupRequest _
 
 
 newtype DeleteIdentityProviderRequest = DeleteIdentityProviderRequest 
   { "UserPoolId" :: (UserPoolIdType)
   , "ProviderName" :: (ProviderNameType)
   }
+derive instance newtypeDeleteIdentityProviderRequest :: Newtype DeleteIdentityProviderRequest _
 
 
 newtype DeleteResourceServerRequest = DeleteResourceServerRequest 
   { "UserPoolId" :: (UserPoolIdType)
   , "Identifier" :: (ResourceServerIdentifierType)
   }
+derive instance newtypeDeleteResourceServerRequest :: Newtype DeleteResourceServerRequest _
 
 
 -- | <p>Represents the request to delete user attributes.</p>
@@ -1331,12 +1468,14 @@ newtype DeleteUserAttributesRequest = DeleteUserAttributesRequest
   { "UserAttributeNames" :: (AttributeNameListType)
   , "AccessToken" :: (TokenModelType)
   }
+derive instance newtypeDeleteUserAttributesRequest :: Newtype DeleteUserAttributesRequest _
 
 
 -- | <p>Represents the response from the server to delete user attributes.</p>
 newtype DeleteUserAttributesResponse = DeleteUserAttributesResponse 
   { 
   }
+derive instance newtypeDeleteUserAttributesResponse :: Newtype DeleteUserAttributesResponse _
 
 
 -- | <p>Represents the request to delete a user pool client.</p>
@@ -1344,68 +1483,81 @@ newtype DeleteUserPoolClientRequest = DeleteUserPoolClientRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "ClientId" :: (ClientIdType)
   }
+derive instance newtypeDeleteUserPoolClientRequest :: Newtype DeleteUserPoolClientRequest _
 
 
 newtype DeleteUserPoolDomainRequest = DeleteUserPoolDomainRequest 
   { "Domain" :: (DomainType)
   , "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeDeleteUserPoolDomainRequest :: Newtype DeleteUserPoolDomainRequest _
 
 
 newtype DeleteUserPoolDomainResponse = DeleteUserPoolDomainResponse 
   { 
   }
+derive instance newtypeDeleteUserPoolDomainResponse :: Newtype DeleteUserPoolDomainResponse _
 
 
 -- | <p>Represents the request to delete a user pool.</p>
 newtype DeleteUserPoolRequest = DeleteUserPoolRequest 
   { "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeDeleteUserPoolRequest :: Newtype DeleteUserPoolRequest _
 
 
 -- | <p>Represents the request to delete a user.</p>
 newtype DeleteUserRequest = DeleteUserRequest 
   { "AccessToken" :: (TokenModelType)
   }
+derive instance newtypeDeleteUserRequest :: Newtype DeleteUserRequest _
 
 
 newtype DeliveryMediumListType = DeliveryMediumListType (Array DeliveryMediumType)
+derive instance newtypeDeliveryMediumListType :: Newtype DeliveryMediumListType _
 
 
 newtype DeliveryMediumType = DeliveryMediumType String
+derive instance newtypeDeliveryMediumType :: Newtype DeliveryMediumType _
 
 
 newtype DescribeIdentityProviderRequest = DescribeIdentityProviderRequest 
   { "UserPoolId" :: (UserPoolIdType)
   , "ProviderName" :: (ProviderNameType)
   }
+derive instance newtypeDescribeIdentityProviderRequest :: Newtype DescribeIdentityProviderRequest _
 
 
 newtype DescribeIdentityProviderResponse = DescribeIdentityProviderResponse 
   { "IdentityProvider" :: (IdentityProviderType)
   }
+derive instance newtypeDescribeIdentityProviderResponse :: Newtype DescribeIdentityProviderResponse _
 
 
 newtype DescribeResourceServerRequest = DescribeResourceServerRequest 
   { "UserPoolId" :: (UserPoolIdType)
   , "Identifier" :: (ResourceServerIdentifierType)
   }
+derive instance newtypeDescribeResourceServerRequest :: Newtype DescribeResourceServerRequest _
 
 
 newtype DescribeResourceServerResponse = DescribeResourceServerResponse 
   { "ResourceServer" :: (ResourceServerType)
   }
+derive instance newtypeDescribeResourceServerResponse :: Newtype DescribeResourceServerResponse _
 
 
 newtype DescribeRiskConfigurationRequest = DescribeRiskConfigurationRequest 
   { "UserPoolId" :: (UserPoolIdType)
   , "ClientId" :: NullOrUndefined (ClientIdType)
   }
+derive instance newtypeDescribeRiskConfigurationRequest :: Newtype DescribeRiskConfigurationRequest _
 
 
 newtype DescribeRiskConfigurationResponse = DescribeRiskConfigurationResponse 
   { "RiskConfiguration" :: (RiskConfigurationType)
   }
+derive instance newtypeDescribeRiskConfigurationResponse :: Newtype DescribeRiskConfigurationResponse _
 
 
 -- | <p>Represents the request to describe the user import job.</p>
@@ -1413,12 +1565,14 @@ newtype DescribeUserImportJobRequest = DescribeUserImportJobRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "JobId" :: (UserImportJobIdType)
   }
+derive instance newtypeDescribeUserImportJobRequest :: Newtype DescribeUserImportJobRequest _
 
 
 -- | <p>Represents the response from the server to the request to describe the user import job.</p>
 newtype DescribeUserImportJobResponse = DescribeUserImportJobResponse 
   { "UserImportJob" :: NullOrUndefined (UserImportJobType)
   }
+derive instance newtypeDescribeUserImportJobResponse :: Newtype DescribeUserImportJobResponse _
 
 
 -- | <p>Represents the request to describe a user pool client.</p>
@@ -1426,37 +1580,44 @@ newtype DescribeUserPoolClientRequest = DescribeUserPoolClientRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "ClientId" :: (ClientIdType)
   }
+derive instance newtypeDescribeUserPoolClientRequest :: Newtype DescribeUserPoolClientRequest _
 
 
 -- | <p>Represents the response from the server from a request to describe the user pool client.</p>
 newtype DescribeUserPoolClientResponse = DescribeUserPoolClientResponse 
   { "UserPoolClient" :: NullOrUndefined (UserPoolClientType)
   }
+derive instance newtypeDescribeUserPoolClientResponse :: Newtype DescribeUserPoolClientResponse _
 
 
 newtype DescribeUserPoolDomainRequest = DescribeUserPoolDomainRequest 
   { "Domain" :: (DomainType)
   }
+derive instance newtypeDescribeUserPoolDomainRequest :: Newtype DescribeUserPoolDomainRequest _
 
 
 newtype DescribeUserPoolDomainResponse = DescribeUserPoolDomainResponse 
   { "DomainDescription" :: NullOrUndefined (DomainDescriptionType)
   }
+derive instance newtypeDescribeUserPoolDomainResponse :: Newtype DescribeUserPoolDomainResponse _
 
 
 -- | <p>Represents the request to describe the user pool.</p>
 newtype DescribeUserPoolRequest = DescribeUserPoolRequest 
   { "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeDescribeUserPoolRequest :: Newtype DescribeUserPoolRequest _
 
 
 -- | <p>Represents the response to describe the user pool.</p>
 newtype DescribeUserPoolResponse = DescribeUserPoolResponse 
   { "UserPool" :: NullOrUndefined (UserPoolType)
   }
+derive instance newtypeDescribeUserPoolResponse :: Newtype DescribeUserPoolResponse _
 
 
 newtype DescriptionType = DescriptionType String
+derive instance newtypeDescriptionType :: Newtype DescriptionType _
 
 
 -- | <p>The configuration for the user pool's device tracking.</p>
@@ -1464,18 +1625,23 @@ newtype DeviceConfigurationType = DeviceConfigurationType
   { "ChallengeRequiredOnNewDevice" :: NullOrUndefined (BooleanType)
   , "DeviceOnlyRememberedOnUserPrompt" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeDeviceConfigurationType :: Newtype DeviceConfigurationType _
 
 
 newtype DeviceKeyType = DeviceKeyType String
+derive instance newtypeDeviceKeyType :: Newtype DeviceKeyType _
 
 
 newtype DeviceListType = DeviceListType (Array DeviceType)
+derive instance newtypeDeviceListType :: Newtype DeviceListType _
 
 
 newtype DeviceNameType = DeviceNameType String
+derive instance newtypeDeviceNameType :: Newtype DeviceNameType _
 
 
 newtype DeviceRememberedStatusType = DeviceRememberedStatusType String
+derive instance newtypeDeviceRememberedStatusType :: Newtype DeviceRememberedStatusType _
 
 
 -- | <p>The device verifier against which it will be authenticated.</p>
@@ -1483,6 +1649,7 @@ newtype DeviceSecretVerifierConfigType = DeviceSecretVerifierConfigType
   { "PasswordVerifier" :: NullOrUndefined (StringType)
   , "Salt" :: NullOrUndefined (StringType)
   }
+derive instance newtypeDeviceSecretVerifierConfigType :: Newtype DeviceSecretVerifierConfigType _
 
 
 -- | <p>The device type.</p>
@@ -1493,6 +1660,7 @@ newtype DeviceType = DeviceType
   , "DeviceLastModifiedDate" :: NullOrUndefined (DateType)
   , "DeviceLastAuthenticatedDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeDeviceType :: Newtype DeviceType _
 
 
 -- | <p>A container for information about a domain.</p>
@@ -1505,24 +1673,30 @@ newtype DomainDescriptionType = DomainDescriptionType
   , "Version" :: NullOrUndefined (DomainVersionType)
   , "Status" :: NullOrUndefined (DomainStatusType)
   }
+derive instance newtypeDomainDescriptionType :: Newtype DomainDescriptionType _
 
 
 newtype DomainStatusType = DomainStatusType String
+derive instance newtypeDomainStatusType :: Newtype DomainStatusType _
 
 
 newtype DomainType = DomainType String
+derive instance newtypeDomainType :: Newtype DomainType _
 
 
 newtype DomainVersionType = DomainVersionType String
+derive instance newtypeDomainVersionType :: Newtype DomainVersionType _
 
 
 -- | <p>This exception is thrown when the provider is already supported by the user pool.</p>
 newtype DuplicateProviderException = DuplicateProviderException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeDuplicateProviderException :: Newtype DuplicateProviderException _
 
 
 newtype EmailAddressType = EmailAddressType String
+derive instance newtypeEmailAddressType :: Newtype EmailAddressType _
 
 
 -- | <p>The email configuration type.</p>
@@ -1530,30 +1704,38 @@ newtype EmailConfigurationType = EmailConfigurationType
   { "SourceArn" :: NullOrUndefined (ArnType)
   , "ReplyToEmailAddress" :: NullOrUndefined (EmailAddressType)
   }
+derive instance newtypeEmailConfigurationType :: Newtype EmailConfigurationType _
 
 
 newtype EmailNotificationBodyType = EmailNotificationBodyType String
+derive instance newtypeEmailNotificationBodyType :: Newtype EmailNotificationBodyType _
 
 
 newtype EmailNotificationSubjectType = EmailNotificationSubjectType String
+derive instance newtypeEmailNotificationSubjectType :: Newtype EmailNotificationSubjectType _
 
 
 newtype EmailVerificationMessageByLinkType = EmailVerificationMessageByLinkType String
+derive instance newtypeEmailVerificationMessageByLinkType :: Newtype EmailVerificationMessageByLinkType _
 
 
 newtype EmailVerificationMessageType = EmailVerificationMessageType String
+derive instance newtypeEmailVerificationMessageType :: Newtype EmailVerificationMessageType _
 
 
 newtype EmailVerificationSubjectByLinkType = EmailVerificationSubjectByLinkType String
+derive instance newtypeEmailVerificationSubjectByLinkType :: Newtype EmailVerificationSubjectByLinkType _
 
 
 newtype EmailVerificationSubjectType = EmailVerificationSubjectType String
+derive instance newtypeEmailVerificationSubjectType :: Newtype EmailVerificationSubjectType _
 
 
 -- | <p>This exception is thrown when there is a code mismatch and the service fails to configure the software token TOTP multi-factor authentication (MFA).</p>
 newtype EnableSoftwareTokenMFAException = EnableSoftwareTokenMFAException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeEnableSoftwareTokenMFAException :: Newtype EnableSoftwareTokenMFAException _
 
 
 -- | <p>Specifies the user context data captured at the time of an event request.</p>
@@ -1564,6 +1746,7 @@ newtype EventContextDataType = EventContextDataType
   , "City" :: NullOrUndefined (StringType)
   , "Country" :: NullOrUndefined (StringType)
   }
+derive instance newtypeEventContextDataType :: Newtype EventContextDataType _
 
 
 -- | <p>Specifies the event feedback type.</p>
@@ -1572,18 +1755,23 @@ newtype EventFeedbackType = EventFeedbackType
   , "Provider" :: (StringType)
   , "FeedbackDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeEventFeedbackType :: Newtype EventFeedbackType _
 
 
 newtype EventFilterType = EventFilterType String
+derive instance newtypeEventFilterType :: Newtype EventFilterType _
 
 
 newtype EventFiltersType = EventFiltersType (Array EventFilterType)
+derive instance newtypeEventFiltersType :: Newtype EventFiltersType _
 
 
 newtype EventIdType = EventIdType String
+derive instance newtypeEventIdType :: Newtype EventIdType _
 
 
 newtype EventResponseType = EventResponseType String
+derive instance newtypeEventResponseType :: Newtype EventResponseType _
 
 
 -- | <p>The event risk type.</p>
@@ -1591,27 +1779,34 @@ newtype EventRiskType = EventRiskType
   { "RiskDecision" :: NullOrUndefined (RiskDecisionType)
   , "RiskLevel" :: NullOrUndefined (RiskLevelType)
   }
+derive instance newtypeEventRiskType :: Newtype EventRiskType _
 
 
 newtype EventType = EventType String
+derive instance newtypeEventType :: Newtype EventType _
 
 
 -- | <p>This exception is thrown if a code has expired.</p>
 newtype ExpiredCodeException = ExpiredCodeException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeExpiredCodeException :: Newtype ExpiredCodeException _
 
 
 newtype ExplicitAuthFlowsListType = ExplicitAuthFlowsListType (Array ExplicitAuthFlowsType)
+derive instance newtypeExplicitAuthFlowsListType :: Newtype ExplicitAuthFlowsListType _
 
 
 newtype ExplicitAuthFlowsType = ExplicitAuthFlowsType String
+derive instance newtypeExplicitAuthFlowsType :: Newtype ExplicitAuthFlowsType _
 
 
 newtype FeedbackValueType = FeedbackValueType String
+derive instance newtypeFeedbackValueType :: Newtype FeedbackValueType _
 
 
 newtype ForceAliasCreation = ForceAliasCreation Boolean
+derive instance newtypeForceAliasCreation :: Newtype ForceAliasCreation _
 
 
 -- | <p>Represents the request to forget the device.</p>
@@ -1619,6 +1814,7 @@ newtype ForgetDeviceRequest = ForgetDeviceRequest
   { "AccessToken" :: NullOrUndefined (TokenModelType)
   , "DeviceKey" :: (DeviceKeyType)
   }
+derive instance newtypeForgetDeviceRequest :: Newtype ForgetDeviceRequest _
 
 
 -- | <p>Represents the request to reset a user's password.</p>
@@ -1629,21 +1825,25 @@ newtype ForgotPasswordRequest = ForgotPasswordRequest
   , "Username" :: (UsernameType)
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   }
+derive instance newtypeForgotPasswordRequest :: Newtype ForgotPasswordRequest _
 
 
 -- | <p>Respresents the response from the server regarding the request to reset a password.</p>
 newtype ForgotPasswordResponse = ForgotPasswordResponse 
   { "CodeDeliveryDetails" :: NullOrUndefined (CodeDeliveryDetailsType)
   }
+derive instance newtypeForgotPasswordResponse :: Newtype ForgotPasswordResponse _
 
 
 newtype GenerateSecret = GenerateSecret Boolean
+derive instance newtypeGenerateSecret :: Newtype GenerateSecret _
 
 
 -- | <p>Represents the request to get the header information for the .csv file for the user import job.</p>
 newtype GetCSVHeaderRequest = GetCSVHeaderRequest 
   { "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeGetCSVHeaderRequest :: Newtype GetCSVHeaderRequest _
 
 
 -- | <p>Represents the response from the server to the request to get the header information for the .csv file for the user import job.</p>
@@ -1651,6 +1851,7 @@ newtype GetCSVHeaderResponse = GetCSVHeaderResponse
   { "UserPoolId" :: NullOrUndefined (UserPoolIdType)
   , "CSVHeader" :: NullOrUndefined (ListOfStringTypes)
   }
+derive instance newtypeGetCSVHeaderResponse :: Newtype GetCSVHeaderResponse _
 
 
 -- | <p>Represents the request to get the device.</p>
@@ -1658,57 +1859,67 @@ newtype GetDeviceRequest = GetDeviceRequest
   { "DeviceKey" :: (DeviceKeyType)
   , "AccessToken" :: NullOrUndefined (TokenModelType)
   }
+derive instance newtypeGetDeviceRequest :: Newtype GetDeviceRequest _
 
 
 -- | <p>Gets the device response.</p>
 newtype GetDeviceResponse = GetDeviceResponse 
   { "Device" :: (DeviceType)
   }
+derive instance newtypeGetDeviceResponse :: Newtype GetDeviceResponse _
 
 
 newtype GetGroupRequest = GetGroupRequest 
   { "GroupName" :: (GroupNameType)
   , "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeGetGroupRequest :: Newtype GetGroupRequest _
 
 
 newtype GetGroupResponse = GetGroupResponse 
   { "Group" :: NullOrUndefined (GroupType)
   }
+derive instance newtypeGetGroupResponse :: Newtype GetGroupResponse _
 
 
 newtype GetIdentityProviderByIdentifierRequest = GetIdentityProviderByIdentifierRequest 
   { "UserPoolId" :: (UserPoolIdType)
   , "IdpIdentifier" :: (IdpIdentifierType)
   }
+derive instance newtypeGetIdentityProviderByIdentifierRequest :: Newtype GetIdentityProviderByIdentifierRequest _
 
 
 newtype GetIdentityProviderByIdentifierResponse = GetIdentityProviderByIdentifierResponse 
   { "IdentityProvider" :: (IdentityProviderType)
   }
+derive instance newtypeGetIdentityProviderByIdentifierResponse :: Newtype GetIdentityProviderByIdentifierResponse _
 
 
 -- | <p>Request to get a signing certificate from Cognito.</p>
 newtype GetSigningCertificateRequest = GetSigningCertificateRequest 
   { "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeGetSigningCertificateRequest :: Newtype GetSigningCertificateRequest _
 
 
 -- | <p>Response from Cognito for a signing certificate request.</p>
 newtype GetSigningCertificateResponse = GetSigningCertificateResponse 
   { "Certificate" :: NullOrUndefined (StringType)
   }
+derive instance newtypeGetSigningCertificateResponse :: Newtype GetSigningCertificateResponse _
 
 
 newtype GetUICustomizationRequest = GetUICustomizationRequest 
   { "UserPoolId" :: (UserPoolIdType)
   , "ClientId" :: NullOrUndefined (ClientIdType)
   }
+derive instance newtypeGetUICustomizationRequest :: Newtype GetUICustomizationRequest _
 
 
 newtype GetUICustomizationResponse = GetUICustomizationResponse 
   { "UICustomization" :: (UICustomizationType)
   }
+derive instance newtypeGetUICustomizationResponse :: Newtype GetUICustomizationResponse _
 
 
 -- | <p>Represents the request to get user attribute verification.</p>
@@ -1716,17 +1927,20 @@ newtype GetUserAttributeVerificationCodeRequest = GetUserAttributeVerificationCo
   { "AccessToken" :: (TokenModelType)
   , "AttributeName" :: (AttributeNameType)
   }
+derive instance newtypeGetUserAttributeVerificationCodeRequest :: Newtype GetUserAttributeVerificationCodeRequest _
 
 
 -- | <p>The verification code response returned by the server response to get the user attribute verification code.</p>
 newtype GetUserAttributeVerificationCodeResponse = GetUserAttributeVerificationCodeResponse 
   { "CodeDeliveryDetails" :: NullOrUndefined (CodeDeliveryDetailsType)
   }
+derive instance newtypeGetUserAttributeVerificationCodeResponse :: Newtype GetUserAttributeVerificationCodeResponse _
 
 
 newtype GetUserPoolMfaConfigRequest = GetUserPoolMfaConfigRequest 
   { "UserPoolId" :: (UserPoolIdType)
   }
+derive instance newtypeGetUserPoolMfaConfigRequest :: Newtype GetUserPoolMfaConfigRequest _
 
 
 newtype GetUserPoolMfaConfigResponse = GetUserPoolMfaConfigResponse 
@@ -1734,12 +1948,14 @@ newtype GetUserPoolMfaConfigResponse = GetUserPoolMfaConfigResponse
   , "SoftwareTokenMfaConfiguration" :: NullOrUndefined (SoftwareTokenMfaConfigType)
   , "MfaConfiguration" :: NullOrUndefined (UserPoolMfaType)
   }
+derive instance newtypeGetUserPoolMfaConfigResponse :: Newtype GetUserPoolMfaConfigResponse _
 
 
 -- | <p>Represents the request to get information about the user.</p>
 newtype GetUserRequest = GetUserRequest 
   { "AccessToken" :: (TokenModelType)
   }
+derive instance newtypeGetUserRequest :: Newtype GetUserRequest _
 
 
 -- | <p>Represents the response from the server from the request to get information about the user.</p>
@@ -1750,30 +1966,36 @@ newtype GetUserResponse = GetUserResponse
   , "PreferredMfaSetting" :: NullOrUndefined (StringType)
   , "UserMFASettingList" :: NullOrUndefined (UserMFASettingListType)
   }
+derive instance newtypeGetUserResponse :: Newtype GetUserResponse _
 
 
 -- | <p>Represents the request to sign out all devices.</p>
 newtype GlobalSignOutRequest = GlobalSignOutRequest 
   { "AccessToken" :: (TokenModelType)
   }
+derive instance newtypeGlobalSignOutRequest :: Newtype GlobalSignOutRequest _
 
 
 -- | <p>The response to the request to sign out all devices.</p>
 newtype GlobalSignOutResponse = GlobalSignOutResponse 
   { 
   }
+derive instance newtypeGlobalSignOutResponse :: Newtype GlobalSignOutResponse _
 
 
 -- | <p>This exception is thrown when Amazon Cognito encounters a group that already exists in the user pool.</p>
 newtype GroupExistsException = GroupExistsException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeGroupExistsException :: Newtype GroupExistsException _
 
 
 newtype GroupListType = GroupListType (Array GroupType)
+derive instance newtypeGroupListType :: Newtype GroupListType _
 
 
 newtype GroupNameType = GroupNameType String
+derive instance newtypeGroupNameType :: Newtype GroupNameType _
 
 
 -- | <p>The group type.</p>
@@ -1786,9 +2008,11 @@ newtype GroupType = GroupType
   , "LastModifiedDate" :: NullOrUndefined (DateType)
   , "CreationDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeGroupType :: Newtype GroupType _
 
 
 newtype HexStringType = HexStringType String
+derive instance newtypeHexStringType :: Newtype HexStringType _
 
 
 -- | <p>The HTTP header.</p>
@@ -1796,9 +2020,11 @@ newtype HttpHeader = HttpHeader
   { "HeaderName'" :: NullOrUndefined (StringType)
   , "HeaderValue'" :: NullOrUndefined (StringType)
   }
+derive instance newtypeHttpHeader :: Newtype HttpHeader _
 
 
 newtype HttpHeaderList = HttpHeaderList (Array HttpHeader)
+derive instance newtypeHttpHeaderList :: Newtype HttpHeaderList _
 
 
 -- | <p>A container for information about an identity provider.</p>
@@ -1812,21 +2038,27 @@ newtype IdentityProviderType = IdentityProviderType
   , "LastModifiedDate" :: NullOrUndefined (DateType)
   , "CreationDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeIdentityProviderType :: Newtype IdentityProviderType _
 
 
 newtype IdentityProviderTypeType = IdentityProviderTypeType String
+derive instance newtypeIdentityProviderTypeType :: Newtype IdentityProviderTypeType _
 
 
 newtype IdpIdentifierType = IdpIdentifierType String
+derive instance newtypeIdpIdentifierType :: Newtype IdpIdentifierType _
 
 
 newtype IdpIdentifiersListType = IdpIdentifiersListType (Array IdpIdentifierType)
+derive instance newtypeIdpIdentifiersListType :: Newtype IdpIdentifiersListType _
 
 
 newtype ImageFileType = ImageFileType String
+derive instance newtypeImageFileType :: Newtype ImageFileType _
 
 
 newtype ImageUrlType = ImageUrlType String
+derive instance newtypeImageUrlType :: Newtype ImageUrlType _
 
 
 -- | <p>Initiates the authentication request.</p>
@@ -1838,6 +2070,7 @@ newtype InitiateAuthRequest = InitiateAuthRequest
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   , "UserContextData" :: NullOrUndefined (UserContextDataType)
   }
+derive instance newtypeInitiateAuthRequest :: Newtype InitiateAuthRequest _
 
 
 -- | <p>Initiates the authentication response.</p>
@@ -1847,63 +2080,74 @@ newtype InitiateAuthResponse = InitiateAuthResponse
   , "ChallengeParameters" :: NullOrUndefined (ChallengeParametersType)
   , "AuthenticationResult" :: NullOrUndefined (AuthenticationResultType)
   }
+derive instance newtypeInitiateAuthResponse :: Newtype InitiateAuthResponse _
 
 
 newtype IntegerType = IntegerType Int
+derive instance newtypeIntegerType :: Newtype IntegerType _
 
 
 -- | <p>This exception is thrown when Amazon Cognito encounters an internal error.</p>
 newtype InternalErrorException = InternalErrorException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInternalErrorException :: Newtype InternalErrorException _
 
 
 -- | <p>This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code: 400.</p>
 newtype InvalidEmailRoleAccessPolicyException = InvalidEmailRoleAccessPolicyException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidEmailRoleAccessPolicyException :: Newtype InvalidEmailRoleAccessPolicyException _
 
 
 -- | <p>This exception is thrown when the Amazon Cognito service encounters an invalid AWS Lambda response.</p>
 newtype InvalidLambdaResponseException = InvalidLambdaResponseException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidLambdaResponseException :: Newtype InvalidLambdaResponseException _
 
 
 -- | <p>This exception is thrown when the specified OAuth flow is invalid.</p>
 newtype InvalidOAuthFlowException = InvalidOAuthFlowException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidOAuthFlowException :: Newtype InvalidOAuthFlowException _
 
 
 -- | <p>This exception is thrown when the Amazon Cognito service encounters an invalid parameter.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p>This exception is thrown when the Amazon Cognito service encounters an invalid password.</p>
 newtype InvalidPasswordException = InvalidPasswordException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidPasswordException :: Newtype InvalidPasswordException _
 
 
 -- | <p>This exception is returned when the role provided for SMS configuration does not have permission to publish using Amazon SNS.</p>
 newtype InvalidSmsRoleAccessPolicyException = InvalidSmsRoleAccessPolicyException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidSmsRoleAccessPolicyException :: Newtype InvalidSmsRoleAccessPolicyException _
 
 
 -- | <p>This exception is thrown when the trust relationship is invalid for the role provided for SMS configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID provided in the role does not match what is provided in the SMS configuration for the user pool.</p>
 newtype InvalidSmsRoleTrustRelationshipException = InvalidSmsRoleTrustRelationshipException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidSmsRoleTrustRelationshipException :: Newtype InvalidSmsRoleTrustRelationshipException _
 
 
 -- | <p>This exception is thrown when the user pool configuration is invalid.</p>
 newtype InvalidUserPoolConfigurationException = InvalidUserPoolConfigurationException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeInvalidUserPoolConfigurationException :: Newtype InvalidUserPoolConfigurationException _
 
 
 -- | <p>Specifies the configuration for AWS Lambda triggers.</p>
@@ -1919,12 +2163,14 @@ newtype LambdaConfigType = LambdaConfigType
   , "PreTokenGeneration" :: NullOrUndefined (ArnType)
   , "UserMigration" :: NullOrUndefined (ArnType)
   }
+derive instance newtypeLambdaConfigType :: Newtype LambdaConfigType _
 
 
 -- | <p>This exception is thrown when a user exceeds the limit for a requested AWS resource.</p>
 newtype LimitExceededException = LimitExceededException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeLimitExceededException :: Newtype LimitExceededException _
 
 
 -- | <p>Represents the request to list the devices.</p>
@@ -1933,6 +2179,7 @@ newtype ListDevicesRequest = ListDevicesRequest
   , "Limit" :: NullOrUndefined (QueryLimitType)
   , "PaginationToken" :: NullOrUndefined (SearchPaginationTokenType)
   }
+derive instance newtypeListDevicesRequest :: Newtype ListDevicesRequest _
 
 
 -- | <p>Represents the response to list devices.</p>
@@ -1940,6 +2187,7 @@ newtype ListDevicesResponse = ListDevicesResponse
   { "Devices" :: NullOrUndefined (DeviceListType)
   , "PaginationToken" :: NullOrUndefined (SearchPaginationTokenType)
   }
+derive instance newtypeListDevicesResponse :: Newtype ListDevicesResponse _
 
 
 newtype ListGroupsRequest = ListGroupsRequest 
@@ -1947,12 +2195,14 @@ newtype ListGroupsRequest = ListGroupsRequest
   , "Limit" :: NullOrUndefined (QueryLimitType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListGroupsRequest :: Newtype ListGroupsRequest _
 
 
 newtype ListGroupsResponse = ListGroupsResponse 
   { "Groups" :: NullOrUndefined (GroupListType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListGroupsResponse :: Newtype ListGroupsResponse _
 
 
 newtype ListIdentityProvidersRequest = ListIdentityProvidersRequest 
@@ -1960,21 +2210,26 @@ newtype ListIdentityProvidersRequest = ListIdentityProvidersRequest
   , "MaxResults" :: NullOrUndefined (ListProvidersLimitType)
   , "NextToken" :: NullOrUndefined (PaginationKeyType)
   }
+derive instance newtypeListIdentityProvidersRequest :: Newtype ListIdentityProvidersRequest _
 
 
 newtype ListIdentityProvidersResponse = ListIdentityProvidersResponse 
   { "Providers" :: (ProvidersListType)
   , "NextToken" :: NullOrUndefined (PaginationKeyType)
   }
+derive instance newtypeListIdentityProvidersResponse :: Newtype ListIdentityProvidersResponse _
 
 
 newtype ListOfStringTypes = ListOfStringTypes (Array StringType)
+derive instance newtypeListOfStringTypes :: Newtype ListOfStringTypes _
 
 
 newtype ListProvidersLimitType = ListProvidersLimitType Int
+derive instance newtypeListProvidersLimitType :: Newtype ListProvidersLimitType _
 
 
 newtype ListResourceServersLimitType = ListResourceServersLimitType Int
+derive instance newtypeListResourceServersLimitType :: Newtype ListResourceServersLimitType _
 
 
 newtype ListResourceServersRequest = ListResourceServersRequest 
@@ -1982,12 +2237,14 @@ newtype ListResourceServersRequest = ListResourceServersRequest
   , "MaxResults" :: NullOrUndefined (ListResourceServersLimitType)
   , "NextToken" :: NullOrUndefined (PaginationKeyType)
   }
+derive instance newtypeListResourceServersRequest :: Newtype ListResourceServersRequest _
 
 
 newtype ListResourceServersResponse = ListResourceServersResponse 
   { "ResourceServers" :: (ResourceServersListType)
   , "NextToken" :: NullOrUndefined (PaginationKeyType)
   }
+derive instance newtypeListResourceServersResponse :: Newtype ListResourceServersResponse _
 
 
 -- | <p>Represents the request to list the user import jobs.</p>
@@ -1996,6 +2253,7 @@ newtype ListUserImportJobsRequest = ListUserImportJobsRequest
   , "MaxResults" :: (PoolQueryLimitType)
   , "PaginationToken" :: NullOrUndefined (PaginationKeyType)
   }
+derive instance newtypeListUserImportJobsRequest :: Newtype ListUserImportJobsRequest _
 
 
 -- | <p>Represents the response from the server to the request to list the user import jobs.</p>
@@ -2003,6 +2261,7 @@ newtype ListUserImportJobsResponse = ListUserImportJobsResponse
   { "UserImportJobs" :: NullOrUndefined (UserImportJobsListType)
   , "PaginationToken" :: NullOrUndefined (PaginationKeyType)
   }
+derive instance newtypeListUserImportJobsResponse :: Newtype ListUserImportJobsResponse _
 
 
 -- | <p>Represents the request to list the user pool clients.</p>
@@ -2011,6 +2270,7 @@ newtype ListUserPoolClientsRequest = ListUserPoolClientsRequest
   , "MaxResults" :: NullOrUndefined (QueryLimit)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListUserPoolClientsRequest :: Newtype ListUserPoolClientsRequest _
 
 
 -- | <p>Represents the response from the server that lists user pool clients.</p>
@@ -2018,6 +2278,7 @@ newtype ListUserPoolClientsResponse = ListUserPoolClientsResponse
   { "UserPoolClients" :: NullOrUndefined (UserPoolClientListType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListUserPoolClientsResponse :: Newtype ListUserPoolClientsResponse _
 
 
 -- | <p>Represents the request to list user pools.</p>
@@ -2025,6 +2286,7 @@ newtype ListUserPoolsRequest = ListUserPoolsRequest
   { "NextToken" :: NullOrUndefined (PaginationKeyType)
   , "MaxResults" :: (PoolQueryLimitType)
   }
+derive instance newtypeListUserPoolsRequest :: Newtype ListUserPoolsRequest _
 
 
 -- | <p>Represents the response to list user pools.</p>
@@ -2032,6 +2294,7 @@ newtype ListUserPoolsResponse = ListUserPoolsResponse
   { "UserPools" :: NullOrUndefined (UserPoolListType)
   , "NextToken" :: NullOrUndefined (PaginationKeyType)
   }
+derive instance newtypeListUserPoolsResponse :: Newtype ListUserPoolsResponse _
 
 
 newtype ListUsersInGroupRequest = ListUsersInGroupRequest 
@@ -2040,12 +2303,14 @@ newtype ListUsersInGroupRequest = ListUsersInGroupRequest
   , "Limit" :: NullOrUndefined (QueryLimitType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListUsersInGroupRequest :: Newtype ListUsersInGroupRequest _
 
 
 newtype ListUsersInGroupResponse = ListUsersInGroupResponse 
   { "Users" :: NullOrUndefined (UsersListType)
   , "NextToken" :: NullOrUndefined (PaginationKey)
   }
+derive instance newtypeListUsersInGroupResponse :: Newtype ListUsersInGroupResponse _
 
 
 -- | <p>Represents the request to list users.</p>
@@ -2056,6 +2321,7 @@ newtype ListUsersRequest = ListUsersRequest
   , "PaginationToken" :: NullOrUndefined (SearchPaginationTokenType)
   , "Filter" :: NullOrUndefined (UserFilterType)
   }
+derive instance newtypeListUsersRequest :: Newtype ListUsersRequest _
 
 
 -- | <p>The response from the request to list users.</p>
@@ -2063,21 +2329,26 @@ newtype ListUsersResponse = ListUsersResponse
   { "Users" :: NullOrUndefined (UsersListType)
   , "PaginationToken" :: NullOrUndefined (SearchPaginationTokenType)
   }
+derive instance newtypeListUsersResponse :: Newtype ListUsersResponse _
 
 
 newtype LogoutURLsListType = LogoutURLsListType (Array RedirectUrlType)
+derive instance newtypeLogoutURLsListType :: Newtype LogoutURLsListType _
 
 
 newtype LongType = LongType Number
+derive instance newtypeLongType :: Newtype LongType _
 
 
 -- | <p>This exception is thrown when Amazon Cognito cannot find a multi-factor authentication (MFA) method.</p>
 newtype MFAMethodNotFoundException = MFAMethodNotFoundException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeMFAMethodNotFoundException :: Newtype MFAMethodNotFoundException _
 
 
 newtype MFAOptionListType = MFAOptionListType (Array MFAOptionType)
+derive instance newtypeMFAOptionListType :: Newtype MFAOptionListType _
 
 
 -- | <p>Specifies the different settings for multi-factor authentication (MFA).</p>
@@ -2085,9 +2356,11 @@ newtype MFAOptionType = MFAOptionType
   { "DeliveryMedium" :: NullOrUndefined (DeliveryMediumType)
   , "AttributeName" :: NullOrUndefined (AttributeNameType)
   }
+derive instance newtypeMFAOptionType :: Newtype MFAOptionType _
 
 
 newtype MessageActionType = MessageActionType String
+derive instance newtypeMessageActionType :: Newtype MessageActionType _
 
 
 -- | <p>The message template structure.</p>
@@ -2096,9 +2369,11 @@ newtype MessageTemplateType = MessageTemplateType
   , "EmailMessage" :: NullOrUndefined (EmailVerificationMessageType)
   , "EmailSubject" :: NullOrUndefined (EmailVerificationSubjectType)
   }
+derive instance newtypeMessageTemplateType :: Newtype MessageTemplateType _
 
 
 newtype MessageType = MessageType String
+derive instance newtypeMessageType :: Newtype MessageType _
 
 
 -- | <p>The new device metadata type.</p>
@@ -2106,12 +2381,14 @@ newtype NewDeviceMetadataType = NewDeviceMetadataType
   { "DeviceKey" :: NullOrUndefined (DeviceKeyType)
   , "DeviceGroupKey" :: NullOrUndefined (StringType)
   }
+derive instance newtypeNewDeviceMetadataType :: Newtype NewDeviceMetadataType _
 
 
 -- | <p>This exception is thrown when a user is not authorized.</p>
 newtype NotAuthorizedException = NotAuthorizedException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeNotAuthorizedException :: Newtype NotAuthorizedException _
 
 
 -- | <p>The notify configuration type.</p>
@@ -2123,6 +2400,7 @@ newtype NotifyConfigurationType = NotifyConfigurationType
   , "NoActionEmail" :: NullOrUndefined (NotifyEmailType)
   , "MfaEmail" :: NullOrUndefined (NotifyEmailType)
   }
+derive instance newtypeNotifyConfigurationType :: Newtype NotifyConfigurationType _
 
 
 -- | <p>The notify email type.</p>
@@ -2131,6 +2409,7 @@ newtype NotifyEmailType = NotifyEmailType
   , "HtmlBody" :: NullOrUndefined (EmailNotificationBodyType)
   , "TextBody" :: NullOrUndefined (EmailNotificationBodyType)
   }
+derive instance newtypeNotifyEmailType :: Newtype NotifyEmailType _
 
 
 -- | <p>The minimum and maximum value of an attribute that is of the number data type.</p>
@@ -2138,21 +2417,27 @@ newtype NumberAttributeConstraintsType = NumberAttributeConstraintsType
   { "MinValue" :: NullOrUndefined (StringType)
   , "MaxValue" :: NullOrUndefined (StringType)
   }
+derive instance newtypeNumberAttributeConstraintsType :: Newtype NumberAttributeConstraintsType _
 
 
 newtype OAuthFlowType = OAuthFlowType String
+derive instance newtypeOAuthFlowType :: Newtype OAuthFlowType _
 
 
 newtype OAuthFlowsType = OAuthFlowsType (Array OAuthFlowType)
+derive instance newtypeOAuthFlowsType :: Newtype OAuthFlowsType _
 
 
 newtype PaginationKey = PaginationKey String
+derive instance newtypePaginationKey :: Newtype PaginationKey _
 
 
 newtype PaginationKeyType = PaginationKeyType String
+derive instance newtypePaginationKeyType :: Newtype PaginationKeyType _
 
 
 newtype PasswordPolicyMinLengthType = PasswordPolicyMinLengthType Int
+derive instance newtypePasswordPolicyMinLengthType :: Newtype PasswordPolicyMinLengthType _
 
 
 -- | <p>The password policy type.</p>
@@ -2163,30 +2448,37 @@ newtype PasswordPolicyType = PasswordPolicyType
   , "RequireNumbers" :: NullOrUndefined (BooleanType)
   , "RequireSymbols" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypePasswordPolicyType :: Newtype PasswordPolicyType _
 
 
 -- | <p>This exception is thrown when a password reset is required.</p>
 newtype PasswordResetRequiredException = PasswordResetRequiredException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypePasswordResetRequiredException :: Newtype PasswordResetRequiredException _
 
 
 newtype PasswordType = PasswordType String
+derive instance newtypePasswordType :: Newtype PasswordType _
 
 
 newtype PoolQueryLimitType = PoolQueryLimitType Int
+derive instance newtypePoolQueryLimitType :: Newtype PoolQueryLimitType _
 
 
 newtype PreSignedUrlType = PreSignedUrlType String
+derive instance newtypePreSignedUrlType :: Newtype PreSignedUrlType _
 
 
 newtype PrecedenceType = PrecedenceType Int
+derive instance newtypePrecedenceType :: Newtype PrecedenceType _
 
 
 -- | <p>This exception is thrown when a precondition is not met.</p>
 newtype PreconditionNotMetException = PreconditionNotMetException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypePreconditionNotMetException :: Newtype PreconditionNotMetException _
 
 
 -- | <p>A container for identity provider details.</p>
@@ -2196,15 +2488,19 @@ newtype ProviderDescription = ProviderDescription
   , "LastModifiedDate" :: NullOrUndefined (DateType)
   , "CreationDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeProviderDescription :: Newtype ProviderDescription _
 
 
 newtype ProviderDetailsType = ProviderDetailsType (Map StringType StringType)
+derive instance newtypeProviderDetailsType :: Newtype ProviderDetailsType _
 
 
 newtype ProviderNameType = ProviderNameType String
+derive instance newtypeProviderNameType :: Newtype ProviderNameType _
 
 
 newtype ProviderNameTypeV1 = ProviderNameTypeV1 String
+derive instance newtypeProviderNameTypeV1 :: Newtype ProviderNameTypeV1 _
 
 
 -- | <p>A container for information about an identity provider for a user pool.</p>
@@ -2213,21 +2509,27 @@ newtype ProviderUserIdentifierType = ProviderUserIdentifierType
   , "ProviderAttributeName" :: NullOrUndefined (StringType)
   , "ProviderAttributeValue" :: NullOrUndefined (StringType)
   }
+derive instance newtypeProviderUserIdentifierType :: Newtype ProviderUserIdentifierType _
 
 
 newtype ProvidersListType = ProvidersListType (Array ProviderDescription)
+derive instance newtypeProvidersListType :: Newtype ProvidersListType _
 
 
 newtype QueryLimit = QueryLimit Int
+derive instance newtypeQueryLimit :: Newtype QueryLimit _
 
 
 newtype QueryLimitType = QueryLimitType Int
+derive instance newtypeQueryLimitType :: Newtype QueryLimitType _
 
 
 newtype RedirectUrlType = RedirectUrlType String
+derive instance newtypeRedirectUrlType :: Newtype RedirectUrlType _
 
 
 newtype RefreshTokenValidityType = RefreshTokenValidityType Int
+derive instance newtypeRefreshTokenValidityType :: Newtype RefreshTokenValidityType _
 
 
 -- | <p>Represents the request to resend the confirmation code.</p>
@@ -2238,33 +2540,41 @@ newtype ResendConfirmationCodeRequest = ResendConfirmationCodeRequest
   , "Username" :: (UsernameType)
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   }
+derive instance newtypeResendConfirmationCodeRequest :: Newtype ResendConfirmationCodeRequest _
 
 
 -- | <p>The response from the server when the Amazon Cognito Your User Pools service makes the request to resend a confirmation code.</p>
 newtype ResendConfirmationCodeResponse = ResendConfirmationCodeResponse 
   { "CodeDeliveryDetails" :: NullOrUndefined (CodeDeliveryDetailsType)
   }
+derive instance newtypeResendConfirmationCodeResponse :: Newtype ResendConfirmationCodeResponse _
 
 
 -- | <p>This exception is thrown when the Amazon Cognito service cannot find the requested resource.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
 
 
 newtype ResourceServerIdentifierType = ResourceServerIdentifierType String
+derive instance newtypeResourceServerIdentifierType :: Newtype ResourceServerIdentifierType _
 
 
 newtype ResourceServerNameType = ResourceServerNameType String
+derive instance newtypeResourceServerNameType :: Newtype ResourceServerNameType _
 
 
 newtype ResourceServerScopeDescriptionType = ResourceServerScopeDescriptionType String
+derive instance newtypeResourceServerScopeDescriptionType :: Newtype ResourceServerScopeDescriptionType _
 
 
 newtype ResourceServerScopeListType = ResourceServerScopeListType (Array ResourceServerScopeType)
+derive instance newtypeResourceServerScopeListType :: Newtype ResourceServerScopeListType _
 
 
 newtype ResourceServerScopeNameType = ResourceServerScopeNameType String
+derive instance newtypeResourceServerScopeNameType :: Newtype ResourceServerScopeNameType _
 
 
 -- | <p>A resource server scope.</p>
@@ -2272,6 +2582,7 @@ newtype ResourceServerScopeType = ResourceServerScopeType
   { "ScopeName" :: (ResourceServerScopeNameType)
   , "ScopeDescription" :: (ResourceServerScopeDescriptionType)
   }
+derive instance newtypeResourceServerScopeType :: Newtype ResourceServerScopeType _
 
 
 -- | <p>A container for information about a resource server for a user pool.</p>
@@ -2281,9 +2592,11 @@ newtype ResourceServerType = ResourceServerType
   , "Name" :: NullOrUndefined (ResourceServerNameType)
   , "Scopes" :: NullOrUndefined (ResourceServerScopeListType)
   }
+derive instance newtypeResourceServerType :: Newtype ResourceServerType _
 
 
 newtype ResourceServersListType = ResourceServersListType (Array ResourceServerType)
+derive instance newtypeResourceServersListType :: Newtype ResourceServersListType _
 
 
 -- | <p>The request to respond to an authentication challenge.</p>
@@ -2295,6 +2608,7 @@ newtype RespondToAuthChallengeRequest = RespondToAuthChallengeRequest
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   , "UserContextData" :: NullOrUndefined (UserContextDataType)
   }
+derive instance newtypeRespondToAuthChallengeRequest :: Newtype RespondToAuthChallengeRequest _
 
 
 -- | <p>The response to respond to the authentication challenge.</p>
@@ -2304,6 +2618,7 @@ newtype RespondToAuthChallengeResponse = RespondToAuthChallengeResponse
   , "ChallengeParameters" :: NullOrUndefined (ChallengeParametersType)
   , "AuthenticationResult" :: NullOrUndefined (AuthenticationResultType)
   }
+derive instance newtypeRespondToAuthChallengeResponse :: Newtype RespondToAuthChallengeResponse _
 
 
 -- | <p>The risk configuration type.</p>
@@ -2315,9 +2630,11 @@ newtype RiskConfigurationType = RiskConfigurationType
   , "RiskExceptionConfiguration" :: NullOrUndefined (RiskExceptionConfigurationType)
   , "LastModifiedDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeRiskConfigurationType :: Newtype RiskConfigurationType _
 
 
 newtype RiskDecisionType = RiskDecisionType String
+derive instance newtypeRiskDecisionType :: Newtype RiskDecisionType _
 
 
 -- | <p>The type of the configuration to override the risk decision.</p>
@@ -2325,12 +2642,15 @@ newtype RiskExceptionConfigurationType = RiskExceptionConfigurationType
   { "BlockedIPRangeList" :: NullOrUndefined (BlockedIPRangeListType)
   , "SkippedIPRangeList" :: NullOrUndefined (SkippedIPRangeListType)
   }
+derive instance newtypeRiskExceptionConfigurationType :: Newtype RiskExceptionConfigurationType _
 
 
 newtype RiskLevelType = RiskLevelType String
+derive instance newtypeRiskLevelType :: Newtype RiskLevelType _
 
 
 newtype S3BucketType = S3BucketType String
+derive instance newtypeS3BucketType :: Newtype S3BucketType _
 
 
 -- | <p>The SMS multi-factor authentication (MFA) settings type.</p>
@@ -2338,6 +2658,7 @@ newtype SMSMfaSettingsType = SMSMfaSettingsType
   { "Enabled" :: NullOrUndefined (BooleanType)
   , "PreferredMfa" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeSMSMfaSettingsType :: Newtype SMSMfaSettingsType _
 
 
 -- | <p>Contains information about the schema attribute.</p>
@@ -2350,36 +2671,46 @@ newtype SchemaAttributeType = SchemaAttributeType
   , "NumberAttributeConstraints" :: NullOrUndefined (NumberAttributeConstraintsType)
   , "StringAttributeConstraints" :: NullOrUndefined (StringAttributeConstraintsType)
   }
+derive instance newtypeSchemaAttributeType :: Newtype SchemaAttributeType _
 
 
 newtype SchemaAttributesListType = SchemaAttributesListType (Array SchemaAttributeType)
+derive instance newtypeSchemaAttributesListType :: Newtype SchemaAttributesListType _
 
 
 -- | <p>This exception is thrown when the specified scope does not exist.</p>
 newtype ScopeDoesNotExistException = ScopeDoesNotExistException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeScopeDoesNotExistException :: Newtype ScopeDoesNotExistException _
 
 
 newtype ScopeListType = ScopeListType (Array ScopeType)
+derive instance newtypeScopeListType :: Newtype ScopeListType _
 
 
 newtype ScopeType = ScopeType String
+derive instance newtypeScopeType :: Newtype ScopeType _
 
 
 newtype SearchPaginationTokenType = SearchPaginationTokenType String
+derive instance newtypeSearchPaginationTokenType :: Newtype SearchPaginationTokenType _
 
 
 newtype SearchedAttributeNamesListType = SearchedAttributeNamesListType (Array AttributeNameType)
+derive instance newtypeSearchedAttributeNamesListType :: Newtype SearchedAttributeNamesListType _
 
 
 newtype SecretCodeType = SecretCodeType String
+derive instance newtypeSecretCodeType :: Newtype SecretCodeType _
 
 
 newtype SecretHashType = SecretHashType String
+derive instance newtypeSecretHashType :: Newtype SecretHashType _
 
 
 newtype SessionType = SessionType String
+derive instance newtypeSessionType :: Newtype SessionType _
 
 
 newtype SetRiskConfigurationRequest = SetRiskConfigurationRequest 
@@ -2389,11 +2720,13 @@ newtype SetRiskConfigurationRequest = SetRiskConfigurationRequest
   , "AccountTakeoverRiskConfiguration" :: NullOrUndefined (AccountTakeoverRiskConfigurationType)
   , "RiskExceptionConfiguration" :: NullOrUndefined (RiskExceptionConfigurationType)
   }
+derive instance newtypeSetRiskConfigurationRequest :: Newtype SetRiskConfigurationRequest _
 
 
 newtype SetRiskConfigurationResponse = SetRiskConfigurationResponse 
   { "RiskConfiguration" :: (RiskConfigurationType)
   }
+derive instance newtypeSetRiskConfigurationResponse :: Newtype SetRiskConfigurationResponse _
 
 
 newtype SetUICustomizationRequest = SetUICustomizationRequest 
@@ -2402,11 +2735,13 @@ newtype SetUICustomizationRequest = SetUICustomizationRequest
   , "CSS" :: NullOrUndefined (CSSType)
   , "ImageFile" :: NullOrUndefined (ImageFileType)
   }
+derive instance newtypeSetUICustomizationRequest :: Newtype SetUICustomizationRequest _
 
 
 newtype SetUICustomizationResponse = SetUICustomizationResponse 
   { "UICustomization" :: (UICustomizationType)
   }
+derive instance newtypeSetUICustomizationResponse :: Newtype SetUICustomizationResponse _
 
 
 newtype SetUserMFAPreferenceRequest = SetUserMFAPreferenceRequest 
@@ -2414,11 +2749,13 @@ newtype SetUserMFAPreferenceRequest = SetUserMFAPreferenceRequest
   , "SoftwareTokenMfaSettings" :: NullOrUndefined (SoftwareTokenMfaSettingsType)
   , "AccessToken" :: (TokenModelType)
   }
+derive instance newtypeSetUserMFAPreferenceRequest :: Newtype SetUserMFAPreferenceRequest _
 
 
 newtype SetUserMFAPreferenceResponse = SetUserMFAPreferenceResponse 
   { 
   }
+derive instance newtypeSetUserMFAPreferenceResponse :: Newtype SetUserMFAPreferenceResponse _
 
 
 newtype SetUserPoolMfaConfigRequest = SetUserPoolMfaConfigRequest 
@@ -2427,6 +2764,7 @@ newtype SetUserPoolMfaConfigRequest = SetUserPoolMfaConfigRequest
   , "SoftwareTokenMfaConfiguration" :: NullOrUndefined (SoftwareTokenMfaConfigType)
   , "MfaConfiguration" :: NullOrUndefined (UserPoolMfaType)
   }
+derive instance newtypeSetUserPoolMfaConfigRequest :: Newtype SetUserPoolMfaConfigRequest _
 
 
 newtype SetUserPoolMfaConfigResponse = SetUserPoolMfaConfigResponse 
@@ -2434,6 +2772,7 @@ newtype SetUserPoolMfaConfigResponse = SetUserPoolMfaConfigResponse
   , "SoftwareTokenMfaConfiguration" :: NullOrUndefined (SoftwareTokenMfaConfigType)
   , "MfaConfiguration" :: NullOrUndefined (UserPoolMfaType)
   }
+derive instance newtypeSetUserPoolMfaConfigResponse :: Newtype SetUserPoolMfaConfigResponse _
 
 
 -- | <p>Represents the request to set user settings.</p>
@@ -2441,12 +2780,14 @@ newtype SetUserSettingsRequest = SetUserSettingsRequest
   { "AccessToken" :: (TokenModelType)
   , "MFAOptions" :: (MFAOptionListType)
   }
+derive instance newtypeSetUserSettingsRequest :: Newtype SetUserSettingsRequest _
 
 
 -- | <p>The response from the server for a set user settings request.</p>
 newtype SetUserSettingsResponse = SetUserSettingsResponse 
   { 
   }
+derive instance newtypeSetUserSettingsResponse :: Newtype SetUserSettingsResponse _
 
 
 -- | <p>Represents the request to register a user.</p>
@@ -2460,6 +2801,7 @@ newtype SignUpRequest = SignUpRequest
   , "AnalyticsMetadata" :: NullOrUndefined (AnalyticsMetadataType)
   , "UserContextData" :: NullOrUndefined (UserContextDataType)
   }
+derive instance newtypeSignUpRequest :: Newtype SignUpRequest _
 
 
 -- | <p>The response from the server for a registration request.</p>
@@ -2468,9 +2810,11 @@ newtype SignUpResponse = SignUpResponse
   , "CodeDeliveryDetails" :: NullOrUndefined (CodeDeliveryDetailsType)
   , "UserSub" :: (StringType)
   }
+derive instance newtypeSignUpResponse :: Newtype SignUpResponse _
 
 
 newtype SkippedIPRangeListType = SkippedIPRangeListType (Array StringType)
+derive instance newtypeSkippedIPRangeListType :: Newtype SkippedIPRangeListType _
 
 
 -- | <p>The SMS configuration type.</p>
@@ -2478,6 +2822,7 @@ newtype SmsConfigurationType = SmsConfigurationType
   { "SnsCallerArn" :: (ArnType)
   , "ExternalId" :: NullOrUndefined (StringType)
   }
+derive instance newtypeSmsConfigurationType :: Newtype SmsConfigurationType _
 
 
 -- | <p>The SMS text message multi-factor authentication (MFA) configuration type.</p>
@@ -2485,24 +2830,29 @@ newtype SmsMfaConfigType = SmsMfaConfigType
   { "SmsAuthenticationMessage" :: NullOrUndefined (SmsVerificationMessageType)
   , "SmsConfiguration" :: NullOrUndefined (SmsConfigurationType)
   }
+derive instance newtypeSmsMfaConfigType :: Newtype SmsMfaConfigType _
 
 
 newtype SmsVerificationMessageType = SmsVerificationMessageType String
+derive instance newtypeSmsVerificationMessageType :: Newtype SmsVerificationMessageType _
 
 
 -- | <p>This exception is thrown when the software token TOTP multi-factor authentication (MFA) is not enabled for the user pool.</p>
 newtype SoftwareTokenMFANotFoundException = SoftwareTokenMFANotFoundException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeSoftwareTokenMFANotFoundException :: Newtype SoftwareTokenMFANotFoundException _
 
 
 newtype SoftwareTokenMFAUserCodeType = SoftwareTokenMFAUserCodeType String
+derive instance newtypeSoftwareTokenMFAUserCodeType :: Newtype SoftwareTokenMFAUserCodeType _
 
 
 -- | <p>The type used for enabling software token MFA at the user pool level.</p>
 newtype SoftwareTokenMfaConfigType = SoftwareTokenMfaConfigType 
   { "Enabled" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeSoftwareTokenMfaConfigType :: Newtype SoftwareTokenMfaConfigType _
 
 
 -- | <p>The type used for enabling software token MFA at the user level.</p>
@@ -2510,6 +2860,7 @@ newtype SoftwareTokenMfaSettingsType = SoftwareTokenMfaSettingsType
   { "Enabled" :: NullOrUndefined (BooleanType)
   , "PreferredMfa" :: NullOrUndefined (BooleanType)
   }
+derive instance newtypeSoftwareTokenMfaSettingsType :: Newtype SoftwareTokenMfaSettingsType _
 
 
 -- | <p>Represents the request to start the user import job.</p>
@@ -2517,15 +2868,18 @@ newtype StartUserImportJobRequest = StartUserImportJobRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "JobId" :: (UserImportJobIdType)
   }
+derive instance newtypeStartUserImportJobRequest :: Newtype StartUserImportJobRequest _
 
 
 -- | <p>Represents the response from the server to the request to start the user import job.</p>
 newtype StartUserImportJobResponse = StartUserImportJobResponse 
   { "UserImportJob" :: NullOrUndefined (UserImportJobType)
   }
+derive instance newtypeStartUserImportJobResponse :: Newtype StartUserImportJobResponse _
 
 
 newtype StatusType = StatusType String
+derive instance newtypeStatusType :: Newtype StatusType _
 
 
 -- | <p>Represents the request to stop the user import job.</p>
@@ -2533,12 +2887,14 @@ newtype StopUserImportJobRequest = StopUserImportJobRequest
   { "UserPoolId" :: (UserPoolIdType)
   , "JobId" :: (UserImportJobIdType)
   }
+derive instance newtypeStopUserImportJobRequest :: Newtype StopUserImportJobRequest _
 
 
 -- | <p>Represents the response from the server to the request to stop the user import job.</p>
 newtype StopUserImportJobResponse = StopUserImportJobResponse 
   { "UserImportJob" :: NullOrUndefined (UserImportJobType)
   }
+derive instance newtypeStopUserImportJobResponse :: Newtype StopUserImportJobResponse _
 
 
 -- | <p>The constraints associated with a string attribute.</p>
@@ -2546,27 +2902,33 @@ newtype StringAttributeConstraintsType = StringAttributeConstraintsType
   { "MinLength" :: NullOrUndefined (StringType)
   , "MaxLength" :: NullOrUndefined (StringType)
   }
+derive instance newtypeStringAttributeConstraintsType :: Newtype StringAttributeConstraintsType _
 
 
 newtype StringType = StringType String
+derive instance newtypeStringType :: Newtype StringType _
 
 
 newtype SupportedIdentityProvidersListType = SupportedIdentityProvidersListType (Array ProviderNameType)
+derive instance newtypeSupportedIdentityProvidersListType :: Newtype SupportedIdentityProvidersListType _
 
 
 newtype TokenModelType = TokenModelType String
+derive instance newtypeTokenModelType :: Newtype TokenModelType _
 
 
 -- | <p>This exception is thrown when the user has made too many failed attempts for a given action (e.g., sign in).</p>
 newtype TooManyFailedAttemptsException = TooManyFailedAttemptsException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeTooManyFailedAttemptsException :: Newtype TooManyFailedAttemptsException _
 
 
 -- | <p>This exception is thrown when the user has made too many requests for a given operation.</p>
 newtype TooManyRequestsException = TooManyRequestsException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeTooManyRequestsException :: Newtype TooManyRequestsException _
 
 
 -- | <p>A container for the UI customization information for a user pool's built-in app UI.</p>
@@ -2579,24 +2941,28 @@ newtype UICustomizationType = UICustomizationType
   , "LastModifiedDate" :: NullOrUndefined (DateType)
   , "CreationDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeUICustomizationType :: Newtype UICustomizationType _
 
 
 -- | <p>This exception is thrown when the Amazon Cognito service encounters an unexpected exception with the AWS Lambda service.</p>
 newtype UnexpectedLambdaException = UnexpectedLambdaException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUnexpectedLambdaException :: Newtype UnexpectedLambdaException _
 
 
 -- | <p>This exception is thrown when the specified identifier is not supported.</p>
 newtype UnsupportedIdentityProviderException = UnsupportedIdentityProviderException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUnsupportedIdentityProviderException :: Newtype UnsupportedIdentityProviderException _
 
 
 -- | <p>The request failed because the user is in an unsupported state.</p>
 newtype UnsupportedUserStateException = UnsupportedUserStateException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUnsupportedUserStateException :: Newtype UnsupportedUserStateException _
 
 
 newtype UpdateAuthEventFeedbackRequest = UpdateAuthEventFeedbackRequest 
@@ -2606,11 +2972,13 @@ newtype UpdateAuthEventFeedbackRequest = UpdateAuthEventFeedbackRequest
   , "FeedbackToken" :: (TokenModelType)
   , "FeedbackValue" :: (FeedbackValueType)
   }
+derive instance newtypeUpdateAuthEventFeedbackRequest :: Newtype UpdateAuthEventFeedbackRequest _
 
 
 newtype UpdateAuthEventFeedbackResponse = UpdateAuthEventFeedbackResponse 
   { 
   }
+derive instance newtypeUpdateAuthEventFeedbackResponse :: Newtype UpdateAuthEventFeedbackResponse _
 
 
 -- | <p>Represents the request to update the device status.</p>
@@ -2619,12 +2987,14 @@ newtype UpdateDeviceStatusRequest = UpdateDeviceStatusRequest
   , "DeviceKey" :: (DeviceKeyType)
   , "DeviceRememberedStatus" :: NullOrUndefined (DeviceRememberedStatusType)
   }
+derive instance newtypeUpdateDeviceStatusRequest :: Newtype UpdateDeviceStatusRequest _
 
 
 -- | <p>The response to the request to update the device status.</p>
 newtype UpdateDeviceStatusResponse = UpdateDeviceStatusResponse 
   { 
   }
+derive instance newtypeUpdateDeviceStatusResponse :: Newtype UpdateDeviceStatusResponse _
 
 
 newtype UpdateGroupRequest = UpdateGroupRequest 
@@ -2634,11 +3004,13 @@ newtype UpdateGroupRequest = UpdateGroupRequest
   , "RoleArn" :: NullOrUndefined (ArnType)
   , "Precedence" :: NullOrUndefined (PrecedenceType)
   }
+derive instance newtypeUpdateGroupRequest :: Newtype UpdateGroupRequest _
 
 
 newtype UpdateGroupResponse = UpdateGroupResponse 
   { "Group" :: NullOrUndefined (GroupType)
   }
+derive instance newtypeUpdateGroupResponse :: Newtype UpdateGroupResponse _
 
 
 newtype UpdateIdentityProviderRequest = UpdateIdentityProviderRequest 
@@ -2648,11 +3020,13 @@ newtype UpdateIdentityProviderRequest = UpdateIdentityProviderRequest
   , "AttributeMapping" :: NullOrUndefined (AttributeMappingType)
   , "IdpIdentifiers" :: NullOrUndefined (IdpIdentifiersListType)
   }
+derive instance newtypeUpdateIdentityProviderRequest :: Newtype UpdateIdentityProviderRequest _
 
 
 newtype UpdateIdentityProviderResponse = UpdateIdentityProviderResponse 
   { "IdentityProvider" :: (IdentityProviderType)
   }
+derive instance newtypeUpdateIdentityProviderResponse :: Newtype UpdateIdentityProviderResponse _
 
 
 newtype UpdateResourceServerRequest = UpdateResourceServerRequest 
@@ -2661,11 +3035,13 @@ newtype UpdateResourceServerRequest = UpdateResourceServerRequest
   , "Name" :: (ResourceServerNameType)
   , "Scopes" :: NullOrUndefined (ResourceServerScopeListType)
   }
+derive instance newtypeUpdateResourceServerRequest :: Newtype UpdateResourceServerRequest _
 
 
 newtype UpdateResourceServerResponse = UpdateResourceServerResponse 
   { "ResourceServer" :: (ResourceServerType)
   }
+derive instance newtypeUpdateResourceServerResponse :: Newtype UpdateResourceServerResponse _
 
 
 -- | <p>Represents the request to update user attributes.</p>
@@ -2673,12 +3049,14 @@ newtype UpdateUserAttributesRequest = UpdateUserAttributesRequest
   { "UserAttributes" :: (AttributeListType)
   , "AccessToken" :: (TokenModelType)
   }
+derive instance newtypeUpdateUserAttributesRequest :: Newtype UpdateUserAttributesRequest _
 
 
 -- | <p>Represents the response from the server for the request to update user attributes.</p>
 newtype UpdateUserAttributesResponse = UpdateUserAttributesResponse 
   { "CodeDeliveryDetailsList" :: NullOrUndefined (CodeDeliveryDetailsListType)
   }
+derive instance newtypeUpdateUserAttributesResponse :: Newtype UpdateUserAttributesResponse _
 
 
 -- | <p>Represents the request to update the user pool client.</p>
@@ -2699,12 +3077,14 @@ newtype UpdateUserPoolClientRequest = UpdateUserPoolClientRequest
   , "AllowedOAuthFlowsUserPoolClient" :: NullOrUndefined (BooleanType)
   , "AnalyticsConfiguration" :: NullOrUndefined (AnalyticsConfigurationType)
   }
+derive instance newtypeUpdateUserPoolClientRequest :: Newtype UpdateUserPoolClientRequest _
 
 
 -- | <p>Represents the response from the server to the request to update the user pool client.</p>
 newtype UpdateUserPoolClientResponse = UpdateUserPoolClientResponse 
   { "UserPoolClient" :: NullOrUndefined (UserPoolClientType)
   }
+derive instance newtypeUpdateUserPoolClientResponse :: Newtype UpdateUserPoolClientResponse _
 
 
 -- | <p>Represents the request to update the user pool.</p>
@@ -2726,36 +3106,44 @@ newtype UpdateUserPoolRequest = UpdateUserPoolRequest
   , "AdminCreateUserConfig" :: NullOrUndefined (AdminCreateUserConfigType)
   , "UserPoolAddOns" :: NullOrUndefined (UserPoolAddOnsType)
   }
+derive instance newtypeUpdateUserPoolRequest :: Newtype UpdateUserPoolRequest _
 
 
 -- | <p>Represents the response from the server when you make a request to update the user pool.</p>
 newtype UpdateUserPoolResponse = UpdateUserPoolResponse 
   { 
   }
+derive instance newtypeUpdateUserPoolResponse :: Newtype UpdateUserPoolResponse _
 
 
 -- | <p>Contextual data such as the user's device fingerprint, IP address, or location used for evaluating the risk of an unexpected event by Amazon Cognito advanced security.</p>
 newtype UserContextDataType = UserContextDataType 
   { "EncodedData" :: NullOrUndefined (StringType)
   }
+derive instance newtypeUserContextDataType :: Newtype UserContextDataType _
 
 
 newtype UserFilterType = UserFilterType String
+derive instance newtypeUserFilterType :: Newtype UserFilterType _
 
 
 -- | <p>This exception is thrown when you are trying to modify a user pool while a user import job is in progress for that pool.</p>
 newtype UserImportInProgressException = UserImportInProgressException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUserImportInProgressException :: Newtype UserImportInProgressException _
 
 
 newtype UserImportJobIdType = UserImportJobIdType String
+derive instance newtypeUserImportJobIdType :: Newtype UserImportJobIdType _
 
 
 newtype UserImportJobNameType = UserImportJobNameType String
+derive instance newtypeUserImportJobNameType :: Newtype UserImportJobNameType _
 
 
 newtype UserImportJobStatusType = UserImportJobStatusType String
+derive instance newtypeUserImportJobStatusType :: Newtype UserImportJobStatusType _
 
 
 -- | <p>The user import job type.</p>
@@ -2774,42 +3162,50 @@ newtype UserImportJobType = UserImportJobType
   , "FailedUsers" :: NullOrUndefined (LongType)
   , "CompletionMessage" :: NullOrUndefined (CompletionMessageType)
   }
+derive instance newtypeUserImportJobType :: Newtype UserImportJobType _
 
 
 newtype UserImportJobsListType = UserImportJobsListType (Array UserImportJobType)
+derive instance newtypeUserImportJobsListType :: Newtype UserImportJobsListType _
 
 
 -- | <p>This exception is thrown when the Amazon Cognito service encounters a user validation exception with the AWS Lambda service.</p>
 newtype UserLambdaValidationException = UserLambdaValidationException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUserLambdaValidationException :: Newtype UserLambdaValidationException _
 
 
 newtype UserMFASettingListType = UserMFASettingListType (Array StringType)
+derive instance newtypeUserMFASettingListType :: Newtype UserMFASettingListType _
 
 
 -- | <p>This exception is thrown when a user is not confirmed successfully.</p>
 newtype UserNotConfirmedException = UserNotConfirmedException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUserNotConfirmedException :: Newtype UserNotConfirmedException _
 
 
 -- | <p>This exception is thrown when a user is not found.</p>
 newtype UserNotFoundException = UserNotFoundException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUserNotFoundException :: Newtype UserNotFoundException _
 
 
 -- | <p>This exception is thrown when user pool add-ons are not enabled.</p>
 newtype UserPoolAddOnNotEnabledException = UserPoolAddOnNotEnabledException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUserPoolAddOnNotEnabledException :: Newtype UserPoolAddOnNotEnabledException _
 
 
 -- | <p>The user pool add-ons type.</p>
 newtype UserPoolAddOnsType = UserPoolAddOnsType 
   { "AdvancedSecurityMode" :: (AdvancedSecurityModeType)
   }
+derive instance newtypeUserPoolAddOnsType :: Newtype UserPoolAddOnsType _
 
 
 -- | <p>The description of the user pool client.</p>
@@ -2818,9 +3214,11 @@ newtype UserPoolClientDescription = UserPoolClientDescription
   , "UserPoolId" :: NullOrUndefined (UserPoolIdType)
   , "ClientName" :: NullOrUndefined (ClientNameType)
   }
+derive instance newtypeUserPoolClientDescription :: Newtype UserPoolClientDescription _
 
 
 newtype UserPoolClientListType = UserPoolClientListType (Array UserPoolClientDescription)
+derive instance newtypeUserPoolClientListType :: Newtype UserPoolClientListType _
 
 
 -- | <p>Contains information about a user pool client.</p>
@@ -2844,6 +3242,7 @@ newtype UserPoolClientType = UserPoolClientType
   , "AllowedOAuthFlowsUserPoolClient" :: NullOrUndefined (BooleanType)
   , "AnalyticsConfiguration" :: NullOrUndefined (AnalyticsConfigurationType)
   }
+derive instance newtypeUserPoolClientType :: Newtype UserPoolClientType _
 
 
 -- | <p>A user pool description.</p>
@@ -2855,33 +3254,41 @@ newtype UserPoolDescriptionType = UserPoolDescriptionType
   , "LastModifiedDate" :: NullOrUndefined (DateType)
   , "CreationDate" :: NullOrUndefined (DateType)
   }
+derive instance newtypeUserPoolDescriptionType :: Newtype UserPoolDescriptionType _
 
 
 newtype UserPoolIdType = UserPoolIdType String
+derive instance newtypeUserPoolIdType :: Newtype UserPoolIdType _
 
 
 newtype UserPoolListType = UserPoolListType (Array UserPoolDescriptionType)
+derive instance newtypeUserPoolListType :: Newtype UserPoolListType _
 
 
 newtype UserPoolMfaType = UserPoolMfaType String
+derive instance newtypeUserPoolMfaType :: Newtype UserPoolMfaType _
 
 
 newtype UserPoolNameType = UserPoolNameType String
+derive instance newtypeUserPoolNameType :: Newtype UserPoolNameType _
 
 
 -- | <p>The policy associated with a user pool.</p>
 newtype UserPoolPolicyType = UserPoolPolicyType 
   { "PasswordPolicy" :: NullOrUndefined (PasswordPolicyType)
   }
+derive instance newtypeUserPoolPolicyType :: Newtype UserPoolPolicyType _
 
 
 -- | <p>This exception is thrown when a user pool tag cannot be set or updated.</p>
 newtype UserPoolTaggingException = UserPoolTaggingException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUserPoolTaggingException :: Newtype UserPoolTaggingException _
 
 
 newtype UserPoolTagsType = UserPoolTagsType (Map StringType StringType)
+derive instance newtypeUserPoolTagsType :: Newtype UserPoolTagsType _
 
 
 -- | <p>A container for information about the user pool.</p>
@@ -2914,9 +3321,11 @@ newtype UserPoolType = UserPoolType
   , "AdminCreateUserConfig" :: NullOrUndefined (AdminCreateUserConfigType)
   , "UserPoolAddOns" :: NullOrUndefined (UserPoolAddOnsType)
   }
+derive instance newtypeUserPoolType :: Newtype UserPoolType _
 
 
 newtype UserStatusType = UserStatusType String
+derive instance newtypeUserStatusType :: Newtype UserStatusType _
 
 
 -- | <p>The user type.</p>
@@ -2929,24 +3338,30 @@ newtype UserType = UserType
   , "UserStatus" :: NullOrUndefined (UserStatusType)
   , "MFAOptions" :: NullOrUndefined (MFAOptionListType)
   }
+derive instance newtypeUserType :: Newtype UserType _
 
 
 newtype UsernameAttributeType = UsernameAttributeType String
+derive instance newtypeUsernameAttributeType :: Newtype UsernameAttributeType _
 
 
 newtype UsernameAttributesListType = UsernameAttributesListType (Array UsernameAttributeType)
+derive instance newtypeUsernameAttributesListType :: Newtype UsernameAttributesListType _
 
 
 -- | <p>This exception is thrown when Amazon Cognito encounters a user name that already exists in the user pool.</p>
 newtype UsernameExistsException = UsernameExistsException 
   { "Message'" :: NullOrUndefined (MessageType)
   }
+derive instance newtypeUsernameExistsException :: Newtype UsernameExistsException _
 
 
 newtype UsernameType = UsernameType String
+derive instance newtypeUsernameType :: Newtype UsernameType _
 
 
 newtype UsersListType = UsersListType (Array UserType)
+derive instance newtypeUsersListType :: Newtype UsersListType _
 
 
 -- | <p>The template for verification messages.</p>
@@ -2958,12 +3373,15 @@ newtype VerificationMessageTemplateType = VerificationMessageTemplateType
   , "EmailSubjectByLink" :: NullOrUndefined (EmailVerificationSubjectByLinkType)
   , "DefaultEmailOption" :: NullOrUndefined (DefaultEmailOptionType)
   }
+derive instance newtypeVerificationMessageTemplateType :: Newtype VerificationMessageTemplateType _
 
 
 newtype VerifiedAttributeType = VerifiedAttributeType String
+derive instance newtypeVerifiedAttributeType :: Newtype VerifiedAttributeType _
 
 
 newtype VerifiedAttributesListType = VerifiedAttributesListType (Array VerifiedAttributeType)
+derive instance newtypeVerifiedAttributesListType :: Newtype VerifiedAttributesListType _
 
 
 newtype VerifySoftwareTokenRequest = VerifySoftwareTokenRequest 
@@ -2972,15 +3390,18 @@ newtype VerifySoftwareTokenRequest = VerifySoftwareTokenRequest
   , "UserCode" :: (SoftwareTokenMFAUserCodeType)
   , "FriendlyDeviceName" :: NullOrUndefined (StringType)
   }
+derive instance newtypeVerifySoftwareTokenRequest :: Newtype VerifySoftwareTokenRequest _
 
 
 newtype VerifySoftwareTokenResponse = VerifySoftwareTokenResponse 
   { "Status" :: NullOrUndefined (VerifySoftwareTokenResponseType)
   , "Session" :: NullOrUndefined (SessionType)
   }
+derive instance newtypeVerifySoftwareTokenResponse :: Newtype VerifySoftwareTokenResponse _
 
 
 newtype VerifySoftwareTokenResponseType = VerifySoftwareTokenResponseType String
+derive instance newtypeVerifySoftwareTokenResponseType :: Newtype VerifySoftwareTokenResponseType _
 
 
 -- | <p>Represents the request to verify user attributes.</p>
@@ -2989,9 +3410,11 @@ newtype VerifyUserAttributeRequest = VerifyUserAttributeRequest
   , "AttributeName" :: (AttributeNameType)
   , "Code" :: (ConfirmationCodeType)
   }
+derive instance newtypeVerifyUserAttributeRequest :: Newtype VerifyUserAttributeRequest _
 
 
 -- | <p>A container representing the response from the server from the request to verify user attributes.</p>
 newtype VerifyUserAttributeResponse = VerifyUserAttributeResponse 
   { 
   }
+derive instance newtypeVerifyUserAttributeResponse :: Newtype VerifyUserAttributeResponse _

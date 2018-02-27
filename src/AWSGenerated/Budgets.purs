@@ -6,6 +6,7 @@ module AWS.Budgets where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -80,6 +81,7 @@ updateSubscriber = AWS.request serviceName "UpdateSubscriber"
 
 -- | <p>The account ID of the customer. It should be a 12 digit number.</p>
 newtype AccountId = AccountId String
+derive instance newtypeAccountId :: Newtype AccountId _
 
 
 -- | <p>Represents the output of the <code>CreateBudget</code> operation. The content consists of the detailed metadata and data file information, and the current status of the <code>budget</code>.</p> <p>The ARN pattern for a budget is: <code>arn:aws:budgetservice::AccountId:budget/budgetName</code> </p>
@@ -93,18 +95,22 @@ newtype Budget = Budget
   , "CalculatedSpend" :: NullOrUndefined (CalculatedSpend)
   , "BudgetType" :: (BudgetType)
   }
+derive instance newtypeBudget :: Newtype Budget _
 
 
 -- | <p> A string represents the budget name. No ":" and "\" character is allowed.</p>
 newtype BudgetName = BudgetName String
+derive instance newtypeBudgetName :: Newtype BudgetName _
 
 
 -- | <p> The type of a budget. It should be COST, USAGE, or RI_UTILIZATION.</p>
 newtype BudgetType = BudgetType String
+derive instance newtypeBudgetType :: Newtype BudgetType _
 
 
 -- | <p> A list of budgets</p>
 newtype Budgets = Budgets (Array Budget)
+derive instance newtypeBudgets :: Newtype Budgets _
 
 
 -- | <p>The spend objects associated with this budget. The <code>actualSpend</code> tracks how much you've used, cost, usage, or RI units, and the <code>forecastedSpend</code> tracks how much you are predicted to spend if your current usage remains steady.</p> <p>For example, if it is the 20th of the month and you have spent <code>50</code> dollars on Amazon EC2, your <code>actualSpend</code> is <code>50 USD</code>, and your <code>forecastedSpend</code> is <code>75 USD</code>.</p>
@@ -112,14 +118,17 @@ newtype CalculatedSpend = CalculatedSpend
   { "ActualSpend" :: (Spend)
   , "ForecastedSpend" :: NullOrUndefined (Spend)
   }
+derive instance newtypeCalculatedSpend :: Newtype CalculatedSpend _
 
 
 -- | <p> The comparison operator of a notification. Currently we support less than, equal to and greater than.</p>
 newtype ComparisonOperator = ComparisonOperator String
+derive instance newtypeComparisonOperator :: Newtype ComparisonOperator _
 
 
 -- | <p> A map that represents the cost filters applied to the budget.</p>
 newtype CostFilters = CostFilters (Map GenericString DimensionValues)
+derive instance newtypeCostFilters :: Newtype CostFilters _
 
 
 -- | <p>The types of cost included in a budget, such as tax and subscriptions.</p>
@@ -136,6 +145,7 @@ newtype CostTypes = CostTypes
   , "IncludeDiscount" :: NullOrUndefined (NullableBoolean)
   , "UseAmortized" :: NullOrUndefined (NullableBoolean)
   }
+derive instance newtypeCostTypes :: Newtype CostTypes _
 
 
 -- | <p> Request of CreateBudget </p>
@@ -144,12 +154,14 @@ newtype CreateBudgetRequest = CreateBudgetRequest
   , "Budget" :: (Budget)
   , "NotificationsWithSubscribers" :: NullOrUndefined (NotificationWithSubscribersList)
   }
+derive instance newtypeCreateBudgetRequest :: Newtype CreateBudgetRequest _
 
 
 -- | <p> Response of CreateBudget </p>
 newtype CreateBudgetResponse = CreateBudgetResponse 
   { 
   }
+derive instance newtypeCreateBudgetResponse :: Newtype CreateBudgetResponse _
 
 
 -- | <p> Request of CreateNotification </p>
@@ -159,12 +171,14 @@ newtype CreateNotificationRequest = CreateNotificationRequest
   , "Notification" :: (Notification)
   , "Subscribers" :: (Subscribers)
   }
+derive instance newtypeCreateNotificationRequest :: Newtype CreateNotificationRequest _
 
 
 -- | <p> Response of CreateNotification </p>
 newtype CreateNotificationResponse = CreateNotificationResponse 
   { 
   }
+derive instance newtypeCreateNotificationResponse :: Newtype CreateNotificationResponse _
 
 
 -- | <p> Request of CreateSubscriber </p>
@@ -174,18 +188,21 @@ newtype CreateSubscriberRequest = CreateSubscriberRequest
   , "Notification" :: (Notification)
   , "Subscriber" :: (Subscriber)
   }
+derive instance newtypeCreateSubscriberRequest :: Newtype CreateSubscriberRequest _
 
 
 -- | <p> Response of CreateSubscriber </p>
 newtype CreateSubscriberResponse = CreateSubscriberResponse 
   { 
   }
+derive instance newtypeCreateSubscriberResponse :: Newtype CreateSubscriberResponse _
 
 
 -- | <p>You've exceeded the notification or subscriber limit.</p>
 newtype CreationLimitExceededException = CreationLimitExceededException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeCreationLimitExceededException :: Newtype CreationLimitExceededException _
 
 
 -- | <p> Request of DeleteBudget </p>
@@ -193,12 +210,14 @@ newtype DeleteBudgetRequest = DeleteBudgetRequest
   { "AccountId" :: (AccountId)
   , "BudgetName" :: (BudgetName)
   }
+derive instance newtypeDeleteBudgetRequest :: Newtype DeleteBudgetRequest _
 
 
 -- | <p> Response of DeleteBudget </p>
 newtype DeleteBudgetResponse = DeleteBudgetResponse 
   { 
   }
+derive instance newtypeDeleteBudgetResponse :: Newtype DeleteBudgetResponse _
 
 
 -- | <p> Request of DeleteNotification </p>
@@ -207,12 +226,14 @@ newtype DeleteNotificationRequest = DeleteNotificationRequest
   , "BudgetName" :: (BudgetName)
   , "Notification" :: (Notification)
   }
+derive instance newtypeDeleteNotificationRequest :: Newtype DeleteNotificationRequest _
 
 
 -- | <p> Response of DeleteNotification </p>
 newtype DeleteNotificationResponse = DeleteNotificationResponse 
   { 
   }
+derive instance newtypeDeleteNotificationResponse :: Newtype DeleteNotificationResponse _
 
 
 -- | <p> Request of DeleteSubscriber </p>
@@ -222,12 +243,14 @@ newtype DeleteSubscriberRequest = DeleteSubscriberRequest
   , "Notification" :: (Notification)
   , "Subscriber" :: (Subscriber)
   }
+derive instance newtypeDeleteSubscriberRequest :: Newtype DeleteSubscriberRequest _
 
 
 -- | <p> Response of DeleteSubscriber </p>
 newtype DeleteSubscriberResponse = DeleteSubscriberResponse 
   { 
   }
+derive instance newtypeDeleteSubscriberResponse :: Newtype DeleteSubscriberResponse _
 
 
 -- | <p> Request of DescribeBudget </p>
@@ -235,12 +258,14 @@ newtype DescribeBudgetRequest = DescribeBudgetRequest
   { "AccountId" :: (AccountId)
   , "BudgetName" :: (BudgetName)
   }
+derive instance newtypeDescribeBudgetRequest :: Newtype DescribeBudgetRequest _
 
 
 -- | <p> Response of DescribeBudget </p>
 newtype DescribeBudgetResponse = DescribeBudgetResponse 
   { "Budget" :: NullOrUndefined (Budget)
   }
+derive instance newtypeDescribeBudgetResponse :: Newtype DescribeBudgetResponse _
 
 
 -- | <p> Request of DescribeBudgets </p>
@@ -249,6 +274,7 @@ newtype DescribeBudgetsRequest = DescribeBudgetsRequest
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (GenericString)
   }
+derive instance newtypeDescribeBudgetsRequest :: Newtype DescribeBudgetsRequest _
 
 
 -- | <p> Response of DescribeBudgets </p>
@@ -256,6 +282,7 @@ newtype DescribeBudgetsResponse = DescribeBudgetsResponse
   { "Budgets" :: NullOrUndefined (Budgets)
   , "NextToken" :: NullOrUndefined (GenericString)
   }
+derive instance newtypeDescribeBudgetsResponse :: Newtype DescribeBudgetsResponse _
 
 
 -- | <p> Request of DescribeNotificationsForBudget </p>
@@ -265,6 +292,7 @@ newtype DescribeNotificationsForBudgetRequest = DescribeNotificationsForBudgetRe
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (GenericString)
   }
+derive instance newtypeDescribeNotificationsForBudgetRequest :: Newtype DescribeNotificationsForBudgetRequest _
 
 
 -- | <p> Response of GetNotificationsForBudget </p>
@@ -272,6 +300,7 @@ newtype DescribeNotificationsForBudgetResponse = DescribeNotificationsForBudgetR
   { "Notifications" :: NullOrUndefined (Notifications)
   , "NextToken" :: NullOrUndefined (GenericString)
   }
+derive instance newtypeDescribeNotificationsForBudgetResponse :: Newtype DescribeNotificationsForBudgetResponse _
 
 
 -- | <p> Request of DescribeSubscribersForNotification </p>
@@ -282,6 +311,7 @@ newtype DescribeSubscribersForNotificationRequest = DescribeSubscribersForNotifi
   , "MaxResults" :: NullOrUndefined (MaxResults)
   , "NextToken" :: NullOrUndefined (GenericString)
   }
+derive instance newtypeDescribeSubscribersForNotificationRequest :: Newtype DescribeSubscribersForNotificationRequest _
 
 
 -- | <p> Response of DescribeSubscribersForNotification </p>
@@ -289,57 +319,68 @@ newtype DescribeSubscribersForNotificationResponse = DescribeSubscribersForNotif
   { "Subscribers" :: NullOrUndefined (Subscribers)
   , "NextToken" :: NullOrUndefined (GenericString)
   }
+derive instance newtypeDescribeSubscribersForNotificationResponse :: Newtype DescribeSubscribersForNotificationResponse _
 
 
 newtype DimensionValues = DimensionValues (Array GenericString)
+derive instance newtypeDimensionValues :: Newtype DimensionValues _
 
 
 -- | <p>The budget name already exists. Budget names must be unique within an account.</p>
 newtype DuplicateRecordException = DuplicateRecordException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeDuplicateRecordException :: Newtype DuplicateRecordException _
 
 
 -- | <p>The pagination token expired.</p>
 newtype ExpiredNextTokenException = ExpiredNextTokenException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeExpiredNextTokenException :: Newtype ExpiredNextTokenException _
 
 
 -- | <p> A generic String.</p>
 newtype GenericString = GenericString String
+derive instance newtypeGenericString :: Newtype GenericString _
 
 
 -- | <p> A generic timestamp. In Java it is transformed to a Date object.</p>
 newtype GenericTimestamp = GenericTimestamp Number
+derive instance newtypeGenericTimestamp :: Newtype GenericTimestamp _
 
 
 -- | <p>An error on the server occurred during the processing of your request. Try again later.</p>
 newtype InternalErrorException = InternalErrorException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInternalErrorException :: Newtype InternalErrorException _
 
 
 -- | <p>The pagination token is invalid.</p>
 newtype InvalidNextTokenException = InvalidNextTokenException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInvalidNextTokenException :: Newtype InvalidNextTokenException _
 
 
 -- | <p>An error on the client occurred. Typically, the cause is an invalid input value.</p>
 newtype InvalidParameterException = InvalidParameterException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeInvalidParameterException :: Newtype InvalidParameterException _
 
 
 -- | <p> An integer to represent how many entries a paginated response contains. Maximum is set to 100.</p>
 newtype MaxResults = MaxResults Int
+derive instance newtypeMaxResults :: Newtype MaxResults _
 
 
 -- | <p>We can’t locate the resource that you specified.</p>
 newtype NotFoundException = NotFoundException 
   { "Message" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeNotFoundException :: Newtype NotFoundException _
 
 
 -- | <p>A notification associated with a budget. A budget can have up to five notifications. </p> <p>Each notification must have at least one subscriber. A notification can have one SNS subscriber and up to ten email subscribers, for a total of 11 subscribers.</p> <p>For example, if you have a budget for 200 dollars and you want to be notified when you go over 160 dollars, create a notification with the following parameters:</p> <ul> <li> <p>A notificationType of <code>ACTUAL</code> </p> </li> <li> <p>A comparisonOperator of <code>GREATER_THAN</code> </p> </li> <li> <p>A notification threshold of <code>80</code> </p> </li> </ul>
@@ -349,14 +390,17 @@ newtype Notification = Notification
   , "Threshold" :: (NotificationThreshold)
   , "ThresholdType" :: NullOrUndefined (ThresholdType)
   }
+derive instance newtypeNotification :: Newtype Notification _
 
 
 -- | <p> The threshold of a notification. It should be a number between 0 and 1,000,000,000.</p>
 newtype NotificationThreshold = NotificationThreshold Number
+derive instance newtypeNotificationThreshold :: Newtype NotificationThreshold _
 
 
 -- | <p> The type of a notification. It should be ACTUAL or FORECASTED.</p>
 newtype NotificationType = NotificationType String
+derive instance newtypeNotificationType :: Newtype NotificationType _
 
 
 -- | <p>A notification with subscribers. A notification can have one SNS subscriber and up to ten email subscribers, for a total of 11 subscribers.</p>
@@ -364,21 +408,26 @@ newtype NotificationWithSubscribers = NotificationWithSubscribers
   { "Notification" :: (Notification)
   , "Subscribers" :: (Subscribers)
   }
+derive instance newtypeNotificationWithSubscribers :: Newtype NotificationWithSubscribers _
 
 
 -- | <p> A list of Notifications, each with a list of subscribers.</p>
 newtype NotificationWithSubscribersList = NotificationWithSubscribersList (Array NotificationWithSubscribers)
+derive instance newtypeNotificationWithSubscribersList :: Newtype NotificationWithSubscribersList _
 
 
 -- | <p> A list of notifications.</p>
 newtype Notifications = Notifications (Array Notification)
+derive instance newtypeNotifications :: Newtype Notifications _
 
 
 newtype NullableBoolean = NullableBoolean Boolean
+derive instance newtypeNullableBoolean :: Newtype NullableBoolean _
 
 
 -- | <p> A string to represent NumericValue.</p>
 newtype NumericValue = NumericValue String
+derive instance newtypeNumericValue :: Newtype NumericValue _
 
 
 -- | <p>The amount of cost or usage being measured for a budget.</p> <p>For example, a <code>Spend</code> for <code>3 GB</code> of S3 usage would have the following parameters:</p> <ul> <li> <p>An <code>Amount</code> of <code>3</code> </p> </li> <li> <p>A <code>unit</code> of <code>GB</code> </p> </li> </ul>
@@ -386,6 +435,7 @@ newtype Spend = Spend
   { "Amount" :: (NumericValue)
   , "Unit''" :: (UnitValue)
   }
+derive instance newtypeSpend :: Newtype Spend _
 
 
 -- | <p>The subscriber to a budget notification. The subscriber consists of a subscription type and either an Amazon Simple Notification Service topic or an email address.</p> <p>For example, an email subscriber would have the following parameters:</p> <ul> <li> <p>A <code>subscriptionType</code> of <code>EMAIL</code> </p> </li> <li> <p>An <code>address</code> of <code>example@example.com</code> </p> </li> </ul>
@@ -393,22 +443,27 @@ newtype Subscriber = Subscriber
   { "SubscriptionType" :: (SubscriptionType)
   , "Address" :: (SubscriberAddress)
   }
+derive instance newtypeSubscriber :: Newtype Subscriber _
 
 
 -- | <p> String containing email or sns topic for the subscriber address.</p>
 newtype SubscriberAddress = SubscriberAddress String
+derive instance newtypeSubscriberAddress :: Newtype SubscriberAddress _
 
 
 -- | <p> A list of subscribers.</p>
 newtype Subscribers = Subscribers (Array Subscriber)
+derive instance newtypeSubscribers :: Newtype Subscribers _
 
 
 -- | <p> The subscription type of the subscriber. It can be SMS or EMAIL.</p>
 newtype SubscriptionType = SubscriptionType String
+derive instance newtypeSubscriptionType :: Newtype SubscriptionType _
 
 
 -- | <p> The type of threshold for a notification. It can be PERCENTAGE or ABSOLUTE_VALUE.</p>
 newtype ThresholdType = ThresholdType String
+derive instance newtypeThresholdType :: Newtype ThresholdType _
 
 
 -- | <p>The period of time covered by a budget. Has a start date and an end date. The start date must come before the end date. There are no restrictions on the end date. </p>
@@ -416,14 +471,17 @@ newtype TimePeriod = TimePeriod
   { "Start" :: NullOrUndefined (GenericTimestamp)
   , "End" :: NullOrUndefined (GenericTimestamp)
   }
+derive instance newtypeTimePeriod :: Newtype TimePeriod _
 
 
 -- | <p> The time unit of the budget. e.g. MONTHLY, QUARTERLY, etc.</p>
 newtype TimeUnit = TimeUnit String
+derive instance newtypeTimeUnit :: Newtype TimeUnit _
 
 
 -- | <p> A string to represent budget spend unit. It should be not null and not empty.</p>
 newtype UnitValue = UnitValue String
+derive instance newtypeUnitValue :: Newtype UnitValue _
 
 
 -- | <p> Request of UpdateBudget </p>
@@ -431,12 +489,14 @@ newtype UpdateBudgetRequest = UpdateBudgetRequest
   { "AccountId" :: (AccountId)
   , "NewBudget" :: (Budget)
   }
+derive instance newtypeUpdateBudgetRequest :: Newtype UpdateBudgetRequest _
 
 
 -- | <p> Response of UpdateBudget </p>
 newtype UpdateBudgetResponse = UpdateBudgetResponse 
   { 
   }
+derive instance newtypeUpdateBudgetResponse :: Newtype UpdateBudgetResponse _
 
 
 -- | <p> Request of UpdateNotification </p>
@@ -446,12 +506,14 @@ newtype UpdateNotificationRequest = UpdateNotificationRequest
   , "OldNotification" :: (Notification)
   , "NewNotification" :: (Notification)
   }
+derive instance newtypeUpdateNotificationRequest :: Newtype UpdateNotificationRequest _
 
 
 -- | <p> Response of UpdateNotification </p>
 newtype UpdateNotificationResponse = UpdateNotificationResponse 
   { 
   }
+derive instance newtypeUpdateNotificationResponse :: Newtype UpdateNotificationResponse _
 
 
 -- | <p> Request of UpdateSubscriber </p>
@@ -462,13 +524,16 @@ newtype UpdateSubscriberRequest = UpdateSubscriberRequest
   , "OldSubscriber" :: (Subscriber)
   , "NewSubscriber" :: (Subscriber)
   }
+derive instance newtypeUpdateSubscriberRequest :: Newtype UpdateSubscriberRequest _
 
 
 -- | <p> Response of UpdateSubscriber </p>
 newtype UpdateSubscriberResponse = UpdateSubscriberResponse 
   { 
   }
+derive instance newtypeUpdateSubscriberResponse :: Newtype UpdateSubscriberResponse _
 
 
 -- | <p>The error message the exception carries.</p>
 newtype ErrorMessage' = ErrorMessage' String
+derive instance newtypeErrorMessage' :: Newtype ErrorMessage' _

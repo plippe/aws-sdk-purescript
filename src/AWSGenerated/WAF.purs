@@ -6,6 +6,7 @@ module AWS.WAF where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -359,6 +360,7 @@ updateXssMatchSet = AWS.request serviceName "UpdateXssMatchSet"
 
 
 newtype Action = Action String
+derive instance newtypeAction :: Newtype Action _
 
 
 -- | <p>The <code>ActivatedRule</code> object in an <a>UpdateWebACL</a> request specifies a <code>Rule</code> that you want to insert or delete, the priority of the <code>Rule</code> in the <code>WebACL</code>, and the action that you want AWS WAF to take when a web request matches the <code>Rule</code> (<code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>).</p> <p>To specify whether to insert or delete a <code>Rule</code>, use the <code>Action</code> parameter in the <a>WebACLUpdate</a> data type.</p>
@@ -369,9 +371,11 @@ newtype ActivatedRule = ActivatedRule
   , "OverrideAction" :: NullOrUndefined (WafOverrideAction)
   , "Type" :: NullOrUndefined (WafRuleType)
   }
+derive instance newtypeActivatedRule :: Newtype ActivatedRule _
 
 
 newtype ActivatedRules = ActivatedRules (Array ActivatedRule)
+derive instance newtypeActivatedRules :: Newtype ActivatedRules _
 
 
 -- | <p>In a <a>GetByteMatchSet</a> request, <code>ByteMatchSet</code> is a complex type that contains the <code>ByteMatchSetId</code> and <code>Name</code> of a <code>ByteMatchSet</code>, and the values that you specified when you updated the <code>ByteMatchSet</code>. </p> <p>A complex type that contains <code>ByteMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect and the values that you want AWS WAF to search for. If a <code>ByteMatchSet</code> contains more than one <code>ByteMatchTuple</code> object, a request needs to match the settings in only one <code>ByteMatchTuple</code> to be considered a match.</p>
@@ -380,9 +384,11 @@ newtype ByteMatchSet = ByteMatchSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "ByteMatchTuples" :: (ByteMatchTuples)
   }
+derive instance newtypeByteMatchSet :: Newtype ByteMatchSet _
 
 
 newtype ByteMatchSetSummaries = ByteMatchSetSummaries (Array ByteMatchSetSummary)
+derive instance newtypeByteMatchSetSummaries :: Newtype ByteMatchSetSummaries _
 
 
 -- | <p>Returned by <a>ListByteMatchSets</a>. Each <code>ByteMatchSetSummary</code> object includes the <code>Name</code> and <code>ByteMatchSetId</code> for one <a>ByteMatchSet</a>.</p>
@@ -390,6 +396,7 @@ newtype ByteMatchSetSummary = ByteMatchSetSummary
   { "ByteMatchSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeByteMatchSetSummary :: Newtype ByteMatchSetSummary _
 
 
 -- | <p>In an <a>UpdateByteMatchSet</a> request, <code>ByteMatchSetUpdate</code> specifies whether to insert or delete a <a>ByteMatchTuple</a> and includes the settings for the <code>ByteMatchTuple</code>.</p>
@@ -397,12 +404,15 @@ newtype ByteMatchSetUpdate = ByteMatchSetUpdate
   { "Action" :: (ChangeAction)
   , "ByteMatchTuple" :: (ByteMatchTuple)
   }
+derive instance newtypeByteMatchSetUpdate :: Newtype ByteMatchSetUpdate _
 
 
 newtype ByteMatchSetUpdates = ByteMatchSetUpdates (Array ByteMatchSetUpdate)
+derive instance newtypeByteMatchSetUpdates :: Newtype ByteMatchSetUpdates _
 
 
 newtype ByteMatchTargetString = ByteMatchTargetString String
+derive instance newtypeByteMatchTargetString :: Newtype ByteMatchTargetString _
 
 
 -- | <p>The bytes (typically a string that corresponds with ASCII characters) that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings.</p>
@@ -412,60 +422,73 @@ newtype ByteMatchTuple = ByteMatchTuple
   , "TextTransformation" :: (TextTransformation)
   , "PositionalConstraint" :: (PositionalConstraint)
   }
+derive instance newtypeByteMatchTuple :: Newtype ByteMatchTuple _
 
 
 newtype ByteMatchTuples = ByteMatchTuples (Array ByteMatchTuple)
+derive instance newtypeByteMatchTuples :: Newtype ByteMatchTuples _
 
 
 newtype ChangeAction = ChangeAction String
+derive instance newtypeChangeAction :: Newtype ChangeAction _
 
 
 newtype ChangeToken = ChangeToken String
+derive instance newtypeChangeToken :: Newtype ChangeToken _
 
 
 newtype ChangeTokenStatus = ChangeTokenStatus String
+derive instance newtypeChangeTokenStatus :: Newtype ChangeTokenStatus _
 
 
 newtype ComparisonOperator = ComparisonOperator String
+derive instance newtypeComparisonOperator :: Newtype ComparisonOperator _
 
 
 newtype Country = Country String
+derive instance newtypeCountry :: Newtype Country _
 
 
 newtype CreateByteMatchSetRequest = CreateByteMatchSetRequest 
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateByteMatchSetRequest :: Newtype CreateByteMatchSetRequest _
 
 
 newtype CreateByteMatchSetResponse = CreateByteMatchSetResponse 
   { "ByteMatchSet" :: NullOrUndefined (ByteMatchSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateByteMatchSetResponse :: Newtype CreateByteMatchSetResponse _
 
 
 newtype CreateGeoMatchSetRequest = CreateGeoMatchSetRequest 
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateGeoMatchSetRequest :: Newtype CreateGeoMatchSetRequest _
 
 
 newtype CreateGeoMatchSetResponse = CreateGeoMatchSetResponse 
   { "GeoMatchSet" :: NullOrUndefined (GeoMatchSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateGeoMatchSetResponse :: Newtype CreateGeoMatchSetResponse _
 
 
 newtype CreateIPSetRequest = CreateIPSetRequest 
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateIPSetRequest :: Newtype CreateIPSetRequest _
 
 
 newtype CreateIPSetResponse = CreateIPSetResponse 
   { "IPSet" :: NullOrUndefined (IPSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateIPSetResponse :: Newtype CreateIPSetResponse _
 
 
 newtype CreateRateBasedRuleRequest = CreateRateBasedRuleRequest 
@@ -475,36 +498,42 @@ newtype CreateRateBasedRuleRequest = CreateRateBasedRuleRequest
   , "RateLimit" :: (RateLimit)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateRateBasedRuleRequest :: Newtype CreateRateBasedRuleRequest _
 
 
 newtype CreateRateBasedRuleResponse = CreateRateBasedRuleResponse 
   { "Rule" :: NullOrUndefined (RateBasedRule)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateRateBasedRuleResponse :: Newtype CreateRateBasedRuleResponse _
 
 
 newtype CreateRegexMatchSetRequest = CreateRegexMatchSetRequest 
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateRegexMatchSetRequest :: Newtype CreateRegexMatchSetRequest _
 
 
 newtype CreateRegexMatchSetResponse = CreateRegexMatchSetResponse 
   { "RegexMatchSet" :: NullOrUndefined (RegexMatchSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateRegexMatchSetResponse :: Newtype CreateRegexMatchSetResponse _
 
 
 newtype CreateRegexPatternSetRequest = CreateRegexPatternSetRequest 
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateRegexPatternSetRequest :: Newtype CreateRegexPatternSetRequest _
 
 
 newtype CreateRegexPatternSetResponse = CreateRegexPatternSetResponse 
   { "RegexPatternSet" :: NullOrUndefined (RegexPatternSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateRegexPatternSetResponse :: Newtype CreateRegexPatternSetResponse _
 
 
 newtype CreateRuleGroupRequest = CreateRuleGroupRequest 
@@ -512,12 +541,14 @@ newtype CreateRuleGroupRequest = CreateRuleGroupRequest
   , "MetricName" :: (MetricName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateRuleGroupRequest :: Newtype CreateRuleGroupRequest _
 
 
 newtype CreateRuleGroupResponse = CreateRuleGroupResponse 
   { "RuleGroup" :: NullOrUndefined (RuleGroup)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateRuleGroupResponse :: Newtype CreateRuleGroupResponse _
 
 
 newtype CreateRuleRequest = CreateRuleRequest 
@@ -525,24 +556,28 @@ newtype CreateRuleRequest = CreateRuleRequest
   , "MetricName" :: (MetricName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateRuleRequest :: Newtype CreateRuleRequest _
 
 
 newtype CreateRuleResponse = CreateRuleResponse 
   { "Rule" :: NullOrUndefined (Rule)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateRuleResponse :: Newtype CreateRuleResponse _
 
 
 newtype CreateSizeConstraintSetRequest = CreateSizeConstraintSetRequest 
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateSizeConstraintSetRequest :: Newtype CreateSizeConstraintSetRequest _
 
 
 newtype CreateSizeConstraintSetResponse = CreateSizeConstraintSetResponse 
   { "SizeConstraintSet" :: NullOrUndefined (SizeConstraintSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateSizeConstraintSetResponse :: Newtype CreateSizeConstraintSetResponse _
 
 
 -- | <p>A request to create a <a>SqlInjectionMatchSet</a>.</p>
@@ -550,6 +585,7 @@ newtype CreateSqlInjectionMatchSetRequest = CreateSqlInjectionMatchSetRequest
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateSqlInjectionMatchSetRequest :: Newtype CreateSqlInjectionMatchSetRequest _
 
 
 -- | <p>The response to a <code>CreateSqlInjectionMatchSet</code> request.</p>
@@ -557,6 +593,7 @@ newtype CreateSqlInjectionMatchSetResponse = CreateSqlInjectionMatchSetResponse
   { "SqlInjectionMatchSet" :: NullOrUndefined (SqlInjectionMatchSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateSqlInjectionMatchSetResponse :: Newtype CreateSqlInjectionMatchSetResponse _
 
 
 newtype CreateWebACLRequest = CreateWebACLRequest 
@@ -565,12 +602,14 @@ newtype CreateWebACLRequest = CreateWebACLRequest
   , "DefaultAction" :: (WafAction)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateWebACLRequest :: Newtype CreateWebACLRequest _
 
 
 newtype CreateWebACLResponse = CreateWebACLResponse 
   { "WebACL" :: NullOrUndefined (WebACL)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateWebACLResponse :: Newtype CreateWebACLResponse _
 
 
 -- | <p>A request to create an <a>XssMatchSet</a>.</p>
@@ -578,6 +617,7 @@ newtype CreateXssMatchSetRequest = CreateXssMatchSetRequest
   { "Name" :: (ResourceName)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeCreateXssMatchSetRequest :: Newtype CreateXssMatchSetRequest _
 
 
 -- | <p>The response to a <code>CreateXssMatchSet</code> request.</p>
@@ -585,115 +625,136 @@ newtype CreateXssMatchSetResponse = CreateXssMatchSetResponse
   { "XssMatchSet" :: NullOrUndefined (XssMatchSet)
   , "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeCreateXssMatchSetResponse :: Newtype CreateXssMatchSetResponse _
 
 
 newtype DeleteByteMatchSetRequest = DeleteByteMatchSetRequest 
   { "ByteMatchSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteByteMatchSetRequest :: Newtype DeleteByteMatchSetRequest _
 
 
 newtype DeleteByteMatchSetResponse = DeleteByteMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteByteMatchSetResponse :: Newtype DeleteByteMatchSetResponse _
 
 
 newtype DeleteGeoMatchSetRequest = DeleteGeoMatchSetRequest 
   { "GeoMatchSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteGeoMatchSetRequest :: Newtype DeleteGeoMatchSetRequest _
 
 
 newtype DeleteGeoMatchSetResponse = DeleteGeoMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteGeoMatchSetResponse :: Newtype DeleteGeoMatchSetResponse _
 
 
 newtype DeleteIPSetRequest = DeleteIPSetRequest 
   { "IPSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteIPSetRequest :: Newtype DeleteIPSetRequest _
 
 
 newtype DeleteIPSetResponse = DeleteIPSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteIPSetResponse :: Newtype DeleteIPSetResponse _
 
 
 newtype DeletePermissionPolicyRequest = DeletePermissionPolicyRequest 
   { "ResourceArn" :: (ResourceArn)
   }
+derive instance newtypeDeletePermissionPolicyRequest :: Newtype DeletePermissionPolicyRequest _
 
 
 newtype DeletePermissionPolicyResponse = DeletePermissionPolicyResponse 
   { 
   }
+derive instance newtypeDeletePermissionPolicyResponse :: Newtype DeletePermissionPolicyResponse _
 
 
 newtype DeleteRateBasedRuleRequest = DeleteRateBasedRuleRequest 
   { "RuleId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteRateBasedRuleRequest :: Newtype DeleteRateBasedRuleRequest _
 
 
 newtype DeleteRateBasedRuleResponse = DeleteRateBasedRuleResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteRateBasedRuleResponse :: Newtype DeleteRateBasedRuleResponse _
 
 
 newtype DeleteRegexMatchSetRequest = DeleteRegexMatchSetRequest 
   { "RegexMatchSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteRegexMatchSetRequest :: Newtype DeleteRegexMatchSetRequest _
 
 
 newtype DeleteRegexMatchSetResponse = DeleteRegexMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteRegexMatchSetResponse :: Newtype DeleteRegexMatchSetResponse _
 
 
 newtype DeleteRegexPatternSetRequest = DeleteRegexPatternSetRequest 
   { "RegexPatternSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteRegexPatternSetRequest :: Newtype DeleteRegexPatternSetRequest _
 
 
 newtype DeleteRegexPatternSetResponse = DeleteRegexPatternSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteRegexPatternSetResponse :: Newtype DeleteRegexPatternSetResponse _
 
 
 newtype DeleteRuleGroupRequest = DeleteRuleGroupRequest 
   { "RuleGroupId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteRuleGroupRequest :: Newtype DeleteRuleGroupRequest _
 
 
 newtype DeleteRuleGroupResponse = DeleteRuleGroupResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteRuleGroupResponse :: Newtype DeleteRuleGroupResponse _
 
 
 newtype DeleteRuleRequest = DeleteRuleRequest 
   { "RuleId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteRuleRequest :: Newtype DeleteRuleRequest _
 
 
 newtype DeleteRuleResponse = DeleteRuleResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteRuleResponse :: Newtype DeleteRuleResponse _
 
 
 newtype DeleteSizeConstraintSetRequest = DeleteSizeConstraintSetRequest 
   { "SizeConstraintSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteSizeConstraintSetRequest :: Newtype DeleteSizeConstraintSetRequest _
 
 
 newtype DeleteSizeConstraintSetResponse = DeleteSizeConstraintSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteSizeConstraintSetResponse :: Newtype DeleteSizeConstraintSetResponse _
 
 
 -- | <p>A request to delete a <a>SqlInjectionMatchSet</a> from AWS WAF.</p>
@@ -701,23 +762,27 @@ newtype DeleteSqlInjectionMatchSetRequest = DeleteSqlInjectionMatchSetRequest
   { "SqlInjectionMatchSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteSqlInjectionMatchSetRequest :: Newtype DeleteSqlInjectionMatchSetRequest _
 
 
 -- | <p>The response to a request to delete a <a>SqlInjectionMatchSet</a> from AWS WAF.</p>
 newtype DeleteSqlInjectionMatchSetResponse = DeleteSqlInjectionMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteSqlInjectionMatchSetResponse :: Newtype DeleteSqlInjectionMatchSetResponse _
 
 
 newtype DeleteWebACLRequest = DeleteWebACLRequest 
   { "WebACLId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteWebACLRequest :: Newtype DeleteWebACLRequest _
 
 
 newtype DeleteWebACLResponse = DeleteWebACLResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteWebACLResponse :: Newtype DeleteWebACLResponse _
 
 
 -- | <p>A request to delete an <a>XssMatchSet</a> from AWS WAF.</p>
@@ -725,12 +790,14 @@ newtype DeleteXssMatchSetRequest = DeleteXssMatchSetRequest
   { "XssMatchSetId" :: (ResourceId)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeDeleteXssMatchSetRequest :: Newtype DeleteXssMatchSetRequest _
 
 
 -- | <p>The response to a request to delete an <a>XssMatchSet</a> from AWS WAF.</p>
 newtype DeleteXssMatchSetResponse = DeleteXssMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeDeleteXssMatchSetResponse :: Newtype DeleteXssMatchSetResponse _
 
 
 -- | <p>Specifies where in a web request to look for <code>TargetString</code>.</p>
@@ -738,6 +805,7 @@ newtype FieldToMatch = FieldToMatch
   { "Type" :: (MatchFieldType)
   , "Data" :: NullOrUndefined (MatchFieldData)
   }
+derive instance newtypeFieldToMatch :: Newtype FieldToMatch _
 
 
 -- | <p>The country from which web requests originate that you want AWS WAF to search for.</p>
@@ -745,15 +813,19 @@ newtype GeoMatchConstraint = GeoMatchConstraint
   { "Type" :: (GeoMatchConstraintType)
   , "Value" :: (GeoMatchConstraintValue)
   }
+derive instance newtypeGeoMatchConstraint :: Newtype GeoMatchConstraint _
 
 
 newtype GeoMatchConstraintType = GeoMatchConstraintType String
+derive instance newtypeGeoMatchConstraintType :: Newtype GeoMatchConstraintType _
 
 
 newtype GeoMatchConstraintValue = GeoMatchConstraintValue String
+derive instance newtypeGeoMatchConstraintValue :: Newtype GeoMatchConstraintValue _
 
 
 newtype GeoMatchConstraints = GeoMatchConstraints (Array GeoMatchConstraint)
+derive instance newtypeGeoMatchConstraints :: Newtype GeoMatchConstraints _
 
 
 -- | <p>Contains one or more countries that AWS WAF will search for.</p>
@@ -762,9 +834,11 @@ newtype GeoMatchSet = GeoMatchSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "GeoMatchConstraints" :: (GeoMatchConstraints)
   }
+derive instance newtypeGeoMatchSet :: Newtype GeoMatchSet _
 
 
 newtype GeoMatchSetSummaries = GeoMatchSetSummaries (Array GeoMatchSetSummary)
+derive instance newtypeGeoMatchSetSummaries :: Newtype GeoMatchSetSummaries _
 
 
 -- | <p>Contains the identifier and the name of the <code>GeoMatchSet</code>.</p>
@@ -772,6 +846,7 @@ newtype GeoMatchSetSummary = GeoMatchSetSummary
   { "GeoMatchSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeGeoMatchSetSummary :: Newtype GeoMatchSetSummary _
 
 
 -- | <p>Specifies the type of update to perform to an <a>GeoMatchSet</a> with <a>UpdateGeoMatchSet</a>.</p>
@@ -779,134 +854,161 @@ newtype GeoMatchSetUpdate = GeoMatchSetUpdate
   { "Action" :: (ChangeAction)
   , "GeoMatchConstraint" :: (GeoMatchConstraint)
   }
+derive instance newtypeGeoMatchSetUpdate :: Newtype GeoMatchSetUpdate _
 
 
 newtype GeoMatchSetUpdates = GeoMatchSetUpdates (Array GeoMatchSetUpdate)
+derive instance newtypeGeoMatchSetUpdates :: Newtype GeoMatchSetUpdates _
 
 
 newtype GetByteMatchSetRequest = GetByteMatchSetRequest 
   { "ByteMatchSetId" :: (ResourceId)
   }
+derive instance newtypeGetByteMatchSetRequest :: Newtype GetByteMatchSetRequest _
 
 
 newtype GetByteMatchSetResponse = GetByteMatchSetResponse 
   { "ByteMatchSet" :: NullOrUndefined (ByteMatchSet)
   }
+derive instance newtypeGetByteMatchSetResponse :: Newtype GetByteMatchSetResponse _
 
 
 newtype GetChangeTokenRequest = GetChangeTokenRequest 
   { 
   }
+derive instance newtypeGetChangeTokenRequest :: Newtype GetChangeTokenRequest _
 
 
 newtype GetChangeTokenResponse = GetChangeTokenResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeGetChangeTokenResponse :: Newtype GetChangeTokenResponse _
 
 
 newtype GetChangeTokenStatusRequest = GetChangeTokenStatusRequest 
   { "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeGetChangeTokenStatusRequest :: Newtype GetChangeTokenStatusRequest _
 
 
 newtype GetChangeTokenStatusResponse = GetChangeTokenStatusResponse 
   { "ChangeTokenStatus" :: NullOrUndefined (ChangeTokenStatus)
   }
+derive instance newtypeGetChangeTokenStatusResponse :: Newtype GetChangeTokenStatusResponse _
 
 
 newtype GetGeoMatchSetRequest = GetGeoMatchSetRequest 
   { "GeoMatchSetId" :: (ResourceId)
   }
+derive instance newtypeGetGeoMatchSetRequest :: Newtype GetGeoMatchSetRequest _
 
 
 newtype GetGeoMatchSetResponse = GetGeoMatchSetResponse 
   { "GeoMatchSet" :: NullOrUndefined (GeoMatchSet)
   }
+derive instance newtypeGetGeoMatchSetResponse :: Newtype GetGeoMatchSetResponse _
 
 
 newtype GetIPSetRequest = GetIPSetRequest 
   { "IPSetId" :: (ResourceId)
   }
+derive instance newtypeGetIPSetRequest :: Newtype GetIPSetRequest _
 
 
 newtype GetIPSetResponse = GetIPSetResponse 
   { "IPSet" :: NullOrUndefined (IPSet)
   }
+derive instance newtypeGetIPSetResponse :: Newtype GetIPSetResponse _
 
 
 newtype GetPermissionPolicyRequest = GetPermissionPolicyRequest 
   { "ResourceArn" :: (ResourceArn)
   }
+derive instance newtypeGetPermissionPolicyRequest :: Newtype GetPermissionPolicyRequest _
 
 
 newtype GetPermissionPolicyResponse = GetPermissionPolicyResponse 
   { "Policy" :: NullOrUndefined (PolicyString)
   }
+derive instance newtypeGetPermissionPolicyResponse :: Newtype GetPermissionPolicyResponse _
 
 
 newtype GetRateBasedRuleManagedKeysRequest = GetRateBasedRuleManagedKeysRequest 
   { "RuleId" :: (ResourceId)
   , "NextMarker" :: NullOrUndefined (NextMarker)
   }
+derive instance newtypeGetRateBasedRuleManagedKeysRequest :: Newtype GetRateBasedRuleManagedKeysRequest _
 
 
 newtype GetRateBasedRuleManagedKeysResponse = GetRateBasedRuleManagedKeysResponse 
   { "ManagedKeys" :: NullOrUndefined (ManagedKeys)
   , "NextMarker" :: NullOrUndefined (NextMarker)
   }
+derive instance newtypeGetRateBasedRuleManagedKeysResponse :: Newtype GetRateBasedRuleManagedKeysResponse _
 
 
 newtype GetRateBasedRuleRequest = GetRateBasedRuleRequest 
   { "RuleId" :: (ResourceId)
   }
+derive instance newtypeGetRateBasedRuleRequest :: Newtype GetRateBasedRuleRequest _
 
 
 newtype GetRateBasedRuleResponse = GetRateBasedRuleResponse 
   { "Rule" :: NullOrUndefined (RateBasedRule)
   }
+derive instance newtypeGetRateBasedRuleResponse :: Newtype GetRateBasedRuleResponse _
 
 
 newtype GetRegexMatchSetRequest = GetRegexMatchSetRequest 
   { "RegexMatchSetId" :: (ResourceId)
   }
+derive instance newtypeGetRegexMatchSetRequest :: Newtype GetRegexMatchSetRequest _
 
 
 newtype GetRegexMatchSetResponse = GetRegexMatchSetResponse 
   { "RegexMatchSet" :: NullOrUndefined (RegexMatchSet)
   }
+derive instance newtypeGetRegexMatchSetResponse :: Newtype GetRegexMatchSetResponse _
 
 
 newtype GetRegexPatternSetRequest = GetRegexPatternSetRequest 
   { "RegexPatternSetId" :: (ResourceId)
   }
+derive instance newtypeGetRegexPatternSetRequest :: Newtype GetRegexPatternSetRequest _
 
 
 newtype GetRegexPatternSetResponse = GetRegexPatternSetResponse 
   { "RegexPatternSet" :: NullOrUndefined (RegexPatternSet)
   }
+derive instance newtypeGetRegexPatternSetResponse :: Newtype GetRegexPatternSetResponse _
 
 
 newtype GetRuleGroupRequest = GetRuleGroupRequest 
   { "RuleGroupId" :: (ResourceId)
   }
+derive instance newtypeGetRuleGroupRequest :: Newtype GetRuleGroupRequest _
 
 
 newtype GetRuleGroupResponse = GetRuleGroupResponse 
   { "RuleGroup" :: NullOrUndefined (RuleGroup)
   }
+derive instance newtypeGetRuleGroupResponse :: Newtype GetRuleGroupResponse _
 
 
 newtype GetRuleRequest = GetRuleRequest 
   { "RuleId" :: (ResourceId)
   }
+derive instance newtypeGetRuleRequest :: Newtype GetRuleRequest _
 
 
 newtype GetRuleResponse = GetRuleResponse 
   { "Rule" :: NullOrUndefined (Rule)
   }
+derive instance newtypeGetRuleResponse :: Newtype GetRuleResponse _
 
 
 newtype GetSampledRequestsMaxItems = GetSampledRequestsMaxItems Number
+derive instance newtypeGetSampledRequestsMaxItems :: Newtype GetSampledRequestsMaxItems _
 
 
 newtype GetSampledRequestsRequest = GetSampledRequestsRequest 
@@ -915,6 +1017,7 @@ newtype GetSampledRequestsRequest = GetSampledRequestsRequest
   , "TimeWindow" :: (TimeWindow)
   , "MaxItems" :: (GetSampledRequestsMaxItems)
   }
+derive instance newtypeGetSampledRequestsRequest :: Newtype GetSampledRequestsRequest _
 
 
 newtype GetSampledRequestsResponse = GetSampledRequestsResponse 
@@ -922,50 +1025,59 @@ newtype GetSampledRequestsResponse = GetSampledRequestsResponse
   , "PopulationSize" :: NullOrUndefined (PopulationSize)
   , "TimeWindow" :: NullOrUndefined (TimeWindow)
   }
+derive instance newtypeGetSampledRequestsResponse :: Newtype GetSampledRequestsResponse _
 
 
 newtype GetSizeConstraintSetRequest = GetSizeConstraintSetRequest 
   { "SizeConstraintSetId" :: (ResourceId)
   }
+derive instance newtypeGetSizeConstraintSetRequest :: Newtype GetSizeConstraintSetRequest _
 
 
 newtype GetSizeConstraintSetResponse = GetSizeConstraintSetResponse 
   { "SizeConstraintSet" :: NullOrUndefined (SizeConstraintSet)
   }
+derive instance newtypeGetSizeConstraintSetResponse :: Newtype GetSizeConstraintSetResponse _
 
 
 -- | <p>A request to get a <a>SqlInjectionMatchSet</a>.</p>
 newtype GetSqlInjectionMatchSetRequest = GetSqlInjectionMatchSetRequest 
   { "SqlInjectionMatchSetId" :: (ResourceId)
   }
+derive instance newtypeGetSqlInjectionMatchSetRequest :: Newtype GetSqlInjectionMatchSetRequest _
 
 
 -- | <p>The response to a <a>GetSqlInjectionMatchSet</a> request.</p>
 newtype GetSqlInjectionMatchSetResponse = GetSqlInjectionMatchSetResponse 
   { "SqlInjectionMatchSet" :: NullOrUndefined (SqlInjectionMatchSet)
   }
+derive instance newtypeGetSqlInjectionMatchSetResponse :: Newtype GetSqlInjectionMatchSetResponse _
 
 
 newtype GetWebACLRequest = GetWebACLRequest 
   { "WebACLId" :: (ResourceId)
   }
+derive instance newtypeGetWebACLRequest :: Newtype GetWebACLRequest _
 
 
 newtype GetWebACLResponse = GetWebACLResponse 
   { "WebACL" :: NullOrUndefined (WebACL)
   }
+derive instance newtypeGetWebACLResponse :: Newtype GetWebACLResponse _
 
 
 -- | <p>A request to get an <a>XssMatchSet</a>.</p>
 newtype GetXssMatchSetRequest = GetXssMatchSetRequest 
   { "XssMatchSetId" :: (ResourceId)
   }
+derive instance newtypeGetXssMatchSetRequest :: Newtype GetXssMatchSetRequest _
 
 
 -- | <p>The response to a <a>GetXssMatchSet</a> request.</p>
 newtype GetXssMatchSetResponse = GetXssMatchSetResponse 
   { "XssMatchSet" :: NullOrUndefined (XssMatchSet)
   }
+derive instance newtypeGetXssMatchSetResponse :: Newtype GetXssMatchSetResponse _
 
 
 -- | <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPHeader</code> complex type that appears as <code>Headers</code> in the response syntax. <code>HTTPHeader</code> contains the names and values of all of the headers that appear in one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
@@ -973,12 +1085,15 @@ newtype HTTPHeader = HTTPHeader
   { "Name" :: NullOrUndefined (HeaderName)
   , "Value" :: NullOrUndefined (HeaderValue)
   }
+derive instance newtypeHTTPHeader :: Newtype HTTPHeader _
 
 
 newtype HTTPHeaders = HTTPHeaders (Array HTTPHeader)
+derive instance newtypeHTTPHeaders :: Newtype HTTPHeaders _
 
 
 newtype HTTPMethod = HTTPMethod String
+derive instance newtypeHTTPMethod :: Newtype HTTPMethod _
 
 
 -- | <p>The response from a <a>GetSampledRequests</a> request includes an <code>HTTPRequest</code> complex type that appears as <code>Request</code> in the response syntax. <code>HTTPRequest</code> contains information about one of the web requests that were returned by <code>GetSampledRequests</code>. </p>
@@ -990,15 +1105,19 @@ newtype HTTPRequest = HTTPRequest
   , "HTTPVersion" :: NullOrUndefined (HTTPVersion)
   , "Headers" :: NullOrUndefined (HTTPHeaders)
   }
+derive instance newtypeHTTPRequest :: Newtype HTTPRequest _
 
 
 newtype HTTPVersion = HTTPVersion String
+derive instance newtypeHTTPVersion :: Newtype HTTPVersion _
 
 
 newtype HeaderName = HeaderName String
+derive instance newtypeHeaderName :: Newtype HeaderName _
 
 
 newtype HeaderValue = HeaderValue String
+derive instance newtypeHeaderValue :: Newtype HeaderValue _
 
 
 -- | <p>Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6.</p> <p>To specify an individual IP address, you specify the four-part IP address followed by a <code>/32</code>, for example, 192.0.2.0/31. To block a range of IP addresses, you can specify a <code>/128</code>, <code>/64</code>, <code>/56</code>, <code>/48</code>, <code>/32</code>, <code>/24</code>, <code>/16</code>, or <code>/8</code> CIDR. For more information about CIDR notation, see the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">Classless Inter-Domain Routing</a>. </p>
@@ -1007,6 +1126,7 @@ newtype IPSet = IPSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "IPSetDescriptors" :: (IPSetDescriptors)
   }
+derive instance newtypeIPSet :: Newtype IPSet _
 
 
 -- | <p>Specifies the IP address type (<code>IPV4</code> or <code>IPV6</code>) and the IP address range (in CIDR format) that web requests originate from.</p>
@@ -1014,18 +1134,23 @@ newtype IPSetDescriptor = IPSetDescriptor
   { "Type" :: (IPSetDescriptorType)
   , "Value" :: (IPSetDescriptorValue)
   }
+derive instance newtypeIPSetDescriptor :: Newtype IPSetDescriptor _
 
 
 newtype IPSetDescriptorType = IPSetDescriptorType String
+derive instance newtypeIPSetDescriptorType :: Newtype IPSetDescriptorType _
 
 
 newtype IPSetDescriptorValue = IPSetDescriptorValue String
+derive instance newtypeIPSetDescriptorValue :: Newtype IPSetDescriptorValue _
 
 
 newtype IPSetDescriptors = IPSetDescriptors (Array IPSetDescriptor)
+derive instance newtypeIPSetDescriptors :: Newtype IPSetDescriptors _
 
 
 newtype IPSetSummaries = IPSetSummaries (Array IPSetSummary)
+derive instance newtypeIPSetSummaries :: Newtype IPSetSummaries _
 
 
 -- | <p>Contains the identifier and the name of the <code>IPSet</code>.</p>
@@ -1033,6 +1158,7 @@ newtype IPSetSummary = IPSetSummary
   { "IPSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeIPSetSummary :: Newtype IPSetSummary _
 
 
 -- | <p>Specifies the type of update to perform to an <a>IPSet</a> with <a>UpdateIPSet</a>.</p>
@@ -1040,12 +1166,15 @@ newtype IPSetUpdate = IPSetUpdate
   { "Action" :: (ChangeAction)
   , "IPSetDescriptor" :: (IPSetDescriptor)
   }
+derive instance newtypeIPSetUpdate :: Newtype IPSetUpdate _
 
 
 newtype IPSetUpdates = IPSetUpdates (Array IPSetUpdate)
+derive instance newtypeIPSetUpdates :: Newtype IPSetUpdates _
 
 
 newtype IPString = IPString String
+derive instance newtypeIPString :: Newtype IPString _
 
 
 newtype ListActivatedRulesInRuleGroupRequest = ListActivatedRulesInRuleGroupRequest 
@@ -1053,120 +1182,140 @@ newtype ListActivatedRulesInRuleGroupRequest = ListActivatedRulesInRuleGroupRequ
   , "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListActivatedRulesInRuleGroupRequest :: Newtype ListActivatedRulesInRuleGroupRequest _
 
 
 newtype ListActivatedRulesInRuleGroupResponse = ListActivatedRulesInRuleGroupResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "ActivatedRules" :: NullOrUndefined (ActivatedRules)
   }
+derive instance newtypeListActivatedRulesInRuleGroupResponse :: Newtype ListActivatedRulesInRuleGroupResponse _
 
 
 newtype ListByteMatchSetsRequest = ListByteMatchSetsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListByteMatchSetsRequest :: Newtype ListByteMatchSetsRequest _
 
 
 newtype ListByteMatchSetsResponse = ListByteMatchSetsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "ByteMatchSets" :: NullOrUndefined (ByteMatchSetSummaries)
   }
+derive instance newtypeListByteMatchSetsResponse :: Newtype ListByteMatchSetsResponse _
 
 
 newtype ListGeoMatchSetsRequest = ListGeoMatchSetsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListGeoMatchSetsRequest :: Newtype ListGeoMatchSetsRequest _
 
 
 newtype ListGeoMatchSetsResponse = ListGeoMatchSetsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "GeoMatchSets" :: NullOrUndefined (GeoMatchSetSummaries)
   }
+derive instance newtypeListGeoMatchSetsResponse :: Newtype ListGeoMatchSetsResponse _
 
 
 newtype ListIPSetsRequest = ListIPSetsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListIPSetsRequest :: Newtype ListIPSetsRequest _
 
 
 newtype ListIPSetsResponse = ListIPSetsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "IPSets" :: NullOrUndefined (IPSetSummaries)
   }
+derive instance newtypeListIPSetsResponse :: Newtype ListIPSetsResponse _
 
 
 newtype ListRateBasedRulesRequest = ListRateBasedRulesRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListRateBasedRulesRequest :: Newtype ListRateBasedRulesRequest _
 
 
 newtype ListRateBasedRulesResponse = ListRateBasedRulesResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Rules" :: NullOrUndefined (RuleSummaries)
   }
+derive instance newtypeListRateBasedRulesResponse :: Newtype ListRateBasedRulesResponse _
 
 
 newtype ListRegexMatchSetsRequest = ListRegexMatchSetsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListRegexMatchSetsRequest :: Newtype ListRegexMatchSetsRequest _
 
 
 newtype ListRegexMatchSetsResponse = ListRegexMatchSetsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "RegexMatchSets" :: NullOrUndefined (RegexMatchSetSummaries)
   }
+derive instance newtypeListRegexMatchSetsResponse :: Newtype ListRegexMatchSetsResponse _
 
 
 newtype ListRegexPatternSetsRequest = ListRegexPatternSetsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListRegexPatternSetsRequest :: Newtype ListRegexPatternSetsRequest _
 
 
 newtype ListRegexPatternSetsResponse = ListRegexPatternSetsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "RegexPatternSets" :: NullOrUndefined (RegexPatternSetSummaries)
   }
+derive instance newtypeListRegexPatternSetsResponse :: Newtype ListRegexPatternSetsResponse _
 
 
 newtype ListRuleGroupsRequest = ListRuleGroupsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListRuleGroupsRequest :: Newtype ListRuleGroupsRequest _
 
 
 newtype ListRuleGroupsResponse = ListRuleGroupsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "RuleGroups" :: NullOrUndefined (RuleGroupSummaries)
   }
+derive instance newtypeListRuleGroupsResponse :: Newtype ListRuleGroupsResponse _
 
 
 newtype ListRulesRequest = ListRulesRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListRulesRequest :: Newtype ListRulesRequest _
 
 
 newtype ListRulesResponse = ListRulesResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Rules" :: NullOrUndefined (RuleSummaries)
   }
+derive instance newtypeListRulesResponse :: Newtype ListRulesResponse _
 
 
 newtype ListSizeConstraintSetsRequest = ListSizeConstraintSetsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListSizeConstraintSetsRequest :: Newtype ListSizeConstraintSetsRequest _
 
 
 newtype ListSizeConstraintSetsResponse = ListSizeConstraintSetsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "SizeConstraintSets" :: NullOrUndefined (SizeConstraintSetSummaries)
   }
+derive instance newtypeListSizeConstraintSetsResponse :: Newtype ListSizeConstraintSetsResponse _
 
 
 -- | <p>A request to list the <a>SqlInjectionMatchSet</a> objects created by the current AWS account.</p>
@@ -1174,6 +1323,7 @@ newtype ListSqlInjectionMatchSetsRequest = ListSqlInjectionMatchSetsRequest
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListSqlInjectionMatchSetsRequest :: Newtype ListSqlInjectionMatchSetsRequest _
 
 
 -- | <p>The response to a <a>ListSqlInjectionMatchSets</a> request.</p>
@@ -1181,30 +1331,35 @@ newtype ListSqlInjectionMatchSetsResponse = ListSqlInjectionMatchSetsResponse
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "SqlInjectionMatchSets" :: NullOrUndefined (SqlInjectionMatchSetSummaries)
   }
+derive instance newtypeListSqlInjectionMatchSetsResponse :: Newtype ListSqlInjectionMatchSetsResponse _
 
 
 newtype ListSubscribedRuleGroupsRequest = ListSubscribedRuleGroupsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListSubscribedRuleGroupsRequest :: Newtype ListSubscribedRuleGroupsRequest _
 
 
 newtype ListSubscribedRuleGroupsResponse = ListSubscribedRuleGroupsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "RuleGroups" :: NullOrUndefined (SubscribedRuleGroupSummaries)
   }
+derive instance newtypeListSubscribedRuleGroupsResponse :: Newtype ListSubscribedRuleGroupsResponse _
 
 
 newtype ListWebACLsRequest = ListWebACLsRequest 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListWebACLsRequest :: Newtype ListWebACLsRequest _
 
 
 newtype ListWebACLsResponse = ListWebACLsResponse 
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "WebACLs" :: NullOrUndefined (WebACLSummaries)
   }
+derive instance newtypeListWebACLsResponse :: Newtype ListWebACLsResponse _
 
 
 -- | <p>A request to list the <a>XssMatchSet</a> objects created by the current AWS account.</p>
@@ -1212,6 +1367,7 @@ newtype ListXssMatchSetsRequest = ListXssMatchSetsRequest
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "Limit" :: NullOrUndefined (PaginationLimit)
   }
+derive instance newtypeListXssMatchSetsRequest :: Newtype ListXssMatchSetsRequest _
 
 
 -- | <p>The response to a <a>ListXssMatchSets</a> request.</p>
@@ -1219,48 +1375,63 @@ newtype ListXssMatchSetsResponse = ListXssMatchSetsResponse
   { "NextMarker" :: NullOrUndefined (NextMarker)
   , "XssMatchSets" :: NullOrUndefined (XssMatchSetSummaries)
   }
+derive instance newtypeListXssMatchSetsResponse :: Newtype ListXssMatchSetsResponse _
 
 
 newtype ManagedKey = ManagedKey String
+derive instance newtypeManagedKey :: Newtype ManagedKey _
 
 
 newtype ManagedKeys = ManagedKeys (Array ManagedKey)
+derive instance newtypeManagedKeys :: Newtype ManagedKeys _
 
 
 newtype MatchFieldData = MatchFieldData String
+derive instance newtypeMatchFieldData :: Newtype MatchFieldData _
 
 
 newtype MatchFieldType = MatchFieldType String
+derive instance newtypeMatchFieldType :: Newtype MatchFieldType _
 
 
 newtype MetricName = MetricName String
+derive instance newtypeMetricName :: Newtype MetricName _
 
 
 newtype Negated = Negated Boolean
+derive instance newtypeNegated :: Newtype Negated _
 
 
 newtype NextMarker = NextMarker String
+derive instance newtypeNextMarker :: Newtype NextMarker _
 
 
 newtype PaginationLimit = PaginationLimit Int
+derive instance newtypePaginationLimit :: Newtype PaginationLimit _
 
 
 newtype ParameterExceptionField = ParameterExceptionField String
+derive instance newtypeParameterExceptionField :: Newtype ParameterExceptionField _
 
 
 newtype ParameterExceptionParameter = ParameterExceptionParameter String
+derive instance newtypeParameterExceptionParameter :: Newtype ParameterExceptionParameter _
 
 
 newtype ParameterExceptionReason = ParameterExceptionReason String
+derive instance newtypeParameterExceptionReason :: Newtype ParameterExceptionReason _
 
 
 newtype PolicyString = PolicyString String
+derive instance newtypePolicyString :: Newtype PolicyString _
 
 
 newtype PopulationSize = PopulationSize Number
+derive instance newtypePopulationSize :: Newtype PopulationSize _
 
 
 newtype PositionalConstraint = PositionalConstraint String
+derive instance newtypePositionalConstraint :: Newtype PositionalConstraint _
 
 
 -- | <p>Specifies the <a>ByteMatchSet</a>, <a>IPSet</a>, <a>SqlInjectionMatchSet</a>, <a>XssMatchSet</a>, <a>RegexMatchSet</a>, <a>GeoMatchSet</a>, and <a>SizeConstraintSet</a> objects that you want to add to a <code>Rule</code> and, for each object, indicates whether you want to negate the settings, for example, requests that do NOT originate from the IP address 192.0.2.44. </p>
@@ -1269,23 +1440,28 @@ newtype Predicate = Predicate
   , "Type" :: (PredicateType)
   , "DataId" :: (ResourceId)
   }
+derive instance newtypePredicate :: Newtype Predicate _
 
 
 newtype PredicateType = PredicateType String
+derive instance newtypePredicateType :: Newtype PredicateType _
 
 
 newtype Predicates = Predicates (Array Predicate)
+derive instance newtypePredicates :: Newtype Predicates _
 
 
 newtype PutPermissionPolicyRequest = PutPermissionPolicyRequest 
   { "ResourceArn" :: (ResourceArn)
   , "Policy" :: (PolicyString)
   }
+derive instance newtypePutPermissionPolicyRequest :: Newtype PutPermissionPolicyRequest _
 
 
 newtype PutPermissionPolicyResponse = PutPermissionPolicyResponse 
   { 
   }
+derive instance newtypePutPermissionPolicyResponse :: Newtype PutPermissionPolicyResponse _
 
 
 -- | <p>A <code>RateBasedRule</code> is identical to a regular <a>Rule</a>, with one addition: a <code>RateBasedRule</code> counts the number of requests that arrive from a specified IP address every five minutes. For example, based on recent requests that you've seen from an attacker, you might create a <code>RateBasedRule</code> that includes the following conditions: </p> <ul> <li> <p>The requests come from 192.0.2.44.</p> </li> <li> <p>They contain the value <code>BadBot</code> in the <code>User-Agent</code> header.</p> </li> </ul> <p>In the rule, you also define the rate limit as 15,000.</p> <p>Requests that meet both of these conditions and exceed 15,000 requests every five minutes trigger the rule's action (block or count), which is defined in the web ACL.</p>
@@ -1297,12 +1473,15 @@ newtype RateBasedRule = RateBasedRule
   , "RateKey" :: (RateKey)
   , "RateLimit" :: (RateLimit)
   }
+derive instance newtypeRateBasedRule :: Newtype RateBasedRule _
 
 
 newtype RateKey = RateKey String
+derive instance newtypeRateKey :: Newtype RateKey _
 
 
 newtype RateLimit = RateLimit Number
+derive instance newtypeRateLimit :: Newtype RateLimit _
 
 
 -- | <p>In a <a>GetRegexMatchSet</a> request, <code>RegexMatchSet</code> is a complex type that contains the <code>RegexMatchSetId</code> and <code>Name</code> of a <code>RegexMatchSet</code>, and the values that you specified when you updated the <code>RegexMatchSet</code>.</p> <p> The values are contained in a <code>RegexMatchTuple</code> object, which specify the parts of web requests that you want AWS WAF to inspect and the values that you want AWS WAF to search for. If a <code>RegexMatchSet</code> contains more than one <code>RegexMatchTuple</code> object, a request needs to match the settings in only one <code>ByteMatchTuple</code> to be considered a match.</p>
@@ -1311,9 +1490,11 @@ newtype RegexMatchSet = RegexMatchSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "RegexMatchTuples" :: NullOrUndefined (RegexMatchTuples)
   }
+derive instance newtypeRegexMatchSet :: Newtype RegexMatchSet _
 
 
 newtype RegexMatchSetSummaries = RegexMatchSetSummaries (Array RegexMatchSetSummary)
+derive instance newtypeRegexMatchSetSummaries :: Newtype RegexMatchSetSummaries _
 
 
 -- | <p>Returned by <a>ListRegexMatchSets</a>. Each <code>RegexMatchSetSummary</code> object includes the <code>Name</code> and <code>RegexMatchSetId</code> for one <a>RegexMatchSet</a>.</p>
@@ -1321,6 +1502,7 @@ newtype RegexMatchSetSummary = RegexMatchSetSummary
   { "RegexMatchSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeRegexMatchSetSummary :: Newtype RegexMatchSetSummary _
 
 
 -- | <p>In an <a>UpdateRegexMatchSet</a> request, <code>RegexMatchSetUpdate</code> specifies whether to insert or delete a <a>RegexMatchTuple</a> and includes the settings for the <code>RegexMatchTuple</code>.</p>
@@ -1328,9 +1510,11 @@ newtype RegexMatchSetUpdate = RegexMatchSetUpdate
   { "Action" :: (ChangeAction)
   , "RegexMatchTuple" :: (RegexMatchTuple)
   }
+derive instance newtypeRegexMatchSetUpdate :: Newtype RegexMatchSetUpdate _
 
 
 newtype RegexMatchSetUpdates = RegexMatchSetUpdates (Array RegexMatchSetUpdate)
+derive instance newtypeRegexMatchSetUpdates :: Newtype RegexMatchSetUpdates _
 
 
 -- | <p>The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. Each <code>RegexMatchTuple</code> object contains: </p> <ul> <li> <p>The part of a web request that you want AWS WAF to inspect, such as a query string or the value of the <code>User-Agent</code> header. </p> </li> <li> <p>The identifier of the pattern (a regular expression) that you want AWS WAF to look for. For more information, see <a>RegexPatternSet</a>. </p> </li> <li> <p>Whether to perform any conversions on the request, such as converting it to lowercase, before inspecting it for the specified string.</p> </li> </ul>
@@ -1339,9 +1523,11 @@ newtype RegexMatchTuple = RegexMatchTuple
   , "TextTransformation" :: (TextTransformation)
   , "RegexPatternSetId" :: (ResourceId)
   }
+derive instance newtypeRegexMatchTuple :: Newtype RegexMatchTuple _
 
 
 newtype RegexMatchTuples = RegexMatchTuples (Array RegexMatchTuple)
+derive instance newtypeRegexMatchTuples :: Newtype RegexMatchTuples _
 
 
 -- | <p>The <code>RegexPatternSet</code> specifies the regular expression (regex) pattern that you want AWS WAF to search for, such as <code>B[a@]dB[o0]t</code>. You can then configure AWS WAF to reject those requests.</p>
@@ -1350,9 +1536,11 @@ newtype RegexPatternSet = RegexPatternSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "RegexPatternStrings" :: (RegexPatternStrings)
   }
+derive instance newtypeRegexPatternSet :: Newtype RegexPatternSet _
 
 
 newtype RegexPatternSetSummaries = RegexPatternSetSummaries (Array RegexPatternSetSummary)
+derive instance newtypeRegexPatternSetSummaries :: Newtype RegexPatternSetSummaries _
 
 
 -- | <p>Returned by <a>ListRegexPatternSets</a>. Each <code>RegexPatternSetSummary</code> object includes the <code>Name</code> and <code>RegexPatternSetId</code> for one <a>RegexPatternSet</a>.</p>
@@ -1360,6 +1548,7 @@ newtype RegexPatternSetSummary = RegexPatternSetSummary
   { "RegexPatternSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeRegexPatternSetSummary :: Newtype RegexPatternSetSummary _
 
 
 -- | <p>In an <a>UpdateRegexPatternSet</a> request, <code>RegexPatternSetUpdate</code> specifies whether to insert or delete a <code>RegexPatternString</code> and includes the settings for the <code>RegexPatternString</code>.</p>
@@ -1367,24 +1556,31 @@ newtype RegexPatternSetUpdate = RegexPatternSetUpdate
   { "Action" :: (ChangeAction)
   , "RegexPatternString" :: (RegexPatternString)
   }
+derive instance newtypeRegexPatternSetUpdate :: Newtype RegexPatternSetUpdate _
 
 
 newtype RegexPatternSetUpdates = RegexPatternSetUpdates (Array RegexPatternSetUpdate)
+derive instance newtypeRegexPatternSetUpdates :: Newtype RegexPatternSetUpdates _
 
 
 newtype RegexPatternString = RegexPatternString String
+derive instance newtypeRegexPatternString :: Newtype RegexPatternString _
 
 
 newtype RegexPatternStrings = RegexPatternStrings (Array RegexPatternString)
+derive instance newtypeRegexPatternStrings :: Newtype RegexPatternStrings _
 
 
 newtype ResourceArn = ResourceArn String
+derive instance newtypeResourceArn :: Newtype ResourceArn _
 
 
 newtype ResourceId = ResourceId String
+derive instance newtypeResourceId :: Newtype ResourceId _
 
 
 newtype ResourceName = ResourceName String
+derive instance newtypeResourceName :: Newtype ResourceName _
 
 
 -- | <p>A combination of <a>ByteMatchSet</a>, <a>IPSet</a>, and/or <a>SqlInjectionMatchSet</a> objects that identify the web requests that you want to allow, block, or count. For example, you might create a <code>Rule</code> that includes the following predicates:</p> <ul> <li> <p>An <code>IPSet</code> that causes AWS WAF to search for web requests that originate from the IP address <code>192.0.2.44</code> </p> </li> <li> <p>A <code>ByteMatchSet</code> that causes AWS WAF to search for web requests for which the value of the <code>User-Agent</code> header is <code>BadBot</code>.</p> </li> </ul> <p>To match the settings in this <code>Rule</code>, a request must originate from <code>192.0.2.44</code> AND include a <code>User-Agent</code> header for which the value is <code>BadBot</code>.</p>
@@ -1394,6 +1590,7 @@ newtype Rule = Rule
   , "MetricName" :: NullOrUndefined (MetricName)
   , "Predicates" :: (Predicates)
   }
+derive instance newtypeRule :: Newtype Rule _
 
 
 -- | <p>A collection of predefined rules that you can add to a web ACL.</p> <p>Rule groups are subject to the following limits:</p> <ul> <li> <p>Three rule groups per account. You can request an increase to this limit by contacting customer support.</p> </li> <li> <p>One rule group per web ACL.</p> </li> <li> <p>Ten rules per rule group.</p> </li> </ul>
@@ -1402,9 +1599,11 @@ newtype RuleGroup = RuleGroup
   , "Name" :: NullOrUndefined (ResourceName)
   , "MetricName" :: NullOrUndefined (MetricName)
   }
+derive instance newtypeRuleGroup :: Newtype RuleGroup _
 
 
 newtype RuleGroupSummaries = RuleGroupSummaries (Array RuleGroupSummary)
+derive instance newtypeRuleGroupSummaries :: Newtype RuleGroupSummaries _
 
 
 -- | <p>Contains the identifier and the friendly name or description of the <code>RuleGroup</code>.</p>
@@ -1412,6 +1611,7 @@ newtype RuleGroupSummary = RuleGroupSummary
   { "RuleGroupId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeRuleGroupSummary :: Newtype RuleGroupSummary _
 
 
 -- | <p>Specifies an <code>ActivatedRule</code> and indicates whether you want to add it to a <code>RuleGroup</code> or delete it from a <code>RuleGroup</code>.</p>
@@ -1419,15 +1619,19 @@ newtype RuleGroupUpdate = RuleGroupUpdate
   { "Action" :: (ChangeAction)
   , "ActivatedRule" :: (ActivatedRule)
   }
+derive instance newtypeRuleGroupUpdate :: Newtype RuleGroupUpdate _
 
 
 newtype RuleGroupUpdates = RuleGroupUpdates (Array RuleGroupUpdate)
+derive instance newtypeRuleGroupUpdates :: Newtype RuleGroupUpdates _
 
 
 newtype RulePriority = RulePriority Int
+derive instance newtypeRulePriority :: Newtype RulePriority _
 
 
 newtype RuleSummaries = RuleSummaries (Array RuleSummary)
+derive instance newtypeRuleSummaries :: Newtype RuleSummaries _
 
 
 -- | <p>Contains the identifier and the friendly name or description of the <code>Rule</code>.</p>
@@ -1435,6 +1639,7 @@ newtype RuleSummary = RuleSummary
   { "RuleId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeRuleSummary :: Newtype RuleSummary _
 
 
 -- | <p>Specifies a <code>Predicate</code> (such as an <code>IPSet</code>) and indicates whether you want to add it to a <code>Rule</code> or delete it from a <code>Rule</code>.</p>
@@ -1442,12 +1647,15 @@ newtype RuleUpdate = RuleUpdate
   { "Action" :: (ChangeAction)
   , "Predicate" :: (Predicate)
   }
+derive instance newtypeRuleUpdate :: Newtype RuleUpdate _
 
 
 newtype RuleUpdates = RuleUpdates (Array RuleUpdate)
+derive instance newtypeRuleUpdates :: Newtype RuleUpdates _
 
 
 newtype SampleWeight = SampleWeight Number
+derive instance newtypeSampleWeight :: Newtype SampleWeight _
 
 
 -- | <p>The response from a <a>GetSampledRequests</a> request includes a <code>SampledHTTPRequests</code> complex type that appears as <code>SampledRequests</code> in the response syntax. <code>SampledHTTPRequests</code> contains one <code>SampledHTTPRequest</code> object for each web request that is returned by <code>GetSampledRequests</code>.</p>
@@ -1458,12 +1666,15 @@ newtype SampledHTTPRequest = SampledHTTPRequest
   , "Action" :: NullOrUndefined (Action)
   , "RuleWithinRuleGroup" :: NullOrUndefined (ResourceId)
   }
+derive instance newtypeSampledHTTPRequest :: Newtype SampledHTTPRequest _
 
 
 newtype SampledHTTPRequests = SampledHTTPRequests (Array SampledHTTPRequest)
+derive instance newtypeSampledHTTPRequests :: Newtype SampledHTTPRequests _
 
 
 newtype Size = Size Number
+derive instance newtypeSize :: Newtype Size _
 
 
 -- | <p>Specifies a constraint on the size of a part of the web request. AWS WAF uses the <code>Size</code>, <code>ComparisonOperator</code>, and <code>FieldToMatch</code> to build an expression in the form of "<code>Size</code> <code>ComparisonOperator</code> size in bytes of <code>FieldToMatch</code>". If that expression is true, the <code>SizeConstraint</code> is considered to match.</p>
@@ -1473,6 +1684,7 @@ newtype SizeConstraint = SizeConstraint
   , "ComparisonOperator" :: (ComparisonOperator)
   , "Size" :: (Size)
   }
+derive instance newtypeSizeConstraint :: Newtype SizeConstraint _
 
 
 -- | <p>A complex type that contains <code>SizeConstraint</code> objects, which specify the parts of web requests that you want AWS WAF to inspect the size of. If a <code>SizeConstraintSet</code> contains more than one <code>SizeConstraint</code> object, a request only needs to match one constraint to be considered a match.</p>
@@ -1481,9 +1693,11 @@ newtype SizeConstraintSet = SizeConstraintSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "SizeConstraints" :: (SizeConstraints)
   }
+derive instance newtypeSizeConstraintSet :: Newtype SizeConstraintSet _
 
 
 newtype SizeConstraintSetSummaries = SizeConstraintSetSummaries (Array SizeConstraintSetSummary)
+derive instance newtypeSizeConstraintSetSummaries :: Newtype SizeConstraintSetSummaries _
 
 
 -- | <p>The <code>Id</code> and <code>Name</code> of a <code>SizeConstraintSet</code>.</p>
@@ -1491,6 +1705,7 @@ newtype SizeConstraintSetSummary = SizeConstraintSetSummary
   { "SizeConstraintSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeSizeConstraintSetSummary :: Newtype SizeConstraintSetSummary _
 
 
 -- | <p>Specifies the part of a web request that you want to inspect the size of and indicates whether you want to add the specification to a <a>SizeConstraintSet</a> or delete it from a <code>SizeConstraintSet</code>.</p>
@@ -1498,12 +1713,15 @@ newtype SizeConstraintSetUpdate = SizeConstraintSetUpdate
   { "Action" :: (ChangeAction)
   , "SizeConstraint" :: (SizeConstraint)
   }
+derive instance newtypeSizeConstraintSetUpdate :: Newtype SizeConstraintSetUpdate _
 
 
 newtype SizeConstraintSetUpdates = SizeConstraintSetUpdates (Array SizeConstraintSetUpdate)
+derive instance newtypeSizeConstraintSetUpdates :: Newtype SizeConstraintSetUpdates _
 
 
 newtype SizeConstraints = SizeConstraints (Array SizeConstraint)
+derive instance newtypeSizeConstraints :: Newtype SizeConstraints _
 
 
 -- | <p>A complex type that contains <code>SqlInjectionMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header. If a <code>SqlInjectionMatchSet</code> contains more than one <code>SqlInjectionMatchTuple</code> object, a request needs to include snippets of SQL code in only one of the specified parts of the request to be considered a match.</p>
@@ -1512,9 +1730,11 @@ newtype SqlInjectionMatchSet = SqlInjectionMatchSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "SqlInjectionMatchTuples" :: (SqlInjectionMatchTuples)
   }
+derive instance newtypeSqlInjectionMatchSet :: Newtype SqlInjectionMatchSet _
 
 
 newtype SqlInjectionMatchSetSummaries = SqlInjectionMatchSetSummaries (Array SqlInjectionMatchSetSummary)
+derive instance newtypeSqlInjectionMatchSetSummaries :: Newtype SqlInjectionMatchSetSummaries _
 
 
 -- | <p>The <code>Id</code> and <code>Name</code> of a <code>SqlInjectionMatchSet</code>.</p>
@@ -1522,6 +1742,7 @@ newtype SqlInjectionMatchSetSummary = SqlInjectionMatchSetSummary
   { "SqlInjectionMatchSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeSqlInjectionMatchSetSummary :: Newtype SqlInjectionMatchSetSummary _
 
 
 -- | <p>Specifies the part of a web request that you want to inspect for snippets of malicious SQL code and indicates whether you want to add the specification to a <a>SqlInjectionMatchSet</a> or delete it from a <code>SqlInjectionMatchSet</code>.</p>
@@ -1529,9 +1750,11 @@ newtype SqlInjectionMatchSetUpdate = SqlInjectionMatchSetUpdate
   { "Action" :: (ChangeAction)
   , "SqlInjectionMatchTuple" :: (SqlInjectionMatchTuple)
   }
+derive instance newtypeSqlInjectionMatchSetUpdate :: Newtype SqlInjectionMatchSetUpdate _
 
 
 newtype SqlInjectionMatchSetUpdates = SqlInjectionMatchSetUpdates (Array SqlInjectionMatchSetUpdate)
+derive instance newtypeSqlInjectionMatchSetUpdates :: Newtype SqlInjectionMatchSetUpdates _
 
 
 -- | <p>Specifies the part of a web request that you want AWS WAF to inspect for snippets of malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.</p>
@@ -1539,12 +1762,15 @@ newtype SqlInjectionMatchTuple = SqlInjectionMatchTuple
   { "FieldToMatch" :: (FieldToMatch)
   , "TextTransformation" :: (TextTransformation)
   }
+derive instance newtypeSqlInjectionMatchTuple :: Newtype SqlInjectionMatchTuple _
 
 
 newtype SqlInjectionMatchTuples = SqlInjectionMatchTuples (Array SqlInjectionMatchTuple)
+derive instance newtypeSqlInjectionMatchTuples :: Newtype SqlInjectionMatchTuples _
 
 
 newtype SubscribedRuleGroupSummaries = SubscribedRuleGroupSummaries (Array SubscribedRuleGroupSummary)
+derive instance newtypeSubscribedRuleGroupSummaries :: Newtype SubscribedRuleGroupSummaries _
 
 
 -- | <p>A summary of the rule groups you are subscribed to.</p>
@@ -1553,9 +1779,11 @@ newtype SubscribedRuleGroupSummary = SubscribedRuleGroupSummary
   , "Name" :: (ResourceName)
   , "MetricName" :: (MetricName)
   }
+derive instance newtypeSubscribedRuleGroupSummary :: Newtype SubscribedRuleGroupSummary _
 
 
 newtype TextTransformation = TextTransformation String
+derive instance newtypeTextTransformation :: Newtype TextTransformation _
 
 
 -- | <p>In a <a>GetSampledRequests</a> request, the <code>StartTime</code> and <code>EndTime</code> objects specify the time range for which you want AWS WAF to return a sample of web requests.</p> <p>In a <a>GetSampledRequests</a> response, the <code>StartTime</code> and <code>EndTime</code> objects specify the time range for which AWS WAF actually returned a sample of web requests. AWS WAF gets the specified number of requests from among the first 5,000 requests that your AWS resource receives during the specified time period. If your resource receives more than 5,000 requests during that period, AWS WAF stops sampling after the 5,000th request. In that case, <code>EndTime</code> is the time that AWS WAF received the 5,000th request. </p>
@@ -1563,9 +1791,11 @@ newtype TimeWindow = TimeWindow
   { "StartTime" :: (Number)
   , "EndTime" :: (Number)
   }
+derive instance newtypeTimeWindow :: Newtype TimeWindow _
 
 
 newtype URIString = URIString String
+derive instance newtypeURIString :: Newtype URIString _
 
 
 newtype UpdateByteMatchSetRequest = UpdateByteMatchSetRequest 
@@ -1573,11 +1803,13 @@ newtype UpdateByteMatchSetRequest = UpdateByteMatchSetRequest
   , "ChangeToken" :: (ChangeToken)
   , "Updates" :: (ByteMatchSetUpdates)
   }
+derive instance newtypeUpdateByteMatchSetRequest :: Newtype UpdateByteMatchSetRequest _
 
 
 newtype UpdateByteMatchSetResponse = UpdateByteMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateByteMatchSetResponse :: Newtype UpdateByteMatchSetResponse _
 
 
 newtype UpdateGeoMatchSetRequest = UpdateGeoMatchSetRequest 
@@ -1585,11 +1817,13 @@ newtype UpdateGeoMatchSetRequest = UpdateGeoMatchSetRequest
   , "ChangeToken" :: (ChangeToken)
   , "Updates" :: (GeoMatchSetUpdates)
   }
+derive instance newtypeUpdateGeoMatchSetRequest :: Newtype UpdateGeoMatchSetRequest _
 
 
 newtype UpdateGeoMatchSetResponse = UpdateGeoMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateGeoMatchSetResponse :: Newtype UpdateGeoMatchSetResponse _
 
 
 newtype UpdateIPSetRequest = UpdateIPSetRequest 
@@ -1597,11 +1831,13 @@ newtype UpdateIPSetRequest = UpdateIPSetRequest
   , "ChangeToken" :: (ChangeToken)
   , "Updates" :: (IPSetUpdates)
   }
+derive instance newtypeUpdateIPSetRequest :: Newtype UpdateIPSetRequest _
 
 
 newtype UpdateIPSetResponse = UpdateIPSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateIPSetResponse :: Newtype UpdateIPSetResponse _
 
 
 newtype UpdateRateBasedRuleRequest = UpdateRateBasedRuleRequest 
@@ -1610,11 +1846,13 @@ newtype UpdateRateBasedRuleRequest = UpdateRateBasedRuleRequest
   , "Updates" :: (RuleUpdates)
   , "RateLimit" :: (RateLimit)
   }
+derive instance newtypeUpdateRateBasedRuleRequest :: Newtype UpdateRateBasedRuleRequest _
 
 
 newtype UpdateRateBasedRuleResponse = UpdateRateBasedRuleResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateRateBasedRuleResponse :: Newtype UpdateRateBasedRuleResponse _
 
 
 newtype UpdateRegexMatchSetRequest = UpdateRegexMatchSetRequest 
@@ -1622,11 +1860,13 @@ newtype UpdateRegexMatchSetRequest = UpdateRegexMatchSetRequest
   , "Updates" :: (RegexMatchSetUpdates)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeUpdateRegexMatchSetRequest :: Newtype UpdateRegexMatchSetRequest _
 
 
 newtype UpdateRegexMatchSetResponse = UpdateRegexMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateRegexMatchSetResponse :: Newtype UpdateRegexMatchSetResponse _
 
 
 newtype UpdateRegexPatternSetRequest = UpdateRegexPatternSetRequest 
@@ -1634,11 +1874,13 @@ newtype UpdateRegexPatternSetRequest = UpdateRegexPatternSetRequest
   , "Updates" :: (RegexPatternSetUpdates)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeUpdateRegexPatternSetRequest :: Newtype UpdateRegexPatternSetRequest _
 
 
 newtype UpdateRegexPatternSetResponse = UpdateRegexPatternSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateRegexPatternSetResponse :: Newtype UpdateRegexPatternSetResponse _
 
 
 newtype UpdateRuleGroupRequest = UpdateRuleGroupRequest 
@@ -1646,11 +1888,13 @@ newtype UpdateRuleGroupRequest = UpdateRuleGroupRequest
   , "Updates" :: (RuleGroupUpdates)
   , "ChangeToken" :: (ChangeToken)
   }
+derive instance newtypeUpdateRuleGroupRequest :: Newtype UpdateRuleGroupRequest _
 
 
 newtype UpdateRuleGroupResponse = UpdateRuleGroupResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateRuleGroupResponse :: Newtype UpdateRuleGroupResponse _
 
 
 newtype UpdateRuleRequest = UpdateRuleRequest 
@@ -1658,11 +1902,13 @@ newtype UpdateRuleRequest = UpdateRuleRequest
   , "ChangeToken" :: (ChangeToken)
   , "Updates" :: (RuleUpdates)
   }
+derive instance newtypeUpdateRuleRequest :: Newtype UpdateRuleRequest _
 
 
 newtype UpdateRuleResponse = UpdateRuleResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateRuleResponse :: Newtype UpdateRuleResponse _
 
 
 newtype UpdateSizeConstraintSetRequest = UpdateSizeConstraintSetRequest 
@@ -1670,11 +1916,13 @@ newtype UpdateSizeConstraintSetRequest = UpdateSizeConstraintSetRequest
   , "ChangeToken" :: (ChangeToken)
   , "Updates" :: (SizeConstraintSetUpdates)
   }
+derive instance newtypeUpdateSizeConstraintSetRequest :: Newtype UpdateSizeConstraintSetRequest _
 
 
 newtype UpdateSizeConstraintSetResponse = UpdateSizeConstraintSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateSizeConstraintSetResponse :: Newtype UpdateSizeConstraintSetResponse _
 
 
 -- | <p>A request to update a <a>SqlInjectionMatchSet</a>.</p>
@@ -1683,12 +1931,14 @@ newtype UpdateSqlInjectionMatchSetRequest = UpdateSqlInjectionMatchSetRequest
   , "ChangeToken" :: (ChangeToken)
   , "Updates" :: (SqlInjectionMatchSetUpdates)
   }
+derive instance newtypeUpdateSqlInjectionMatchSetRequest :: Newtype UpdateSqlInjectionMatchSetRequest _
 
 
 -- | <p>The response to an <a>UpdateSqlInjectionMatchSets</a> request.</p>
 newtype UpdateSqlInjectionMatchSetResponse = UpdateSqlInjectionMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateSqlInjectionMatchSetResponse :: Newtype UpdateSqlInjectionMatchSetResponse _
 
 
 newtype UpdateWebACLRequest = UpdateWebACLRequest 
@@ -1697,11 +1947,13 @@ newtype UpdateWebACLRequest = UpdateWebACLRequest
   , "Updates" :: NullOrUndefined (WebACLUpdates)
   , "DefaultAction" :: NullOrUndefined (WafAction)
   }
+derive instance newtypeUpdateWebACLRequest :: Newtype UpdateWebACLRequest _
 
 
 newtype UpdateWebACLResponse = UpdateWebACLResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateWebACLResponse :: Newtype UpdateWebACLResponse _
 
 
 -- | <p>A request to update an <a>XssMatchSet</a>.</p>
@@ -1710,36 +1962,42 @@ newtype UpdateXssMatchSetRequest = UpdateXssMatchSetRequest
   , "ChangeToken" :: (ChangeToken)
   , "Updates" :: (XssMatchSetUpdates)
   }
+derive instance newtypeUpdateXssMatchSetRequest :: Newtype UpdateXssMatchSetRequest _
 
 
 -- | <p>The response to an <a>UpdateXssMatchSets</a> request.</p>
 newtype UpdateXssMatchSetResponse = UpdateXssMatchSetResponse 
   { "ChangeToken" :: NullOrUndefined (ChangeToken)
   }
+derive instance newtypeUpdateXssMatchSetResponse :: Newtype UpdateXssMatchSetResponse _
 
 
 -- | <p>The name specified is invalid.</p>
 newtype WAFDisallowedNameException = WAFDisallowedNameException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFDisallowedNameException :: Newtype WAFDisallowedNameException _
 
 
 -- | <p>The operation failed because of a system problem, even though the request was valid. Retry your request.</p>
 newtype WAFInternalErrorException = WAFInternalErrorException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFInternalErrorException :: Newtype WAFInternalErrorException _
 
 
 -- | <p>The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.</p>
 newtype WAFInvalidAccountException = WAFInvalidAccountException 
   { 
   }
+derive instance newtypeWAFInvalidAccountException :: Newtype WAFInvalidAccountException _
 
 
 -- | <p>The operation failed because there was nothing to do. For example:</p> <ul> <li> <p>You tried to remove a <code>Rule</code> from a <code>WebACL</code>, but the <code>Rule</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to remove an IP address from an <code>IPSet</code>, but the IP address isn't in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to remove a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> isn't in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add a <code>Rule</code> to a <code>WebACL</code>, but the <code>Rule</code> already exists in the specified <code>WebACL</code>.</p> </li> <li> <p>You tried to add an IP address to an <code>IPSet</code>, but the IP address already exists in the specified <code>IPSet</code>.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to a <code>ByteMatchSet</code>, but the <code>ByteMatchTuple</code> already exists in the specified <code>WebACL</code>.</p> </li> </ul>
 newtype WAFInvalidOperationException = WAFInvalidOperationException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFInvalidOperationException :: Newtype WAFInvalidOperationException _
 
 
 -- | <p>The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p> <ul> <li> <p>You specified an invalid parameter name.</p> </li> <li> <p>You specified an invalid value.</p> </li> <li> <p>You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.</p> </li> <li> <p>You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than <code>IP</code>.</p> </li> <li> <p>You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other than HEADER, METHOD, QUERY_STRING, URI, or BODY.</p> </li> <li> <p>You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no value for <code>Data</code>.</p> </li> <li> <p>Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL cannot be associated.</p> </li> </ul>
@@ -1748,81 +2006,96 @@ newtype WAFInvalidParameterException = WAFInvalidParameterException
   , "Parameter'" :: NullOrUndefined (ParameterExceptionParameter)
   , "Reason'" :: NullOrUndefined (ParameterExceptionReason)
   }
+derive instance newtypeWAFInvalidParameterException :: Newtype WAFInvalidParameterException _
 
 
 -- | <p>The operation failed because the specified policy is not in the proper format. </p> <p>The policy is subject to the following restrictions:</p> <ul> <li> <p>You can attach only one policy with each <code>PutPermissionPolicy</code> request.</p> </li> <li> <p>The policy must include an <code>Effect</code>, <code>Action</code> and <code>Principal</code>. </p> </li> <li> <p> <code>Effect</code> must specify <code>Allow</code>.</p> </li> <li> <p>The <code>Action</code> in the policy must be <code>waf:UpdateWebACL</code> or <code>waf-regional:UpdateWebACL</code>. Any extra or wildcard actions in the policy will be rejected.</p> </li> <li> <p>The policy cannot include a <code>Resource</code> parameter.</p> </li> <li> <p>The ARN in the request must be a valid WAF RuleGroup ARN and the RuleGroup must exist in the same region.</p> </li> <li> <p>The user making the request must be the owner of the RuleGroup.</p> </li> <li> <p>Your policy must be composed using IAM Policy version 2012-10-17.</p> </li> </ul>
 newtype WAFInvalidPermissionPolicyException = WAFInvalidPermissionPolicyException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFInvalidPermissionPolicyException :: Newtype WAFInvalidPermissionPolicyException _
 
 
 -- | <p>The regular expression (regex) you specified in <code>RegexPatternString</code> is invalid.</p>
 newtype WAFInvalidRegexPatternException = WAFInvalidRegexPatternException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFInvalidRegexPatternException :: Newtype WAFInvalidRegexPatternException _
 
 
 -- | <p>The operation exceeds a resource limit, for example, the maximum number of <code>WebACL</code> objects that you can create for an AWS account. For more information, see <a href="http://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF Developer Guide</i>.</p>
 newtype WAFLimitsExceededException = WAFLimitsExceededException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFLimitsExceededException :: Newtype WAFLimitsExceededException _
 
 
 -- | <p>The operation failed because you tried to delete an object that isn't empty. For example:</p> <ul> <li> <p>You tried to delete a <code>WebACL</code> that still contains one or more <code>Rule</code> objects.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that still contains one or more <code>ByteMatchSet</code> objects or other predicates.</p> </li> <li> <p>You tried to delete a <code>ByteMatchSet</code> that contains one or more <code>ByteMatchTuple</code> objects.</p> </li> <li> <p>You tried to delete an <code>IPSet</code> that references one or more IP addresses.</p> </li> </ul>
 newtype WAFNonEmptyEntityException = WAFNonEmptyEntityException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFNonEmptyEntityException :: Newtype WAFNonEmptyEntityException _
 
 
 -- | <p>The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:</p> <ul> <li> <p>You tried to add a <code>Rule</code> to or delete a <code>Rule</code> from a <code>WebACL</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchSet</code> to or delete a <code>ByteMatchSet</code> from a <code>Rule</code> that doesn't exist.</p> </li> <li> <p>You tried to add an IP address to or delete an IP address from an <code>IPSet</code> that doesn't exist.</p> </li> <li> <p>You tried to add a <code>ByteMatchTuple</code> to or delete a <code>ByteMatchTuple</code> from a <code>ByteMatchSet</code> that doesn't exist.</p> </li> </ul>
 newtype WAFNonexistentContainerException = WAFNonexistentContainerException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFNonexistentContainerException :: Newtype WAFNonexistentContainerException _
 
 
 -- | <p>The operation failed because the referenced object doesn't exist.</p>
 newtype WAFNonexistentItemException = WAFNonexistentItemException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFNonexistentItemException :: Newtype WAFNonexistentItemException _
 
 
 -- | <p>The operation failed because you tried to delete an object that is still in use. For example:</p> <ul> <li> <p>You tried to delete a <code>ByteMatchSet</code> that is still referenced by a <code>Rule</code>.</p> </li> <li> <p>You tried to delete a <code>Rule</code> that is still referenced by a <code>WebACL</code>.</p> </li> </ul>
 newtype WAFReferencedItemException = WAFReferencedItemException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFReferencedItemException :: Newtype WAFReferencedItemException _
 
 
 -- | <p>The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.</p>
 newtype WAFStaleDataException = WAFStaleDataException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFStaleDataException :: Newtype WAFStaleDataException _
 
 
 -- | <p>The specified subscription does not exist.</p>
 newtype WAFSubscriptionNotFoundException = WAFSubscriptionNotFoundException 
   { "Message'" :: NullOrUndefined (ErrorMessage')
   }
+derive instance newtypeWAFSubscriptionNotFoundException :: Newtype WAFSubscriptionNotFoundException _
 
 
 -- | <p>For the action that is associated with a rule in a <code>WebACL</code>, specifies the action that you want AWS WAF to perform when a web request matches all of the conditions in a rule. For the default action in a <code>WebACL</code>, specifies the action that you want AWS WAF to take when a web request doesn't match all of the conditions in any of the rules in a <code>WebACL</code>. </p>
 newtype WafAction = WafAction 
   { "Type" :: (WafActionType)
   }
+derive instance newtypeWafAction :: Newtype WafAction _
 
 
 newtype WafActionType = WafActionType String
+derive instance newtypeWafActionType :: Newtype WafActionType _
 
 
 -- | <p>The action to take if any rule within the <code>RuleGroup</code> matches a request. </p>
 newtype WafOverrideAction = WafOverrideAction 
   { "Type" :: (WafOverrideActionType)
   }
+derive instance newtypeWafOverrideAction :: Newtype WafOverrideAction _
 
 
 newtype WafOverrideActionType = WafOverrideActionType String
+derive instance newtypeWafOverrideActionType :: Newtype WafOverrideActionType _
 
 
 newtype WafRuleType = WafRuleType String
+derive instance newtypeWafRuleType :: Newtype WafRuleType _
 
 
 -- | <p>Contains the <code>Rules</code> that identify the requests that you want to allow, block, or count. In a <code>WebACL</code>, you also specify a default action (<code>ALLOW</code> or <code>BLOCK</code>), and the action for each <code>Rule</code> that you add to a <code>WebACL</code>, for example, block requests from specified IP addresses or block requests from specified referrers. You also associate the <code>WebACL</code> with a CloudFront distribution to identify the requests that you want AWS WAF to filter. If you add more than one <code>Rule</code> to a <code>WebACL</code>, a request needs to match only one of the specifications to be allowed, blocked, or counted. For more information, see <a>UpdateWebACL</a>.</p>
@@ -1833,9 +2106,11 @@ newtype WebACL = WebACL
   , "DefaultAction" :: (WafAction)
   , "Rules" :: (ActivatedRules)
   }
+derive instance newtypeWebACL :: Newtype WebACL _
 
 
 newtype WebACLSummaries = WebACLSummaries (Array WebACLSummary)
+derive instance newtypeWebACLSummaries :: Newtype WebACLSummaries _
 
 
 -- | <p>Contains the identifier and the name or description of the <a>WebACL</a>.</p>
@@ -1843,6 +2118,7 @@ newtype WebACLSummary = WebACLSummary
   { "WebACLId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeWebACLSummary :: Newtype WebACLSummary _
 
 
 -- | <p>Specifies whether to insert a <code>Rule</code> into or delete a <code>Rule</code> from a <code>WebACL</code>.</p>
@@ -1850,9 +2126,11 @@ newtype WebACLUpdate = WebACLUpdate
   { "Action" :: (ChangeAction)
   , "ActivatedRule" :: (ActivatedRule)
   }
+derive instance newtypeWebACLUpdate :: Newtype WebACLUpdate _
 
 
 newtype WebACLUpdates = WebACLUpdates (Array WebACLUpdate)
+derive instance newtypeWebACLUpdates :: Newtype WebACLUpdates _
 
 
 -- | <p>A complex type that contains <code>XssMatchTuple</code> objects, which specify the parts of web requests that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header. If a <code>XssMatchSet</code> contains more than one <code>XssMatchTuple</code> object, a request needs to include cross-site scripting attacks in only one of the specified parts of the request to be considered a match.</p>
@@ -1861,9 +2139,11 @@ newtype XssMatchSet = XssMatchSet
   , "Name" :: NullOrUndefined (ResourceName)
   , "XssMatchTuples" :: (XssMatchTuples)
   }
+derive instance newtypeXssMatchSet :: Newtype XssMatchSet _
 
 
 newtype XssMatchSetSummaries = XssMatchSetSummaries (Array XssMatchSetSummary)
+derive instance newtypeXssMatchSetSummaries :: Newtype XssMatchSetSummaries _
 
 
 -- | <p>The <code>Id</code> and <code>Name</code> of an <code>XssMatchSet</code>.</p>
@@ -1871,6 +2151,7 @@ newtype XssMatchSetSummary = XssMatchSetSummary
   { "XssMatchSetId" :: (ResourceId)
   , "Name" :: (ResourceName)
   }
+derive instance newtypeXssMatchSetSummary :: Newtype XssMatchSetSummary _
 
 
 -- | <p>Specifies the part of a web request that you want to inspect for cross-site scripting attacks and indicates whether you want to add the specification to an <a>XssMatchSet</a> or delete it from an <code>XssMatchSet</code>.</p>
@@ -1878,9 +2159,11 @@ newtype XssMatchSetUpdate = XssMatchSetUpdate
   { "Action" :: (ChangeAction)
   , "XssMatchTuple" :: (XssMatchTuple)
   }
+derive instance newtypeXssMatchSetUpdate :: Newtype XssMatchSetUpdate _
 
 
 newtype XssMatchSetUpdates = XssMatchSetUpdates (Array XssMatchSetUpdate)
+derive instance newtypeXssMatchSetUpdates :: Newtype XssMatchSetUpdates _
 
 
 -- | <p>Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.</p>
@@ -1888,9 +2171,12 @@ newtype XssMatchTuple = XssMatchTuple
   { "FieldToMatch" :: (FieldToMatch)
   , "TextTransformation" :: (TextTransformation)
   }
+derive instance newtypeXssMatchTuple :: Newtype XssMatchTuple _
 
 
 newtype XssMatchTuples = XssMatchTuples (Array XssMatchTuple)
+derive instance newtypeXssMatchTuples :: Newtype XssMatchTuples _
 
 
 newtype ErrorMessage' = ErrorMessage' String
+derive instance newtypeErrorMessage' :: Newtype ErrorMessage' _

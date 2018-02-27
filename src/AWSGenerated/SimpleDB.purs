@@ -6,6 +6,7 @@ module AWS.SimpleDB where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -70,35 +71,42 @@ newtype Attribute = Attribute
   , "Value" :: (String)
   , "AlternateValueEncoding" :: NullOrUndefined (String)
   }
+derive instance newtypeAttribute :: Newtype Attribute _
 
 
 -- | <p>The specified attribute does not exist.</p>
 newtype AttributeDoesNotExist = AttributeDoesNotExist 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeAttributeDoesNotExist :: Newtype AttributeDoesNotExist _
 
 
 newtype AttributeList = AttributeList (Array Attribute)
+derive instance newtypeAttributeList :: Newtype AttributeList _
 
 
 newtype AttributeNameList = AttributeNameList (Array String)
+derive instance newtypeAttributeNameList :: Newtype AttributeNameList _
 
 
 newtype BatchDeleteAttributesRequest = BatchDeleteAttributesRequest 
   { "DomainName" :: (String)
   , "Items" :: (DeletableItemList)
   }
+derive instance newtypeBatchDeleteAttributesRequest :: Newtype BatchDeleteAttributesRequest _
 
 
 newtype BatchPutAttributesRequest = BatchPutAttributesRequest 
   { "DomainName" :: (String)
   , "Items" :: (ReplaceableItemList)
   }
+derive instance newtypeBatchPutAttributesRequest :: Newtype BatchPutAttributesRequest _
 
 
 newtype CreateDomainRequest = CreateDomainRequest 
   { "DomainName" :: (String)
   }
+derive instance newtypeCreateDomainRequest :: Newtype CreateDomainRequest _
 
 
 -- | <p></p>
@@ -106,18 +114,22 @@ newtype DeletableAttribute = DeletableAttribute
   { "Name" :: (String)
   , "Value" :: NullOrUndefined (String)
   }
+derive instance newtypeDeletableAttribute :: Newtype DeletableAttribute _
 
 
 newtype DeletableAttributeList = DeletableAttributeList (Array DeletableAttribute)
+derive instance newtypeDeletableAttributeList :: Newtype DeletableAttributeList _
 
 
 newtype DeletableItem = DeletableItem 
   { "Name" :: (String)
   , "Attributes" :: NullOrUndefined (DeletableAttributeList)
   }
+derive instance newtypeDeletableItem :: Newtype DeletableItem _
 
 
 newtype DeletableItemList = DeletableItemList (Array DeletableItem)
+derive instance newtypeDeletableItemList :: Newtype DeletableItemList _
 
 
 newtype DeleteAttributesRequest = DeleteAttributesRequest 
@@ -126,16 +138,19 @@ newtype DeleteAttributesRequest = DeleteAttributesRequest
   , "Attributes" :: NullOrUndefined (DeletableAttributeList)
   , "Expected" :: NullOrUndefined (UpdateCondition)
   }
+derive instance newtypeDeleteAttributesRequest :: Newtype DeleteAttributesRequest _
 
 
 newtype DeleteDomainRequest = DeleteDomainRequest 
   { "DomainName" :: (String)
   }
+derive instance newtypeDeleteDomainRequest :: Newtype DeleteDomainRequest _
 
 
 newtype DomainMetadataRequest = DomainMetadataRequest 
   { "DomainName" :: (String)
   }
+derive instance newtypeDomainMetadataRequest :: Newtype DomainMetadataRequest _
 
 
 newtype DomainMetadataResult = DomainMetadataResult 
@@ -147,15 +162,18 @@ newtype DomainMetadataResult = DomainMetadataResult
   , "AttributeValuesSizeBytes" :: NullOrUndefined (Number)
   , "Number" :: NullOrUndefined (Int)
   }
+derive instance newtypeDomainMetadataResult :: Newtype DomainMetadataResult _
 
 
 newtype DomainNameList = DomainNameList (Array String)
+derive instance newtypeDomainNameList :: Newtype DomainNameList _
 
 
 -- | <p>The item name was specified more than once. </p>
 newtype DuplicateItemName = DuplicateItemName 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeDuplicateItemName :: Newtype DuplicateItemName _
 
 
 newtype GetAttributesRequest = GetAttributesRequest 
@@ -164,41 +182,48 @@ newtype GetAttributesRequest = GetAttributesRequest
   , "AttributeNames" :: NullOrUndefined (AttributeNameList)
   , "ConsistentRead" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeGetAttributesRequest :: Newtype GetAttributesRequest _
 
 
 newtype GetAttributesResult = GetAttributesResult 
   { "Attributes" :: NullOrUndefined (AttributeList)
   }
+derive instance newtypeGetAttributesResult :: Newtype GetAttributesResult _
 
 
 -- | <p>The specified NextToken is not valid. </p>
 newtype InvalidNextToken = InvalidNextToken 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeInvalidNextToken :: Newtype InvalidNextToken _
 
 
 -- | <p>Too many predicates exist in the query expression.</p>
 newtype InvalidNumberPredicates = InvalidNumberPredicates 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeInvalidNumberPredicates :: Newtype InvalidNumberPredicates _
 
 
 -- | <p>Too many predicates exist in the query expression.</p>
 newtype InvalidNumberValueTests = InvalidNumberValueTests 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeInvalidNumberValueTests :: Newtype InvalidNumberValueTests _
 
 
 -- | <p>The value for a parameter is invalid.</p>
 newtype InvalidParameterValue = InvalidParameterValue 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeInvalidParameterValue :: Newtype InvalidParameterValue _
 
 
 -- | <p>The specified query expression syntax is not valid.</p>
 newtype InvalidQueryExpression = InvalidQueryExpression 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeInvalidQueryExpression :: Newtype InvalidQueryExpression _
 
 
 -- | <p></p>
@@ -207,69 +232,81 @@ newtype Item = Item
   , "AlternateNameEncoding" :: NullOrUndefined (String)
   , "Attributes" :: (AttributeList)
   }
+derive instance newtypeItem :: Newtype Item _
 
 
 newtype ItemList = ItemList (Array Item)
+derive instance newtypeItemList :: Newtype ItemList _
 
 
 newtype ListDomainsRequest = ListDomainsRequest 
   { "MaxNumberOfDomains" :: NullOrUndefined (Int)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListDomainsRequest :: Newtype ListDomainsRequest _
 
 
 newtype ListDomainsResult = ListDomainsResult 
   { "DomainNames" :: NullOrUndefined (DomainNameList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeListDomainsResult :: Newtype ListDomainsResult _
 
 
 -- | <p>The request must contain the specified missing parameter.</p>
 newtype MissingParameter = MissingParameter 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeMissingParameter :: Newtype MissingParameter _
 
 
 -- | <p>The specified domain does not exist.</p>
 newtype NoSuchDomain = NoSuchDomain 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeNoSuchDomain :: Newtype NoSuchDomain _
 
 
 -- | <p>Too many attributes in this domain.</p>
 newtype NumberDomainAttributesExceeded = NumberDomainAttributesExceeded 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeNumberDomainAttributesExceeded :: Newtype NumberDomainAttributesExceeded _
 
 
 -- | <p>Too many bytes in this domain.</p>
 newtype NumberDomainBytesExceeded = NumberDomainBytesExceeded 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeNumberDomainBytesExceeded :: Newtype NumberDomainBytesExceeded _
 
 
 -- | <p>Too many domains exist per this account.</p>
 newtype NumberDomainsExceeded = NumberDomainsExceeded 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeNumberDomainsExceeded :: Newtype NumberDomainsExceeded _
 
 
 -- | <p>Too many attributes in this item.</p>
 newtype NumberItemAttributesExceeded = NumberItemAttributesExceeded 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeNumberItemAttributesExceeded :: Newtype NumberItemAttributesExceeded _
 
 
 -- | <p>Too many attributes exist in a single call.</p>
 newtype NumberSubmittedAttributesExceeded = NumberSubmittedAttributesExceeded 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeNumberSubmittedAttributesExceeded :: Newtype NumberSubmittedAttributesExceeded _
 
 
 -- | <p>Too many items exist in a single call.</p>
 newtype NumberSubmittedItemsExceeded = NumberSubmittedItemsExceeded 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeNumberSubmittedItemsExceeded :: Newtype NumberSubmittedItemsExceeded _
 
 
 newtype PutAttributesRequest = PutAttributesRequest 
@@ -278,6 +315,7 @@ newtype PutAttributesRequest = PutAttributesRequest
   , "Attributes" :: (ReplaceableAttributeList)
   , "Expected" :: NullOrUndefined (UpdateCondition)
   }
+derive instance newtypePutAttributesRequest :: Newtype PutAttributesRequest _
 
 
 -- | <p></p>
@@ -286,9 +324,11 @@ newtype ReplaceableAttribute = ReplaceableAttribute
   , "Value" :: (String)
   , "Replace" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeReplaceableAttribute :: Newtype ReplaceableAttribute _
 
 
 newtype ReplaceableAttributeList = ReplaceableAttributeList (Array ReplaceableAttribute)
+derive instance newtypeReplaceableAttributeList :: Newtype ReplaceableAttributeList _
 
 
 -- | <p></p>
@@ -296,15 +336,18 @@ newtype ReplaceableItem = ReplaceableItem
   { "Name" :: (String)
   , "Attributes" :: (ReplaceableAttributeList)
   }
+derive instance newtypeReplaceableItem :: Newtype ReplaceableItem _
 
 
 newtype ReplaceableItemList = ReplaceableItemList (Array ReplaceableItem)
+derive instance newtypeReplaceableItemList :: Newtype ReplaceableItemList _
 
 
 -- | <p>A timeout occurred when attempting to query the specified domain with specified query expression.</p>
 newtype RequestTimeout = RequestTimeout 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeRequestTimeout :: Newtype RequestTimeout _
 
 
 newtype SelectRequest = SelectRequest 
@@ -312,18 +355,21 @@ newtype SelectRequest = SelectRequest
   , "NextToken" :: NullOrUndefined (String)
   , "ConsistentRead" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeSelectRequest :: Newtype SelectRequest _
 
 
 newtype SelectResult = SelectResult 
   { "Items" :: NullOrUndefined (ItemList)
   , "NextToken" :: NullOrUndefined (String)
   }
+derive instance newtypeSelectResult :: Newtype SelectResult _
 
 
 -- | <p>Too many attributes requested.</p>
 newtype TooManyRequestedAttributes = TooManyRequestedAttributes 
   { "BoxUsage" :: NullOrUndefined (Number)
   }
+derive instance newtypeTooManyRequestedAttributes :: Newtype TooManyRequestedAttributes _
 
 
 -- | <p> Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist. </p>
@@ -332,3 +378,4 @@ newtype UpdateCondition = UpdateCondition
   , "Value" :: NullOrUndefined (String)
   , "Exists" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeUpdateCondition :: Newtype UpdateCondition _

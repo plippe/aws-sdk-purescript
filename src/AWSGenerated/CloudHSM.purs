@@ -6,6 +6,7 @@ module AWS.CloudHSM where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -114,50 +115,63 @@ removeTagsFromResource = AWS.request serviceName "RemoveTagsFromResource"
 
 
 newtype AZ = AZ String
+derive instance newtypeAZ :: Newtype AZ _
 
 
 newtype AZList = AZList (Array AZ)
+derive instance newtypeAZList :: Newtype AZList _
 
 
 newtype AddTagsToResourceRequest = AddTagsToResourceRequest 
   { "ResourceArn" :: (String)
   , "TagList" :: (TagList)
   }
+derive instance newtypeAddTagsToResourceRequest :: Newtype AddTagsToResourceRequest _
 
 
 newtype AddTagsToResourceResponse = AddTagsToResourceResponse 
   { "Status" :: (String)
   }
+derive instance newtypeAddTagsToResourceResponse :: Newtype AddTagsToResourceResponse _
 
 
 newtype Certificate = Certificate String
+derive instance newtypeCertificate :: Newtype Certificate _
 
 
 newtype CertificateFingerprint = CertificateFingerprint String
+derive instance newtypeCertificateFingerprint :: Newtype CertificateFingerprint _
 
 
 newtype ClientArn = ClientArn String
+derive instance newtypeClientArn :: Newtype ClientArn _
 
 
 newtype ClientLabel = ClientLabel String
+derive instance newtypeClientLabel :: Newtype ClientLabel _
 
 
 newtype ClientList = ClientList (Array ClientArn)
+derive instance newtypeClientList :: Newtype ClientList _
 
 
 newtype ClientToken = ClientToken String
+derive instance newtypeClientToken :: Newtype ClientToken _
 
 
 newtype ClientVersion = ClientVersion String
+derive instance newtypeClientVersion :: Newtype ClientVersion _
 
 
 -- | <p>Indicates that an internal error occurred.</p>
 newtype CloudHsmInternalException = CloudHsmInternalException 
   { 
   }
+derive instance newtypeCloudHsmInternalException :: Newtype CloudHsmInternalException _
 
 
 newtype CloudHsmObjectState = CloudHsmObjectState String
+derive instance newtypeCloudHsmObjectState :: Newtype CloudHsmObjectState _
 
 
 -- | <p>Indicates that an exception occurred in the AWS CloudHSM service.</p>
@@ -165,18 +179,21 @@ newtype CloudHsmServiceException = CloudHsmServiceException
   { "Message'" :: NullOrUndefined (String)
   , "Retryable'" :: NullOrUndefined (Boolean)
   }
+derive instance newtypeCloudHsmServiceException :: Newtype CloudHsmServiceException _
 
 
 -- | <p>Contains the inputs for the <a>CreateHapgRequest</a> action.</p>
 newtype CreateHapgRequest = CreateHapgRequest 
   { "Label" :: (Label)
   }
+derive instance newtypeCreateHapgRequest :: Newtype CreateHapgRequest _
 
 
 -- | <p>Contains the output of the <a>CreateHAPartitionGroup</a> action.</p>
 newtype CreateHapgResponse = CreateHapgResponse 
   { "HapgArn" :: NullOrUndefined (HapgArn)
   }
+derive instance newtypeCreateHapgResponse :: Newtype CreateHapgResponse _
 
 
 -- | <p>Contains the inputs for the <code>CreateHsm</code> operation.</p>
@@ -190,12 +207,14 @@ newtype CreateHsmRequest = CreateHsmRequest
   , "ClientToken" :: NullOrUndefined (ClientToken)
   , "SyslogIp" :: NullOrUndefined (IpAddress)
   }
+derive instance newtypeCreateHsmRequest :: Newtype CreateHsmRequest _
 
 
 -- | <p>Contains the output of the <code>CreateHsm</code> operation.</p>
 newtype CreateHsmResponse = CreateHsmResponse 
   { "HsmArn" :: NullOrUndefined (HsmArn)
   }
+derive instance newtypeCreateHsmResponse :: Newtype CreateHsmResponse _
 
 
 -- | <p>Contains the inputs for the <a>CreateLunaClient</a> action.</p>
@@ -203,52 +222,61 @@ newtype CreateLunaClientRequest = CreateLunaClientRequest
   { "Label" :: NullOrUndefined (ClientLabel)
   , "Certificate" :: (Certificate)
   }
+derive instance newtypeCreateLunaClientRequest :: Newtype CreateLunaClientRequest _
 
 
 -- | <p>Contains the output of the <a>CreateLunaClient</a> action.</p>
 newtype CreateLunaClientResponse = CreateLunaClientResponse 
   { "ClientArn" :: NullOrUndefined (ClientArn)
   }
+derive instance newtypeCreateLunaClientResponse :: Newtype CreateLunaClientResponse _
 
 
 -- | <p>Contains the inputs for the <a>DeleteHapg</a> action.</p>
 newtype DeleteHapgRequest = DeleteHapgRequest 
   { "HapgArn" :: (HapgArn)
   }
+derive instance newtypeDeleteHapgRequest :: Newtype DeleteHapgRequest _
 
 
 -- | <p>Contains the output of the <a>DeleteHapg</a> action.</p>
 newtype DeleteHapgResponse = DeleteHapgResponse 
   { "Status" :: (String)
   }
+derive instance newtypeDeleteHapgResponse :: Newtype DeleteHapgResponse _
 
 
 -- | <p>Contains the inputs for the <a>DeleteHsm</a> operation.</p>
 newtype DeleteHsmRequest = DeleteHsmRequest 
   { "HsmArn" :: (HsmArn)
   }
+derive instance newtypeDeleteHsmRequest :: Newtype DeleteHsmRequest _
 
 
 -- | <p>Contains the output of the <a>DeleteHsm</a> operation.</p>
 newtype DeleteHsmResponse = DeleteHsmResponse 
   { "Status" :: (String)
   }
+derive instance newtypeDeleteHsmResponse :: Newtype DeleteHsmResponse _
 
 
 newtype DeleteLunaClientRequest = DeleteLunaClientRequest 
   { "ClientArn" :: (ClientArn)
   }
+derive instance newtypeDeleteLunaClientRequest :: Newtype DeleteLunaClientRequest _
 
 
 newtype DeleteLunaClientResponse = DeleteLunaClientResponse 
   { "Status" :: (String)
   }
+derive instance newtypeDeleteLunaClientResponse :: Newtype DeleteLunaClientResponse _
 
 
 -- | <p>Contains the inputs for the <a>DescribeHapg</a> action.</p>
 newtype DescribeHapgRequest = DescribeHapgRequest 
   { "HapgArn" :: (HapgArn)
   }
+derive instance newtypeDescribeHapgRequest :: Newtype DescribeHapgRequest _
 
 
 -- | <p>Contains the output of the <a>DescribeHapg</a> action.</p>
@@ -263,6 +291,7 @@ newtype DescribeHapgResponse = DescribeHapgResponse
   , "PartitionSerialList" :: NullOrUndefined (PartitionSerialList)
   , "State" :: NullOrUndefined (CloudHsmObjectState)
   }
+derive instance newtypeDescribeHapgResponse :: Newtype DescribeHapgResponse _
 
 
 -- | <p>Contains the inputs for the <a>DescribeHsm</a> operation.</p>
@@ -270,6 +299,7 @@ newtype DescribeHsmRequest = DescribeHsmRequest
   { "HsmArn" :: NullOrUndefined (HsmArn)
   , "HsmSerialNumber" :: NullOrUndefined (HsmSerialNumber)
   }
+derive instance newtypeDescribeHsmRequest :: Newtype DescribeHsmRequest _
 
 
 -- | <p>Contains the output of the <a>DescribeHsm</a> operation.</p>
@@ -296,12 +326,14 @@ newtype DescribeHsmResponse = DescribeHsmResponse
   , "ServerCertLastUpdated" :: NullOrUndefined (Number)
   , "Partitions" :: NullOrUndefined (PartitionList)
   }
+derive instance newtypeDescribeHsmResponse :: Newtype DescribeHsmResponse _
 
 
 newtype DescribeLunaClientRequest = DescribeLunaClientRequest 
   { "ClientArn" :: NullOrUndefined (ClientArn)
   , "CertificateFingerprint" :: NullOrUndefined (CertificateFingerprint)
   }
+derive instance newtypeDescribeLunaClientRequest :: Newtype DescribeLunaClientRequest _
 
 
 newtype DescribeLunaClientResponse = DescribeLunaClientResponse 
@@ -311,12 +343,15 @@ newtype DescribeLunaClientResponse = DescribeLunaClientResponse
   , "LastModifiedTimestamp" :: NullOrUndefined (Number)
   , "Label" :: NullOrUndefined (Label)
   }
+derive instance newtypeDescribeLunaClientResponse :: Newtype DescribeLunaClientResponse _
 
 
 newtype EniId = EniId String
+derive instance newtypeEniId :: Newtype EniId _
 
 
 newtype ExternalId = ExternalId String
+derive instance newtypeExternalId :: Newtype ExternalId _
 
 
 newtype GetConfigRequest = GetConfigRequest 
@@ -324,6 +359,7 @@ newtype GetConfigRequest = GetConfigRequest
   , "ClientVersion" :: (ClientVersion)
   , "HapgList" :: (HapgList)
   }
+derive instance newtypeGetConfigRequest :: Newtype GetConfigRequest _
 
 
 newtype GetConfigResponse = GetConfigResponse 
@@ -331,68 +367,84 @@ newtype GetConfigResponse = GetConfigResponse
   , "ConfigFile" :: NullOrUndefined (String)
   , "ConfigCred" :: NullOrUndefined (String)
   }
+derive instance newtypeGetConfigResponse :: Newtype GetConfigResponse _
 
 
 newtype HapgArn = HapgArn String
+derive instance newtypeHapgArn :: Newtype HapgArn _
 
 
 newtype HapgList = HapgList (Array HapgArn)
+derive instance newtypeHapgList :: Newtype HapgList _
 
 
 -- | <p>An ARN that identifies an HSM.</p>
 newtype HsmArn = HsmArn String
+derive instance newtypeHsmArn :: Newtype HsmArn _
 
 
 -- | <p>Contains a list of ARNs that identify the HSMs.</p>
 newtype HsmList = HsmList (Array HsmArn)
+derive instance newtypeHsmList :: Newtype HsmList _
 
 
 newtype HsmSerialNumber = HsmSerialNumber String
+derive instance newtypeHsmSerialNumber :: Newtype HsmSerialNumber _
 
 
 newtype HsmStatus = HsmStatus String
+derive instance newtypeHsmStatus :: Newtype HsmStatus _
 
 
 newtype IamRoleArn = IamRoleArn String
+derive instance newtypeIamRoleArn :: Newtype IamRoleArn _
 
 
 -- | <p>Indicates that one or more of the request parameters are not valid.</p>
 newtype InvalidRequestException = InvalidRequestException 
   { 
   }
+derive instance newtypeInvalidRequestException :: Newtype InvalidRequestException _
 
 
 newtype IpAddress = IpAddress String
+derive instance newtypeIpAddress :: Newtype IpAddress _
 
 
 newtype Label = Label String
+derive instance newtypeLabel :: Newtype Label _
 
 
 -- | <p>Contains the inputs for the <a>ListAvailableZones</a> action.</p>
 newtype ListAvailableZonesRequest = ListAvailableZonesRequest 
   { 
   }
+derive instance newtypeListAvailableZonesRequest :: Newtype ListAvailableZonesRequest _
 
 
 newtype ListAvailableZonesResponse = ListAvailableZonesResponse 
   { "AZList" :: NullOrUndefined (AZList)
   }
+derive instance newtypeListAvailableZonesResponse :: Newtype ListAvailableZonesResponse _
 
 
 newtype ListHapgsRequest = ListHapgsRequest 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListHapgsRequest :: Newtype ListHapgsRequest _
 
 
 newtype ListHapgsResponse = ListHapgsResponse 
   { "HapgList" :: (HapgList)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListHapgsResponse :: Newtype ListHapgsResponse _
 
 
 newtype ListHsmsRequest = ListHsmsRequest 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListHsmsRequest :: Newtype ListHsmsRequest _
 
 
 -- | <p>Contains the output of the <code>ListHsms</code> operation.</p>
@@ -400,27 +452,32 @@ newtype ListHsmsResponse = ListHsmsResponse
   { "HsmList" :: NullOrUndefined (HsmList)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListHsmsResponse :: Newtype ListHsmsResponse _
 
 
 newtype ListLunaClientsRequest = ListLunaClientsRequest 
   { "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListLunaClientsRequest :: Newtype ListLunaClientsRequest _
 
 
 newtype ListLunaClientsResponse = ListLunaClientsResponse 
   { "ClientList" :: (ClientList)
   , "NextToken" :: NullOrUndefined (PaginationToken)
   }
+derive instance newtypeListLunaClientsResponse :: Newtype ListLunaClientsResponse _
 
 
 newtype ListTagsForResourceRequest = ListTagsForResourceRequest 
   { "ResourceArn" :: (String)
   }
+derive instance newtypeListTagsForResourceRequest :: Newtype ListTagsForResourceRequest _
 
 
 newtype ListTagsForResourceResponse = ListTagsForResourceResponse 
   { "TagList" :: (TagList)
   }
+derive instance newtypeListTagsForResourceResponse :: Newtype ListTagsForResourceResponse _
 
 
 newtype ModifyHapgRequest = ModifyHapgRequest 
@@ -428,11 +485,13 @@ newtype ModifyHapgRequest = ModifyHapgRequest
   , "Label" :: NullOrUndefined (Label)
   , "PartitionSerialList" :: NullOrUndefined (PartitionSerialList)
   }
+derive instance newtypeModifyHapgRequest :: Newtype ModifyHapgRequest _
 
 
 newtype ModifyHapgResponse = ModifyHapgResponse 
   { "HapgArn" :: NullOrUndefined (HapgArn)
   }
+derive instance newtypeModifyHapgResponse :: Newtype ModifyHapgResponse _
 
 
 -- | <p>Contains the inputs for the <a>ModifyHsm</a> operation.</p>
@@ -444,59 +503,73 @@ newtype ModifyHsmRequest = ModifyHsmRequest
   , "ExternalId" :: NullOrUndefined (ExternalId)
   , "SyslogIp" :: NullOrUndefined (IpAddress)
   }
+derive instance newtypeModifyHsmRequest :: Newtype ModifyHsmRequest _
 
 
 -- | <p>Contains the output of the <a>ModifyHsm</a> operation.</p>
 newtype ModifyHsmResponse = ModifyHsmResponse 
   { "HsmArn" :: NullOrUndefined (HsmArn)
   }
+derive instance newtypeModifyHsmResponse :: Newtype ModifyHsmResponse _
 
 
 newtype ModifyLunaClientRequest = ModifyLunaClientRequest 
   { "ClientArn" :: (ClientArn)
   , "Certificate" :: (Certificate)
   }
+derive instance newtypeModifyLunaClientRequest :: Newtype ModifyLunaClientRequest _
 
 
 newtype ModifyLunaClientResponse = ModifyLunaClientResponse 
   { "ClientArn" :: NullOrUndefined (ClientArn)
   }
+derive instance newtypeModifyLunaClientResponse :: Newtype ModifyLunaClientResponse _
 
 
 newtype PaginationToken = PaginationToken String
+derive instance newtypePaginationToken :: Newtype PaginationToken _
 
 
 newtype PartitionArn = PartitionArn String
+derive instance newtypePartitionArn :: Newtype PartitionArn _
 
 
 newtype PartitionList = PartitionList (Array PartitionArn)
+derive instance newtypePartitionList :: Newtype PartitionList _
 
 
 newtype PartitionSerial = PartitionSerial String
+derive instance newtypePartitionSerial :: Newtype PartitionSerial _
 
 
 newtype PartitionSerialList = PartitionSerialList (Array PartitionSerial)
+derive instance newtypePartitionSerialList :: Newtype PartitionSerialList _
 
 
 newtype RemoveTagsFromResourceRequest = RemoveTagsFromResourceRequest 
   { "ResourceArn" :: (String)
   , "TagKeyList" :: (TagKeyList)
   }
+derive instance newtypeRemoveTagsFromResourceRequest :: Newtype RemoveTagsFromResourceRequest _
 
 
 newtype RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse 
   { "Status" :: (String)
   }
+derive instance newtypeRemoveTagsFromResourceResponse :: Newtype RemoveTagsFromResourceResponse _
 
 
 newtype SshKey = SshKey String
+derive instance newtypeSshKey :: Newtype SshKey _
 
 
 newtype SubnetId = SubnetId String
+derive instance newtypeSubnetId :: Newtype SubnetId _
 
 
 -- | <p>Specifies the type of subscription for the HSM.</p> <ul> <li> <p> <b>PRODUCTION</b> - The HSM is being used in a production environment.</p> </li> <li> <p> <b>TRIAL</b> - The HSM is being used in a product trial.</p> </li> </ul>
 newtype SubscriptionType = SubscriptionType String
+derive instance newtypeSubscriptionType :: Newtype SubscriptionType _
 
 
 -- | <p>A key-value pair that identifies or specifies metadata about an AWS CloudHSM resource.</p>
@@ -504,18 +577,24 @@ newtype Tag = Tag
   { "Key" :: (TagKey)
   , "Value" :: (TagValue)
   }
+derive instance newtypeTag :: Newtype Tag _
 
 
 newtype TagKey = TagKey String
+derive instance newtypeTagKey :: Newtype TagKey _
 
 
 newtype TagKeyList = TagKeyList (Array TagKey)
+derive instance newtypeTagKeyList :: Newtype TagKeyList _
 
 
 newtype TagList = TagList (Array Tag)
+derive instance newtypeTagList :: Newtype TagList _
 
 
 newtype TagValue = TagValue String
+derive instance newtypeTagValue :: Newtype TagValue _
 
 
 newtype VpcId = VpcId String
+derive instance newtypeVpcId :: Newtype VpcId _
