@@ -1,5 +1,6 @@
 {
   "name": "purescript-aws-sdk",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
