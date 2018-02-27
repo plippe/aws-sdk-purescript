@@ -16,52 +16,52 @@ serviceName = "Cloud9" :: String
 
 -- | <p>Creates an AWS Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment.</p>
 createEnvironmentEC2 :: forall eff. CreateEnvironmentEC2Request -> Aff (err :: AWS.RequestError | eff) CreateEnvironmentEC2Result
-createEnvironmentEC2 = AWS.request serviceName "CreateEnvironmentEC2" 
+createEnvironmentEC2 = AWS.request serviceName "createEnvironmentEC2" 
 
 
 -- | <p>Adds an environment member to an AWS Cloud9 development environment.</p>
 createEnvironmentMembership :: forall eff. CreateEnvironmentMembershipRequest -> Aff (err :: AWS.RequestError | eff) CreateEnvironmentMembershipResult
-createEnvironmentMembership = AWS.request serviceName "CreateEnvironmentMembership" 
+createEnvironmentMembership = AWS.request serviceName "createEnvironmentMembership" 
 
 
 -- | <p>Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance is connected to the environment, also terminates the instance.</p>
 deleteEnvironment :: forall eff. DeleteEnvironmentRequest -> Aff (err :: AWS.RequestError | eff) DeleteEnvironmentResult
-deleteEnvironment = AWS.request serviceName "DeleteEnvironment" 
+deleteEnvironment = AWS.request serviceName "deleteEnvironment" 
 
 
 -- | <p>Deletes an environment member from an AWS Cloud9 development environment.</p>
 deleteEnvironmentMembership :: forall eff. DeleteEnvironmentMembershipRequest -> Aff (err :: AWS.RequestError | eff) DeleteEnvironmentMembershipResult
-deleteEnvironmentMembership = AWS.request serviceName "DeleteEnvironmentMembership" 
+deleteEnvironmentMembership = AWS.request serviceName "deleteEnvironmentMembership" 
 
 
 -- | <p>Gets information about environment members for an AWS Cloud9 development environment.</p>
 describeEnvironmentMemberships :: forall eff. DescribeEnvironmentMembershipsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEnvironmentMembershipsResult
-describeEnvironmentMemberships = AWS.request serviceName "DescribeEnvironmentMemberships" 
+describeEnvironmentMemberships = AWS.request serviceName "describeEnvironmentMemberships" 
 
 
 -- | <p>Gets status information for an AWS Cloud9 development environment.</p>
 describeEnvironmentStatus :: forall eff. DescribeEnvironmentStatusRequest -> Aff (err :: AWS.RequestError | eff) DescribeEnvironmentStatusResult
-describeEnvironmentStatus = AWS.request serviceName "DescribeEnvironmentStatus" 
+describeEnvironmentStatus = AWS.request serviceName "describeEnvironmentStatus" 
 
 
 -- | <p>Gets information about AWS Cloud9 development environments.</p>
 describeEnvironments :: forall eff. DescribeEnvironmentsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEnvironmentsResult
-describeEnvironments = AWS.request serviceName "DescribeEnvironments" 
+describeEnvironments = AWS.request serviceName "describeEnvironments" 
 
 
 -- | <p>Gets a list of AWS Cloud9 development environment identifiers.</p>
 listEnvironments :: forall eff. ListEnvironmentsRequest -> Aff (err :: AWS.RequestError | eff) ListEnvironmentsResult
-listEnvironments = AWS.request serviceName "ListEnvironments" 
+listEnvironments = AWS.request serviceName "listEnvironments" 
 
 
 -- | <p>Changes the settings of an existing AWS Cloud9 development environment.</p>
 updateEnvironment :: forall eff. UpdateEnvironmentRequest -> Aff (err :: AWS.RequestError | eff) UpdateEnvironmentResult
-updateEnvironment = AWS.request serviceName "UpdateEnvironment" 
+updateEnvironment = AWS.request serviceName "updateEnvironment" 
 
 
 -- | <p>Changes the settings of an existing environment member for an AWS Cloud9 development environment.</p>
 updateEnvironmentMembership :: forall eff. UpdateEnvironmentMembershipRequest -> Aff (err :: AWS.RequestError | eff) UpdateEnvironmentMembershipResult
-updateEnvironmentMembership = AWS.request serviceName "UpdateEnvironmentMembership" 
+updateEnvironmentMembership = AWS.request serviceName "updateEnvironmentMembership" 
 
 
 newtype AutomaticStopTimeMinutes = AutomaticStopTimeMinutes Int

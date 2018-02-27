@@ -16,57 +16,57 @@ serviceName = "MediaPackage" :: String
 
 -- | Creates a new Channel.
 createChannel :: forall eff. CreateChannelRequest -> Aff (err :: AWS.RequestError | eff) CreateChannelResponse
-createChannel = AWS.request serviceName "CreateChannel" 
+createChannel = AWS.request serviceName "createChannel" 
 
 
 -- | Creates a new OriginEndpoint record.
 createOriginEndpoint :: forall eff. CreateOriginEndpointRequest -> Aff (err :: AWS.RequestError | eff) CreateOriginEndpointResponse
-createOriginEndpoint = AWS.request serviceName "CreateOriginEndpoint" 
+createOriginEndpoint = AWS.request serviceName "createOriginEndpoint" 
 
 
 -- | Deletes an existing Channel.
 deleteChannel :: forall eff. DeleteChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteChannelResponse
-deleteChannel = AWS.request serviceName "DeleteChannel" 
+deleteChannel = AWS.request serviceName "deleteChannel" 
 
 
 -- | Deletes an existing OriginEndpoint.
 deleteOriginEndpoint :: forall eff. DeleteOriginEndpointRequest -> Aff (err :: AWS.RequestError | eff) DeleteOriginEndpointResponse
-deleteOriginEndpoint = AWS.request serviceName "DeleteOriginEndpoint" 
+deleteOriginEndpoint = AWS.request serviceName "deleteOriginEndpoint" 
 
 
 -- | Gets details about a Channel.
 describeChannel :: forall eff. DescribeChannelRequest -> Aff (err :: AWS.RequestError | eff) DescribeChannelResponse
-describeChannel = AWS.request serviceName "DescribeChannel" 
+describeChannel = AWS.request serviceName "describeChannel" 
 
 
 -- | Gets details about an existing OriginEndpoint.
 describeOriginEndpoint :: forall eff. DescribeOriginEndpointRequest -> Aff (err :: AWS.RequestError | eff) DescribeOriginEndpointResponse
-describeOriginEndpoint = AWS.request serviceName "DescribeOriginEndpoint" 
+describeOriginEndpoint = AWS.request serviceName "describeOriginEndpoint" 
 
 
 -- | Returns a collection of Channels.
 listChannels :: forall eff. ListChannelsRequest -> Aff (err :: AWS.RequestError | eff) ListChannelsResponse
-listChannels = AWS.request serviceName "ListChannels" 
+listChannels = AWS.request serviceName "listChannels" 
 
 
 -- | Returns a collection of OriginEndpoint records.
 listOriginEndpoints :: forall eff. ListOriginEndpointsRequest -> Aff (err :: AWS.RequestError | eff) ListOriginEndpointsResponse
-listOriginEndpoints = AWS.request serviceName "ListOriginEndpoints" 
+listOriginEndpoints = AWS.request serviceName "listOriginEndpoints" 
 
 
 -- | Changes the Channel ingest username and password.
 rotateChannelCredentials :: forall eff. RotateChannelCredentialsRequest -> Aff (err :: AWS.RequestError | eff) RotateChannelCredentialsResponse
-rotateChannelCredentials = AWS.request serviceName "RotateChannelCredentials" 
+rotateChannelCredentials = AWS.request serviceName "rotateChannelCredentials" 
 
 
 -- | Updates an existing Channel.
 updateChannel :: forall eff. UpdateChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateChannelResponse
-updateChannel = AWS.request serviceName "UpdateChannel" 
+updateChannel = AWS.request serviceName "updateChannel" 
 
 
 -- | Updates an existing OriginEndpoint.
 updateOriginEndpoint :: forall eff. UpdateOriginEndpointRequest -> Aff (err :: AWS.RequestError | eff) UpdateOriginEndpointResponse
-updateOriginEndpoint = AWS.request serviceName "UpdateOriginEndpoint" 
+updateOriginEndpoint = AWS.request serviceName "updateOriginEndpoint" 
 
 
 newtype AdMarkers = AdMarkers String

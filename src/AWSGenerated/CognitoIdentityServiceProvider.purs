@@ -16,477 +16,477 @@ serviceName = "CognitoIdentityServiceProvider" :: String
 
 -- | <p>Adds additional user attributes to the user pool schema.</p>
 addCustomAttributes :: forall eff. AddCustomAttributesRequest -> Aff (err :: AWS.RequestError | eff) AddCustomAttributesResponse
-addCustomAttributes = AWS.request serviceName "AddCustomAttributes" 
+addCustomAttributes = AWS.request serviceName "addCustomAttributes" 
 
 
 -- | <p>Adds the specified user to the specified group.</p> <p>Requires developer credentials.</p>
 adminAddUserToGroup :: forall eff. AdminAddUserToGroupRequest -> Aff (err :: AWS.RequestError | eff) Unit
-adminAddUserToGroup = AWS.request serviceName "AdminAddUserToGroup" 
+adminAddUserToGroup = AWS.request serviceName "adminAddUserToGroup" 
 
 
 -- | <p>Confirms user registration as an admin without using a confirmation code. Works on any user.</p> <p>Requires developer credentials.</p>
 adminConfirmSignUp :: forall eff. AdminConfirmSignUpRequest -> Aff (err :: AWS.RequestError | eff) AdminConfirmSignUpResponse
-adminConfirmSignUp = AWS.request serviceName "AdminConfirmSignUp" 
+adminConfirmSignUp = AWS.request serviceName "adminConfirmSignUp" 
 
 
 -- | <p>Creates a new user in the specified user pool.</p> <p>If <code>MessageAction</code> is not set, the default is to send a welcome message via email or phone (SMS).</p> <note> <p>This message is based on a template that you configured in your call to or . This template includes your custom sign-up instructions and placeholders for user name and temporary password.</p> </note> <p>Alternatively, you can call AdminCreateUser with “SUPPRESS” for the <code>MessageAction</code> parameter, and Amazon Cognito will not send any email. </p> <p>In either case, the user will be in the <code>FORCE_CHANGE_PASSWORD</code> state until they sign in and change their password.</p> <p>AdminCreateUser requires developer credentials.</p>
 adminCreateUser :: forall eff. AdminCreateUserRequest -> Aff (err :: AWS.RequestError | eff) AdminCreateUserResponse
-adminCreateUser = AWS.request serviceName "AdminCreateUser" 
+adminCreateUser = AWS.request serviceName "adminCreateUser" 
 
 
 -- | <p>Deletes a user as an administrator. Works on any user.</p> <p>Requires developer credentials.</p>
 adminDeleteUser :: forall eff. AdminDeleteUserRequest -> Aff (err :: AWS.RequestError | eff) Unit
-adminDeleteUser = AWS.request serviceName "AdminDeleteUser" 
+adminDeleteUser = AWS.request serviceName "adminDeleteUser" 
 
 
 -- | <p>Deletes the user attributes in a user pool as an administrator. Works on any user.</p> <p>Requires developer credentials.</p>
 adminDeleteUserAttributes :: forall eff. AdminDeleteUserAttributesRequest -> Aff (err :: AWS.RequestError | eff) AdminDeleteUserAttributesResponse
-adminDeleteUserAttributes = AWS.request serviceName "AdminDeleteUserAttributes" 
+adminDeleteUserAttributes = AWS.request serviceName "adminDeleteUserAttributes" 
 
 
 -- | <p>Disables the user from signing in with the specified external (SAML or social) identity provider. If the user to disable is a Cognito User Pools native username + password user, they are not permitted to use their password to sign-in. If the user to disable is a linked external IdP user, any link between that user and an existing user is removed. The next time the external user (no longer attached to the previously linked <code>DestinationUser</code>) signs in, they must create a new user account. See .</p> <p>This action is enabled only for admin access and requires developer credentials.</p> <p>The <code>ProviderName</code> must match the value specified when creating an IdP for the pool. </p> <p>To disable a native username + password user, the <code>ProviderName</code> value must be <code>Cognito</code> and the <code>ProviderAttributeName</code> must be <code>Cognito_Subject</code>, with the <code>ProviderAttributeValue</code> being the name that is used in the user pool for the user.</p> <p>The <code>ProviderAttributeName</code> must always be <code>Cognito_Subject</code> for social identity providers. The <code>ProviderAttributeValue</code> must always be the exact subject that was used when the user was originally linked as a source user.</p> <p>For de-linking a SAML identity, there are two scenarios. If the linked identity has not yet been used to sign-in, the <code>ProviderAttributeName</code> and <code>ProviderAttributeValue</code> must be the same values that were used for the <code>SourceUser</code> when the identities were originally linked in the call. (If the linking was done with <code>ProviderAttributeName</code> set to <code>Cognito_Subject</code>, the same applies here). However, if the user has already signed in, the <code>ProviderAttributeName</code> must be <code>Cognito_Subject</code> and <code>ProviderAttributeValue</code> must be the subject of the SAML assertion.</p>
 adminDisableProviderForUser :: forall eff. AdminDisableProviderForUserRequest -> Aff (err :: AWS.RequestError | eff) AdminDisableProviderForUserResponse
-adminDisableProviderForUser = AWS.request serviceName "AdminDisableProviderForUser" 
+adminDisableProviderForUser = AWS.request serviceName "adminDisableProviderForUser" 
 
 
 -- | <p>Disables the specified user as an administrator. Works on any user.</p> <p>Requires developer credentials.</p>
 adminDisableUser :: forall eff. AdminDisableUserRequest -> Aff (err :: AWS.RequestError | eff) AdminDisableUserResponse
-adminDisableUser = AWS.request serviceName "AdminDisableUser" 
+adminDisableUser = AWS.request serviceName "adminDisableUser" 
 
 
 -- | <p>Enables the specified user as an administrator. Works on any user.</p> <p>Requires developer credentials.</p>
 adminEnableUser :: forall eff. AdminEnableUserRequest -> Aff (err :: AWS.RequestError | eff) AdminEnableUserResponse
-adminEnableUser = AWS.request serviceName "AdminEnableUser" 
+adminEnableUser = AWS.request serviceName "adminEnableUser" 
 
 
 -- | <p>Forgets the device, as an administrator.</p> <p>Requires developer credentials.</p>
 adminForgetDevice :: forall eff. AdminForgetDeviceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-adminForgetDevice = AWS.request serviceName "AdminForgetDevice" 
+adminForgetDevice = AWS.request serviceName "adminForgetDevice" 
 
 
 -- | <p>Gets the device, as an administrator.</p> <p>Requires developer credentials.</p>
 adminGetDevice :: forall eff. AdminGetDeviceRequest -> Aff (err :: AWS.RequestError | eff) AdminGetDeviceResponse
-adminGetDevice = AWS.request serviceName "AdminGetDevice" 
+adminGetDevice = AWS.request serviceName "adminGetDevice" 
 
 
 -- | <p>Gets the specified user by user name in a user pool as an administrator. Works on any user.</p> <p>Requires developer credentials.</p>
 adminGetUser :: forall eff. AdminGetUserRequest -> Aff (err :: AWS.RequestError | eff) AdminGetUserResponse
-adminGetUser = AWS.request serviceName "AdminGetUser" 
+adminGetUser = AWS.request serviceName "adminGetUser" 
 
 
 -- | <p>Initiates the authentication flow, as an administrator.</p> <p>Requires developer credentials.</p>
 adminInitiateAuth :: forall eff. AdminInitiateAuthRequest -> Aff (err :: AWS.RequestError | eff) AdminInitiateAuthResponse
-adminInitiateAuth = AWS.request serviceName "AdminInitiateAuth" 
+adminInitiateAuth = AWS.request serviceName "adminInitiateAuth" 
 
 
 -- | <p>Links an existing user account in a user pool (<code>DestinationUser</code>) to an identity from an external identity provider (<code>SourceUser</code>) based on a specified attribute name and value from the external identity provider. This allows you to create a link from the existing user account to an external federated user identity that has not yet been used to sign in, so that the federated user identity can be used to sign in as the existing user account. </p> <p> For example, if there is an existing user with a username and password, this API links that user to a federated user identity, so that when the federated user identity is used, the user signs in as the existing user account. </p> <important> <p>Because this API allows a user with an external federated identity to sign in as an existing user in the user pool, it is critical that it only be used with external identity providers and provider attributes that have been trusted by the application owner.</p> </important> <p>See also .</p> <p>This action is enabled only for admin access and requires developer credentials.</p>
 adminLinkProviderForUser :: forall eff. AdminLinkProviderForUserRequest -> Aff (err :: AWS.RequestError | eff) AdminLinkProviderForUserResponse
-adminLinkProviderForUser = AWS.request serviceName "AdminLinkProviderForUser" 
+adminLinkProviderForUser = AWS.request serviceName "adminLinkProviderForUser" 
 
 
 -- | <p>Lists devices, as an administrator.</p> <p>Requires developer credentials.</p>
 adminListDevices :: forall eff. AdminListDevicesRequest -> Aff (err :: AWS.RequestError | eff) AdminListDevicesResponse
-adminListDevices = AWS.request serviceName "AdminListDevices" 
+adminListDevices = AWS.request serviceName "adminListDevices" 
 
 
 -- | <p>Lists the groups that the user belongs to.</p> <p>Requires developer credentials.</p>
 adminListGroupsForUser :: forall eff. AdminListGroupsForUserRequest -> Aff (err :: AWS.RequestError | eff) AdminListGroupsForUserResponse
-adminListGroupsForUser = AWS.request serviceName "AdminListGroupsForUser" 
+adminListGroupsForUser = AWS.request serviceName "adminListGroupsForUser" 
 
 
 -- | <p>Lists a history of user activity and any risks detected as part of Amazon Cognito advanced security.</p>
 adminListUserAuthEvents :: forall eff. AdminListUserAuthEventsRequest -> Aff (err :: AWS.RequestError | eff) AdminListUserAuthEventsResponse
-adminListUserAuthEvents = AWS.request serviceName "AdminListUserAuthEvents" 
+adminListUserAuthEvents = AWS.request serviceName "adminListUserAuthEvents" 
 
 
 -- | <p>Removes the specified user from the specified group.</p> <p>Requires developer credentials.</p>
 adminRemoveUserFromGroup :: forall eff. AdminRemoveUserFromGroupRequest -> Aff (err :: AWS.RequestError | eff) Unit
-adminRemoveUserFromGroup = AWS.request serviceName "AdminRemoveUserFromGroup" 
+adminRemoveUserFromGroup = AWS.request serviceName "adminRemoveUserFromGroup" 
 
 
 -- | <p>Resets the specified user's password in a user pool as an administrator. Works on any user.</p> <p>When a developer calls this API, the current password is invalidated, so it must be changed. If a user tries to sign in after the API is called, the app will get a PasswordResetRequiredException exception back and should direct the user down the flow to reset the password, which is the same as the forgot password flow. In addition, if the user pool has phone verification selected and a verified phone number exists for the user, or if email verification is selected and a verified email exists for the user, calling this API will also result in sending a message to the end user with the code to change their password.</p> <p>Requires developer credentials.</p>
 adminResetUserPassword :: forall eff. AdminResetUserPasswordRequest -> Aff (err :: AWS.RequestError | eff) AdminResetUserPasswordResponse
-adminResetUserPassword = AWS.request serviceName "AdminResetUserPassword" 
+adminResetUserPassword = AWS.request serviceName "adminResetUserPassword" 
 
 
 -- | <p>Responds to an authentication challenge, as an administrator.</p> <p>Requires developer credentials.</p>
 adminRespondToAuthChallenge :: forall eff. AdminRespondToAuthChallengeRequest -> Aff (err :: AWS.RequestError | eff) AdminRespondToAuthChallengeResponse
-adminRespondToAuthChallenge = AWS.request serviceName "AdminRespondToAuthChallenge" 
+adminRespondToAuthChallenge = AWS.request serviceName "adminRespondToAuthChallenge" 
 
 
 -- | <p>Sets the user's multi-factor authentication (MFA) preference.</p>
 adminSetUserMFAPreference :: forall eff. AdminSetUserMFAPreferenceRequest -> Aff (err :: AWS.RequestError | eff) AdminSetUserMFAPreferenceResponse
-adminSetUserMFAPreference = AWS.request serviceName "AdminSetUserMFAPreference" 
+adminSetUserMFAPreference = AWS.request serviceName "adminSetUserMFAPreference" 
 
 
 -- | <p>Sets all the user settings for a specified user name. Works on any user.</p> <p>Requires developer credentials.</p>
 adminSetUserSettings :: forall eff. AdminSetUserSettingsRequest -> Aff (err :: AWS.RequestError | eff) AdminSetUserSettingsResponse
-adminSetUserSettings = AWS.request serviceName "AdminSetUserSettings" 
+adminSetUserSettings = AWS.request serviceName "adminSetUserSettings" 
 
 
 -- | <p>Provides feedback for an authentication event as to whether it was from a valid user. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.</p>
 adminUpdateAuthEventFeedback :: forall eff. AdminUpdateAuthEventFeedbackRequest -> Aff (err :: AWS.RequestError | eff) AdminUpdateAuthEventFeedbackResponse
-adminUpdateAuthEventFeedback = AWS.request serviceName "AdminUpdateAuthEventFeedback" 
+adminUpdateAuthEventFeedback = AWS.request serviceName "adminUpdateAuthEventFeedback" 
 
 
 -- | <p>Updates the device status as an administrator.</p> <p>Requires developer credentials.</p>
 adminUpdateDeviceStatus :: forall eff. AdminUpdateDeviceStatusRequest -> Aff (err :: AWS.RequestError | eff) AdminUpdateDeviceStatusResponse
-adminUpdateDeviceStatus = AWS.request serviceName "AdminUpdateDeviceStatus" 
+adminUpdateDeviceStatus = AWS.request serviceName "adminUpdateDeviceStatus" 
 
 
 -- | <p>Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.</p> <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the attribute name.</p> <p>In addition to updating user attributes, this API can also be used to mark phone and email as verified.</p> <p>Requires developer credentials.</p>
 adminUpdateUserAttributes :: forall eff. AdminUpdateUserAttributesRequest -> Aff (err :: AWS.RequestError | eff) AdminUpdateUserAttributesResponse
-adminUpdateUserAttributes = AWS.request serviceName "AdminUpdateUserAttributes" 
+adminUpdateUserAttributes = AWS.request serviceName "adminUpdateUserAttributes" 
 
 
 -- | <p>Signs out users from all devices, as an administrator.</p> <p>Requires developer credentials.</p>
 adminUserGlobalSignOut :: forall eff. AdminUserGlobalSignOutRequest -> Aff (err :: AWS.RequestError | eff) AdminUserGlobalSignOutResponse
-adminUserGlobalSignOut = AWS.request serviceName "AdminUserGlobalSignOut" 
+adminUserGlobalSignOut = AWS.request serviceName "adminUserGlobalSignOut" 
 
 
 -- | <p>Returns a unique generated shared secret key code for the user account. The request takes an access token or a session string, but not both.</p>
 associateSoftwareToken :: forall eff. AssociateSoftwareTokenRequest -> Aff (err :: AWS.RequestError | eff) AssociateSoftwareTokenResponse
-associateSoftwareToken = AWS.request serviceName "AssociateSoftwareToken" 
+associateSoftwareToken = AWS.request serviceName "associateSoftwareToken" 
 
 
 -- | <p>Changes the password for a specified user in a user pool.</p>
 changePassword :: forall eff. ChangePasswordRequest -> Aff (err :: AWS.RequestError | eff) ChangePasswordResponse
-changePassword = AWS.request serviceName "ChangePassword" 
+changePassword = AWS.request serviceName "changePassword" 
 
 
 -- | <p>Confirms tracking of the device. This API call is the call that begins device tracking.</p>
 confirmDevice :: forall eff. ConfirmDeviceRequest -> Aff (err :: AWS.RequestError | eff) ConfirmDeviceResponse
-confirmDevice = AWS.request serviceName "ConfirmDevice" 
+confirmDevice = AWS.request serviceName "confirmDevice" 
 
 
 -- | <p>Allows a user to enter a confirmation code to reset a forgotten password.</p>
 confirmForgotPassword :: forall eff. ConfirmForgotPasswordRequest -> Aff (err :: AWS.RequestError | eff) ConfirmForgotPasswordResponse
-confirmForgotPassword = AWS.request serviceName "ConfirmForgotPassword" 
+confirmForgotPassword = AWS.request serviceName "confirmForgotPassword" 
 
 
 -- | <p>Confirms registration of a user and handles the existing alias from a previous user.</p>
 confirmSignUp :: forall eff. ConfirmSignUpRequest -> Aff (err :: AWS.RequestError | eff) ConfirmSignUpResponse
-confirmSignUp = AWS.request serviceName "ConfirmSignUp" 
+confirmSignUp = AWS.request serviceName "confirmSignUp" 
 
 
 -- | <p>Creates a new group in the specified user pool.</p> <p>Requires developer credentials.</p>
 createGroup :: forall eff. CreateGroupRequest -> Aff (err :: AWS.RequestError | eff) CreateGroupResponse
-createGroup = AWS.request serviceName "CreateGroup" 
+createGroup = AWS.request serviceName "createGroup" 
 
 
 -- | <p>Creates an identity provider for a user pool.</p>
 createIdentityProvider :: forall eff. CreateIdentityProviderRequest -> Aff (err :: AWS.RequestError | eff) CreateIdentityProviderResponse
-createIdentityProvider = AWS.request serviceName "CreateIdentityProvider" 
+createIdentityProvider = AWS.request serviceName "createIdentityProvider" 
 
 
 -- | <p>Creates a new OAuth2.0 resource server and defines custom scopes in it.</p>
 createResourceServer :: forall eff. CreateResourceServerRequest -> Aff (err :: AWS.RequestError | eff) CreateResourceServerResponse
-createResourceServer = AWS.request serviceName "CreateResourceServer" 
+createResourceServer = AWS.request serviceName "createResourceServer" 
 
 
 -- | <p>Creates the user import job.</p>
 createUserImportJob :: forall eff. CreateUserImportJobRequest -> Aff (err :: AWS.RequestError | eff) CreateUserImportJobResponse
-createUserImportJob = AWS.request serviceName "CreateUserImportJob" 
+createUserImportJob = AWS.request serviceName "createUserImportJob" 
 
 
 -- | <p>Creates a new Amazon Cognito user pool and sets the password policy for the pool.</p>
 createUserPool :: forall eff. CreateUserPoolRequest -> Aff (err :: AWS.RequestError | eff) CreateUserPoolResponse
-createUserPool = AWS.request serviceName "CreateUserPool" 
+createUserPool = AWS.request serviceName "createUserPool" 
 
 
 -- | <p>Creates the user pool client.</p>
 createUserPoolClient :: forall eff. CreateUserPoolClientRequest -> Aff (err :: AWS.RequestError | eff) CreateUserPoolClientResponse
-createUserPoolClient = AWS.request serviceName "CreateUserPoolClient" 
+createUserPoolClient = AWS.request serviceName "createUserPoolClient" 
 
 
 -- | <p>Creates a new domain for a user pool.</p>
 createUserPoolDomain :: forall eff. CreateUserPoolDomainRequest -> Aff (err :: AWS.RequestError | eff) CreateUserPoolDomainResponse
-createUserPoolDomain = AWS.request serviceName "CreateUserPoolDomain" 
+createUserPoolDomain = AWS.request serviceName "createUserPoolDomain" 
 
 
 -- | <p>Deletes a group. Currently only groups with no members can be deleted.</p> <p>Requires developer credentials.</p>
 deleteGroup :: forall eff. DeleteGroupRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteGroup = AWS.request serviceName "DeleteGroup" 
+deleteGroup = AWS.request serviceName "deleteGroup" 
 
 
 -- | <p>Deletes an identity provider for a user pool.</p>
 deleteIdentityProvider :: forall eff. DeleteIdentityProviderRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteIdentityProvider = AWS.request serviceName "DeleteIdentityProvider" 
+deleteIdentityProvider = AWS.request serviceName "deleteIdentityProvider" 
 
 
 -- | <p>Deletes a resource server.</p>
 deleteResourceServer :: forall eff. DeleteResourceServerRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteResourceServer = AWS.request serviceName "DeleteResourceServer" 
+deleteResourceServer = AWS.request serviceName "deleteResourceServer" 
 
 
 -- | <p>Allows a user to delete himself or herself.</p>
 deleteUser :: forall eff. DeleteUserRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteUser = AWS.request serviceName "DeleteUser" 
+deleteUser = AWS.request serviceName "deleteUser" 
 
 
 -- | <p>Deletes the attributes for a user.</p>
 deleteUserAttributes :: forall eff. DeleteUserAttributesRequest -> Aff (err :: AWS.RequestError | eff) DeleteUserAttributesResponse
-deleteUserAttributes = AWS.request serviceName "DeleteUserAttributes" 
+deleteUserAttributes = AWS.request serviceName "deleteUserAttributes" 
 
 
 -- | <p>Deletes the specified Amazon Cognito user pool.</p>
 deleteUserPool :: forall eff. DeleteUserPoolRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteUserPool = AWS.request serviceName "DeleteUserPool" 
+deleteUserPool = AWS.request serviceName "deleteUserPool" 
 
 
 -- | <p>Allows the developer to delete the user pool client.</p>
 deleteUserPoolClient :: forall eff. DeleteUserPoolClientRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteUserPoolClient = AWS.request serviceName "DeleteUserPoolClient" 
+deleteUserPoolClient = AWS.request serviceName "deleteUserPoolClient" 
 
 
 -- | <p>Deletes a domain for a user pool.</p>
 deleteUserPoolDomain :: forall eff. DeleteUserPoolDomainRequest -> Aff (err :: AWS.RequestError | eff) DeleteUserPoolDomainResponse
-deleteUserPoolDomain = AWS.request serviceName "DeleteUserPoolDomain" 
+deleteUserPoolDomain = AWS.request serviceName "deleteUserPoolDomain" 
 
 
 -- | <p>Gets information about a specific identity provider.</p>
 describeIdentityProvider :: forall eff. DescribeIdentityProviderRequest -> Aff (err :: AWS.RequestError | eff) DescribeIdentityProviderResponse
-describeIdentityProvider = AWS.request serviceName "DescribeIdentityProvider" 
+describeIdentityProvider = AWS.request serviceName "describeIdentityProvider" 
 
 
 -- | <p>Describes a resource server.</p>
 describeResourceServer :: forall eff. DescribeResourceServerRequest -> Aff (err :: AWS.RequestError | eff) DescribeResourceServerResponse
-describeResourceServer = AWS.request serviceName "DescribeResourceServer" 
+describeResourceServer = AWS.request serviceName "describeResourceServer" 
 
 
 -- | <p>Describes the risk configuration.</p>
 describeRiskConfiguration :: forall eff. DescribeRiskConfigurationRequest -> Aff (err :: AWS.RequestError | eff) DescribeRiskConfigurationResponse
-describeRiskConfiguration = AWS.request serviceName "DescribeRiskConfiguration" 
+describeRiskConfiguration = AWS.request serviceName "describeRiskConfiguration" 
 
 
 -- | <p>Describes the user import job.</p>
 describeUserImportJob :: forall eff. DescribeUserImportJobRequest -> Aff (err :: AWS.RequestError | eff) DescribeUserImportJobResponse
-describeUserImportJob = AWS.request serviceName "DescribeUserImportJob" 
+describeUserImportJob = AWS.request serviceName "describeUserImportJob" 
 
 
 -- | <p>Returns the configuration information and metadata of the specified user pool.</p>
 describeUserPool :: forall eff. DescribeUserPoolRequest -> Aff (err :: AWS.RequestError | eff) DescribeUserPoolResponse
-describeUserPool = AWS.request serviceName "DescribeUserPool" 
+describeUserPool = AWS.request serviceName "describeUserPool" 
 
 
 -- | <p>Client method for returning the configuration information and metadata of the specified user pool client.</p>
 describeUserPoolClient :: forall eff. DescribeUserPoolClientRequest -> Aff (err :: AWS.RequestError | eff) DescribeUserPoolClientResponse
-describeUserPoolClient = AWS.request serviceName "DescribeUserPoolClient" 
+describeUserPoolClient = AWS.request serviceName "describeUserPoolClient" 
 
 
 -- | <p>Gets information about a domain.</p>
 describeUserPoolDomain :: forall eff. DescribeUserPoolDomainRequest -> Aff (err :: AWS.RequestError | eff) DescribeUserPoolDomainResponse
-describeUserPoolDomain = AWS.request serviceName "DescribeUserPoolDomain" 
+describeUserPoolDomain = AWS.request serviceName "describeUserPoolDomain" 
 
 
 -- | <p>Forgets the specified device.</p>
 forgetDevice :: forall eff. ForgetDeviceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-forgetDevice = AWS.request serviceName "ForgetDevice" 
+forgetDevice = AWS.request serviceName "forgetDevice" 
 
 
 -- | <p>Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the <code>Username</code> parameter, you can use the username or user alias. If a verified phone number exists for the user, the confirmation code is sent to the phone number. Otherwise, if a verified email exists, the confirmation code is sent to the email. If neither a verified phone number nor a verified email exists, <code>InvalidParameterException</code> is thrown. To use the confirmation code for resetting the password, call .</p>
 forgotPassword :: forall eff. ForgotPasswordRequest -> Aff (err :: AWS.RequestError | eff) ForgotPasswordResponse
-forgotPassword = AWS.request serviceName "ForgotPassword" 
+forgotPassword = AWS.request serviceName "forgotPassword" 
 
 
 -- | <p>Gets the header information for the .csv file to be used as input for the user import job.</p>
 getCSVHeader :: forall eff. GetCSVHeaderRequest -> Aff (err :: AWS.RequestError | eff) GetCSVHeaderResponse
-getCSVHeader = AWS.request serviceName "GetCSVHeader" 
+getCSVHeader = AWS.request serviceName "getCSVHeader" 
 
 
 -- | <p>Gets the device.</p>
 getDevice :: forall eff. GetDeviceRequest -> Aff (err :: AWS.RequestError | eff) GetDeviceResponse
-getDevice = AWS.request serviceName "GetDevice" 
+getDevice = AWS.request serviceName "getDevice" 
 
 
 -- | <p>Gets a group.</p> <p>Requires developer credentials.</p>
 getGroup :: forall eff. GetGroupRequest -> Aff (err :: AWS.RequestError | eff) GetGroupResponse
-getGroup = AWS.request serviceName "GetGroup" 
+getGroup = AWS.request serviceName "getGroup" 
 
 
 -- | <p>Gets the specified identity provider.</p>
 getIdentityProviderByIdentifier :: forall eff. GetIdentityProviderByIdentifierRequest -> Aff (err :: AWS.RequestError | eff) GetIdentityProviderByIdentifierResponse
-getIdentityProviderByIdentifier = AWS.request serviceName "GetIdentityProviderByIdentifier" 
+getIdentityProviderByIdentifier = AWS.request serviceName "getIdentityProviderByIdentifier" 
 
 
 -- | <p>This method takes a user pool ID, and returns the signing certificate.</p>
 getSigningCertificate :: forall eff. GetSigningCertificateRequest -> Aff (err :: AWS.RequestError | eff) GetSigningCertificateResponse
-getSigningCertificate = AWS.request serviceName "GetSigningCertificate" 
+getSigningCertificate = AWS.request serviceName "getSigningCertificate" 
 
 
 -- | <p>Gets the UI Customization information for a particular app client's app UI, if there is something set. If nothing is set for the particular client, but there is an existing pool level customization (app <code>clientId</code> will be <code>ALL</code>), then that is returned. If nothing is present, then an empty shape is returned.</p>
 getUICustomization :: forall eff. GetUICustomizationRequest -> Aff (err :: AWS.RequestError | eff) GetUICustomizationResponse
-getUICustomization = AWS.request serviceName "GetUICustomization" 
+getUICustomization = AWS.request serviceName "getUICustomization" 
 
 
 -- | <p>Gets the user attributes and metadata for a user.</p>
 getUser :: forall eff. GetUserRequest -> Aff (err :: AWS.RequestError | eff) GetUserResponse
-getUser = AWS.request serviceName "GetUser" 
+getUser = AWS.request serviceName "getUser" 
 
 
 -- | <p>Gets the user attribute verification code for the specified attribute name.</p>
 getUserAttributeVerificationCode :: forall eff. GetUserAttributeVerificationCodeRequest -> Aff (err :: AWS.RequestError | eff) GetUserAttributeVerificationCodeResponse
-getUserAttributeVerificationCode = AWS.request serviceName "GetUserAttributeVerificationCode" 
+getUserAttributeVerificationCode = AWS.request serviceName "getUserAttributeVerificationCode" 
 
 
 -- | <p>Gets the user pool multi-factor authentication (MFA) configuration.</p>
 getUserPoolMfaConfig :: forall eff. GetUserPoolMfaConfigRequest -> Aff (err :: AWS.RequestError | eff) GetUserPoolMfaConfigResponse
-getUserPoolMfaConfig = AWS.request serviceName "GetUserPoolMfaConfig" 
+getUserPoolMfaConfig = AWS.request serviceName "getUserPoolMfaConfig" 
 
 
 -- | <p>Signs out users from all devices.</p>
 globalSignOut :: forall eff. GlobalSignOutRequest -> Aff (err :: AWS.RequestError | eff) GlobalSignOutResponse
-globalSignOut = AWS.request serviceName "GlobalSignOut" 
+globalSignOut = AWS.request serviceName "globalSignOut" 
 
 
 -- | <p>Initiates the authentication flow.</p>
 initiateAuth :: forall eff. InitiateAuthRequest -> Aff (err :: AWS.RequestError | eff) InitiateAuthResponse
-initiateAuth = AWS.request serviceName "InitiateAuth" 
+initiateAuth = AWS.request serviceName "initiateAuth" 
 
 
 -- | <p>Lists the devices.</p>
 listDevices :: forall eff. ListDevicesRequest -> Aff (err :: AWS.RequestError | eff) ListDevicesResponse
-listDevices = AWS.request serviceName "ListDevices" 
+listDevices = AWS.request serviceName "listDevices" 
 
 
 -- | <p>Lists the groups associated with a user pool.</p> <p>Requires developer credentials.</p>
 listGroups :: forall eff. ListGroupsRequest -> Aff (err :: AWS.RequestError | eff) ListGroupsResponse
-listGroups = AWS.request serviceName "ListGroups" 
+listGroups = AWS.request serviceName "listGroups" 
 
 
 -- | <p>Lists information about all identity providers for a user pool.</p>
 listIdentityProviders :: forall eff. ListIdentityProvidersRequest -> Aff (err :: AWS.RequestError | eff) ListIdentityProvidersResponse
-listIdentityProviders = AWS.request serviceName "ListIdentityProviders" 
+listIdentityProviders = AWS.request serviceName "listIdentityProviders" 
 
 
 -- | <p>Lists the resource servers for a user pool.</p>
 listResourceServers :: forall eff. ListResourceServersRequest -> Aff (err :: AWS.RequestError | eff) ListResourceServersResponse
-listResourceServers = AWS.request serviceName "ListResourceServers" 
+listResourceServers = AWS.request serviceName "listResourceServers" 
 
 
 -- | <p>Lists the user import jobs.</p>
 listUserImportJobs :: forall eff. ListUserImportJobsRequest -> Aff (err :: AWS.RequestError | eff) ListUserImportJobsResponse
-listUserImportJobs = AWS.request serviceName "ListUserImportJobs" 
+listUserImportJobs = AWS.request serviceName "listUserImportJobs" 
 
 
 -- | <p>Lists the clients that have been created for the specified user pool.</p>
 listUserPoolClients :: forall eff. ListUserPoolClientsRequest -> Aff (err :: AWS.RequestError | eff) ListUserPoolClientsResponse
-listUserPoolClients = AWS.request serviceName "ListUserPoolClients" 
+listUserPoolClients = AWS.request serviceName "listUserPoolClients" 
 
 
 -- | <p>Lists the user pools associated with an AWS account.</p>
 listUserPools :: forall eff. ListUserPoolsRequest -> Aff (err :: AWS.RequestError | eff) ListUserPoolsResponse
-listUserPools = AWS.request serviceName "ListUserPools" 
+listUserPools = AWS.request serviceName "listUserPools" 
 
 
 -- | <p>Lists the users in the Amazon Cognito user pool.</p>
 listUsers :: forall eff. ListUsersRequest -> Aff (err :: AWS.RequestError | eff) ListUsersResponse
-listUsers = AWS.request serviceName "ListUsers" 
+listUsers = AWS.request serviceName "listUsers" 
 
 
 -- | <p>Lists the users in the specified group.</p> <p>Requires developer credentials.</p>
 listUsersInGroup :: forall eff. ListUsersInGroupRequest -> Aff (err :: AWS.RequestError | eff) ListUsersInGroupResponse
-listUsersInGroup = AWS.request serviceName "ListUsersInGroup" 
+listUsersInGroup = AWS.request serviceName "listUsersInGroup" 
 
 
 -- | <p>Resends the confirmation (for confirmation of registration) to a specific user in the user pool.</p>
 resendConfirmationCode :: forall eff. ResendConfirmationCodeRequest -> Aff (err :: AWS.RequestError | eff) ResendConfirmationCodeResponse
-resendConfirmationCode = AWS.request serviceName "ResendConfirmationCode" 
+resendConfirmationCode = AWS.request serviceName "resendConfirmationCode" 
 
 
 -- | <p>Responds to the authentication challenge.</p>
 respondToAuthChallenge :: forall eff. RespondToAuthChallengeRequest -> Aff (err :: AWS.RequestError | eff) RespondToAuthChallengeResponse
-respondToAuthChallenge = AWS.request serviceName "RespondToAuthChallenge" 
+respondToAuthChallenge = AWS.request serviceName "respondToAuthChallenge" 
 
 
 -- | <p>Configures actions on detected risks. To delete the risk configuration for <code>UserPoolId</code> or <code>ClientId</code>, pass null values for all four configuration types.</p> <p>To enable Amazon Cognito advanced security features, update the user pool to include the <code>UserPoolAddOns</code> key<code>AdvancedSecurityMode</code>.</p> <p>See .</p>
 setRiskConfiguration :: forall eff. SetRiskConfigurationRequest -> Aff (err :: AWS.RequestError | eff) SetRiskConfigurationResponse
-setRiskConfiguration = AWS.request serviceName "SetRiskConfiguration" 
+setRiskConfiguration = AWS.request serviceName "setRiskConfiguration" 
 
 
 -- | <p>Sets the UI customization information for a user pool's built-in app UI.</p> <p>You can specify app UI customization settings for a single client (with a specific <code>clientId</code>) or for all clients (by setting the <code>clientId</code> to <code>ALL</code>). If you specify <code>ALL</code>, the default configuration will be used for every client that has no UI customization set previously. If you specify UI customization settings for a particular client, it will no longer fall back to the <code>ALL</code> configuration. </p> <note> <p>To use this API, your user pool must have a domain associated with it. Otherwise, there is no place to host the app's pages, and the service will throw an error.</p> </note>
 setUICustomization :: forall eff. SetUICustomizationRequest -> Aff (err :: AWS.RequestError | eff) SetUICustomizationResponse
-setUICustomization = AWS.request serviceName "SetUICustomization" 
+setUICustomization = AWS.request serviceName "setUICustomization" 
 
 
 -- | <p>Set the user's multi-factor authentication (MFA) method preference.</p>
 setUserMFAPreference :: forall eff. SetUserMFAPreferenceRequest -> Aff (err :: AWS.RequestError | eff) SetUserMFAPreferenceResponse
-setUserMFAPreference = AWS.request serviceName "SetUserMFAPreference" 
+setUserMFAPreference = AWS.request serviceName "setUserMFAPreference" 
 
 
 -- | <p>Set the user pool MFA configuration.</p>
 setUserPoolMfaConfig :: forall eff. SetUserPoolMfaConfigRequest -> Aff (err :: AWS.RequestError | eff) SetUserPoolMfaConfigResponse
-setUserPoolMfaConfig = AWS.request serviceName "SetUserPoolMfaConfig" 
+setUserPoolMfaConfig = AWS.request serviceName "setUserPoolMfaConfig" 
 
 
 -- | <p>Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.</p>
 setUserSettings :: forall eff. SetUserSettingsRequest -> Aff (err :: AWS.RequestError | eff) SetUserSettingsResponse
-setUserSettings = AWS.request serviceName "SetUserSettings" 
+setUserSettings = AWS.request serviceName "setUserSettings" 
 
 
 -- | <p>Registers the user in the specified user pool and creates a user name, password, and user attributes.</p>
 signUp :: forall eff. SignUpRequest -> Aff (err :: AWS.RequestError | eff) SignUpResponse
-signUp = AWS.request serviceName "SignUp" 
+signUp = AWS.request serviceName "signUp" 
 
 
 -- | <p>Starts the user import.</p>
 startUserImportJob :: forall eff. StartUserImportJobRequest -> Aff (err :: AWS.RequestError | eff) StartUserImportJobResponse
-startUserImportJob = AWS.request serviceName "StartUserImportJob" 
+startUserImportJob = AWS.request serviceName "startUserImportJob" 
 
 
 -- | <p>Stops the user import job.</p>
 stopUserImportJob :: forall eff. StopUserImportJobRequest -> Aff (err :: AWS.RequestError | eff) StopUserImportJobResponse
-stopUserImportJob = AWS.request serviceName "StopUserImportJob" 
+stopUserImportJob = AWS.request serviceName "stopUserImportJob" 
 
 
 -- | <p>Provides the feedback for an authentication event whether it was from a valid user or not. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.</p>
 updateAuthEventFeedback :: forall eff. UpdateAuthEventFeedbackRequest -> Aff (err :: AWS.RequestError | eff) UpdateAuthEventFeedbackResponse
-updateAuthEventFeedback = AWS.request serviceName "UpdateAuthEventFeedback" 
+updateAuthEventFeedback = AWS.request serviceName "updateAuthEventFeedback" 
 
 
 -- | <p>Updates the device status.</p>
 updateDeviceStatus :: forall eff. UpdateDeviceStatusRequest -> Aff (err :: AWS.RequestError | eff) UpdateDeviceStatusResponse
-updateDeviceStatus = AWS.request serviceName "UpdateDeviceStatus" 
+updateDeviceStatus = AWS.request serviceName "updateDeviceStatus" 
 
 
 -- | <p>Updates the specified group with the specified attributes.</p> <p>Requires developer credentials.</p>
 updateGroup :: forall eff. UpdateGroupRequest -> Aff (err :: AWS.RequestError | eff) UpdateGroupResponse
-updateGroup = AWS.request serviceName "UpdateGroup" 
+updateGroup = AWS.request serviceName "updateGroup" 
 
 
 -- | <p>Updates identity provider information for a user pool.</p>
 updateIdentityProvider :: forall eff. UpdateIdentityProviderRequest -> Aff (err :: AWS.RequestError | eff) UpdateIdentityProviderResponse
-updateIdentityProvider = AWS.request serviceName "UpdateIdentityProvider" 
+updateIdentityProvider = AWS.request serviceName "updateIdentityProvider" 
 
 
 -- | <p>Updates the name and scopes of resource server. All other fields are read-only.</p>
 updateResourceServer :: forall eff. UpdateResourceServerRequest -> Aff (err :: AWS.RequestError | eff) UpdateResourceServerResponse
-updateResourceServer = AWS.request serviceName "UpdateResourceServer" 
+updateResourceServer = AWS.request serviceName "updateResourceServer" 
 
 
 -- | <p>Allows a user to update a specific attribute (one at a time).</p>
 updateUserAttributes :: forall eff. UpdateUserAttributesRequest -> Aff (err :: AWS.RequestError | eff) UpdateUserAttributesResponse
-updateUserAttributes = AWS.request serviceName "UpdateUserAttributes" 
+updateUserAttributes = AWS.request serviceName "updateUserAttributes" 
 
 
 -- | <p>Updates the specified user pool with the specified attributes.</p>
 updateUserPool :: forall eff. UpdateUserPoolRequest -> Aff (err :: AWS.RequestError | eff) UpdateUserPoolResponse
-updateUserPool = AWS.request serviceName "UpdateUserPool" 
+updateUserPool = AWS.request serviceName "updateUserPool" 
 
 
 -- | <p>Allows the developer to update the specified user pool client and password policy.</p>
 updateUserPoolClient :: forall eff. UpdateUserPoolClientRequest -> Aff (err :: AWS.RequestError | eff) UpdateUserPoolClientResponse
-updateUserPoolClient = AWS.request serviceName "UpdateUserPoolClient" 
+updateUserPoolClient = AWS.request serviceName "updateUserPoolClient" 
 
 
 -- | <p>Use this API to register a user's entered TOTP code and mark the user's software token MFA status as "verified" if successful,</p>
 verifySoftwareToken :: forall eff. VerifySoftwareTokenRequest -> Aff (err :: AWS.RequestError | eff) VerifySoftwareTokenResponse
-verifySoftwareToken = AWS.request serviceName "VerifySoftwareToken" 
+verifySoftwareToken = AWS.request serviceName "verifySoftwareToken" 
 
 
 -- | <p>Verifies the specified user attributes in the user pool.</p>
 verifyUserAttribute :: forall eff. VerifyUserAttributeRequest -> Aff (err :: AWS.RequestError | eff) VerifyUserAttributeResponse
-verifyUserAttribute = AWS.request serviceName "VerifyUserAttribute" 
+verifyUserAttribute = AWS.request serviceName "verifyUserAttribute" 
 
 
 newtype AWSAccountIdType = AWSAccountIdType String

@@ -16,97 +16,97 @@ serviceName = "Discovery" :: String
 
 -- | <p>Associates one or more configuration items with an application.</p>
 associateConfigurationItemsToApplication :: forall eff. AssociateConfigurationItemsToApplicationRequest -> Aff (err :: AWS.RequestError | eff) AssociateConfigurationItemsToApplicationResponse
-associateConfigurationItemsToApplication = AWS.request serviceName "AssociateConfigurationItemsToApplication" 
+associateConfigurationItemsToApplication = AWS.request serviceName "associateConfigurationItemsToApplication" 
 
 
 -- | <p>Creates an application with the given name and description.</p>
 createApplication :: forall eff. CreateApplicationRequest -> Aff (err :: AWS.RequestError | eff) CreateApplicationResponse
-createApplication = AWS.request serviceName "CreateApplication" 
+createApplication = AWS.request serviceName "createApplication" 
 
 
 -- | <p>Creates one or more tags for configuration items. Tags are metadata that help you categorize IT assets. This API accepts a list of multiple configuration items.</p>
 createTags :: forall eff. CreateTagsRequest -> Aff (err :: AWS.RequestError | eff) CreateTagsResponse
-createTags = AWS.request serviceName "CreateTags" 
+createTags = AWS.request serviceName "createTags" 
 
 
 -- | <p>Deletes a list of applications and their associations with configuration items.</p>
 deleteApplications :: forall eff. DeleteApplicationsRequest -> Aff (err :: AWS.RequestError | eff) DeleteApplicationsResponse
-deleteApplications = AWS.request serviceName "DeleteApplications" 
+deleteApplications = AWS.request serviceName "deleteApplications" 
 
 
 -- | <p>Deletes the association between configuration items and one or more tags. This API accepts a list of multiple configuration items.</p>
 deleteTags :: forall eff. DeleteTagsRequest -> Aff (err :: AWS.RequestError | eff) DeleteTagsResponse
-deleteTags = AWS.request serviceName "DeleteTags" 
+deleteTags = AWS.request serviceName "deleteTags" 
 
 
 -- | <p>Lists agents or the Connector by ID or lists all agents/Connectors associated with your user account if you did not specify an ID.</p>
 describeAgents :: forall eff. DescribeAgentsRequest -> Aff (err :: AWS.RequestError | eff) DescribeAgentsResponse
-describeAgents = AWS.request serviceName "DescribeAgents" 
+describeAgents = AWS.request serviceName "describeAgents" 
 
 
 -- | <p>Retrieves attributes for a list of configuration item IDs. All of the supplied IDs must be for the same asset type (server, application, process, or connection). Output fields are specific to the asset type selected. For example, the output for a <i>server</i> configuration item includes a list of attributes about the server, such as host name, operating system, and number of network cards.</p> <p>For a complete list of outputs for each asset type, see <a href="http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#DescribeConfigurations">Using the DescribeConfigurations Action</a>.</p>
 describeConfigurations :: forall eff. DescribeConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) DescribeConfigurationsResponse
-describeConfigurations = AWS.request serviceName "DescribeConfigurations" 
+describeConfigurations = AWS.request serviceName "describeConfigurations" 
 
 
 -- | <p>Deprecated. Use <code>DescribeExportTasks</code> instead.</p> <p>Retrieves the status of a given export process. You can retrieve status from a maximum of 100 processes.</p>
 describeExportConfigurations :: forall eff. DescribeExportConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) DescribeExportConfigurationsResponse
-describeExportConfigurations = AWS.request serviceName "DescribeExportConfigurations" 
+describeExportConfigurations = AWS.request serviceName "describeExportConfigurations" 
 
 
 -- | <p>Retrieve status of one or more export tasks. You can retrieve the status of up to 100 export tasks.</p>
 describeExportTasks :: forall eff. DescribeExportTasksRequest -> Aff (err :: AWS.RequestError | eff) DescribeExportTasksResponse
-describeExportTasks = AWS.request serviceName "DescribeExportTasks" 
+describeExportTasks = AWS.request serviceName "describeExportTasks" 
 
 
 -- | <p>Retrieves a list of configuration items that are tagged with a specific tag. Or retrieves a list of all tags assigned to a specific configuration item.</p>
 describeTags :: forall eff. DescribeTagsRequest -> Aff (err :: AWS.RequestError | eff) DescribeTagsResponse
-describeTags = AWS.request serviceName "DescribeTags" 
+describeTags = AWS.request serviceName "describeTags" 
 
 
 -- | <p>Disassociates one or more configuration items from an application.</p>
 disassociateConfigurationItemsFromApplication :: forall eff. DisassociateConfigurationItemsFromApplicationRequest -> Aff (err :: AWS.RequestError | eff) DisassociateConfigurationItemsFromApplicationResponse
-disassociateConfigurationItemsFromApplication = AWS.request serviceName "DisassociateConfigurationItemsFromApplication" 
+disassociateConfigurationItemsFromApplication = AWS.request serviceName "disassociateConfigurationItemsFromApplication" 
 
 
 -- | <p>Deprecated. Use <code>StartExportTask</code> instead.</p> <p>Exports all discovered configuration data to an Amazon S3 bucket or an application that enables you to view and evaluate the data. Data includes tags and tag associations, processes, connections, servers, and system performance. This API returns an export ID that you can query using the <i>DescribeExportConfigurations</i> API. The system imposes a limit of two configuration exports in six hours.</p>
 exportConfigurations :: forall eff.  Aff (err :: AWS.RequestError | eff) ExportConfigurationsResponse
-exportConfigurations = AWS.request serviceName "ExportConfigurations" unit
+exportConfigurations = AWS.request serviceName "exportConfigurations" unit
 
 
 -- | <p>Retrieves a short summary of discovered assets.</p>
 getDiscoverySummary :: forall eff. GetDiscoverySummaryRequest -> Aff (err :: AWS.RequestError | eff) GetDiscoverySummaryResponse
-getDiscoverySummary = AWS.request serviceName "GetDiscoverySummary" 
+getDiscoverySummary = AWS.request serviceName "getDiscoverySummary" 
 
 
 -- | <p>Retrieves a list of configuration items according to criteria that you specify in a filter. The filter criteria identifies the relationship requirements.</p>
 listConfigurations :: forall eff. ListConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) ListConfigurationsResponse
-listConfigurations = AWS.request serviceName "ListConfigurations" 
+listConfigurations = AWS.request serviceName "listConfigurations" 
 
 
 -- | <p>Retrieves a list of servers that are one network hop away from a specified server.</p>
 listServerNeighbors :: forall eff. ListServerNeighborsRequest -> Aff (err :: AWS.RequestError | eff) ListServerNeighborsResponse
-listServerNeighbors = AWS.request serviceName "ListServerNeighbors" 
+listServerNeighbors = AWS.request serviceName "listServerNeighbors" 
 
 
 -- | <p>Instructs the specified agents or connectors to start collecting data.</p>
 startDataCollectionByAgentIds :: forall eff. StartDataCollectionByAgentIdsRequest -> Aff (err :: AWS.RequestError | eff) StartDataCollectionByAgentIdsResponse
-startDataCollectionByAgentIds = AWS.request serviceName "StartDataCollectionByAgentIds" 
+startDataCollectionByAgentIds = AWS.request serviceName "startDataCollectionByAgentIds" 
 
 
 -- | <p> Begins the export of discovered data to an S3 bucket.</p> <p> If you specify <code>agentIds</code> in a filter, the task exports up to 72 hours of detailed data collected by the identified Application Discovery Agent, including network, process, and performance details. A time range for exported agent data may be set by using <code>startTime</code> and <code>endTime</code>. Export of detailed agent data is limited to five concurrently running exports. </p> <p> If you do not include an <code>agentIds</code> filter, summary data is exported that includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery Agents. Export of summary data is limited to two exports per day. </p>
 startExportTask :: forall eff. StartExportTaskRequest -> Aff (err :: AWS.RequestError | eff) StartExportTaskResponse
-startExportTask = AWS.request serviceName "StartExportTask" 
+startExportTask = AWS.request serviceName "startExportTask" 
 
 
 -- | <p>Instructs the specified agents or connectors to stop collecting data.</p>
 stopDataCollectionByAgentIds :: forall eff. StopDataCollectionByAgentIdsRequest -> Aff (err :: AWS.RequestError | eff) StopDataCollectionByAgentIdsResponse
-stopDataCollectionByAgentIds = AWS.request serviceName "StopDataCollectionByAgentIds" 
+stopDataCollectionByAgentIds = AWS.request serviceName "stopDataCollectionByAgentIds" 
 
 
 -- | <p>Updates metadata about an application.</p>
 updateApplication :: forall eff. UpdateApplicationRequest -> Aff (err :: AWS.RequestError | eff) UpdateApplicationResponse
-updateApplication = AWS.request serviceName "UpdateApplication" 
+updateApplication = AWS.request serviceName "updateApplication" 
 
 
 -- | <p>Information about agents or connectors that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation, and whether the agent/connector configuration was updated.</p>

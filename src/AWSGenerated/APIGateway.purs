@@ -16,589 +16,589 @@ serviceName = "APIGateway" :: String
 
 -- | <p>Create an <a>ApiKey</a> resource. </p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html">AWS CLI</a></div>
 createApiKey :: forall eff. CreateApiKeyRequest -> Aff (err :: AWS.RequestError | eff) ApiKey
-createApiKey = AWS.request serviceName "CreateApiKey" 
+createApiKey = AWS.request serviceName "createApiKey" 
 
 
 -- | <p>Adds a new <a>Authorizer</a> resource to an existing <a>RestApi</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html">AWS CLI</a></div>
 createAuthorizer :: forall eff. CreateAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) Authorizer
-createAuthorizer = AWS.request serviceName "CreateAuthorizer" 
+createAuthorizer = AWS.request serviceName "createAuthorizer" 
 
 
 -- | <p>Creates a new <a>BasePathMapping</a> resource.</p>
 createBasePathMapping :: forall eff. CreateBasePathMappingRequest -> Aff (err :: AWS.RequestError | eff) BasePathMapping
-createBasePathMapping = AWS.request serviceName "CreateBasePathMapping" 
+createBasePathMapping = AWS.request serviceName "createBasePathMapping" 
 
 
 -- | <p>Creates a <a>Deployment</a> resource, which makes a specified <a>RestApi</a> callable over the internet.</p>
 createDeployment :: forall eff. CreateDeploymentRequest -> Aff (err :: AWS.RequestError | eff) Deployment
-createDeployment = AWS.request serviceName "CreateDeployment" 
+createDeployment = AWS.request serviceName "createDeployment" 
 
 
 createDocumentationPart :: forall eff. CreateDocumentationPartRequest -> Aff (err :: AWS.RequestError | eff) DocumentationPart
-createDocumentationPart = AWS.request serviceName "CreateDocumentationPart" 
+createDocumentationPart = AWS.request serviceName "createDocumentationPart" 
 
 
 createDocumentationVersion :: forall eff. CreateDocumentationVersionRequest -> Aff (err :: AWS.RequestError | eff) DocumentationVersion
-createDocumentationVersion = AWS.request serviceName "CreateDocumentationVersion" 
+createDocumentationVersion = AWS.request serviceName "createDocumentationVersion" 
 
 
 -- | <p>Creates a new domain name.</p>
 createDomainName :: forall eff. CreateDomainNameRequest -> Aff (err :: AWS.RequestError | eff) DomainName
-createDomainName = AWS.request serviceName "CreateDomainName" 
+createDomainName = AWS.request serviceName "createDomainName" 
 
 
 -- | <p>Adds a new <a>Model</a> resource to an existing <a>RestApi</a> resource.</p>
 createModel :: forall eff. CreateModelRequest -> Aff (err :: AWS.RequestError | eff) Model
-createModel = AWS.request serviceName "CreateModel" 
+createModel = AWS.request serviceName "createModel" 
 
 
 -- | <p>Creates a <a>ReqeustValidator</a> of a given <a>RestApi</a>.</p>
 createRequestValidator :: forall eff. CreateRequestValidatorRequest -> Aff (err :: AWS.RequestError | eff) RequestValidator
-createRequestValidator = AWS.request serviceName "CreateRequestValidator" 
+createRequestValidator = AWS.request serviceName "createRequestValidator" 
 
 
 -- | <p>Creates a <a>Resource</a> resource.</p>
 createResource :: forall eff. CreateResourceRequest -> Aff (err :: AWS.RequestError | eff) Resource
-createResource = AWS.request serviceName "CreateResource" 
+createResource = AWS.request serviceName "createResource" 
 
 
 -- | <p>Creates a new <a>RestApi</a> resource.</p>
 createRestApi :: forall eff. CreateRestApiRequest -> Aff (err :: AWS.RequestError | eff) RestApi
-createRestApi = AWS.request serviceName "CreateRestApi" 
+createRestApi = AWS.request serviceName "createRestApi" 
 
 
 -- | <p>Creates a new <a>Stage</a> resource that references a pre-existing <a>Deployment</a> for the API. </p>
 createStage :: forall eff. CreateStageRequest -> Aff (err :: AWS.RequestError | eff) Stage
-createStage = AWS.request serviceName "CreateStage" 
+createStage = AWS.request serviceName "createStage" 
 
 
 -- | <p>Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload. </p>
 createUsagePlan :: forall eff. CreateUsagePlanRequest -> Aff (err :: AWS.RequestError | eff) UsagePlan
-createUsagePlan = AWS.request serviceName "CreateUsagePlan" 
+createUsagePlan = AWS.request serviceName "createUsagePlan" 
 
 
 -- | <p>Creates a usage plan key for adding an existing API key to a usage plan.</p>
 createUsagePlanKey :: forall eff. CreateUsagePlanKeyRequest -> Aff (err :: AWS.RequestError | eff) UsagePlanKey
-createUsagePlanKey = AWS.request serviceName "CreateUsagePlanKey" 
+createUsagePlanKey = AWS.request serviceName "createUsagePlanKey" 
 
 
 -- | <p>Creates a VPC link, under the caller's account in a selected region, in an asynchronous operation that typically takes 2-4 minutes to complete and become operational. The caller must have permissions to create and update VPC Endpoint services.</p>
 createVpcLink :: forall eff. CreateVpcLinkRequest -> Aff (err :: AWS.RequestError | eff) VpcLink
-createVpcLink = AWS.request serviceName "CreateVpcLink" 
+createVpcLink = AWS.request serviceName "createVpcLink" 
 
 
 -- | <p>Deletes the <a>ApiKey</a> resource.</p>
 deleteApiKey :: forall eff. DeleteApiKeyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteApiKey = AWS.request serviceName "DeleteApiKey" 
+deleteApiKey = AWS.request serviceName "deleteApiKey" 
 
 
 -- | <p>Deletes an existing <a>Authorizer</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/delete-authorizer.html">AWS CLI</a></div>
 deleteAuthorizer :: forall eff. DeleteAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteAuthorizer = AWS.request serviceName "DeleteAuthorizer" 
+deleteAuthorizer = AWS.request serviceName "deleteAuthorizer" 
 
 
 -- | <p>Deletes the <a>BasePathMapping</a> resource.</p>
 deleteBasePathMapping :: forall eff. DeleteBasePathMappingRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBasePathMapping = AWS.request serviceName "DeleteBasePathMapping" 
+deleteBasePathMapping = AWS.request serviceName "deleteBasePathMapping" 
 
 
 -- | <p>Deletes the <a>ClientCertificate</a> resource.</p>
 deleteClientCertificate :: forall eff. DeleteClientCertificateRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteClientCertificate = AWS.request serviceName "DeleteClientCertificate" 
+deleteClientCertificate = AWS.request serviceName "deleteClientCertificate" 
 
 
 -- | <p>Deletes a <a>Deployment</a> resource. Deleting a deployment will only succeed if there are no <a>Stage</a> resources associated with it.</p>
 deleteDeployment :: forall eff. DeleteDeploymentRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDeployment = AWS.request serviceName "DeleteDeployment" 
+deleteDeployment = AWS.request serviceName "deleteDeployment" 
 
 
 deleteDocumentationPart :: forall eff. DeleteDocumentationPartRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDocumentationPart = AWS.request serviceName "DeleteDocumentationPart" 
+deleteDocumentationPart = AWS.request serviceName "deleteDocumentationPart" 
 
 
 deleteDocumentationVersion :: forall eff. DeleteDocumentationVersionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDocumentationVersion = AWS.request serviceName "DeleteDocumentationVersion" 
+deleteDocumentationVersion = AWS.request serviceName "deleteDocumentationVersion" 
 
 
 -- | <p>Deletes the <a>DomainName</a> resource.</p>
 deleteDomainName :: forall eff. DeleteDomainNameRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDomainName = AWS.request serviceName "DeleteDomainName" 
+deleteDomainName = AWS.request serviceName "deleteDomainName" 
 
 
 -- | <p>Clears any customization of a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a> and resets it with the default settings.</p>
 deleteGatewayResponse :: forall eff. DeleteGatewayResponseRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteGatewayResponse = AWS.request serviceName "DeleteGatewayResponse" 
+deleteGatewayResponse = AWS.request serviceName "deleteGatewayResponse" 
 
 
 -- | <p>Represents a delete integration.</p>
 deleteIntegration :: forall eff. DeleteIntegrationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteIntegration = AWS.request serviceName "DeleteIntegration" 
+deleteIntegration = AWS.request serviceName "deleteIntegration" 
 
 
 -- | <p>Represents a delete integration response.</p>
 deleteIntegrationResponse :: forall eff. DeleteIntegrationResponseRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteIntegrationResponse = AWS.request serviceName "DeleteIntegrationResponse" 
+deleteIntegrationResponse = AWS.request serviceName "deleteIntegrationResponse" 
 
 
 -- | <p>Deletes an existing <a>Method</a> resource.</p>
 deleteMethod :: forall eff. DeleteMethodRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteMethod = AWS.request serviceName "DeleteMethod" 
+deleteMethod = AWS.request serviceName "deleteMethod" 
 
 
 -- | <p>Deletes an existing <a>MethodResponse</a> resource.</p>
 deleteMethodResponse :: forall eff. DeleteMethodResponseRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteMethodResponse = AWS.request serviceName "DeleteMethodResponse" 
+deleteMethodResponse = AWS.request serviceName "deleteMethodResponse" 
 
 
 -- | <p>Deletes a model.</p>
 deleteModel :: forall eff. DeleteModelRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteModel = AWS.request serviceName "DeleteModel" 
+deleteModel = AWS.request serviceName "deleteModel" 
 
 
 -- | <p>Deletes a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
 deleteRequestValidator :: forall eff. DeleteRequestValidatorRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteRequestValidator = AWS.request serviceName "DeleteRequestValidator" 
+deleteRequestValidator = AWS.request serviceName "deleteRequestValidator" 
 
 
 -- | <p>Deletes a <a>Resource</a> resource.</p>
 deleteResource :: forall eff. DeleteResourceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteResource = AWS.request serviceName "DeleteResource" 
+deleteResource = AWS.request serviceName "deleteResource" 
 
 
 -- | <p>Deletes the specified API.</p>
 deleteRestApi :: forall eff. DeleteRestApiRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteRestApi = AWS.request serviceName "DeleteRestApi" 
+deleteRestApi = AWS.request serviceName "deleteRestApi" 
 
 
 -- | <p>Deletes a <a>Stage</a> resource.</p>
 deleteStage :: forall eff. DeleteStageRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteStage = AWS.request serviceName "DeleteStage" 
+deleteStage = AWS.request serviceName "deleteStage" 
 
 
 -- | <p>Deletes a usage plan of a given plan Id.</p>
 deleteUsagePlan :: forall eff. DeleteUsagePlanRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteUsagePlan = AWS.request serviceName "DeleteUsagePlan" 
+deleteUsagePlan = AWS.request serviceName "deleteUsagePlan" 
 
 
 -- | <p>Deletes a usage plan key and remove the underlying API key from the associated usage plan.</p>
 deleteUsagePlanKey :: forall eff. DeleteUsagePlanKeyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteUsagePlanKey = AWS.request serviceName "DeleteUsagePlanKey" 
+deleteUsagePlanKey = AWS.request serviceName "deleteUsagePlanKey" 
 
 
 -- | <p>Deletes an existing <a>VpcLink</a> of a specified identifier.</p>
 deleteVpcLink :: forall eff. DeleteVpcLinkRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteVpcLink = AWS.request serviceName "DeleteVpcLink" 
+deleteVpcLink = AWS.request serviceName "deleteVpcLink" 
 
 
 -- | <p>Flushes all authorizer cache entries on a stage.</p>
 flushStageAuthorizersCache :: forall eff. FlushStageAuthorizersCacheRequest -> Aff (err :: AWS.RequestError | eff) Unit
-flushStageAuthorizersCache = AWS.request serviceName "FlushStageAuthorizersCache" 
+flushStageAuthorizersCache = AWS.request serviceName "flushStageAuthorizersCache" 
 
 
 -- | <p>Flushes a stage's cache.</p>
 flushStageCache :: forall eff. FlushStageCacheRequest -> Aff (err :: AWS.RequestError | eff) Unit
-flushStageCache = AWS.request serviceName "FlushStageCache" 
+flushStageCache = AWS.request serviceName "flushStageCache" 
 
 
 -- | <p>Generates a <a>ClientCertificate</a> resource.</p>
 generateClientCertificate :: forall eff. GenerateClientCertificateRequest -> Aff (err :: AWS.RequestError | eff) ClientCertificate
-generateClientCertificate = AWS.request serviceName "GenerateClientCertificate" 
+generateClientCertificate = AWS.request serviceName "generateClientCertificate" 
 
 
 -- | <p>Gets information about the current <a>Account</a> resource.</p>
 getAccount :: forall eff. GetAccountRequest -> Aff (err :: AWS.RequestError | eff) Account
-getAccount = AWS.request serviceName "GetAccount" 
+getAccount = AWS.request serviceName "getAccount" 
 
 
 -- | <p>Gets information about the current <a>ApiKey</a> resource.</p>
 getApiKey :: forall eff. GetApiKeyRequest -> Aff (err :: AWS.RequestError | eff) ApiKey
-getApiKey = AWS.request serviceName "GetApiKey" 
+getApiKey = AWS.request serviceName "getApiKey" 
 
 
 -- | <p>Gets information about the current <a>ApiKeys</a> resource.</p>
 getApiKeys :: forall eff. GetApiKeysRequest -> Aff (err :: AWS.RequestError | eff) ApiKeys
-getApiKeys = AWS.request serviceName "GetApiKeys" 
+getApiKeys = AWS.request serviceName "getApiKeys" 
 
 
 -- | <p>Describe an existing <a>Authorizer</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html">AWS CLI</a></div>
 getAuthorizer :: forall eff. GetAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) Authorizer
-getAuthorizer = AWS.request serviceName "GetAuthorizer" 
+getAuthorizer = AWS.request serviceName "getAuthorizer" 
 
 
 -- | <p>Describe an existing <a>Authorizers</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html">AWS CLI</a></div>
 getAuthorizers :: forall eff. GetAuthorizersRequest -> Aff (err :: AWS.RequestError | eff) Authorizers
-getAuthorizers = AWS.request serviceName "GetAuthorizers" 
+getAuthorizers = AWS.request serviceName "getAuthorizers" 
 
 
 -- | <p>Describe a <a>BasePathMapping</a> resource.</p>
 getBasePathMapping :: forall eff. GetBasePathMappingRequest -> Aff (err :: AWS.RequestError | eff) BasePathMapping
-getBasePathMapping = AWS.request serviceName "GetBasePathMapping" 
+getBasePathMapping = AWS.request serviceName "getBasePathMapping" 
 
 
 -- | <p>Represents a collection of <a>BasePathMapping</a> resources.</p>
 getBasePathMappings :: forall eff. GetBasePathMappingsRequest -> Aff (err :: AWS.RequestError | eff) BasePathMappings
-getBasePathMappings = AWS.request serviceName "GetBasePathMappings" 
+getBasePathMappings = AWS.request serviceName "getBasePathMappings" 
 
 
 -- | <p>Gets information about the current <a>ClientCertificate</a> resource.</p>
 getClientCertificate :: forall eff. GetClientCertificateRequest -> Aff (err :: AWS.RequestError | eff) ClientCertificate
-getClientCertificate = AWS.request serviceName "GetClientCertificate" 
+getClientCertificate = AWS.request serviceName "getClientCertificate" 
 
 
 -- | <p>Gets a collection of <a>ClientCertificate</a> resources.</p>
 getClientCertificates :: forall eff. GetClientCertificatesRequest -> Aff (err :: AWS.RequestError | eff) ClientCertificates
-getClientCertificates = AWS.request serviceName "GetClientCertificates" 
+getClientCertificates = AWS.request serviceName "getClientCertificates" 
 
 
 -- | <p>Gets information about a <a>Deployment</a> resource.</p>
 getDeployment :: forall eff. GetDeploymentRequest -> Aff (err :: AWS.RequestError | eff) Deployment
-getDeployment = AWS.request serviceName "GetDeployment" 
+getDeployment = AWS.request serviceName "getDeployment" 
 
 
 -- | <p>Gets information about a <a>Deployments</a> collection.</p>
 getDeployments :: forall eff. GetDeploymentsRequest -> Aff (err :: AWS.RequestError | eff) Deployments
-getDeployments = AWS.request serviceName "GetDeployments" 
+getDeployments = AWS.request serviceName "getDeployments" 
 
 
 getDocumentationPart :: forall eff. GetDocumentationPartRequest -> Aff (err :: AWS.RequestError | eff) DocumentationPart
-getDocumentationPart = AWS.request serviceName "GetDocumentationPart" 
+getDocumentationPart = AWS.request serviceName "getDocumentationPart" 
 
 
 getDocumentationParts :: forall eff. GetDocumentationPartsRequest -> Aff (err :: AWS.RequestError | eff) DocumentationParts
-getDocumentationParts = AWS.request serviceName "GetDocumentationParts" 
+getDocumentationParts = AWS.request serviceName "getDocumentationParts" 
 
 
 getDocumentationVersion :: forall eff. GetDocumentationVersionRequest -> Aff (err :: AWS.RequestError | eff) DocumentationVersion
-getDocumentationVersion = AWS.request serviceName "GetDocumentationVersion" 
+getDocumentationVersion = AWS.request serviceName "getDocumentationVersion" 
 
 
 getDocumentationVersions :: forall eff. GetDocumentationVersionsRequest -> Aff (err :: AWS.RequestError | eff) DocumentationVersions
-getDocumentationVersions = AWS.request serviceName "GetDocumentationVersions" 
+getDocumentationVersions = AWS.request serviceName "getDocumentationVersions" 
 
 
 -- | <p>Represents a domain name that is contained in a simpler, more intuitive URL that can be called.</p>
 getDomainName :: forall eff. GetDomainNameRequest -> Aff (err :: AWS.RequestError | eff) DomainName
-getDomainName = AWS.request serviceName "GetDomainName" 
+getDomainName = AWS.request serviceName "getDomainName" 
 
 
 -- | <p>Represents a collection of <a>DomainName</a> resources.</p>
 getDomainNames :: forall eff. GetDomainNamesRequest -> Aff (err :: AWS.RequestError | eff) DomainNames
-getDomainNames = AWS.request serviceName "GetDomainNames" 
+getDomainNames = AWS.request serviceName "getDomainNames" 
 
 
 -- | <p>Exports a deployed version of a <a>RestApi</a> in a specified format.</p>
 getExport :: forall eff. GetExportRequest -> Aff (err :: AWS.RequestError | eff) ExportResponse
-getExport = AWS.request serviceName "GetExport" 
+getExport = AWS.request serviceName "getExport" 
 
 
 -- | <p>Gets a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a>.</p>
 getGatewayResponse :: forall eff. GetGatewayResponseRequest -> Aff (err :: AWS.RequestError | eff) GatewayResponse
-getGatewayResponse = AWS.request serviceName "GetGatewayResponse" 
+getGatewayResponse = AWS.request serviceName "getGatewayResponse" 
 
 
 -- | <p>Gets the <a>GatewayResponses</a> collection on the given <a>RestApi</a>. If an API developer has not added any definitions for gateway responses, the result will be the API Gateway-generated default <a>GatewayResponses</a> collection for the supported response types.</p>
 getGatewayResponses :: forall eff. GetGatewayResponsesRequest -> Aff (err :: AWS.RequestError | eff) GatewayResponses
-getGatewayResponses = AWS.request serviceName "GetGatewayResponses" 
+getGatewayResponses = AWS.request serviceName "getGatewayResponses" 
 
 
 -- | <p>Get the integration settings.</p>
 getIntegration :: forall eff. GetIntegrationRequest -> Aff (err :: AWS.RequestError | eff) Integration
-getIntegration = AWS.request serviceName "GetIntegration" 
+getIntegration = AWS.request serviceName "getIntegration" 
 
 
 -- | <p>Represents a get integration response.</p>
 getIntegrationResponse :: forall eff. GetIntegrationResponseRequest -> Aff (err :: AWS.RequestError | eff) IntegrationResponse
-getIntegrationResponse = AWS.request serviceName "GetIntegrationResponse" 
+getIntegrationResponse = AWS.request serviceName "getIntegrationResponse" 
 
 
 -- | <p>Describe an existing <a>Method</a> resource.</p>
 getMethod :: forall eff. GetMethodRequest -> Aff (err :: AWS.RequestError | eff) Method
-getMethod = AWS.request serviceName "GetMethod" 
+getMethod = AWS.request serviceName "getMethod" 
 
 
 -- | <p>Describes a <a>MethodResponse</a> resource.</p>
 getMethodResponse :: forall eff. GetMethodResponseRequest -> Aff (err :: AWS.RequestError | eff) MethodResponse
-getMethodResponse = AWS.request serviceName "GetMethodResponse" 
+getMethodResponse = AWS.request serviceName "getMethodResponse" 
 
 
 -- | <p>Describes an existing model defined for a <a>RestApi</a> resource.</p>
 getModel :: forall eff. GetModelRequest -> Aff (err :: AWS.RequestError | eff) Model
-getModel = AWS.request serviceName "GetModel" 
+getModel = AWS.request serviceName "getModel" 
 
 
 -- | <p>Generates a sample mapping template that can be used to transform a payload into the structure of a model.</p>
 getModelTemplate :: forall eff. GetModelTemplateRequest -> Aff (err :: AWS.RequestError | eff) Template
-getModelTemplate = AWS.request serviceName "GetModelTemplate" 
+getModelTemplate = AWS.request serviceName "getModelTemplate" 
 
 
 -- | <p>Describes existing <a>Models</a> defined for a <a>RestApi</a> resource.</p>
 getModels :: forall eff. GetModelsRequest -> Aff (err :: AWS.RequestError | eff) Models
-getModels = AWS.request serviceName "GetModels" 
+getModels = AWS.request serviceName "getModels" 
 
 
 -- | <p>Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
 getRequestValidator :: forall eff. GetRequestValidatorRequest -> Aff (err :: AWS.RequestError | eff) RequestValidator
-getRequestValidator = AWS.request serviceName "GetRequestValidator" 
+getRequestValidator = AWS.request serviceName "getRequestValidator" 
 
 
 -- | <p>Gets the <a>RequestValidators</a> collection of a given <a>RestApi</a>.</p>
 getRequestValidators :: forall eff. GetRequestValidatorsRequest -> Aff (err :: AWS.RequestError | eff) RequestValidators
-getRequestValidators = AWS.request serviceName "GetRequestValidators" 
+getRequestValidators = AWS.request serviceName "getRequestValidators" 
 
 
 -- | <p>Lists information about a resource.</p>
 getResource :: forall eff. GetResourceRequest -> Aff (err :: AWS.RequestError | eff) Resource
-getResource = AWS.request serviceName "GetResource" 
+getResource = AWS.request serviceName "getResource" 
 
 
 -- | <p>Lists information about a collection of <a>Resource</a> resources.</p>
 getResources :: forall eff. GetResourcesRequest -> Aff (err :: AWS.RequestError | eff) Resources
-getResources = AWS.request serviceName "GetResources" 
+getResources = AWS.request serviceName "getResources" 
 
 
 -- | <p>Lists the <a>RestApi</a> resource in the collection.</p>
 getRestApi :: forall eff. GetRestApiRequest -> Aff (err :: AWS.RequestError | eff) RestApi
-getRestApi = AWS.request serviceName "GetRestApi" 
+getRestApi = AWS.request serviceName "getRestApi" 
 
 
 -- | <p>Lists the <a>RestApis</a> resources for your collection.</p>
 getRestApis :: forall eff. GetRestApisRequest -> Aff (err :: AWS.RequestError | eff) RestApis
-getRestApis = AWS.request serviceName "GetRestApis" 
+getRestApis = AWS.request serviceName "getRestApis" 
 
 
 -- | <p>Generates a client SDK for a <a>RestApi</a> and <a>Stage</a>.</p>
 getSdk :: forall eff. GetSdkRequest -> Aff (err :: AWS.RequestError | eff) SdkResponse
-getSdk = AWS.request serviceName "GetSdk" 
+getSdk = AWS.request serviceName "getSdk" 
 
 
 getSdkType :: forall eff. GetSdkTypeRequest -> Aff (err :: AWS.RequestError | eff) SdkType
-getSdkType = AWS.request serviceName "GetSdkType" 
+getSdkType = AWS.request serviceName "getSdkType" 
 
 
 getSdkTypes :: forall eff. GetSdkTypesRequest -> Aff (err :: AWS.RequestError | eff) SdkTypes
-getSdkTypes = AWS.request serviceName "GetSdkTypes" 
+getSdkTypes = AWS.request serviceName "getSdkTypes" 
 
 
 -- | <p>Gets information about a <a>Stage</a> resource.</p>
 getStage :: forall eff. GetStageRequest -> Aff (err :: AWS.RequestError | eff) Stage
-getStage = AWS.request serviceName "GetStage" 
+getStage = AWS.request serviceName "getStage" 
 
 
 -- | <p>Gets information about one or more <a>Stage</a> resources.</p>
 getStages :: forall eff. GetStagesRequest -> Aff (err :: AWS.RequestError | eff) Stages
-getStages = AWS.request serviceName "GetStages" 
+getStages = AWS.request serviceName "getStages" 
 
 
 -- | <p>Gets the Tags collection for a given resource.</p>
 getTags :: forall eff. GetTagsRequest -> Aff (err :: AWS.RequestError | eff) Tags
-getTags = AWS.request serviceName "GetTags" 
+getTags = AWS.request serviceName "getTags" 
 
 
 -- | <p>Gets the usage data of a usage plan in a specified time interval.</p>
 getUsage :: forall eff. GetUsageRequest -> Aff (err :: AWS.RequestError | eff) Usage
-getUsage = AWS.request serviceName "GetUsage" 
+getUsage = AWS.request serviceName "getUsage" 
 
 
 -- | <p>Gets a usage plan of a given plan identifier.</p>
 getUsagePlan :: forall eff. GetUsagePlanRequest -> Aff (err :: AWS.RequestError | eff) UsagePlan
-getUsagePlan = AWS.request serviceName "GetUsagePlan" 
+getUsagePlan = AWS.request serviceName "getUsagePlan" 
 
 
 -- | <p>Gets a usage plan key of a given key identifier.</p>
 getUsagePlanKey :: forall eff. GetUsagePlanKeyRequest -> Aff (err :: AWS.RequestError | eff) UsagePlanKey
-getUsagePlanKey = AWS.request serviceName "GetUsagePlanKey" 
+getUsagePlanKey = AWS.request serviceName "getUsagePlanKey" 
 
 
 -- | <p>Gets all the usage plan keys representing the API keys added to a specified usage plan.</p>
 getUsagePlanKeys :: forall eff. GetUsagePlanKeysRequest -> Aff (err :: AWS.RequestError | eff) UsagePlanKeys
-getUsagePlanKeys = AWS.request serviceName "GetUsagePlanKeys" 
+getUsagePlanKeys = AWS.request serviceName "getUsagePlanKeys" 
 
 
 -- | <p>Gets all the usage plans of the caller's account.</p>
 getUsagePlans :: forall eff. GetUsagePlansRequest -> Aff (err :: AWS.RequestError | eff) UsagePlans
-getUsagePlans = AWS.request serviceName "GetUsagePlans" 
+getUsagePlans = AWS.request serviceName "getUsagePlans" 
 
 
 -- | <p>Gets a specified VPC link under the caller's account in a region.</p>
 getVpcLink :: forall eff. GetVpcLinkRequest -> Aff (err :: AWS.RequestError | eff) VpcLink
-getVpcLink = AWS.request serviceName "GetVpcLink" 
+getVpcLink = AWS.request serviceName "getVpcLink" 
 
 
 -- | <p>Gets the <a>VpcLinks</a> collection under the caller's account in a selected region.</p>
 getVpcLinks :: forall eff. GetVpcLinksRequest -> Aff (err :: AWS.RequestError | eff) VpcLinks
-getVpcLinks = AWS.request serviceName "GetVpcLinks" 
+getVpcLinks = AWS.request serviceName "getVpcLinks" 
 
 
 -- | <p>Import API keys from an external source, such as a CSV-formatted file.</p>
 importApiKeys :: forall eff. ImportApiKeysRequest -> Aff (err :: AWS.RequestError | eff) ApiKeyIds
-importApiKeys = AWS.request serviceName "ImportApiKeys" 
+importApiKeys = AWS.request serviceName "importApiKeys" 
 
 
 importDocumentationParts :: forall eff. ImportDocumentationPartsRequest -> Aff (err :: AWS.RequestError | eff) DocumentationPartIds
-importDocumentationParts = AWS.request serviceName "ImportDocumentationParts" 
+importDocumentationParts = AWS.request serviceName "importDocumentationParts" 
 
 
 -- | <p>A feature of the API Gateway control service for creating a new API from an external API definition file.</p>
 importRestApi :: forall eff. ImportRestApiRequest -> Aff (err :: AWS.RequestError | eff) RestApi
-importRestApi = AWS.request serviceName "ImportRestApi" 
+importRestApi = AWS.request serviceName "importRestApi" 
 
 
 -- | <p>Creates a customization of a <a>GatewayResponse</a> of a specified response type and status code on the given <a>RestApi</a>.</p>
 putGatewayResponse :: forall eff. PutGatewayResponseRequest -> Aff (err :: AWS.RequestError | eff) GatewayResponse
-putGatewayResponse = AWS.request serviceName "PutGatewayResponse" 
+putGatewayResponse = AWS.request serviceName "putGatewayResponse" 
 
 
 -- | <p>Sets up a method's integration.</p>
 putIntegration :: forall eff. PutIntegrationRequest -> Aff (err :: AWS.RequestError | eff) Integration
-putIntegration = AWS.request serviceName "PutIntegration" 
+putIntegration = AWS.request serviceName "putIntegration" 
 
 
 -- | <p>Represents a put integration.</p>
 putIntegrationResponse :: forall eff. PutIntegrationResponseRequest -> Aff (err :: AWS.RequestError | eff) IntegrationResponse
-putIntegrationResponse = AWS.request serviceName "PutIntegrationResponse" 
+putIntegrationResponse = AWS.request serviceName "putIntegrationResponse" 
 
 
 -- | <p>Add a method to an existing <a>Resource</a> resource.</p>
 putMethod :: forall eff. PutMethodRequest -> Aff (err :: AWS.RequestError | eff) Method
-putMethod = AWS.request serviceName "PutMethod" 
+putMethod = AWS.request serviceName "putMethod" 
 
 
 -- | <p>Adds a <a>MethodResponse</a> to an existing <a>Method</a> resource.</p>
 putMethodResponse :: forall eff. PutMethodResponseRequest -> Aff (err :: AWS.RequestError | eff) MethodResponse
-putMethodResponse = AWS.request serviceName "PutMethodResponse" 
+putMethodResponse = AWS.request serviceName "putMethodResponse" 
 
 
 -- | <p>A feature of the API Gateway control service for updating an existing API with an input of external API definitions. The update can take the form of merging the supplied definition into the existing API or overwriting the existing API.</p>
 putRestApi :: forall eff. PutRestApiRequest -> Aff (err :: AWS.RequestError | eff) RestApi
-putRestApi = AWS.request serviceName "PutRestApi" 
+putRestApi = AWS.request serviceName "putRestApi" 
 
 
 -- | <p>Adds or updates Tags on a gievn resource.</p>
 tagResource :: forall eff. TagResourceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-tagResource = AWS.request serviceName "TagResource" 
+tagResource = AWS.request serviceName "tagResource" 
 
 
 -- | <p>Simulate the execution of an <a>Authorizer</a> in your <a>RestApi</a> with headers, parameters, and an incoming request body.</p> <div class="seeAlso"> <a href="http://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom authorizers</a> </div>
 testInvokeAuthorizer :: forall eff. TestInvokeAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) TestInvokeAuthorizerResponse
-testInvokeAuthorizer = AWS.request serviceName "TestInvokeAuthorizer" 
+testInvokeAuthorizer = AWS.request serviceName "testInvokeAuthorizer" 
 
 
 -- | <p>Simulate the execution of a <a>Method</a> in your <a>RestApi</a> with headers, parameters, and an incoming request body.</p>
 testInvokeMethod :: forall eff. TestInvokeMethodRequest -> Aff (err :: AWS.RequestError | eff) TestInvokeMethodResponse
-testInvokeMethod = AWS.request serviceName "TestInvokeMethod" 
+testInvokeMethod = AWS.request serviceName "testInvokeMethod" 
 
 
 -- | <p>Removes Tags from a given resource.</p>
 untagResource :: forall eff. UntagResourceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-untagResource = AWS.request serviceName "UntagResource" 
+untagResource = AWS.request serviceName "untagResource" 
 
 
 -- | <p>Changes information about the current <a>Account</a> resource.</p>
 updateAccount :: forall eff. UpdateAccountRequest -> Aff (err :: AWS.RequestError | eff) Account
-updateAccount = AWS.request serviceName "UpdateAccount" 
+updateAccount = AWS.request serviceName "updateAccount" 
 
 
 -- | <p>Changes information about an <a>ApiKey</a> resource.</p>
 updateApiKey :: forall eff. UpdateApiKeyRequest -> Aff (err :: AWS.RequestError | eff) ApiKey
-updateApiKey = AWS.request serviceName "UpdateApiKey" 
+updateApiKey = AWS.request serviceName "updateApiKey" 
 
 
 -- | <p>Updates an existing <a>Authorizer</a> resource.</p> <div class="seeAlso"><a href="http://docs.aws.amazon.com/cli/latest/reference/apigateway/update-authorizer.html">AWS CLI</a></div>
 updateAuthorizer :: forall eff. UpdateAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) Authorizer
-updateAuthorizer = AWS.request serviceName "UpdateAuthorizer" 
+updateAuthorizer = AWS.request serviceName "updateAuthorizer" 
 
 
 -- | <p>Changes information about the <a>BasePathMapping</a> resource.</p>
 updateBasePathMapping :: forall eff. UpdateBasePathMappingRequest -> Aff (err :: AWS.RequestError | eff) BasePathMapping
-updateBasePathMapping = AWS.request serviceName "UpdateBasePathMapping" 
+updateBasePathMapping = AWS.request serviceName "updateBasePathMapping" 
 
 
 -- | <p>Changes information about an <a>ClientCertificate</a> resource.</p>
 updateClientCertificate :: forall eff. UpdateClientCertificateRequest -> Aff (err :: AWS.RequestError | eff) ClientCertificate
-updateClientCertificate = AWS.request serviceName "UpdateClientCertificate" 
+updateClientCertificate = AWS.request serviceName "updateClientCertificate" 
 
 
 -- | <p>Changes information about a <a>Deployment</a> resource.</p>
 updateDeployment :: forall eff. UpdateDeploymentRequest -> Aff (err :: AWS.RequestError | eff) Deployment
-updateDeployment = AWS.request serviceName "UpdateDeployment" 
+updateDeployment = AWS.request serviceName "updateDeployment" 
 
 
 updateDocumentationPart :: forall eff. UpdateDocumentationPartRequest -> Aff (err :: AWS.RequestError | eff) DocumentationPart
-updateDocumentationPart = AWS.request serviceName "UpdateDocumentationPart" 
+updateDocumentationPart = AWS.request serviceName "updateDocumentationPart" 
 
 
 updateDocumentationVersion :: forall eff. UpdateDocumentationVersionRequest -> Aff (err :: AWS.RequestError | eff) DocumentationVersion
-updateDocumentationVersion = AWS.request serviceName "UpdateDocumentationVersion" 
+updateDocumentationVersion = AWS.request serviceName "updateDocumentationVersion" 
 
 
 -- | <p>Changes information about the <a>DomainName</a> resource.</p>
 updateDomainName :: forall eff. UpdateDomainNameRequest -> Aff (err :: AWS.RequestError | eff) DomainName
-updateDomainName = AWS.request serviceName "UpdateDomainName" 
+updateDomainName = AWS.request serviceName "updateDomainName" 
 
 
 -- | <p>Updates a <a>GatewayResponse</a> of a specified response type on the given <a>RestApi</a>.</p>
 updateGatewayResponse :: forall eff. UpdateGatewayResponseRequest -> Aff (err :: AWS.RequestError | eff) GatewayResponse
-updateGatewayResponse = AWS.request serviceName "UpdateGatewayResponse" 
+updateGatewayResponse = AWS.request serviceName "updateGatewayResponse" 
 
 
 -- | <p>Represents an update integration.</p>
 updateIntegration :: forall eff. UpdateIntegrationRequest -> Aff (err :: AWS.RequestError | eff) Integration
-updateIntegration = AWS.request serviceName "UpdateIntegration" 
+updateIntegration = AWS.request serviceName "updateIntegration" 
 
 
 -- | <p>Represents an update integration response.</p>
 updateIntegrationResponse :: forall eff. UpdateIntegrationResponseRequest -> Aff (err :: AWS.RequestError | eff) IntegrationResponse
-updateIntegrationResponse = AWS.request serviceName "UpdateIntegrationResponse" 
+updateIntegrationResponse = AWS.request serviceName "updateIntegrationResponse" 
 
 
 -- | <p>Updates an existing <a>Method</a> resource.</p>
 updateMethod :: forall eff. UpdateMethodRequest -> Aff (err :: AWS.RequestError | eff) Method
-updateMethod = AWS.request serviceName "UpdateMethod" 
+updateMethod = AWS.request serviceName "updateMethod" 
 
 
 -- | <p>Updates an existing <a>MethodResponse</a> resource.</p>
 updateMethodResponse :: forall eff. UpdateMethodResponseRequest -> Aff (err :: AWS.RequestError | eff) MethodResponse
-updateMethodResponse = AWS.request serviceName "UpdateMethodResponse" 
+updateMethodResponse = AWS.request serviceName "updateMethodResponse" 
 
 
 -- | <p>Changes information about a model.</p>
 updateModel :: forall eff. UpdateModelRequest -> Aff (err :: AWS.RequestError | eff) Model
-updateModel = AWS.request serviceName "UpdateModel" 
+updateModel = AWS.request serviceName "updateModel" 
 
 
 -- | <p>Updates a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
 updateRequestValidator :: forall eff. UpdateRequestValidatorRequest -> Aff (err :: AWS.RequestError | eff) RequestValidator
-updateRequestValidator = AWS.request serviceName "UpdateRequestValidator" 
+updateRequestValidator = AWS.request serviceName "updateRequestValidator" 
 
 
 -- | <p>Changes information about a <a>Resource</a> resource.</p>
 updateResource :: forall eff. UpdateResourceRequest -> Aff (err :: AWS.RequestError | eff) Resource
-updateResource = AWS.request serviceName "UpdateResource" 
+updateResource = AWS.request serviceName "updateResource" 
 
 
 -- | <p>Changes information about the specified API.</p>
 updateRestApi :: forall eff. UpdateRestApiRequest -> Aff (err :: AWS.RequestError | eff) RestApi
-updateRestApi = AWS.request serviceName "UpdateRestApi" 
+updateRestApi = AWS.request serviceName "updateRestApi" 
 
 
 -- | <p>Changes information about a <a>Stage</a> resource.</p>
 updateStage :: forall eff. UpdateStageRequest -> Aff (err :: AWS.RequestError | eff) Stage
-updateStage = AWS.request serviceName "UpdateStage" 
+updateStage = AWS.request serviceName "updateStage" 
 
 
 -- | <p>Grants a temporary extension to the remaining quota of a usage plan associated with a specified API key.</p>
 updateUsage :: forall eff. UpdateUsageRequest -> Aff (err :: AWS.RequestError | eff) Usage
-updateUsage = AWS.request serviceName "UpdateUsage" 
+updateUsage = AWS.request serviceName "updateUsage" 
 
 
 -- | <p>Updates a usage plan of a given plan Id.</p>
 updateUsagePlan :: forall eff. UpdateUsagePlanRequest -> Aff (err :: AWS.RequestError | eff) UsagePlan
-updateUsagePlan = AWS.request serviceName "UpdateUsagePlan" 
+updateUsagePlan = AWS.request serviceName "updateUsagePlan" 
 
 
 -- | <p>Updates an existing <a>VpcLink</a> of a specified identifier.</p>
 updateVpcLink :: forall eff. UpdateVpcLinkRequest -> Aff (err :: AWS.RequestError | eff) VpcLink
-updateVpcLink = AWS.request serviceName "UpdateVpcLink" 
+updateVpcLink = AWS.request serviceName "updateVpcLink" 
 
 
 -- | <p>Access log settings, including the access log format and access log destination ARN.</p>

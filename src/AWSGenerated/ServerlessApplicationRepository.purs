@@ -35,52 +35,52 @@ serviceName = "ServerlessApplicationRepository" :: String
 
 -- | <p>Creates an application, optionally including an AWS SAM file to create the first application version in the same call.</p>
 createApplication :: forall eff. CreateApplicationRequest -> Aff (err :: AWS.RequestError | eff) CreateApplicationResponse
-createApplication = AWS.request serviceName "CreateApplication" 
+createApplication = AWS.request serviceName "createApplication" 
 
 
 -- | <p>Creates an application version.</p>
 createApplicationVersion :: forall eff. CreateApplicationVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateApplicationVersionResponse
-createApplicationVersion = AWS.request serviceName "CreateApplicationVersion" 
+createApplicationVersion = AWS.request serviceName "createApplicationVersion" 
 
 
 -- | <p>Creates an AWS CloudFormation ChangeSet for the given application.</p>
 createCloudFormationChangeSet :: forall eff. CreateCloudFormationChangeSetRequest -> Aff (err :: AWS.RequestError | eff) CreateCloudFormationChangeSetResponse
-createCloudFormationChangeSet = AWS.request serviceName "CreateCloudFormationChangeSet" 
+createCloudFormationChangeSet = AWS.request serviceName "createCloudFormationChangeSet" 
 
 
 -- | <p>Deletes the specified application.</p>
 deleteApplication :: forall eff. DeleteApplicationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteApplication = AWS.request serviceName "DeleteApplication" 
+deleteApplication = AWS.request serviceName "deleteApplication" 
 
 
 -- | <p>Gets the specified application.</p>
 getApplication :: forall eff. GetApplicationRequest -> Aff (err :: AWS.RequestError | eff) GetApplicationResponse
-getApplication = AWS.request serviceName "GetApplication" 
+getApplication = AWS.request serviceName "getApplication" 
 
 
 -- | <p>Gets the policy for the specified application.</p>
 getApplicationPolicy :: forall eff. GetApplicationPolicyRequest -> Aff (err :: AWS.RequestError | eff) GetApplicationPolicyResponse
-getApplicationPolicy = AWS.request serviceName "GetApplicationPolicy" 
+getApplicationPolicy = AWS.request serviceName "getApplicationPolicy" 
 
 
 -- | <p>Lists versions for the specified application.</p>
 listApplicationVersions :: forall eff. ListApplicationVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListApplicationVersionsResponse
-listApplicationVersions = AWS.request serviceName "ListApplicationVersions" 
+listApplicationVersions = AWS.request serviceName "listApplicationVersions" 
 
 
 -- | <p>Lists applications owned by the requester.</p>
 listApplications :: forall eff. ListApplicationsRequest -> Aff (err :: AWS.RequestError | eff) ListApplicationsResponse
-listApplications = AWS.request serviceName "ListApplications" 
+listApplications = AWS.request serviceName "listApplications" 
 
 
 -- | <p>Puts the policy for the specified application.</p>
 putApplicationPolicy :: forall eff. PutApplicationPolicyRequest -> Aff (err :: AWS.RequestError | eff) PutApplicationPolicyResponse
-putApplicationPolicy = AWS.request serviceName "PutApplicationPolicy" 
+putApplicationPolicy = AWS.request serviceName "putApplicationPolicy" 
 
 
 -- | <p>Updates the specified application.</p>
 updateApplication :: forall eff. UpdateApplicationRequest -> Aff (err :: AWS.RequestError | eff) UpdateApplicationResponse
-updateApplication = AWS.request serviceName "UpdateApplication" 
+updateApplication = AWS.request serviceName "updateApplication" 
 
 
 -- | <p>Details about the application.</p>

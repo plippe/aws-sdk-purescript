@@ -14,203 +14,203 @@ serviceName = "RDS" :: String
 
 
 addSourceIdentifierToSubscription :: forall eff. AddSourceIdentifierToSubscriptionMessage -> Aff (err :: AWS.RequestError | eff) AddSourceIdentifierToSubscriptionResult
-addSourceIdentifierToSubscription = AWS.request serviceName "AddSourceIdentifierToSubscription" 
+addSourceIdentifierToSubscription = AWS.request serviceName "addSourceIdentifierToSubscription" 
 
 
 addTagsToResource :: forall eff. AddTagsToResourceMessage -> Aff (err :: AWS.RequestError | eff) Unit
-addTagsToResource = AWS.request serviceName "AddTagsToResource" 
+addTagsToResource = AWS.request serviceName "addTagsToResource" 
 
 
 authorizeDBSecurityGroupIngress :: forall eff. AuthorizeDBSecurityGroupIngressMessage -> Aff (err :: AWS.RequestError | eff) AuthorizeDBSecurityGroupIngressResult
-authorizeDBSecurityGroupIngress = AWS.request serviceName "AuthorizeDBSecurityGroupIngress" 
+authorizeDBSecurityGroupIngress = AWS.request serviceName "authorizeDBSecurityGroupIngress" 
 
 
 copyDBSnapshot :: forall eff. CopyDBSnapshotMessage -> Aff (err :: AWS.RequestError | eff) CopyDBSnapshotResult
-copyDBSnapshot = AWS.request serviceName "CopyDBSnapshot" 
+copyDBSnapshot = AWS.request serviceName "copyDBSnapshot" 
 
 
 createDBInstance :: forall eff. CreateDBInstanceMessage -> Aff (err :: AWS.RequestError | eff) CreateDBInstanceResult
-createDBInstance = AWS.request serviceName "CreateDBInstance" 
+createDBInstance = AWS.request serviceName "createDBInstance" 
 
 
 createDBInstanceReadReplica :: forall eff. CreateDBInstanceReadReplicaMessage -> Aff (err :: AWS.RequestError | eff) CreateDBInstanceReadReplicaResult
-createDBInstanceReadReplica = AWS.request serviceName "CreateDBInstanceReadReplica" 
+createDBInstanceReadReplica = AWS.request serviceName "createDBInstanceReadReplica" 
 
 
 createDBParameterGroup :: forall eff. CreateDBParameterGroupMessage -> Aff (err :: AWS.RequestError | eff) CreateDBParameterGroupResult
-createDBParameterGroup = AWS.request serviceName "CreateDBParameterGroup" 
+createDBParameterGroup = AWS.request serviceName "createDBParameterGroup" 
 
 
 createDBSecurityGroup :: forall eff. CreateDBSecurityGroupMessage -> Aff (err :: AWS.RequestError | eff) CreateDBSecurityGroupResult
-createDBSecurityGroup = AWS.request serviceName "CreateDBSecurityGroup" 
+createDBSecurityGroup = AWS.request serviceName "createDBSecurityGroup" 
 
 
 createDBSnapshot :: forall eff. CreateDBSnapshotMessage -> Aff (err :: AWS.RequestError | eff) CreateDBSnapshotResult
-createDBSnapshot = AWS.request serviceName "CreateDBSnapshot" 
+createDBSnapshot = AWS.request serviceName "createDBSnapshot" 
 
 
 createDBSubnetGroup :: forall eff. CreateDBSubnetGroupMessage -> Aff (err :: AWS.RequestError | eff) CreateDBSubnetGroupResult
-createDBSubnetGroup = AWS.request serviceName "CreateDBSubnetGroup" 
+createDBSubnetGroup = AWS.request serviceName "createDBSubnetGroup" 
 
 
 createEventSubscription :: forall eff. CreateEventSubscriptionMessage -> Aff (err :: AWS.RequestError | eff) CreateEventSubscriptionResult
-createEventSubscription = AWS.request serviceName "CreateEventSubscription" 
+createEventSubscription = AWS.request serviceName "createEventSubscription" 
 
 
 createOptionGroup :: forall eff. CreateOptionGroupMessage -> Aff (err :: AWS.RequestError | eff) CreateOptionGroupResult
-createOptionGroup = AWS.request serviceName "CreateOptionGroup" 
+createOptionGroup = AWS.request serviceName "createOptionGroup" 
 
 
 deleteDBInstance :: forall eff. DeleteDBInstanceMessage -> Aff (err :: AWS.RequestError | eff) DeleteDBInstanceResult
-deleteDBInstance = AWS.request serviceName "DeleteDBInstance" 
+deleteDBInstance = AWS.request serviceName "deleteDBInstance" 
 
 
 deleteDBParameterGroup :: forall eff. DeleteDBParameterGroupMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDBParameterGroup = AWS.request serviceName "DeleteDBParameterGroup" 
+deleteDBParameterGroup = AWS.request serviceName "deleteDBParameterGroup" 
 
 
 deleteDBSecurityGroup :: forall eff. DeleteDBSecurityGroupMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDBSecurityGroup = AWS.request serviceName "DeleteDBSecurityGroup" 
+deleteDBSecurityGroup = AWS.request serviceName "deleteDBSecurityGroup" 
 
 
 deleteDBSnapshot :: forall eff. DeleteDBSnapshotMessage -> Aff (err :: AWS.RequestError | eff) DeleteDBSnapshotResult
-deleteDBSnapshot = AWS.request serviceName "DeleteDBSnapshot" 
+deleteDBSnapshot = AWS.request serviceName "deleteDBSnapshot" 
 
 
 deleteDBSubnetGroup :: forall eff. DeleteDBSubnetGroupMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDBSubnetGroup = AWS.request serviceName "DeleteDBSubnetGroup" 
+deleteDBSubnetGroup = AWS.request serviceName "deleteDBSubnetGroup" 
 
 
 deleteEventSubscription :: forall eff. DeleteEventSubscriptionMessage -> Aff (err :: AWS.RequestError | eff) DeleteEventSubscriptionResult
-deleteEventSubscription = AWS.request serviceName "DeleteEventSubscription" 
+deleteEventSubscription = AWS.request serviceName "deleteEventSubscription" 
 
 
 deleteOptionGroup :: forall eff. DeleteOptionGroupMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteOptionGroup = AWS.request serviceName "DeleteOptionGroup" 
+deleteOptionGroup = AWS.request serviceName "deleteOptionGroup" 
 
 
 describeDBEngineVersions :: forall eff. DescribeDBEngineVersionsMessage -> Aff (err :: AWS.RequestError | eff) DBEngineVersionMessage
-describeDBEngineVersions = AWS.request serviceName "DescribeDBEngineVersions" 
+describeDBEngineVersions = AWS.request serviceName "describeDBEngineVersions" 
 
 
 describeDBInstances :: forall eff. DescribeDBInstancesMessage -> Aff (err :: AWS.RequestError | eff) DBInstanceMessage
-describeDBInstances = AWS.request serviceName "DescribeDBInstances" 
+describeDBInstances = AWS.request serviceName "describeDBInstances" 
 
 
 describeDBParameterGroups :: forall eff. DescribeDBParameterGroupsMessage -> Aff (err :: AWS.RequestError | eff) DBParameterGroupsMessage
-describeDBParameterGroups = AWS.request serviceName "DescribeDBParameterGroups" 
+describeDBParameterGroups = AWS.request serviceName "describeDBParameterGroups" 
 
 
 describeDBParameters :: forall eff. DescribeDBParametersMessage -> Aff (err :: AWS.RequestError | eff) DBParameterGroupDetails
-describeDBParameters = AWS.request serviceName "DescribeDBParameters" 
+describeDBParameters = AWS.request serviceName "describeDBParameters" 
 
 
 describeDBSecurityGroups :: forall eff. DescribeDBSecurityGroupsMessage -> Aff (err :: AWS.RequestError | eff) DBSecurityGroupMessage
-describeDBSecurityGroups = AWS.request serviceName "DescribeDBSecurityGroups" 
+describeDBSecurityGroups = AWS.request serviceName "describeDBSecurityGroups" 
 
 
 describeDBSnapshots :: forall eff. DescribeDBSnapshotsMessage -> Aff (err :: AWS.RequestError | eff) DBSnapshotMessage
-describeDBSnapshots = AWS.request serviceName "DescribeDBSnapshots" 
+describeDBSnapshots = AWS.request serviceName "describeDBSnapshots" 
 
 
 describeDBSubnetGroups :: forall eff. DescribeDBSubnetGroupsMessage -> Aff (err :: AWS.RequestError | eff) DBSubnetGroupMessage
-describeDBSubnetGroups = AWS.request serviceName "DescribeDBSubnetGroups" 
+describeDBSubnetGroups = AWS.request serviceName "describeDBSubnetGroups" 
 
 
 describeEngineDefaultParameters :: forall eff. DescribeEngineDefaultParametersMessage -> Aff (err :: AWS.RequestError | eff) DescribeEngineDefaultParametersResult
-describeEngineDefaultParameters = AWS.request serviceName "DescribeEngineDefaultParameters" 
+describeEngineDefaultParameters = AWS.request serviceName "describeEngineDefaultParameters" 
 
 
 describeEventCategories :: forall eff. DescribeEventCategoriesMessage -> Aff (err :: AWS.RequestError | eff) EventCategoriesMessage
-describeEventCategories = AWS.request serviceName "DescribeEventCategories" 
+describeEventCategories = AWS.request serviceName "describeEventCategories" 
 
 
 describeEventSubscriptions :: forall eff. DescribeEventSubscriptionsMessage -> Aff (err :: AWS.RequestError | eff) EventSubscriptionsMessage
-describeEventSubscriptions = AWS.request serviceName "DescribeEventSubscriptions" 
+describeEventSubscriptions = AWS.request serviceName "describeEventSubscriptions" 
 
 
 describeEvents :: forall eff. DescribeEventsMessage -> Aff (err :: AWS.RequestError | eff) EventsMessage
-describeEvents = AWS.request serviceName "DescribeEvents" 
+describeEvents = AWS.request serviceName "describeEvents" 
 
 
 describeOptionGroupOptions :: forall eff. DescribeOptionGroupOptionsMessage -> Aff (err :: AWS.RequestError | eff) OptionGroupOptionsMessage
-describeOptionGroupOptions = AWS.request serviceName "DescribeOptionGroupOptions" 
+describeOptionGroupOptions = AWS.request serviceName "describeOptionGroupOptions" 
 
 
 describeOptionGroups :: forall eff. DescribeOptionGroupsMessage -> Aff (err :: AWS.RequestError | eff) OptionGroups
-describeOptionGroups = AWS.request serviceName "DescribeOptionGroups" 
+describeOptionGroups = AWS.request serviceName "describeOptionGroups" 
 
 
 describeOrderableDBInstanceOptions :: forall eff. DescribeOrderableDBInstanceOptionsMessage -> Aff (err :: AWS.RequestError | eff) OrderableDBInstanceOptionsMessage
-describeOrderableDBInstanceOptions = AWS.request serviceName "DescribeOrderableDBInstanceOptions" 
+describeOrderableDBInstanceOptions = AWS.request serviceName "describeOrderableDBInstanceOptions" 
 
 
 describeReservedDBInstances :: forall eff. DescribeReservedDBInstancesMessage -> Aff (err :: AWS.RequestError | eff) ReservedDBInstanceMessage
-describeReservedDBInstances = AWS.request serviceName "DescribeReservedDBInstances" 
+describeReservedDBInstances = AWS.request serviceName "describeReservedDBInstances" 
 
 
 describeReservedDBInstancesOfferings :: forall eff. DescribeReservedDBInstancesOfferingsMessage -> Aff (err :: AWS.RequestError | eff) ReservedDBInstancesOfferingMessage
-describeReservedDBInstancesOfferings = AWS.request serviceName "DescribeReservedDBInstancesOfferings" 
+describeReservedDBInstancesOfferings = AWS.request serviceName "describeReservedDBInstancesOfferings" 
 
 
 listTagsForResource :: forall eff. ListTagsForResourceMessage -> Aff (err :: AWS.RequestError | eff) TagListMessage
-listTagsForResource = AWS.request serviceName "ListTagsForResource" 
+listTagsForResource = AWS.request serviceName "listTagsForResource" 
 
 
 modifyDBInstance :: forall eff. ModifyDBInstanceMessage -> Aff (err :: AWS.RequestError | eff) ModifyDBInstanceResult
-modifyDBInstance = AWS.request serviceName "ModifyDBInstance" 
+modifyDBInstance = AWS.request serviceName "modifyDBInstance" 
 
 
 modifyDBParameterGroup :: forall eff. ModifyDBParameterGroupMessage -> Aff (err :: AWS.RequestError | eff) DBParameterGroupNameMessage
-modifyDBParameterGroup = AWS.request serviceName "ModifyDBParameterGroup" 
+modifyDBParameterGroup = AWS.request serviceName "modifyDBParameterGroup" 
 
 
 modifyDBSubnetGroup :: forall eff. ModifyDBSubnetGroupMessage -> Aff (err :: AWS.RequestError | eff) ModifyDBSubnetGroupResult
-modifyDBSubnetGroup = AWS.request serviceName "ModifyDBSubnetGroup" 
+modifyDBSubnetGroup = AWS.request serviceName "modifyDBSubnetGroup" 
 
 
 modifyEventSubscription :: forall eff. ModifyEventSubscriptionMessage -> Aff (err :: AWS.RequestError | eff) ModifyEventSubscriptionResult
-modifyEventSubscription = AWS.request serviceName "ModifyEventSubscription" 
+modifyEventSubscription = AWS.request serviceName "modifyEventSubscription" 
 
 
 modifyOptionGroup :: forall eff. ModifyOptionGroupMessage -> Aff (err :: AWS.RequestError | eff) ModifyOptionGroupResult
-modifyOptionGroup = AWS.request serviceName "ModifyOptionGroup" 
+modifyOptionGroup = AWS.request serviceName "modifyOptionGroup" 
 
 
 promoteReadReplica :: forall eff. PromoteReadReplicaMessage -> Aff (err :: AWS.RequestError | eff) PromoteReadReplicaResult
-promoteReadReplica = AWS.request serviceName "PromoteReadReplica" 
+promoteReadReplica = AWS.request serviceName "promoteReadReplica" 
 
 
 purchaseReservedDBInstancesOffering :: forall eff. PurchaseReservedDBInstancesOfferingMessage -> Aff (err :: AWS.RequestError | eff) PurchaseReservedDBInstancesOfferingResult
-purchaseReservedDBInstancesOffering = AWS.request serviceName "PurchaseReservedDBInstancesOffering" 
+purchaseReservedDBInstancesOffering = AWS.request serviceName "purchaseReservedDBInstancesOffering" 
 
 
 rebootDBInstance :: forall eff. RebootDBInstanceMessage -> Aff (err :: AWS.RequestError | eff) RebootDBInstanceResult
-rebootDBInstance = AWS.request serviceName "RebootDBInstance" 
+rebootDBInstance = AWS.request serviceName "rebootDBInstance" 
 
 
 removeSourceIdentifierFromSubscription :: forall eff. RemoveSourceIdentifierFromSubscriptionMessage -> Aff (err :: AWS.RequestError | eff) RemoveSourceIdentifierFromSubscriptionResult
-removeSourceIdentifierFromSubscription = AWS.request serviceName "RemoveSourceIdentifierFromSubscription" 
+removeSourceIdentifierFromSubscription = AWS.request serviceName "removeSourceIdentifierFromSubscription" 
 
 
 removeTagsFromResource :: forall eff. RemoveTagsFromResourceMessage -> Aff (err :: AWS.RequestError | eff) Unit
-removeTagsFromResource = AWS.request serviceName "RemoveTagsFromResource" 
+removeTagsFromResource = AWS.request serviceName "removeTagsFromResource" 
 
 
 resetDBParameterGroup :: forall eff. ResetDBParameterGroupMessage -> Aff (err :: AWS.RequestError | eff) DBParameterGroupNameMessage
-resetDBParameterGroup = AWS.request serviceName "ResetDBParameterGroup" 
+resetDBParameterGroup = AWS.request serviceName "resetDBParameterGroup" 
 
 
 restoreDBInstanceFromDBSnapshot :: forall eff. RestoreDBInstanceFromDBSnapshotMessage -> Aff (err :: AWS.RequestError | eff) RestoreDBInstanceFromDBSnapshotResult
-restoreDBInstanceFromDBSnapshot = AWS.request serviceName "RestoreDBInstanceFromDBSnapshot" 
+restoreDBInstanceFromDBSnapshot = AWS.request serviceName "restoreDBInstanceFromDBSnapshot" 
 
 
 restoreDBInstanceToPointInTime :: forall eff. RestoreDBInstanceToPointInTimeMessage -> Aff (err :: AWS.RequestError | eff) RestoreDBInstanceToPointInTimeResult
-restoreDBInstanceToPointInTime = AWS.request serviceName "RestoreDBInstanceToPointInTime" 
+restoreDBInstanceToPointInTime = AWS.request serviceName "restoreDBInstanceToPointInTime" 
 
 
 revokeDBSecurityGroupIngress :: forall eff. RevokeDBSecurityGroupIngressMessage -> Aff (err :: AWS.RequestError | eff) RevokeDBSecurityGroupIngressResult
-revokeDBSecurityGroupIngress = AWS.request serviceName "RevokeDBSecurityGroupIngress" 
+revokeDBSecurityGroupIngress = AWS.request serviceName "revokeDBSecurityGroupIngress" 
 
 
 newtype AddSourceIdentifierToSubscriptionMessage = AddSourceIdentifierToSubscriptionMessage 

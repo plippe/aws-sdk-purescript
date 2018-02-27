@@ -16,47 +16,47 @@ serviceName = "Mobile" :: String
 
 -- | <p> Creates an AWS Mobile Hub project. </p>
 createProject :: forall eff. CreateProjectRequest -> Aff (err :: AWS.RequestError | eff) CreateProjectResult
-createProject = AWS.request serviceName "CreateProject" 
+createProject = AWS.request serviceName "createProject" 
 
 
 -- | <p> Delets a project in AWS Mobile Hub. </p>
 deleteProject :: forall eff. DeleteProjectRequest -> Aff (err :: AWS.RequestError | eff) DeleteProjectResult
-deleteProject = AWS.request serviceName "DeleteProject" 
+deleteProject = AWS.request serviceName "deleteProject" 
 
 
 -- | <p> Get the bundle details for the requested bundle id. </p>
 describeBundle :: forall eff. DescribeBundleRequest -> Aff (err :: AWS.RequestError | eff) DescribeBundleResult
-describeBundle = AWS.request serviceName "DescribeBundle" 
+describeBundle = AWS.request serviceName "describeBundle" 
 
 
 -- | <p> Gets details about a project in AWS Mobile Hub. </p>
 describeProject :: forall eff. DescribeProjectRequest -> Aff (err :: AWS.RequestError | eff) DescribeProjectResult
-describeProject = AWS.request serviceName "DescribeProject" 
+describeProject = AWS.request serviceName "describeProject" 
 
 
 -- | <p> Generates customized software development kit (SDK) and or tool packages used to integrate mobile web or mobile app clients with backend AWS resources. </p>
 exportBundle :: forall eff. ExportBundleRequest -> Aff (err :: AWS.RequestError | eff) ExportBundleResult
-exportBundle = AWS.request serviceName "ExportBundle" 
+exportBundle = AWS.request serviceName "exportBundle" 
 
 
 -- | <p> Exports project configuration to a snapshot which can be downloaded and shared. Note that mobile app push credentials are encrypted in exported projects, so they can only be shared successfully within the same AWS account. </p>
 exportProject :: forall eff. ExportProjectRequest -> Aff (err :: AWS.RequestError | eff) ExportProjectResult
-exportProject = AWS.request serviceName "ExportProject" 
+exportProject = AWS.request serviceName "exportProject" 
 
 
 -- | <p> List all available bundles. </p>
 listBundles :: forall eff. ListBundlesRequest -> Aff (err :: AWS.RequestError | eff) ListBundlesResult
-listBundles = AWS.request serviceName "ListBundles" 
+listBundles = AWS.request serviceName "listBundles" 
 
 
 -- | <p> Lists projects in AWS Mobile Hub. </p>
 listProjects :: forall eff. ListProjectsRequest -> Aff (err :: AWS.RequestError | eff) ListProjectsResult
-listProjects = AWS.request serviceName "ListProjects" 
+listProjects = AWS.request serviceName "listProjects" 
 
 
 -- | <p> Update an existing project. </p>
 updateProject :: forall eff. UpdateProjectRequest -> Aff (err :: AWS.RequestError | eff) UpdateProjectResult
-updateProject = AWS.request serviceName "UpdateProject" 
+updateProject = AWS.request serviceName "updateProject" 
 
 
 -- | <p> Account Action is required in order to continue the request. </p>

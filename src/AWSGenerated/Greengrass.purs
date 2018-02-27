@@ -16,372 +16,372 @@ serviceName = "Greengrass" :: String
 
 -- | Associates a role with a group. The role will be used by the AWS Greengrass core in order to access AWS cloud services. The role's permissions will allow Greengrass core Lambda functions to perform actions against the cloud.
 associateRoleToGroup :: forall eff. AssociateRoleToGroupRequest -> Aff (err :: AWS.RequestError | eff) AssociateRoleToGroupResponse
-associateRoleToGroup = AWS.request serviceName "AssociateRoleToGroup" 
+associateRoleToGroup = AWS.request serviceName "associateRoleToGroup" 
 
 
 -- | Associates a role which is used by AWS Greengrass. AWS Greengrass uses the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. It needs to have minimum permissions in policy ``AWSGreengrassResourceAccessRolePolicy``
 associateServiceRoleToAccount :: forall eff. AssociateServiceRoleToAccountRequest -> Aff (err :: AWS.RequestError | eff) AssociateServiceRoleToAccountResponse
-associateServiceRoleToAccount = AWS.request serviceName "AssociateServiceRoleToAccount" 
+associateServiceRoleToAccount = AWS.request serviceName "associateServiceRoleToAccount" 
 
 
 -- | Creates a core definition. You may optionally provide the initial version of the core definition or use ''CreateCoreDefinitionVersion'' at a later time. AWS Greengrass Groups must each contain exactly 1 AWS Greengrass Core.
 createCoreDefinition :: forall eff. CreateCoreDefinitionRequest -> Aff (err :: AWS.RequestError | eff) CreateCoreDefinitionResponse
-createCoreDefinition = AWS.request serviceName "CreateCoreDefinition" 
+createCoreDefinition = AWS.request serviceName "createCoreDefinition" 
 
 
 -- | Creates a version of a core definition that has already been defined. AWS Greengrass Groups must each contain exactly 1 AWS Greengrass Core.
 createCoreDefinitionVersion :: forall eff. CreateCoreDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateCoreDefinitionVersionResponse
-createCoreDefinitionVersion = AWS.request serviceName "CreateCoreDefinitionVersion" 
+createCoreDefinitionVersion = AWS.request serviceName "createCoreDefinitionVersion" 
 
 
 -- | Creates a deployment.
 createDeployment :: forall eff. CreateDeploymentRequest -> Aff (err :: AWS.RequestError | eff) CreateDeploymentResponse
-createDeployment = AWS.request serviceName "CreateDeployment" 
+createDeployment = AWS.request serviceName "createDeployment" 
 
 
 -- | Creates a device definition. You may optinally provide the initial version of the device definition or use ``CreateDeviceDefinitionVersion`` at a later time.
 createDeviceDefinition :: forall eff. CreateDeviceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) CreateDeviceDefinitionResponse
-createDeviceDefinition = AWS.request serviceName "CreateDeviceDefinition" 
+createDeviceDefinition = AWS.request serviceName "createDeviceDefinition" 
 
 
 -- | Creates a version of a device definition that has already been defined.
 createDeviceDefinitionVersion :: forall eff. CreateDeviceDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateDeviceDefinitionVersionResponse
-createDeviceDefinitionVersion = AWS.request serviceName "CreateDeviceDefinitionVersion" 
+createDeviceDefinitionVersion = AWS.request serviceName "createDeviceDefinitionVersion" 
 
 
 -- | Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ``CreateFunctionDefinitionVersion`` later.
 createFunctionDefinition :: forall eff. CreateFunctionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) CreateFunctionDefinitionResponse
-createFunctionDefinition = AWS.request serviceName "CreateFunctionDefinition" 
+createFunctionDefinition = AWS.request serviceName "createFunctionDefinition" 
 
 
 -- | Create a version of a Lambda function definition that has already been defined.
 createFunctionDefinitionVersion :: forall eff. CreateFunctionDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateFunctionDefinitionVersionResponse
-createFunctionDefinitionVersion = AWS.request serviceName "CreateFunctionDefinitionVersion" 
+createFunctionDefinitionVersion = AWS.request serviceName "createFunctionDefinitionVersion" 
 
 
 -- | Creates a group. You may optionally provide the initial version of the group or use ''CreateGroupVersion'' at a later time.
 createGroup :: forall eff. CreateGroupRequest -> Aff (err :: AWS.RequestError | eff) CreateGroupResponse
-createGroup = AWS.request serviceName "CreateGroup" 
+createGroup = AWS.request serviceName "createGroup" 
 
 
 -- | Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
 createGroupCertificateAuthority :: forall eff. CreateGroupCertificateAuthorityRequest -> Aff (err :: AWS.RequestError | eff) CreateGroupCertificateAuthorityResponse
-createGroupCertificateAuthority = AWS.request serviceName "CreateGroupCertificateAuthority" 
+createGroupCertificateAuthority = AWS.request serviceName "createGroupCertificateAuthority" 
 
 
 -- | Creates a version of a group which has already been defined.
 createGroupVersion :: forall eff. CreateGroupVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateGroupVersionResponse
-createGroupVersion = AWS.request serviceName "CreateGroupVersion" 
+createGroupVersion = AWS.request serviceName "createGroupVersion" 
 
 
 -- | Creates a logger definition. You may optionally provide the initial version of the logger definition or use ``CreateLoggerDefinitionVersion`` at a later time.
 createLoggerDefinition :: forall eff. CreateLoggerDefinitionRequest -> Aff (err :: AWS.RequestError | eff) CreateLoggerDefinitionResponse
-createLoggerDefinition = AWS.request serviceName "CreateLoggerDefinition" 
+createLoggerDefinition = AWS.request serviceName "createLoggerDefinition" 
 
 
 -- | Creates a version of a logger definition that has already been defined.
 createLoggerDefinitionVersion :: forall eff. CreateLoggerDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateLoggerDefinitionVersionResponse
-createLoggerDefinitionVersion = AWS.request serviceName "CreateLoggerDefinitionVersion" 
+createLoggerDefinitionVersion = AWS.request serviceName "createLoggerDefinitionVersion" 
 
 
 -- | Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ``CreateResourceDefinitionVersion`` later.
 createResourceDefinition :: forall eff. CreateResourceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) CreateResourceDefinitionResponse
-createResourceDefinition = AWS.request serviceName "CreateResourceDefinition" 
+createResourceDefinition = AWS.request serviceName "createResourceDefinition" 
 
 
 -- | Create a version of a resource definition that has already been defined.
 createResourceDefinitionVersion :: forall eff. CreateResourceDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateResourceDefinitionVersionResponse
-createResourceDefinitionVersion = AWS.request serviceName "CreateResourceDefinitionVersion" 
+createResourceDefinitionVersion = AWS.request serviceName "createResourceDefinitionVersion" 
 
 
 -- | Creates an Iot Job that will trigger your Greengrass Cores to update the software they are running.
 createSoftwareUpdateJob :: forall eff. CreateSoftwareUpdateJobRequest -> Aff (err :: AWS.RequestError | eff) CreateSoftwareUpdateJobResponse
-createSoftwareUpdateJob = AWS.request serviceName "CreateSoftwareUpdateJob" 
+createSoftwareUpdateJob = AWS.request serviceName "createSoftwareUpdateJob" 
 
 
 -- | Creates a subscription definition. You may optionally provide the initial version of the subscription definition or use ``CreateSubscriptionDefinitionVersion`` at a later time.
 createSubscriptionDefinition :: forall eff. CreateSubscriptionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) CreateSubscriptionDefinitionResponse
-createSubscriptionDefinition = AWS.request serviceName "CreateSubscriptionDefinition" 
+createSubscriptionDefinition = AWS.request serviceName "createSubscriptionDefinition" 
 
 
 -- | Creates a version of a subscription definition which has already been defined.
 createSubscriptionDefinitionVersion :: forall eff. CreateSubscriptionDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) CreateSubscriptionDefinitionVersionResponse
-createSubscriptionDefinitionVersion = AWS.request serviceName "CreateSubscriptionDefinitionVersion" 
+createSubscriptionDefinitionVersion = AWS.request serviceName "createSubscriptionDefinitionVersion" 
 
 
 -- | Deletes a core definition. The core definition must not have been used in a deployment.
 deleteCoreDefinition :: forall eff. DeleteCoreDefinitionRequest -> Aff (err :: AWS.RequestError | eff) DeleteCoreDefinitionResponse
-deleteCoreDefinition = AWS.request serviceName "DeleteCoreDefinition" 
+deleteCoreDefinition = AWS.request serviceName "deleteCoreDefinition" 
 
 
 -- | Deletes a device definition. The device definition must not have been used in a deployment.
 deleteDeviceDefinition :: forall eff. DeleteDeviceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) DeleteDeviceDefinitionResponse
-deleteDeviceDefinition = AWS.request serviceName "DeleteDeviceDefinition" 
+deleteDeviceDefinition = AWS.request serviceName "deleteDeviceDefinition" 
 
 
 -- | Deletes a Lambda function definition. The Lambda function definition must not have been used in a deployment.
 deleteFunctionDefinition :: forall eff. DeleteFunctionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) DeleteFunctionDefinitionResponse
-deleteFunctionDefinition = AWS.request serviceName "DeleteFunctionDefinition" 
+deleteFunctionDefinition = AWS.request serviceName "deleteFunctionDefinition" 
 
 
 -- | Deletes a group. The group must not have been used in deployment.
 deleteGroup :: forall eff. DeleteGroupRequest -> Aff (err :: AWS.RequestError | eff) DeleteGroupResponse
-deleteGroup = AWS.request serviceName "DeleteGroup" 
+deleteGroup = AWS.request serviceName "deleteGroup" 
 
 
 -- | Deletes a logger definition. The logger definition must not have been used in a deployment.
 deleteLoggerDefinition :: forall eff. DeleteLoggerDefinitionRequest -> Aff (err :: AWS.RequestError | eff) DeleteLoggerDefinitionResponse
-deleteLoggerDefinition = AWS.request serviceName "DeleteLoggerDefinition" 
+deleteLoggerDefinition = AWS.request serviceName "deleteLoggerDefinition" 
 
 
 -- | Deletes a resource definition.
 deleteResourceDefinition :: forall eff. DeleteResourceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) DeleteResourceDefinitionResponse
-deleteResourceDefinition = AWS.request serviceName "DeleteResourceDefinition" 
+deleteResourceDefinition = AWS.request serviceName "deleteResourceDefinition" 
 
 
 -- | Deletes a subscription definition. The subscription definition must not have been used in a deployment.
 deleteSubscriptionDefinition :: forall eff. DeleteSubscriptionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) DeleteSubscriptionDefinitionResponse
-deleteSubscriptionDefinition = AWS.request serviceName "DeleteSubscriptionDefinition" 
+deleteSubscriptionDefinition = AWS.request serviceName "deleteSubscriptionDefinition" 
 
 
 -- | Disassociates the role from a group.
 disassociateRoleFromGroup :: forall eff. DisassociateRoleFromGroupRequest -> Aff (err :: AWS.RequestError | eff) DisassociateRoleFromGroupResponse
-disassociateRoleFromGroup = AWS.request serviceName "DisassociateRoleFromGroup" 
+disassociateRoleFromGroup = AWS.request serviceName "disassociateRoleFromGroup" 
 
 
 -- | Disassociates the service role from the account. Without a service role, deployments will not work.
 disassociateServiceRoleFromAccount :: forall eff. DisassociateServiceRoleFromAccountRequest -> Aff (err :: AWS.RequestError | eff) DisassociateServiceRoleFromAccountResponse
-disassociateServiceRoleFromAccount = AWS.request serviceName "DisassociateServiceRoleFromAccount" 
+disassociateServiceRoleFromAccount = AWS.request serviceName "disassociateServiceRoleFromAccount" 
 
 
 -- | Retrieves the role associated with a particular group.
 getAssociatedRole :: forall eff. GetAssociatedRoleRequest -> Aff (err :: AWS.RequestError | eff) GetAssociatedRoleResponse
-getAssociatedRole = AWS.request serviceName "GetAssociatedRole" 
+getAssociatedRole = AWS.request serviceName "getAssociatedRole" 
 
 
 -- | Retrieves the connectivity information for a core.
 getConnectivityInfo :: forall eff. GetConnectivityInfoRequest -> Aff (err :: AWS.RequestError | eff) GetConnectivityInfoResponse
-getConnectivityInfo = AWS.request serviceName "GetConnectivityInfo" 
+getConnectivityInfo = AWS.request serviceName "getConnectivityInfo" 
 
 
 -- | Retrieves information about a core definition version.
 getCoreDefinition :: forall eff. GetCoreDefinitionRequest -> Aff (err :: AWS.RequestError | eff) GetCoreDefinitionResponse
-getCoreDefinition = AWS.request serviceName "GetCoreDefinition" 
+getCoreDefinition = AWS.request serviceName "getCoreDefinition" 
 
 
 -- | Retrieves information about a core definition version.
 getCoreDefinitionVersion :: forall eff. GetCoreDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) GetCoreDefinitionVersionResponse
-getCoreDefinitionVersion = AWS.request serviceName "GetCoreDefinitionVersion" 
+getCoreDefinitionVersion = AWS.request serviceName "getCoreDefinitionVersion" 
 
 
 -- | Returns the status of a deployment.
 getDeploymentStatus :: forall eff. GetDeploymentStatusRequest -> Aff (err :: AWS.RequestError | eff) GetDeploymentStatusResponse
-getDeploymentStatus = AWS.request serviceName "GetDeploymentStatus" 
+getDeploymentStatus = AWS.request serviceName "getDeploymentStatus" 
 
 
 -- | Retrieves information about a device definition.
 getDeviceDefinition :: forall eff. GetDeviceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) GetDeviceDefinitionResponse
-getDeviceDefinition = AWS.request serviceName "GetDeviceDefinition" 
+getDeviceDefinition = AWS.request serviceName "getDeviceDefinition" 
 
 
 -- | Retrieves information about a device definition version.
 getDeviceDefinitionVersion :: forall eff. GetDeviceDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) GetDeviceDefinitionVersionResponse
-getDeviceDefinitionVersion = AWS.request serviceName "GetDeviceDefinitionVersion" 
+getDeviceDefinitionVersion = AWS.request serviceName "getDeviceDefinitionVersion" 
 
 
 -- | Retrieves information about a Lambda function definition, such as its creation time and latest version.
 getFunctionDefinition :: forall eff. GetFunctionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) GetFunctionDefinitionResponse
-getFunctionDefinition = AWS.request serviceName "GetFunctionDefinition" 
+getFunctionDefinition = AWS.request serviceName "getFunctionDefinition" 
 
 
 -- | Retrieves information about a Lambda function definition version, such as which Lambda functions are included in the version and their configurations.
 getFunctionDefinitionVersion :: forall eff. GetFunctionDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) GetFunctionDefinitionVersionResponse
-getFunctionDefinitionVersion = AWS.request serviceName "GetFunctionDefinitionVersion" 
+getFunctionDefinitionVersion = AWS.request serviceName "getFunctionDefinitionVersion" 
 
 
 -- | Retrieves information about a group.
 getGroup :: forall eff. GetGroupRequest -> Aff (err :: AWS.RequestError | eff) GetGroupResponse
-getGroup = AWS.request serviceName "GetGroup" 
+getGroup = AWS.request serviceName "getGroup" 
 
 
 -- | Retreives the CA associated with a group. Returns the public key of the CA.
 getGroupCertificateAuthority :: forall eff. GetGroupCertificateAuthorityRequest -> Aff (err :: AWS.RequestError | eff) GetGroupCertificateAuthorityResponse
-getGroupCertificateAuthority = AWS.request serviceName "GetGroupCertificateAuthority" 
+getGroupCertificateAuthority = AWS.request serviceName "getGroupCertificateAuthority" 
 
 
 -- | Retrieves the current configuration for the CA used by the group.
 getGroupCertificateConfiguration :: forall eff. GetGroupCertificateConfigurationRequest -> Aff (err :: AWS.RequestError | eff) GetGroupCertificateConfigurationResponse
-getGroupCertificateConfiguration = AWS.request serviceName "GetGroupCertificateConfiguration" 
+getGroupCertificateConfiguration = AWS.request serviceName "getGroupCertificateConfiguration" 
 
 
 -- | Retrieves information about a group version.
 getGroupVersion :: forall eff. GetGroupVersionRequest -> Aff (err :: AWS.RequestError | eff) GetGroupVersionResponse
-getGroupVersion = AWS.request serviceName "GetGroupVersion" 
+getGroupVersion = AWS.request serviceName "getGroupVersion" 
 
 
 -- | Retrieves information about a logger definition.
 getLoggerDefinition :: forall eff. GetLoggerDefinitionRequest -> Aff (err :: AWS.RequestError | eff) GetLoggerDefinitionResponse
-getLoggerDefinition = AWS.request serviceName "GetLoggerDefinition" 
+getLoggerDefinition = AWS.request serviceName "getLoggerDefinition" 
 
 
 -- | Retrieves information about a logger definition version.
 getLoggerDefinitionVersion :: forall eff. GetLoggerDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) GetLoggerDefinitionVersionResponse
-getLoggerDefinitionVersion = AWS.request serviceName "GetLoggerDefinitionVersion" 
+getLoggerDefinitionVersion = AWS.request serviceName "getLoggerDefinitionVersion" 
 
 
 -- | Retrieves information about a resource definition, such as its creation time and latest version.
 getResourceDefinition :: forall eff. GetResourceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) GetResourceDefinitionResponse
-getResourceDefinition = AWS.request serviceName "GetResourceDefinition" 
+getResourceDefinition = AWS.request serviceName "getResourceDefinition" 
 
 
 -- | Retrieves information about a resource definition version, such as which resources are included in the version.
 getResourceDefinitionVersion :: forall eff. GetResourceDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) GetResourceDefinitionVersionResponse
-getResourceDefinitionVersion = AWS.request serviceName "GetResourceDefinitionVersion" 
+getResourceDefinitionVersion = AWS.request serviceName "getResourceDefinitionVersion" 
 
 
 -- | Retrieves the service role that is attached to the account.
 getServiceRoleForAccount :: forall eff. GetServiceRoleForAccountRequest -> Aff (err :: AWS.RequestError | eff) GetServiceRoleForAccountResponse
-getServiceRoleForAccount = AWS.request serviceName "GetServiceRoleForAccount" 
+getServiceRoleForAccount = AWS.request serviceName "getServiceRoleForAccount" 
 
 
 -- | Retrieves information about a subscription definition.
 getSubscriptionDefinition :: forall eff. GetSubscriptionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) GetSubscriptionDefinitionResponse
-getSubscriptionDefinition = AWS.request serviceName "GetSubscriptionDefinition" 
+getSubscriptionDefinition = AWS.request serviceName "getSubscriptionDefinition" 
 
 
 -- | Retrieves information about a subscription definition version.
 getSubscriptionDefinitionVersion :: forall eff. GetSubscriptionDefinitionVersionRequest -> Aff (err :: AWS.RequestError | eff) GetSubscriptionDefinitionVersionResponse
-getSubscriptionDefinitionVersion = AWS.request serviceName "GetSubscriptionDefinitionVersion" 
+getSubscriptionDefinitionVersion = AWS.request serviceName "getSubscriptionDefinitionVersion" 
 
 
 -- | Lists versions of a core definition.
 listCoreDefinitionVersions :: forall eff. ListCoreDefinitionVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListCoreDefinitionVersionsResponse
-listCoreDefinitionVersions = AWS.request serviceName "ListCoreDefinitionVersions" 
+listCoreDefinitionVersions = AWS.request serviceName "listCoreDefinitionVersions" 
 
 
 -- | Retrieves a list of core definitions.
 listCoreDefinitions :: forall eff. ListCoreDefinitionsRequest -> Aff (err :: AWS.RequestError | eff) ListCoreDefinitionsResponse
-listCoreDefinitions = AWS.request serviceName "ListCoreDefinitions" 
+listCoreDefinitions = AWS.request serviceName "listCoreDefinitions" 
 
 
 -- | Returns a history of deployments for the group.
 listDeployments :: forall eff. ListDeploymentsRequest -> Aff (err :: AWS.RequestError | eff) ListDeploymentsResponse
-listDeployments = AWS.request serviceName "ListDeployments" 
+listDeployments = AWS.request serviceName "listDeployments" 
 
 
 -- | Lists the versions of a device definition.
 listDeviceDefinitionVersions :: forall eff. ListDeviceDefinitionVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListDeviceDefinitionVersionsResponse
-listDeviceDefinitionVersions = AWS.request serviceName "ListDeviceDefinitionVersions" 
+listDeviceDefinitionVersions = AWS.request serviceName "listDeviceDefinitionVersions" 
 
 
 -- | Retrieves a list of device definitions.
 listDeviceDefinitions :: forall eff. ListDeviceDefinitionsRequest -> Aff (err :: AWS.RequestError | eff) ListDeviceDefinitionsResponse
-listDeviceDefinitions = AWS.request serviceName "ListDeviceDefinitions" 
+listDeviceDefinitions = AWS.request serviceName "listDeviceDefinitions" 
 
 
 -- | Lists the versions of a Lambda function definition.
 listFunctionDefinitionVersions :: forall eff. ListFunctionDefinitionVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListFunctionDefinitionVersionsResponse
-listFunctionDefinitionVersions = AWS.request serviceName "ListFunctionDefinitionVersions" 
+listFunctionDefinitionVersions = AWS.request serviceName "listFunctionDefinitionVersions" 
 
 
 -- | Retrieves a list of Lambda function definitions.
 listFunctionDefinitions :: forall eff. ListFunctionDefinitionsRequest -> Aff (err :: AWS.RequestError | eff) ListFunctionDefinitionsResponse
-listFunctionDefinitions = AWS.request serviceName "ListFunctionDefinitions" 
+listFunctionDefinitions = AWS.request serviceName "listFunctionDefinitions" 
 
 
 -- | Retrieves the current CAs for a group.
 listGroupCertificateAuthorities :: forall eff. ListGroupCertificateAuthoritiesRequest -> Aff (err :: AWS.RequestError | eff) ListGroupCertificateAuthoritiesResponse
-listGroupCertificateAuthorities = AWS.request serviceName "ListGroupCertificateAuthorities" 
+listGroupCertificateAuthorities = AWS.request serviceName "listGroupCertificateAuthorities" 
 
 
 -- | List the versions of a group.
 listGroupVersions :: forall eff. ListGroupVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListGroupVersionsResponse
-listGroupVersions = AWS.request serviceName "ListGroupVersions" 
+listGroupVersions = AWS.request serviceName "listGroupVersions" 
 
 
 -- | Retrieves a list of groups.
 listGroups :: forall eff. ListGroupsRequest -> Aff (err :: AWS.RequestError | eff) ListGroupsResponse
-listGroups = AWS.request serviceName "ListGroups" 
+listGroups = AWS.request serviceName "listGroups" 
 
 
 -- | Lists the versions of a logger definition.
 listLoggerDefinitionVersions :: forall eff. ListLoggerDefinitionVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListLoggerDefinitionVersionsResponse
-listLoggerDefinitionVersions = AWS.request serviceName "ListLoggerDefinitionVersions" 
+listLoggerDefinitionVersions = AWS.request serviceName "listLoggerDefinitionVersions" 
 
 
 -- | Retrieves a list of logger definitions.
 listLoggerDefinitions :: forall eff. ListLoggerDefinitionsRequest -> Aff (err :: AWS.RequestError | eff) ListLoggerDefinitionsResponse
-listLoggerDefinitions = AWS.request serviceName "ListLoggerDefinitions" 
+listLoggerDefinitions = AWS.request serviceName "listLoggerDefinitions" 
 
 
 -- | Lists the versions of a resource definition.
 listResourceDefinitionVersions :: forall eff. ListResourceDefinitionVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListResourceDefinitionVersionsResponse
-listResourceDefinitionVersions = AWS.request serviceName "ListResourceDefinitionVersions" 
+listResourceDefinitionVersions = AWS.request serviceName "listResourceDefinitionVersions" 
 
 
 -- | Retrieves a list of resource definitions.
 listResourceDefinitions :: forall eff. ListResourceDefinitionsRequest -> Aff (err :: AWS.RequestError | eff) ListResourceDefinitionsResponse
-listResourceDefinitions = AWS.request serviceName "ListResourceDefinitions" 
+listResourceDefinitions = AWS.request serviceName "listResourceDefinitions" 
 
 
 -- | Lists the versions of a subscription definition.
 listSubscriptionDefinitionVersions :: forall eff. ListSubscriptionDefinitionVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListSubscriptionDefinitionVersionsResponse
-listSubscriptionDefinitionVersions = AWS.request serviceName "ListSubscriptionDefinitionVersions" 
+listSubscriptionDefinitionVersions = AWS.request serviceName "listSubscriptionDefinitionVersions" 
 
 
 -- | Retrieves a list of subscription definitions.
 listSubscriptionDefinitions :: forall eff. ListSubscriptionDefinitionsRequest -> Aff (err :: AWS.RequestError | eff) ListSubscriptionDefinitionsResponse
-listSubscriptionDefinitions = AWS.request serviceName "ListSubscriptionDefinitions" 
+listSubscriptionDefinitions = AWS.request serviceName "listSubscriptionDefinitions" 
 
 
 -- | Resets a group's deployments.
 resetDeployments :: forall eff. ResetDeploymentsRequest -> Aff (err :: AWS.RequestError | eff) ResetDeploymentsResponse
-resetDeployments = AWS.request serviceName "ResetDeployments" 
+resetDeployments = AWS.request serviceName "resetDeployments" 
 
 
 -- | Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.
 updateConnectivityInfo :: forall eff. UpdateConnectivityInfoRequest -> Aff (err :: AWS.RequestError | eff) UpdateConnectivityInfoResponse
-updateConnectivityInfo = AWS.request serviceName "UpdateConnectivityInfo" 
+updateConnectivityInfo = AWS.request serviceName "updateConnectivityInfo" 
 
 
 -- | Updates a core definition.
 updateCoreDefinition :: forall eff. UpdateCoreDefinitionRequest -> Aff (err :: AWS.RequestError | eff) UpdateCoreDefinitionResponse
-updateCoreDefinition = AWS.request serviceName "UpdateCoreDefinition" 
+updateCoreDefinition = AWS.request serviceName "updateCoreDefinition" 
 
 
 -- | Updates a device definition.
 updateDeviceDefinition :: forall eff. UpdateDeviceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) UpdateDeviceDefinitionResponse
-updateDeviceDefinition = AWS.request serviceName "UpdateDeviceDefinition" 
+updateDeviceDefinition = AWS.request serviceName "updateDeviceDefinition" 
 
 
 -- | Updates a Lambda function definition.
 updateFunctionDefinition :: forall eff. UpdateFunctionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) UpdateFunctionDefinitionResponse
-updateFunctionDefinition = AWS.request serviceName "UpdateFunctionDefinition" 
+updateFunctionDefinition = AWS.request serviceName "updateFunctionDefinition" 
 
 
 -- | Updates a group.
 updateGroup :: forall eff. UpdateGroupRequest -> Aff (err :: AWS.RequestError | eff) UpdateGroupResponse
-updateGroup = AWS.request serviceName "UpdateGroup" 
+updateGroup = AWS.request serviceName "updateGroup" 
 
 
 -- | Updates the Cert expiry time for a group.
 updateGroupCertificateConfiguration :: forall eff. UpdateGroupCertificateConfigurationRequest -> Aff (err :: AWS.RequestError | eff) UpdateGroupCertificateConfigurationResponse
-updateGroupCertificateConfiguration = AWS.request serviceName "UpdateGroupCertificateConfiguration" 
+updateGroupCertificateConfiguration = AWS.request serviceName "updateGroupCertificateConfiguration" 
 
 
 -- | Updates a logger definition.
 updateLoggerDefinition :: forall eff. UpdateLoggerDefinitionRequest -> Aff (err :: AWS.RequestError | eff) UpdateLoggerDefinitionResponse
-updateLoggerDefinition = AWS.request serviceName "UpdateLoggerDefinition" 
+updateLoggerDefinition = AWS.request serviceName "updateLoggerDefinition" 
 
 
 -- | Updates a resource definition.
 updateResourceDefinition :: forall eff. UpdateResourceDefinitionRequest -> Aff (err :: AWS.RequestError | eff) UpdateResourceDefinitionResponse
-updateResourceDefinition = AWS.request serviceName "UpdateResourceDefinition" 
+updateResourceDefinition = AWS.request serviceName "updateResourceDefinition" 
 
 
 -- | Updates a subscription definition.
 updateSubscriptionDefinition :: forall eff. UpdateSubscriptionDefinitionRequest -> Aff (err :: AWS.RequestError | eff) UpdateSubscriptionDefinitionResponse
-updateSubscriptionDefinition = AWS.request serviceName "UpdateSubscriptionDefinition" 
+updateSubscriptionDefinition = AWS.request serviceName "updateSubscriptionDefinition" 
 
 
 newtype AssociateRoleToGroupRequest = AssociateRoleToGroupRequest 

@@ -16,297 +16,297 @@ serviceName = "ServiceCatalog" :: String
 
 -- | <p>Accepts an offer to share the specified portfolio.</p>
 acceptPortfolioShare :: forall eff. AcceptPortfolioShareInput -> Aff (err :: AWS.RequestError | eff) AcceptPortfolioShareOutput
-acceptPortfolioShare = AWS.request serviceName "AcceptPortfolioShare" 
+acceptPortfolioShare = AWS.request serviceName "acceptPortfolioShare" 
 
 
 -- | <p>Associates the specified principal ARN with the specified portfolio.</p>
 associatePrincipalWithPortfolio :: forall eff. AssociatePrincipalWithPortfolioInput -> Aff (err :: AWS.RequestError | eff) AssociatePrincipalWithPortfolioOutput
-associatePrincipalWithPortfolio = AWS.request serviceName "AssociatePrincipalWithPortfolio" 
+associatePrincipalWithPortfolio = AWS.request serviceName "associatePrincipalWithPortfolio" 
 
 
 -- | <p>Associates the specified product with the specified portfolio.</p>
 associateProductWithPortfolio :: forall eff. AssociateProductWithPortfolioInput -> Aff (err :: AWS.RequestError | eff) AssociateProductWithPortfolioOutput
-associateProductWithPortfolio = AWS.request serviceName "AssociateProductWithPortfolio" 
+associateProductWithPortfolio = AWS.request serviceName "associateProductWithPortfolio" 
 
 
 -- | <p>Associate the specified TagOption with the specified portfolio or product.</p>
 associateTagOptionWithResource :: forall eff. AssociateTagOptionWithResourceInput -> Aff (err :: AWS.RequestError | eff) AssociateTagOptionWithResourceOutput
-associateTagOptionWithResource = AWS.request serviceName "AssociateTagOptionWithResource" 
+associateTagOptionWithResource = AWS.request serviceName "associateTagOptionWithResource" 
 
 
 -- | <p>Copies the specified source product to the specified target product or a new product.</p> <p>You can copy a product to the same account or another account. You can copy a product to the same region or another region.</p> <p>This operation is performed asynchronously. To track the progress of the operation, use <a>DescribeCopyProductStatus</a>.</p>
 copyProduct :: forall eff. CopyProductInput -> Aff (err :: AWS.RequestError | eff) CopyProductOutput
-copyProduct = AWS.request serviceName "CopyProduct" 
+copyProduct = AWS.request serviceName "copyProduct" 
 
 
 -- | <p>Creates a constraint.</p>
 createConstraint :: forall eff. CreateConstraintInput -> Aff (err :: AWS.RequestError | eff) CreateConstraintOutput
-createConstraint = AWS.request serviceName "CreateConstraint" 
+createConstraint = AWS.request serviceName "createConstraint" 
 
 
 -- | <p>Creates a portfolio.</p>
 createPortfolio :: forall eff. CreatePortfolioInput -> Aff (err :: AWS.RequestError | eff) CreatePortfolioOutput
-createPortfolio = AWS.request serviceName "CreatePortfolio" 
+createPortfolio = AWS.request serviceName "createPortfolio" 
 
 
 -- | <p>Shares the specified portfolio with the specified account.</p>
 createPortfolioShare :: forall eff. CreatePortfolioShareInput -> Aff (err :: AWS.RequestError | eff) CreatePortfolioShareOutput
-createPortfolioShare = AWS.request serviceName "CreatePortfolioShare" 
+createPortfolioShare = AWS.request serviceName "createPortfolioShare" 
 
 
 -- | <p>Creates a product.</p>
 createProduct :: forall eff. CreateProductInput -> Aff (err :: AWS.RequestError | eff) CreateProductOutput
-createProduct = AWS.request serviceName "CreateProduct" 
+createProduct = AWS.request serviceName "createProduct" 
 
 
 -- | <p>Creates a plan. A plan includes the list of resources that will be created (when provisioning a new product) or modified (when updating a provisioned product) when the plan is executed.</p> <p>You can create one plan per provisioned product. To create a plan for an existing provisioned product, it's status must be AVAILBLE or TAINTED.</p> <p>To view the resource changes in the change set, use <a>DescribeProvisionedProductPlan</a>. To create or modify the provisioned product, use <a>ExecuteProvisionedProductPlan</a>.</p>
 createProvisionedProductPlan :: forall eff. CreateProvisionedProductPlanInput -> Aff (err :: AWS.RequestError | eff) CreateProvisionedProductPlanOutput
-createProvisionedProductPlan = AWS.request serviceName "CreateProvisionedProductPlan" 
+createProvisionedProductPlan = AWS.request serviceName "createProvisionedProductPlan" 
 
 
 -- | <p>Creates a provisioning artifact (also known as a version) for the specified product.</p> <p>You cannot create a provisioning artifact for a product that was shared with you.</p>
 createProvisioningArtifact :: forall eff. CreateProvisioningArtifactInput -> Aff (err :: AWS.RequestError | eff) CreateProvisioningArtifactOutput
-createProvisioningArtifact = AWS.request serviceName "CreateProvisioningArtifact" 
+createProvisioningArtifact = AWS.request serviceName "createProvisioningArtifact" 
 
 
 -- | <p>Creates a TagOption.</p>
 createTagOption :: forall eff. CreateTagOptionInput -> Aff (err :: AWS.RequestError | eff) CreateTagOptionOutput
-createTagOption = AWS.request serviceName "CreateTagOption" 
+createTagOption = AWS.request serviceName "createTagOption" 
 
 
 -- | <p>Deletes the specified constraint.</p>
 deleteConstraint :: forall eff. DeleteConstraintInput -> Aff (err :: AWS.RequestError | eff) DeleteConstraintOutput
-deleteConstraint = AWS.request serviceName "DeleteConstraint" 
+deleteConstraint = AWS.request serviceName "deleteConstraint" 
 
 
 -- | <p>Deletes the specified portfolio.</p> <p>You cannot delete a portfolio if it was shared with you or if it has associated products, users, constraints, or shared accounts.</p>
 deletePortfolio :: forall eff. DeletePortfolioInput -> Aff (err :: AWS.RequestError | eff) DeletePortfolioOutput
-deletePortfolio = AWS.request serviceName "DeletePortfolio" 
+deletePortfolio = AWS.request serviceName "deletePortfolio" 
 
 
 -- | <p>Stops sharing the specified portfolio with the specified account.</p>
 deletePortfolioShare :: forall eff. DeletePortfolioShareInput -> Aff (err :: AWS.RequestError | eff) DeletePortfolioShareOutput
-deletePortfolioShare = AWS.request serviceName "DeletePortfolioShare" 
+deletePortfolioShare = AWS.request serviceName "deletePortfolioShare" 
 
 
 -- | <p>Deletes the specified product.</p> <p>You cannot delete a product if it was shared with you or is associated with a portfolio.</p>
 deleteProduct :: forall eff. DeleteProductInput -> Aff (err :: AWS.RequestError | eff) DeleteProductOutput
-deleteProduct = AWS.request serviceName "DeleteProduct" 
+deleteProduct = AWS.request serviceName "deleteProduct" 
 
 
 -- | <p>Deletes the specified plan.</p>
 deleteProvisionedProductPlan :: forall eff. DeleteProvisionedProductPlanInput -> Aff (err :: AWS.RequestError | eff) DeleteProvisionedProductPlanOutput
-deleteProvisionedProductPlan = AWS.request serviceName "DeleteProvisionedProductPlan" 
+deleteProvisionedProductPlan = AWS.request serviceName "deleteProvisionedProductPlan" 
 
 
 -- | <p>Deletes the specified provisioning artifact (also known as a version) for the specified product.</p> <p>You cannot delete a provisioning artifact associated with a product that was shared with you. You cannot delete the last provisioning artifact for a product, because a product must have at least one provisioning artifact.</p>
 deleteProvisioningArtifact :: forall eff. DeleteProvisioningArtifactInput -> Aff (err :: AWS.RequestError | eff) DeleteProvisioningArtifactOutput
-deleteProvisioningArtifact = AWS.request serviceName "DeleteProvisioningArtifact" 
+deleteProvisioningArtifact = AWS.request serviceName "deleteProvisioningArtifact" 
 
 
 -- | <p>Gets information about the specified constraint.</p>
 describeConstraint :: forall eff. DescribeConstraintInput -> Aff (err :: AWS.RequestError | eff) DescribeConstraintOutput
-describeConstraint = AWS.request serviceName "DescribeConstraint" 
+describeConstraint = AWS.request serviceName "describeConstraint" 
 
 
 -- | <p>Gets the status of the specified copy product operation.</p>
 describeCopyProductStatus :: forall eff. DescribeCopyProductStatusInput -> Aff (err :: AWS.RequestError | eff) DescribeCopyProductStatusOutput
-describeCopyProductStatus = AWS.request serviceName "DescribeCopyProductStatus" 
+describeCopyProductStatus = AWS.request serviceName "describeCopyProductStatus" 
 
 
 -- | <p>Gets information about the specified portfolio.</p>
 describePortfolio :: forall eff. DescribePortfolioInput -> Aff (err :: AWS.RequestError | eff) DescribePortfolioOutput
-describePortfolio = AWS.request serviceName "DescribePortfolio" 
+describePortfolio = AWS.request serviceName "describePortfolio" 
 
 
 -- | <p>Gets information about the specified product.</p>
 describeProduct :: forall eff. DescribeProductInput -> Aff (err :: AWS.RequestError | eff) DescribeProductOutput
-describeProduct = AWS.request serviceName "DescribeProduct" 
+describeProduct = AWS.request serviceName "describeProduct" 
 
 
 -- | <p>Gets information about the specified product. This operation is run with administrator access.</p>
 describeProductAsAdmin :: forall eff. DescribeProductAsAdminInput -> Aff (err :: AWS.RequestError | eff) DescribeProductAsAdminOutput
-describeProductAsAdmin = AWS.request serviceName "DescribeProductAsAdmin" 
+describeProductAsAdmin = AWS.request serviceName "describeProductAsAdmin" 
 
 
 -- | <p>Gets information about the specified product.</p>
 describeProductView :: forall eff. DescribeProductViewInput -> Aff (err :: AWS.RequestError | eff) DescribeProductViewOutput
-describeProductView = AWS.request serviceName "DescribeProductView" 
+describeProductView = AWS.request serviceName "describeProductView" 
 
 
 -- | <p>Gets information about the specified provisioned product.</p>
 describeProvisionedProduct :: forall eff. DescribeProvisionedProductInput -> Aff (err :: AWS.RequestError | eff) DescribeProvisionedProductOutput
-describeProvisionedProduct = AWS.request serviceName "DescribeProvisionedProduct" 
+describeProvisionedProduct = AWS.request serviceName "describeProvisionedProduct" 
 
 
 -- | <p>Gets information about the resource changes for the specified plan.</p>
 describeProvisionedProductPlan :: forall eff. DescribeProvisionedProductPlanInput -> Aff (err :: AWS.RequestError | eff) DescribeProvisionedProductPlanOutput
-describeProvisionedProductPlan = AWS.request serviceName "DescribeProvisionedProductPlan" 
+describeProvisionedProductPlan = AWS.request serviceName "describeProvisionedProductPlan" 
 
 
 -- | <p>Gets information about the specified provisioning artifact (also known as a version) for the specified product.</p>
 describeProvisioningArtifact :: forall eff. DescribeProvisioningArtifactInput -> Aff (err :: AWS.RequestError | eff) DescribeProvisioningArtifactOutput
-describeProvisioningArtifact = AWS.request serviceName "DescribeProvisioningArtifact" 
+describeProvisioningArtifact = AWS.request serviceName "describeProvisioningArtifact" 
 
 
 -- | <p>Gets information about the configuration required to provision the specified product using the specified provisioning artifact.</p> <p>If the output contains a TagOption key with an empty list of values, there is a TagOption conflict for that key. The end user cannot take action to fix the conflict, and launch is not blocked. In subsequent calls to <a>ProvisionProduct</a>, do not include conflicted TagOption keys as tags, or this causes the error "Parameter validation failed: Missing required parameter in Tags[<i>N</i>]:<i>Value</i>". Tag the provisioned product with the value <code>sc-tagoption-conflict-portfolioId-productId</code>.</p>
 describeProvisioningParameters :: forall eff. DescribeProvisioningParametersInput -> Aff (err :: AWS.RequestError | eff) DescribeProvisioningParametersOutput
-describeProvisioningParameters = AWS.request serviceName "DescribeProvisioningParameters" 
+describeProvisioningParameters = AWS.request serviceName "describeProvisioningParameters" 
 
 
 -- | <p>Gets information about the specified request operation.</p> <p>Use this operation after calling a request operation (for example, <a>ProvisionProduct</a>, <a>TerminateProvisionedProduct</a>, or <a>UpdateProvisionedProduct</a>). </p>
 describeRecord :: forall eff. DescribeRecordInput -> Aff (err :: AWS.RequestError | eff) DescribeRecordOutput
-describeRecord = AWS.request serviceName "DescribeRecord" 
+describeRecord = AWS.request serviceName "describeRecord" 
 
 
 -- | <p>Gets information about the specified TagOption.</p>
 describeTagOption :: forall eff. DescribeTagOptionInput -> Aff (err :: AWS.RequestError | eff) DescribeTagOptionOutput
-describeTagOption = AWS.request serviceName "DescribeTagOption" 
+describeTagOption = AWS.request serviceName "describeTagOption" 
 
 
 -- | <p>Disassociates a previously associated principal ARN from a specified portfolio.</p>
 disassociatePrincipalFromPortfolio :: forall eff. DisassociatePrincipalFromPortfolioInput -> Aff (err :: AWS.RequestError | eff) DisassociatePrincipalFromPortfolioOutput
-disassociatePrincipalFromPortfolio = AWS.request serviceName "DisassociatePrincipalFromPortfolio" 
+disassociatePrincipalFromPortfolio = AWS.request serviceName "disassociatePrincipalFromPortfolio" 
 
 
 -- | <p>Disassociates the specified product from the specified portfolio. </p>
 disassociateProductFromPortfolio :: forall eff. DisassociateProductFromPortfolioInput -> Aff (err :: AWS.RequestError | eff) DisassociateProductFromPortfolioOutput
-disassociateProductFromPortfolio = AWS.request serviceName "DisassociateProductFromPortfolio" 
+disassociateProductFromPortfolio = AWS.request serviceName "disassociateProductFromPortfolio" 
 
 
 -- | <p>Disassociates the specified TagOption from the specified resource.</p>
 disassociateTagOptionFromResource :: forall eff. DisassociateTagOptionFromResourceInput -> Aff (err :: AWS.RequestError | eff) DisassociateTagOptionFromResourceOutput
-disassociateTagOptionFromResource = AWS.request serviceName "DisassociateTagOptionFromResource" 
+disassociateTagOptionFromResource = AWS.request serviceName "disassociateTagOptionFromResource" 
 
 
 -- | <p>Provisions or modifies a product based on the resource changes for the specified plan.</p>
 executeProvisionedProductPlan :: forall eff. ExecuteProvisionedProductPlanInput -> Aff (err :: AWS.RequestError | eff) ExecuteProvisionedProductPlanOutput
-executeProvisionedProductPlan = AWS.request serviceName "ExecuteProvisionedProductPlan" 
+executeProvisionedProductPlan = AWS.request serviceName "executeProvisionedProductPlan" 
 
 
 -- | <p>Lists all portfolios for which sharing was accepted by this account.</p>
 listAcceptedPortfolioShares :: forall eff. ListAcceptedPortfolioSharesInput -> Aff (err :: AWS.RequestError | eff) ListAcceptedPortfolioSharesOutput
-listAcceptedPortfolioShares = AWS.request serviceName "ListAcceptedPortfolioShares" 
+listAcceptedPortfolioShares = AWS.request serviceName "listAcceptedPortfolioShares" 
 
 
 -- | <p>Lists the constraints for the specified portfolio and product.</p>
 listConstraintsForPortfolio :: forall eff. ListConstraintsForPortfolioInput -> Aff (err :: AWS.RequestError | eff) ListConstraintsForPortfolioOutput
-listConstraintsForPortfolio = AWS.request serviceName "ListConstraintsForPortfolio" 
+listConstraintsForPortfolio = AWS.request serviceName "listConstraintsForPortfolio" 
 
 
 -- | <p>Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.</p>
 listLaunchPaths :: forall eff. ListLaunchPathsInput -> Aff (err :: AWS.RequestError | eff) ListLaunchPathsOutput
-listLaunchPaths = AWS.request serviceName "ListLaunchPaths" 
+listLaunchPaths = AWS.request serviceName "listLaunchPaths" 
 
 
 -- | <p>Lists the account IDs that have access to the specified portfolio.</p>
 listPortfolioAccess :: forall eff. ListPortfolioAccessInput -> Aff (err :: AWS.RequestError | eff) ListPortfolioAccessOutput
-listPortfolioAccess = AWS.request serviceName "ListPortfolioAccess" 
+listPortfolioAccess = AWS.request serviceName "listPortfolioAccess" 
 
 
 -- | <p>Lists all portfolios in the catalog.</p>
 listPortfolios :: forall eff. ListPortfoliosInput -> Aff (err :: AWS.RequestError | eff) ListPortfoliosOutput
-listPortfolios = AWS.request serviceName "ListPortfolios" 
+listPortfolios = AWS.request serviceName "listPortfolios" 
 
 
 -- | <p>Lists all portfolios that the specified product is associated with.</p>
 listPortfoliosForProduct :: forall eff. ListPortfoliosForProductInput -> Aff (err :: AWS.RequestError | eff) ListPortfoliosForProductOutput
-listPortfoliosForProduct = AWS.request serviceName "ListPortfoliosForProduct" 
+listPortfoliosForProduct = AWS.request serviceName "listPortfoliosForProduct" 
 
 
 -- | <p>Lists all principal ARNs associated with the specified portfolio.</p>
 listPrincipalsForPortfolio :: forall eff. ListPrincipalsForPortfolioInput -> Aff (err :: AWS.RequestError | eff) ListPrincipalsForPortfolioOutput
-listPrincipalsForPortfolio = AWS.request serviceName "ListPrincipalsForPortfolio" 
+listPrincipalsForPortfolio = AWS.request serviceName "listPrincipalsForPortfolio" 
 
 
 -- | <p>Lists the plans for the specified provisioned product or all plans the user has access to.</p>
 listProvisionedProductPlans :: forall eff. ListProvisionedProductPlansInput -> Aff (err :: AWS.RequestError | eff) ListProvisionedProductPlansOutput
-listProvisionedProductPlans = AWS.request serviceName "ListProvisionedProductPlans" 
+listProvisionedProductPlans = AWS.request serviceName "listProvisionedProductPlans" 
 
 
 -- | <p>Lists all provisioning artifacts (also known as versions) for the specified product.</p>
 listProvisioningArtifacts :: forall eff. ListProvisioningArtifactsInput -> Aff (err :: AWS.RequestError | eff) ListProvisioningArtifactsOutput
-listProvisioningArtifacts = AWS.request serviceName "ListProvisioningArtifacts" 
+listProvisioningArtifacts = AWS.request serviceName "listProvisioningArtifacts" 
 
 
 -- | <p>Lists the specified requests or all performed requests.</p>
 listRecordHistory :: forall eff. ListRecordHistoryInput -> Aff (err :: AWS.RequestError | eff) ListRecordHistoryOutput
-listRecordHistory = AWS.request serviceName "ListRecordHistory" 
+listRecordHistory = AWS.request serviceName "listRecordHistory" 
 
 
 -- | <p>Lists the resources associated with the specified TagOption.</p>
 listResourcesForTagOption :: forall eff. ListResourcesForTagOptionInput -> Aff (err :: AWS.RequestError | eff) ListResourcesForTagOptionOutput
-listResourcesForTagOption = AWS.request serviceName "ListResourcesForTagOption" 
+listResourcesForTagOption = AWS.request serviceName "listResourcesForTagOption" 
 
 
 -- | <p>Lists the specified TagOptions or all TagOptions.</p>
 listTagOptions :: forall eff. ListTagOptionsInput -> Aff (err :: AWS.RequestError | eff) ListTagOptionsOutput
-listTagOptions = AWS.request serviceName "ListTagOptions" 
+listTagOptions = AWS.request serviceName "listTagOptions" 
 
 
 -- | <p>Provisions the specified product.</p> <p>A provisioned product is a resourced instance of a product. For example, provisioning a product based on a CloudFormation template launches a CloudFormation stack and its underlying resources. You can check the status of this request using <a>DescribeRecord</a>.</p> <p>If the request contains a tag key with an empty list of values, there is a tag conflict for that key. Do not include conflicted keys as tags, or this causes the error "Parameter validation failed: Missing required parameter in Tags[<i>N</i>]:<i>Value</i>".</p>
 provisionProduct :: forall eff. ProvisionProductInput -> Aff (err :: AWS.RequestError | eff) ProvisionProductOutput
-provisionProduct = AWS.request serviceName "ProvisionProduct" 
+provisionProduct = AWS.request serviceName "provisionProduct" 
 
 
 -- | <p>Rejects an offer to share the specified portfolio.</p>
 rejectPortfolioShare :: forall eff. RejectPortfolioShareInput -> Aff (err :: AWS.RequestError | eff) RejectPortfolioShareOutput
-rejectPortfolioShare = AWS.request serviceName "RejectPortfolioShare" 
+rejectPortfolioShare = AWS.request serviceName "rejectPortfolioShare" 
 
 
 -- | <p>Lists the provisioned products that are available (not terminated).</p> <p>To use additional filtering, see <a>SearchProvisionedProducts</a>.</p>
 scanProvisionedProducts :: forall eff. ScanProvisionedProductsInput -> Aff (err :: AWS.RequestError | eff) ScanProvisionedProductsOutput
-scanProvisionedProducts = AWS.request serviceName "ScanProvisionedProducts" 
+scanProvisionedProducts = AWS.request serviceName "scanProvisionedProducts" 
 
 
 -- | <p>Gets information about the products to which the caller has access.</p>
 searchProducts :: forall eff. SearchProductsInput -> Aff (err :: AWS.RequestError | eff) SearchProductsOutput
-searchProducts = AWS.request serviceName "SearchProducts" 
+searchProducts = AWS.request serviceName "searchProducts" 
 
 
 -- | <p>Gets information about the products for the specified portfolio or all products.</p>
 searchProductsAsAdmin :: forall eff. SearchProductsAsAdminInput -> Aff (err :: AWS.RequestError | eff) SearchProductsAsAdminOutput
-searchProductsAsAdmin = AWS.request serviceName "SearchProductsAsAdmin" 
+searchProductsAsAdmin = AWS.request serviceName "searchProductsAsAdmin" 
 
 
 -- | <p>Gets information about the provisioned products that meet the specified criteria.</p>
 searchProvisionedProducts :: forall eff. SearchProvisionedProductsInput -> Aff (err :: AWS.RequestError | eff) SearchProvisionedProductsOutput
-searchProvisionedProducts = AWS.request serviceName "SearchProvisionedProducts" 
+searchProvisionedProducts = AWS.request serviceName "searchProvisionedProducts" 
 
 
 -- | <p>Terminates the specified provisioned product.</p> <p>This operation does not delete any records associated with the provisioned product.</p> <p>You can check the status of this request using <a>DescribeRecord</a>.</p>
 terminateProvisionedProduct :: forall eff. TerminateProvisionedProductInput -> Aff (err :: AWS.RequestError | eff) TerminateProvisionedProductOutput
-terminateProvisionedProduct = AWS.request serviceName "TerminateProvisionedProduct" 
+terminateProvisionedProduct = AWS.request serviceName "terminateProvisionedProduct" 
 
 
 -- | <p>Updates the specified constraint.</p>
 updateConstraint :: forall eff. UpdateConstraintInput -> Aff (err :: AWS.RequestError | eff) UpdateConstraintOutput
-updateConstraint = AWS.request serviceName "UpdateConstraint" 
+updateConstraint = AWS.request serviceName "updateConstraint" 
 
 
 -- | <p>Updates the specified portfolio.</p> <p>You cannot update a product that was shared with you.</p>
 updatePortfolio :: forall eff. UpdatePortfolioInput -> Aff (err :: AWS.RequestError | eff) UpdatePortfolioOutput
-updatePortfolio = AWS.request serviceName "UpdatePortfolio" 
+updatePortfolio = AWS.request serviceName "updatePortfolio" 
 
 
 -- | <p>Updates the specified product.</p>
 updateProduct :: forall eff. UpdateProductInput -> Aff (err :: AWS.RequestError | eff) UpdateProductOutput
-updateProduct = AWS.request serviceName "UpdateProduct" 
+updateProduct = AWS.request serviceName "updateProduct" 
 
 
 -- | <p>Requests updates to the configuration of the specified provisioned product.</p> <p>If there are tags associated with the object, they cannot be updated or added. Depending on the specific updates requested, this operation can update with no interruption, with some interruption, or replace the provisioned product entirely.</p> <p>You can check the status of this request using <a>DescribeRecord</a>.</p>
 updateProvisionedProduct :: forall eff. UpdateProvisionedProductInput -> Aff (err :: AWS.RequestError | eff) UpdateProvisionedProductOutput
-updateProvisionedProduct = AWS.request serviceName "UpdateProvisionedProduct" 
+updateProvisionedProduct = AWS.request serviceName "updateProvisionedProduct" 
 
 
 -- | <p>Updates the specified provisioning artifact (also known as a version) for the specified product.</p> <p>You cannot update a provisioning artifact for a product that was shared with you.</p>
 updateProvisioningArtifact :: forall eff. UpdateProvisioningArtifactInput -> Aff (err :: AWS.RequestError | eff) UpdateProvisioningArtifactOutput
-updateProvisioningArtifact = AWS.request serviceName "UpdateProvisioningArtifact" 
+updateProvisioningArtifact = AWS.request serviceName "updateProvisioningArtifact" 
 
 
 -- | <p>Updates the specified TagOption.</p>
 updateTagOption :: forall eff. UpdateTagOptionInput -> Aff (err :: AWS.RequestError | eff) UpdateTagOptionOutput
-updateTagOption = AWS.request serviceName "UpdateTagOption" 
+updateTagOption = AWS.request serviceName "updateTagOption" 
 
 
 newtype AcceptLanguage = AcceptLanguage String

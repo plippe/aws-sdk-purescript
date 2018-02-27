@@ -46,16 +46,14 @@ function :: String -> ServiceOperation -> String
 function name (ServiceOperation serviceOperation) = """
 {{documentation}}
 {{camelCaseName}} :: forall eff. {{input}} Aff (err :: AWS.RequestError | eff) {{output}}
-{{camelCaseName}} = AWS.request serviceName "{{pascalCaseName}}" {{fallback}}
+{{camelCaseName}} = AWS.request serviceName "{{camelCaseName}}" {{fallback}}
 """ # replaceAll (Pattern "{{camelCaseName}}") (Replacement camelCaseName)
-    # replace (Pattern "{{pascalCaseName}}") (Replacement pascalCaseName)
     # replace (Pattern "{{input}}") (Replacement input)
     # replace (Pattern "{{output}}") (Replacement output)
     # replace (Pattern "{{fallback}}") (Replacement fallback)
     # replace (Pattern "{{documentation}}") (Replacement documentation)
         where
             camelCaseName = (take 1 name # toLower) <> (drop 1 name)
-            pascalCaseName =  name
             input = unNullOrUndefined serviceOperation.input # maybe "" (\(ServiceShapeName { shape }) -> shape <> " ->")
             output =  unNullOrUndefined serviceOperation.output # maybe "Unit" (\(ServiceShapeName { shape }) -> shape)
             fallback = unNullOrUndefined serviceOperation.input # maybe "unit" (\_ -> "")

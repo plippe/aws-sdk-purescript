@@ -16,617 +16,617 @@ serviceName = "Iot" :: String
 
 -- | <p>Accepts a pending certificate transfer. The default state of the certificate is INACTIVE.</p> <p>To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.</p>
 acceptCertificateTransfer :: forall eff. AcceptCertificateTransferRequest -> Aff (err :: AWS.RequestError | eff) Unit
-acceptCertificateTransfer = AWS.request serviceName "AcceptCertificateTransfer" 
+acceptCertificateTransfer = AWS.request serviceName "acceptCertificateTransfer" 
 
 
 -- | <p>Adds a thing to a thing group.</p>
 addThingToThingGroup :: forall eff. AddThingToThingGroupRequest -> Aff (err :: AWS.RequestError | eff) AddThingToThingGroupResponse
-addThingToThingGroup = AWS.request serviceName "AddThingToThingGroup" 
+addThingToThingGroup = AWS.request serviceName "addThingToThingGroup" 
 
 
 -- | <p>Associates a group with a continuous job. The following criteria must be met: </p> <ul> <li> <p>The job must have been created with the <code>targetSelection</code> field set to "CONTINUOUS".</p> </li> <li> <p>The job status must currently be "IN_PROGRESS".</p> </li> <li> <p>The total number of targets associated with a job must not exceed 100.</p> </li> </ul>
 associateTargetsWithJob :: forall eff. AssociateTargetsWithJobRequest -> Aff (err :: AWS.RequestError | eff) AssociateTargetsWithJobResponse
-associateTargetsWithJob = AWS.request serviceName "AssociateTargetsWithJob" 
+associateTargetsWithJob = AWS.request serviceName "associateTargetsWithJob" 
 
 
 -- | <p>Attaches a policy to the specified target.</p>
 attachPolicy :: forall eff. AttachPolicyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-attachPolicy = AWS.request serviceName "AttachPolicy" 
+attachPolicy = AWS.request serviceName "attachPolicy" 
 
 
 -- | <p>Attaches the specified policy to the specified principal (certificate or other credential).</p> <p> <b>Note:</b> This API is deprecated. Please use <a>AttachPolicy</a> instead.</p>
 attachPrincipalPolicy :: forall eff. AttachPrincipalPolicyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-attachPrincipalPolicy = AWS.request serviceName "AttachPrincipalPolicy" 
+attachPrincipalPolicy = AWS.request serviceName "attachPrincipalPolicy" 
 
 
 -- | <p>Attaches the specified principal to the specified thing.</p>
 attachThingPrincipal :: forall eff. AttachThingPrincipalRequest -> Aff (err :: AWS.RequestError | eff) AttachThingPrincipalResponse
-attachThingPrincipal = AWS.request serviceName "AttachThingPrincipal" 
+attachThingPrincipal = AWS.request serviceName "attachThingPrincipal" 
 
 
 -- | <p>Cancels a pending transfer for the specified certificate.</p> <p> <b>Note</b> Only the transfer source account can use this operation to cancel a transfer. (Transfer destinations can use <a>RejectCertificateTransfer</a> instead.) After transfer, AWS IoT returns the certificate to the source account in the INACTIVE state. After the destination account has accepted the transfer, the transfer cannot be cancelled.</p> <p>After a certificate transfer is cancelled, the status of the certificate changes from PENDING_TRANSFER to INACTIVE.</p>
 cancelCertificateTransfer :: forall eff. CancelCertificateTransferRequest -> Aff (err :: AWS.RequestError | eff) Unit
-cancelCertificateTransfer = AWS.request serviceName "CancelCertificateTransfer" 
+cancelCertificateTransfer = AWS.request serviceName "cancelCertificateTransfer" 
 
 
 -- | <p>Cancels a job.</p>
 cancelJob :: forall eff. CancelJobRequest -> Aff (err :: AWS.RequestError | eff) CancelJobResponse
-cancelJob = AWS.request serviceName "CancelJob" 
+cancelJob = AWS.request serviceName "cancelJob" 
 
 
 -- | <p>Clears the default authorizer.</p>
 clearDefaultAuthorizer :: forall eff. ClearDefaultAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) ClearDefaultAuthorizerResponse
-clearDefaultAuthorizer = AWS.request serviceName "ClearDefaultAuthorizer" 
+clearDefaultAuthorizer = AWS.request serviceName "clearDefaultAuthorizer" 
 
 
 -- | <p>Creates an authorizer.</p>
 createAuthorizer :: forall eff. CreateAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) CreateAuthorizerResponse
-createAuthorizer = AWS.request serviceName "CreateAuthorizer" 
+createAuthorizer = AWS.request serviceName "createAuthorizer" 
 
 
 -- | <p>Creates an X.509 certificate using the specified certificate signing request.</p> <p> <b>Note:</b> The CSR must include a public key that is either an RSA key with a length of at least 2048 bits or an ECC key from NIST P-256 or NIST P-384 curves. </p> <p> <b>Note:</b> Reusing the same certificate signing request (CSR) results in a distinct certificate.</p> <p>You can create multiple certificates in a batch by creating a directory, copying multiple .csr files into that directory, and then specifying that directory on the command line. The following commands show how to create a batch of certificates given a batch of CSRs.</p> <p>Assuming a set of CSRs are located inside of the directory my-csr-directory:</p> <p>On Linux and OS X, the command is:</p> <p>$ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}</p> <p>This command lists all of the CSRs in my-csr-directory and pipes each CSR file name to the aws iot create-certificate-from-csr AWS CLI command to create a certificate for the corresponding CSR.</p> <p>The aws iot create-certificate-from-csr part of the command can also be run in parallel to speed up the certificate creation process:</p> <p>$ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}</p> <p>On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is:</p> <p>&gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/$_}</p> <p>On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is:</p> <p>&gt; forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path"</p>
 createCertificateFromCsr :: forall eff. CreateCertificateFromCsrRequest -> Aff (err :: AWS.RequestError | eff) CreateCertificateFromCsrResponse
-createCertificateFromCsr = AWS.request serviceName "CreateCertificateFromCsr" 
+createCertificateFromCsr = AWS.request serviceName "createCertificateFromCsr" 
 
 
 -- | <p>Creates a job.</p>
 createJob :: forall eff. CreateJobRequest -> Aff (err :: AWS.RequestError | eff) CreateJobResponse
-createJob = AWS.request serviceName "CreateJob" 
+createJob = AWS.request serviceName "createJob" 
 
 
 -- | <p>Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key.</p> <p> <b>Note</b> This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.</p>
 createKeysAndCertificate :: forall eff. CreateKeysAndCertificateRequest -> Aff (err :: AWS.RequestError | eff) CreateKeysAndCertificateResponse
-createKeysAndCertificate = AWS.request serviceName "CreateKeysAndCertificate" 
+createKeysAndCertificate = AWS.request serviceName "createKeysAndCertificate" 
 
 
 -- | <p>Creates an AWS IoT OTAUpdate on a target group of things or groups.</p>
 createOTAUpdate :: forall eff. CreateOTAUpdateRequest -> Aff (err :: AWS.RequestError | eff) CreateOTAUpdateResponse
-createOTAUpdate = AWS.request serviceName "CreateOTAUpdate" 
+createOTAUpdate = AWS.request serviceName "createOTAUpdate" 
 
 
 -- | <p>Creates an AWS IoT policy.</p> <p>The created policy is the default version for the policy. This operation creates a policy version with a version identifier of <b>1</b> and sets <b>1</b> as the policy's default version.</p>
 createPolicy :: forall eff. CreatePolicyRequest -> Aff (err :: AWS.RequestError | eff) CreatePolicyResponse
-createPolicy = AWS.request serviceName "CreatePolicy" 
+createPolicy = AWS.request serviceName "createPolicy" 
 
 
 -- | <p>Creates a new version of the specified AWS IoT policy. To update a policy, create a new policy version. A managed policy can have up to five versions. If the policy has five versions, you must use <a>DeletePolicyVersion</a> to delete an existing version before you create a new one.</p> <p>Optionally, you can set the new version as the policy's default version. The default version is the operative version (that is, the version that is in effect for the certificates to which the policy is attached).</p>
 createPolicyVersion :: forall eff. CreatePolicyVersionRequest -> Aff (err :: AWS.RequestError | eff) CreatePolicyVersionResponse
-createPolicyVersion = AWS.request serviceName "CreatePolicyVersion" 
+createPolicyVersion = AWS.request serviceName "createPolicyVersion" 
 
 
 -- | <p>Creates a role alias.</p>
 createRoleAlias :: forall eff. CreateRoleAliasRequest -> Aff (err :: AWS.RequestError | eff) CreateRoleAliasResponse
-createRoleAlias = AWS.request serviceName "CreateRoleAlias" 
+createRoleAlias = AWS.request serviceName "createRoleAlias" 
 
 
 -- | <p>Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports data bytes in chunks or blocks packaged as MQTT messages from a source like S3. You can have one or more files associated with a stream. The total size of a file associated with the stream cannot exceed more than 2 MB. The stream will be created with version 0. If a stream is created with the same streamID as a stream that existed and was deleted within last 90 days, we will resurrect that old stream by incrementing the version by 1.</p>
 createStream :: forall eff. CreateStreamRequest -> Aff (err :: AWS.RequestError | eff) CreateStreamResponse
-createStream = AWS.request serviceName "CreateStream" 
+createStream = AWS.request serviceName "createStream" 
 
 
 -- | <p>Creates a thing record in the thing registry.</p>
 createThing :: forall eff. CreateThingRequest -> Aff (err :: AWS.RequestError | eff) CreateThingResponse
-createThing = AWS.request serviceName "CreateThing" 
+createThing = AWS.request serviceName "createThing" 
 
 
 -- | <p>Create a thing group.</p>
 createThingGroup :: forall eff. CreateThingGroupRequest -> Aff (err :: AWS.RequestError | eff) CreateThingGroupResponse
-createThingGroup = AWS.request serviceName "CreateThingGroup" 
+createThingGroup = AWS.request serviceName "createThingGroup" 
 
 
 -- | <p>Creates a new thing type.</p>
 createThingType :: forall eff. CreateThingTypeRequest -> Aff (err :: AWS.RequestError | eff) CreateThingTypeResponse
-createThingType = AWS.request serviceName "CreateThingType" 
+createThingType = AWS.request serviceName "createThingType" 
 
 
 -- | <p>Creates a rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.</p>
 createTopicRule :: forall eff. CreateTopicRuleRequest -> Aff (err :: AWS.RequestError | eff) Unit
-createTopicRule = AWS.request serviceName "CreateTopicRule" 
+createTopicRule = AWS.request serviceName "createTopicRule" 
 
 
 -- | <p>Deletes an authorizer.</p>
 deleteAuthorizer :: forall eff. DeleteAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) DeleteAuthorizerResponse
-deleteAuthorizer = AWS.request serviceName "DeleteAuthorizer" 
+deleteAuthorizer = AWS.request serviceName "deleteAuthorizer" 
 
 
 -- | <p>Deletes a registered CA certificate.</p>
 deleteCACertificate :: forall eff. DeleteCACertificateRequest -> Aff (err :: AWS.RequestError | eff) DeleteCACertificateResponse
-deleteCACertificate = AWS.request serviceName "DeleteCACertificate" 
+deleteCACertificate = AWS.request serviceName "deleteCACertificate" 
 
 
 -- | <p>Deletes the specified certificate.</p> <p>A certificate cannot be deleted if it has a policy attached to it or if its status is set to ACTIVE. To delete a certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to the INACTIVE status.</p>
 deleteCertificate :: forall eff. DeleteCertificateRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteCertificate = AWS.request serviceName "DeleteCertificate" 
+deleteCertificate = AWS.request serviceName "deleteCertificate" 
 
 
 -- | <p>Delete an OTA update.</p>
 deleteOTAUpdate :: forall eff. DeleteOTAUpdateRequest -> Aff (err :: AWS.RequestError | eff) DeleteOTAUpdateResponse
-deleteOTAUpdate = AWS.request serviceName "DeleteOTAUpdate" 
+deleteOTAUpdate = AWS.request serviceName "deleteOTAUpdate" 
 
 
 -- | <p>Deletes the specified policy.</p> <p>A policy cannot be deleted if it has non-default versions or it is attached to any certificate.</p> <p>To delete a policy, use the DeletePolicyVersion API to delete all non-default versions of the policy; use the DetachPrincipalPolicy API to detach the policy from any certificate; and then use the DeletePolicy API to delete the policy.</p> <p>When a policy is deleted using DeletePolicy, its default version is deleted with it.</p>
 deletePolicy :: forall eff. DeletePolicyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deletePolicy = AWS.request serviceName "DeletePolicy" 
+deletePolicy = AWS.request serviceName "deletePolicy" 
 
 
 -- | <p>Deletes the specified version of the specified policy. You cannot delete the default version of a policy using this API. To delete the default version of a policy, use <a>DeletePolicy</a>. To find out which version of a policy is marked as the default version, use ListPolicyVersions.</p>
 deletePolicyVersion :: forall eff. DeletePolicyVersionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deletePolicyVersion = AWS.request serviceName "DeletePolicyVersion" 
+deletePolicyVersion = AWS.request serviceName "deletePolicyVersion" 
 
 
 -- | <p>Deletes a CA certificate registration code.</p>
 deleteRegistrationCode :: forall eff. DeleteRegistrationCodeRequest -> Aff (err :: AWS.RequestError | eff) DeleteRegistrationCodeResponse
-deleteRegistrationCode = AWS.request serviceName "DeleteRegistrationCode" 
+deleteRegistrationCode = AWS.request serviceName "deleteRegistrationCode" 
 
 
 -- | <p>Deletes a role alias</p>
 deleteRoleAlias :: forall eff. DeleteRoleAliasRequest -> Aff (err :: AWS.RequestError | eff) DeleteRoleAliasResponse
-deleteRoleAlias = AWS.request serviceName "DeleteRoleAlias" 
+deleteRoleAlias = AWS.request serviceName "deleteRoleAlias" 
 
 
 -- | <p>Deletes a stream.</p>
 deleteStream :: forall eff. DeleteStreamRequest -> Aff (err :: AWS.RequestError | eff) DeleteStreamResponse
-deleteStream = AWS.request serviceName "DeleteStream" 
+deleteStream = AWS.request serviceName "deleteStream" 
 
 
 -- | <p>Deletes the specified thing.</p>
 deleteThing :: forall eff. DeleteThingRequest -> Aff (err :: AWS.RequestError | eff) DeleteThingResponse
-deleteThing = AWS.request serviceName "DeleteThing" 
+deleteThing = AWS.request serviceName "deleteThing" 
 
 
 -- | <p>Deletes a thing group.</p>
 deleteThingGroup :: forall eff. DeleteThingGroupRequest -> Aff (err :: AWS.RequestError | eff) DeleteThingGroupResponse
-deleteThingGroup = AWS.request serviceName "DeleteThingGroup" 
+deleteThingGroup = AWS.request serviceName "deleteThingGroup" 
 
 
 -- | <p>Deletes the specified thing type . You cannot delete a thing type if it has things associated with it. To delete a thing type, first mark it as deprecated by calling <a>DeprecateThingType</a>, then remove any associated things by calling <a>UpdateThing</a> to change the thing type on any associated thing, and finally use <a>DeleteThingType</a> to delete the thing type.</p>
 deleteThingType :: forall eff. DeleteThingTypeRequest -> Aff (err :: AWS.RequestError | eff) DeleteThingTypeResponse
-deleteThingType = AWS.request serviceName "DeleteThingType" 
+deleteThingType = AWS.request serviceName "deleteThingType" 
 
 
 -- | <p>Deletes the rule.</p>
 deleteTopicRule :: forall eff. DeleteTopicRuleRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteTopicRule = AWS.request serviceName "DeleteTopicRule" 
+deleteTopicRule = AWS.request serviceName "deleteTopicRule" 
 
 
 -- | <p>Deletes a logging level.</p>
 deleteV2LoggingLevel :: forall eff. DeleteV2LoggingLevelRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteV2LoggingLevel = AWS.request serviceName "DeleteV2LoggingLevel" 
+deleteV2LoggingLevel = AWS.request serviceName "deleteV2LoggingLevel" 
 
 
 -- | <p>Deprecates a thing type. You can not associate new things with deprecated thing type.</p>
 deprecateThingType :: forall eff. DeprecateThingTypeRequest -> Aff (err :: AWS.RequestError | eff) DeprecateThingTypeResponse
-deprecateThingType = AWS.request serviceName "DeprecateThingType" 
+deprecateThingType = AWS.request serviceName "deprecateThingType" 
 
 
 -- | <p>Describes an authorizer.</p>
 describeAuthorizer :: forall eff. DescribeAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) DescribeAuthorizerResponse
-describeAuthorizer = AWS.request serviceName "DescribeAuthorizer" 
+describeAuthorizer = AWS.request serviceName "describeAuthorizer" 
 
 
 -- | <p>Describes a registered CA certificate.</p>
 describeCACertificate :: forall eff. DescribeCACertificateRequest -> Aff (err :: AWS.RequestError | eff) DescribeCACertificateResponse
-describeCACertificate = AWS.request serviceName "DescribeCACertificate" 
+describeCACertificate = AWS.request serviceName "describeCACertificate" 
 
 
 -- | <p>Gets information about the specified certificate.</p>
 describeCertificate :: forall eff. DescribeCertificateRequest -> Aff (err :: AWS.RequestError | eff) DescribeCertificateResponse
-describeCertificate = AWS.request serviceName "DescribeCertificate" 
+describeCertificate = AWS.request serviceName "describeCertificate" 
 
 
 -- | <p>Describes the default authorizer.</p>
 describeDefaultAuthorizer :: forall eff. DescribeDefaultAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) DescribeDefaultAuthorizerResponse
-describeDefaultAuthorizer = AWS.request serviceName "DescribeDefaultAuthorizer" 
+describeDefaultAuthorizer = AWS.request serviceName "describeDefaultAuthorizer" 
 
 
 -- | <p>Returns a unique endpoint specific to the AWS account making the call.</p>
 describeEndpoint :: forall eff. DescribeEndpointRequest -> Aff (err :: AWS.RequestError | eff) DescribeEndpointResponse
-describeEndpoint = AWS.request serviceName "DescribeEndpoint" 
+describeEndpoint = AWS.request serviceName "describeEndpoint" 
 
 
 -- | <p>Describes event configurations.</p>
 describeEventConfigurations :: forall eff. DescribeEventConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEventConfigurationsResponse
-describeEventConfigurations = AWS.request serviceName "DescribeEventConfigurations" 
+describeEventConfigurations = AWS.request serviceName "describeEventConfigurations" 
 
 
 -- | <p>Describes a search index.</p>
 describeIndex :: forall eff. DescribeIndexRequest -> Aff (err :: AWS.RequestError | eff) DescribeIndexResponse
-describeIndex = AWS.request serviceName "DescribeIndex" 
+describeIndex = AWS.request serviceName "describeIndex" 
 
 
 -- | <p>Describes a job.</p>
 describeJob :: forall eff. DescribeJobRequest -> Aff (err :: AWS.RequestError | eff) DescribeJobResponse
-describeJob = AWS.request serviceName "DescribeJob" 
+describeJob = AWS.request serviceName "describeJob" 
 
 
 -- | <p>Describes a job execution.</p>
 describeJobExecution :: forall eff. DescribeJobExecutionRequest -> Aff (err :: AWS.RequestError | eff) DescribeJobExecutionResponse
-describeJobExecution = AWS.request serviceName "DescribeJobExecution" 
+describeJobExecution = AWS.request serviceName "describeJobExecution" 
 
 
 -- | <p>Describes a role alias.</p>
 describeRoleAlias :: forall eff. DescribeRoleAliasRequest -> Aff (err :: AWS.RequestError | eff) DescribeRoleAliasResponse
-describeRoleAlias = AWS.request serviceName "DescribeRoleAlias" 
+describeRoleAlias = AWS.request serviceName "describeRoleAlias" 
 
 
 -- | <p>Gets information about a stream.</p>
 describeStream :: forall eff. DescribeStreamRequest -> Aff (err :: AWS.RequestError | eff) DescribeStreamResponse
-describeStream = AWS.request serviceName "DescribeStream" 
+describeStream = AWS.request serviceName "describeStream" 
 
 
 -- | <p>Gets information about the specified thing.</p>
 describeThing :: forall eff. DescribeThingRequest -> Aff (err :: AWS.RequestError | eff) DescribeThingResponse
-describeThing = AWS.request serviceName "DescribeThing" 
+describeThing = AWS.request serviceName "describeThing" 
 
 
 -- | <p>Describe a thing group.</p>
 describeThingGroup :: forall eff. DescribeThingGroupRequest -> Aff (err :: AWS.RequestError | eff) DescribeThingGroupResponse
-describeThingGroup = AWS.request serviceName "DescribeThingGroup" 
+describeThingGroup = AWS.request serviceName "describeThingGroup" 
 
 
 -- | <p>Describes a bulk thing provisioning task.</p>
 describeThingRegistrationTask :: forall eff. DescribeThingRegistrationTaskRequest -> Aff (err :: AWS.RequestError | eff) DescribeThingRegistrationTaskResponse
-describeThingRegistrationTask = AWS.request serviceName "DescribeThingRegistrationTask" 
+describeThingRegistrationTask = AWS.request serviceName "describeThingRegistrationTask" 
 
 
 -- | <p>Gets information about the specified thing type.</p>
 describeThingType :: forall eff. DescribeThingTypeRequest -> Aff (err :: AWS.RequestError | eff) DescribeThingTypeResponse
-describeThingType = AWS.request serviceName "DescribeThingType" 
+describeThingType = AWS.request serviceName "describeThingType" 
 
 
 -- | <p>Detaches a policy from the specified target.</p>
 detachPolicy :: forall eff. DetachPolicyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-detachPolicy = AWS.request serviceName "DetachPolicy" 
+detachPolicy = AWS.request serviceName "detachPolicy" 
 
 
 -- | <p>Removes the specified policy from the specified certificate.</p> <p> <b>Note:</b> This API is deprecated. Please use <a>DetachPolicy</a> instead.</p>
 detachPrincipalPolicy :: forall eff. DetachPrincipalPolicyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-detachPrincipalPolicy = AWS.request serviceName "DetachPrincipalPolicy" 
+detachPrincipalPolicy = AWS.request serviceName "detachPrincipalPolicy" 
 
 
 -- | <p>Detaches the specified principal from the specified thing.</p>
 detachThingPrincipal :: forall eff. DetachThingPrincipalRequest -> Aff (err :: AWS.RequestError | eff) DetachThingPrincipalResponse
-detachThingPrincipal = AWS.request serviceName "DetachThingPrincipal" 
+detachThingPrincipal = AWS.request serviceName "detachThingPrincipal" 
 
 
 -- | <p>Disables the rule.</p>
 disableTopicRule :: forall eff. DisableTopicRuleRequest -> Aff (err :: AWS.RequestError | eff) Unit
-disableTopicRule = AWS.request serviceName "DisableTopicRule" 
+disableTopicRule = AWS.request serviceName "disableTopicRule" 
 
 
 -- | <p>Enables the rule.</p>
 enableTopicRule :: forall eff. EnableTopicRuleRequest -> Aff (err :: AWS.RequestError | eff) Unit
-enableTopicRule = AWS.request serviceName "EnableTopicRule" 
+enableTopicRule = AWS.request serviceName "enableTopicRule" 
 
 
 -- | <p>Gets effective policies.</p>
 getEffectivePolicies :: forall eff. GetEffectivePoliciesRequest -> Aff (err :: AWS.RequestError | eff) GetEffectivePoliciesResponse
-getEffectivePolicies = AWS.request serviceName "GetEffectivePolicies" 
+getEffectivePolicies = AWS.request serviceName "getEffectivePolicies" 
 
 
 -- | <p>Gets the search configuration.</p>
 getIndexingConfiguration :: forall eff. GetIndexingConfigurationRequest -> Aff (err :: AWS.RequestError | eff) GetIndexingConfigurationResponse
-getIndexingConfiguration = AWS.request serviceName "GetIndexingConfiguration" 
+getIndexingConfiguration = AWS.request serviceName "getIndexingConfiguration" 
 
 
 -- | <p>Gets a job document.</p>
 getJobDocument :: forall eff. GetJobDocumentRequest -> Aff (err :: AWS.RequestError | eff) GetJobDocumentResponse
-getJobDocument = AWS.request serviceName "GetJobDocument" 
+getJobDocument = AWS.request serviceName "getJobDocument" 
 
 
 -- | <p>Gets the logging options.</p>
 getLoggingOptions :: forall eff. GetLoggingOptionsRequest -> Aff (err :: AWS.RequestError | eff) GetLoggingOptionsResponse
-getLoggingOptions = AWS.request serviceName "GetLoggingOptions" 
+getLoggingOptions = AWS.request serviceName "getLoggingOptions" 
 
 
 -- | <p>Gets an OTA update.</p>
 getOTAUpdate :: forall eff. GetOTAUpdateRequest -> Aff (err :: AWS.RequestError | eff) GetOTAUpdateResponse
-getOTAUpdate = AWS.request serviceName "GetOTAUpdate" 
+getOTAUpdate = AWS.request serviceName "getOTAUpdate" 
 
 
 -- | <p>Gets information about the specified policy with the policy document of the default version.</p>
 getPolicy :: forall eff. GetPolicyRequest -> Aff (err :: AWS.RequestError | eff) GetPolicyResponse
-getPolicy = AWS.request serviceName "GetPolicy" 
+getPolicy = AWS.request serviceName "getPolicy" 
 
 
 -- | <p>Gets information about the specified policy version.</p>
 getPolicyVersion :: forall eff. GetPolicyVersionRequest -> Aff (err :: AWS.RequestError | eff) GetPolicyVersionResponse
-getPolicyVersion = AWS.request serviceName "GetPolicyVersion" 
+getPolicyVersion = AWS.request serviceName "getPolicyVersion" 
 
 
 -- | <p>Gets a registration code used to register a CA certificate with AWS IoT.</p>
 getRegistrationCode :: forall eff. GetRegistrationCodeRequest -> Aff (err :: AWS.RequestError | eff) GetRegistrationCodeResponse
-getRegistrationCode = AWS.request serviceName "GetRegistrationCode" 
+getRegistrationCode = AWS.request serviceName "getRegistrationCode" 
 
 
 -- | <p>Gets information about the rule.</p>
 getTopicRule :: forall eff. GetTopicRuleRequest -> Aff (err :: AWS.RequestError | eff) GetTopicRuleResponse
-getTopicRule = AWS.request serviceName "GetTopicRule" 
+getTopicRule = AWS.request serviceName "getTopicRule" 
 
 
 -- | <p>Gets the fine grained logging options.</p>
 getV2LoggingOptions :: forall eff. GetV2LoggingOptionsRequest -> Aff (err :: AWS.RequestError | eff) GetV2LoggingOptionsResponse
-getV2LoggingOptions = AWS.request serviceName "GetV2LoggingOptions" 
+getV2LoggingOptions = AWS.request serviceName "getV2LoggingOptions" 
 
 
 -- | <p>Lists the policies attached to the specified thing group.</p>
 listAttachedPolicies :: forall eff. ListAttachedPoliciesRequest -> Aff (err :: AWS.RequestError | eff) ListAttachedPoliciesResponse
-listAttachedPolicies = AWS.request serviceName "ListAttachedPolicies" 
+listAttachedPolicies = AWS.request serviceName "listAttachedPolicies" 
 
 
 -- | <p>Lists the authorizers registered in your account.</p>
 listAuthorizers :: forall eff. ListAuthorizersRequest -> Aff (err :: AWS.RequestError | eff) ListAuthorizersResponse
-listAuthorizers = AWS.request serviceName "ListAuthorizers" 
+listAuthorizers = AWS.request serviceName "listAuthorizers" 
 
 
 -- | <p>Lists the CA certificates registered for your AWS account.</p> <p>The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.</p>
 listCACertificates :: forall eff. ListCACertificatesRequest -> Aff (err :: AWS.RequestError | eff) ListCACertificatesResponse
-listCACertificates = AWS.request serviceName "ListCACertificates" 
+listCACertificates = AWS.request serviceName "listCACertificates" 
 
 
 -- | <p>Lists the certificates registered in your AWS account.</p> <p>The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results.</p>
 listCertificates :: forall eff. ListCertificatesRequest -> Aff (err :: AWS.RequestError | eff) ListCertificatesResponse
-listCertificates = AWS.request serviceName "ListCertificates" 
+listCertificates = AWS.request serviceName "listCertificates" 
 
 
 -- | <p>List the device certificates signed by the specified CA certificate.</p>
 listCertificatesByCA :: forall eff. ListCertificatesByCARequest -> Aff (err :: AWS.RequestError | eff) ListCertificatesByCAResponse
-listCertificatesByCA = AWS.request serviceName "ListCertificatesByCA" 
+listCertificatesByCA = AWS.request serviceName "listCertificatesByCA" 
 
 
 -- | <p>Lists the search indices.</p>
 listIndices :: forall eff. ListIndicesRequest -> Aff (err :: AWS.RequestError | eff) ListIndicesResponse
-listIndices = AWS.request serviceName "ListIndices" 
+listIndices = AWS.request serviceName "listIndices" 
 
 
 -- | <p>Lists the job executions for a job.</p>
 listJobExecutionsForJob :: forall eff. ListJobExecutionsForJobRequest -> Aff (err :: AWS.RequestError | eff) ListJobExecutionsForJobResponse
-listJobExecutionsForJob = AWS.request serviceName "ListJobExecutionsForJob" 
+listJobExecutionsForJob = AWS.request serviceName "listJobExecutionsForJob" 
 
 
 -- | <p>Lists the job executions for the specified thing.</p>
 listJobExecutionsForThing :: forall eff. ListJobExecutionsForThingRequest -> Aff (err :: AWS.RequestError | eff) ListJobExecutionsForThingResponse
-listJobExecutionsForThing = AWS.request serviceName "ListJobExecutionsForThing" 
+listJobExecutionsForThing = AWS.request serviceName "listJobExecutionsForThing" 
 
 
 -- | <p>Lists jobs.</p>
 listJobs :: forall eff. ListJobsRequest -> Aff (err :: AWS.RequestError | eff) ListJobsResponse
-listJobs = AWS.request serviceName "ListJobs" 
+listJobs = AWS.request serviceName "listJobs" 
 
 
 -- | <p>Lists OTA updates.</p>
 listOTAUpdates :: forall eff. ListOTAUpdatesRequest -> Aff (err :: AWS.RequestError | eff) ListOTAUpdatesResponse
-listOTAUpdates = AWS.request serviceName "ListOTAUpdates" 
+listOTAUpdates = AWS.request serviceName "listOTAUpdates" 
 
 
 -- | <p>Lists certificates that are being transferred but not yet accepted.</p>
 listOutgoingCertificates :: forall eff. ListOutgoingCertificatesRequest -> Aff (err :: AWS.RequestError | eff) ListOutgoingCertificatesResponse
-listOutgoingCertificates = AWS.request serviceName "ListOutgoingCertificates" 
+listOutgoingCertificates = AWS.request serviceName "listOutgoingCertificates" 
 
 
 -- | <p>Lists your policies.</p>
 listPolicies :: forall eff. ListPoliciesRequest -> Aff (err :: AWS.RequestError | eff) ListPoliciesResponse
-listPolicies = AWS.request serviceName "ListPolicies" 
+listPolicies = AWS.request serviceName "listPolicies" 
 
 
 -- | <p>Lists the principals associated with the specified policy.</p> <p> <b>Note:</b> This API is deprecated. Please use <a>ListTargetsForPolicy</a> instead.</p>
 listPolicyPrincipals :: forall eff. ListPolicyPrincipalsRequest -> Aff (err :: AWS.RequestError | eff) ListPolicyPrincipalsResponse
-listPolicyPrincipals = AWS.request serviceName "ListPolicyPrincipals" 
+listPolicyPrincipals = AWS.request serviceName "listPolicyPrincipals" 
 
 
 -- | <p>Lists the versions of the specified policy and identifies the default version.</p>
 listPolicyVersions :: forall eff. ListPolicyVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListPolicyVersionsResponse
-listPolicyVersions = AWS.request serviceName "ListPolicyVersions" 
+listPolicyVersions = AWS.request serviceName "listPolicyVersions" 
 
 
 -- | <p>Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in <a href="http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax">AmazonCognito Identity format</a>.</p> <p> <b>Note:</b> This API is deprecated. Please use <a>ListAttachedPolicies</a> instead.</p>
 listPrincipalPolicies :: forall eff. ListPrincipalPoliciesRequest -> Aff (err :: AWS.RequestError | eff) ListPrincipalPoliciesResponse
-listPrincipalPolicies = AWS.request serviceName "ListPrincipalPolicies" 
+listPrincipalPolicies = AWS.request serviceName "listPrincipalPolicies" 
 
 
 -- | <p>Lists the things associated with the specified principal.</p>
 listPrincipalThings :: forall eff. ListPrincipalThingsRequest -> Aff (err :: AWS.RequestError | eff) ListPrincipalThingsResponse
-listPrincipalThings = AWS.request serviceName "ListPrincipalThings" 
+listPrincipalThings = AWS.request serviceName "listPrincipalThings" 
 
 
 -- | <p>Lists the role aliases registered in your account.</p>
 listRoleAliases :: forall eff. ListRoleAliasesRequest -> Aff (err :: AWS.RequestError | eff) ListRoleAliasesResponse
-listRoleAliases = AWS.request serviceName "ListRoleAliases" 
+listRoleAliases = AWS.request serviceName "listRoleAliases" 
 
 
 -- | <p>Lists all of the streams in your AWS account.</p>
 listStreams :: forall eff. ListStreamsRequest -> Aff (err :: AWS.RequestError | eff) ListStreamsResponse
-listStreams = AWS.request serviceName "ListStreams" 
+listStreams = AWS.request serviceName "listStreams" 
 
 
 -- | <p>List targets for the specified policy.</p>
 listTargetsForPolicy :: forall eff. ListTargetsForPolicyRequest -> Aff (err :: AWS.RequestError | eff) ListTargetsForPolicyResponse
-listTargetsForPolicy = AWS.request serviceName "ListTargetsForPolicy" 
+listTargetsForPolicy = AWS.request serviceName "listTargetsForPolicy" 
 
 
 -- | <p>List the thing groups in your account.</p>
 listThingGroups :: forall eff. ListThingGroupsRequest -> Aff (err :: AWS.RequestError | eff) ListThingGroupsResponse
-listThingGroups = AWS.request serviceName "ListThingGroups" 
+listThingGroups = AWS.request serviceName "listThingGroups" 
 
 
 -- | <p>List the thing groups to which the specified thing belongs.</p>
 listThingGroupsForThing :: forall eff. ListThingGroupsForThingRequest -> Aff (err :: AWS.RequestError | eff) ListThingGroupsForThingResponse
-listThingGroupsForThing = AWS.request serviceName "ListThingGroupsForThing" 
+listThingGroupsForThing = AWS.request serviceName "listThingGroupsForThing" 
 
 
 -- | <p>Lists the principals associated with the specified thing.</p>
 listThingPrincipals :: forall eff. ListThingPrincipalsRequest -> Aff (err :: AWS.RequestError | eff) ListThingPrincipalsResponse
-listThingPrincipals = AWS.request serviceName "ListThingPrincipals" 
+listThingPrincipals = AWS.request serviceName "listThingPrincipals" 
 
 
 -- | <p>Information about the thing registration tasks.</p>
 listThingRegistrationTaskReports :: forall eff. ListThingRegistrationTaskReportsRequest -> Aff (err :: AWS.RequestError | eff) ListThingRegistrationTaskReportsResponse
-listThingRegistrationTaskReports = AWS.request serviceName "ListThingRegistrationTaskReports" 
+listThingRegistrationTaskReports = AWS.request serviceName "listThingRegistrationTaskReports" 
 
 
 -- | <p>List bulk thing provisioning tasks.</p>
 listThingRegistrationTasks :: forall eff. ListThingRegistrationTasksRequest -> Aff (err :: AWS.RequestError | eff) ListThingRegistrationTasksResponse
-listThingRegistrationTasks = AWS.request serviceName "ListThingRegistrationTasks" 
+listThingRegistrationTasks = AWS.request serviceName "listThingRegistrationTasks" 
 
 
 -- | <p>Lists the existing thing types.</p>
 listThingTypes :: forall eff. ListThingTypesRequest -> Aff (err :: AWS.RequestError | eff) ListThingTypesResponse
-listThingTypes = AWS.request serviceName "ListThingTypes" 
+listThingTypes = AWS.request serviceName "listThingTypes" 
 
 
 -- | <p>Lists your things. Use the <b>attributeName</b> and <b>attributeValue</b> parameters to filter your things. For example, calling <code>ListThings</code> with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute <b>Color</b> with the value <b>Red</b>. </p>
 listThings :: forall eff. ListThingsRequest -> Aff (err :: AWS.RequestError | eff) ListThingsResponse
-listThings = AWS.request serviceName "ListThings" 
+listThings = AWS.request serviceName "listThings" 
 
 
 -- | <p>Lists the things in the specified group.</p>
 listThingsInThingGroup :: forall eff. ListThingsInThingGroupRequest -> Aff (err :: AWS.RequestError | eff) ListThingsInThingGroupResponse
-listThingsInThingGroup = AWS.request serviceName "ListThingsInThingGroup" 
+listThingsInThingGroup = AWS.request serviceName "listThingsInThingGroup" 
 
 
 -- | <p>Lists the rules for the specific topic.</p>
 listTopicRules :: forall eff. ListTopicRulesRequest -> Aff (err :: AWS.RequestError | eff) ListTopicRulesResponse
-listTopicRules = AWS.request serviceName "ListTopicRules" 
+listTopicRules = AWS.request serviceName "listTopicRules" 
 
 
 -- | <p>Lists logging levels.</p>
 listV2LoggingLevels :: forall eff. ListV2LoggingLevelsRequest -> Aff (err :: AWS.RequestError | eff) ListV2LoggingLevelsResponse
-listV2LoggingLevels = AWS.request serviceName "ListV2LoggingLevels" 
+listV2LoggingLevels = AWS.request serviceName "listV2LoggingLevels" 
 
 
 -- | <p>Registers a CA certificate with AWS IoT. This CA certificate can then be used to sign device certificates, which can be then registered with AWS IoT. You can register up to 10 CA certificates per AWS account that have the same subject field. This enables you to have up to 10 certificate authorities sign your device certificates. If you have more than one CA certificate registered, make sure you pass the CA certificate when you register your device certificates with the RegisterCertificate API.</p>
 registerCACertificate :: forall eff. RegisterCACertificateRequest -> Aff (err :: AWS.RequestError | eff) RegisterCACertificateResponse
-registerCACertificate = AWS.request serviceName "RegisterCACertificate" 
+registerCACertificate = AWS.request serviceName "registerCACertificate" 
 
 
 -- | <p>Registers a device certificate with AWS IoT. If you have more than one CA certificate that has the same subject field, you must specify the CA certificate that was used to sign the device certificate being registered.</p>
 registerCertificate :: forall eff. RegisterCertificateRequest -> Aff (err :: AWS.RequestError | eff) RegisterCertificateResponse
-registerCertificate = AWS.request serviceName "RegisterCertificate" 
+registerCertificate = AWS.request serviceName "registerCertificate" 
 
 
 -- | <p>Provisions a thing.</p>
 registerThing :: forall eff. RegisterThingRequest -> Aff (err :: AWS.RequestError | eff) RegisterThingResponse
-registerThing = AWS.request serviceName "RegisterThing" 
+registerThing = AWS.request serviceName "registerThing" 
 
 
 -- | <p>Rejects a pending certificate transfer. After AWS IoT rejects a certificate transfer, the certificate status changes from <b>PENDING_TRANSFER</b> to <b>INACTIVE</b>.</p> <p>To check for pending certificate transfers, call <a>ListCertificates</a> to enumerate your certificates.</p> <p>This operation can only be called by the transfer destination. After it is called, the certificate will be returned to the source's account in the INACTIVE state.</p>
 rejectCertificateTransfer :: forall eff. RejectCertificateTransferRequest -> Aff (err :: AWS.RequestError | eff) Unit
-rejectCertificateTransfer = AWS.request serviceName "RejectCertificateTransfer" 
+rejectCertificateTransfer = AWS.request serviceName "rejectCertificateTransfer" 
 
 
 -- | <p>Remove the specified thing from the specified group.</p>
 removeThingFromThingGroup :: forall eff. RemoveThingFromThingGroupRequest -> Aff (err :: AWS.RequestError | eff) RemoveThingFromThingGroupResponse
-removeThingFromThingGroup = AWS.request serviceName "RemoveThingFromThingGroup" 
+removeThingFromThingGroup = AWS.request serviceName "removeThingFromThingGroup" 
 
 
 -- | <p>Replaces the rule. You must specify all parameters for the new rule. Creating rules is an administrator-level action. Any user who has permission to create rules will be able to access data processed by the rule.</p>
 replaceTopicRule :: forall eff. ReplaceTopicRuleRequest -> Aff (err :: AWS.RequestError | eff) Unit
-replaceTopicRule = AWS.request serviceName "ReplaceTopicRule" 
+replaceTopicRule = AWS.request serviceName "replaceTopicRule" 
 
 
 -- | <p>The query search index.</p>
 searchIndex :: forall eff. SearchIndexRequest -> Aff (err :: AWS.RequestError | eff) SearchIndexResponse
-searchIndex = AWS.request serviceName "SearchIndex" 
+searchIndex = AWS.request serviceName "searchIndex" 
 
 
 -- | <p>Sets the default authorizer. This will be used if a websocket connection is made without specifying an authorizer.</p>
 setDefaultAuthorizer :: forall eff. SetDefaultAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) SetDefaultAuthorizerResponse
-setDefaultAuthorizer = AWS.request serviceName "SetDefaultAuthorizer" 
+setDefaultAuthorizer = AWS.request serviceName "setDefaultAuthorizer" 
 
 
 -- | <p>Sets the specified version of the specified policy as the policy's default (operative) version. This action affects all certificates to which the policy is attached. To list the principals the policy is attached to, use the ListPrincipalPolicy API.</p>
 setDefaultPolicyVersion :: forall eff. SetDefaultPolicyVersionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-setDefaultPolicyVersion = AWS.request serviceName "SetDefaultPolicyVersion" 
+setDefaultPolicyVersion = AWS.request serviceName "setDefaultPolicyVersion" 
 
 
 -- | <p>Sets the logging options.</p>
 setLoggingOptions :: forall eff. SetLoggingOptionsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-setLoggingOptions = AWS.request serviceName "SetLoggingOptions" 
+setLoggingOptions = AWS.request serviceName "setLoggingOptions" 
 
 
 -- | <p>Sets the logging level.</p>
 setV2LoggingLevel :: forall eff. SetV2LoggingLevelRequest -> Aff (err :: AWS.RequestError | eff) Unit
-setV2LoggingLevel = AWS.request serviceName "SetV2LoggingLevel" 
+setV2LoggingLevel = AWS.request serviceName "setV2LoggingLevel" 
 
 
 -- | <p>Sets the logging options for the V2 logging service.</p>
 setV2LoggingOptions :: forall eff. SetV2LoggingOptionsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-setV2LoggingOptions = AWS.request serviceName "SetV2LoggingOptions" 
+setV2LoggingOptions = AWS.request serviceName "setV2LoggingOptions" 
 
 
 -- | <p>Creates a bulk thing provisioning task.</p>
 startThingRegistrationTask :: forall eff. StartThingRegistrationTaskRequest -> Aff (err :: AWS.RequestError | eff) StartThingRegistrationTaskResponse
-startThingRegistrationTask = AWS.request serviceName "StartThingRegistrationTask" 
+startThingRegistrationTask = AWS.request serviceName "startThingRegistrationTask" 
 
 
 -- | <p>Cancels a bulk thing provisioning task.</p>
 stopThingRegistrationTask :: forall eff. StopThingRegistrationTaskRequest -> Aff (err :: AWS.RequestError | eff) StopThingRegistrationTaskResponse
-stopThingRegistrationTask = AWS.request serviceName "StopThingRegistrationTask" 
+stopThingRegistrationTask = AWS.request serviceName "stopThingRegistrationTask" 
 
 
 -- | <p>Test custom authorization.</p>
 testAuthorization :: forall eff. TestAuthorizationRequest -> Aff (err :: AWS.RequestError | eff) TestAuthorizationResponse
-testAuthorization = AWS.request serviceName "TestAuthorization" 
+testAuthorization = AWS.request serviceName "testAuthorization" 
 
 
 -- | <p>Invoke the specified custom authorizer for testing purposes.</p>
 testInvokeAuthorizer :: forall eff. TestInvokeAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) TestInvokeAuthorizerResponse
-testInvokeAuthorizer = AWS.request serviceName "TestInvokeAuthorizer" 
+testInvokeAuthorizer = AWS.request serviceName "testInvokeAuthorizer" 
 
 
 -- | <p>Transfers the specified certificate to the specified AWS account.</p> <p>You can cancel the transfer until it is acknowledged by the recipient.</p> <p>No notification is sent to the transfer destination's account. It is up to the caller to notify the transfer target.</p> <p>The certificate being transferred must not be in the ACTIVE state. You can use the UpdateCertificate API to deactivate it.</p> <p>The certificate must not have any policies attached to it. You can use the DetachPrincipalPolicy API to detach them.</p>
 transferCertificate :: forall eff. TransferCertificateRequest -> Aff (err :: AWS.RequestError | eff) TransferCertificateResponse
-transferCertificate = AWS.request serviceName "TransferCertificate" 
+transferCertificate = AWS.request serviceName "transferCertificate" 
 
 
 -- | <p>Updates an authorizer.</p>
 updateAuthorizer :: forall eff. UpdateAuthorizerRequest -> Aff (err :: AWS.RequestError | eff) UpdateAuthorizerResponse
-updateAuthorizer = AWS.request serviceName "UpdateAuthorizer" 
+updateAuthorizer = AWS.request serviceName "updateAuthorizer" 
 
 
 -- | <p>Updates a registered CA certificate.</p>
 updateCACertificate :: forall eff. UpdateCACertificateRequest -> Aff (err :: AWS.RequestError | eff) Unit
-updateCACertificate = AWS.request serviceName "UpdateCACertificate" 
+updateCACertificate = AWS.request serviceName "updateCACertificate" 
 
 
 -- | <p>Updates the status of the specified certificate. This operation is idempotent.</p> <p>Moving a certificate from the ACTIVE state (including REVOKED) will not disconnect currently connected devices, but these devices will be unable to reconnect.</p> <p>The ACTIVE state is required to authenticate devices connecting to AWS IoT using a certificate.</p>
 updateCertificate :: forall eff. UpdateCertificateRequest -> Aff (err :: AWS.RequestError | eff) Unit
-updateCertificate = AWS.request serviceName "UpdateCertificate" 
+updateCertificate = AWS.request serviceName "updateCertificate" 
 
 
 -- | <p>Updates the event configurations.</p>
 updateEventConfigurations :: forall eff. UpdateEventConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) UpdateEventConfigurationsResponse
-updateEventConfigurations = AWS.request serviceName "UpdateEventConfigurations" 
+updateEventConfigurations = AWS.request serviceName "updateEventConfigurations" 
 
 
 -- | <p>Updates the search configuration.</p>
 updateIndexingConfiguration :: forall eff. UpdateIndexingConfigurationRequest -> Aff (err :: AWS.RequestError | eff) UpdateIndexingConfigurationResponse
-updateIndexingConfiguration = AWS.request serviceName "UpdateIndexingConfiguration" 
+updateIndexingConfiguration = AWS.request serviceName "updateIndexingConfiguration" 
 
 
 -- | <p>Updates a role alias.</p>
 updateRoleAlias :: forall eff. UpdateRoleAliasRequest -> Aff (err :: AWS.RequestError | eff) UpdateRoleAliasResponse
-updateRoleAlias = AWS.request serviceName "UpdateRoleAlias" 
+updateRoleAlias = AWS.request serviceName "updateRoleAlias" 
 
 
 -- | <p>Updates an existing stream. The stream version will be incremented by one.</p>
 updateStream :: forall eff. UpdateStreamRequest -> Aff (err :: AWS.RequestError | eff) UpdateStreamResponse
-updateStream = AWS.request serviceName "UpdateStream" 
+updateStream = AWS.request serviceName "updateStream" 
 
 
 -- | <p>Updates the data for a thing.</p>
 updateThing :: forall eff. UpdateThingRequest -> Aff (err :: AWS.RequestError | eff) UpdateThingResponse
-updateThing = AWS.request serviceName "UpdateThing" 
+updateThing = AWS.request serviceName "updateThing" 
 
 
 -- | <p>Update a thing group.</p>
 updateThingGroup :: forall eff. UpdateThingGroupRequest -> Aff (err :: AWS.RequestError | eff) UpdateThingGroupResponse
-updateThingGroup = AWS.request serviceName "UpdateThingGroup" 
+updateThingGroup = AWS.request serviceName "updateThingGroup" 
 
 
 -- | <p>Updates the groups to which the thing belongs.</p>
 updateThingGroupsForThing :: forall eff. UpdateThingGroupsForThingRequest -> Aff (err :: AWS.RequestError | eff) UpdateThingGroupsForThingResponse
-updateThingGroupsForThing = AWS.request serviceName "UpdateThingGroupsForThing" 
+updateThingGroupsForThing = AWS.request serviceName "updateThingGroupsForThing" 
 
 
 -- | <p>The input for the AcceptCertificateTransfer operation.</p>

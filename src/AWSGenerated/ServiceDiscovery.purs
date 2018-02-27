@@ -16,87 +16,87 @@ serviceName = "ServiceDiscovery" :: String
 
 -- | <p>Creates a private namespace based on DNS, which will be visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace <code>example.com</code> and name your service <code>backend</code>, the resulting DNS name for the service will be <code>backend.example.com</code>. You can associate more than one service with the same namespace.</p>
 createPrivateDnsNamespace :: forall eff. CreatePrivateDnsNamespaceRequest -> Aff (err :: AWS.RequestError | eff) CreatePrivateDnsNamespaceResponse
-createPrivateDnsNamespace = AWS.request serviceName "CreatePrivateDnsNamespace" 
+createPrivateDnsNamespace = AWS.request serviceName "createPrivateDnsNamespace" 
 
 
 -- | <p>Creates a public namespace based on DNS, which will be visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace <code>example.com</code> and name your service <code>backend</code>, the resulting DNS name for the service will be <code>backend.example.com</code>. You can associate more than one service with the same namespace.</p>
 createPublicDnsNamespace :: forall eff. CreatePublicDnsNamespaceRequest -> Aff (err :: AWS.RequestError | eff) CreatePublicDnsNamespaceResponse
-createPublicDnsNamespace = AWS.request serviceName "CreatePublicDnsNamespace" 
+createPublicDnsNamespace = AWS.request serviceName "createPublicDnsNamespace" 
 
 
 -- | <p>Creates a service, which defines the configuration for the following entities:</p> <ul> <li> <p>Up to three records (A, AAAA, and SRV) or one CNAME record</p> </li> <li> <p>Optionally, a health check</p> </li> </ul> <p>After you create the service, you can submit a <a>RegisterInstance</a> request, and Amazon Route 53 uses the values in the configuration to create the specified entities. </p>
 createService :: forall eff. CreateServiceRequest -> Aff (err :: AWS.RequestError | eff) CreateServiceResponse
-createService = AWS.request serviceName "CreateService" 
+createService = AWS.request serviceName "createService" 
 
 
 -- | <p>Deletes a namespace from the current account. If the namespace still contains one or more services, the request fails.</p>
 deleteNamespace :: forall eff. DeleteNamespaceRequest -> Aff (err :: AWS.RequestError | eff) DeleteNamespaceResponse
-deleteNamespace = AWS.request serviceName "DeleteNamespace" 
+deleteNamespace = AWS.request serviceName "deleteNamespace" 
 
 
 -- | <p>Deletes a specified service. If the service still contains one or more registered instances, the request fails.</p>
 deleteService :: forall eff. DeleteServiceRequest -> Aff (err :: AWS.RequestError | eff) DeleteServiceResponse
-deleteService = AWS.request serviceName "DeleteService" 
+deleteService = AWS.request serviceName "deleteService" 
 
 
 -- | <p>Deletes the records and the health check, if any, that Amazon Route 53 created for the specified instance.</p>
 deregisterInstance :: forall eff. DeregisterInstanceRequest -> Aff (err :: AWS.RequestError | eff) DeregisterInstanceResponse
-deregisterInstance = AWS.request serviceName "DeregisterInstance" 
+deregisterInstance = AWS.request serviceName "deregisterInstance" 
 
 
 -- | <p>Gets information about a specified instance.</p>
 getInstance :: forall eff. GetInstanceRequest -> Aff (err :: AWS.RequestError | eff) GetInstanceResponse
-getInstance = AWS.request serviceName "GetInstance" 
+getInstance = AWS.request serviceName "getInstance" 
 
 
 -- | <p>Gets the current health status (<code>Healthy</code>, <code>Unhealthy</code>, or <code>Unknown</code>) of one or more instances that are associated with a specified service.</p> <note> <p>There is a brief delay between when you register an instance and when the health status for the instance is available. </p> </note>
 getInstancesHealthStatus :: forall eff. GetInstancesHealthStatusRequest -> Aff (err :: AWS.RequestError | eff) GetInstancesHealthStatusResponse
-getInstancesHealthStatus = AWS.request serviceName "GetInstancesHealthStatus" 
+getInstancesHealthStatus = AWS.request serviceName "getInstancesHealthStatus" 
 
 
 -- | <p>Gets information about a namespace.</p>
 getNamespace :: forall eff. GetNamespaceRequest -> Aff (err :: AWS.RequestError | eff) GetNamespaceResponse
-getNamespace = AWS.request serviceName "GetNamespace" 
+getNamespace = AWS.request serviceName "getNamespace" 
 
 
 -- | <p>Gets information about any operation that returns an operation ID in the response, such as a <code>CreateService</code> request.</p> <note> <p>To get a list of operations that match specified criteria, see <a>ListOperations</a>.</p> </note>
 getOperation :: forall eff. GetOperationRequest -> Aff (err :: AWS.RequestError | eff) GetOperationResponse
-getOperation = AWS.request serviceName "GetOperation" 
+getOperation = AWS.request serviceName "getOperation" 
 
 
 -- | <p>Gets the settings for a specified service.</p>
 getService :: forall eff. GetServiceRequest -> Aff (err :: AWS.RequestError | eff) GetServiceResponse
-getService = AWS.request serviceName "GetService" 
+getService = AWS.request serviceName "getService" 
 
 
 -- | <p>Lists summary information about the instances that you registered by using a specified service.</p>
 listInstances :: forall eff. ListInstancesRequest -> Aff (err :: AWS.RequestError | eff) ListInstancesResponse
-listInstances = AWS.request serviceName "ListInstances" 
+listInstances = AWS.request serviceName "listInstances" 
 
 
 -- | <p>Lists summary information about the namespaces that were created by the current AWS account.</p>
 listNamespaces :: forall eff. ListNamespacesRequest -> Aff (err :: AWS.RequestError | eff) ListNamespacesResponse
-listNamespaces = AWS.request serviceName "ListNamespaces" 
+listNamespaces = AWS.request serviceName "listNamespaces" 
 
 
 -- | <p>Lists operations that match the criteria that you specify.</p>
 listOperations :: forall eff. ListOperationsRequest -> Aff (err :: AWS.RequestError | eff) ListOperationsResponse
-listOperations = AWS.request serviceName "ListOperations" 
+listOperations = AWS.request serviceName "listOperations" 
 
 
 -- | <p>Lists summary information for all the services that are associated with one or more specified namespaces.</p>
 listServices :: forall eff. ListServicesRequest -> Aff (err :: AWS.RequestError | eff) ListServicesResponse
-listServices = AWS.request serviceName "ListServices" 
+listServices = AWS.request serviceName "listServices" 
 
 
 -- | <p>Creates or updates one or more records and optionally a health check based on the settings in a specified service. When you submit a <code>RegisterInstance</code> request, Amazon Route 53 does the following:</p> <ul> <li> <p>For each DNS record that you define in the service specified by <code>ServiceId</code>, creates or updates a record in the hosted zone that is associated with the corresponding namespace</p> </li> <li> <p>Creates or updates a health check based on the settings in the health check configuration, if any, for the service</p> </li> <li> <p>Associates the health check, if any, with each of the records</p> </li> </ul> <important> <p>One <code>RegisterInstance</code> request must complete before you can submit another request and specify the same service ID and instance ID.</p> </important> <p>For more information, see <a>CreateService</a>.</p> <p>When Route 53 receives a DNS query for the specified DNS name, it returns the applicable value:</p> <ul> <li> <p> <b>If the health check is healthy</b>: returns all the records</p> </li> <li> <p> <b>If the health check is unhealthy</b>: returns the IP address of the last healthy instance</p> </li> <li> <p> <b>If you didn't specify a health check configuration</b>: returns all the records</p> </li> </ul>
 registerInstance :: forall eff. RegisterInstanceRequest -> Aff (err :: AWS.RequestError | eff) RegisterInstanceResponse
-registerInstance = AWS.request serviceName "RegisterInstance" 
+registerInstance = AWS.request serviceName "registerInstance" 
 
 
 -- | <p>Submits a request to perform the following operations:</p> <ul> <li> <p>Add or delete <code>DnsRecords</code> configurations</p> </li> <li> <p>Update the TTL setting for existing <code>DnsRecords</code> configurations</p> </li> <li> <p>Add, update, or delete <code>HealthCheckConfig</code> for a specified service</p> </li> <li> <p/> </li> </ul> <p>You must specify all <code>DnsRecords</code> configurations (and, optionally, <code>HealthCheckConfig</code>) that you want to appear in the updated service. Any current configurations that don't appear in an <code>UpdateService</code> request are deleted.</p> <p>When you update the TTL setting for a service, Amazon Route 53 also updates the corresponding settings in all the records and health checks that were created by using the specified service.</p>
 updateService :: forall eff. UpdateServiceRequest -> Aff (err :: AWS.RequestError | eff) UpdateServiceResponse
-updateService = AWS.request serviceName "UpdateService" 
+updateService = AWS.request serviceName "updateService" 
 
 
 newtype Arn = Arn String

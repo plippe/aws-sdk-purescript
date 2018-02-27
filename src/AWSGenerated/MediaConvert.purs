@@ -16,102 +16,102 @@ serviceName = "MediaConvert" :: String
 
 -- | Permanently remove a job from a queue. Once you have canceled a job, you can't start it again. You can't delete a running job.
 cancelJob :: forall eff. CancelJobRequest -> Aff (err :: AWS.RequestError | eff) CancelJobResponse
-cancelJob = AWS.request serviceName "CancelJob" 
+cancelJob = AWS.request serviceName "cancelJob" 
 
 
 -- | Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 createJob :: forall eff. CreateJobRequest -> Aff (err :: AWS.RequestError | eff) CreateJobResponse
-createJob = AWS.request serviceName "CreateJob" 
+createJob = AWS.request serviceName "createJob" 
 
 
 -- | Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 createJobTemplate :: forall eff. CreateJobTemplateRequest -> Aff (err :: AWS.RequestError | eff) CreateJobTemplateResponse
-createJobTemplate = AWS.request serviceName "CreateJobTemplate" 
+createJobTemplate = AWS.request serviceName "createJobTemplate" 
 
 
 -- | Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 createPreset :: forall eff. CreatePresetRequest -> Aff (err :: AWS.RequestError | eff) CreatePresetResponse
-createPreset = AWS.request serviceName "CreatePreset" 
+createPreset = AWS.request serviceName "createPreset" 
 
 
 -- | Create a new transcoding queue. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 createQueue :: forall eff. CreateQueueRequest -> Aff (err :: AWS.RequestError | eff) CreateQueueResponse
-createQueue = AWS.request serviceName "CreateQueue" 
+createQueue = AWS.request serviceName "createQueue" 
 
 
 -- | Permanently delete a job template you have created.
 deleteJobTemplate :: forall eff. DeleteJobTemplateRequest -> Aff (err :: AWS.RequestError | eff) DeleteJobTemplateResponse
-deleteJobTemplate = AWS.request serviceName "DeleteJobTemplate" 
+deleteJobTemplate = AWS.request serviceName "deleteJobTemplate" 
 
 
 -- | Permanently delete a preset you have created.
 deletePreset :: forall eff. DeletePresetRequest -> Aff (err :: AWS.RequestError | eff) DeletePresetResponse
-deletePreset = AWS.request serviceName "DeletePreset" 
+deletePreset = AWS.request serviceName "deletePreset" 
 
 
 -- | Permanently delete a queue you have created.
 deleteQueue :: forall eff. DeleteQueueRequest -> Aff (err :: AWS.RequestError | eff) DeleteQueueResponse
-deleteQueue = AWS.request serviceName "DeleteQueue" 
+deleteQueue = AWS.request serviceName "deleteQueue" 
 
 
 -- | Send an request with an empty body to the regional API endpoint to get your account API endpoint.
 describeEndpoints :: forall eff. DescribeEndpointsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEndpointsResponse
-describeEndpoints = AWS.request serviceName "DescribeEndpoints" 
+describeEndpoints = AWS.request serviceName "describeEndpoints" 
 
 
 -- | Retrieve the JSON for a specific completed transcoding job.
 getJob :: forall eff. GetJobRequest -> Aff (err :: AWS.RequestError | eff) GetJobResponse
-getJob = AWS.request serviceName "GetJob" 
+getJob = AWS.request serviceName "getJob" 
 
 
 -- | Retrieve the JSON for a specific job template.
 getJobTemplate :: forall eff. GetJobTemplateRequest -> Aff (err :: AWS.RequestError | eff) GetJobTemplateResponse
-getJobTemplate = AWS.request serviceName "GetJobTemplate" 
+getJobTemplate = AWS.request serviceName "getJobTemplate" 
 
 
 -- | Retrieve the JSON for a specific preset.
 getPreset :: forall eff. GetPresetRequest -> Aff (err :: AWS.RequestError | eff) GetPresetResponse
-getPreset = AWS.request serviceName "GetPreset" 
+getPreset = AWS.request serviceName "getPreset" 
 
 
 -- | Retrieve the JSON for a specific queue.
 getQueue :: forall eff. GetQueueRequest -> Aff (err :: AWS.RequestError | eff) GetQueueResponse
-getQueue = AWS.request serviceName "GetQueue" 
+getQueue = AWS.request serviceName "getQueue" 
 
 
 -- | Retrieve a JSON array of up to twenty of your job templates. This will return the templates themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string returned with the array
 listJobTemplates :: forall eff. ListJobTemplatesRequest -> Aff (err :: AWS.RequestError | eff) ListJobTemplatesResponse
-listJobTemplates = AWS.request serviceName "ListJobTemplates" 
+listJobTemplates = AWS.request serviceName "listJobTemplates" 
 
 
 -- | Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
 listJobs :: forall eff. ListJobsRequest -> Aff (err :: AWS.RequestError | eff) ListJobsResponse
-listJobs = AWS.request serviceName "ListJobs" 
+listJobs = AWS.request serviceName "listJobs" 
 
 
 -- | Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.
 listPresets :: forall eff. ListPresetsRequest -> Aff (err :: AWS.RequestError | eff) ListPresetsResponse
-listPresets = AWS.request serviceName "ListPresets" 
+listPresets = AWS.request serviceName "listPresets" 
 
 
 -- | Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.
 listQueues :: forall eff. ListQueuesRequest -> Aff (err :: AWS.RequestError | eff) ListQueuesResponse
-listQueues = AWS.request serviceName "ListQueues" 
+listQueues = AWS.request serviceName "listQueues" 
 
 
 -- | Modify one of your existing job templates.
 updateJobTemplate :: forall eff. UpdateJobTemplateRequest -> Aff (err :: AWS.RequestError | eff) UpdateJobTemplateResponse
-updateJobTemplate = AWS.request serviceName "UpdateJobTemplate" 
+updateJobTemplate = AWS.request serviceName "updateJobTemplate" 
 
 
 -- | Modify one of your existing presets.
 updatePreset :: forall eff. UpdatePresetRequest -> Aff (err :: AWS.RequestError | eff) UpdatePresetResponse
-updatePreset = AWS.request serviceName "UpdatePreset" 
+updatePreset = AWS.request serviceName "updatePreset" 
 
 
 -- | Modify one of your existing queues.
 updateQueue :: forall eff. UpdateQueueRequest -> Aff (err :: AWS.RequestError | eff) UpdateQueueResponse
-updateQueue = AWS.request serviceName "UpdateQueue" 
+updateQueue = AWS.request serviceName "updateQueue" 
 
 
 -- | Choose BROADCASTER_MIXED_AD when the input contains pre-mixed main audio + audio description (AD) as a stereo pair. The value for AudioType will be set to 3, which signals to downstream systems that this stream contains "broadcaster mixed AD". Note that the input received by the encoder must contain pre-mixed audio; the encoder does not perform the mixing. When you choose BROADCASTER_MIXED_AD, the encoder ignores any values you provide in AudioType and  FollowInputAudioType. Choose NORMAL when the input does not contain pre-mixed audio + audio description (AD). In this case, the encoder will use any values you provide for AudioType and FollowInputAudioType.

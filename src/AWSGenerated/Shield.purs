@@ -16,52 +16,52 @@ serviceName = "Shield" :: String
 
 -- | <p>Enables AWS Shield Advanced for a specific AWS resource. The resource can be an Amazon CloudFront distribution, Elastic Load Balancing load balancer, Elastic IP Address, or an Amazon Route 53 hosted zone.</p>
 createProtection :: forall eff. CreateProtectionRequest -> Aff (err :: AWS.RequestError | eff) CreateProtectionResponse
-createProtection = AWS.request serviceName "CreateProtection" 
+createProtection = AWS.request serviceName "createProtection" 
 
 
 -- | <p>Activates AWS Shield Advanced for an account.</p>
 createSubscription :: forall eff. CreateSubscriptionRequest -> Aff (err :: AWS.RequestError | eff) CreateSubscriptionResponse
-createSubscription = AWS.request serviceName "CreateSubscription" 
+createSubscription = AWS.request serviceName "createSubscription" 
 
 
 -- | <p>Deletes an AWS Shield Advanced <a>Protection</a>.</p>
 deleteProtection :: forall eff. DeleteProtectionRequest -> Aff (err :: AWS.RequestError | eff) DeleteProtectionResponse
-deleteProtection = AWS.request serviceName "DeleteProtection" 
+deleteProtection = AWS.request serviceName "deleteProtection" 
 
 
 -- | <p>Removes AWS Shield Advanced from an account. AWS Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment. </p>
 deleteSubscription :: forall eff. DeleteSubscriptionRequest -> Aff (err :: AWS.RequestError | eff) DeleteSubscriptionResponse
-deleteSubscription = AWS.request serviceName "DeleteSubscription" 
+deleteSubscription = AWS.request serviceName "deleteSubscription" 
 
 
 -- | <p>Describes the details of a DDoS attack. </p>
 describeAttack :: forall eff. DescribeAttackRequest -> Aff (err :: AWS.RequestError | eff) DescribeAttackResponse
-describeAttack = AWS.request serviceName "DescribeAttack" 
+describeAttack = AWS.request serviceName "describeAttack" 
 
 
 -- | <p>Lists the details of a <a>Protection</a> object.</p>
 describeProtection :: forall eff. DescribeProtectionRequest -> Aff (err :: AWS.RequestError | eff) DescribeProtectionResponse
-describeProtection = AWS.request serviceName "DescribeProtection" 
+describeProtection = AWS.request serviceName "describeProtection" 
 
 
 -- | <p>Provides details about the AWS Shield Advanced subscription for an account.</p>
 describeSubscription :: forall eff. DescribeSubscriptionRequest -> Aff (err :: AWS.RequestError | eff) DescribeSubscriptionResponse
-describeSubscription = AWS.request serviceName "DescribeSubscription" 
+describeSubscription = AWS.request serviceName "describeSubscription" 
 
 
 -- | <p>Returns the <code>SubscriptionState</code>, either <code>Active</code> or <code>Inactive</code>.</p>
 getSubscriptionState :: forall eff. GetSubscriptionStateRequest -> Aff (err :: AWS.RequestError | eff) GetSubscriptionStateResponse
-getSubscriptionState = AWS.request serviceName "GetSubscriptionState" 
+getSubscriptionState = AWS.request serviceName "getSubscriptionState" 
 
 
 -- | <p>Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.</p>
 listAttacks :: forall eff. ListAttacksRequest -> Aff (err :: AWS.RequestError | eff) ListAttacksResponse
-listAttacks = AWS.request serviceName "ListAttacks" 
+listAttacks = AWS.request serviceName "listAttacks" 
 
 
 -- | <p>Lists all <a>Protection</a> objects for the account.</p>
 listProtections :: forall eff. ListProtectionsRequest -> Aff (err :: AWS.RequestError | eff) ListProtectionsResponse
-listProtections = AWS.request serviceName "ListProtections" 
+listProtections = AWS.request serviceName "listProtections" 
 
 
 -- | <p>The details of a DDoS attack.</p>

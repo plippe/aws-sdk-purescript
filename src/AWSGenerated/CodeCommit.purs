@@ -16,182 +16,182 @@ serviceName = "CodeCommit" :: String
 
 -- | <p>Returns information about one or more repositories.</p> <note> <p>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</p> </note>
 batchGetRepositories :: forall eff. BatchGetRepositoriesInput -> Aff (err :: AWS.RequestError | eff) BatchGetRepositoriesOutput
-batchGetRepositories = AWS.request serviceName "BatchGetRepositories" 
+batchGetRepositories = AWS.request serviceName "batchGetRepositories" 
 
 
 -- | <p>Creates a new branch in a repository and points the branch to a commit.</p> <note> <p>Calling the create branch operation does not set a repository's default branch. To do this, call the update default branch operation.</p> </note>
 createBranch :: forall eff. CreateBranchInput -> Aff (err :: AWS.RequestError | eff) Unit
-createBranch = AWS.request serviceName "CreateBranch" 
+createBranch = AWS.request serviceName "createBranch" 
 
 
 -- | <p>Creates a pull request in the specified repository.</p>
 createPullRequest :: forall eff. CreatePullRequestInput -> Aff (err :: AWS.RequestError | eff) CreatePullRequestOutput
-createPullRequest = AWS.request serviceName "CreatePullRequest" 
+createPullRequest = AWS.request serviceName "createPullRequest" 
 
 
 -- | <p>Creates a new, empty repository.</p>
 createRepository :: forall eff. CreateRepositoryInput -> Aff (err :: AWS.RequestError | eff) CreateRepositoryOutput
-createRepository = AWS.request serviceName "CreateRepository" 
+createRepository = AWS.request serviceName "createRepository" 
 
 
 -- | <p>Deletes a branch from a repository, unless that branch is the default branch for the repository. </p>
 deleteBranch :: forall eff. DeleteBranchInput -> Aff (err :: AWS.RequestError | eff) DeleteBranchOutput
-deleteBranch = AWS.request serviceName "DeleteBranch" 
+deleteBranch = AWS.request serviceName "deleteBranch" 
 
 
 -- | <p>Deletes the content of a comment made on a change, file, or commit in a repository.</p>
 deleteCommentContent :: forall eff. DeleteCommentContentInput -> Aff (err :: AWS.RequestError | eff) DeleteCommentContentOutput
-deleteCommentContent = AWS.request serviceName "DeleteCommentContent" 
+deleteCommentContent = AWS.request serviceName "deleteCommentContent" 
 
 
 -- | <p>Deletes a repository. If a specified repository was already deleted, a null repository ID will be returned.</p> <important> <p>Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository will fail.</p> </important>
 deleteRepository :: forall eff. DeleteRepositoryInput -> Aff (err :: AWS.RequestError | eff) DeleteRepositoryOutput
-deleteRepository = AWS.request serviceName "DeleteRepository" 
+deleteRepository = AWS.request serviceName "deleteRepository" 
 
 
 -- | <p>Returns information about one or more pull request events.</p>
 describePullRequestEvents :: forall eff. DescribePullRequestEventsInput -> Aff (err :: AWS.RequestError | eff) DescribePullRequestEventsOutput
-describePullRequestEvents = AWS.request serviceName "DescribePullRequestEvents" 
+describePullRequestEvents = AWS.request serviceName "describePullRequestEvents" 
 
 
 -- | <p>Returns the base-64 encoded content of an individual blob within a repository.</p>
 getBlob :: forall eff. GetBlobInput -> Aff (err :: AWS.RequestError | eff) GetBlobOutput
-getBlob = AWS.request serviceName "GetBlob" 
+getBlob = AWS.request serviceName "getBlob" 
 
 
 -- | <p>Returns information about a repository branch, including its name and the last commit ID.</p>
 getBranch :: forall eff. GetBranchInput -> Aff (err :: AWS.RequestError | eff) GetBranchOutput
-getBranch = AWS.request serviceName "GetBranch" 
+getBranch = AWS.request serviceName "getBranch" 
 
 
 -- | <p>Returns the content of a comment made on a change, file, or commit in a repository.</p>
 getComment :: forall eff. GetCommentInput -> Aff (err :: AWS.RequestError | eff) GetCommentOutput
-getComment = AWS.request serviceName "GetComment" 
+getComment = AWS.request serviceName "getComment" 
 
 
 -- | <p>Returns information about comments made on the comparison between two commits.</p>
 getCommentsForComparedCommit :: forall eff. GetCommentsForComparedCommitInput -> Aff (err :: AWS.RequestError | eff) GetCommentsForComparedCommitOutput
-getCommentsForComparedCommit = AWS.request serviceName "GetCommentsForComparedCommit" 
+getCommentsForComparedCommit = AWS.request serviceName "getCommentsForComparedCommit" 
 
 
 -- | <p>Returns comments made on a pull request.</p>
 getCommentsForPullRequest :: forall eff. GetCommentsForPullRequestInput -> Aff (err :: AWS.RequestError | eff) GetCommentsForPullRequestOutput
-getCommentsForPullRequest = AWS.request serviceName "GetCommentsForPullRequest" 
+getCommentsForPullRequest = AWS.request serviceName "getCommentsForPullRequest" 
 
 
 -- | <p>Returns information about a commit, including commit message and committer information.</p>
 getCommit :: forall eff. GetCommitInput -> Aff (err :: AWS.RequestError | eff) GetCommitOutput
-getCommit = AWS.request serviceName "GetCommit" 
+getCommit = AWS.request serviceName "getCommit" 
 
 
 -- | <p>Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID or other fully qualified reference). Results can be limited to a specified path.</p>
 getDifferences :: forall eff. GetDifferencesInput -> Aff (err :: AWS.RequestError | eff) GetDifferencesOutput
-getDifferences = AWS.request serviceName "GetDifferences" 
+getDifferences = AWS.request serviceName "getDifferences" 
 
 
 -- | <p>Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.</p>
 getMergeConflicts :: forall eff. GetMergeConflictsInput -> Aff (err :: AWS.RequestError | eff) GetMergeConflictsOutput
-getMergeConflicts = AWS.request serviceName "GetMergeConflicts" 
+getMergeConflicts = AWS.request serviceName "getMergeConflicts" 
 
 
 -- | <p>Gets information about a pull request in a specified repository.</p>
 getPullRequest :: forall eff. GetPullRequestInput -> Aff (err :: AWS.RequestError | eff) GetPullRequestOutput
-getPullRequest = AWS.request serviceName "GetPullRequest" 
+getPullRequest = AWS.request serviceName "getPullRequest" 
 
 
 -- | <p>Returns information about a repository.</p> <note> <p>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</p> </note>
 getRepository :: forall eff. GetRepositoryInput -> Aff (err :: AWS.RequestError | eff) GetRepositoryOutput
-getRepository = AWS.request serviceName "GetRepository" 
+getRepository = AWS.request serviceName "getRepository" 
 
 
 -- | <p>Gets information about triggers configured for a repository.</p>
 getRepositoryTriggers :: forall eff. GetRepositoryTriggersInput -> Aff (err :: AWS.RequestError | eff) GetRepositoryTriggersOutput
-getRepositoryTriggers = AWS.request serviceName "GetRepositoryTriggers" 
+getRepositoryTriggers = AWS.request serviceName "getRepositoryTriggers" 
 
 
 -- | <p>Gets information about one or more branches in a repository.</p>
 listBranches :: forall eff. ListBranchesInput -> Aff (err :: AWS.RequestError | eff) ListBranchesOutput
-listBranches = AWS.request serviceName "ListBranches" 
+listBranches = AWS.request serviceName "listBranches" 
 
 
 -- | <p>Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.</p>
 listPullRequests :: forall eff. ListPullRequestsInput -> Aff (err :: AWS.RequestError | eff) ListPullRequestsOutput
-listPullRequests = AWS.request serviceName "ListPullRequests" 
+listPullRequests = AWS.request serviceName "listPullRequests" 
 
 
 -- | <p>Gets information about one or more repositories.</p>
 listRepositories :: forall eff. ListRepositoriesInput -> Aff (err :: AWS.RequestError | eff) ListRepositoriesOutput
-listRepositories = AWS.request serviceName "ListRepositories" 
+listRepositories = AWS.request serviceName "listRepositories" 
 
 
 -- | <p>Closes a pull request and attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge option.</p>
 mergePullRequestByFastForward :: forall eff. MergePullRequestByFastForwardInput -> Aff (err :: AWS.RequestError | eff) MergePullRequestByFastForwardOutput
-mergePullRequestByFastForward = AWS.request serviceName "MergePullRequestByFastForward" 
+mergePullRequestByFastForward = AWS.request serviceName "mergePullRequestByFastForward" 
 
 
 -- | <p>Posts a comment on the comparison between two commits.</p>
 postCommentForComparedCommit :: forall eff. PostCommentForComparedCommitInput -> Aff (err :: AWS.RequestError | eff) PostCommentForComparedCommitOutput
-postCommentForComparedCommit = AWS.request serviceName "PostCommentForComparedCommit" 
+postCommentForComparedCommit = AWS.request serviceName "postCommentForComparedCommit" 
 
 
 -- | <p>Posts a comment on a pull request.</p>
 postCommentForPullRequest :: forall eff. PostCommentForPullRequestInput -> Aff (err :: AWS.RequestError | eff) PostCommentForPullRequestOutput
-postCommentForPullRequest = AWS.request serviceName "PostCommentForPullRequest" 
+postCommentForPullRequest = AWS.request serviceName "postCommentForPullRequest" 
 
 
 -- | <p>Posts a comment in reply to an existing comment on a comparison between commits or a pull request.</p>
 postCommentReply :: forall eff. PostCommentReplyInput -> Aff (err :: AWS.RequestError | eff) PostCommentReplyOutput
-postCommentReply = AWS.request serviceName "PostCommentReply" 
+postCommentReply = AWS.request serviceName "postCommentReply" 
 
 
 -- | <p>Adds or updates a file in an AWS CodeCommit repository.</p>
 putFile :: forall eff. PutFileInput -> Aff (err :: AWS.RequestError | eff) PutFileOutput
-putFile = AWS.request serviceName "PutFile" 
+putFile = AWS.request serviceName "putFile" 
 
 
 -- | <p>Replaces all triggers for a repository. This can be used to create or delete triggers.</p>
 putRepositoryTriggers :: forall eff. PutRepositoryTriggersInput -> Aff (err :: AWS.RequestError | eff) PutRepositoryTriggersOutput
-putRepositoryTriggers = AWS.request serviceName "PutRepositoryTriggers" 
+putRepositoryTriggers = AWS.request serviceName "putRepositoryTriggers" 
 
 
 -- | <p>Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test will send data from the last commit. If no data is available, sample data will be generated.</p>
 testRepositoryTriggers :: forall eff. TestRepositoryTriggersInput -> Aff (err :: AWS.RequestError | eff) TestRepositoryTriggersOutput
-testRepositoryTriggers = AWS.request serviceName "TestRepositoryTriggers" 
+testRepositoryTriggers = AWS.request serviceName "testRepositoryTriggers" 
 
 
 -- | <p>Replaces the contents of a comment.</p>
 updateComment :: forall eff. UpdateCommentInput -> Aff (err :: AWS.RequestError | eff) UpdateCommentOutput
-updateComment = AWS.request serviceName "UpdateComment" 
+updateComment = AWS.request serviceName "updateComment" 
 
 
 -- | <p>Sets or changes the default branch name for the specified repository.</p> <note> <p>If you use this operation to change the default branch name to the current default branch name, a success message is returned even though the default branch did not change.</p> </note>
 updateDefaultBranch :: forall eff. UpdateDefaultBranchInput -> Aff (err :: AWS.RequestError | eff) Unit
-updateDefaultBranch = AWS.request serviceName "UpdateDefaultBranch" 
+updateDefaultBranch = AWS.request serviceName "updateDefaultBranch" 
 
 
 -- | <p>Replaces the contents of the description of a pull request.</p>
 updatePullRequestDescription :: forall eff. UpdatePullRequestDescriptionInput -> Aff (err :: AWS.RequestError | eff) UpdatePullRequestDescriptionOutput
-updatePullRequestDescription = AWS.request serviceName "UpdatePullRequestDescription" 
+updatePullRequestDescription = AWS.request serviceName "updatePullRequestDescription" 
 
 
 -- | <p>Updates the status of a pull request. </p>
 updatePullRequestStatus :: forall eff. UpdatePullRequestStatusInput -> Aff (err :: AWS.RequestError | eff) UpdatePullRequestStatusOutput
-updatePullRequestStatus = AWS.request serviceName "UpdatePullRequestStatus" 
+updatePullRequestStatus = AWS.request serviceName "updatePullRequestStatus" 
 
 
 -- | <p>Replaces the title of a pull request.</p>
 updatePullRequestTitle :: forall eff. UpdatePullRequestTitleInput -> Aff (err :: AWS.RequestError | eff) UpdatePullRequestTitleOutput
-updatePullRequestTitle = AWS.request serviceName "UpdatePullRequestTitle" 
+updatePullRequestTitle = AWS.request serviceName "updatePullRequestTitle" 
 
 
 -- | <p>Sets or changes the comment or description for a repository.</p> <note> <p>The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a web page could expose users to potentially malicious code. Make sure that you HTML-encode the description field in any application that uses this API to display the repository description on a web page.</p> </note>
 updateRepositoryDescription :: forall eff. UpdateRepositoryDescriptionInput -> Aff (err :: AWS.RequestError | eff) Unit
-updateRepositoryDescription = AWS.request serviceName "UpdateRepositoryDescription" 
+updateRepositoryDescription = AWS.request serviceName "updateRepositoryDescription" 
 
 
 -- | <p>Renames a repository. The repository name must be unique across the calling AWS account. In addition, repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix ".git" is prohibited. For a full description of the limits on repository names, see <a href="http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html">Limits</a> in the AWS CodeCommit User Guide.</p>
 updateRepositoryName :: forall eff. UpdateRepositoryNameInput -> Aff (err :: AWS.RequestError | eff) Unit
-updateRepositoryName = AWS.request serviceName "UpdateRepositoryName" 
+updateRepositoryName = AWS.request serviceName "updateRepositoryName" 
 
 
 newtype AccountId = AccountId String

@@ -16,112 +16,112 @@ serviceName = "ECR" :: String
 
 -- | <p>Check the availability of multiple image layers in a specified registry and repository.</p> <note> <p>This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p> </note>
 batchCheckLayerAvailability :: forall eff. BatchCheckLayerAvailabilityRequest -> Aff (err :: AWS.RequestError | eff) BatchCheckLayerAvailabilityResponse
-batchCheckLayerAvailability = AWS.request serviceName "BatchCheckLayerAvailability" 
+batchCheckLayerAvailability = AWS.request serviceName "batchCheckLayerAvailability" 
 
 
 -- | <p>Deletes a list of specified images within a specified repository. Images are specified with either <code>imageTag</code> or <code>imageDigest</code>.</p> <p>You can remove a tag from an image by specifying the image's tag in your request. When you remove the last tag from an image, the image is deleted from your repository.</p> <p>You can completely delete an image (and all of its tags) by specifying the image's digest in your request.</p>
 batchDeleteImage :: forall eff. BatchDeleteImageRequest -> Aff (err :: AWS.RequestError | eff) BatchDeleteImageResponse
-batchDeleteImage = AWS.request serviceName "BatchDeleteImage" 
+batchDeleteImage = AWS.request serviceName "batchDeleteImage" 
 
 
 -- | <p>Gets detailed information for specified images within a specified repository. Images are specified with either <code>imageTag</code> or <code>imageDigest</code>.</p>
 batchGetImage :: forall eff. BatchGetImageRequest -> Aff (err :: AWS.RequestError | eff) BatchGetImageResponse
-batchGetImage = AWS.request serviceName "BatchGetImage" 
+batchGetImage = AWS.request serviceName "batchGetImage" 
 
 
 -- | <p>Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID. You can optionally provide a <code>sha256</code> digest of the image layer for data validation purposes.</p> <note> <p>This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p> </note>
 completeLayerUpload :: forall eff. CompleteLayerUploadRequest -> Aff (err :: AWS.RequestError | eff) CompleteLayerUploadResponse
-completeLayerUpload = AWS.request serviceName "CompleteLayerUpload" 
+completeLayerUpload = AWS.request serviceName "completeLayerUpload" 
 
 
 -- | <p>Creates an image repository.</p>
 createRepository :: forall eff. CreateRepositoryRequest -> Aff (err :: AWS.RequestError | eff) CreateRepositoryResponse
-createRepository = AWS.request serviceName "CreateRepository" 
+createRepository = AWS.request serviceName "createRepository" 
 
 
 -- | <p>Deletes the specified lifecycle policy.</p>
 deleteLifecyclePolicy :: forall eff. DeleteLifecyclePolicyRequest -> Aff (err :: AWS.RequestError | eff) DeleteLifecyclePolicyResponse
-deleteLifecyclePolicy = AWS.request serviceName "DeleteLifecyclePolicy" 
+deleteLifecyclePolicy = AWS.request serviceName "deleteLifecyclePolicy" 
 
 
 -- | <p>Deletes an existing image repository. If a repository contains images, you must use the <code>force</code> option to delete it.</p>
 deleteRepository :: forall eff. DeleteRepositoryRequest -> Aff (err :: AWS.RequestError | eff) DeleteRepositoryResponse
-deleteRepository = AWS.request serviceName "DeleteRepository" 
+deleteRepository = AWS.request serviceName "deleteRepository" 
 
 
 -- | <p>Deletes the repository policy from a specified repository.</p>
 deleteRepositoryPolicy :: forall eff. DeleteRepositoryPolicyRequest -> Aff (err :: AWS.RequestError | eff) DeleteRepositoryPolicyResponse
-deleteRepositoryPolicy = AWS.request serviceName "DeleteRepositoryPolicy" 
+deleteRepositoryPolicy = AWS.request serviceName "deleteRepositoryPolicy" 
 
 
 -- | <p>Returns metadata about the images in a repository, including image size, image tags, and creation date.</p> <note> <p>Beginning with Docker version 1.9, the Docker client compresses image layers before pushing them to a V2 Docker registry. The output of the <code>docker images</code> command shows the uncompressed image size, so it may return a larger image size than the image sizes returned by <a>DescribeImages</a>.</p> </note>
 describeImages :: forall eff. DescribeImagesRequest -> Aff (err :: AWS.RequestError | eff) DescribeImagesResponse
-describeImages = AWS.request serviceName "DescribeImages" 
+describeImages = AWS.request serviceName "describeImages" 
 
 
 -- | <p>Describes image repositories in a registry.</p>
 describeRepositories :: forall eff. DescribeRepositoriesRequest -> Aff (err :: AWS.RequestError | eff) DescribeRepositoriesResponse
-describeRepositories = AWS.request serviceName "DescribeRepositories" 
+describeRepositories = AWS.request serviceName "describeRepositories" 
 
 
 -- | <p>Retrieves a token that is valid for a specified registry for 12 hours. This command allows you to use the <code>docker</code> CLI to push and pull images with Amazon ECR. If you do not specify a registry, the default registry is assumed.</p> <p>The <code>authorizationToken</code> returned for each registry specified is a base64 encoded string that can be decoded and used in a <code>docker login</code> command to authenticate to a registry. The AWS CLI offers an <code>aws ecr get-login</code> command that simplifies the login process.</p>
 getAuthorizationToken :: forall eff. GetAuthorizationTokenRequest -> Aff (err :: AWS.RequestError | eff) GetAuthorizationTokenResponse
-getAuthorizationToken = AWS.request serviceName "GetAuthorizationToken" 
+getAuthorizationToken = AWS.request serviceName "getAuthorizationToken" 
 
 
 -- | <p>Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image layers that are referenced in an image.</p> <note> <p>This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p> </note>
 getDownloadUrlForLayer :: forall eff. GetDownloadUrlForLayerRequest -> Aff (err :: AWS.RequestError | eff) GetDownloadUrlForLayerResponse
-getDownloadUrlForLayer = AWS.request serviceName "GetDownloadUrlForLayer" 
+getDownloadUrlForLayer = AWS.request serviceName "getDownloadUrlForLayer" 
 
 
 -- | <p>Retrieves the specified lifecycle policy.</p>
 getLifecyclePolicy :: forall eff. GetLifecyclePolicyRequest -> Aff (err :: AWS.RequestError | eff) GetLifecyclePolicyResponse
-getLifecyclePolicy = AWS.request serviceName "GetLifecyclePolicy" 
+getLifecyclePolicy = AWS.request serviceName "getLifecyclePolicy" 
 
 
 -- | <p>Retrieves the results of the specified lifecycle policy preview request.</p>
 getLifecyclePolicyPreview :: forall eff. GetLifecyclePolicyPreviewRequest -> Aff (err :: AWS.RequestError | eff) GetLifecyclePolicyPreviewResponse
-getLifecyclePolicyPreview = AWS.request serviceName "GetLifecyclePolicyPreview" 
+getLifecyclePolicyPreview = AWS.request serviceName "getLifecyclePolicyPreview" 
 
 
 -- | <p>Retrieves the repository policy for a specified repository.</p>
 getRepositoryPolicy :: forall eff. GetRepositoryPolicyRequest -> Aff (err :: AWS.RequestError | eff) GetRepositoryPolicyResponse
-getRepositoryPolicy = AWS.request serviceName "GetRepositoryPolicy" 
+getRepositoryPolicy = AWS.request serviceName "getRepositoryPolicy" 
 
 
 -- | <p>Notify Amazon ECR that you intend to upload an image layer.</p> <note> <p>This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p> </note>
 initiateLayerUpload :: forall eff. InitiateLayerUploadRequest -> Aff (err :: AWS.RequestError | eff) InitiateLayerUploadResponse
-initiateLayerUpload = AWS.request serviceName "InitiateLayerUpload" 
+initiateLayerUpload = AWS.request serviceName "initiateLayerUpload" 
 
 
 -- | <p>Lists all the image IDs for a given repository.</p> <p>You can filter images based on whether or not they are tagged by setting the <code>tagStatus</code> parameter to <code>TAGGED</code> or <code>UNTAGGED</code>. For example, you can filter your results to return only <code>UNTAGGED</code> images and then pipe that result to a <a>BatchDeleteImage</a> operation to delete them. Or, you can filter your results to return only <code>TAGGED</code> images to list all of the tags in your repository.</p>
 listImages :: forall eff. ListImagesRequest -> Aff (err :: AWS.RequestError | eff) ListImagesResponse
-listImages = AWS.request serviceName "ListImages" 
+listImages = AWS.request serviceName "listImages" 
 
 
 -- | <p>Creates or updates the image manifest and tags associated with an image.</p> <note> <p>This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p> </note>
 putImage :: forall eff. PutImageRequest -> Aff (err :: AWS.RequestError | eff) PutImageResponse
-putImage = AWS.request serviceName "PutImage" 
+putImage = AWS.request serviceName "putImage" 
 
 
 -- | <p>Creates or updates a lifecycle policy.</p>
 putLifecyclePolicy :: forall eff. PutLifecyclePolicyRequest -> Aff (err :: AWS.RequestError | eff) PutLifecyclePolicyResponse
-putLifecyclePolicy = AWS.request serviceName "PutLifecyclePolicy" 
+putLifecyclePolicy = AWS.request serviceName "putLifecyclePolicy" 
 
 
 -- | <p>Applies a repository policy on a specified repository to control access permissions.</p>
 setRepositoryPolicy :: forall eff. SetRepositoryPolicyRequest -> Aff (err :: AWS.RequestError | eff) SetRepositoryPolicyResponse
-setRepositoryPolicy = AWS.request serviceName "SetRepositoryPolicy" 
+setRepositoryPolicy = AWS.request serviceName "setRepositoryPolicy" 
 
 
 -- | <p>Starts a preview of the specified lifecycle policy. This allows you to see the results before creating the lifecycle policy.</p>
 startLifecyclePolicyPreview :: forall eff. StartLifecyclePolicyPreviewRequest -> Aff (err :: AWS.RequestError | eff) StartLifecyclePolicyPreviewResponse
-startLifecyclePolicyPreview = AWS.request serviceName "StartLifecyclePolicyPreview" 
+startLifecyclePolicyPreview = AWS.request serviceName "startLifecyclePolicyPreview" 
 
 
 -- | <p>Uploads an image layer part to Amazon ECR.</p> <note> <p>This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p> </note>
 uploadLayerPart :: forall eff. UploadLayerPartRequest -> Aff (err :: AWS.RequestError | eff) UploadLayerPartResponse
-uploadLayerPart = AWS.request serviceName "UploadLayerPart" 
+uploadLayerPart = AWS.request serviceName "uploadLayerPart" 
 
 
 newtype Arn = Arn String

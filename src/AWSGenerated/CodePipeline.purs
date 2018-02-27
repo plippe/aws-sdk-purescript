@@ -16,137 +16,137 @@ serviceName = "CodePipeline" :: String
 
 -- | <p>Returns information about a specified job and whether that job has been received by the job worker. Only used for custom actions.</p>
 acknowledgeJob :: forall eff. AcknowledgeJobInput -> Aff (err :: AWS.RequestError | eff) AcknowledgeJobOutput
-acknowledgeJob = AWS.request serviceName "AcknowledgeJob" 
+acknowledgeJob = AWS.request serviceName "acknowledgeJob" 
 
 
 -- | <p>Confirms a job worker has received the specified job. Only used for partner actions.</p>
 acknowledgeThirdPartyJob :: forall eff. AcknowledgeThirdPartyJobInput -> Aff (err :: AWS.RequestError | eff) AcknowledgeThirdPartyJobOutput
-acknowledgeThirdPartyJob = AWS.request serviceName "AcknowledgeThirdPartyJob" 
+acknowledgeThirdPartyJob = AWS.request serviceName "acknowledgeThirdPartyJob" 
 
 
 -- | <p>Creates a new custom action that can be used in all pipelines associated with the AWS account. Only used for custom actions.</p>
 createCustomActionType :: forall eff. CreateCustomActionTypeInput -> Aff (err :: AWS.RequestError | eff) CreateCustomActionTypeOutput
-createCustomActionType = AWS.request serviceName "CreateCustomActionType" 
+createCustomActionType = AWS.request serviceName "createCustomActionType" 
 
 
 -- | <p>Creates a pipeline.</p>
 createPipeline :: forall eff. CreatePipelineInput -> Aff (err :: AWS.RequestError | eff) CreatePipelineOutput
-createPipeline = AWS.request serviceName "CreatePipeline" 
+createPipeline = AWS.request serviceName "createPipeline" 
 
 
 -- | <p>Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for deletion. Only used for custom actions.</p> <important> <p>You cannot recreate a custom action after it has been deleted unless you increase the version number of the action.</p> </important>
 deleteCustomActionType :: forall eff. DeleteCustomActionTypeInput -> Aff (err :: AWS.RequestError | eff) Unit
-deleteCustomActionType = AWS.request serviceName "DeleteCustomActionType" 
+deleteCustomActionType = AWS.request serviceName "deleteCustomActionType" 
 
 
 -- | <p>Deletes the specified pipeline.</p>
 deletePipeline :: forall eff. DeletePipelineInput -> Aff (err :: AWS.RequestError | eff) Unit
-deletePipeline = AWS.request serviceName "DeletePipeline" 
+deletePipeline = AWS.request serviceName "deletePipeline" 
 
 
 -- | <p>Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.</p>
 disableStageTransition :: forall eff. DisableStageTransitionInput -> Aff (err :: AWS.RequestError | eff) Unit
-disableStageTransition = AWS.request serviceName "DisableStageTransition" 
+disableStageTransition = AWS.request serviceName "disableStageTransition" 
 
 
 -- | <p>Enables artifacts in a pipeline to transition to a stage in a pipeline.</p>
 enableStageTransition :: forall eff. EnableStageTransitionInput -> Aff (err :: AWS.RequestError | eff) Unit
-enableStageTransition = AWS.request serviceName "EnableStageTransition" 
+enableStageTransition = AWS.request serviceName "enableStageTransition" 
 
 
 -- | <p>Returns information about a job. Only used for custom actions.</p> <important> <p>When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.</p> </important>
 getJobDetails :: forall eff. GetJobDetailsInput -> Aff (err :: AWS.RequestError | eff) GetJobDetailsOutput
-getJobDetails = AWS.request serviceName "GetJobDetails" 
+getJobDetails = AWS.request serviceName "getJobDetails" 
 
 
 -- | <p>Returns the metadata, structure, stages, and actions of a pipeline. Can be used to return the entire structure of a pipeline in JSON format, which can then be modified and used to update the pipeline structure with <a>UpdatePipeline</a>.</p>
 getPipeline :: forall eff. GetPipelineInput -> Aff (err :: AWS.RequestError | eff) GetPipelineOutput
-getPipeline = AWS.request serviceName "GetPipeline" 
+getPipeline = AWS.request serviceName "getPipeline" 
 
 
 -- | <p>Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.</p>
 getPipelineExecution :: forall eff. GetPipelineExecutionInput -> Aff (err :: AWS.RequestError | eff) GetPipelineExecutionOutput
-getPipelineExecution = AWS.request serviceName "GetPipelineExecution" 
+getPipelineExecution = AWS.request serviceName "getPipelineExecution" 
 
 
 -- | <p>Returns information about the state of a pipeline, including the stages and actions.</p>
 getPipelineState :: forall eff. GetPipelineStateInput -> Aff (err :: AWS.RequestError | eff) GetPipelineStateOutput
-getPipelineState = AWS.request serviceName "GetPipelineState" 
+getPipelineState = AWS.request serviceName "getPipelineState" 
 
 
 -- | <p>Requests the details of a job for a third party action. Only used for partner actions.</p> <important> <p>When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.</p> </important>
 getThirdPartyJobDetails :: forall eff. GetThirdPartyJobDetailsInput -> Aff (err :: AWS.RequestError | eff) GetThirdPartyJobDetailsOutput
-getThirdPartyJobDetails = AWS.request serviceName "GetThirdPartyJobDetails" 
+getThirdPartyJobDetails = AWS.request serviceName "getThirdPartyJobDetails" 
 
 
 -- | <p>Gets a summary of all AWS CodePipeline action types associated with your account.</p>
 listActionTypes :: forall eff. ListActionTypesInput -> Aff (err :: AWS.RequestError | eff) ListActionTypesOutput
-listActionTypes = AWS.request serviceName "ListActionTypes" 
+listActionTypes = AWS.request serviceName "listActionTypes" 
 
 
 -- | <p>Gets a summary of the most recent executions for a pipeline.</p>
 listPipelineExecutions :: forall eff. ListPipelineExecutionsInput -> Aff (err :: AWS.RequestError | eff) ListPipelineExecutionsOutput
-listPipelineExecutions = AWS.request serviceName "ListPipelineExecutions" 
+listPipelineExecutions = AWS.request serviceName "listPipelineExecutions" 
 
 
 -- | <p>Gets a summary of all of the pipelines associated with your account.</p>
 listPipelines :: forall eff. ListPipelinesInput -> Aff (err :: AWS.RequestError | eff) ListPipelinesOutput
-listPipelines = AWS.request serviceName "ListPipelines" 
+listPipelines = AWS.request serviceName "listPipelines" 
 
 
 -- | <p>Returns information about any jobs for AWS CodePipeline to act upon.</p> <important> <p>When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts. Additionally, this API returns any secret values defined for the action.</p> </important>
 pollForJobs :: forall eff. PollForJobsInput -> Aff (err :: AWS.RequestError | eff) PollForJobsOutput
-pollForJobs = AWS.request serviceName "PollForJobs" 
+pollForJobs = AWS.request serviceName "pollForJobs" 
 
 
 -- | <p>Determines whether there are any third party jobs for a job worker to act on. Only used for partner actions.</p> <important> <p>When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.</p> </important>
 pollForThirdPartyJobs :: forall eff. PollForThirdPartyJobsInput -> Aff (err :: AWS.RequestError | eff) PollForThirdPartyJobsOutput
-pollForThirdPartyJobs = AWS.request serviceName "PollForThirdPartyJobs" 
+pollForThirdPartyJobs = AWS.request serviceName "pollForThirdPartyJobs" 
 
 
 -- | <p>Provides information to AWS CodePipeline about new revisions to a source.</p>
 putActionRevision :: forall eff. PutActionRevisionInput -> Aff (err :: AWS.RequestError | eff) PutActionRevisionOutput
-putActionRevision = AWS.request serviceName "PutActionRevision" 
+putActionRevision = AWS.request serviceName "putActionRevision" 
 
 
 -- | <p>Provides the response to a manual approval request to AWS CodePipeline. Valid responses include Approved and Rejected.</p>
 putApprovalResult :: forall eff. PutApprovalResultInput -> Aff (err :: AWS.RequestError | eff) PutApprovalResultOutput
-putApprovalResult = AWS.request serviceName "PutApprovalResult" 
+putApprovalResult = AWS.request serviceName "putApprovalResult" 
 
 
 -- | <p>Represents the failure of a job as returned to the pipeline by a job worker. Only used for custom actions.</p>
 putJobFailureResult :: forall eff. PutJobFailureResultInput -> Aff (err :: AWS.RequestError | eff) Unit
-putJobFailureResult = AWS.request serviceName "PutJobFailureResult" 
+putJobFailureResult = AWS.request serviceName "putJobFailureResult" 
 
 
 -- | <p>Represents the success of a job as returned to the pipeline by a job worker. Only used for custom actions.</p>
 putJobSuccessResult :: forall eff. PutJobSuccessResultInput -> Aff (err :: AWS.RequestError | eff) Unit
-putJobSuccessResult = AWS.request serviceName "PutJobSuccessResult" 
+putJobSuccessResult = AWS.request serviceName "putJobSuccessResult" 
 
 
 -- | <p>Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner actions.</p>
 putThirdPartyJobFailureResult :: forall eff. PutThirdPartyJobFailureResultInput -> Aff (err :: AWS.RequestError | eff) Unit
-putThirdPartyJobFailureResult = AWS.request serviceName "PutThirdPartyJobFailureResult" 
+putThirdPartyJobFailureResult = AWS.request serviceName "putThirdPartyJobFailureResult" 
 
 
 -- | <p>Represents the success of a third party job as returned to the pipeline by a job worker. Only used for partner actions.</p>
 putThirdPartyJobSuccessResult :: forall eff. PutThirdPartyJobSuccessResultInput -> Aff (err :: AWS.RequestError | eff) Unit
-putThirdPartyJobSuccessResult = AWS.request serviceName "PutThirdPartyJobSuccessResult" 
+putThirdPartyJobSuccessResult = AWS.request serviceName "putThirdPartyJobSuccessResult" 
 
 
 -- | <p>Resumes the pipeline execution by retrying the last failed actions in a stage.</p>
 retryStageExecution :: forall eff. RetryStageExecutionInput -> Aff (err :: AWS.RequestError | eff) RetryStageExecutionOutput
-retryStageExecution = AWS.request serviceName "RetryStageExecution" 
+retryStageExecution = AWS.request serviceName "retryStageExecution" 
 
 
 -- | <p>Starts the specified pipeline. Specifically, it begins processing the latest commit to the source location specified as part of the pipeline.</p>
 startPipelineExecution :: forall eff. StartPipelineExecutionInput -> Aff (err :: AWS.RequestError | eff) StartPipelineExecutionOutput
-startPipelineExecution = AWS.request serviceName "StartPipelineExecution" 
+startPipelineExecution = AWS.request serviceName "startPipelineExecution" 
 
 
 -- | <p>Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure in conjunction with UpdatePipeline to provide the full structure of the pipeline. Updating the pipeline increases the version number of the pipeline by 1.</p>
 updatePipeline :: forall eff. UpdatePipelineInput -> Aff (err :: AWS.RequestError | eff) UpdatePipelineOutput
-updatePipeline = AWS.request serviceName "UpdatePipeline" 
+updatePipeline = AWS.request serviceName "updatePipeline" 
 
 
 -- | <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.</p>

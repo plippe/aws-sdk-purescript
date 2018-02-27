@@ -16,67 +16,67 @@ serviceName = "DynamoDB" :: String
 
 -- | <p>Retrieves the attributes for multiple items from multiple tables using their primary keys.</p> <p>The maximum number of item attributes that can be retrieved for a single operation is 100. Also, the number of items retrieved is constrained by a 1 MB the size limit. If the response size limit is exceeded or a partial result is returned due to an internal processing failure, Amazon DynamoDB returns an <code>UnprocessedKeys</code> value so you can retry the operation starting with the next item to get.</p> <p>Amazon DynamoDB automatically adjusts the number of items returned per page to enforce this limit. For example, even if you ask to retrieve 100 items, but each individual item is 50k in size, the system returns 20 items and an appropriate <code>UnprocessedKeys</code> value so you can get the next page of results. If necessary, your application needs its own logic to assemble the pages of results into one set.</p>
 batchGetItem :: forall eff. BatchGetItemInput -> Aff (err :: AWS.RequestError | eff) BatchGetItemOutput
-batchGetItem = AWS.request serviceName "BatchGetItem" 
+batchGetItem = AWS.request serviceName "batchGetItem" 
 
 
 -- | <p>Allows to execute a batch of Put and/or Delete Requests for many tables in a single call. A total of 25 requests are allowed.</p> <p>There are no transaction guarantees provided by this API. It does not allow conditional puts nor does it support return values.</p>
 batchWriteItem :: forall eff. BatchWriteItemInput -> Aff (err :: AWS.RequestError | eff) BatchWriteItemOutput
-batchWriteItem = AWS.request serviceName "BatchWriteItem" 
+batchWriteItem = AWS.request serviceName "batchWriteItem" 
 
 
 -- | <p>Adds a new table to your account.</p> <p>The table name must be unique among those associated with the AWS Account issuing the request, and the AWS Region that receives the request (e.g. <code>us-east-1</code>).</p> <p>The <code>CreateTable</code> operation triggers an asynchronous workflow to begin creating the table. Amazon DynamoDB immediately returns the state of the table (<code>CREATING</code>) until the table is in the <code>ACTIVE</code> state. Once the table is in the <code>ACTIVE</code> state, you can perform data plane operations.</p>
 createTable :: forall eff. CreateTableInput -> Aff (err :: AWS.RequestError | eff) CreateTableOutput
-createTable = AWS.request serviceName "CreateTable" 
+createTable = AWS.request serviceName "createTable" 
 
 
 -- | <p>Deletes a single item in a table by primary key.</p> <p>You can perform a conditional delete operation that deletes the item if it exists, or if it has an expected attribute value.</p>
 deleteItem :: forall eff. DeleteItemInput -> Aff (err :: AWS.RequestError | eff) DeleteItemOutput
-deleteItem = AWS.request serviceName "DeleteItem" 
+deleteItem = AWS.request serviceName "deleteItem" 
 
 
 -- | <p>Deletes a table and all of its items.</p> <p>If the table is in the <code>ACTIVE</code> state, you can delete it. If a table is in <code>CREATING</code> or <code>UPDATING</code> states then Amazon DynamoDB returns a <code>ResourceInUseException</code>. If the specified table does not exist, Amazon DynamoDB returns a <code>ResourceNotFoundException</code>.</p>
 deleteTable :: forall eff. DeleteTableInput -> Aff (err :: AWS.RequestError | eff) DeleteTableOutput
-deleteTable = AWS.request serviceName "DeleteTable" 
+deleteTable = AWS.request serviceName "deleteTable" 
 
 
 -- | <p>Retrieves information about the table, including the current status of the table, the primary key schema and when the table was created.</p> <p>If the table does not exist, Amazon DynamoDB returns a <code>ResourceNotFoundException</code>.</p>
 describeTable :: forall eff. DescribeTableInput -> Aff (err :: AWS.RequestError | eff) DescribeTableOutput
-describeTable = AWS.request serviceName "DescribeTable" 
+describeTable = AWS.request serviceName "describeTable" 
 
 
 -- | <p>Retrieves a set of Attributes for an item that matches the primary key.</p> <p>The <code>GetItem</code> operation provides an eventually-consistent read by default. If eventually-consistent reads are not acceptable for your application, use <code>ConsistentRead</code>. Although this operation might take longer than a standard read, it always returns the last updated value.</p>
 getItem :: forall eff. GetItemInput -> Aff (err :: AWS.RequestError | eff) GetItemOutput
-getItem = AWS.request serviceName "GetItem" 
+getItem = AWS.request serviceName "getItem" 
 
 
 -- | <p>Retrieves a paginated list of table names created by the AWS Account of the caller in the AWS Region (e.g. <code>us-east-1</code>).</p>
 listTables :: forall eff. ListTablesInput -> Aff (err :: AWS.RequestError | eff) ListTablesOutput
-listTables = AWS.request serviceName "ListTables" 
+listTables = AWS.request serviceName "listTables" 
 
 
 -- | <p>Creates a new item, or replaces an old item with a new item (including all the attributes).</p> <p>If an item already exists in the specified table with the same primary key, the new item completely replaces the existing item. You can perform a conditional put (insert a new item if one with the specified primary key doesn't exist), or replace an existing item if it has certain attribute values.</p>
 putItem :: forall eff. PutItemInput -> Aff (err :: AWS.RequestError | eff) PutItemOutput
-putItem = AWS.request serviceName "PutItem" 
+putItem = AWS.request serviceName "putItem" 
 
 
 -- | <p>Gets the values of one or more items and its attributes by primary key (composite primary key, only).</p> <p>Narrow the scope of the query using comparison operators on the <code>RangeKeyValue</code> of the composite key. Use the <code>ScanIndexForward</code> parameter to get results in forward or reverse order by range key.</p>
 query :: forall eff. QueryInput -> Aff (err :: AWS.RequestError | eff) QueryOutput
-query = AWS.request serviceName "Query" 
+query = AWS.request serviceName "query" 
 
 
 -- | <p>Retrieves one or more items and its attributes by performing a full scan of a table.</p> <p>Provide a <code>ScanFilter</code> to get more specific results.</p>
 scan :: forall eff. ScanInput -> Aff (err :: AWS.RequestError | eff) ScanOutput
-scan = AWS.request serviceName "Scan" 
+scan = AWS.request serviceName "scan" 
 
 
 -- | <p>Edits an existing item's attributes.</p> <p>You can perform a conditional update (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).</p>
 updateItem :: forall eff. UpdateItemInput -> Aff (err :: AWS.RequestError | eff) UpdateItemOutput
-updateItem = AWS.request serviceName "UpdateItem" 
+updateItem = AWS.request serviceName "updateItem" 
 
 
 -- | <p>Updates the provisioned throughput for the given table.</p> <p>Setting the throughput for a table helps you manage performance and is part of the Provisioned Throughput feature of Amazon DynamoDB.</p>
 updateTable :: forall eff. UpdateTableInput -> Aff (err :: AWS.RequestError | eff) UpdateTableOutput
-updateTable = AWS.request serviceName "UpdateTable" 
+updateTable = AWS.request serviceName "updateTable" 
 
 
 -- | <p>The type of action for an item update operation. Only use the add action for numbers or sets; the specified value is added to the existing value. If a set of values is specified, the values are added to the existing set. Adds the specified attribute. If the attribute exists, it is replaced by the new value. If no value is specified, this removes the attribute and its value. If a set of values is specified, then the values in the specified set are removed from the old set.</p>

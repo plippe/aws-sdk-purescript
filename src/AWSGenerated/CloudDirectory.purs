@@ -16,312 +16,312 @@ serviceName = "CloudDirectory" :: String
 
 -- | <p>Adds a new <a>Facet</a> to an object.</p>
 addFacetToObject :: forall eff. AddFacetToObjectRequest -> Aff (err :: AWS.RequestError | eff) AddFacetToObjectResponse
-addFacetToObject = AWS.request serviceName "AddFacetToObject" 
+addFacetToObject = AWS.request serviceName "addFacetToObject" 
 
 
 -- | <p>Copies the input published schema, at the specified version, into the <a>Directory</a> with the same name and version as that of the published schema.</p>
 applySchema :: forall eff. ApplySchemaRequest -> Aff (err :: AWS.RequestError | eff) ApplySchemaResponse
-applySchema = AWS.request serviceName "ApplySchema" 
+applySchema = AWS.request serviceName "applySchema" 
 
 
 -- | <p>Attaches an existing object to another object. An object can be accessed in two ways:</p> <ol> <li> <p>Using the path</p> </li> <li> <p>Using <code>ObjectIdentifier</code> </p> </li> </ol>
 attachObject :: forall eff. AttachObjectRequest -> Aff (err :: AWS.RequestError | eff) AttachObjectResponse
-attachObject = AWS.request serviceName "AttachObject" 
+attachObject = AWS.request serviceName "attachObject" 
 
 
 -- | <p>Attaches a policy object to a regular object. An object can have a limited number of attached policies.</p>
 attachPolicy :: forall eff. AttachPolicyRequest -> Aff (err :: AWS.RequestError | eff) AttachPolicyResponse
-attachPolicy = AWS.request serviceName "AttachPolicy" 
+attachPolicy = AWS.request serviceName "attachPolicy" 
 
 
 -- | <p>Attaches the specified object to the specified index.</p>
 attachToIndex :: forall eff. AttachToIndexRequest -> Aff (err :: AWS.RequestError | eff) AttachToIndexResponse
-attachToIndex = AWS.request serviceName "AttachToIndex" 
+attachToIndex = AWS.request serviceName "attachToIndex" 
 
 
 -- | <p>Attaches a typed link to a specified source and target object. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 attachTypedLink :: forall eff. AttachTypedLinkRequest -> Aff (err :: AWS.RequestError | eff) AttachTypedLinkResponse
-attachTypedLink = AWS.request serviceName "AttachTypedLink" 
+attachTypedLink = AWS.request serviceName "attachTypedLink" 
 
 
 -- | <p>Performs all the read operations in a batch. </p>
 batchRead :: forall eff. BatchReadRequest -> Aff (err :: AWS.RequestError | eff) BatchReadResponse
-batchRead = AWS.request serviceName "BatchRead" 
+batchRead = AWS.request serviceName "batchRead" 
 
 
 -- | <p>Performs all the write operations in a batch. Either all the operations succeed or none.</p>
 batchWrite :: forall eff. BatchWriteRequest -> Aff (err :: AWS.RequestError | eff) BatchWriteResponse
-batchWrite = AWS.request serviceName "BatchWrite" 
+batchWrite = AWS.request serviceName "batchWrite" 
 
 
 -- | <p>Creates a <a>Directory</a> by copying the published schema into the directory. A directory cannot be created without a schema.</p>
 createDirectory :: forall eff. CreateDirectoryRequest -> Aff (err :: AWS.RequestError | eff) CreateDirectoryResponse
-createDirectory = AWS.request serviceName "CreateDirectory" 
+createDirectory = AWS.request serviceName "createDirectory" 
 
 
 -- | <p>Creates a new <a>Facet</a> in a schema. Facet creation is allowed only in development or applied schemas.</p>
 createFacet :: forall eff. CreateFacetRequest -> Aff (err :: AWS.RequestError | eff) CreateFacetResponse
-createFacet = AWS.request serviceName "CreateFacet" 
+createFacet = AWS.request serviceName "createFacet" 
 
 
 -- | <p>Creates an index object. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_indexing.html">Indexing</a> for more information.</p>
 createIndex :: forall eff. CreateIndexRequest -> Aff (err :: AWS.RequestError | eff) CreateIndexResponse
-createIndex = AWS.request serviceName "CreateIndex" 
+createIndex = AWS.request serviceName "createIndex" 
 
 
 -- | <p>Creates an object in a <a>Directory</a>. Additionally attaches the object to a parent, if a parent reference and <code>LinkName</code> is specified. An object is simply a collection of <a>Facet</a> attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet. </p>
 createObject :: forall eff. CreateObjectRequest -> Aff (err :: AWS.RequestError | eff) CreateObjectResponse
-createObject = AWS.request serviceName "CreateObject" 
+createObject = AWS.request serviceName "createObject" 
 
 
 -- | <p>Creates a new schema in a development state. A schema can exist in three phases:</p> <ul> <li> <p> <i>Development:</i> This is a mutable phase of the schema. All new schemas are in the development phase. Once the schema is finalized, it can be published.</p> </li> <li> <p> <i>Published:</i> Published schemas are immutable and have a version associated with them.</p> </li> <li> <p> <i>Applied:</i> Applied schemas are mutable in a way that allows you to add new schema facets. You can also add new, nonrequired attributes to existing schema facets. You can apply only published schemas to directories. </p> </li> </ul>
 createSchema :: forall eff. CreateSchemaRequest -> Aff (err :: AWS.RequestError | eff) CreateSchemaResponse
-createSchema = AWS.request serviceName "CreateSchema" 
+createSchema = AWS.request serviceName "createSchema" 
 
 
 -- | <p>Creates a <a>TypedLinkFacet</a>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 createTypedLinkFacet :: forall eff. CreateTypedLinkFacetRequest -> Aff (err :: AWS.RequestError | eff) CreateTypedLinkFacetResponse
-createTypedLinkFacet = AWS.request serviceName "CreateTypedLinkFacet" 
+createTypedLinkFacet = AWS.request serviceName "createTypedLinkFacet" 
 
 
 -- | <p>Deletes a directory. Only disabled directories can be deleted. A deleted directory cannot be undone. Exercise extreme caution when deleting directories.</p>
 deleteDirectory :: forall eff. DeleteDirectoryRequest -> Aff (err :: AWS.RequestError | eff) DeleteDirectoryResponse
-deleteDirectory = AWS.request serviceName "DeleteDirectory" 
+deleteDirectory = AWS.request serviceName "deleteDirectory" 
 
 
 -- | <p>Deletes a given <a>Facet</a>. All attributes and <a>Rule</a>s that are associated with the facet will be deleted. Only development schema facets are allowed deletion.</p>
 deleteFacet :: forall eff. DeleteFacetRequest -> Aff (err :: AWS.RequestError | eff) DeleteFacetResponse
-deleteFacet = AWS.request serviceName "DeleteFacet" 
+deleteFacet = AWS.request serviceName "deleteFacet" 
 
 
 -- | <p>Deletes an object and its associated attributes. Only objects with no children and no parents can be deleted.</p>
 deleteObject :: forall eff. DeleteObjectRequest -> Aff (err :: AWS.RequestError | eff) DeleteObjectResponse
-deleteObject = AWS.request serviceName "DeleteObject" 
+deleteObject = AWS.request serviceName "deleteObject" 
 
 
 -- | <p>Deletes a given schema. Schemas in a development and published state can only be deleted. </p>
 deleteSchema :: forall eff. DeleteSchemaRequest -> Aff (err :: AWS.RequestError | eff) DeleteSchemaResponse
-deleteSchema = AWS.request serviceName "DeleteSchema" 
+deleteSchema = AWS.request serviceName "deleteSchema" 
 
 
 -- | <p>Deletes a <a>TypedLinkFacet</a>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 deleteTypedLinkFacet :: forall eff. DeleteTypedLinkFacetRequest -> Aff (err :: AWS.RequestError | eff) DeleteTypedLinkFacetResponse
-deleteTypedLinkFacet = AWS.request serviceName "DeleteTypedLinkFacet" 
+deleteTypedLinkFacet = AWS.request serviceName "deleteTypedLinkFacet" 
 
 
 -- | <p>Detaches the specified object from the specified index.</p>
 detachFromIndex :: forall eff. DetachFromIndexRequest -> Aff (err :: AWS.RequestError | eff) DetachFromIndexResponse
-detachFromIndex = AWS.request serviceName "DetachFromIndex" 
+detachFromIndex = AWS.request serviceName "detachFromIndex" 
 
 
 -- | <p>Detaches a given object from the parent object. The object that is to be detached from the parent is specified by the link name.</p>
 detachObject :: forall eff. DetachObjectRequest -> Aff (err :: AWS.RequestError | eff) DetachObjectResponse
-detachObject = AWS.request serviceName "DetachObject" 
+detachObject = AWS.request serviceName "detachObject" 
 
 
 -- | <p>Detaches a policy from an object.</p>
 detachPolicy :: forall eff. DetachPolicyRequest -> Aff (err :: AWS.RequestError | eff) DetachPolicyResponse
-detachPolicy = AWS.request serviceName "DetachPolicy" 
+detachPolicy = AWS.request serviceName "detachPolicy" 
 
 
 -- | <p>Detaches a typed link from a specified source and target object. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 detachTypedLink :: forall eff. DetachTypedLinkRequest -> Aff (err :: AWS.RequestError | eff) Unit
-detachTypedLink = AWS.request serviceName "DetachTypedLink" 
+detachTypedLink = AWS.request serviceName "detachTypedLink" 
 
 
 -- | <p>Disables the specified directory. Disabled directories cannot be read or written to. Only enabled directories can be disabled. Disabled directories may be reenabled.</p>
 disableDirectory :: forall eff. DisableDirectoryRequest -> Aff (err :: AWS.RequestError | eff) DisableDirectoryResponse
-disableDirectory = AWS.request serviceName "DisableDirectory" 
+disableDirectory = AWS.request serviceName "disableDirectory" 
 
 
 -- | <p>Enables the specified directory. Only disabled directories can be enabled. Once enabled, the directory can then be read and written to.</p>
 enableDirectory :: forall eff. EnableDirectoryRequest -> Aff (err :: AWS.RequestError | eff) EnableDirectoryResponse
-enableDirectory = AWS.request serviceName "EnableDirectory" 
+enableDirectory = AWS.request serviceName "enableDirectory" 
 
 
 -- | <p>Returns current applied schema version ARN, including the minor version in use.</p>
 getAppliedSchemaVersion :: forall eff. GetAppliedSchemaVersionRequest -> Aff (err :: AWS.RequestError | eff) GetAppliedSchemaVersionResponse
-getAppliedSchemaVersion = AWS.request serviceName "GetAppliedSchemaVersion" 
+getAppliedSchemaVersion = AWS.request serviceName "getAppliedSchemaVersion" 
 
 
 -- | <p>Retrieves metadata about a directory.</p>
 getDirectory :: forall eff. GetDirectoryRequest -> Aff (err :: AWS.RequestError | eff) GetDirectoryResponse
-getDirectory = AWS.request serviceName "GetDirectory" 
+getDirectory = AWS.request serviceName "getDirectory" 
 
 
 -- | <p>Gets details of the <a>Facet</a>, such as facet name, attributes, <a>Rule</a>s, or <code>ObjectType</code>. You can call this on all kinds of schema facets -- published, development, or applied.</p>
 getFacet :: forall eff. GetFacetRequest -> Aff (err :: AWS.RequestError | eff) GetFacetResponse
-getFacet = AWS.request serviceName "GetFacet" 
+getFacet = AWS.request serviceName "getFacet" 
 
 
 -- | <p>Retrieves metadata about an object.</p>
 getObjectInformation :: forall eff. GetObjectInformationRequest -> Aff (err :: AWS.RequestError | eff) GetObjectInformationResponse
-getObjectInformation = AWS.request serviceName "GetObjectInformation" 
+getObjectInformation = AWS.request serviceName "getObjectInformation" 
 
 
 -- | <p>Retrieves a JSON representation of the schema. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat">JSON Schema Format</a> for more information.</p>
 getSchemaAsJson :: forall eff. GetSchemaAsJsonRequest -> Aff (err :: AWS.RequestError | eff) GetSchemaAsJsonResponse
-getSchemaAsJson = AWS.request serviceName "GetSchemaAsJson" 
+getSchemaAsJson = AWS.request serviceName "getSchemaAsJson" 
 
 
 -- | <p>Returns the identity attribute order for a specific <a>TypedLinkFacet</a>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 getTypedLinkFacetInformation :: forall eff. GetTypedLinkFacetInformationRequest -> Aff (err :: AWS.RequestError | eff) GetTypedLinkFacetInformationResponse
-getTypedLinkFacetInformation = AWS.request serviceName "GetTypedLinkFacetInformation" 
+getTypedLinkFacetInformation = AWS.request serviceName "getTypedLinkFacetInformation" 
 
 
 -- | <p>Lists schema major versions applied to a directory. If <code>SchemaArn</code> is provided, lists the minor version.</p>
 listAppliedSchemaArns :: forall eff. ListAppliedSchemaArnsRequest -> Aff (err :: AWS.RequestError | eff) ListAppliedSchemaArnsResponse
-listAppliedSchemaArns = AWS.request serviceName "ListAppliedSchemaArns" 
+listAppliedSchemaArns = AWS.request serviceName "listAppliedSchemaArns" 
 
 
 -- | <p>Lists indices attached to the specified object.</p>
 listAttachedIndices :: forall eff. ListAttachedIndicesRequest -> Aff (err :: AWS.RequestError | eff) ListAttachedIndicesResponse
-listAttachedIndices = AWS.request serviceName "ListAttachedIndices" 
+listAttachedIndices = AWS.request serviceName "listAttachedIndices" 
 
 
 -- | <p>Retrieves each Amazon Resource Name (ARN) of schemas in the development state.</p>
 listDevelopmentSchemaArns :: forall eff. ListDevelopmentSchemaArnsRequest -> Aff (err :: AWS.RequestError | eff) ListDevelopmentSchemaArnsResponse
-listDevelopmentSchemaArns = AWS.request serviceName "ListDevelopmentSchemaArns" 
+listDevelopmentSchemaArns = AWS.request serviceName "listDevelopmentSchemaArns" 
 
 
 -- | <p>Lists directories created within an account.</p>
 listDirectories :: forall eff. ListDirectoriesRequest -> Aff (err :: AWS.RequestError | eff) ListDirectoriesResponse
-listDirectories = AWS.request serviceName "ListDirectories" 
+listDirectories = AWS.request serviceName "listDirectories" 
 
 
 -- | <p>Retrieves attributes attached to the facet.</p>
 listFacetAttributes :: forall eff. ListFacetAttributesRequest -> Aff (err :: AWS.RequestError | eff) ListFacetAttributesResponse
-listFacetAttributes = AWS.request serviceName "ListFacetAttributes" 
+listFacetAttributes = AWS.request serviceName "listFacetAttributes" 
 
 
 -- | <p>Retrieves the names of facets that exist in a schema.</p>
 listFacetNames :: forall eff. ListFacetNamesRequest -> Aff (err :: AWS.RequestError | eff) ListFacetNamesResponse
-listFacetNames = AWS.request serviceName "ListFacetNames" 
+listFacetNames = AWS.request serviceName "listFacetNames" 
 
 
 -- | <p>Returns a paginated list of all the incoming <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 listIncomingTypedLinks :: forall eff. ListIncomingTypedLinksRequest -> Aff (err :: AWS.RequestError | eff) ListIncomingTypedLinksResponse
-listIncomingTypedLinks = AWS.request serviceName "ListIncomingTypedLinks" 
+listIncomingTypedLinks = AWS.request serviceName "listIncomingTypedLinks" 
 
 
 -- | <p>Lists objects and indexed values attached to the index.</p>
 listIndex :: forall eff. ListIndexRequest -> Aff (err :: AWS.RequestError | eff) ListIndexResponse
-listIndex = AWS.request serviceName "ListIndex" 
+listIndex = AWS.request serviceName "listIndex" 
 
 
 -- | <p>Lists all attributes that are associated with an object. </p>
 listObjectAttributes :: forall eff. ListObjectAttributesRequest -> Aff (err :: AWS.RequestError | eff) ListObjectAttributesResponse
-listObjectAttributes = AWS.request serviceName "ListObjectAttributes" 
+listObjectAttributes = AWS.request serviceName "listObjectAttributes" 
 
 
 -- | <p>Returns a paginated list of child objects that are associated with a given object.</p>
 listObjectChildren :: forall eff. ListObjectChildrenRequest -> Aff (err :: AWS.RequestError | eff) ListObjectChildrenResponse
-listObjectChildren = AWS.request serviceName "ListObjectChildren" 
+listObjectChildren = AWS.request serviceName "listObjectChildren" 
 
 
 -- | <p>Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#dirstructure">Directory Structure</a>.</p> <p>Use this API to evaluate all parents for an object. The call returns all objects from the root of the directory up to the requested object. The API returns the number of paths based on user-defined <code>MaxResults</code>, in case there are multiple paths to the parent. The order of the paths and nodes returned is consistent among multiple API calls unless the objects are deleted or moved. Paths not leading to the directory root are ignored from the target object.</p>
 listObjectParentPaths :: forall eff. ListObjectParentPathsRequest -> Aff (err :: AWS.RequestError | eff) ListObjectParentPathsResponse
-listObjectParentPaths = AWS.request serviceName "ListObjectParentPaths" 
+listObjectParentPaths = AWS.request serviceName "listObjectParentPaths" 
 
 
 -- | <p>Lists parent objects that are associated with a given object in pagination fashion.</p>
 listObjectParents :: forall eff. ListObjectParentsRequest -> Aff (err :: AWS.RequestError | eff) ListObjectParentsResponse
-listObjectParents = AWS.request serviceName "ListObjectParents" 
+listObjectParents = AWS.request serviceName "listObjectParents" 
 
 
 -- | <p>Returns policies attached to an object in pagination fashion.</p>
 listObjectPolicies :: forall eff. ListObjectPoliciesRequest -> Aff (err :: AWS.RequestError | eff) ListObjectPoliciesResponse
-listObjectPolicies = AWS.request serviceName "ListObjectPolicies" 
+listObjectPolicies = AWS.request serviceName "listObjectPolicies" 
 
 
 -- | <p>Returns a paginated list of all the outgoing <a>TypedLinkSpecifier</a> information for an object. It also supports filtering by typed link facet and identity attributes. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 listOutgoingTypedLinks :: forall eff. ListOutgoingTypedLinksRequest -> Aff (err :: AWS.RequestError | eff) ListOutgoingTypedLinksResponse
-listOutgoingTypedLinks = AWS.request serviceName "ListOutgoingTypedLinks" 
+listOutgoingTypedLinks = AWS.request serviceName "listOutgoingTypedLinks" 
 
 
 -- | <p>Returns all of the <code>ObjectIdentifiers</code> to which a given policy is attached.</p>
 listPolicyAttachments :: forall eff. ListPolicyAttachmentsRequest -> Aff (err :: AWS.RequestError | eff) ListPolicyAttachmentsResponse
-listPolicyAttachments = AWS.request serviceName "ListPolicyAttachments" 
+listPolicyAttachments = AWS.request serviceName "listPolicyAttachments" 
 
 
 -- | <p>Lists schema major versions for a published schema. If <code>SchemaArn</code> is provided, lists the minor version.</p>
 listPublishedSchemaArns :: forall eff. ListPublishedSchemaArnsRequest -> Aff (err :: AWS.RequestError | eff) ListPublishedSchemaArnsResponse
-listPublishedSchemaArns = AWS.request serviceName "ListPublishedSchemaArns" 
+listPublishedSchemaArns = AWS.request serviceName "listPublishedSchemaArns" 
 
 
 -- | <p>Returns tags for a resource. Tagging is currently supported only for directories with a limit of 50 tags per directory. All 50 tags are returned for a given directory with this API call.</p>
 listTagsForResource :: forall eff. ListTagsForResourceRequest -> Aff (err :: AWS.RequestError | eff) ListTagsForResourceResponse
-listTagsForResource = AWS.request serviceName "ListTagsForResource" 
+listTagsForResource = AWS.request serviceName "listTagsForResource" 
 
 
 -- | <p>Returns a paginated list of all attribute definitions for a particular <a>TypedLinkFacet</a>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 listTypedLinkFacetAttributes :: forall eff. ListTypedLinkFacetAttributesRequest -> Aff (err :: AWS.RequestError | eff) ListTypedLinkFacetAttributesResponse
-listTypedLinkFacetAttributes = AWS.request serviceName "ListTypedLinkFacetAttributes" 
+listTypedLinkFacetAttributes = AWS.request serviceName "listTypedLinkFacetAttributes" 
 
 
 -- | <p>Returns a paginated list of <code>TypedLink</code> facet names for a particular schema. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 listTypedLinkFacetNames :: forall eff. ListTypedLinkFacetNamesRequest -> Aff (err :: AWS.RequestError | eff) ListTypedLinkFacetNamesResponse
-listTypedLinkFacetNames = AWS.request serviceName "ListTypedLinkFacetNames" 
+listTypedLinkFacetNames = AWS.request serviceName "listTypedLinkFacetNames" 
 
 
 -- | <p>Lists all policies from the root of the <a>Directory</a> to the object specified. If there are no policies present, an empty list is returned. If policies are present, and if some objects don't have the policies attached, it returns the <code>ObjectIdentifier</code> for such objects. If policies are present, it returns <code>ObjectIdentifier</code>, <code>policyId</code>, and <code>policyType</code>. Paths that don't lead to the root from the target object are ignored. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_key_concepts.html#policies">Policies</a>.</p>
 lookupPolicy :: forall eff. LookupPolicyRequest -> Aff (err :: AWS.RequestError | eff) LookupPolicyResponse
-lookupPolicy = AWS.request serviceName "LookupPolicy" 
+lookupPolicy = AWS.request serviceName "lookupPolicy" 
 
 
 -- | <p>Publishes a development schema with a major version and a recommended minor version.</p>
 publishSchema :: forall eff. PublishSchemaRequest -> Aff (err :: AWS.RequestError | eff) PublishSchemaResponse
-publishSchema = AWS.request serviceName "PublishSchema" 
+publishSchema = AWS.request serviceName "publishSchema" 
 
 
 -- | <p>Allows a schema to be updated using JSON upload. Only available for development schemas. See <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/cd_schemas.html#jsonformat">JSON Schema Format</a> for more information.</p>
 putSchemaFromJson :: forall eff. PutSchemaFromJsonRequest -> Aff (err :: AWS.RequestError | eff) PutSchemaFromJsonResponse
-putSchemaFromJson = AWS.request serviceName "PutSchemaFromJson" 
+putSchemaFromJson = AWS.request serviceName "putSchemaFromJson" 
 
 
 -- | <p>Removes the specified facet from the specified object.</p>
 removeFacetFromObject :: forall eff. RemoveFacetFromObjectRequest -> Aff (err :: AWS.RequestError | eff) RemoveFacetFromObjectResponse
-removeFacetFromObject = AWS.request serviceName "RemoveFacetFromObject" 
+removeFacetFromObject = AWS.request serviceName "removeFacetFromObject" 
 
 
 -- | <p>An API operation for adding tags to a resource.</p>
 tagResource :: forall eff. TagResourceRequest -> Aff (err :: AWS.RequestError | eff) TagResourceResponse
-tagResource = AWS.request serviceName "TagResource" 
+tagResource = AWS.request serviceName "tagResource" 
 
 
 -- | <p>An API operation for removing tags from a resource.</p>
 untagResource :: forall eff. UntagResourceRequest -> Aff (err :: AWS.RequestError | eff) UntagResourceResponse
-untagResource = AWS.request serviceName "UntagResource" 
+untagResource = AWS.request serviceName "untagResource" 
 
 
 -- | <p>Does the following:</p> <ol> <li> <p>Adds new <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> <li> <p>Updates existing <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> <li> <p>Deletes existing <code>Attributes</code>, <code>Rules</code>, or <code>ObjectTypes</code>.</p> </li> </ol>
 updateFacet :: forall eff. UpdateFacetRequest -> Aff (err :: AWS.RequestError | eff) UpdateFacetResponse
-updateFacet = AWS.request serviceName "UpdateFacet" 
+updateFacet = AWS.request serviceName "updateFacet" 
 
 
 -- | <p>Updates a given object's attributes.</p>
 updateObjectAttributes :: forall eff. UpdateObjectAttributesRequest -> Aff (err :: AWS.RequestError | eff) UpdateObjectAttributesResponse
-updateObjectAttributes = AWS.request serviceName "UpdateObjectAttributes" 
+updateObjectAttributes = AWS.request serviceName "updateObjectAttributes" 
 
 
 -- | <p>Updates the schema name with a new name. Only development schema names can be updated.</p>
 updateSchema :: forall eff. UpdateSchemaRequest -> Aff (err :: AWS.RequestError | eff) UpdateSchemaResponse
-updateSchema = AWS.request serviceName "UpdateSchema" 
+updateSchema = AWS.request serviceName "updateSchema" 
 
 
 -- | <p>Updates a <a>TypedLinkFacet</a>. For more information, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 updateTypedLinkFacet :: forall eff. UpdateTypedLinkFacetRequest -> Aff (err :: AWS.RequestError | eff) UpdateTypedLinkFacetResponse
-updateTypedLinkFacet = AWS.request serviceName "UpdateTypedLinkFacet" 
+updateTypedLinkFacet = AWS.request serviceName "updateTypedLinkFacet" 
 
 
 -- | <p>Upgrades a single directory in-place using the <code>PublishedSchemaArn</code> with schema updates found in <code>MinorVersion</code>. Backwards-compatible minor version upgrades are instantaneously available for readers on all objects in the directory. Note: This is a synchronous API call and upgrades only one schema on a given directory per call. To upgrade multiple directories from one schema, you would need to call this API on each directory.</p>
 upgradeAppliedSchema :: forall eff. UpgradeAppliedSchemaRequest -> Aff (err :: AWS.RequestError | eff) UpgradeAppliedSchemaResponse
-upgradeAppliedSchema = AWS.request serviceName "UpgradeAppliedSchema" 
+upgradeAppliedSchema = AWS.request serviceName "upgradeAppliedSchema" 
 
 
 -- | <p>Upgrades a published schema under a new minor version revision using the current contents of <code>DevelopmentSchemaArn</code>.</p>
 upgradePublishedSchema :: forall eff. UpgradePublishedSchemaRequest -> Aff (err :: AWS.RequestError | eff) UpgradePublishedSchemaResponse
-upgradePublishedSchema = AWS.request serviceName "UpgradePublishedSchema" 
+upgradePublishedSchema = AWS.request serviceName "upgradePublishedSchema" 
 
 
 -- | <p>Access denied. Check your permissions.</p>

@@ -16,22 +16,22 @@ serviceName = "IotData" :: String
 
 -- | <p>Deletes the thing shadow for the specified thing.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html">DeleteThingShadow</a> in the <i>AWS IoT Developer Guide</i>.</p>
 deleteThingShadow :: forall eff. DeleteThingShadowRequest -> Aff (err :: AWS.RequestError | eff) DeleteThingShadowResponse
-deleteThingShadow = AWS.request serviceName "DeleteThingShadow" 
+deleteThingShadow = AWS.request serviceName "deleteThingShadow" 
 
 
 -- | <p>Gets the thing shadow for the specified thing.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/API_GetThingShadow.html">GetThingShadow</a> in the <i>AWS IoT Developer Guide</i>.</p>
 getThingShadow :: forall eff. GetThingShadowRequest -> Aff (err :: AWS.RequestError | eff) GetThingShadowResponse
-getThingShadow = AWS.request serviceName "GetThingShadow" 
+getThingShadow = AWS.request serviceName "getThingShadow" 
 
 
 -- | <p>Publishes state information.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http">HTTP Protocol</a> in the <i>AWS IoT Developer Guide</i>.</p>
 publish :: forall eff. PublishRequest -> Aff (err :: AWS.RequestError | eff) Unit
-publish = AWS.request serviceName "Publish" 
+publish = AWS.request serviceName "publish" 
 
 
 -- | <p>Updates the thing shadow for the specified thing.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html">UpdateThingShadow</a> in the <i>AWS IoT Developer Guide</i>.</p>
 updateThingShadow :: forall eff. UpdateThingShadowRequest -> Aff (err :: AWS.RequestError | eff) UpdateThingShadowResponse
-updateThingShadow = AWS.request serviceName "UpdateThingShadow" 
+updateThingShadow = AWS.request serviceName "updateThingShadow" 
 
 
 -- | <p>The specified version does not match the version of the document.</p>

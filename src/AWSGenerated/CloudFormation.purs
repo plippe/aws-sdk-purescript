@@ -16,207 +16,207 @@ serviceName = "CloudFormation" :: String
 
 -- | <p>Cancels an update on the specified stack. If the call completes successfully, the stack rolls back the update and reverts to the previous stack configuration.</p> <note> <p>You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.</p> </note>
 cancelUpdateStack :: forall eff. CancelUpdateStackInput -> Aff (err :: AWS.RequestError | eff) Unit
-cancelUpdateStack = AWS.request serviceName "CancelUpdateStack" 
+cancelUpdateStack = AWS.request serviceName "cancelUpdateStack" 
 
 
 -- | <p>For a specified stack that is in the <code>UPDATE_ROLLBACK_FAILED</code> state, continues rolling it back to the <code>UPDATE_ROLLBACK_COMPLETE</code> state. Depending on the cause of the failure, you can manually <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed"> fix the error</a> and continue the rollback. By continuing the rollback, you can return your stack to a working state (the <code>UPDATE_ROLLBACK_COMPLETE</code> state), and then try to update the stack again.</p> <p>A stack goes into the <code>UPDATE_ROLLBACK_FAILED</code> state when AWS CloudFormation cannot roll back all changes after a failed stack update. For example, you might have a stack that is rolling back to an old database instance that was deleted outside of AWS CloudFormation. Because AWS CloudFormation doesn't know the database was deleted, it assumes that the database instance still exists and attempts to roll back to it, causing the update rollback to fail.</p>
 continueUpdateRollback :: forall eff. ContinueUpdateRollbackInput -> Aff (err :: AWS.RequestError | eff) ContinueUpdateRollbackOutput
-continueUpdateRollback = AWS.request serviceName "ContinueUpdateRollback" 
+continueUpdateRollback = AWS.request serviceName "continueUpdateRollback" 
 
 
 -- | <p>Creates a list of changes that will be applied to a stack so that you can review the changes before executing them. You can create a change set for a stack that doesn't exist or an existing stack. If you create a change set for a stack that doesn't exist, the change set shows all of the resources that AWS CloudFormation will create. If you create a change set for an existing stack, AWS CloudFormation compares the stack's information with the information that you submit in the change set and lists the differences. Use change sets to understand which resources AWS CloudFormation will create or change, and how it will change resources in an existing stack, before you create or update a stack.</p> <p>To create a change set for a stack that doesn't exist, for the <code>ChangeSetType</code> parameter, specify <code>CREATE</code>. To create a change set for an existing stack, specify <code>UPDATE</code> for the <code>ChangeSetType</code> parameter. After the <code>CreateChangeSet</code> call successfully completes, AWS CloudFormation starts creating the change set. To check the status of the change set or to review it, use the <a>DescribeChangeSet</a> action.</p> <p>When you are satisfied with the changes the change set will make, execute the change set by using the <a>ExecuteChangeSet</a> action. AWS CloudFormation doesn't make changes until you execute the change set.</p>
 createChangeSet :: forall eff. CreateChangeSetInput -> Aff (err :: AWS.RequestError | eff) CreateChangeSetOutput
-createChangeSet = AWS.request serviceName "CreateChangeSet" 
+createChangeSet = AWS.request serviceName "createChangeSet" 
 
 
 -- | <p>Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack via the <a>DescribeStacks</a> API.</p>
 createStack :: forall eff. CreateStackInput -> Aff (err :: AWS.RequestError | eff) CreateStackOutput
-createStack = AWS.request serviceName "CreateStack" 
+createStack = AWS.request serviceName "createStack" 
 
 
 -- | <p>Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a stack in a specific account and region. <code>Accounts</code> and <code>Regions</code> are required parameters—you must specify at least one account and one region. </p>
 createStackInstances :: forall eff. CreateStackInstancesInput -> Aff (err :: AWS.RequestError | eff) CreateStackInstancesOutput
-createStackInstances = AWS.request serviceName "CreateStackInstances" 
+createStackInstances = AWS.request serviceName "createStackInstances" 
 
 
 -- | <p>Creates a stack set.</p>
 createStackSet :: forall eff. CreateStackSetInput -> Aff (err :: AWS.RequestError | eff) CreateStackSetOutput
-createStackSet = AWS.request serviceName "CreateStackSet" 
+createStackSet = AWS.request serviceName "createStackSet" 
 
 
 -- | <p>Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.</p> <p>If the call successfully completes, AWS CloudFormation successfully deleted the change set.</p>
 deleteChangeSet :: forall eff. DeleteChangeSetInput -> Aff (err :: AWS.RequestError | eff) DeleteChangeSetOutput
-deleteChangeSet = AWS.request serviceName "DeleteChangeSet" 
+deleteChangeSet = AWS.request serviceName "deleteChangeSet" 
 
 
 -- | <p>Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks do not show up in the <a>DescribeStacks</a> API if the deletion has been completed successfully.</p>
 deleteStack :: forall eff. DeleteStackInput -> Aff (err :: AWS.RequestError | eff) Unit
-deleteStack = AWS.request serviceName "DeleteStack" 
+deleteStack = AWS.request serviceName "deleteStack" 
 
 
 -- | <p>Deletes stack instances for the specified accounts, in the specified regions. </p>
 deleteStackInstances :: forall eff. DeleteStackInstancesInput -> Aff (err :: AWS.RequestError | eff) DeleteStackInstancesOutput
-deleteStackInstances = AWS.request serviceName "DeleteStackInstances" 
+deleteStackInstances = AWS.request serviceName "deleteStackInstances" 
 
 
 -- | <p>Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be deleted. For more information about how to do this, see <a>DeleteStackInstances</a>. </p>
 deleteStackSet :: forall eff. DeleteStackSetInput -> Aff (err :: AWS.RequestError | eff) DeleteStackSetOutput
-deleteStackSet = AWS.request serviceName "DeleteStackSet" 
+deleteStackSet = AWS.request serviceName "deleteStackSet" 
 
 
 -- | <p>Retrieves your account's AWS CloudFormation limits, such as the maximum number of stacks that you can create in your account.</p>
 describeAccountLimits :: forall eff. DescribeAccountLimitsInput -> Aff (err :: AWS.RequestError | eff) DescribeAccountLimitsOutput
-describeAccountLimits = AWS.request serviceName "DescribeAccountLimits" 
+describeAccountLimits = AWS.request serviceName "describeAccountLimits" 
 
 
 -- | <p>Returns the inputs for the change set and a list of changes that AWS CloudFormation will make if you execute the change set. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Updating Stacks Using Change Sets</a> in the AWS CloudFormation User Guide.</p>
 describeChangeSet :: forall eff. DescribeChangeSetInput -> Aff (err :: AWS.RequestError | eff) DescribeChangeSetOutput
-describeChangeSet = AWS.request serviceName "DescribeChangeSet" 
+describeChangeSet = AWS.request serviceName "describeChangeSet" 
 
 
 -- | <p>Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html">Stacks</a> in the AWS CloudFormation User Guide.</p> <note> <p>You can list events for stacks that have failed to create or have been deleted by specifying the unique stack identifier (stack ID).</p> </note>
 describeStackEvents :: forall eff. DescribeStackEventsInput -> Aff (err :: AWS.RequestError | eff) DescribeStackEventsOutput
-describeStackEvents = AWS.request serviceName "DescribeStackEvents" 
+describeStackEvents = AWS.request serviceName "describeStackEvents" 
 
 
 -- | <p>Returns the stack instance that's associated with the specified stack set, AWS account, and region.</p> <p>For a list of stack instances that are associated with a specific stack set, use <a>ListStackInstances</a>.</p>
 describeStackInstance :: forall eff. DescribeStackInstanceInput -> Aff (err :: AWS.RequestError | eff) DescribeStackInstanceOutput
-describeStackInstance = AWS.request serviceName "DescribeStackInstance" 
+describeStackInstance = AWS.request serviceName "describeStackInstance" 
 
 
 -- | <p>Returns a description of the specified resource in the specified stack.</p> <p>For deleted stacks, DescribeStackResource returns resource information for up to 90 days after the stack has been deleted.</p>
 describeStackResource :: forall eff. DescribeStackResourceInput -> Aff (err :: AWS.RequestError | eff) DescribeStackResourceOutput
-describeStackResource = AWS.request serviceName "DescribeStackResource" 
+describeStackResource = AWS.request serviceName "describeStackResource" 
 
 
 -- | <p>Returns AWS resource descriptions for running and deleted stacks. If <code>StackName</code> is specified, all the associated resources that are part of the stack are returned. If <code>PhysicalResourceId</code> is specified, the associated resources of the stack that the resource belongs to are returned.</p> <note> <p>Only the first 100 resources will be returned. If your stack has more resources than this, you should use <code>ListStackResources</code> instead.</p> </note> <p>For deleted stacks, <code>DescribeStackResources</code> returns resource information for up to 90 days after the stack has been deleted.</p> <p>You must specify either <code>StackName</code> or <code>PhysicalResourceId</code>, but not both. In addition, you can specify <code>LogicalResourceId</code> to filter the returned result. For more information about resources, the <code>LogicalResourceId</code> and <code>PhysicalResourceId</code>, go to the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/">AWS CloudFormation User Guide</a>.</p> <note> <p>A <code>ValidationError</code> is returned if you specify both <code>StackName</code> and <code>PhysicalResourceId</code> in the same request.</p> </note>
 describeStackResources :: forall eff. DescribeStackResourcesInput -> Aff (err :: AWS.RequestError | eff) DescribeStackResourcesOutput
-describeStackResources = AWS.request serviceName "DescribeStackResources" 
+describeStackResources = AWS.request serviceName "describeStackResources" 
 
 
 -- | <p>Returns the description of the specified stack set. </p>
 describeStackSet :: forall eff. DescribeStackSetInput -> Aff (err :: AWS.RequestError | eff) DescribeStackSetOutput
-describeStackSet = AWS.request serviceName "DescribeStackSet" 
+describeStackSet = AWS.request serviceName "describeStackSet" 
 
 
 -- | <p>Returns the description of the specified stack set operation. </p>
 describeStackSetOperation :: forall eff. DescribeStackSetOperationInput -> Aff (err :: AWS.RequestError | eff) DescribeStackSetOperationOutput
-describeStackSetOperation = AWS.request serviceName "DescribeStackSetOperation" 
+describeStackSetOperation = AWS.request serviceName "describeStackSetOperation" 
 
 
 -- | <p>Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created.</p> <note> <p>If the stack does not exist, an <code>AmazonCloudFormationException</code> is returned.</p> </note>
 describeStacks :: forall eff. DescribeStacksInput -> Aff (err :: AWS.RequestError | eff) DescribeStacksOutput
-describeStacks = AWS.request serviceName "DescribeStacks" 
+describeStacks = AWS.request serviceName "describeStacks" 
 
 
 -- | <p>Returns the estimated monthly cost of a template. The return value is an AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.</p>
 estimateTemplateCost :: forall eff. EstimateTemplateCostInput -> Aff (err :: AWS.RequestError | eff) EstimateTemplateCostOutput
-estimateTemplateCost = AWS.request serviceName "EstimateTemplateCost" 
+estimateTemplateCost = AWS.request serviceName "estimateTemplateCost" 
 
 
 -- | <p>Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, AWS CloudFormation starts updating the stack. Use the <a>DescribeStacks</a> action to view the status of the update.</p> <p>When you execute a change set, AWS CloudFormation deletes all other change sets associated with the stack because they aren't valid for the updated stack.</p> <p>If a stack policy is associated with the stack, AWS CloudFormation enforces the policy during the update. You can't specify a temporary stack policy that overrides the current policy.</p>
 executeChangeSet :: forall eff. ExecuteChangeSetInput -> Aff (err :: AWS.RequestError | eff) ExecuteChangeSetOutput
-executeChangeSet = AWS.request serviceName "ExecuteChangeSet" 
+executeChangeSet = AWS.request serviceName "executeChangeSet" 
 
 
 -- | <p>Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is returned.</p>
 getStackPolicy :: forall eff. GetStackPolicyInput -> Aff (err :: AWS.RequestError | eff) GetStackPolicyOutput
-getStackPolicy = AWS.request serviceName "GetStackPolicy" 
+getStackPolicy = AWS.request serviceName "getStackPolicy" 
 
 
 -- | <p>Returns the template body for a specified stack. You can get the template for running or deleted stacks.</p> <p>For deleted stacks, GetTemplate returns the template for up to 90 days after the stack has been deleted.</p> <note> <p> If the template does not exist, a <code>ValidationError</code> is returned. </p> </note>
 getTemplate :: forall eff. GetTemplateInput -> Aff (err :: AWS.RequestError | eff) GetTemplateOutput
-getTemplate = AWS.request serviceName "GetTemplate" 
+getTemplate = AWS.request serviceName "getTemplate" 
 
 
 -- | <p>Returns information about a new or existing template. The <code>GetTemplateSummary</code> action is useful for viewing parameter information, such as default parameter values and parameter types, before you create or update a stack or stack set.</p> <p>You can use the <code>GetTemplateSummary</code> action when you submit a template, or you can get template information for a stack set, or a running or deleted stack.</p> <p>For deleted stacks, <code>GetTemplateSummary</code> returns the template information for up to 90 days after the stack has been deleted. If the template does not exist, a <code>ValidationError</code> is returned.</p>
 getTemplateSummary :: forall eff. GetTemplateSummaryInput -> Aff (err :: AWS.RequestError | eff) GetTemplateSummaryOutput
-getTemplateSummary = AWS.request serviceName "GetTemplateSummary" 
+getTemplateSummary = AWS.request serviceName "getTemplateSummary" 
 
 
 -- | <p>Returns the ID and status of each active change set for a stack. For example, AWS CloudFormation lists change sets that are in the <code>CREATE_IN_PROGRESS</code> or <code>CREATE_PENDING</code> state.</p>
 listChangeSets :: forall eff. ListChangeSetsInput -> Aff (err :: AWS.RequestError | eff) ListChangeSetsOutput
-listChangeSets = AWS.request serviceName "ListChangeSets" 
+listChangeSets = AWS.request serviceName "listChangeSets" 
 
 
 -- | <p>Lists all exported output values in the account and region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html"> <code>Fn::ImportValue</code> </a> function. </p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html"> AWS CloudFormation Export Stack Output Values</a>.</p>
 listExports :: forall eff. ListExportsInput -> Aff (err :: AWS.RequestError | eff) ListExportsOutput
-listExports = AWS.request serviceName "ListExports" 
+listExports = AWS.request serviceName "listExports" 
 
 
 -- | <p>Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first use this action to see which stacks are using it. To see the exported output values in your account, see <a>ListExports</a>. </p> <p>For more information about importing an exported output value, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html"> <code>Fn::ImportValue</code> </a> function. </p>
 listImports :: forall eff. ListImportsInput -> Aff (err :: AWS.RequestError | eff) ListImportsOutput
-listImports = AWS.request serviceName "ListImports" 
+listImports = AWS.request serviceName "listImports" 
 
 
 -- | <p>Returns summary information about stack instances that are associated with the specified stack set. You can filter for stack instances that are associated with a specific AWS account name or region.</p>
 listStackInstances :: forall eff. ListStackInstancesInput -> Aff (err :: AWS.RequestError | eff) ListStackInstancesOutput
-listStackInstances = AWS.request serviceName "ListStackInstances" 
+listStackInstances = AWS.request serviceName "listStackInstances" 
 
 
 -- | <p>Returns descriptions of all resources of the specified stack.</p> <p>For deleted stacks, ListStackResources returns resource information for up to 90 days after the stack has been deleted.</p>
 listStackResources :: forall eff. ListStackResourcesInput -> Aff (err :: AWS.RequestError | eff) ListStackResourcesOutput
-listStackResources = AWS.request serviceName "ListStackResources" 
+listStackResources = AWS.request serviceName "listStackResources" 
 
 
 -- | <p>Returns summary information about the results of a stack set operation. </p>
 listStackSetOperationResults :: forall eff. ListStackSetOperationResultsInput -> Aff (err :: AWS.RequestError | eff) ListStackSetOperationResultsOutput
-listStackSetOperationResults = AWS.request serviceName "ListStackSetOperationResults" 
+listStackSetOperationResults = AWS.request serviceName "listStackSetOperationResults" 
 
 
 -- | <p>Returns summary information about operations performed on a stack set. </p>
 listStackSetOperations :: forall eff. ListStackSetOperationsInput -> Aff (err :: AWS.RequestError | eff) ListStackSetOperationsOutput
-listStackSetOperations = AWS.request serviceName "ListStackSetOperations" 
+listStackSetOperations = AWS.request serviceName "listStackSetOperations" 
 
 
 -- | <p>Returns summary information about stack sets that are associated with the user.</p>
 listStackSets :: forall eff. ListStackSetsInput -> Aff (err :: AWS.RequestError | eff) ListStackSetsOutput
-listStackSets = AWS.request serviceName "ListStackSets" 
+listStackSets = AWS.request serviceName "listStackSets" 
 
 
 -- | <p>Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).</p>
 listStacks :: forall eff. ListStacksInput -> Aff (err :: AWS.RequestError | eff) ListStacksOutput
-listStacks = AWS.request serviceName "ListStacks" 
+listStacks = AWS.request serviceName "listStacks" 
 
 
 -- | <p>Sets a stack policy for a specified stack.</p>
 setStackPolicy :: forall eff. SetStackPolicyInput -> Aff (err :: AWS.RequestError | eff) Unit
-setStackPolicy = AWS.request serviceName "SetStackPolicy" 
+setStackPolicy = AWS.request serviceName "setStackPolicy" 
 
 
 -- | <p>Sends a signal to the specified resource with a success or failure status. You can use the SignalResource API in conjunction with a creation policy or update policy. AWS CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The SignalResource API is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.</p>
 signalResource :: forall eff. SignalResourceInput -> Aff (err :: AWS.RequestError | eff) Unit
-signalResource = AWS.request serviceName "SignalResource" 
+signalResource = AWS.request serviceName "signalResource" 
 
 
 -- | <p>Stops an in-progress operation on a stack set and its associated stack instances. </p>
 stopStackSetOperation :: forall eff. StopStackSetOperationInput -> Aff (err :: AWS.RequestError | eff) StopStackSetOperationOutput
-stopStackSetOperation = AWS.request serviceName "StopStackSetOperation" 
+stopStackSetOperation = AWS.request serviceName "stopStackSetOperation" 
 
 
 -- | <p>Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You can check the status of the stack via the <a>DescribeStacks</a> action.</p> <p>To get a copy of the template for an existing stack, you can use the <a>GetTemplate</a> action.</p> <p>For more information about creating an update template, updating a stack, and monitoring the progress of the update, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html">Updating a Stack</a>.</p>
 updateStack :: forall eff. UpdateStackInput -> Aff (err :: AWS.RequestError | eff) UpdateStackOutput
-updateStack = AWS.request serviceName "UpdateStack" 
+updateStack = AWS.request serviceName "updateStack" 
 
 
 -- | <p>Updates the parameter values for stack instances for the specified accounts, within the specified regions. A stack instance refers to a stack in a specific account and region. </p> <p>You can only update stack instances in regions and accounts where they already exist; to create additional stack instances, use <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html">CreateStackInstances</a>. </p> <p>During stack set updates, any parameters overridden for a stack instance are not updated, but retain their overridden value.</p> <p>You can only update the parameter <i>values</i> that are specified in the stack set; to add or delete a parameter itself, use <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html">UpdateStackSet</a> to update the stack set template. If you add a parameter to a template, before you can override the parameter value specified in the stack set you must first use <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html">UpdateStackSet</a> to update all stack instances with the updated template and parameter value specified in the stack set. Once a stack instance has been updated with the new parameter, you can then override the parameter value using <code>UpdateStackInstances</code>.</p>
 updateStackInstances :: forall eff. UpdateStackInstancesInput -> Aff (err :: AWS.RequestError | eff) UpdateStackInstancesOutput
-updateStackInstances = AWS.request serviceName "UpdateStackInstances" 
+updateStackInstances = AWS.request serviceName "updateStackInstances" 
 
 
 -- | <p>Updates the stack set and <i>all</i> associated stack instances.</p> <p>Even if the stack set operation created by updating the stack set fails (completely or partially, below or above a specified failure tolerance), the stack set is updated with your changes. Subsequent <a>CreateStackInstances</a> calls on the specified stack set use the updated stack set.</p>
 updateStackSet :: forall eff. UpdateStackSetInput -> Aff (err :: AWS.RequestError | eff) UpdateStackSetOutput
-updateStackSet = AWS.request serviceName "UpdateStackSet" 
+updateStackSet = AWS.request serviceName "updateStackSet" 
 
 
 -- | <p>Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a Stack From Being Deleted</a> in the <i>AWS CloudFormation User Guide</i>.</p> <p> For <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested stacks</a>, termination protection is set on the root stack and cannot be changed directly on the nested stack.</p>
 updateTerminationProtection :: forall eff. UpdateTerminationProtectionInput -> Aff (err :: AWS.RequestError | eff) UpdateTerminationProtectionOutput
-updateTerminationProtection = AWS.request serviceName "UpdateTerminationProtection" 
+updateTerminationProtection = AWS.request serviceName "updateTerminationProtection" 
 
 
 -- | <p>Validates a specified template. AWS CloudFormation first checks if the template is valid JSON. If it isn't, AWS CloudFormation checks if the template is valid YAML. If both these checks fail, AWS CloudFormation returns a template validation error.</p>
 validateTemplate :: forall eff. ValidateTemplateInput -> Aff (err :: AWS.RequestError | eff) ValidateTemplateOutput
-validateTemplate = AWS.request serviceName "ValidateTemplate" 
+validateTemplate = AWS.request serviceName "validateTemplate" 
 
 
 newtype Account = Account String

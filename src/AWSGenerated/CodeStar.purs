@@ -16,92 +16,92 @@ serviceName = "CodeStar" :: String
 
 -- | <p>Adds an IAM user to the team for an AWS CodeStar project.</p>
 associateTeamMember :: forall eff. AssociateTeamMemberRequest -> Aff (err :: AWS.RequestError | eff) AssociateTeamMemberResult
-associateTeamMember = AWS.request serviceName "AssociateTeamMember" 
+associateTeamMember = AWS.request serviceName "associateTeamMember" 
 
 
 -- | <p>Reserved for future use. To create a project, use the AWS CodeStar console.</p>
 createProject :: forall eff. CreateProjectRequest -> Aff (err :: AWS.RequestError | eff) CreateProjectResult
-createProject = AWS.request serviceName "CreateProject" 
+createProject = AWS.request serviceName "createProject" 
 
 
 -- | <p>Creates a profile for a user that includes user preferences, such as the display name and email address assocciated with the user, in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar.</p>
 createUserProfile :: forall eff. CreateUserProfileRequest -> Aff (err :: AWS.RequestError | eff) CreateUserProfileResult
-createUserProfile = AWS.request serviceName "CreateUserProfile" 
+createUserProfile = AWS.request serviceName "createUserProfile" 
 
 
 -- | <p>Deletes a project, including project resources. Does not delete users associated with the project, but does delete the IAM roles that allowed access to the project.</p>
 deleteProject :: forall eff. DeleteProjectRequest -> Aff (err :: AWS.RequestError | eff) DeleteProjectResult
-deleteProject = AWS.request serviceName "DeleteProject" 
+deleteProject = AWS.request serviceName "deleteProject" 
 
 
 -- | <p>Deletes a user profile in AWS CodeStar, including all personal preference data associated with that profile, such as display name and email address. It does not delete the history of that user, for example the history of commits made by that user.</p>
 deleteUserProfile :: forall eff. DeleteUserProfileRequest -> Aff (err :: AWS.RequestError | eff) DeleteUserProfileResult
-deleteUserProfile = AWS.request serviceName "DeleteUserProfile" 
+deleteUserProfile = AWS.request serviceName "deleteUserProfile" 
 
 
 -- | <p>Describes a project and its resources.</p>
 describeProject :: forall eff. DescribeProjectRequest -> Aff (err :: AWS.RequestError | eff) DescribeProjectResult
-describeProject = AWS.request serviceName "DescribeProject" 
+describeProject = AWS.request serviceName "describeProject" 
 
 
 -- | <p>Describes a user in AWS CodeStar and the user attributes across all projects.</p>
 describeUserProfile :: forall eff. DescribeUserProfileRequest -> Aff (err :: AWS.RequestError | eff) DescribeUserProfileResult
-describeUserProfile = AWS.request serviceName "DescribeUserProfile" 
+describeUserProfile = AWS.request serviceName "describeUserProfile" 
 
 
 -- | <p>Removes a user from a project. Removing a user from a project also removes the IAM policies from that user that allowed access to the project and its resources. Disassociating a team member does not remove that user's profile from AWS CodeStar. It does not remove the user from IAM.</p>
 disassociateTeamMember :: forall eff. DisassociateTeamMemberRequest -> Aff (err :: AWS.RequestError | eff) DisassociateTeamMemberResult
-disassociateTeamMember = AWS.request serviceName "DisassociateTeamMember" 
+disassociateTeamMember = AWS.request serviceName "disassociateTeamMember" 
 
 
 -- | <p>Lists all projects in AWS CodeStar associated with your AWS account.</p>
 listProjects :: forall eff. ListProjectsRequest -> Aff (err :: AWS.RequestError | eff) ListProjectsResult
-listProjects = AWS.request serviceName "ListProjects" 
+listProjects = AWS.request serviceName "listProjects" 
 
 
 -- | <p>Lists resources associated with a project in AWS CodeStar.</p>
 listResources :: forall eff. ListResourcesRequest -> Aff (err :: AWS.RequestError | eff) ListResourcesResult
-listResources = AWS.request serviceName "ListResources" 
+listResources = AWS.request serviceName "listResources" 
 
 
 -- | <p>Gets the tags for a project.</p>
 listTagsForProject :: forall eff. ListTagsForProjectRequest -> Aff (err :: AWS.RequestError | eff) ListTagsForProjectResult
-listTagsForProject = AWS.request serviceName "ListTagsForProject" 
+listTagsForProject = AWS.request serviceName "listTagsForProject" 
 
 
 -- | <p>Lists all team members associated with a project.</p>
 listTeamMembers :: forall eff. ListTeamMembersRequest -> Aff (err :: AWS.RequestError | eff) ListTeamMembersResult
-listTeamMembers = AWS.request serviceName "ListTeamMembers" 
+listTeamMembers = AWS.request serviceName "listTeamMembers" 
 
 
 -- | <p>Lists all the user profiles configured for your AWS account in AWS CodeStar.</p>
 listUserProfiles :: forall eff. ListUserProfilesRequest -> Aff (err :: AWS.RequestError | eff) ListUserProfilesResult
-listUserProfiles = AWS.request serviceName "ListUserProfiles" 
+listUserProfiles = AWS.request serviceName "listUserProfiles" 
 
 
 -- | <p>Adds tags to a project.</p>
 tagProject :: forall eff. TagProjectRequest -> Aff (err :: AWS.RequestError | eff) TagProjectResult
-tagProject = AWS.request serviceName "TagProject" 
+tagProject = AWS.request serviceName "tagProject" 
 
 
 -- | <p>Removes tags from a project.</p>
 untagProject :: forall eff. UntagProjectRequest -> Aff (err :: AWS.RequestError | eff) UntagProjectResult
-untagProject = AWS.request serviceName "UntagProject" 
+untagProject = AWS.request serviceName "untagProject" 
 
 
 -- | <p>Updates a project in AWS CodeStar.</p>
 updateProject :: forall eff. UpdateProjectRequest -> Aff (err :: AWS.RequestError | eff) UpdateProjectResult
-updateProject = AWS.request serviceName "UpdateProject" 
+updateProject = AWS.request serviceName "updateProject" 
 
 
 -- | <p>Updates a team member's attributes in an AWS CodeStar project. For example, you can change a team member's role in the project, or change whether they have remote access to project resources.</p>
 updateTeamMember :: forall eff. UpdateTeamMemberRequest -> Aff (err :: AWS.RequestError | eff) UpdateTeamMemberResult
-updateTeamMember = AWS.request serviceName "UpdateTeamMember" 
+updateTeamMember = AWS.request serviceName "updateTeamMember" 
 
 
 -- | <p>Updates a user's profile in AWS CodeStar. The user profile is not project-specific. Information in the user profile is displayed wherever the user's information appears to other users in AWS CodeStar. </p>
 updateUserProfile :: forall eff. UpdateUserProfileRequest -> Aff (err :: AWS.RequestError | eff) UpdateUserProfileResult
-updateUserProfile = AWS.request serviceName "UpdateUserProfile" 
+updateUserProfile = AWS.request serviceName "updateUserProfile" 
 
 
 newtype AssociateTeamMemberRequest = AssociateTeamMemberRequest 

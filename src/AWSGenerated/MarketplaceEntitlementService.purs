@@ -16,7 +16,7 @@ serviceName = "MarketplaceEntitlementService" :: String
 
 -- | <p>GetEntitlements retrieves entitlement values for a given product. The results can be filtered based on customer identifier or product dimensions.</p>
 getEntitlements :: forall eff. GetEntitlementsRequest -> Aff (err :: AWS.RequestError | eff) GetEntitlementsResult
-getEntitlements = AWS.request serviceName "GetEntitlements" 
+getEntitlements = AWS.request serviceName "getEntitlements" 
 
 
 -- | <p>An entitlement represents capacity in a product owned by the customer. For example, a customer might own some number of users or seats in an SaaS application or some amount of data capacity in a multi-tenant database.</p>

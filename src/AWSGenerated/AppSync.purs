@@ -16,137 +16,137 @@ serviceName = "AppSync" :: String
 
 -- | <p>Creates a unique key that you can distribute to clients who are executing your API.</p>
 createApiKey :: forall eff. CreateApiKeyRequest -> Aff (err :: AWS.RequestError | eff) CreateApiKeyResponse
-createApiKey = AWS.request serviceName "CreateApiKey" 
+createApiKey = AWS.request serviceName "createApiKey" 
 
 
 -- | <p>Creates a <code>DataSource</code> object.</p>
 createDataSource :: forall eff. CreateDataSourceRequest -> Aff (err :: AWS.RequestError | eff) CreateDataSourceResponse
-createDataSource = AWS.request serviceName "CreateDataSource" 
+createDataSource = AWS.request serviceName "createDataSource" 
 
 
 -- | <p>Creates a <code>GraphqlApi</code> object.</p>
 createGraphqlApi :: forall eff. CreateGraphqlApiRequest -> Aff (err :: AWS.RequestError | eff) CreateGraphqlApiResponse
-createGraphqlApi = AWS.request serviceName "CreateGraphqlApi" 
+createGraphqlApi = AWS.request serviceName "createGraphqlApi" 
 
 
 -- | <p>Creates a <code>Resolver</code> object.</p> <p>A resolver converts incoming requests into a format that a data source can understand and converts the data source's responses into GraphQL.</p>
 createResolver :: forall eff. CreateResolverRequest -> Aff (err :: AWS.RequestError | eff) CreateResolverResponse
-createResolver = AWS.request serviceName "CreateResolver" 
+createResolver = AWS.request serviceName "createResolver" 
 
 
 -- | <p>Creates a <code>Type</code> object.</p>
 createType :: forall eff. CreateTypeRequest -> Aff (err :: AWS.RequestError | eff) CreateTypeResponse
-createType = AWS.request serviceName "CreateType" 
+createType = AWS.request serviceName "createType" 
 
 
 -- | <p>Deletes an API key.</p>
 deleteApiKey :: forall eff. DeleteApiKeyRequest -> Aff (err :: AWS.RequestError | eff) DeleteApiKeyResponse
-deleteApiKey = AWS.request serviceName "DeleteApiKey" 
+deleteApiKey = AWS.request serviceName "deleteApiKey" 
 
 
 -- | <p>Deletes a <code>DataSource</code> object.</p>
 deleteDataSource :: forall eff. DeleteDataSourceRequest -> Aff (err :: AWS.RequestError | eff) DeleteDataSourceResponse
-deleteDataSource = AWS.request serviceName "DeleteDataSource" 
+deleteDataSource = AWS.request serviceName "deleteDataSource" 
 
 
 -- | <p>Deletes a <code>GraphqlApi</code> object.</p>
 deleteGraphqlApi :: forall eff. DeleteGraphqlApiRequest -> Aff (err :: AWS.RequestError | eff) DeleteGraphqlApiResponse
-deleteGraphqlApi = AWS.request serviceName "DeleteGraphqlApi" 
+deleteGraphqlApi = AWS.request serviceName "deleteGraphqlApi" 
 
 
 -- | <p>Deletes a <code>Resolver</code> object.</p>
 deleteResolver :: forall eff. DeleteResolverRequest -> Aff (err :: AWS.RequestError | eff) DeleteResolverResponse
-deleteResolver = AWS.request serviceName "DeleteResolver" 
+deleteResolver = AWS.request serviceName "deleteResolver" 
 
 
 -- | <p>Deletes a <code>Type</code> object.</p>
 deleteType :: forall eff. DeleteTypeRequest -> Aff (err :: AWS.RequestError | eff) DeleteTypeResponse
-deleteType = AWS.request serviceName "DeleteType" 
+deleteType = AWS.request serviceName "deleteType" 
 
 
 -- | <p>Retrieves a <code>DataSource</code> object.</p>
 getDataSource :: forall eff. GetDataSourceRequest -> Aff (err :: AWS.RequestError | eff) GetDataSourceResponse
-getDataSource = AWS.request serviceName "GetDataSource" 
+getDataSource = AWS.request serviceName "getDataSource" 
 
 
 -- | <p>Retrieves a <code>GraphqlApi</code> object.</p>
 getGraphqlApi :: forall eff. GetGraphqlApiRequest -> Aff (err :: AWS.RequestError | eff) GetGraphqlApiResponse
-getGraphqlApi = AWS.request serviceName "GetGraphqlApi" 
+getGraphqlApi = AWS.request serviceName "getGraphqlApi" 
 
 
 -- | <p>Retrieves the introspection schema for a GraphQL API.</p>
 getIntrospectionSchema :: forall eff. GetIntrospectionSchemaRequest -> Aff (err :: AWS.RequestError | eff) GetIntrospectionSchemaResponse
-getIntrospectionSchema = AWS.request serviceName "GetIntrospectionSchema" 
+getIntrospectionSchema = AWS.request serviceName "getIntrospectionSchema" 
 
 
 -- | <p>Retrieves a <code>Resolver</code> object.</p>
 getResolver :: forall eff. GetResolverRequest -> Aff (err :: AWS.RequestError | eff) GetResolverResponse
-getResolver = AWS.request serviceName "GetResolver" 
+getResolver = AWS.request serviceName "getResolver" 
 
 
 -- | <p>Retrieves the current status of a schema creation operation.</p>
 getSchemaCreationStatus :: forall eff. GetSchemaCreationStatusRequest -> Aff (err :: AWS.RequestError | eff) GetSchemaCreationStatusResponse
-getSchemaCreationStatus = AWS.request serviceName "GetSchemaCreationStatus" 
+getSchemaCreationStatus = AWS.request serviceName "getSchemaCreationStatus" 
 
 
 -- | <p>Retrieves a <code>Type</code> object.</p>
 getType :: forall eff. GetTypeRequest -> Aff (err :: AWS.RequestError | eff) GetTypeResponse
-getType = AWS.request serviceName "GetType" 
+getType = AWS.request serviceName "getType" 
 
 
 -- | <p>Lists the API keys for a given API.</p>
 listApiKeys :: forall eff. ListApiKeysRequest -> Aff (err :: AWS.RequestError | eff) ListApiKeysResponse
-listApiKeys = AWS.request serviceName "ListApiKeys" 
+listApiKeys = AWS.request serviceName "listApiKeys" 
 
 
 -- | <p>Lists the data sources for a given API.</p>
 listDataSources :: forall eff. ListDataSourcesRequest -> Aff (err :: AWS.RequestError | eff) ListDataSourcesResponse
-listDataSources = AWS.request serviceName "ListDataSources" 
+listDataSources = AWS.request serviceName "listDataSources" 
 
 
 -- | <p>Lists your GraphQL APIs.</p>
 listGraphqlApis :: forall eff. ListGraphqlApisRequest -> Aff (err :: AWS.RequestError | eff) ListGraphqlApisResponse
-listGraphqlApis = AWS.request serviceName "ListGraphqlApis" 
+listGraphqlApis = AWS.request serviceName "listGraphqlApis" 
 
 
 -- | <p>Lists the resolvers for a given API and type.</p>
 listResolvers :: forall eff. ListResolversRequest -> Aff (err :: AWS.RequestError | eff) ListResolversResponse
-listResolvers = AWS.request serviceName "ListResolvers" 
+listResolvers = AWS.request serviceName "listResolvers" 
 
 
 -- | <p>Lists the types for a given API.</p>
 listTypes :: forall eff. ListTypesRequest -> Aff (err :: AWS.RequestError | eff) ListTypesResponse
-listTypes = AWS.request serviceName "ListTypes" 
+listTypes = AWS.request serviceName "listTypes" 
 
 
 -- | <p>Adds a new schema to your GraphQL API.</p> <p>This operation is asynchronous. Use to determine when it has completed.</p>
 startSchemaCreation :: forall eff. StartSchemaCreationRequest -> Aff (err :: AWS.RequestError | eff) StartSchemaCreationResponse
-startSchemaCreation = AWS.request serviceName "StartSchemaCreation" 
+startSchemaCreation = AWS.request serviceName "startSchemaCreation" 
 
 
 -- | <p>Updates an API key.</p>
 updateApiKey :: forall eff. UpdateApiKeyRequest -> Aff (err :: AWS.RequestError | eff) UpdateApiKeyResponse
-updateApiKey = AWS.request serviceName "UpdateApiKey" 
+updateApiKey = AWS.request serviceName "updateApiKey" 
 
 
 -- | <p>Updates a <code>DataSource</code> object.</p>
 updateDataSource :: forall eff. UpdateDataSourceRequest -> Aff (err :: AWS.RequestError | eff) UpdateDataSourceResponse
-updateDataSource = AWS.request serviceName "UpdateDataSource" 
+updateDataSource = AWS.request serviceName "updateDataSource" 
 
 
 -- | <p>Updates a <code>GraphqlApi</code> object.</p>
 updateGraphqlApi :: forall eff. UpdateGraphqlApiRequest -> Aff (err :: AWS.RequestError | eff) UpdateGraphqlApiResponse
-updateGraphqlApi = AWS.request serviceName "UpdateGraphqlApi" 
+updateGraphqlApi = AWS.request serviceName "updateGraphqlApi" 
 
 
 -- | <p>Updates a <code>Resolver</code> object.</p>
 updateResolver :: forall eff. UpdateResolverRequest -> Aff (err :: AWS.RequestError | eff) UpdateResolverResponse
-updateResolver = AWS.request serviceName "UpdateResolver" 
+updateResolver = AWS.request serviceName "updateResolver" 
 
 
 -- | <p>Updates a <code>Type</code> object.</p>
 updateType :: forall eff. UpdateTypeRequest -> Aff (err :: AWS.RequestError | eff) UpdateTypeResponse
-updateType = AWS.request serviceName "UpdateType" 
+updateType = AWS.request serviceName "updateType" 
 
 
 -- | <p>Describes an API key.</p>

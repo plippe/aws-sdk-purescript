@@ -15,387 +15,387 @@ serviceName = "S3" :: String
 
 -- | <p>Aborts a multipart upload.</p><p>To verify that all parts have been removed, so you don't get charged for the part storage, you should call the List Parts operation and ensure the parts list is empty.</p>
 abortMultipartUpload :: forall eff. AbortMultipartUploadRequest -> Aff (err :: AWS.RequestError | eff) AbortMultipartUploadOutput
-abortMultipartUpload = AWS.request serviceName "AbortMultipartUpload" 
+abortMultipartUpload = AWS.request serviceName "abortMultipartUpload" 
 
 
 -- | Completes a multipart upload by assembling previously uploaded parts.
 completeMultipartUpload :: forall eff. CompleteMultipartUploadRequest -> Aff (err :: AWS.RequestError | eff) CompleteMultipartUploadOutput
-completeMultipartUpload = AWS.request serviceName "CompleteMultipartUpload" 
+completeMultipartUpload = AWS.request serviceName "completeMultipartUpload" 
 
 
 -- | Creates a copy of an object that is already stored in Amazon S3.
 copyObject :: forall eff. CopyObjectRequest -> Aff (err :: AWS.RequestError | eff) CopyObjectOutput
-copyObject = AWS.request serviceName "CopyObject" 
+copyObject = AWS.request serviceName "copyObject" 
 
 
 -- | Creates a new bucket.
 createBucket :: forall eff. CreateBucketRequest -> Aff (err :: AWS.RequestError | eff) CreateBucketOutput
-createBucket = AWS.request serviceName "CreateBucket" 
+createBucket = AWS.request serviceName "createBucket" 
 
 
 -- | <p>Initiates a multipart upload and returns an upload ID.</p><p><b>Note:</b> After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.</p>
 createMultipartUpload :: forall eff. CreateMultipartUploadRequest -> Aff (err :: AWS.RequestError | eff) CreateMultipartUploadOutput
-createMultipartUpload = AWS.request serviceName "CreateMultipartUpload" 
+createMultipartUpload = AWS.request serviceName "createMultipartUpload" 
 
 
 -- | Deletes the bucket. All objects (including all object versions and Delete Markers) in the bucket must be deleted before the bucket itself can be deleted.
 deleteBucket :: forall eff. DeleteBucketRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucket = AWS.request serviceName "DeleteBucket" 
+deleteBucket = AWS.request serviceName "deleteBucket" 
 
 
 -- | Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
 deleteBucketAnalyticsConfiguration :: forall eff. DeleteBucketAnalyticsConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketAnalyticsConfiguration = AWS.request serviceName "DeleteBucketAnalyticsConfiguration" 
+deleteBucketAnalyticsConfiguration = AWS.request serviceName "deleteBucketAnalyticsConfiguration" 
 
 
 -- | Deletes the cors configuration information set for the bucket.
 deleteBucketCors :: forall eff. DeleteBucketCorsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketCors = AWS.request serviceName "DeleteBucketCors" 
+deleteBucketCors = AWS.request serviceName "deleteBucketCors" 
 
 
 -- | Deletes the server-side encryption configuration from the bucket.
 deleteBucketEncryption :: forall eff. DeleteBucketEncryptionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketEncryption = AWS.request serviceName "DeleteBucketEncryption" 
+deleteBucketEncryption = AWS.request serviceName "deleteBucketEncryption" 
 
 
 -- | Deletes an inventory configuration (identified by the inventory ID) from the bucket.
 deleteBucketInventoryConfiguration :: forall eff. DeleteBucketInventoryConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketInventoryConfiguration = AWS.request serviceName "DeleteBucketInventoryConfiguration" 
+deleteBucketInventoryConfiguration = AWS.request serviceName "deleteBucketInventoryConfiguration" 
 
 
 -- | Deletes the lifecycle configuration from the bucket.
 deleteBucketLifecycle :: forall eff. DeleteBucketLifecycleRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketLifecycle = AWS.request serviceName "DeleteBucketLifecycle" 
+deleteBucketLifecycle = AWS.request serviceName "deleteBucketLifecycle" 
 
 
 -- | Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket.
 deleteBucketMetricsConfiguration :: forall eff. DeleteBucketMetricsConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketMetricsConfiguration = AWS.request serviceName "DeleteBucketMetricsConfiguration" 
+deleteBucketMetricsConfiguration = AWS.request serviceName "deleteBucketMetricsConfiguration" 
 
 
 -- | Deletes the policy from the bucket.
 deleteBucketPolicy :: forall eff. DeleteBucketPolicyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketPolicy = AWS.request serviceName "DeleteBucketPolicy" 
+deleteBucketPolicy = AWS.request serviceName "deleteBucketPolicy" 
 
 
 -- | Deletes the replication configuration from the bucket.
 deleteBucketReplication :: forall eff. DeleteBucketReplicationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketReplication = AWS.request serviceName "DeleteBucketReplication" 
+deleteBucketReplication = AWS.request serviceName "deleteBucketReplication" 
 
 
 -- | Deletes the tags from the bucket.
 deleteBucketTagging :: forall eff. DeleteBucketTaggingRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketTagging = AWS.request serviceName "DeleteBucketTagging" 
+deleteBucketTagging = AWS.request serviceName "deleteBucketTagging" 
 
 
 -- | This operation removes the website configuration from the bucket.
 deleteBucketWebsite :: forall eff. DeleteBucketWebsiteRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteBucketWebsite = AWS.request serviceName "DeleteBucketWebsite" 
+deleteBucketWebsite = AWS.request serviceName "deleteBucketWebsite" 
 
 
 -- | Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects.
 deleteObject :: forall eff. DeleteObjectRequest -> Aff (err :: AWS.RequestError | eff) DeleteObjectOutput
-deleteObject = AWS.request serviceName "DeleteObject" 
+deleteObject = AWS.request serviceName "deleteObject" 
 
 
 -- | Removes the tag-set from an existing object.
 deleteObjectTagging :: forall eff. DeleteObjectTaggingRequest -> Aff (err :: AWS.RequestError | eff) DeleteObjectTaggingOutput
-deleteObjectTagging = AWS.request serviceName "DeleteObjectTagging" 
+deleteObjectTagging = AWS.request serviceName "deleteObjectTagging" 
 
 
 -- | This operation enables you to delete multiple objects from a bucket using a single HTTP request. You may specify up to 1000 keys.
 deleteObjects :: forall eff. DeleteObjectsRequest -> Aff (err :: AWS.RequestError | eff) DeleteObjectsOutput
-deleteObjects = AWS.request serviceName "DeleteObjects" 
+deleteObjects = AWS.request serviceName "deleteObjects" 
 
 
 -- | Returns the accelerate configuration of a bucket.
 getBucketAccelerateConfiguration :: forall eff. GetBucketAccelerateConfigurationRequest -> Aff (err :: AWS.RequestError | eff) GetBucketAccelerateConfigurationOutput
-getBucketAccelerateConfiguration = AWS.request serviceName "GetBucketAccelerateConfiguration" 
+getBucketAccelerateConfiguration = AWS.request serviceName "getBucketAccelerateConfiguration" 
 
 
 -- | Gets the access control policy for the bucket.
 getBucketAcl :: forall eff. GetBucketAclRequest -> Aff (err :: AWS.RequestError | eff) GetBucketAclOutput
-getBucketAcl = AWS.request serviceName "GetBucketAcl" 
+getBucketAcl = AWS.request serviceName "getBucketAcl" 
 
 
 -- | Gets an analytics configuration for the bucket (specified by the analytics configuration ID).
 getBucketAnalyticsConfiguration :: forall eff. GetBucketAnalyticsConfigurationRequest -> Aff (err :: AWS.RequestError | eff) GetBucketAnalyticsConfigurationOutput
-getBucketAnalyticsConfiguration = AWS.request serviceName "GetBucketAnalyticsConfiguration" 
+getBucketAnalyticsConfiguration = AWS.request serviceName "getBucketAnalyticsConfiguration" 
 
 
 -- | Returns the cors configuration for the bucket.
 getBucketCors :: forall eff. GetBucketCorsRequest -> Aff (err :: AWS.RequestError | eff) GetBucketCorsOutput
-getBucketCors = AWS.request serviceName "GetBucketCors" 
+getBucketCors = AWS.request serviceName "getBucketCors" 
 
 
 -- | Returns the server-side encryption configuration of a bucket.
 getBucketEncryption :: forall eff. GetBucketEncryptionRequest -> Aff (err :: AWS.RequestError | eff) GetBucketEncryptionOutput
-getBucketEncryption = AWS.request serviceName "GetBucketEncryption" 
+getBucketEncryption = AWS.request serviceName "getBucketEncryption" 
 
 
 -- | Returns an inventory configuration (identified by the inventory ID) from the bucket.
 getBucketInventoryConfiguration :: forall eff. GetBucketInventoryConfigurationRequest -> Aff (err :: AWS.RequestError | eff) GetBucketInventoryConfigurationOutput
-getBucketInventoryConfiguration = AWS.request serviceName "GetBucketInventoryConfiguration" 
+getBucketInventoryConfiguration = AWS.request serviceName "getBucketInventoryConfiguration" 
 
 
 -- | Deprecated, see the GetBucketLifecycleConfiguration operation.
 getBucketLifecycle :: forall eff. GetBucketLifecycleRequest -> Aff (err :: AWS.RequestError | eff) GetBucketLifecycleOutput
-getBucketLifecycle = AWS.request serviceName "GetBucketLifecycle" 
+getBucketLifecycle = AWS.request serviceName "getBucketLifecycle" 
 
 
 -- | Returns the lifecycle configuration information set on the bucket.
 getBucketLifecycleConfiguration :: forall eff. GetBucketLifecycleConfigurationRequest -> Aff (err :: AWS.RequestError | eff) GetBucketLifecycleConfigurationOutput
-getBucketLifecycleConfiguration = AWS.request serviceName "GetBucketLifecycleConfiguration" 
+getBucketLifecycleConfiguration = AWS.request serviceName "getBucketLifecycleConfiguration" 
 
 
 -- | Returns the region the bucket resides in.
 getBucketLocation :: forall eff. GetBucketLocationRequest -> Aff (err :: AWS.RequestError | eff) GetBucketLocationOutput
-getBucketLocation = AWS.request serviceName "GetBucketLocation" 
+getBucketLocation = AWS.request serviceName "getBucketLocation" 
 
 
 -- | Returns the logging status of a bucket and the permissions users have to view and modify that status. To use GET, you must be the bucket owner.
 getBucketLogging :: forall eff. GetBucketLoggingRequest -> Aff (err :: AWS.RequestError | eff) GetBucketLoggingOutput
-getBucketLogging = AWS.request serviceName "GetBucketLogging" 
+getBucketLogging = AWS.request serviceName "getBucketLogging" 
 
 
 -- | Gets a metrics configuration (specified by the metrics configuration ID) from the bucket.
 getBucketMetricsConfiguration :: forall eff. GetBucketMetricsConfigurationRequest -> Aff (err :: AWS.RequestError | eff) GetBucketMetricsConfigurationOutput
-getBucketMetricsConfiguration = AWS.request serviceName "GetBucketMetricsConfiguration" 
+getBucketMetricsConfiguration = AWS.request serviceName "getBucketMetricsConfiguration" 
 
 
 -- | Deprecated, see the GetBucketNotificationConfiguration operation.
 getBucketNotification :: forall eff. GetBucketNotificationConfigurationRequest -> Aff (err :: AWS.RequestError | eff) NotificationConfigurationDeprecated
-getBucketNotification = AWS.request serviceName "GetBucketNotification" 
+getBucketNotification = AWS.request serviceName "getBucketNotification" 
 
 
 -- | Returns the notification configuration of a bucket.
 getBucketNotificationConfiguration :: forall eff. GetBucketNotificationConfigurationRequest -> Aff (err :: AWS.RequestError | eff) NotificationConfiguration
-getBucketNotificationConfiguration = AWS.request serviceName "GetBucketNotificationConfiguration" 
+getBucketNotificationConfiguration = AWS.request serviceName "getBucketNotificationConfiguration" 
 
 
 -- | Returns the policy of a specified bucket.
 getBucketPolicy :: forall eff. GetBucketPolicyRequest -> Aff (err :: AWS.RequestError | eff) GetBucketPolicyOutput
-getBucketPolicy = AWS.request serviceName "GetBucketPolicy" 
+getBucketPolicy = AWS.request serviceName "getBucketPolicy" 
 
 
 -- | Returns the replication configuration of a bucket.
 getBucketReplication :: forall eff. GetBucketReplicationRequest -> Aff (err :: AWS.RequestError | eff) GetBucketReplicationOutput
-getBucketReplication = AWS.request serviceName "GetBucketReplication" 
+getBucketReplication = AWS.request serviceName "getBucketReplication" 
 
 
 -- | Returns the request payment configuration of a bucket.
 getBucketRequestPayment :: forall eff. GetBucketRequestPaymentRequest -> Aff (err :: AWS.RequestError | eff) GetBucketRequestPaymentOutput
-getBucketRequestPayment = AWS.request serviceName "GetBucketRequestPayment" 
+getBucketRequestPayment = AWS.request serviceName "getBucketRequestPayment" 
 
 
 -- | Returns the tag set associated with the bucket.
 getBucketTagging :: forall eff. GetBucketTaggingRequest -> Aff (err :: AWS.RequestError | eff) GetBucketTaggingOutput
-getBucketTagging = AWS.request serviceName "GetBucketTagging" 
+getBucketTagging = AWS.request serviceName "getBucketTagging" 
 
 
 -- | Returns the versioning state of a bucket.
 getBucketVersioning :: forall eff. GetBucketVersioningRequest -> Aff (err :: AWS.RequestError | eff) GetBucketVersioningOutput
-getBucketVersioning = AWS.request serviceName "GetBucketVersioning" 
+getBucketVersioning = AWS.request serviceName "getBucketVersioning" 
 
 
 -- | Returns the website configuration for a bucket.
 getBucketWebsite :: forall eff. GetBucketWebsiteRequest -> Aff (err :: AWS.RequestError | eff) GetBucketWebsiteOutput
-getBucketWebsite = AWS.request serviceName "GetBucketWebsite" 
+getBucketWebsite = AWS.request serviceName "getBucketWebsite" 
 
 
 -- | Retrieves objects from Amazon S3.
 getObject :: forall eff. GetObjectRequest -> Aff (err :: AWS.RequestError | eff) GetObjectOutput
-getObject = AWS.request serviceName "GetObject" 
+getObject = AWS.request serviceName "getObject" 
 
 
 -- | Returns the access control list (ACL) of an object.
 getObjectAcl :: forall eff. GetObjectAclRequest -> Aff (err :: AWS.RequestError | eff) GetObjectAclOutput
-getObjectAcl = AWS.request serviceName "GetObjectAcl" 
+getObjectAcl = AWS.request serviceName "getObjectAcl" 
 
 
 -- | Returns the tag-set of an object.
 getObjectTagging :: forall eff. GetObjectTaggingRequest -> Aff (err :: AWS.RequestError | eff) GetObjectTaggingOutput
-getObjectTagging = AWS.request serviceName "GetObjectTagging" 
+getObjectTagging = AWS.request serviceName "getObjectTagging" 
 
 
 -- | Return torrent files from a bucket.
 getObjectTorrent :: forall eff. GetObjectTorrentRequest -> Aff (err :: AWS.RequestError | eff) GetObjectTorrentOutput
-getObjectTorrent = AWS.request serviceName "GetObjectTorrent" 
+getObjectTorrent = AWS.request serviceName "getObjectTorrent" 
 
 
 -- | This operation is useful to determine if a bucket exists and you have permission to access it.
 headBucket :: forall eff. HeadBucketRequest -> Aff (err :: AWS.RequestError | eff) Unit
-headBucket = AWS.request serviceName "HeadBucket" 
+headBucket = AWS.request serviceName "headBucket" 
 
 
 -- | The HEAD operation retrieves metadata from an object without returning the object itself. This operation is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.
 headObject :: forall eff. HeadObjectRequest -> Aff (err :: AWS.RequestError | eff) HeadObjectOutput
-headObject = AWS.request serviceName "HeadObject" 
+headObject = AWS.request serviceName "headObject" 
 
 
 -- | Lists the analytics configurations for the bucket.
 listBucketAnalyticsConfigurations :: forall eff. ListBucketAnalyticsConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) ListBucketAnalyticsConfigurationsOutput
-listBucketAnalyticsConfigurations = AWS.request serviceName "ListBucketAnalyticsConfigurations" 
+listBucketAnalyticsConfigurations = AWS.request serviceName "listBucketAnalyticsConfigurations" 
 
 
 -- | Returns a list of inventory configurations for the bucket.
 listBucketInventoryConfigurations :: forall eff. ListBucketInventoryConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) ListBucketInventoryConfigurationsOutput
-listBucketInventoryConfigurations = AWS.request serviceName "ListBucketInventoryConfigurations" 
+listBucketInventoryConfigurations = AWS.request serviceName "listBucketInventoryConfigurations" 
 
 
 -- | Lists the metrics configurations for the bucket.
 listBucketMetricsConfigurations :: forall eff. ListBucketMetricsConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) ListBucketMetricsConfigurationsOutput
-listBucketMetricsConfigurations = AWS.request serviceName "ListBucketMetricsConfigurations" 
+listBucketMetricsConfigurations = AWS.request serviceName "listBucketMetricsConfigurations" 
 
 
 -- | Returns a list of all buckets owned by the authenticated sender of the request.
 listBuckets :: forall eff.  Aff (err :: AWS.RequestError | eff) ListBucketsOutput
-listBuckets = AWS.request serviceName "ListBuckets" unit
+listBuckets = AWS.request serviceName "listBuckets" unit
 
 
 -- | This operation lists in-progress multipart uploads.
 listMultipartUploads :: forall eff. ListMultipartUploadsRequest -> Aff (err :: AWS.RequestError | eff) ListMultipartUploadsOutput
-listMultipartUploads = AWS.request serviceName "ListMultipartUploads" 
+listMultipartUploads = AWS.request serviceName "listMultipartUploads" 
 
 
 -- | Returns metadata about all of the versions of objects in a bucket.
 listObjectVersions :: forall eff. ListObjectVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListObjectVersionsOutput
-listObjectVersions = AWS.request serviceName "ListObjectVersions" 
+listObjectVersions = AWS.request serviceName "listObjectVersions" 
 
 
 -- | Returns some or all (up to 1000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket.
 listObjects :: forall eff. ListObjectsRequest -> Aff (err :: AWS.RequestError | eff) ListObjectsOutput
-listObjects = AWS.request serviceName "ListObjects" 
+listObjects = AWS.request serviceName "listObjects" 
 
 
 -- | Returns some or all (up to 1000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. Note: ListObjectsV2 is the revised List Objects API and we recommend you use this revised API for new application development.
 listObjectsV2 :: forall eff. ListObjectsV2Request -> Aff (err :: AWS.RequestError | eff) ListObjectsV2Output
-listObjectsV2 = AWS.request serviceName "ListObjectsV2" 
+listObjectsV2 = AWS.request serviceName "listObjectsV2" 
 
 
 -- | Lists the parts that have been uploaded for a specific multipart upload.
 listParts :: forall eff. ListPartsRequest -> Aff (err :: AWS.RequestError | eff) ListPartsOutput
-listParts = AWS.request serviceName "ListParts" 
+listParts = AWS.request serviceName "listParts" 
 
 
 -- | Sets the accelerate configuration of an existing bucket.
 putBucketAccelerateConfiguration :: forall eff. PutBucketAccelerateConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketAccelerateConfiguration = AWS.request serviceName "PutBucketAccelerateConfiguration" 
+putBucketAccelerateConfiguration = AWS.request serviceName "putBucketAccelerateConfiguration" 
 
 
 -- | Sets the permissions on a bucket using access control lists (ACL).
 putBucketAcl :: forall eff. PutBucketAclRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketAcl = AWS.request serviceName "PutBucketAcl" 
+putBucketAcl = AWS.request serviceName "putBucketAcl" 
 
 
 -- | Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
 putBucketAnalyticsConfiguration :: forall eff. PutBucketAnalyticsConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketAnalyticsConfiguration = AWS.request serviceName "PutBucketAnalyticsConfiguration" 
+putBucketAnalyticsConfiguration = AWS.request serviceName "putBucketAnalyticsConfiguration" 
 
 
 -- | Sets the cors configuration for a bucket.
 putBucketCors :: forall eff. PutBucketCorsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketCors = AWS.request serviceName "PutBucketCors" 
+putBucketCors = AWS.request serviceName "putBucketCors" 
 
 
 -- | Creates a new server-side encryption configuration (or replaces an existing one, if present).
 putBucketEncryption :: forall eff. PutBucketEncryptionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketEncryption = AWS.request serviceName "PutBucketEncryption" 
+putBucketEncryption = AWS.request serviceName "putBucketEncryption" 
 
 
 -- | Adds an inventory configuration (identified by the inventory ID) from the bucket.
 putBucketInventoryConfiguration :: forall eff. PutBucketInventoryConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketInventoryConfiguration = AWS.request serviceName "PutBucketInventoryConfiguration" 
+putBucketInventoryConfiguration = AWS.request serviceName "putBucketInventoryConfiguration" 
 
 
 -- | Deprecated, see the PutBucketLifecycleConfiguration operation.
 putBucketLifecycle :: forall eff. PutBucketLifecycleRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketLifecycle = AWS.request serviceName "PutBucketLifecycle" 
+putBucketLifecycle = AWS.request serviceName "putBucketLifecycle" 
 
 
 -- | Sets lifecycle configuration for your bucket. If a lifecycle configuration exists, it replaces it.
 putBucketLifecycleConfiguration :: forall eff. PutBucketLifecycleConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketLifecycleConfiguration = AWS.request serviceName "PutBucketLifecycleConfiguration" 
+putBucketLifecycleConfiguration = AWS.request serviceName "putBucketLifecycleConfiguration" 
 
 
 -- | Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. To set the logging status of a bucket, you must be the bucket owner.
 putBucketLogging :: forall eff. PutBucketLoggingRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketLogging = AWS.request serviceName "PutBucketLogging" 
+putBucketLogging = AWS.request serviceName "putBucketLogging" 
 
 
 -- | Sets a metrics configuration (specified by the metrics configuration ID) for the bucket.
 putBucketMetricsConfiguration :: forall eff. PutBucketMetricsConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketMetricsConfiguration = AWS.request serviceName "PutBucketMetricsConfiguration" 
+putBucketMetricsConfiguration = AWS.request serviceName "putBucketMetricsConfiguration" 
 
 
 -- | Deprecated, see the PutBucketNotificationConfiguraiton operation.
 putBucketNotification :: forall eff. PutBucketNotificationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketNotification = AWS.request serviceName "PutBucketNotification" 
+putBucketNotification = AWS.request serviceName "putBucketNotification" 
 
 
 -- | Enables notifications of specified events for a bucket.
 putBucketNotificationConfiguration :: forall eff. PutBucketNotificationConfigurationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketNotificationConfiguration = AWS.request serviceName "PutBucketNotificationConfiguration" 
+putBucketNotificationConfiguration = AWS.request serviceName "putBucketNotificationConfiguration" 
 
 
 -- | Replaces a policy on a bucket. If the bucket already has a policy, the one in this request completely replaces it.
 putBucketPolicy :: forall eff. PutBucketPolicyRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketPolicy = AWS.request serviceName "PutBucketPolicy" 
+putBucketPolicy = AWS.request serviceName "putBucketPolicy" 
 
 
 -- | Creates a new replication configuration (or replaces an existing one, if present).
 putBucketReplication :: forall eff. PutBucketReplicationRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketReplication = AWS.request serviceName "PutBucketReplication" 
+putBucketReplication = AWS.request serviceName "putBucketReplication" 
 
 
 -- | Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. Documentation on requester pays buckets can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
 putBucketRequestPayment :: forall eff. PutBucketRequestPaymentRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketRequestPayment = AWS.request serviceName "PutBucketRequestPayment" 
+putBucketRequestPayment = AWS.request serviceName "putBucketRequestPayment" 
 
 
 -- | Sets the tags for a bucket.
 putBucketTagging :: forall eff. PutBucketTaggingRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketTagging = AWS.request serviceName "PutBucketTagging" 
+putBucketTagging = AWS.request serviceName "putBucketTagging" 
 
 
 -- | Sets the versioning state of an existing bucket. To set the versioning state, you must be the bucket owner.
 putBucketVersioning :: forall eff. PutBucketVersioningRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketVersioning = AWS.request serviceName "PutBucketVersioning" 
+putBucketVersioning = AWS.request serviceName "putBucketVersioning" 
 
 
 -- | Set the website configuration for a bucket.
 putBucketWebsite :: forall eff. PutBucketWebsiteRequest -> Aff (err :: AWS.RequestError | eff) Unit
-putBucketWebsite = AWS.request serviceName "PutBucketWebsite" 
+putBucketWebsite = AWS.request serviceName "putBucketWebsite" 
 
 
 -- | Adds an object to a bucket.
 putObject :: forall eff. PutObjectRequest -> Aff (err :: AWS.RequestError | eff) PutObjectOutput
-putObject = AWS.request serviceName "PutObject" 
+putObject = AWS.request serviceName "putObject" 
 
 
 -- | uses the acl subresource to set the access control list (ACL) permissions for an object that already exists in a bucket
 putObjectAcl :: forall eff. PutObjectAclRequest -> Aff (err :: AWS.RequestError | eff) PutObjectAclOutput
-putObjectAcl = AWS.request serviceName "PutObjectAcl" 
+putObjectAcl = AWS.request serviceName "putObjectAcl" 
 
 
 -- | Sets the supplied tag-set to an object that already exists in a bucket
 putObjectTagging :: forall eff. PutObjectTaggingRequest -> Aff (err :: AWS.RequestError | eff) PutObjectTaggingOutput
-putObjectTagging = AWS.request serviceName "PutObjectTagging" 
+putObjectTagging = AWS.request serviceName "putObjectTagging" 
 
 
 -- | Restores an archived copy of an object back into Amazon S3
 restoreObject :: forall eff. RestoreObjectRequest -> Aff (err :: AWS.RequestError | eff) RestoreObjectOutput
-restoreObject = AWS.request serviceName "RestoreObject" 
+restoreObject = AWS.request serviceName "restoreObject" 
 
 
 -- | <p>Uploads a part in a multipart upload.</p><p><b>Note:</b> After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.</p>
 uploadPart :: forall eff. UploadPartRequest -> Aff (err :: AWS.RequestError | eff) UploadPartOutput
-uploadPart = AWS.request serviceName "UploadPart" 
+uploadPart = AWS.request serviceName "uploadPart" 
 
 
 -- | Uploads a part by copying data from an existing object as data source.
 uploadPartCopy :: forall eff. UploadPartCopyRequest -> Aff (err :: AWS.RequestError | eff) UploadPartCopyOutput
-uploadPartCopy = AWS.request serviceName "UploadPartCopy" 
+uploadPartCopy = AWS.request serviceName "uploadPartCopy" 
 
 
 newtype AbortDate = AbortDate Number

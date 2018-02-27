@@ -16,357 +16,357 @@ serviceName = "Lightsail" :: String
 
 -- | <p>Allocates a static IP address.</p>
 allocateStaticIp :: forall eff. AllocateStaticIpRequest -> Aff (err :: AWS.RequestError | eff) AllocateStaticIpResult
-allocateStaticIp = AWS.request serviceName "AllocateStaticIp" 
+allocateStaticIp = AWS.request serviceName "allocateStaticIp" 
 
 
 -- | <p>Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name.</p>
 attachDisk :: forall eff. AttachDiskRequest -> Aff (err :: AWS.RequestError | eff) AttachDiskResult
-attachDisk = AWS.request serviceName "AttachDisk" 
+attachDisk = AWS.request serviceName "attachDisk" 
 
 
 -- | <p>Attaches one or more Lightsail instances to a load balancer.</p>
 attachInstancesToLoadBalancer :: forall eff. AttachInstancesToLoadBalancerRequest -> Aff (err :: AWS.RequestError | eff) AttachInstancesToLoadBalancerResult
-attachInstancesToLoadBalancer = AWS.request serviceName "AttachInstancesToLoadBalancer" 
+attachInstancesToLoadBalancer = AWS.request serviceName "attachInstancesToLoadBalancer" 
 
 
 -- | <p>Attaches a Transport Layer Security (TLS) certificate to your load balancer.</p> <p>TLS is just an updated, more secure version of Secure Socket Layer (SSL).</p>
 attachLoadBalancerTlsCertificate :: forall eff. AttachLoadBalancerTlsCertificateRequest -> Aff (err :: AWS.RequestError | eff) AttachLoadBalancerTlsCertificateResult
-attachLoadBalancerTlsCertificate = AWS.request serviceName "AttachLoadBalancerTlsCertificate" 
+attachLoadBalancerTlsCertificate = AWS.request serviceName "attachLoadBalancerTlsCertificate" 
 
 
 -- | <p>Attaches a static IP address to a specific Amazon Lightsail instance.</p>
 attachStaticIp :: forall eff. AttachStaticIpRequest -> Aff (err :: AWS.RequestError | eff) AttachStaticIpResult
-attachStaticIp = AWS.request serviceName "AttachStaticIp" 
+attachStaticIp = AWS.request serviceName "attachStaticIp" 
 
 
 -- | <p>Closes the public ports on a specific Amazon Lightsail instance.</p>
 closeInstancePublicPorts :: forall eff. CloseInstancePublicPortsRequest -> Aff (err :: AWS.RequestError | eff) CloseInstancePublicPortsResult
-closeInstancePublicPorts = AWS.request serviceName "CloseInstancePublicPorts" 
+closeInstancePublicPorts = AWS.request serviceName "closeInstancePublicPorts" 
 
 
 -- | <p>Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e.g., <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the HTTP request to. For more information, see <a href="https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail">Regions and Availability Zones in Lightsail</a>.</p>
 createDisk :: forall eff. CreateDiskRequest -> Aff (err :: AWS.RequestError | eff) CreateDiskResult
-createDisk = AWS.request serviceName "CreateDisk" 
+createDisk = AWS.request serviceName "createDisk" 
 
 
 -- | <p>Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same Availability Zone (e.g., <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the HTTP request to. For more information, see <a href="https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail">Regions and Availability Zones in Lightsail</a>.</p>
 createDiskFromSnapshot :: forall eff. CreateDiskFromSnapshotRequest -> Aff (err :: AWS.RequestError | eff) CreateDiskFromSnapshotResult
-createDiskFromSnapshot = AWS.request serviceName "CreateDiskFromSnapshot" 
+createDiskFromSnapshot = AWS.request serviceName "createDiskFromSnapshot" 
 
 
 -- | <p>Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to save data before shutting down a Lightsail instance.</p> <p>You can take a snapshot of an attached disk that is in use; however, snapshots only capture data that has been written to your disk at the time the snapshot command is issued. This may exclude any data that has been cached by any applications or the operating system. If you can pause any file systems on the disk long enough to take a snapshot, your snapshot should be complete. Nevertheless, if you cannot pause all file writes to the disk, you should unmount the disk from within the Lightsail instance, issue the create disk snapshot command, and then remount the disk to ensure a consistent and complete snapshot. You may remount and use your disk while the snapshot status is pending.</p>
 createDiskSnapshot :: forall eff. CreateDiskSnapshotRequest -> Aff (err :: AWS.RequestError | eff) CreateDiskSnapshotResult
-createDiskSnapshot = AWS.request serviceName "CreateDiskSnapshot" 
+createDiskSnapshot = AWS.request serviceName "createDiskSnapshot" 
 
 
 -- | <p>Creates a domain resource for the specified domain (e.g., example.com).</p>
 createDomain :: forall eff. CreateDomainRequest -> Aff (err :: AWS.RequestError | eff) CreateDomainResult
-createDomain = AWS.request serviceName "CreateDomain" 
+createDomain = AWS.request serviceName "createDomain" 
 
 
 -- | <p>Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX record.</p>
 createDomainEntry :: forall eff. CreateDomainEntryRequest -> Aff (err :: AWS.RequestError | eff) CreateDomainEntryResult
-createDomainEntry = AWS.request serviceName "CreateDomainEntry" 
+createDomainEntry = AWS.request serviceName "createDomainEntry" 
 
 
 -- | <p>Creates a snapshot of a specific virtual private server, or <i>instance</i>. You can use a snapshot to create a new instance that is based on that snapshot.</p>
 createInstanceSnapshot :: forall eff. CreateInstanceSnapshotRequest -> Aff (err :: AWS.RequestError | eff) CreateInstanceSnapshotResult
-createInstanceSnapshot = AWS.request serviceName "CreateInstanceSnapshot" 
+createInstanceSnapshot = AWS.request serviceName "createInstanceSnapshot" 
 
 
 -- | <p>Creates one or more Amazon Lightsail virtual private servers, or <i>instances</i>.</p>
 createInstances :: forall eff. CreateInstancesRequest -> Aff (err :: AWS.RequestError | eff) CreateInstancesResult
-createInstances = AWS.request serviceName "CreateInstances" 
+createInstances = AWS.request serviceName "createInstances" 
 
 
 -- | <p>Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical configuration.</p>
 createInstancesFromSnapshot :: forall eff. CreateInstancesFromSnapshotRequest -> Aff (err :: AWS.RequestError | eff) CreateInstancesFromSnapshotResult
-createInstancesFromSnapshot = AWS.request serviceName "CreateInstancesFromSnapshot" 
+createInstancesFromSnapshot = AWS.request serviceName "createInstancesFromSnapshot" 
 
 
 -- | <p>Creates sn SSH key pair.</p>
 createKeyPair :: forall eff. CreateKeyPairRequest -> Aff (err :: AWS.RequestError | eff) CreateKeyPairResult
-createKeyPair = AWS.request serviceName "CreateKeyPair" 
+createKeyPair = AWS.request serviceName "createKeyPair" 
 
 
 -- | <p>Creates a Lightsail load balancer.</p> <p>When you create a load balancer, you can specify certificates and port settings. You can create up to 5 load balancers per AWS Region in your account.</p>
 createLoadBalancer :: forall eff. CreateLoadBalancerRequest -> Aff (err :: AWS.RequestError | eff) CreateLoadBalancerResult
-createLoadBalancer = AWS.request serviceName "CreateLoadBalancer" 
+createLoadBalancer = AWS.request serviceName "createLoadBalancer" 
 
 
 -- | <p>Creates a Lightsail load balancer TLS certificate.</p> <p>TLS is just an updated, more secure version of Secure Socket Layer (SSL).</p>
 createLoadBalancerTlsCertificate :: forall eff. CreateLoadBalancerTlsCertificateRequest -> Aff (err :: AWS.RequestError | eff) CreateLoadBalancerTlsCertificateResult
-createLoadBalancerTlsCertificate = AWS.request serviceName "CreateLoadBalancerTlsCertificate" 
+createLoadBalancerTlsCertificate = AWS.request serviceName "createLoadBalancerTlsCertificate" 
 
 
 -- | <p>Deletes the specified block storage disk. The disk must be in the <code>available</code> state (not attached to a Lightsail instance).</p> <note> <p>The disk may remain in the <code>deleting</code> state for several minutes.</p> </note>
 deleteDisk :: forall eff. DeleteDiskRequest -> Aff (err :: AWS.RequestError | eff) DeleteDiskResult
-deleteDisk = AWS.request serviceName "DeleteDisk" 
+deleteDisk = AWS.request serviceName "deleteDisk" 
 
 
 -- | <p>Deletes the specified disk snapshot.</p> <p>When you make periodic snapshots of a disk, the snapshots are incremental, and only the blocks on the device that have changed since your last snapshot are saved in the new snapshot. When you delete a snapshot, only the data not needed for any other snapshot is removed. So regardless of which prior snapshots have been deleted, all active snapshots will have access to all the information needed to restore the disk.</p>
 deleteDiskSnapshot :: forall eff. DeleteDiskSnapshotRequest -> Aff (err :: AWS.RequestError | eff) DeleteDiskSnapshotResult
-deleteDiskSnapshot = AWS.request serviceName "DeleteDiskSnapshot" 
+deleteDiskSnapshot = AWS.request serviceName "deleteDiskSnapshot" 
 
 
 -- | <p>Deletes the specified domain recordset and all of its domain records.</p>
 deleteDomain :: forall eff. DeleteDomainRequest -> Aff (err :: AWS.RequestError | eff) DeleteDomainResult
-deleteDomain = AWS.request serviceName "DeleteDomain" 
+deleteDomain = AWS.request serviceName "deleteDomain" 
 
 
 -- | <p>Deletes a specific domain entry.</p>
 deleteDomainEntry :: forall eff. DeleteDomainEntryRequest -> Aff (err :: AWS.RequestError | eff) DeleteDomainEntryResult
-deleteDomainEntry = AWS.request serviceName "DeleteDomainEntry" 
+deleteDomainEntry = AWS.request serviceName "deleteDomainEntry" 
 
 
 -- | <p>Deletes a specific Amazon Lightsail virtual private server, or <i>instance</i>.</p>
 deleteInstance :: forall eff. DeleteInstanceRequest -> Aff (err :: AWS.RequestError | eff) DeleteInstanceResult
-deleteInstance = AWS.request serviceName "DeleteInstance" 
+deleteInstance = AWS.request serviceName "deleteInstance" 
 
 
 -- | <p>Deletes a specific snapshot of a virtual private server (or <i>instance</i>).</p>
 deleteInstanceSnapshot :: forall eff. DeleteInstanceSnapshotRequest -> Aff (err :: AWS.RequestError | eff) DeleteInstanceSnapshotResult
-deleteInstanceSnapshot = AWS.request serviceName "DeleteInstanceSnapshot" 
+deleteInstanceSnapshot = AWS.request serviceName "deleteInstanceSnapshot" 
 
 
 -- | <p>Deletes a specific SSH key pair.</p>
 deleteKeyPair :: forall eff. DeleteKeyPairRequest -> Aff (err :: AWS.RequestError | eff) DeleteKeyPairResult
-deleteKeyPair = AWS.request serviceName "DeleteKeyPair" 
+deleteKeyPair = AWS.request serviceName "deleteKeyPair" 
 
 
 -- | <p>Deletes a Lightsail load balancer.</p>
 deleteLoadBalancer :: forall eff. DeleteLoadBalancerRequest -> Aff (err :: AWS.RequestError | eff) DeleteLoadBalancerResult
-deleteLoadBalancer = AWS.request serviceName "DeleteLoadBalancer" 
+deleteLoadBalancer = AWS.request serviceName "deleteLoadBalancer" 
 
 
 -- | <p>Deletes a TLS/SSL certificate associated with a Lightsail load balancer.</p>
 deleteLoadBalancerTlsCertificate :: forall eff. DeleteLoadBalancerTlsCertificateRequest -> Aff (err :: AWS.RequestError | eff) DeleteLoadBalancerTlsCertificateResult
-deleteLoadBalancerTlsCertificate = AWS.request serviceName "DeleteLoadBalancerTlsCertificate" 
+deleteLoadBalancerTlsCertificate = AWS.request serviceName "deleteLoadBalancerTlsCertificate" 
 
 
 -- | <p>Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the device within your operating system before stopping the instance and detaching the disk.</p>
 detachDisk :: forall eff. DetachDiskRequest -> Aff (err :: AWS.RequestError | eff) DetachDiskResult
-detachDisk = AWS.request serviceName "DetachDisk" 
+detachDisk = AWS.request serviceName "detachDisk" 
 
 
 -- | <p>Detaches the specified instances from a Lightsail load balancer.</p>
 detachInstancesFromLoadBalancer :: forall eff. DetachInstancesFromLoadBalancerRequest -> Aff (err :: AWS.RequestError | eff) DetachInstancesFromLoadBalancerResult
-detachInstancesFromLoadBalancer = AWS.request serviceName "DetachInstancesFromLoadBalancer" 
+detachInstancesFromLoadBalancer = AWS.request serviceName "detachInstancesFromLoadBalancer" 
 
 
 -- | <p>Detaches a static IP from the Amazon Lightsail instance to which it is attached.</p>
 detachStaticIp :: forall eff. DetachStaticIpRequest -> Aff (err :: AWS.RequestError | eff) DetachStaticIpResult
-detachStaticIp = AWS.request serviceName "DetachStaticIp" 
+detachStaticIp = AWS.request serviceName "detachStaticIp" 
 
 
 -- | <p>Downloads the default SSH key pair from the user's account.</p>
 downloadDefaultKeyPair :: forall eff. DownloadDefaultKeyPairRequest -> Aff (err :: AWS.RequestError | eff) DownloadDefaultKeyPairResult
-downloadDefaultKeyPair = AWS.request serviceName "DownloadDefaultKeyPair" 
+downloadDefaultKeyPair = AWS.request serviceName "downloadDefaultKeyPair" 
 
 
 -- | <p>Returns the names of all active (not deleted) resources.</p>
 getActiveNames :: forall eff. GetActiveNamesRequest -> Aff (err :: AWS.RequestError | eff) GetActiveNamesResult
-getActiveNames = AWS.request serviceName "GetActiveNames" 
+getActiveNames = AWS.request serviceName "getActiveNames" 
 
 
 -- | <p>Returns the list of available instance images, or <i>blueprints</i>. You can use a blueprint to create a new virtual private server already running a specific operating system, as well as a preinstalled app or development stack. The software each instance is running depends on the blueprint image you choose.</p>
 getBlueprints :: forall eff. GetBlueprintsRequest -> Aff (err :: AWS.RequestError | eff) GetBlueprintsResult
-getBlueprints = AWS.request serviceName "GetBlueprints" 
+getBlueprints = AWS.request serviceName "getBlueprints" 
 
 
 -- | <p>Returns the list of bundles that are available for purchase. A bundle describes the specs for your virtual private server (or <i>instance</i>).</p>
 getBundles :: forall eff. GetBundlesRequest -> Aff (err :: AWS.RequestError | eff) GetBundlesResult
-getBundles = AWS.request serviceName "GetBundles" 
+getBundles = AWS.request serviceName "getBundles" 
 
 
 -- | <p>Returns information about a specific block storage disk.</p>
 getDisk :: forall eff. GetDiskRequest -> Aff (err :: AWS.RequestError | eff) GetDiskResult
-getDisk = AWS.request serviceName "GetDisk" 
+getDisk = AWS.request serviceName "getDisk" 
 
 
 -- | <p>Returns information about a specific block storage disk snapshot.</p>
 getDiskSnapshot :: forall eff. GetDiskSnapshotRequest -> Aff (err :: AWS.RequestError | eff) GetDiskSnapshotResult
-getDiskSnapshot = AWS.request serviceName "GetDiskSnapshot" 
+getDiskSnapshot = AWS.request serviceName "getDiskSnapshot" 
 
 
 -- | <p>Returns information about all block storage disk snapshots in your AWS account and region.</p> <p>If you are describing a long list of disk snapshots, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.</p>
 getDiskSnapshots :: forall eff. GetDiskSnapshotsRequest -> Aff (err :: AWS.RequestError | eff) GetDiskSnapshotsResult
-getDiskSnapshots = AWS.request serviceName "GetDiskSnapshots" 
+getDiskSnapshots = AWS.request serviceName "getDiskSnapshots" 
 
 
 -- | <p>Returns information about all block storage disks in your AWS account and region.</p> <p>If you are describing a long list of disks, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.</p>
 getDisks :: forall eff. GetDisksRequest -> Aff (err :: AWS.RequestError | eff) GetDisksResult
-getDisks = AWS.request serviceName "GetDisks" 
+getDisks = AWS.request serviceName "getDisks" 
 
 
 -- | <p>Returns information about a specific domain recordset.</p>
 getDomain :: forall eff. GetDomainRequest -> Aff (err :: AWS.RequestError | eff) GetDomainResult
-getDomain = AWS.request serviceName "GetDomain" 
+getDomain = AWS.request serviceName "getDomain" 
 
 
 -- | <p>Returns a list of all domains in the user's account.</p>
 getDomains :: forall eff. GetDomainsRequest -> Aff (err :: AWS.RequestError | eff) GetDomainsResult
-getDomains = AWS.request serviceName "GetDomains" 
+getDomains = AWS.request serviceName "getDomains" 
 
 
 -- | <p>Returns information about a specific Amazon Lightsail instance, which is a virtual private server.</p>
 getInstance :: forall eff. GetInstanceRequest -> Aff (err :: AWS.RequestError | eff) GetInstanceResult
-getInstance = AWS.request serviceName "GetInstance" 
+getInstance = AWS.request serviceName "getInstance" 
 
 
 -- | <p>Returns temporary SSH keys you can use to connect to a specific virtual private server, or <i>instance</i>.</p>
 getInstanceAccessDetails :: forall eff. GetInstanceAccessDetailsRequest -> Aff (err :: AWS.RequestError | eff) GetInstanceAccessDetailsResult
-getInstanceAccessDetails = AWS.request serviceName "GetInstanceAccessDetails" 
+getInstanceAccessDetails = AWS.request serviceName "getInstanceAccessDetails" 
 
 
 -- | <p>Returns the data points for the specified Amazon Lightsail instance metric, given an instance name.</p>
 getInstanceMetricData :: forall eff. GetInstanceMetricDataRequest -> Aff (err :: AWS.RequestError | eff) GetInstanceMetricDataResult
-getInstanceMetricData = AWS.request serviceName "GetInstanceMetricData" 
+getInstanceMetricData = AWS.request serviceName "getInstanceMetricData" 
 
 
 -- | <p>Returns the port states for a specific virtual private server, or <i>instance</i>.</p>
 getInstancePortStates :: forall eff. GetInstancePortStatesRequest -> Aff (err :: AWS.RequestError | eff) GetInstancePortStatesResult
-getInstancePortStates = AWS.request serviceName "GetInstancePortStates" 
+getInstancePortStates = AWS.request serviceName "getInstancePortStates" 
 
 
 -- | <p>Returns information about a specific instance snapshot.</p>
 getInstanceSnapshot :: forall eff. GetInstanceSnapshotRequest -> Aff (err :: AWS.RequestError | eff) GetInstanceSnapshotResult
-getInstanceSnapshot = AWS.request serviceName "GetInstanceSnapshot" 
+getInstanceSnapshot = AWS.request serviceName "getInstanceSnapshot" 
 
 
 -- | <p>Returns all instance snapshots for the user's account.</p>
 getInstanceSnapshots :: forall eff. GetInstanceSnapshotsRequest -> Aff (err :: AWS.RequestError | eff) GetInstanceSnapshotsResult
-getInstanceSnapshots = AWS.request serviceName "GetInstanceSnapshots" 
+getInstanceSnapshots = AWS.request serviceName "getInstanceSnapshots" 
 
 
 -- | <p>Returns the state of a specific instance. Works on one instance at a time.</p>
 getInstanceState :: forall eff. GetInstanceStateRequest -> Aff (err :: AWS.RequestError | eff) GetInstanceStateResult
-getInstanceState = AWS.request serviceName "GetInstanceState" 
+getInstanceState = AWS.request serviceName "getInstanceState" 
 
 
 -- | <p>Returns information about all Amazon Lightsail virtual private servers, or <i>instances</i>.</p>
 getInstances :: forall eff. GetInstancesRequest -> Aff (err :: AWS.RequestError | eff) GetInstancesResult
-getInstances = AWS.request serviceName "GetInstances" 
+getInstances = AWS.request serviceName "getInstances" 
 
 
 -- | <p>Returns information about a specific key pair.</p>
 getKeyPair :: forall eff. GetKeyPairRequest -> Aff (err :: AWS.RequestError | eff) GetKeyPairResult
-getKeyPair = AWS.request serviceName "GetKeyPair" 
+getKeyPair = AWS.request serviceName "getKeyPair" 
 
 
 -- | <p>Returns information about all key pairs in the user's account.</p>
 getKeyPairs :: forall eff. GetKeyPairsRequest -> Aff (err :: AWS.RequestError | eff) GetKeyPairsResult
-getKeyPairs = AWS.request serviceName "GetKeyPairs" 
+getKeyPairs = AWS.request serviceName "getKeyPairs" 
 
 
 -- | <p>Returns information about the specified Lightsail load balancer.</p>
 getLoadBalancer :: forall eff. GetLoadBalancerRequest -> Aff (err :: AWS.RequestError | eff) GetLoadBalancerResult
-getLoadBalancer = AWS.request serviceName "GetLoadBalancer" 
+getLoadBalancer = AWS.request serviceName "getLoadBalancer" 
 
 
 -- | <p>Returns information about health metrics for your Lightsail load balancer.</p>
 getLoadBalancerMetricData :: forall eff. GetLoadBalancerMetricDataRequest -> Aff (err :: AWS.RequestError | eff) GetLoadBalancerMetricDataResult
-getLoadBalancerMetricData = AWS.request serviceName "GetLoadBalancerMetricData" 
+getLoadBalancerMetricData = AWS.request serviceName "getLoadBalancerMetricData" 
 
 
 -- | <p>Returns information about the TLS certificates that are associated with the specified Lightsail load balancer.</p> <p>TLS is just an updated, more secure version of Secure Socket Layer (SSL).</p>
 getLoadBalancerTlsCertificates :: forall eff. GetLoadBalancerTlsCertificatesRequest -> Aff (err :: AWS.RequestError | eff) GetLoadBalancerTlsCertificatesResult
-getLoadBalancerTlsCertificates = AWS.request serviceName "GetLoadBalancerTlsCertificates" 
+getLoadBalancerTlsCertificates = AWS.request serviceName "getLoadBalancerTlsCertificates" 
 
 
 -- | <p>Returns information about all load balancers in an account.</p> <p>If you are describing a long list of load balancers, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.</p>
 getLoadBalancers :: forall eff. GetLoadBalancersRequest -> Aff (err :: AWS.RequestError | eff) GetLoadBalancersResult
-getLoadBalancers = AWS.request serviceName "GetLoadBalancers" 
+getLoadBalancers = AWS.request serviceName "getLoadBalancers" 
 
 
 -- | <p>Returns information about a specific operation. Operations include events such as when you create an instance, allocate a static IP, attach a static IP, and so on.</p>
 getOperation :: forall eff. GetOperationRequest -> Aff (err :: AWS.RequestError | eff) GetOperationResult
-getOperation = AWS.request serviceName "GetOperation" 
+getOperation = AWS.request serviceName "getOperation" 
 
 
 -- | <p>Returns information about all operations.</p> <p>Results are returned from oldest to newest, up to a maximum of 200. Results can be paged by making each subsequent call to <code>GetOperations</code> use the maximum (last) <code>statusChangedAt</code> value from the previous request.</p>
 getOperations :: forall eff. GetOperationsRequest -> Aff (err :: AWS.RequestError | eff) GetOperationsResult
-getOperations = AWS.request serviceName "GetOperations" 
+getOperations = AWS.request serviceName "getOperations" 
 
 
 -- | <p>Gets operations for a specific resource (e.g., an instance or a static IP).</p>
 getOperationsForResource :: forall eff. GetOperationsForResourceRequest -> Aff (err :: AWS.RequestError | eff) GetOperationsForResourceResult
-getOperationsForResource = AWS.request serviceName "GetOperationsForResource" 
+getOperationsForResource = AWS.request serviceName "getOperationsForResource" 
 
 
 -- | <p>Returns a list of all valid regions for Amazon Lightsail. Use the <code>include availability zones</code> parameter to also return the availability zones in a region.</p>
 getRegions :: forall eff. GetRegionsRequest -> Aff (err :: AWS.RequestError | eff) GetRegionsResult
-getRegions = AWS.request serviceName "GetRegions" 
+getRegions = AWS.request serviceName "getRegions" 
 
 
 -- | <p>Returns information about a specific static IP.</p>
 getStaticIp :: forall eff. GetStaticIpRequest -> Aff (err :: AWS.RequestError | eff) GetStaticIpResult
-getStaticIp = AWS.request serviceName "GetStaticIp" 
+getStaticIp = AWS.request serviceName "getStaticIp" 
 
 
 -- | <p>Returns information about all static IPs in the user's account.</p>
 getStaticIps :: forall eff. GetStaticIpsRequest -> Aff (err :: AWS.RequestError | eff) GetStaticIpsResult
-getStaticIps = AWS.request serviceName "GetStaticIps" 
+getStaticIps = AWS.request serviceName "getStaticIps" 
 
 
 -- | <p>Imports a public SSH key from a specific key pair.</p>
 importKeyPair :: forall eff. ImportKeyPairRequest -> Aff (err :: AWS.RequestError | eff) ImportKeyPairResult
-importKeyPair = AWS.request serviceName "ImportKeyPair" 
+importKeyPair = AWS.request serviceName "importKeyPair" 
 
 
 -- | <p>Returns a Boolean value indicating whether your Lightsail VPC is peered.</p>
 isVpcPeered :: forall eff. IsVpcPeeredRequest -> Aff (err :: AWS.RequestError | eff) IsVpcPeeredResult
-isVpcPeered = AWS.request serviceName "IsVpcPeered" 
+isVpcPeered = AWS.request serviceName "isVpcPeered" 
 
 
 -- | <p>Adds public ports to an Amazon Lightsail instance.</p>
 openInstancePublicPorts :: forall eff. OpenInstancePublicPortsRequest -> Aff (err :: AWS.RequestError | eff) OpenInstancePublicPortsResult
-openInstancePublicPorts = AWS.request serviceName "OpenInstancePublicPorts" 
+openInstancePublicPorts = AWS.request serviceName "openInstancePublicPorts" 
 
 
 -- | <p>Tries to peer the Lightsail VPC with the user's default VPC.</p>
 peerVpc :: forall eff. PeerVpcRequest -> Aff (err :: AWS.RequestError | eff) PeerVpcResult
-peerVpc = AWS.request serviceName "PeerVpc" 
+peerVpc = AWS.request serviceName "peerVpc" 
 
 
 -- | <p>Sets the specified open ports for an Amazon Lightsail instance, and closes all ports for every protocol not included in the current request.</p>
 putInstancePublicPorts :: forall eff. PutInstancePublicPortsRequest -> Aff (err :: AWS.RequestError | eff) PutInstancePublicPortsResult
-putInstancePublicPorts = AWS.request serviceName "PutInstancePublicPorts" 
+putInstancePublicPorts = AWS.request serviceName "putInstancePublicPorts" 
 
 
 -- | <p>Restarts a specific instance. When your Amazon Lightsail instance is finished rebooting, Lightsail assigns a new public IP address. To use the same IP address after restarting, create a static IP address and attach it to the instance.</p>
 rebootInstance :: forall eff. RebootInstanceRequest -> Aff (err :: AWS.RequestError | eff) RebootInstanceResult
-rebootInstance = AWS.request serviceName "RebootInstance" 
+rebootInstance = AWS.request serviceName "rebootInstance" 
 
 
 -- | <p>Deletes a specific static IP from your account.</p>
 releaseStaticIp :: forall eff. ReleaseStaticIpRequest -> Aff (err :: AWS.RequestError | eff) ReleaseStaticIpResult
-releaseStaticIp = AWS.request serviceName "ReleaseStaticIp" 
+releaseStaticIp = AWS.request serviceName "releaseStaticIp" 
 
 
 -- | <p>Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the reboot instance operation.</p>
 startInstance :: forall eff. StartInstanceRequest -> Aff (err :: AWS.RequestError | eff) StartInstanceResult
-startInstance = AWS.request serviceName "StartInstance" 
+startInstance = AWS.request serviceName "startInstance" 
 
 
 -- | <p>Stops a specific Amazon Lightsail instance that is currently running.</p>
 stopInstance :: forall eff. StopInstanceRequest -> Aff (err :: AWS.RequestError | eff) StopInstanceResult
-stopInstance = AWS.request serviceName "StopInstance" 
+stopInstance = AWS.request serviceName "stopInstance" 
 
 
 -- | <p>Attempts to unpeer the Lightsail VPC from the user's default VPC.</p>
 unpeerVpc :: forall eff. UnpeerVpcRequest -> Aff (err :: AWS.RequestError | eff) UnpeerVpcResult
-unpeerVpc = AWS.request serviceName "UnpeerVpc" 
+unpeerVpc = AWS.request serviceName "unpeerVpc" 
 
 
 -- | <p>Updates a domain recordset after it is created.</p>
 updateDomainEntry :: forall eff. UpdateDomainEntryRequest -> Aff (err :: AWS.RequestError | eff) UpdateDomainEntryResult
-updateDomainEntry = AWS.request serviceName "UpdateDomainEntry" 
+updateDomainEntry = AWS.request serviceName "updateDomainEntry" 
 
 
 -- | <p>Updates the specified attribute for a load balancer.</p>
 updateLoadBalancerAttribute :: forall eff. UpdateLoadBalancerAttributeRequest -> Aff (err :: AWS.RequestError | eff) UpdateLoadBalancerAttributeResult
-updateLoadBalancerAttribute = AWS.request serviceName "UpdateLoadBalancerAttribute" 
+updateLoadBalancerAttribute = AWS.request serviceName "updateLoadBalancerAttribute" 
 
 
 -- | <p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>

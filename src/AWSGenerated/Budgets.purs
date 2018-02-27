@@ -16,67 +16,67 @@ serviceName = "Budgets" :: String
 
 -- | <p>Creates a budget and, if included, notifications and subscribers. </p>
 createBudget :: forall eff. CreateBudgetRequest -> Aff (err :: AWS.RequestError | eff) CreateBudgetResponse
-createBudget = AWS.request serviceName "CreateBudget" 
+createBudget = AWS.request serviceName "createBudget" 
 
 
 -- | <p>Creates a notification. You must create the budget before you create the associated notification.</p>
 createNotification :: forall eff. CreateNotificationRequest -> Aff (err :: AWS.RequestError | eff) CreateNotificationResponse
-createNotification = AWS.request serviceName "CreateNotification" 
+createNotification = AWS.request serviceName "createNotification" 
 
 
 -- | <p>Creates a subscriber. You must create the associated budget and notification before you create the subscriber.</p>
 createSubscriber :: forall eff. CreateSubscriberRequest -> Aff (err :: AWS.RequestError | eff) CreateSubscriberResponse
-createSubscriber = AWS.request serviceName "CreateSubscriber" 
+createSubscriber = AWS.request serviceName "createSubscriber" 
 
 
 -- | <p>Deletes a budget. You can delete your budget at any time.</p> <p> <b>Deleting a budget also deletes the notifications and subscribers associated with that budget.</b> </p>
 deleteBudget :: forall eff. DeleteBudgetRequest -> Aff (err :: AWS.RequestError | eff) DeleteBudgetResponse
-deleteBudget = AWS.request serviceName "DeleteBudget" 
+deleteBudget = AWS.request serviceName "deleteBudget" 
 
 
 -- | <p>Deletes a notification.</p> <p> <b>Deleting a notification also deletes the subscribers associated with the notification.</b> </p>
 deleteNotification :: forall eff. DeleteNotificationRequest -> Aff (err :: AWS.RequestError | eff) DeleteNotificationResponse
-deleteNotification = AWS.request serviceName "DeleteNotification" 
+deleteNotification = AWS.request serviceName "deleteNotification" 
 
 
 -- | <p>Deletes a subscriber.</p> <p> <b>Deleting the last subscriber to a notification also deletes the notification.</b> </p>
 deleteSubscriber :: forall eff. DeleteSubscriberRequest -> Aff (err :: AWS.RequestError | eff) DeleteSubscriberResponse
-deleteSubscriber = AWS.request serviceName "DeleteSubscriber" 
+deleteSubscriber = AWS.request serviceName "deleteSubscriber" 
 
 
 -- | <p>Describes a budget.</p>
 describeBudget :: forall eff. DescribeBudgetRequest -> Aff (err :: AWS.RequestError | eff) DescribeBudgetResponse
-describeBudget = AWS.request serviceName "DescribeBudget" 
+describeBudget = AWS.request serviceName "describeBudget" 
 
 
 -- | <p>Lists the budgets associated with an account.</p>
 describeBudgets :: forall eff. DescribeBudgetsRequest -> Aff (err :: AWS.RequestError | eff) DescribeBudgetsResponse
-describeBudgets = AWS.request serviceName "DescribeBudgets" 
+describeBudgets = AWS.request serviceName "describeBudgets" 
 
 
 -- | <p>Lists the notifications associated with a budget.</p>
 describeNotificationsForBudget :: forall eff. DescribeNotificationsForBudgetRequest -> Aff (err :: AWS.RequestError | eff) DescribeNotificationsForBudgetResponse
-describeNotificationsForBudget = AWS.request serviceName "DescribeNotificationsForBudget" 
+describeNotificationsForBudget = AWS.request serviceName "describeNotificationsForBudget" 
 
 
 -- | <p>Lists the subscribers associated with a notification.</p>
 describeSubscribersForNotification :: forall eff. DescribeSubscribersForNotificationRequest -> Aff (err :: AWS.RequestError | eff) DescribeSubscribersForNotificationResponse
-describeSubscribersForNotification = AWS.request serviceName "DescribeSubscribersForNotification" 
+describeSubscribersForNotification = AWS.request serviceName "describeSubscribersForNotification" 
 
 
 -- | <p>Updates a budget. You can change every part of a budget except for the <code>budgetName</code> and the <code>calculatedSpend</code>. When a budget is modified, the <code>calculatedSpend</code> drops to zero until AWS has new usage data to use for forecasting.</p>
 updateBudget :: forall eff. UpdateBudgetRequest -> Aff (err :: AWS.RequestError | eff) UpdateBudgetResponse
-updateBudget = AWS.request serviceName "UpdateBudget" 
+updateBudget = AWS.request serviceName "updateBudget" 
 
 
 -- | <p>Updates a notification.</p>
 updateNotification :: forall eff. UpdateNotificationRequest -> Aff (err :: AWS.RequestError | eff) UpdateNotificationResponse
-updateNotification = AWS.request serviceName "UpdateNotification" 
+updateNotification = AWS.request serviceName "updateNotification" 
 
 
 -- | <p>Updates a subscriber.</p>
 updateSubscriber :: forall eff. UpdateSubscriberRequest -> Aff (err :: AWS.RequestError | eff) UpdateSubscriberResponse
-updateSubscriber = AWS.request serviceName "UpdateSubscriber" 
+updateSubscriber = AWS.request serviceName "updateSubscriber" 
 
 
 -- | <p>The account ID of the customer. It should be a 12 digit number.</p>

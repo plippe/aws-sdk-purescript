@@ -16,92 +16,92 @@ serviceName = "CognitoIdentity" :: String
 
 -- | <p>Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The limit on identity pools is 60 per account. The keys for <code>SupportedLoginProviders</code> are as follows:</p> <ul> <li> <p>Facebook: <code>graph.facebook.com</code> </p> </li> <li> <p>Google: <code>accounts.google.com</code> </p> </li> <li> <p>Amazon: <code>www.amazon.com</code> </p> </li> <li> <p>Twitter: <code>api.twitter.com</code> </p> </li> <li> <p>Digits: <code>www.digits.com</code> </p> </li> </ul> <p>You must use AWS Developer credentials to call this API.</p>
 createIdentityPool :: forall eff. CreateIdentityPoolInput -> Aff (err :: AWS.RequestError | eff) IdentityPool
-createIdentityPool = AWS.request serviceName "CreateIdentityPool" 
+createIdentityPool = AWS.request serviceName "createIdentityPool" 
 
 
 -- | <p>Deletes identities from an identity pool. You can specify a list of 1-60 identities that you want to delete.</p> <p>You must use AWS Developer credentials to call this API.</p>
 deleteIdentities :: forall eff. DeleteIdentitiesInput -> Aff (err :: AWS.RequestError | eff) DeleteIdentitiesResponse
-deleteIdentities = AWS.request serviceName "DeleteIdentities" 
+deleteIdentities = AWS.request serviceName "deleteIdentities" 
 
 
 -- | <p>Deletes a user pool. Once a pool is deleted, users will not be able to authenticate with the pool.</p> <p>You must use AWS Developer credentials to call this API.</p>
 deleteIdentityPool :: forall eff. DeleteIdentityPoolInput -> Aff (err :: AWS.RequestError | eff) Unit
-deleteIdentityPool = AWS.request serviceName "DeleteIdentityPool" 
+deleteIdentityPool = AWS.request serviceName "deleteIdentityPool" 
 
 
 -- | <p>Returns metadata related to the given identity, including when the identity was created and any associated linked logins.</p> <p>You must use AWS Developer credentials to call this API.</p>
 describeIdentity :: forall eff. DescribeIdentityInput -> Aff (err :: AWS.RequestError | eff) IdentityDescription
-describeIdentity = AWS.request serviceName "DescribeIdentity" 
+describeIdentity = AWS.request serviceName "describeIdentity" 
 
 
 -- | <p>Gets details about a particular identity pool, including the pool name, ID description, creation date, and current number of users.</p> <p>You must use AWS Developer credentials to call this API.</p>
 describeIdentityPool :: forall eff. DescribeIdentityPoolInput -> Aff (err :: AWS.RequestError | eff) IdentityPool
-describeIdentityPool = AWS.request serviceName "DescribeIdentityPool" 
+describeIdentityPool = AWS.request serviceName "describeIdentityPool" 
 
 
 -- | <p>Returns credentials for the provided identity ID. Any provided logins will be validated against supported login providers. If the token is for cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service with the appropriate role for the token.</p> <p>This is a public API. You do not need any credentials to call this API.</p>
 getCredentialsForIdentity :: forall eff. GetCredentialsForIdentityInput -> Aff (err :: AWS.RequestError | eff) GetCredentialsForIdentityResponse
-getCredentialsForIdentity = AWS.request serviceName "GetCredentialsForIdentity" 
+getCredentialsForIdentity = AWS.request serviceName "getCredentialsForIdentity" 
 
 
 -- | <p>Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.</p> <p>This is a public API. You do not need any credentials to call this API.</p>
 getId :: forall eff. GetIdInput -> Aff (err :: AWS.RequestError | eff) GetIdResponse
-getId = AWS.request serviceName "GetId" 
+getId = AWS.request serviceName "getId" 
 
 
 -- | <p>Gets the roles for an identity pool.</p> <p>You must use AWS Developer credentials to call this API.</p>
 getIdentityPoolRoles :: forall eff. GetIdentityPoolRolesInput -> Aff (err :: AWS.RequestError | eff) GetIdentityPoolRolesResponse
-getIdentityPoolRoles = AWS.request serviceName "GetIdentityPoolRoles" 
+getIdentityPoolRoles = AWS.request serviceName "getIdentityPoolRoles" 
 
 
 -- | <p>Gets an OpenID token, using a known Cognito ID. This known Cognito ID is returned by <a>GetId</a>. You can optionally add additional logins for the identity. Supplying multiple logins creates an implicit link.</p> <p>The OpenId token is valid for 15 minutes.</p> <p>This is a public API. You do not need any credentials to call this API.</p>
 getOpenIdToken :: forall eff. GetOpenIdTokenInput -> Aff (err :: AWS.RequestError | eff) GetOpenIdTokenResponse
-getOpenIdToken = AWS.request serviceName "GetOpenIdToken" 
+getOpenIdToken = AWS.request serviceName "getOpenIdToken" 
 
 
 -- | <p>Registers (or retrieves) a Cognito <code>IdentityId</code> and an OpenID Connect token for a user authenticated by your backend authentication process. Supplying multiple logins will create an implicit linked account. You can only specify one developer provider as part of the <code>Logins</code> map, which is linked to the identity pool. The developer provider is the "domain" by which Cognito will refer to your users.</p> <p>You can use <code>GetOpenIdTokenForDeveloperIdentity</code> to create a new identity and to link new logins (that is, user credentials issued by a public provider or developer provider) to an existing identity. When you want to create a new identity, the <code>IdentityId</code> should be null. When you want to associate a new login with an existing authenticated/unauthenticated identity, you can do so by providing the existing <code>IdentityId</code>. This API will create the identity in the specified <code>IdentityPoolId</code>.</p> <p>You must use AWS Developer credentials to call this API.</p>
 getOpenIdTokenForDeveloperIdentity :: forall eff. GetOpenIdTokenForDeveloperIdentityInput -> Aff (err :: AWS.RequestError | eff) GetOpenIdTokenForDeveloperIdentityResponse
-getOpenIdTokenForDeveloperIdentity = AWS.request serviceName "GetOpenIdTokenForDeveloperIdentity" 
+getOpenIdTokenForDeveloperIdentity = AWS.request serviceName "getOpenIdTokenForDeveloperIdentity" 
 
 
 -- | <p>Lists the identities in a pool.</p> <p>You must use AWS Developer credentials to call this API.</p>
 listIdentities :: forall eff. ListIdentitiesInput -> Aff (err :: AWS.RequestError | eff) ListIdentitiesResponse
-listIdentities = AWS.request serviceName "ListIdentities" 
+listIdentities = AWS.request serviceName "listIdentities" 
 
 
 -- | <p>Lists all of the Cognito identity pools registered for your account.</p> <p>You must use AWS Developer credentials to call this API.</p>
 listIdentityPools :: forall eff. ListIdentityPoolsInput -> Aff (err :: AWS.RequestError | eff) ListIdentityPoolsResponse
-listIdentityPools = AWS.request serviceName "ListIdentityPools" 
+listIdentityPools = AWS.request serviceName "listIdentityPools" 
 
 
 -- | <p>Retrieves the <code>IdentityID</code> associated with a <code>DeveloperUserIdentifier</code> or the list of <code>DeveloperUserIdentifier</code>s associated with an <code>IdentityId</code> for an existing identity. Either <code>IdentityID</code> or <code>DeveloperUserIdentifier</code> must not be null. If you supply only one of these values, the other value will be searched in the database and returned as a part of the response. If you supply both, <code>DeveloperUserIdentifier</code> will be matched against <code>IdentityID</code>. If the values are verified against the database, the response returns both values and is the same as the request. Otherwise a <code>ResourceConflictException</code> is thrown.</p> <p>You must use AWS Developer credentials to call this API.</p>
 lookupDeveloperIdentity :: forall eff. LookupDeveloperIdentityInput -> Aff (err :: AWS.RequestError | eff) LookupDeveloperIdentityResponse
-lookupDeveloperIdentity = AWS.request serviceName "LookupDeveloperIdentity" 
+lookupDeveloperIdentity = AWS.request serviceName "lookupDeveloperIdentity" 
 
 
 -- | <p>Merges two users having different <code>IdentityId</code>s, existing in the same identity pool, and identified by the same developer provider. You can use this action to request that discrete users be merged and identified as a single user in the Cognito environment. Cognito associates the given source user (<code>SourceUserIdentifier</code>) with the <code>IdentityId</code> of the <code>DestinationUserIdentifier</code>. Only developer-authenticated users can be merged. If the users to be merged are associated with the same public provider, but as two different users, an exception will be thrown.</p> <p>You must use AWS Developer credentials to call this API.</p>
 mergeDeveloperIdentities :: forall eff. MergeDeveloperIdentitiesInput -> Aff (err :: AWS.RequestError | eff) MergeDeveloperIdentitiesResponse
-mergeDeveloperIdentities = AWS.request serviceName "MergeDeveloperIdentities" 
+mergeDeveloperIdentities = AWS.request serviceName "mergeDeveloperIdentities" 
 
 
 -- | <p>Sets the roles for an identity pool. These roles are used when making calls to <a>GetCredentialsForIdentity</a> action.</p> <p>You must use AWS Developer credentials to call this API.</p>
 setIdentityPoolRoles :: forall eff. SetIdentityPoolRolesInput -> Aff (err :: AWS.RequestError | eff) Unit
-setIdentityPoolRoles = AWS.request serviceName "SetIdentityPoolRoles" 
+setIdentityPoolRoles = AWS.request serviceName "setIdentityPoolRoles" 
 
 
 -- | <p>Unlinks a <code>DeveloperUserIdentifier</code> from an existing identity. Unlinked developer users will be considered new identities next time they are seen. If, for a given Cognito identity, you remove all federated identities as well as the developer user identifier, the Cognito identity becomes inaccessible.</p> <p>You must use AWS Developer credentials to call this API.</p>
 unlinkDeveloperIdentity :: forall eff. UnlinkDeveloperIdentityInput -> Aff (err :: AWS.RequestError | eff) Unit
-unlinkDeveloperIdentity = AWS.request serviceName "UnlinkDeveloperIdentity" 
+unlinkDeveloperIdentity = AWS.request serviceName "unlinkDeveloperIdentity" 
 
 
 -- | <p>Unlinks a federated identity from an existing account. Unlinked logins will be considered new identities next time they are seen. Removing the last linked login will make this identity inaccessible.</p> <p>This is a public API. You do not need any credentials to call this API.</p>
 unlinkIdentity :: forall eff. UnlinkIdentityInput -> Aff (err :: AWS.RequestError | eff) Unit
-unlinkIdentity = AWS.request serviceName "UnlinkIdentity" 
+unlinkIdentity = AWS.request serviceName "unlinkIdentity" 
 
 
 -- | <p>Updates a user pool.</p> <p>You must use AWS Developer credentials to call this API.</p>
 updateIdentityPool :: forall eff. IdentityPool -> Aff (err :: AWS.RequestError | eff) IdentityPool
-updateIdentityPool = AWS.request serviceName "UpdateIdentityPool" 
+updateIdentityPool = AWS.request serviceName "updateIdentityPool" 
 
 
 newtype ARNString = ARNString String

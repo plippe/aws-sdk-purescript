@@ -16,202 +16,202 @@ serviceName = "WorkDocs" :: String
 
 -- | <p>Aborts the upload of the specified document version that was previously initiated by <a>InitiateDocumentVersionUpload</a>. The client should make this call only when it no longer intends to upload the document version, or fails to do so.</p>
 abortDocumentVersionUpload :: forall eff. AbortDocumentVersionUploadRequest -> Aff (err :: AWS.RequestError | eff) Unit
-abortDocumentVersionUpload = AWS.request serviceName "AbortDocumentVersionUpload" 
+abortDocumentVersionUpload = AWS.request serviceName "abortDocumentVersionUpload" 
 
 
 -- | <p>Activates the specified user. Only active users can access Amazon WorkDocs.</p>
 activateUser :: forall eff. ActivateUserRequest -> Aff (err :: AWS.RequestError | eff) ActivateUserResponse
-activateUser = AWS.request serviceName "ActivateUser" 
+activateUser = AWS.request serviceName "activateUser" 
 
 
 -- | <p>Creates a set of permissions for the specified folder or document. The resource permissions are overwritten if the principals already have different permissions.</p>
 addResourcePermissions :: forall eff. AddResourcePermissionsRequest -> Aff (err :: AWS.RequestError | eff) AddResourcePermissionsResponse
-addResourcePermissions = AWS.request serviceName "AddResourcePermissions" 
+addResourcePermissions = AWS.request serviceName "addResourcePermissions" 
 
 
 -- | <p>Adds a new comment to the specified document version.</p>
 createComment :: forall eff. CreateCommentRequest -> Aff (err :: AWS.RequestError | eff) CreateCommentResponse
-createComment = AWS.request serviceName "CreateComment" 
+createComment = AWS.request serviceName "createComment" 
 
 
 -- | <p>Adds one or more custom properties to the specified resource (a folder, document, or version).</p>
 createCustomMetadata :: forall eff. CreateCustomMetadataRequest -> Aff (err :: AWS.RequestError | eff) CreateCustomMetadataResponse
-createCustomMetadata = AWS.request serviceName "CreateCustomMetadata" 
+createCustomMetadata = AWS.request serviceName "createCustomMetadata" 
 
 
 -- | <p>Creates a folder with the specified name and parent folder.</p>
 createFolder :: forall eff. CreateFolderRequest -> Aff (err :: AWS.RequestError | eff) CreateFolderResponse
-createFolder = AWS.request serviceName "CreateFolder" 
+createFolder = AWS.request serviceName "createFolder" 
 
 
 -- | <p>Adds the specified list of labels to the given resource (a document or folder)</p>
 createLabels :: forall eff. CreateLabelsRequest -> Aff (err :: AWS.RequestError | eff) CreateLabelsResponse
-createLabels = AWS.request serviceName "CreateLabels" 
+createLabels = AWS.request serviceName "createLabels" 
 
 
 -- | <p>Configure WorkDocs to use Amazon SNS notifications.</p> <p>The endpoint receives a confirmation message, and must confirm the subscription. For more information, see <a href="http://docs.aws.amazon.com/sns/latest/dg/SendMessageToHttp.html#SendMessageToHttp.confirm">Confirm the Subscription</a> in the <i>Amazon Simple Notification Service Developer Guide</i>.</p>
 createNotificationSubscription :: forall eff. CreateNotificationSubscriptionRequest -> Aff (err :: AWS.RequestError | eff) CreateNotificationSubscriptionResponse
-createNotificationSubscription = AWS.request serviceName "CreateNotificationSubscription" 
+createNotificationSubscription = AWS.request serviceName "createNotificationSubscription" 
 
 
 -- | <p>Creates a user in a Simple AD or Microsoft AD directory. The status of a newly created user is "ACTIVE". New users can access Amazon WorkDocs.</p>
 createUser :: forall eff. CreateUserRequest -> Aff (err :: AWS.RequestError | eff) CreateUserResponse
-createUser = AWS.request serviceName "CreateUser" 
+createUser = AWS.request serviceName "createUser" 
 
 
 -- | <p>Deactivates the specified user, which revokes the user's access to Amazon WorkDocs.</p>
 deactivateUser :: forall eff. DeactivateUserRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deactivateUser = AWS.request serviceName "DeactivateUser" 
+deactivateUser = AWS.request serviceName "deactivateUser" 
 
 
 -- | <p>Deletes the specified comment from the document version.</p>
 deleteComment :: forall eff. DeleteCommentRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteComment = AWS.request serviceName "DeleteComment" 
+deleteComment = AWS.request serviceName "deleteComment" 
 
 
 -- | <p>Deletes custom metadata from the specified resource.</p>
 deleteCustomMetadata :: forall eff. DeleteCustomMetadataRequest -> Aff (err :: AWS.RequestError | eff) DeleteCustomMetadataResponse
-deleteCustomMetadata = AWS.request serviceName "DeleteCustomMetadata" 
+deleteCustomMetadata = AWS.request serviceName "deleteCustomMetadata" 
 
 
 -- | <p>Permanently deletes the specified document and its associated metadata.</p>
 deleteDocument :: forall eff. DeleteDocumentRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDocument = AWS.request serviceName "DeleteDocument" 
+deleteDocument = AWS.request serviceName "deleteDocument" 
 
 
 -- | <p>Permanently deletes the specified folder and its contents.</p>
 deleteFolder :: forall eff. DeleteFolderRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteFolder = AWS.request serviceName "DeleteFolder" 
+deleteFolder = AWS.request serviceName "deleteFolder" 
 
 
 -- | <p>Deletes the contents of the specified folder.</p>
 deleteFolderContents :: forall eff. DeleteFolderContentsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteFolderContents = AWS.request serviceName "DeleteFolderContents" 
+deleteFolderContents = AWS.request serviceName "deleteFolderContents" 
 
 
 -- | <p>Deletes the specified list of labels from a resource.</p>
 deleteLabels :: forall eff. DeleteLabelsRequest -> Aff (err :: AWS.RequestError | eff) DeleteLabelsResponse
-deleteLabels = AWS.request serviceName "DeleteLabels" 
+deleteLabels = AWS.request serviceName "deleteLabels" 
 
 
 -- | <p>Deletes the specified subscription from the specified organization.</p>
 deleteNotificationSubscription :: forall eff. DeleteNotificationSubscriptionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteNotificationSubscription = AWS.request serviceName "DeleteNotificationSubscription" 
+deleteNotificationSubscription = AWS.request serviceName "deleteNotificationSubscription" 
 
 
 -- | <p>Deletes the specified user from a Simple AD or Microsoft AD directory.</p>
 deleteUser :: forall eff. DeleteUserRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteUser = AWS.request serviceName "DeleteUser" 
+deleteUser = AWS.request serviceName "deleteUser" 
 
 
 -- | <p>Describes the user activities in a specified time period.</p>
 describeActivities :: forall eff. DescribeActivitiesRequest -> Aff (err :: AWS.RequestError | eff) DescribeActivitiesResponse
-describeActivities = AWS.request serviceName "DescribeActivities" 
+describeActivities = AWS.request serviceName "describeActivities" 
 
 
 -- | <p>List all the comments for the specified document version.</p>
 describeComments :: forall eff. DescribeCommentsRequest -> Aff (err :: AWS.RequestError | eff) DescribeCommentsResponse
-describeComments = AWS.request serviceName "DescribeComments" 
+describeComments = AWS.request serviceName "describeComments" 
 
 
 -- | <p>Retrieves the document versions for the specified document.</p> <p>By default, only active versions are returned.</p>
 describeDocumentVersions :: forall eff. DescribeDocumentVersionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeDocumentVersionsResponse
-describeDocumentVersions = AWS.request serviceName "DescribeDocumentVersions" 
+describeDocumentVersions = AWS.request serviceName "describeDocumentVersions" 
 
 
 -- | <p>Describes the contents of the specified folder, including its documents and subfolders.</p> <p>By default, Amazon WorkDocs returns the first 100 active document and folder metadata items. If there are more results, the response includes a marker that you can use to request the next set of results. You can also request initialized documents.</p>
 describeFolderContents :: forall eff. DescribeFolderContentsRequest -> Aff (err :: AWS.RequestError | eff) DescribeFolderContentsResponse
-describeFolderContents = AWS.request serviceName "DescribeFolderContents" 
+describeFolderContents = AWS.request serviceName "describeFolderContents" 
 
 
 -- | <p>Describes the groups specified by query.</p>
 describeGroups :: forall eff. DescribeGroupsRequest -> Aff (err :: AWS.RequestError | eff) DescribeGroupsResponse
-describeGroups = AWS.request serviceName "DescribeGroups" 
+describeGroups = AWS.request serviceName "describeGroups" 
 
 
 -- | <p>Lists the specified notification subscriptions.</p>
 describeNotificationSubscriptions :: forall eff. DescribeNotificationSubscriptionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeNotificationSubscriptionsResponse
-describeNotificationSubscriptions = AWS.request serviceName "DescribeNotificationSubscriptions" 
+describeNotificationSubscriptions = AWS.request serviceName "describeNotificationSubscriptions" 
 
 
 -- | <p>Describes the permissions of a specified resource.</p>
 describeResourcePermissions :: forall eff. DescribeResourcePermissionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeResourcePermissionsResponse
-describeResourcePermissions = AWS.request serviceName "DescribeResourcePermissions" 
+describeResourcePermissions = AWS.request serviceName "describeResourcePermissions" 
 
 
 -- | <p>Describes the current user's special folders; the <code>RootFolder</code> and the <code>RecycleBin</code>. <code>RootFolder</code> is the root of user's files and folders and <code>RecycleBin</code> is the root of recycled items. This is not a valid action for SigV4 (administrative API) clients.</p>
 describeRootFolders :: forall eff. DescribeRootFoldersRequest -> Aff (err :: AWS.RequestError | eff) DescribeRootFoldersResponse
-describeRootFolders = AWS.request serviceName "DescribeRootFolders" 
+describeRootFolders = AWS.request serviceName "describeRootFolders" 
 
 
 -- | <p>Describes the specified users. You can describe all users or filter the results (for example, by status or organization).</p> <p>By default, Amazon WorkDocs returns the first 24 active or pending users. If there are more results, the response includes a marker that you can use to request the next set of results.</p>
 describeUsers :: forall eff. DescribeUsersRequest -> Aff (err :: AWS.RequestError | eff) DescribeUsersResponse
-describeUsers = AWS.request serviceName "DescribeUsers" 
+describeUsers = AWS.request serviceName "describeUsers" 
 
 
 -- | <p>Retrieves details of the current user for whom the authentication token was generated. This is not a valid action for SigV4 (administrative API) clients.</p>
 getCurrentUser :: forall eff. GetCurrentUserRequest -> Aff (err :: AWS.RequestError | eff) GetCurrentUserResponse
-getCurrentUser = AWS.request serviceName "GetCurrentUser" 
+getCurrentUser = AWS.request serviceName "getCurrentUser" 
 
 
 -- | <p>Retrieves details of a document.</p>
 getDocument :: forall eff. GetDocumentRequest -> Aff (err :: AWS.RequestError | eff) GetDocumentResponse
-getDocument = AWS.request serviceName "GetDocument" 
+getDocument = AWS.request serviceName "getDocument" 
 
 
 -- | <p>Retrieves the path information (the hierarchy from the root folder) for the requested document.</p> <p>By default, Amazon WorkDocs returns a maximum of 100 levels upwards from the requested document and only includes the IDs of the parent folders in the path. You can limit the maximum number of levels. You can also request the names of the parent folders.</p>
 getDocumentPath :: forall eff. GetDocumentPathRequest -> Aff (err :: AWS.RequestError | eff) GetDocumentPathResponse
-getDocumentPath = AWS.request serviceName "GetDocumentPath" 
+getDocumentPath = AWS.request serviceName "getDocumentPath" 
 
 
 -- | <p>Retrieves version metadata for the specified document.</p>
 getDocumentVersion :: forall eff. GetDocumentVersionRequest -> Aff (err :: AWS.RequestError | eff) GetDocumentVersionResponse
-getDocumentVersion = AWS.request serviceName "GetDocumentVersion" 
+getDocumentVersion = AWS.request serviceName "getDocumentVersion" 
 
 
 -- | <p>Retrieves the metadata of the specified folder.</p>
 getFolder :: forall eff. GetFolderRequest -> Aff (err :: AWS.RequestError | eff) GetFolderResponse
-getFolder = AWS.request serviceName "GetFolder" 
+getFolder = AWS.request serviceName "getFolder" 
 
 
 -- | <p>Retrieves the path information (the hierarchy from the root folder) for the specified folder.</p> <p>By default, Amazon WorkDocs returns a maximum of 100 levels upwards from the requested folder and only includes the IDs of the parent folders in the path. You can limit the maximum number of levels. You can also request the parent folder names.</p>
 getFolderPath :: forall eff. GetFolderPathRequest -> Aff (err :: AWS.RequestError | eff) GetFolderPathResponse
-getFolderPath = AWS.request serviceName "GetFolderPath" 
+getFolderPath = AWS.request serviceName "getFolderPath" 
 
 
 -- | <p>Creates a new document object and version object.</p> <p>The client specifies the parent folder ID and name of the document to upload. The ID is optionally specified when creating a new version of an existing document. This is the first step to upload a document. Next, upload the document to the URL returned from the call, and then call <a>UpdateDocumentVersion</a>.</p> <p>To cancel the document upload, call <a>AbortDocumentVersionUpload</a>.</p>
 initiateDocumentVersionUpload :: forall eff. InitiateDocumentVersionUploadRequest -> Aff (err :: AWS.RequestError | eff) InitiateDocumentVersionUploadResponse
-initiateDocumentVersionUpload = AWS.request serviceName "InitiateDocumentVersionUpload" 
+initiateDocumentVersionUpload = AWS.request serviceName "initiateDocumentVersionUpload" 
 
 
 -- | <p>Removes all the permissions from the specified resource.</p>
 removeAllResourcePermissions :: forall eff. RemoveAllResourcePermissionsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-removeAllResourcePermissions = AWS.request serviceName "RemoveAllResourcePermissions" 
+removeAllResourcePermissions = AWS.request serviceName "removeAllResourcePermissions" 
 
 
 -- | <p>Removes the permission for the specified principal from the specified resource.</p>
 removeResourcePermission :: forall eff. RemoveResourcePermissionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-removeResourcePermission = AWS.request serviceName "RemoveResourcePermission" 
+removeResourcePermission = AWS.request serviceName "removeResourcePermission" 
 
 
 -- | <p>Updates the specified attributes of a document. The user must have access to both the document and its parent folder, if applicable.</p>
 updateDocument :: forall eff. UpdateDocumentRequest -> Aff (err :: AWS.RequestError | eff) Unit
-updateDocument = AWS.request serviceName "UpdateDocument" 
+updateDocument = AWS.request serviceName "updateDocument" 
 
 
 -- | <p>Changes the status of the document version to ACTIVE. </p> <p>Amazon WorkDocs also sets its document container to ACTIVE. This is the last step in a document upload, after the client uploads the document to an S3-presigned URL returned by <a>InitiateDocumentVersionUpload</a>. </p>
 updateDocumentVersion :: forall eff. UpdateDocumentVersionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-updateDocumentVersion = AWS.request serviceName "UpdateDocumentVersion" 
+updateDocumentVersion = AWS.request serviceName "updateDocumentVersion" 
 
 
 -- | <p>Updates the specified attributes of the specified folder. The user must have access to both the folder and its parent folder, if applicable.</p>
 updateFolder :: forall eff. UpdateFolderRequest -> Aff (err :: AWS.RequestError | eff) Unit
-updateFolder = AWS.request serviceName "UpdateFolder" 
+updateFolder = AWS.request serviceName "updateFolder" 
 
 
 -- | <p>Updates the specified attributes of the specified user, and grants or revokes administrative privileges to the Amazon WorkDocs site.</p>
 updateUser :: forall eff. UpdateUserRequest -> Aff (err :: AWS.RequestError | eff) UpdateUserResponse
-updateUser = AWS.request serviceName "UpdateUser" 
+updateUser = AWS.request serviceName "updateUser" 
 
 
 newtype AbortDocumentVersionUploadRequest = AbortDocumentVersionUploadRequest 

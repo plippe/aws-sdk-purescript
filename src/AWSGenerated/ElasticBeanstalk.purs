@@ -16,217 +16,217 @@ serviceName = "ElasticBeanstalk" :: String
 
 -- | <p>Cancels in-progress environment configuration update or application version deployment.</p>
 abortEnvironmentUpdate :: forall eff. AbortEnvironmentUpdateMessage -> Aff (err :: AWS.RequestError | eff) Unit
-abortEnvironmentUpdate = AWS.request serviceName "AbortEnvironmentUpdate" 
+abortEnvironmentUpdate = AWS.request serviceName "abortEnvironmentUpdate" 
 
 
 -- | <p>Applies a scheduled managed action immediately. A managed action can be applied only if its status is <code>Scheduled</code>. Get the status and action ID of a managed action with <a>DescribeEnvironmentManagedActions</a>.</p>
 applyEnvironmentManagedAction :: forall eff. ApplyEnvironmentManagedActionRequest -> Aff (err :: AWS.RequestError | eff) ApplyEnvironmentManagedActionResult
-applyEnvironmentManagedAction = AWS.request serviceName "ApplyEnvironmentManagedAction" 
+applyEnvironmentManagedAction = AWS.request serviceName "applyEnvironmentManagedAction" 
 
 
 -- | <p>Checks if the specified CNAME is available.</p>
 checkDNSAvailability :: forall eff. CheckDNSAvailabilityMessage -> Aff (err :: AWS.RequestError | eff) CheckDNSAvailabilityResultMessage
-checkDNSAvailability = AWS.request serviceName "CheckDNSAvailability" 
+checkDNSAvailability = AWS.request serviceName "checkDNSAvailability" 
 
 
 -- | <p>Create or update a group of environments that each run a separate component of a single application. Takes a list of version labels that specify application source bundles for each of the environments to create or update. The name of each environment and other required information must be included in the source bundles in an environment manifest named <code>env.yaml</code>. See <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html">Compose Environments</a> for details.</p>
 composeEnvironments :: forall eff. ComposeEnvironmentsMessage -> Aff (err :: AWS.RequestError | eff) EnvironmentDescriptionsMessage
-composeEnvironments = AWS.request serviceName "ComposeEnvironments" 
+composeEnvironments = AWS.request serviceName "composeEnvironments" 
 
 
 -- | <p> Creates an application that has one configuration template named <code>default</code> and no application versions. </p>
 createApplication :: forall eff. CreateApplicationMessage -> Aff (err :: AWS.RequestError | eff) ApplicationDescriptionMessage
-createApplication = AWS.request serviceName "CreateApplication" 
+createApplication = AWS.request serviceName "createApplication" 
 
 
 -- | <p>Creates an application version for the specified application. You can create an application version from a source bundle in Amazon S3, a commit in AWS CodeCommit, or the output of an AWS CodeBuild build as follows:</p> <p>Specify a commit in an AWS CodeCommit repository with <code>SourceBuildInformation</code>.</p> <p>Specify a build in an AWS CodeBuild with <code>SourceBuildInformation</code> and <code>BuildConfiguration</code>.</p> <p>Specify a source bundle in S3 with <code>SourceBundle</code> </p> <p>Omit both <code>SourceBuildInformation</code> and <code>SourceBundle</code> to use the default sample application.</p> <note> <p>Once you create an application version with a specified Amazon S3 bucket and key location, you cannot change that Amazon S3 location. If you change the Amazon S3 location, you receive an exception when you attempt to launch an environment from the application version.</p> </note>
 createApplicationVersion :: forall eff. CreateApplicationVersionMessage -> Aff (err :: AWS.RequestError | eff) ApplicationVersionDescriptionMessage
-createApplicationVersion = AWS.request serviceName "CreateApplicationVersion" 
+createApplicationVersion = AWS.request serviceName "createApplicationVersion" 
 
 
 -- | <p>Creates a configuration template. Templates are associated with a specific application and are used to deploy different versions of the application with the same configuration settings.</p> <p>Related Topics</p> <ul> <li> <p> <a>DescribeConfigurationOptions</a> </p> </li> <li> <p> <a>DescribeConfigurationSettings</a> </p> </li> <li> <p> <a>ListAvailableSolutionStacks</a> </p> </li> </ul>
 createConfigurationTemplate :: forall eff. CreateConfigurationTemplateMessage -> Aff (err :: AWS.RequestError | eff) ConfigurationSettingsDescription
-createConfigurationTemplate = AWS.request serviceName "CreateConfigurationTemplate" 
+createConfigurationTemplate = AWS.request serviceName "createConfigurationTemplate" 
 
 
 -- | <p>Launches an environment for the specified application using the specified configuration.</p>
 createEnvironment :: forall eff. CreateEnvironmentMessage -> Aff (err :: AWS.RequestError | eff) EnvironmentDescription
-createEnvironment = AWS.request serviceName "CreateEnvironment" 
+createEnvironment = AWS.request serviceName "createEnvironment" 
 
 
 -- | <p>Create a new version of your custom platform.</p>
 createPlatformVersion :: forall eff. CreatePlatformVersionRequest -> Aff (err :: AWS.RequestError | eff) CreatePlatformVersionResult
-createPlatformVersion = AWS.request serviceName "CreatePlatformVersion" 
+createPlatformVersion = AWS.request serviceName "createPlatformVersion" 
 
 
 -- | <p>Creates a bucket in Amazon S3 to store application versions, logs, and other files used by Elastic Beanstalk environments. The Elastic Beanstalk console and EB CLI call this API the first time you create an environment in a region. If the storage location already exists, <code>CreateStorageLocation</code> still returns the bucket name but does not create a new bucket.</p>
 createStorageLocation :: forall eff.  Aff (err :: AWS.RequestError | eff) CreateStorageLocationResultMessage
-createStorageLocation = AWS.request serviceName "CreateStorageLocation" unit
+createStorageLocation = AWS.request serviceName "createStorageLocation" unit
 
 
 -- | <p>Deletes the specified application along with all associated versions and configurations. The application versions will not be deleted from your Amazon S3 bucket.</p> <note> <p>You cannot delete an application that has a running environment.</p> </note>
 deleteApplication :: forall eff. DeleteApplicationMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteApplication = AWS.request serviceName "DeleteApplication" 
+deleteApplication = AWS.request serviceName "deleteApplication" 
 
 
 -- | <p>Deletes the specified version from the specified application.</p> <note> <p>You cannot delete an application version that is associated with a running environment.</p> </note>
 deleteApplicationVersion :: forall eff. DeleteApplicationVersionMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteApplicationVersion = AWS.request serviceName "DeleteApplicationVersion" 
+deleteApplicationVersion = AWS.request serviceName "deleteApplicationVersion" 
 
 
 -- | <p>Deletes the specified configuration template.</p> <note> <p>When you launch an environment using a configuration template, the environment gets a copy of the template. You can delete or modify the environment's copy of the template without affecting the running environment.</p> </note>
 deleteConfigurationTemplate :: forall eff. DeleteConfigurationTemplateMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteConfigurationTemplate = AWS.request serviceName "DeleteConfigurationTemplate" 
+deleteConfigurationTemplate = AWS.request serviceName "deleteConfigurationTemplate" 
 
 
 -- | <p>Deletes the draft configuration associated with the running environment.</p> <p>Updating a running environment with any configuration changes creates a draft configuration set. You can get the draft configuration using <a>DescribeConfigurationSettings</a> while the update is in progress or if the update fails. The <code>DeploymentStatus</code> for the draft configuration indicates whether the deployment is in process or has failed. The draft configuration remains in existence until it is deleted with this action.</p>
 deleteEnvironmentConfiguration :: forall eff. DeleteEnvironmentConfigurationMessage -> Aff (err :: AWS.RequestError | eff) Unit
-deleteEnvironmentConfiguration = AWS.request serviceName "DeleteEnvironmentConfiguration" 
+deleteEnvironmentConfiguration = AWS.request serviceName "deleteEnvironmentConfiguration" 
 
 
 -- | <p>Deletes the specified version of a custom platform.</p>
 deletePlatformVersion :: forall eff. DeletePlatformVersionRequest -> Aff (err :: AWS.RequestError | eff) DeletePlatformVersionResult
-deletePlatformVersion = AWS.request serviceName "DeletePlatformVersion" 
+deletePlatformVersion = AWS.request serviceName "deletePlatformVersion" 
 
 
 -- | <p>Retrieve a list of application versions.</p>
 describeApplicationVersions :: forall eff. DescribeApplicationVersionsMessage -> Aff (err :: AWS.RequestError | eff) ApplicationVersionDescriptionsMessage
-describeApplicationVersions = AWS.request serviceName "DescribeApplicationVersions" 
+describeApplicationVersions = AWS.request serviceName "describeApplicationVersions" 
 
 
 -- | <p>Returns the descriptions of existing applications.</p>
 describeApplications :: forall eff. DescribeApplicationsMessage -> Aff (err :: AWS.RequestError | eff) ApplicationDescriptionsMessage
-describeApplications = AWS.request serviceName "DescribeApplications" 
+describeApplications = AWS.request serviceName "describeApplications" 
 
 
 -- | <p>Describes the configuration options that are used in a particular configuration template or environment, or that a specified solution stack defines. The description includes the values the options, their default values, and an indication of the required action on a running environment if an option value is changed.</p>
 describeConfigurationOptions :: forall eff. DescribeConfigurationOptionsMessage -> Aff (err :: AWS.RequestError | eff) ConfigurationOptionsDescription
-describeConfigurationOptions = AWS.request serviceName "DescribeConfigurationOptions" 
+describeConfigurationOptions = AWS.request serviceName "describeConfigurationOptions" 
 
 
 -- | <p>Returns a description of the settings for the specified configuration set, that is, either a configuration template or the configuration set associated with a running environment.</p> <p>When describing the settings for the configuration set associated with a running environment, it is possible to receive two sets of setting descriptions. One is the deployed configuration set, and the other is a draft configuration of an environment that is either in the process of deployment or that failed to deploy.</p> <p>Related Topics</p> <ul> <li> <p> <a>DeleteEnvironmentConfiguration</a> </p> </li> </ul>
 describeConfigurationSettings :: forall eff. DescribeConfigurationSettingsMessage -> Aff (err :: AWS.RequestError | eff) ConfigurationSettingsDescriptions
-describeConfigurationSettings = AWS.request serviceName "DescribeConfigurationSettings" 
+describeConfigurationSettings = AWS.request serviceName "describeConfigurationSettings" 
 
 
 -- | <p>Returns information about the overall health of the specified environment. The <b>DescribeEnvironmentHealth</b> operation is only available with AWS Elastic Beanstalk Enhanced Health.</p>
 describeEnvironmentHealth :: forall eff. DescribeEnvironmentHealthRequest -> Aff (err :: AWS.RequestError | eff) DescribeEnvironmentHealthResult
-describeEnvironmentHealth = AWS.request serviceName "DescribeEnvironmentHealth" 
+describeEnvironmentHealth = AWS.request serviceName "describeEnvironmentHealth" 
 
 
 -- | <p>Lists an environment's completed and failed managed actions.</p>
 describeEnvironmentManagedActionHistory :: forall eff. DescribeEnvironmentManagedActionHistoryRequest -> Aff (err :: AWS.RequestError | eff) DescribeEnvironmentManagedActionHistoryResult
-describeEnvironmentManagedActionHistory = AWS.request serviceName "DescribeEnvironmentManagedActionHistory" 
+describeEnvironmentManagedActionHistory = AWS.request serviceName "describeEnvironmentManagedActionHistory" 
 
 
 -- | <p>Lists an environment's upcoming and in-progress managed actions.</p>
 describeEnvironmentManagedActions :: forall eff. DescribeEnvironmentManagedActionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEnvironmentManagedActionsResult
-describeEnvironmentManagedActions = AWS.request serviceName "DescribeEnvironmentManagedActions" 
+describeEnvironmentManagedActions = AWS.request serviceName "describeEnvironmentManagedActions" 
 
 
 -- | <p>Returns AWS resources for this environment.</p>
 describeEnvironmentResources :: forall eff. DescribeEnvironmentResourcesMessage -> Aff (err :: AWS.RequestError | eff) EnvironmentResourceDescriptionsMessage
-describeEnvironmentResources = AWS.request serviceName "DescribeEnvironmentResources" 
+describeEnvironmentResources = AWS.request serviceName "describeEnvironmentResources" 
 
 
 -- | <p>Returns descriptions for existing environments.</p>
 describeEnvironments :: forall eff. DescribeEnvironmentsMessage -> Aff (err :: AWS.RequestError | eff) EnvironmentDescriptionsMessage
-describeEnvironments = AWS.request serviceName "DescribeEnvironments" 
+describeEnvironments = AWS.request serviceName "describeEnvironments" 
 
 
 -- | <p>Returns list of event descriptions matching criteria up to the last 6 weeks.</p> <note> <p>This action returns the most recent 1,000 events from the specified <code>NextToken</code>.</p> </note>
 describeEvents :: forall eff. DescribeEventsMessage -> Aff (err :: AWS.RequestError | eff) EventDescriptionsMessage
-describeEvents = AWS.request serviceName "DescribeEvents" 
+describeEvents = AWS.request serviceName "describeEvents" 
 
 
 -- | <p>Retrives detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html">enhanced health reporting</a>.</p>
 describeInstancesHealth :: forall eff. DescribeInstancesHealthRequest -> Aff (err :: AWS.RequestError | eff) DescribeInstancesHealthResult
-describeInstancesHealth = AWS.request serviceName "DescribeInstancesHealth" 
+describeInstancesHealth = AWS.request serviceName "describeInstancesHealth" 
 
 
 -- | <p>Describes the version of the platform.</p>
 describePlatformVersion :: forall eff. DescribePlatformVersionRequest -> Aff (err :: AWS.RequestError | eff) DescribePlatformVersionResult
-describePlatformVersion = AWS.request serviceName "DescribePlatformVersion" 
+describePlatformVersion = AWS.request serviceName "describePlatformVersion" 
 
 
 -- | <p>Returns a list of the available solution stack names, with the public version first and then in reverse chronological order.</p>
 listAvailableSolutionStacks :: forall eff.  Aff (err :: AWS.RequestError | eff) ListAvailableSolutionStacksResultMessage
-listAvailableSolutionStacks = AWS.request serviceName "ListAvailableSolutionStacks" unit
+listAvailableSolutionStacks = AWS.request serviceName "listAvailableSolutionStacks" unit
 
 
 -- | <p>Lists the available platforms.</p>
 listPlatformVersions :: forall eff. ListPlatformVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListPlatformVersionsResult
-listPlatformVersions = AWS.request serviceName "ListPlatformVersions" 
+listPlatformVersions = AWS.request serviceName "listPlatformVersions" 
 
 
 -- | <p>Returns the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.</p> <p>Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments. For details about environment tagging, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html">Tagging Resources in Your Elastic Beanstalk Environment</a>.</p>
 listTagsForResource :: forall eff. ListTagsForResourceMessage -> Aff (err :: AWS.RequestError | eff) ResourceTagsDescriptionMessage
-listTagsForResource = AWS.request serviceName "ListTagsForResource" 
+listTagsForResource = AWS.request serviceName "listTagsForResource" 
 
 
 -- | <p>Deletes and recreates all of the AWS resources (for example: the Auto Scaling group, load balancer, etc.) for a specified environment and forces a restart.</p>
 rebuildEnvironment :: forall eff. RebuildEnvironmentMessage -> Aff (err :: AWS.RequestError | eff) Unit
-rebuildEnvironment = AWS.request serviceName "RebuildEnvironment" 
+rebuildEnvironment = AWS.request serviceName "rebuildEnvironment" 
 
 
 -- | <p>Initiates a request to compile the specified type of information of the deployed environment.</p> <p> Setting the <code>InfoType</code> to <code>tail</code> compiles the last lines from the application server log files of every Amazon EC2 instance in your environment. </p> <p> Setting the <code>InfoType</code> to <code>bundle</code> compresses the application server log files for every Amazon EC2 instance into a <code>.zip</code> file. Legacy and .NET containers do not support bundle logs. </p> <p> Use <a>RetrieveEnvironmentInfo</a> to obtain the set of logs. </p> <p>Related Topics</p> <ul> <li> <p> <a>RetrieveEnvironmentInfo</a> </p> </li> </ul>
 requestEnvironmentInfo :: forall eff. RequestEnvironmentInfoMessage -> Aff (err :: AWS.RequestError | eff) Unit
-requestEnvironmentInfo = AWS.request serviceName "RequestEnvironmentInfo" 
+requestEnvironmentInfo = AWS.request serviceName "requestEnvironmentInfo" 
 
 
 -- | <p>Causes the environment to restart the application container server running on each Amazon EC2 instance.</p>
 restartAppServer :: forall eff. RestartAppServerMessage -> Aff (err :: AWS.RequestError | eff) Unit
-restartAppServer = AWS.request serviceName "RestartAppServer" 
+restartAppServer = AWS.request serviceName "restartAppServer" 
 
 
 -- | <p>Retrieves the compiled information from a <a>RequestEnvironmentInfo</a> request.</p> <p>Related Topics</p> <ul> <li> <p> <a>RequestEnvironmentInfo</a> </p> </li> </ul>
 retrieveEnvironmentInfo :: forall eff. RetrieveEnvironmentInfoMessage -> Aff (err :: AWS.RequestError | eff) RetrieveEnvironmentInfoResultMessage
-retrieveEnvironmentInfo = AWS.request serviceName "RetrieveEnvironmentInfo" 
+retrieveEnvironmentInfo = AWS.request serviceName "retrieveEnvironmentInfo" 
 
 
 -- | <p>Swaps the CNAMEs of two environments.</p>
 swapEnvironmentCNAMEs :: forall eff. SwapEnvironmentCNAMEsMessage -> Aff (err :: AWS.RequestError | eff) Unit
-swapEnvironmentCNAMEs = AWS.request serviceName "SwapEnvironmentCNAMEs" 
+swapEnvironmentCNAMEs = AWS.request serviceName "swapEnvironmentCNAMEs" 
 
 
 -- | <p>Terminates the specified environment.</p>
 terminateEnvironment :: forall eff. TerminateEnvironmentMessage -> Aff (err :: AWS.RequestError | eff) EnvironmentDescription
-terminateEnvironment = AWS.request serviceName "TerminateEnvironment" 
+terminateEnvironment = AWS.request serviceName "terminateEnvironment" 
 
 
 -- | <p>Updates the specified application to have the specified properties.</p> <note> <p>If a property (for example, <code>description</code>) is not provided, the value remains unchanged. To clear these properties, specify an empty string.</p> </note>
 updateApplication :: forall eff. UpdateApplicationMessage -> Aff (err :: AWS.RequestError | eff) ApplicationDescriptionMessage
-updateApplication = AWS.request serviceName "UpdateApplication" 
+updateApplication = AWS.request serviceName "updateApplication" 
 
 
 -- | <p>Modifies lifecycle settings for an application.</p>
 updateApplicationResourceLifecycle :: forall eff. UpdateApplicationResourceLifecycleMessage -> Aff (err :: AWS.RequestError | eff) ApplicationResourceLifecycleDescriptionMessage
-updateApplicationResourceLifecycle = AWS.request serviceName "UpdateApplicationResourceLifecycle" 
+updateApplicationResourceLifecycle = AWS.request serviceName "updateApplicationResourceLifecycle" 
 
 
 -- | <p>Updates the specified application version to have the specified properties.</p> <note> <p>If a property (for example, <code>description</code>) is not provided, the value remains unchanged. To clear properties, specify an empty string.</p> </note>
 updateApplicationVersion :: forall eff. UpdateApplicationVersionMessage -> Aff (err :: AWS.RequestError | eff) ApplicationVersionDescriptionMessage
-updateApplicationVersion = AWS.request serviceName "UpdateApplicationVersion" 
+updateApplicationVersion = AWS.request serviceName "updateApplicationVersion" 
 
 
 -- | <p>Updates the specified configuration template to have the specified properties or configuration option values.</p> <note> <p>If a property (for example, <code>ApplicationName</code>) is not provided, its value remains unchanged. To clear such properties, specify an empty string.</p> </note> <p>Related Topics</p> <ul> <li> <p> <a>DescribeConfigurationOptions</a> </p> </li> </ul>
 updateConfigurationTemplate :: forall eff. UpdateConfigurationTemplateMessage -> Aff (err :: AWS.RequestError | eff) ConfigurationSettingsDescription
-updateConfigurationTemplate = AWS.request serviceName "UpdateConfigurationTemplate" 
+updateConfigurationTemplate = AWS.request serviceName "updateConfigurationTemplate" 
 
 
 -- | <p>Updates the environment description, deploys a new application version, updates the configuration settings to an entirely new configuration template, or updates select configuration option values in the running environment.</p> <p> Attempting to update both the release and configuration is not allowed and AWS Elastic Beanstalk returns an <code>InvalidParameterCombination</code> error. </p> <p> When updating the configuration settings to a new template or individual settings, a draft configuration is created and <a>DescribeConfigurationSettings</a> for this environment returns two setting descriptions with different <code>DeploymentStatus</code> values. </p>
 updateEnvironment :: forall eff. UpdateEnvironmentMessage -> Aff (err :: AWS.RequestError | eff) EnvironmentDescription
-updateEnvironment = AWS.request serviceName "UpdateEnvironment" 
+updateEnvironment = AWS.request serviceName "updateEnvironment" 
 
 
 -- | <p>Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: <code>TagsToAdd</code> for tags to add or update, and <code>TagsToRemove</code>.</p> <p>Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments. For details about environment tagging, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html">Tagging Resources in Your Elastic Beanstalk Environment</a>.</p> <p>If you create a custom IAM user policy to control permission to this operation, specify one of the following two virtual actions (or both) instead of the API operation name:</p> <dl> <dt>elasticbeanstalk:AddTags</dt> <dd> <p>Controls permission to call <code>UpdateTagsForResource</code> and pass a list of tags to add in the <code>TagsToAdd</code> parameter.</p> </dd> <dt>elasticbeanstalk:RemoveTags</dt> <dd> <p>Controls permission to call <code>UpdateTagsForResource</code> and pass a list of tag keys to remove in the <code>TagsToRemove</code> parameter.</p> </dd> </dl> <p>For details about creating a custom user policy, see <a href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies">Creating a Custom User Policy</a>.</p>
 updateTagsForResource :: forall eff. UpdateTagsForResourceMessage -> Aff (err :: AWS.RequestError | eff) Unit
-updateTagsForResource = AWS.request serviceName "UpdateTagsForResource" 
+updateTagsForResource = AWS.request serviceName "updateTagsForResource" 
 
 
 -- | <p>Takes a set of configuration settings and either a configuration template or environment, and determines whether those values are valid.</p> <p>This action returns a list of messages indicating any errors or warnings associated with the selection of option values.</p>
 validateConfigurationSettings :: forall eff. ValidateConfigurationSettingsMessage -> Aff (err :: AWS.RequestError | eff) ConfigurationSettingsValidationMessages
-validateConfigurationSettings = AWS.request serviceName "ValidateConfigurationSettings" 
+validateConfigurationSettings = AWS.request serviceName "validateConfigurationSettings" 
 
 
 newtype ARN = ARN String

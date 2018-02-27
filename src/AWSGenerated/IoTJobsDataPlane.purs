@@ -16,22 +16,22 @@ serviceName = "IoTJobsDataPlane" :: String
 
 -- | <p>Gets details of a job execution.</p>
 describeJobExecution :: forall eff. DescribeJobExecutionRequest -> Aff (err :: AWS.RequestError | eff) DescribeJobExecutionResponse
-describeJobExecution = AWS.request serviceName "DescribeJobExecution" 
+describeJobExecution = AWS.request serviceName "describeJobExecution" 
 
 
 -- | <p>Gets the list of all jobs for a thing that are not in a terminal status.</p>
 getPendingJobExecutions :: forall eff. GetPendingJobExecutionsRequest -> Aff (err :: AWS.RequestError | eff) GetPendingJobExecutionsResponse
-getPendingJobExecutions = AWS.request serviceName "GetPendingJobExecutions" 
+getPendingJobExecutions = AWS.request serviceName "getPendingJobExecutions" 
 
 
 -- | <p>Gets and starts the next pending (status IN_PROGRESS or QUEUED) job execution for a thing.</p>
 startNextPendingJobExecution :: forall eff. StartNextPendingJobExecutionRequest -> Aff (err :: AWS.RequestError | eff) StartNextPendingJobExecutionResponse
-startNextPendingJobExecution = AWS.request serviceName "StartNextPendingJobExecution" 
+startNextPendingJobExecution = AWS.request serviceName "startNextPendingJobExecution" 
 
 
 -- | <p>Updates the status of a job execution.</p>
 updateJobExecution :: forall eff. UpdateJobExecutionRequest -> Aff (err :: AWS.RequestError | eff) UpdateJobExecutionResponse
-updateJobExecution = AWS.request serviceName "UpdateJobExecution" 
+updateJobExecution = AWS.request serviceName "updateJobExecution" 
 
 
 -- | <p>The certificate is invalid.</p>

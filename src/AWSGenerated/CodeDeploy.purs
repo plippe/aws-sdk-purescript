@@ -16,202 +16,202 @@ serviceName = "CodeDeploy" :: String
 
 -- | <p>Adds tags to on-premises instances.</p>
 addTagsToOnPremisesInstances :: forall eff. AddTagsToOnPremisesInstancesInput -> Aff (err :: AWS.RequestError | eff) Unit
-addTagsToOnPremisesInstances = AWS.request serviceName "AddTagsToOnPremisesInstances" 
+addTagsToOnPremisesInstances = AWS.request serviceName "addTagsToOnPremisesInstances" 
 
 
 -- | <p>Gets information about one or more application revisions.</p>
 batchGetApplicationRevisions :: forall eff. BatchGetApplicationRevisionsInput -> Aff (err :: AWS.RequestError | eff) BatchGetApplicationRevisionsOutput
-batchGetApplicationRevisions = AWS.request serviceName "BatchGetApplicationRevisions" 
+batchGetApplicationRevisions = AWS.request serviceName "batchGetApplicationRevisions" 
 
 
 -- | <p>Gets information about one or more applications.</p>
 batchGetApplications :: forall eff. BatchGetApplicationsInput -> Aff (err :: AWS.RequestError | eff) BatchGetApplicationsOutput
-batchGetApplications = AWS.request serviceName "BatchGetApplications" 
+batchGetApplications = AWS.request serviceName "batchGetApplications" 
 
 
 -- | <p>Gets information about one or more deployment groups.</p>
 batchGetDeploymentGroups :: forall eff. BatchGetDeploymentGroupsInput -> Aff (err :: AWS.RequestError | eff) BatchGetDeploymentGroupsOutput
-batchGetDeploymentGroups = AWS.request serviceName "BatchGetDeploymentGroups" 
+batchGetDeploymentGroups = AWS.request serviceName "batchGetDeploymentGroups" 
 
 
 -- | <p>Gets information about one or more instance that are part of a deployment group.</p>
 batchGetDeploymentInstances :: forall eff. BatchGetDeploymentInstancesInput -> Aff (err :: AWS.RequestError | eff) BatchGetDeploymentInstancesOutput
-batchGetDeploymentInstances = AWS.request serviceName "BatchGetDeploymentInstances" 
+batchGetDeploymentInstances = AWS.request serviceName "batchGetDeploymentInstances" 
 
 
 -- | <p>Gets information about one or more deployments.</p>
 batchGetDeployments :: forall eff. BatchGetDeploymentsInput -> Aff (err :: AWS.RequestError | eff) BatchGetDeploymentsOutput
-batchGetDeployments = AWS.request serviceName "BatchGetDeployments" 
+batchGetDeployments = AWS.request serviceName "batchGetDeployments" 
 
 
 -- | <p>Gets information about one or more on-premises instances.</p>
 batchGetOnPremisesInstances :: forall eff. BatchGetOnPremisesInstancesInput -> Aff (err :: AWS.RequestError | eff) BatchGetOnPremisesInstancesOutput
-batchGetOnPremisesInstances = AWS.request serviceName "BatchGetOnPremisesInstances" 
+batchGetOnPremisesInstances = AWS.request serviceName "batchGetOnPremisesInstances" 
 
 
 -- | <p>For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.) </p>
 continueDeployment :: forall eff. ContinueDeploymentInput -> Aff (err :: AWS.RequestError | eff) Unit
-continueDeployment = AWS.request serviceName "ContinueDeployment" 
+continueDeployment = AWS.request serviceName "continueDeployment" 
 
 
 -- | <p>Creates an application.</p>
 createApplication :: forall eff. CreateApplicationInput -> Aff (err :: AWS.RequestError | eff) CreateApplicationOutput
-createApplication = AWS.request serviceName "CreateApplication" 
+createApplication = AWS.request serviceName "createApplication" 
 
 
 -- | <p>Deploys an application revision through the specified deployment group.</p>
 createDeployment :: forall eff. CreateDeploymentInput -> Aff (err :: AWS.RequestError | eff) CreateDeploymentOutput
-createDeployment = AWS.request serviceName "CreateDeployment" 
+createDeployment = AWS.request serviceName "createDeployment" 
 
 
 -- | <p>Creates a deployment configuration.</p>
 createDeploymentConfig :: forall eff. CreateDeploymentConfigInput -> Aff (err :: AWS.RequestError | eff) CreateDeploymentConfigOutput
-createDeploymentConfig = AWS.request serviceName "CreateDeploymentConfig" 
+createDeploymentConfig = AWS.request serviceName "createDeploymentConfig" 
 
 
 -- | <p>Creates a deployment group to which application revisions will be deployed.</p>
 createDeploymentGroup :: forall eff. CreateDeploymentGroupInput -> Aff (err :: AWS.RequestError | eff) CreateDeploymentGroupOutput
-createDeploymentGroup = AWS.request serviceName "CreateDeploymentGroup" 
+createDeploymentGroup = AWS.request serviceName "createDeploymentGroup" 
 
 
 -- | <p>Deletes an application.</p>
 deleteApplication :: forall eff. DeleteApplicationInput -> Aff (err :: AWS.RequestError | eff) Unit
-deleteApplication = AWS.request serviceName "DeleteApplication" 
+deleteApplication = AWS.request serviceName "deleteApplication" 
 
 
 -- | <p>Deletes a deployment configuration.</p> <note> <p>A deployment configuration cannot be deleted if it is currently in use. Predefined configurations cannot be deleted.</p> </note>
 deleteDeploymentConfig :: forall eff. DeleteDeploymentConfigInput -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDeploymentConfig = AWS.request serviceName "DeleteDeploymentConfig" 
+deleteDeploymentConfig = AWS.request serviceName "deleteDeploymentConfig" 
 
 
 -- | <p>Deletes a deployment group.</p>
 deleteDeploymentGroup :: forall eff. DeleteDeploymentGroupInput -> Aff (err :: AWS.RequestError | eff) DeleteDeploymentGroupOutput
-deleteDeploymentGroup = AWS.request serviceName "DeleteDeploymentGroup" 
+deleteDeploymentGroup = AWS.request serviceName "deleteDeploymentGroup" 
 
 
 -- | <p>Deletes a GitHub account connection.</p>
 deleteGitHubAccountToken :: forall eff. DeleteGitHubAccountTokenInput -> Aff (err :: AWS.RequestError | eff) DeleteGitHubAccountTokenOutput
-deleteGitHubAccountToken = AWS.request serviceName "DeleteGitHubAccountToken" 
+deleteGitHubAccountToken = AWS.request serviceName "deleteGitHubAccountToken" 
 
 
 -- | <p>Deregisters an on-premises instance.</p>
 deregisterOnPremisesInstance :: forall eff. DeregisterOnPremisesInstanceInput -> Aff (err :: AWS.RequestError | eff) Unit
-deregisterOnPremisesInstance = AWS.request serviceName "DeregisterOnPremisesInstance" 
+deregisterOnPremisesInstance = AWS.request serviceName "deregisterOnPremisesInstance" 
 
 
 -- | <p>Gets information about an application.</p>
 getApplication :: forall eff. GetApplicationInput -> Aff (err :: AWS.RequestError | eff) GetApplicationOutput
-getApplication = AWS.request serviceName "GetApplication" 
+getApplication = AWS.request serviceName "getApplication" 
 
 
 -- | <p>Gets information about an application revision.</p>
 getApplicationRevision :: forall eff. GetApplicationRevisionInput -> Aff (err :: AWS.RequestError | eff) GetApplicationRevisionOutput
-getApplicationRevision = AWS.request serviceName "GetApplicationRevision" 
+getApplicationRevision = AWS.request serviceName "getApplicationRevision" 
 
 
 -- | <p>Gets information about a deployment.</p>
 getDeployment :: forall eff. GetDeploymentInput -> Aff (err :: AWS.RequestError | eff) GetDeploymentOutput
-getDeployment = AWS.request serviceName "GetDeployment" 
+getDeployment = AWS.request serviceName "getDeployment" 
 
 
 -- | <p>Gets information about a deployment configuration.</p>
 getDeploymentConfig :: forall eff. GetDeploymentConfigInput -> Aff (err :: AWS.RequestError | eff) GetDeploymentConfigOutput
-getDeploymentConfig = AWS.request serviceName "GetDeploymentConfig" 
+getDeploymentConfig = AWS.request serviceName "getDeploymentConfig" 
 
 
 -- | <p>Gets information about a deployment group.</p>
 getDeploymentGroup :: forall eff. GetDeploymentGroupInput -> Aff (err :: AWS.RequestError | eff) GetDeploymentGroupOutput
-getDeploymentGroup = AWS.request serviceName "GetDeploymentGroup" 
+getDeploymentGroup = AWS.request serviceName "getDeploymentGroup" 
 
 
 -- | <p>Gets information about an instance as part of a deployment.</p>
 getDeploymentInstance :: forall eff. GetDeploymentInstanceInput -> Aff (err :: AWS.RequestError | eff) GetDeploymentInstanceOutput
-getDeploymentInstance = AWS.request serviceName "GetDeploymentInstance" 
+getDeploymentInstance = AWS.request serviceName "getDeploymentInstance" 
 
 
 -- | <p>Gets information about an on-premises instance.</p>
 getOnPremisesInstance :: forall eff. GetOnPremisesInstanceInput -> Aff (err :: AWS.RequestError | eff) GetOnPremisesInstanceOutput
-getOnPremisesInstance = AWS.request serviceName "GetOnPremisesInstance" 
+getOnPremisesInstance = AWS.request serviceName "getOnPremisesInstance" 
 
 
 -- | <p>Lists information about revisions for an application.</p>
 listApplicationRevisions :: forall eff. ListApplicationRevisionsInput -> Aff (err :: AWS.RequestError | eff) ListApplicationRevisionsOutput
-listApplicationRevisions = AWS.request serviceName "ListApplicationRevisions" 
+listApplicationRevisions = AWS.request serviceName "listApplicationRevisions" 
 
 
 -- | <p>Lists the applications registered with the applicable IAM user or AWS account.</p>
 listApplications :: forall eff. ListApplicationsInput -> Aff (err :: AWS.RequestError | eff) ListApplicationsOutput
-listApplications = AWS.request serviceName "ListApplications" 
+listApplications = AWS.request serviceName "listApplications" 
 
 
 -- | <p>Lists the deployment configurations with the applicable IAM user or AWS account.</p>
 listDeploymentConfigs :: forall eff. ListDeploymentConfigsInput -> Aff (err :: AWS.RequestError | eff) ListDeploymentConfigsOutput
-listDeploymentConfigs = AWS.request serviceName "ListDeploymentConfigs" 
+listDeploymentConfigs = AWS.request serviceName "listDeploymentConfigs" 
 
 
 -- | <p>Lists the deployment groups for an application registered with the applicable IAM user or AWS account.</p>
 listDeploymentGroups :: forall eff. ListDeploymentGroupsInput -> Aff (err :: AWS.RequestError | eff) ListDeploymentGroupsOutput
-listDeploymentGroups = AWS.request serviceName "ListDeploymentGroups" 
+listDeploymentGroups = AWS.request serviceName "listDeploymentGroups" 
 
 
 -- | <p>Lists the instance for a deployment associated with the applicable IAM user or AWS account.</p>
 listDeploymentInstances :: forall eff. ListDeploymentInstancesInput -> Aff (err :: AWS.RequestError | eff) ListDeploymentInstancesOutput
-listDeploymentInstances = AWS.request serviceName "ListDeploymentInstances" 
+listDeploymentInstances = AWS.request serviceName "listDeploymentInstances" 
 
 
 -- | <p>Lists the deployments in a deployment group for an application registered with the applicable IAM user or AWS account.</p>
 listDeployments :: forall eff. ListDeploymentsInput -> Aff (err :: AWS.RequestError | eff) ListDeploymentsOutput
-listDeployments = AWS.request serviceName "ListDeployments" 
+listDeployments = AWS.request serviceName "listDeployments" 
 
 
 -- | <p>Lists the names of stored connections to GitHub accounts.</p>
 listGitHubAccountTokenNames :: forall eff. ListGitHubAccountTokenNamesInput -> Aff (err :: AWS.RequestError | eff) ListGitHubAccountTokenNamesOutput
-listGitHubAccountTokenNames = AWS.request serviceName "ListGitHubAccountTokenNames" 
+listGitHubAccountTokenNames = AWS.request serviceName "listGitHubAccountTokenNames" 
 
 
 -- | <p>Gets a list of names for one or more on-premises instances.</p> <p>Unless otherwise specified, both registered and deregistered on-premises instance names will be listed. To list only registered or deregistered on-premises instance names, use the registration status parameter.</p>
 listOnPremisesInstances :: forall eff. ListOnPremisesInstancesInput -> Aff (err :: AWS.RequestError | eff) ListOnPremisesInstancesOutput
-listOnPremisesInstances = AWS.request serviceName "ListOnPremisesInstances" 
+listOnPremisesInstances = AWS.request serviceName "listOnPremisesInstances" 
 
 
 -- | <p>Sets the result of a Lambda validation function. The function validates one or both lifecycle events (<code>BeforeAllowTraffic</code> and <code>AfterAllowTraffic</code>) and returns <code>Succeeded</code> or <code>Failed</code>.</p>
 putLifecycleEventHookExecutionStatus :: forall eff. PutLifecycleEventHookExecutionStatusInput -> Aff (err :: AWS.RequestError | eff) PutLifecycleEventHookExecutionStatusOutput
-putLifecycleEventHookExecutionStatus = AWS.request serviceName "PutLifecycleEventHookExecutionStatus" 
+putLifecycleEventHookExecutionStatus = AWS.request serviceName "putLifecycleEventHookExecutionStatus" 
 
 
 -- | <p>Registers with AWS CodeDeploy a revision for the specified application.</p>
 registerApplicationRevision :: forall eff. RegisterApplicationRevisionInput -> Aff (err :: AWS.RequestError | eff) Unit
-registerApplicationRevision = AWS.request serviceName "RegisterApplicationRevision" 
+registerApplicationRevision = AWS.request serviceName "registerApplicationRevision" 
 
 
 -- | <p>Registers an on-premises instance.</p> <note> <p>Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in the request. You cannot use both.</p> </note>
 registerOnPremisesInstance :: forall eff. RegisterOnPremisesInstanceInput -> Aff (err :: AWS.RequestError | eff) Unit
-registerOnPremisesInstance = AWS.request serviceName "RegisterOnPremisesInstance" 
+registerOnPremisesInstance = AWS.request serviceName "registerOnPremisesInstance" 
 
 
 -- | <p>Removes one or more tags from one or more on-premises instances.</p>
 removeTagsFromOnPremisesInstances :: forall eff. RemoveTagsFromOnPremisesInstancesInput -> Aff (err :: AWS.RequestError | eff) Unit
-removeTagsFromOnPremisesInstances = AWS.request serviceName "RemoveTagsFromOnPremisesInstances" 
+removeTagsFromOnPremisesInstances = AWS.request serviceName "removeTagsFromOnPremisesInstances" 
 
 
 -- | <p>In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is completed.</p>
 skipWaitTimeForInstanceTermination :: forall eff. SkipWaitTimeForInstanceTerminationInput -> Aff (err :: AWS.RequestError | eff) Unit
-skipWaitTimeForInstanceTermination = AWS.request serviceName "SkipWaitTimeForInstanceTermination" 
+skipWaitTimeForInstanceTermination = AWS.request serviceName "skipWaitTimeForInstanceTermination" 
 
 
 -- | <p>Attempts to stop an ongoing deployment.</p>
 stopDeployment :: forall eff. StopDeploymentInput -> Aff (err :: AWS.RequestError | eff) StopDeploymentOutput
-stopDeployment = AWS.request serviceName "StopDeployment" 
+stopDeployment = AWS.request serviceName "stopDeployment" 
 
 
 -- | <p>Changes the name of an application.</p>
 updateApplication :: forall eff. UpdateApplicationInput -> Aff (err :: AWS.RequestError | eff) Unit
-updateApplication = AWS.request serviceName "UpdateApplication" 
+updateApplication = AWS.request serviceName "updateApplication" 
 
 
 -- | <p>Changes information about a deployment group.</p>
 updateDeploymentGroup :: forall eff. UpdateDeploymentGroupInput -> Aff (err :: AWS.RequestError | eff) UpdateDeploymentGroupOutput
-updateDeploymentGroup = AWS.request serviceName "UpdateDeploymentGroup" 
+updateDeploymentGroup = AWS.request serviceName "updateDeploymentGroup" 
 
 
 -- | <p>Represents the input of, and adds tags to, an on-premises instance operation.</p>

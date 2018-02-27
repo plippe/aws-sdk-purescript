@@ -16,17 +16,17 @@ serviceName = "CUR" :: String
 
 -- | Delete a specified report definition
 deleteReportDefinition :: forall eff. DeleteReportDefinitionRequest -> Aff (err :: AWS.RequestError | eff) DeleteReportDefinitionResponse
-deleteReportDefinition = AWS.request serviceName "DeleteReportDefinition" 
+deleteReportDefinition = AWS.request serviceName "deleteReportDefinition" 
 
 
 -- | Describe a list of report definitions owned by the account
 describeReportDefinitions :: forall eff. DescribeReportDefinitionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeReportDefinitionsResponse
-describeReportDefinitions = AWS.request serviceName "DescribeReportDefinitions" 
+describeReportDefinitions = AWS.request serviceName "describeReportDefinitions" 
 
 
 -- | Create a new report definition
 putReportDefinition :: forall eff. PutReportDefinitionRequest -> Aff (err :: AWS.RequestError | eff) PutReportDefinitionResponse
-putReportDefinition = AWS.request serviceName "PutReportDefinition" 
+putReportDefinition = AWS.request serviceName "putReportDefinition" 
 
 
 -- | Region of customer S3 bucket.

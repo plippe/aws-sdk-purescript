@@ -16,392 +16,392 @@ serviceName = "Glue" :: String
 
 -- | <p>Creates one or more partitions in a batch operation.</p>
 batchCreatePartition :: forall eff. BatchCreatePartitionRequest -> Aff (err :: AWS.RequestError | eff) BatchCreatePartitionResponse
-batchCreatePartition = AWS.request serviceName "BatchCreatePartition" 
+batchCreatePartition = AWS.request serviceName "batchCreatePartition" 
 
 
 -- | <p>Deletes a list of connection definitions from the Data Catalog.</p>
 batchDeleteConnection :: forall eff. BatchDeleteConnectionRequest -> Aff (err :: AWS.RequestError | eff) BatchDeleteConnectionResponse
-batchDeleteConnection = AWS.request serviceName "BatchDeleteConnection" 
+batchDeleteConnection = AWS.request serviceName "batchDeleteConnection" 
 
 
 -- | <p>Deletes one or more partitions in a batch operation.</p>
 batchDeletePartition :: forall eff. BatchDeletePartitionRequest -> Aff (err :: AWS.RequestError | eff) BatchDeletePartitionResponse
-batchDeletePartition = AWS.request serviceName "BatchDeletePartition" 
+batchDeletePartition = AWS.request serviceName "batchDeletePartition" 
 
 
 -- | <p>Deletes multiple tables at once.</p>
 batchDeleteTable :: forall eff. BatchDeleteTableRequest -> Aff (err :: AWS.RequestError | eff) BatchDeleteTableResponse
-batchDeleteTable = AWS.request serviceName "BatchDeleteTable" 
+batchDeleteTable = AWS.request serviceName "batchDeleteTable" 
 
 
 -- | <p>Deletes a specified batch of versions of a table.</p>
 batchDeleteTableVersion :: forall eff. BatchDeleteTableVersionRequest -> Aff (err :: AWS.RequestError | eff) BatchDeleteTableVersionResponse
-batchDeleteTableVersion = AWS.request serviceName "BatchDeleteTableVersion" 
+batchDeleteTableVersion = AWS.request serviceName "batchDeleteTableVersion" 
 
 
 -- | <p>Retrieves partitions in a batch request.</p>
 batchGetPartition :: forall eff. BatchGetPartitionRequest -> Aff (err :: AWS.RequestError | eff) BatchGetPartitionResponse
-batchGetPartition = AWS.request serviceName "BatchGetPartition" 
+batchGetPartition = AWS.request serviceName "batchGetPartition" 
 
 
 -- | <p>Stops one or more job runs for a specified Job.</p>
 batchStopJobRun :: forall eff. BatchStopJobRunRequest -> Aff (err :: AWS.RequestError | eff) BatchStopJobRunResponse
-batchStopJobRun = AWS.request serviceName "BatchStopJobRun" 
+batchStopJobRun = AWS.request serviceName "batchStopJobRun" 
 
 
 -- | <p>Creates a classifier in the user's account. This may be a <code>GrokClassifier</code>, an <code>XMLClassifier</code>, or abbrev <code>JsonClassifier</code>, depending on which field of the request is present.</p>
 createClassifier :: forall eff. CreateClassifierRequest -> Aff (err :: AWS.RequestError | eff) CreateClassifierResponse
-createClassifier = AWS.request serviceName "CreateClassifier" 
+createClassifier = AWS.request serviceName "createClassifier" 
 
 
 -- | <p>Creates a connection definition in the Data Catalog.</p>
 createConnection :: forall eff. CreateConnectionRequest -> Aff (err :: AWS.RequestError | eff) CreateConnectionResponse
-createConnection = AWS.request serviceName "CreateConnection" 
+createConnection = AWS.request serviceName "createConnection" 
 
 
 -- | <p>Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in either the <i>s3Targets</i> or the <i>jdbcTargets</i> field.</p>
 createCrawler :: forall eff. CreateCrawlerRequest -> Aff (err :: AWS.RequestError | eff) CreateCrawlerResponse
-createCrawler = AWS.request serviceName "CreateCrawler" 
+createCrawler = AWS.request serviceName "createCrawler" 
 
 
 -- | <p>Creates a new database in a Data Catalog.</p>
 createDatabase :: forall eff. CreateDatabaseRequest -> Aff (err :: AWS.RequestError | eff) CreateDatabaseResponse
-createDatabase = AWS.request serviceName "CreateDatabase" 
+createDatabase = AWS.request serviceName "createDatabase" 
 
 
 -- | <p>Creates a new DevEndpoint.</p>
 createDevEndpoint :: forall eff. CreateDevEndpointRequest -> Aff (err :: AWS.RequestError | eff) CreateDevEndpointResponse
-createDevEndpoint = AWS.request serviceName "CreateDevEndpoint" 
+createDevEndpoint = AWS.request serviceName "createDevEndpoint" 
 
 
 -- | <p>Creates a new job.</p>
 createJob :: forall eff. CreateJobRequest -> Aff (err :: AWS.RequestError | eff) CreateJobResponse
-createJob = AWS.request serviceName "CreateJob" 
+createJob = AWS.request serviceName "createJob" 
 
 
 -- | <p>Creates a new partition.</p>
 createPartition :: forall eff. CreatePartitionRequest -> Aff (err :: AWS.RequestError | eff) CreatePartitionResponse
-createPartition = AWS.request serviceName "CreatePartition" 
+createPartition = AWS.request serviceName "createPartition" 
 
 
 -- | <p>Transforms a directed acyclic graph (DAG) into code.</p>
 createScript :: forall eff. CreateScriptRequest -> Aff (err :: AWS.RequestError | eff) CreateScriptResponse
-createScript = AWS.request serviceName "CreateScript" 
+createScript = AWS.request serviceName "createScript" 
 
 
 -- | <p>Creates a new table definition in the Data Catalog.</p>
 createTable :: forall eff. CreateTableRequest -> Aff (err :: AWS.RequestError | eff) CreateTableResponse
-createTable = AWS.request serviceName "CreateTable" 
+createTable = AWS.request serviceName "createTable" 
 
 
 -- | <p>Creates a new trigger.</p>
 createTrigger :: forall eff. CreateTriggerRequest -> Aff (err :: AWS.RequestError | eff) CreateTriggerResponse
-createTrigger = AWS.request serviceName "CreateTrigger" 
+createTrigger = AWS.request serviceName "createTrigger" 
 
 
 -- | <p>Creates a new function definition in the Data Catalog.</p>
 createUserDefinedFunction :: forall eff. CreateUserDefinedFunctionRequest -> Aff (err :: AWS.RequestError | eff) CreateUserDefinedFunctionResponse
-createUserDefinedFunction = AWS.request serviceName "CreateUserDefinedFunction" 
+createUserDefinedFunction = AWS.request serviceName "createUserDefinedFunction" 
 
 
 -- | <p>Removes a classifier from the Data Catalog.</p>
 deleteClassifier :: forall eff. DeleteClassifierRequest -> Aff (err :: AWS.RequestError | eff) DeleteClassifierResponse
-deleteClassifier = AWS.request serviceName "DeleteClassifier" 
+deleteClassifier = AWS.request serviceName "deleteClassifier" 
 
 
 -- | <p>Deletes a connection from the Data Catalog.</p>
 deleteConnection :: forall eff. DeleteConnectionRequest -> Aff (err :: AWS.RequestError | eff) DeleteConnectionResponse
-deleteConnection = AWS.request serviceName "DeleteConnection" 
+deleteConnection = AWS.request serviceName "deleteConnection" 
 
 
 -- | <p>Removes a specified crawler from the Data Catalog, unless the crawler state is <code>RUNNING</code>.</p>
 deleteCrawler :: forall eff. DeleteCrawlerRequest -> Aff (err :: AWS.RequestError | eff) DeleteCrawlerResponse
-deleteCrawler = AWS.request serviceName "DeleteCrawler" 
+deleteCrawler = AWS.request serviceName "deleteCrawler" 
 
 
 -- | <p>Removes a specified Database from a Data Catalog.</p>
 deleteDatabase :: forall eff. DeleteDatabaseRequest -> Aff (err :: AWS.RequestError | eff) DeleteDatabaseResponse
-deleteDatabase = AWS.request serviceName "DeleteDatabase" 
+deleteDatabase = AWS.request serviceName "deleteDatabase" 
 
 
 -- | <p>Deletes a specified DevEndpoint.</p>
 deleteDevEndpoint :: forall eff. DeleteDevEndpointRequest -> Aff (err :: AWS.RequestError | eff) DeleteDevEndpointResponse
-deleteDevEndpoint = AWS.request serviceName "DeleteDevEndpoint" 
+deleteDevEndpoint = AWS.request serviceName "deleteDevEndpoint" 
 
 
 -- | <p>Deletes a specified job. If the job is not found, no exception is thrown.</p>
 deleteJob :: forall eff. DeleteJobRequest -> Aff (err :: AWS.RequestError | eff) DeleteJobResponse
-deleteJob = AWS.request serviceName "DeleteJob" 
+deleteJob = AWS.request serviceName "deleteJob" 
 
 
 -- | <p>Deletes a specified partition.</p>
 deletePartition :: forall eff. DeletePartitionRequest -> Aff (err :: AWS.RequestError | eff) DeletePartitionResponse
-deletePartition = AWS.request serviceName "DeletePartition" 
+deletePartition = AWS.request serviceName "deletePartition" 
 
 
 -- | <p>Removes a table definition from the Data Catalog.</p>
 deleteTable :: forall eff. DeleteTableRequest -> Aff (err :: AWS.RequestError | eff) DeleteTableResponse
-deleteTable = AWS.request serviceName "DeleteTable" 
+deleteTable = AWS.request serviceName "deleteTable" 
 
 
 -- | <p>Deletes a specified version of a table.</p>
 deleteTableVersion :: forall eff. DeleteTableVersionRequest -> Aff (err :: AWS.RequestError | eff) DeleteTableVersionResponse
-deleteTableVersion = AWS.request serviceName "DeleteTableVersion" 
+deleteTableVersion = AWS.request serviceName "deleteTableVersion" 
 
 
 -- | <p>Deletes a specified trigger. If the trigger is not found, no exception is thrown.</p>
 deleteTrigger :: forall eff. DeleteTriggerRequest -> Aff (err :: AWS.RequestError | eff) DeleteTriggerResponse
-deleteTrigger = AWS.request serviceName "DeleteTrigger" 
+deleteTrigger = AWS.request serviceName "deleteTrigger" 
 
 
 -- | <p>Deletes an existing function definition from the Data Catalog.</p>
 deleteUserDefinedFunction :: forall eff. DeleteUserDefinedFunctionRequest -> Aff (err :: AWS.RequestError | eff) DeleteUserDefinedFunctionResponse
-deleteUserDefinedFunction = AWS.request serviceName "DeleteUserDefinedFunction" 
+deleteUserDefinedFunction = AWS.request serviceName "deleteUserDefinedFunction" 
 
 
 -- | <p>Retrieves the status of a migration operation.</p>
 getCatalogImportStatus :: forall eff. GetCatalogImportStatusRequest -> Aff (err :: AWS.RequestError | eff) GetCatalogImportStatusResponse
-getCatalogImportStatus = AWS.request serviceName "GetCatalogImportStatus" 
+getCatalogImportStatus = AWS.request serviceName "getCatalogImportStatus" 
 
 
 -- | <p>Retrieve a classifier by name.</p>
 getClassifier :: forall eff. GetClassifierRequest -> Aff (err :: AWS.RequestError | eff) GetClassifierResponse
-getClassifier = AWS.request serviceName "GetClassifier" 
+getClassifier = AWS.request serviceName "getClassifier" 
 
 
 -- | <p>Lists all classifier objects in the Data Catalog.</p>
 getClassifiers :: forall eff. GetClassifiersRequest -> Aff (err :: AWS.RequestError | eff) GetClassifiersResponse
-getClassifiers = AWS.request serviceName "GetClassifiers" 
+getClassifiers = AWS.request serviceName "getClassifiers" 
 
 
 -- | <p>Retrieves a connection definition from the Data Catalog.</p>
 getConnection :: forall eff. GetConnectionRequest -> Aff (err :: AWS.RequestError | eff) GetConnectionResponse
-getConnection = AWS.request serviceName "GetConnection" 
+getConnection = AWS.request serviceName "getConnection" 
 
 
 -- | <p>Retrieves a list of connection definitions from the Data Catalog.</p>
 getConnections :: forall eff. GetConnectionsRequest -> Aff (err :: AWS.RequestError | eff) GetConnectionsResponse
-getConnections = AWS.request serviceName "GetConnections" 
+getConnections = AWS.request serviceName "getConnections" 
 
 
 -- | <p>Retrieves metadata for a specified crawler.</p>
 getCrawler :: forall eff. GetCrawlerRequest -> Aff (err :: AWS.RequestError | eff) GetCrawlerResponse
-getCrawler = AWS.request serviceName "GetCrawler" 
+getCrawler = AWS.request serviceName "getCrawler" 
 
 
 -- | <p>Retrieves metrics about specified crawlers.</p>
 getCrawlerMetrics :: forall eff. GetCrawlerMetricsRequest -> Aff (err :: AWS.RequestError | eff) GetCrawlerMetricsResponse
-getCrawlerMetrics = AWS.request serviceName "GetCrawlerMetrics" 
+getCrawlerMetrics = AWS.request serviceName "getCrawlerMetrics" 
 
 
 -- | <p>Retrieves metadata for all crawlers defined in the customer account.</p>
 getCrawlers :: forall eff. GetCrawlersRequest -> Aff (err :: AWS.RequestError | eff) GetCrawlersResponse
-getCrawlers = AWS.request serviceName "GetCrawlers" 
+getCrawlers = AWS.request serviceName "getCrawlers" 
 
 
 -- | <p>Retrieves the definition of a specified database.</p>
 getDatabase :: forall eff. GetDatabaseRequest -> Aff (err :: AWS.RequestError | eff) GetDatabaseResponse
-getDatabase = AWS.request serviceName "GetDatabase" 
+getDatabase = AWS.request serviceName "getDatabase" 
 
 
 -- | <p>Retrieves all Databases defined in a given Data Catalog.</p>
 getDatabases :: forall eff. GetDatabasesRequest -> Aff (err :: AWS.RequestError | eff) GetDatabasesResponse
-getDatabases = AWS.request serviceName "GetDatabases" 
+getDatabases = AWS.request serviceName "getDatabases" 
 
 
 -- | <p>Transforms a Python script into a directed acyclic graph (DAG). </p>
 getDataflowGraph :: forall eff. GetDataflowGraphRequest -> Aff (err :: AWS.RequestError | eff) GetDataflowGraphResponse
-getDataflowGraph = AWS.request serviceName "GetDataflowGraph" 
+getDataflowGraph = AWS.request serviceName "getDataflowGraph" 
 
 
 -- | <p>Retrieves information about a specified DevEndpoint.</p>
 getDevEndpoint :: forall eff. GetDevEndpointRequest -> Aff (err :: AWS.RequestError | eff) GetDevEndpointResponse
-getDevEndpoint = AWS.request serviceName "GetDevEndpoint" 
+getDevEndpoint = AWS.request serviceName "getDevEndpoint" 
 
 
 -- | <p>Retrieves all the DevEndpoints in this AWS account.</p>
 getDevEndpoints :: forall eff. GetDevEndpointsRequest -> Aff (err :: AWS.RequestError | eff) GetDevEndpointsResponse
-getDevEndpoints = AWS.request serviceName "GetDevEndpoints" 
+getDevEndpoints = AWS.request serviceName "getDevEndpoints" 
 
 
 -- | <p>Retrieves an existing job definition.</p>
 getJob :: forall eff. GetJobRequest -> Aff (err :: AWS.RequestError | eff) GetJobResponse
-getJob = AWS.request serviceName "GetJob" 
+getJob = AWS.request serviceName "getJob" 
 
 
 -- | <p>Retrieves the metadata for a given job run.</p>
 getJobRun :: forall eff. GetJobRunRequest -> Aff (err :: AWS.RequestError | eff) GetJobRunResponse
-getJobRun = AWS.request serviceName "GetJobRun" 
+getJobRun = AWS.request serviceName "getJobRun" 
 
 
 -- | <p>Retrieves metadata for all runs of a given job.</p>
 getJobRuns :: forall eff. GetJobRunsRequest -> Aff (err :: AWS.RequestError | eff) GetJobRunsResponse
-getJobRuns = AWS.request serviceName "GetJobRuns" 
+getJobRuns = AWS.request serviceName "getJobRuns" 
 
 
 -- | <p>Retrieves all current jobs.</p>
 getJobs :: forall eff. GetJobsRequest -> Aff (err :: AWS.RequestError | eff) GetJobsResponse
-getJobs = AWS.request serviceName "GetJobs" 
+getJobs = AWS.request serviceName "getJobs" 
 
 
 -- | <p>Creates mappings.</p>
 getMapping :: forall eff. GetMappingRequest -> Aff (err :: AWS.RequestError | eff) GetMappingResponse
-getMapping = AWS.request serviceName "GetMapping" 
+getMapping = AWS.request serviceName "getMapping" 
 
 
 -- | <p>Retrieves information about a specified partition.</p>
 getPartition :: forall eff. GetPartitionRequest -> Aff (err :: AWS.RequestError | eff) GetPartitionResponse
-getPartition = AWS.request serviceName "GetPartition" 
+getPartition = AWS.request serviceName "getPartition" 
 
 
 -- | <p>Retrieves information about the partitions in a table.</p>
 getPartitions :: forall eff. GetPartitionsRequest -> Aff (err :: AWS.RequestError | eff) GetPartitionsResponse
-getPartitions = AWS.request serviceName "GetPartitions" 
+getPartitions = AWS.request serviceName "getPartitions" 
 
 
 -- | <p>Gets code to perform a specified mapping.</p>
 getPlan :: forall eff. GetPlanRequest -> Aff (err :: AWS.RequestError | eff) GetPlanResponse
-getPlan = AWS.request serviceName "GetPlan" 
+getPlan = AWS.request serviceName "getPlan" 
 
 
 -- | <p>Retrieves the <code>Table</code> definition in a Data Catalog for a specified table.</p>
 getTable :: forall eff. GetTableRequest -> Aff (err :: AWS.RequestError | eff) GetTableResponse
-getTable = AWS.request serviceName "GetTable" 
+getTable = AWS.request serviceName "getTable" 
 
 
 -- | <p>Retrieves a specified version of a table.</p>
 getTableVersion :: forall eff. GetTableVersionRequest -> Aff (err :: AWS.RequestError | eff) GetTableVersionResponse
-getTableVersion = AWS.request serviceName "GetTableVersion" 
+getTableVersion = AWS.request serviceName "getTableVersion" 
 
 
 -- | <p>Retrieves a list of strings that identify available versions of a specified table.</p>
 getTableVersions :: forall eff. GetTableVersionsRequest -> Aff (err :: AWS.RequestError | eff) GetTableVersionsResponse
-getTableVersions = AWS.request serviceName "GetTableVersions" 
+getTableVersions = AWS.request serviceName "getTableVersions" 
 
 
 -- | <p>Retrieves the definitions of some or all of the tables in a given <code>Database</code>.</p>
 getTables :: forall eff. GetTablesRequest -> Aff (err :: AWS.RequestError | eff) GetTablesResponse
-getTables = AWS.request serviceName "GetTables" 
+getTables = AWS.request serviceName "getTables" 
 
 
 -- | <p>Retrieves the definition of a trigger.</p>
 getTrigger :: forall eff. GetTriggerRequest -> Aff (err :: AWS.RequestError | eff) GetTriggerResponse
-getTrigger = AWS.request serviceName "GetTrigger" 
+getTrigger = AWS.request serviceName "getTrigger" 
 
 
 -- | <p>Gets all the triggers associated with a job.</p>
 getTriggers :: forall eff. GetTriggersRequest -> Aff (err :: AWS.RequestError | eff) GetTriggersResponse
-getTriggers = AWS.request serviceName "GetTriggers" 
+getTriggers = AWS.request serviceName "getTriggers" 
 
 
 -- | <p>Retrieves a specified function definition from the Data Catalog.</p>
 getUserDefinedFunction :: forall eff. GetUserDefinedFunctionRequest -> Aff (err :: AWS.RequestError | eff) GetUserDefinedFunctionResponse
-getUserDefinedFunction = AWS.request serviceName "GetUserDefinedFunction" 
+getUserDefinedFunction = AWS.request serviceName "getUserDefinedFunction" 
 
 
 -- | <p>Retrieves a multiple function definitions from the Data Catalog.</p>
 getUserDefinedFunctions :: forall eff. GetUserDefinedFunctionsRequest -> Aff (err :: AWS.RequestError | eff) GetUserDefinedFunctionsResponse
-getUserDefinedFunctions = AWS.request serviceName "GetUserDefinedFunctions" 
+getUserDefinedFunctions = AWS.request serviceName "getUserDefinedFunctions" 
 
 
 -- | <p>Imports an existing Athena Data Catalog to AWS Glue</p>
 importCatalogToGlue :: forall eff. ImportCatalogToGlueRequest -> Aff (err :: AWS.RequestError | eff) ImportCatalogToGlueResponse
-importCatalogToGlue = AWS.request serviceName "ImportCatalogToGlue" 
+importCatalogToGlue = AWS.request serviceName "importCatalogToGlue" 
 
 
 -- | <p>Resets a bookmark entry.</p>
 resetJobBookmark :: forall eff. ResetJobBookmarkRequest -> Aff (err :: AWS.RequestError | eff) ResetJobBookmarkResponse
-resetJobBookmark = AWS.request serviceName "ResetJobBookmark" 
+resetJobBookmark = AWS.request serviceName "resetJobBookmark" 
 
 
 -- | <p>Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is already running, does nothing.</p>
 startCrawler :: forall eff. StartCrawlerRequest -> Aff (err :: AWS.RequestError | eff) StartCrawlerResponse
-startCrawler = AWS.request serviceName "StartCrawler" 
+startCrawler = AWS.request serviceName "startCrawler" 
 
 
 -- | <p>Changes the schedule state of the specified crawler to <code>SCHEDULED</code>, unless the crawler is already running or the schedule state is already <code>SCHEDULED</code>.</p>
 startCrawlerSchedule :: forall eff. StartCrawlerScheduleRequest -> Aff (err :: AWS.RequestError | eff) StartCrawlerScheduleResponse
-startCrawlerSchedule = AWS.request serviceName "StartCrawlerSchedule" 
+startCrawlerSchedule = AWS.request serviceName "startCrawlerSchedule" 
 
 
 -- | <p>Runs a job.</p>
 startJobRun :: forall eff. StartJobRunRequest -> Aff (err :: AWS.RequestError | eff) StartJobRunResponse
-startJobRun = AWS.request serviceName "StartJobRun" 
+startJobRun = AWS.request serviceName "startJobRun" 
 
 
 -- | <p>Starts an existing trigger. See <a href="http://docs.aws.amazon.com/glue/latest/dg/trigger-job.html">Triggering Jobs</a> for information about how different types of trigger are started.</p>
 startTrigger :: forall eff. StartTriggerRequest -> Aff (err :: AWS.RequestError | eff) StartTriggerResponse
-startTrigger = AWS.request serviceName "StartTrigger" 
+startTrigger = AWS.request serviceName "startTrigger" 
 
 
 -- | <p>If the specified crawler is running, stops the crawl.</p>
 stopCrawler :: forall eff. StopCrawlerRequest -> Aff (err :: AWS.RequestError | eff) StopCrawlerResponse
-stopCrawler = AWS.request serviceName "StopCrawler" 
+stopCrawler = AWS.request serviceName "stopCrawler" 
 
 
 -- | <p>Sets the schedule state of the specified crawler to <code>NOT_SCHEDULED</code>, but does not stop the crawler if it is already running.</p>
 stopCrawlerSchedule :: forall eff. StopCrawlerScheduleRequest -> Aff (err :: AWS.RequestError | eff) StopCrawlerScheduleResponse
-stopCrawlerSchedule = AWS.request serviceName "StopCrawlerSchedule" 
+stopCrawlerSchedule = AWS.request serviceName "stopCrawlerSchedule" 
 
 
 -- | <p>Stops a specified trigger.</p>
 stopTrigger :: forall eff. StopTriggerRequest -> Aff (err :: AWS.RequestError | eff) StopTriggerResponse
-stopTrigger = AWS.request serviceName "StopTrigger" 
+stopTrigger = AWS.request serviceName "stopTrigger" 
 
 
 -- | <p>Modifies an existing classifier (a <code>GrokClassifier</code>, <code>XMLClassifier</code>, or <code>JsonClassifier</code>, depending on which field is present).</p>
 updateClassifier :: forall eff. UpdateClassifierRequest -> Aff (err :: AWS.RequestError | eff) UpdateClassifierResponse
-updateClassifier = AWS.request serviceName "UpdateClassifier" 
+updateClassifier = AWS.request serviceName "updateClassifier" 
 
 
 -- | <p>Updates a connection definition in the Data Catalog.</p>
 updateConnection :: forall eff. UpdateConnectionRequest -> Aff (err :: AWS.RequestError | eff) UpdateConnectionResponse
-updateConnection = AWS.request serviceName "UpdateConnection" 
+updateConnection = AWS.request serviceName "updateConnection" 
 
 
 -- | <p>Updates a crawler. If a crawler is running, you must stop it using <code>StopCrawler</code> before updating it.</p>
 updateCrawler :: forall eff. UpdateCrawlerRequest -> Aff (err :: AWS.RequestError | eff) UpdateCrawlerResponse
-updateCrawler = AWS.request serviceName "UpdateCrawler" 
+updateCrawler = AWS.request serviceName "updateCrawler" 
 
 
 -- | <p>Updates the schedule of a crawler using a <code>cron</code> expression. </p>
 updateCrawlerSchedule :: forall eff. UpdateCrawlerScheduleRequest -> Aff (err :: AWS.RequestError | eff) UpdateCrawlerScheduleResponse
-updateCrawlerSchedule = AWS.request serviceName "UpdateCrawlerSchedule" 
+updateCrawlerSchedule = AWS.request serviceName "updateCrawlerSchedule" 
 
 
 -- | <p>Updates an existing database definition in a Data Catalog.</p>
 updateDatabase :: forall eff. UpdateDatabaseRequest -> Aff (err :: AWS.RequestError | eff) UpdateDatabaseResponse
-updateDatabase = AWS.request serviceName "UpdateDatabase" 
+updateDatabase = AWS.request serviceName "updateDatabase" 
 
 
 -- | <p>Updates a specified DevEndpoint.</p>
 updateDevEndpoint :: forall eff. UpdateDevEndpointRequest -> Aff (err :: AWS.RequestError | eff) UpdateDevEndpointResponse
-updateDevEndpoint = AWS.request serviceName "UpdateDevEndpoint" 
+updateDevEndpoint = AWS.request serviceName "updateDevEndpoint" 
 
 
 -- | <p>Updates an existing job definition.</p>
 updateJob :: forall eff. UpdateJobRequest -> Aff (err :: AWS.RequestError | eff) UpdateJobResponse
-updateJob = AWS.request serviceName "UpdateJob" 
+updateJob = AWS.request serviceName "updateJob" 
 
 
 -- | <p>Updates a partition.</p>
 updatePartition :: forall eff. UpdatePartitionRequest -> Aff (err :: AWS.RequestError | eff) UpdatePartitionResponse
-updatePartition = AWS.request serviceName "UpdatePartition" 
+updatePartition = AWS.request serviceName "updatePartition" 
 
 
 -- | <p>Updates a metadata table in the Data Catalog.</p>
 updateTable :: forall eff. UpdateTableRequest -> Aff (err :: AWS.RequestError | eff) UpdateTableResponse
-updateTable = AWS.request serviceName "UpdateTable" 
+updateTable = AWS.request serviceName "updateTable" 
 
 
 -- | <p>Updates a trigger definition.</p>
 updateTrigger :: forall eff. UpdateTriggerRequest -> Aff (err :: AWS.RequestError | eff) UpdateTriggerResponse
-updateTrigger = AWS.request serviceName "UpdateTrigger" 
+updateTrigger = AWS.request serviceName "updateTrigger" 
 
 
 -- | <p>Updates an existing function definition in the Data Catalog.</p>
 updateUserDefinedFunction :: forall eff. UpdateUserDefinedFunctionRequest -> Aff (err :: AWS.RequestError | eff) UpdateUserDefinedFunctionResponse
-updateUserDefinedFunction = AWS.request serviceName "UpdateUserDefinedFunction" 
+updateUserDefinedFunction = AWS.request serviceName "updateUserDefinedFunction" 
 
 
 -- | <p>Access to a resource was denied.</p>

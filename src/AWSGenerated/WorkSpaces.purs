@@ -16,72 +16,72 @@ serviceName = "WorkSpaces" :: String
 
 -- | <p>Creates tags for the specified WorkSpace.</p>
 createTags :: forall eff. CreateTagsRequest -> Aff (err :: AWS.RequestError | eff) CreateTagsResult
-createTags = AWS.request serviceName "CreateTags" 
+createTags = AWS.request serviceName "createTags" 
 
 
 -- | <p>Creates one or more WorkSpaces.</p> <p>This operation is asynchronous and returns before the WorkSpaces are created.</p>
 createWorkspaces :: forall eff. CreateWorkspacesRequest -> Aff (err :: AWS.RequestError | eff) CreateWorkspacesResult
-createWorkspaces = AWS.request serviceName "CreateWorkspaces" 
+createWorkspaces = AWS.request serviceName "createWorkspaces" 
 
 
 -- | <p>Deletes the specified tags from a WorkSpace.</p>
 deleteTags :: forall eff. DeleteTagsRequest -> Aff (err :: AWS.RequestError | eff) DeleteTagsResult
-deleteTags = AWS.request serviceName "DeleteTags" 
+deleteTags = AWS.request serviceName "deleteTags" 
 
 
 -- | <p>Describes the tags for the specified WorkSpace.</p>
 describeTags :: forall eff. DescribeTagsRequest -> Aff (err :: AWS.RequestError | eff) DescribeTagsResult
-describeTags = AWS.request serviceName "DescribeTags" 
+describeTags = AWS.request serviceName "describeTags" 
 
 
 -- | <p>Describes the available WorkSpace bundles.</p> <p>You can filter the results using either bundle ID or owner, but not both.</p>
 describeWorkspaceBundles :: forall eff. DescribeWorkspaceBundlesRequest -> Aff (err :: AWS.RequestError | eff) DescribeWorkspaceBundlesResult
-describeWorkspaceBundles = AWS.request serviceName "DescribeWorkspaceBundles" 
+describeWorkspaceBundles = AWS.request serviceName "describeWorkspaceBundles" 
 
 
 -- | <p>Describes the available AWS Directory Service directories that are registered with Amazon WorkSpaces.</p>
 describeWorkspaceDirectories :: forall eff. DescribeWorkspaceDirectoriesRequest -> Aff (err :: AWS.RequestError | eff) DescribeWorkspaceDirectoriesResult
-describeWorkspaceDirectories = AWS.request serviceName "DescribeWorkspaceDirectories" 
+describeWorkspaceDirectories = AWS.request serviceName "describeWorkspaceDirectories" 
 
 
 -- | <p>Describes the specified WorkSpaces.</p> <p>You can filter the results using bundle ID, directory ID, or owner, but you can specify only one filter at a time.</p>
 describeWorkspaces :: forall eff. DescribeWorkspacesRequest -> Aff (err :: AWS.RequestError | eff) DescribeWorkspacesResult
-describeWorkspaces = AWS.request serviceName "DescribeWorkspaces" 
+describeWorkspaces = AWS.request serviceName "describeWorkspaces" 
 
 
 -- | <p>Describes the connection status of the specified WorkSpaces.</p>
 describeWorkspacesConnectionStatus :: forall eff. DescribeWorkspacesConnectionStatusRequest -> Aff (err :: AWS.RequestError | eff) DescribeWorkspacesConnectionStatusResult
-describeWorkspacesConnectionStatus = AWS.request serviceName "DescribeWorkspacesConnectionStatus" 
+describeWorkspacesConnectionStatus = AWS.request serviceName "describeWorkspacesConnectionStatus" 
 
 
 -- | <p>Modifies the specified WorkSpace properties.</p>
 modifyWorkspaceProperties :: forall eff. ModifyWorkspacePropertiesRequest -> Aff (err :: AWS.RequestError | eff) ModifyWorkspacePropertiesResult
-modifyWorkspaceProperties = AWS.request serviceName "ModifyWorkspaceProperties" 
+modifyWorkspaceProperties = AWS.request serviceName "modifyWorkspaceProperties" 
 
 
 -- | <p>Reboots the specified WorkSpaces.</p> <p>You cannot reboot a WorkSpace unless its state is <code>AVAILABLE</code>, <code>IMPAIRED</code>, or <code>INOPERABLE</code>.</p> <p>This operation is asynchronous and returns before the WorkSpaces have rebooted.</p>
 rebootWorkspaces :: forall eff. RebootWorkspacesRequest -> Aff (err :: AWS.RequestError | eff) RebootWorkspacesResult
-rebootWorkspaces = AWS.request serviceName "RebootWorkspaces" 
+rebootWorkspaces = AWS.request serviceName "rebootWorkspaces" 
 
 
 -- | <p>Rebuilds the specified WorkSpaces.</p> <p>You cannot rebuild a WorkSpace unless its state is <code>AVAILABLE</code> or <code>ERROR</code>.</p> <p>Rebuilding a WorkSpace is a potentially destructive action that can result in the loss of data. For more information, see <a href="http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html">Rebuild a WorkSpace</a>.</p> <p>This operation is asynchronous and returns before the WorkSpaces have been completely rebuilt.</p>
 rebuildWorkspaces :: forall eff. RebuildWorkspacesRequest -> Aff (err :: AWS.RequestError | eff) RebuildWorkspacesResult
-rebuildWorkspaces = AWS.request serviceName "RebuildWorkspaces" 
+rebuildWorkspaces = AWS.request serviceName "rebuildWorkspaces" 
 
 
 -- | <p>Starts the specified WorkSpaces.</p> <p>You cannot start a WorkSpace unless it has a running mode of <code>AutoStop</code> and a state of <code>STOPPED</code>.</p>
 startWorkspaces :: forall eff. StartWorkspacesRequest -> Aff (err :: AWS.RequestError | eff) StartWorkspacesResult
-startWorkspaces = AWS.request serviceName "StartWorkspaces" 
+startWorkspaces = AWS.request serviceName "startWorkspaces" 
 
 
 -- | <p> Stops the specified WorkSpaces.</p> <p>You cannot stop a WorkSpace unless it has a running mode of <code>AutoStop</code> and a state of <code>AVAILABLE</code>, <code>IMPAIRED</code>, <code>UNHEALTHY</code>, or <code>ERROR</code>.</p>
 stopWorkspaces :: forall eff. StopWorkspacesRequest -> Aff (err :: AWS.RequestError | eff) StopWorkspacesResult
-stopWorkspaces = AWS.request serviceName "StopWorkspaces" 
+stopWorkspaces = AWS.request serviceName "stopWorkspaces" 
 
 
 -- | <p>Terminates the specified WorkSpaces.</p> <p>Terminating a WorkSpace is a permanent action and cannot be undone. The user's data is destroyed. If you need to archive any user data, contact Amazon Web Services before terminating the WorkSpace.</p> <p>You can terminate a WorkSpace that is in any state except <code>SUSPENDED</code>.</p> <p>This operation is asynchronous and returns before the WorkSpaces have been completely terminated.</p>
 terminateWorkspaces :: forall eff. TerminateWorkspacesRequest -> Aff (err :: AWS.RequestError | eff) TerminateWorkspacesResult
-terminateWorkspaces = AWS.request serviceName "TerminateWorkspaces" 
+terminateWorkspaces = AWS.request serviceName "terminateWorkspaces" 
 
 
 newtype ARN = ARN String

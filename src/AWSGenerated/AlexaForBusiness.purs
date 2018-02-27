@@ -16,182 +16,182 @@ serviceName = "AlexaForBusiness" :: String
 
 -- | <p>Associates a device to a given room. This applies all the settings from the room profile to the device, and all the skills in any skill groups added to that room. This operation requires the device to be online, or a manual sync is required. </p>
 associateDeviceWithRoom :: forall eff. AssociateDeviceWithRoomRequest -> Aff (err :: AWS.RequestError | eff) AssociateDeviceWithRoomResponse
-associateDeviceWithRoom = AWS.request serviceName "AssociateDeviceWithRoom" 
+associateDeviceWithRoom = AWS.request serviceName "associateDeviceWithRoom" 
 
 
 -- | <p>Associates a skill group to a given room. This enables all skills in the associated skill group on all devices in the room.</p>
 associateSkillGroupWithRoom :: forall eff. AssociateSkillGroupWithRoomRequest -> Aff (err :: AWS.RequestError | eff) AssociateSkillGroupWithRoomResponse
-associateSkillGroupWithRoom = AWS.request serviceName "AssociateSkillGroupWithRoom" 
+associateSkillGroupWithRoom = AWS.request serviceName "associateSkillGroupWithRoom" 
 
 
 -- | <p>Creates a new room profile with the specified details.</p>
 createProfile :: forall eff. CreateProfileRequest -> Aff (err :: AWS.RequestError | eff) CreateProfileResponse
-createProfile = AWS.request serviceName "CreateProfile" 
+createProfile = AWS.request serviceName "createProfile" 
 
 
 -- | <p>Creates a room with the specified details.</p>
 createRoom :: forall eff. CreateRoomRequest -> Aff (err :: AWS.RequestError | eff) CreateRoomResponse
-createRoom = AWS.request serviceName "CreateRoom" 
+createRoom = AWS.request serviceName "createRoom" 
 
 
 -- | <p>Creates a skill group with a specified name and description.</p>
 createSkillGroup :: forall eff. CreateSkillGroupRequest -> Aff (err :: AWS.RequestError | eff) CreateSkillGroupResponse
-createSkillGroup = AWS.request serviceName "CreateSkillGroup" 
+createSkillGroup = AWS.request serviceName "createSkillGroup" 
 
 
 -- | <p>Creates a user.</p>
 createUser :: forall eff. CreateUserRequest -> Aff (err :: AWS.RequestError | eff) CreateUserResponse
-createUser = AWS.request serviceName "CreateUser" 
+createUser = AWS.request serviceName "createUser" 
 
 
 -- | <p>Deletes a room profile by the profile ARN.</p>
 deleteProfile :: forall eff. DeleteProfileRequest -> Aff (err :: AWS.RequestError | eff) DeleteProfileResponse
-deleteProfile = AWS.request serviceName "DeleteProfile" 
+deleteProfile = AWS.request serviceName "deleteProfile" 
 
 
 -- | <p>Deletes a room by the room ARN.</p>
 deleteRoom :: forall eff. DeleteRoomRequest -> Aff (err :: AWS.RequestError | eff) DeleteRoomResponse
-deleteRoom = AWS.request serviceName "DeleteRoom" 
+deleteRoom = AWS.request serviceName "deleteRoom" 
 
 
 -- | <p>Deletes room skill parameter details by room, skill, and parameter key ID.</p>
 deleteRoomSkillParameter :: forall eff. DeleteRoomSkillParameterRequest -> Aff (err :: AWS.RequestError | eff) DeleteRoomSkillParameterResponse
-deleteRoomSkillParameter = AWS.request serviceName "DeleteRoomSkillParameter" 
+deleteRoomSkillParameter = AWS.request serviceName "deleteRoomSkillParameter" 
 
 
 -- | <p>Deletes a skill group by skill group ARN.</p>
 deleteSkillGroup :: forall eff. DeleteSkillGroupRequest -> Aff (err :: AWS.RequestError | eff) DeleteSkillGroupResponse
-deleteSkillGroup = AWS.request serviceName "DeleteSkillGroup" 
+deleteSkillGroup = AWS.request serviceName "deleteSkillGroup" 
 
 
 -- | <p>Deletes a specified user by user ARN and enrollment ARN.</p>
 deleteUser :: forall eff. DeleteUserRequest -> Aff (err :: AWS.RequestError | eff) DeleteUserResponse
-deleteUser = AWS.request serviceName "DeleteUser" 
+deleteUser = AWS.request serviceName "deleteUser" 
 
 
 -- | <p>Disassociates a device from its current room. The device continues to be connected to the Wi-Fi network and is still registered to the account. The device settings and skills are removed from the room.</p>
 disassociateDeviceFromRoom :: forall eff. DisassociateDeviceFromRoomRequest -> Aff (err :: AWS.RequestError | eff) DisassociateDeviceFromRoomResponse
-disassociateDeviceFromRoom = AWS.request serviceName "DisassociateDeviceFromRoom" 
+disassociateDeviceFromRoom = AWS.request serviceName "disassociateDeviceFromRoom" 
 
 
 -- | <p>Disassociates a skill group from a specified room. This disables all skills in the skill group on all devices in the room.</p>
 disassociateSkillGroupFromRoom :: forall eff. DisassociateSkillGroupFromRoomRequest -> Aff (err :: AWS.RequestError | eff) DisassociateSkillGroupFromRoomResponse
-disassociateSkillGroupFromRoom = AWS.request serviceName "DisassociateSkillGroupFromRoom" 
+disassociateSkillGroupFromRoom = AWS.request serviceName "disassociateSkillGroupFromRoom" 
 
 
 -- | <p>Gets the details of a device by device ARN.</p>
 getDevice :: forall eff. GetDeviceRequest -> Aff (err :: AWS.RequestError | eff) GetDeviceResponse
-getDevice = AWS.request serviceName "GetDevice" 
+getDevice = AWS.request serviceName "getDevice" 
 
 
 -- | <p>Gets the details of a room profile by profile ARN.</p>
 getProfile :: forall eff. GetProfileRequest -> Aff (err :: AWS.RequestError | eff) GetProfileResponse
-getProfile = AWS.request serviceName "GetProfile" 
+getProfile = AWS.request serviceName "getProfile" 
 
 
 -- | <p>Gets room details by room ARN.</p>
 getRoom :: forall eff. GetRoomRequest -> Aff (err :: AWS.RequestError | eff) GetRoomResponse
-getRoom = AWS.request serviceName "GetRoom" 
+getRoom = AWS.request serviceName "getRoom" 
 
 
 -- | <p>Gets room skill parameter details by room, skill, and parameter key ARN.</p>
 getRoomSkillParameter :: forall eff. GetRoomSkillParameterRequest -> Aff (err :: AWS.RequestError | eff) GetRoomSkillParameterResponse
-getRoomSkillParameter = AWS.request serviceName "GetRoomSkillParameter" 
+getRoomSkillParameter = AWS.request serviceName "getRoomSkillParameter" 
 
 
 -- | <p>Gets skill group details by skill group ARN.</p>
 getSkillGroup :: forall eff. GetSkillGroupRequest -> Aff (err :: AWS.RequestError | eff) GetSkillGroupResponse
-getSkillGroup = AWS.request serviceName "GetSkillGroup" 
+getSkillGroup = AWS.request serviceName "getSkillGroup" 
 
 
 -- | <p>Lists all enabled skills in a specific skill group.</p>
 listSkills :: forall eff. ListSkillsRequest -> Aff (err :: AWS.RequestError | eff) ListSkillsResponse
-listSkills = AWS.request serviceName "ListSkills" 
+listSkills = AWS.request serviceName "listSkills" 
 
 
 -- | <p>Lists all tags for a specific resource.</p>
 listTags :: forall eff. ListTagsRequest -> Aff (err :: AWS.RequestError | eff) ListTagsResponse
-listTags = AWS.request serviceName "ListTags" 
+listTags = AWS.request serviceName "listTags" 
 
 
 -- | <p>Updates room skill parameter details by room, skill, and parameter key ID. Not all skills have a room skill parameter.</p>
 putRoomSkillParameter :: forall eff. PutRoomSkillParameterRequest -> Aff (err :: AWS.RequestError | eff) PutRoomSkillParameterResponse
-putRoomSkillParameter = AWS.request serviceName "PutRoomSkillParameter" 
+putRoomSkillParameter = AWS.request serviceName "putRoomSkillParameter" 
 
 
 -- | <p>Determines the details for the room from which a skill request was invoked. This operation is used by skill developers.</p>
 resolveRoom :: forall eff. ResolveRoomRequest -> Aff (err :: AWS.RequestError | eff) ResolveRoomResponse
-resolveRoom = AWS.request serviceName "ResolveRoom" 
+resolveRoom = AWS.request serviceName "resolveRoom" 
 
 
 -- | <p>Revokes an invitation and invalidates the enrollment URL.</p>
 revokeInvitation :: forall eff. RevokeInvitationRequest -> Aff (err :: AWS.RequestError | eff) RevokeInvitationResponse
-revokeInvitation = AWS.request serviceName "RevokeInvitation" 
+revokeInvitation = AWS.request serviceName "revokeInvitation" 
 
 
 -- | <p>Searches devices and lists the ones that meet a set of filter criteria.</p>
 searchDevices :: forall eff. SearchDevicesRequest -> Aff (err :: AWS.RequestError | eff) SearchDevicesResponse
-searchDevices = AWS.request serviceName "SearchDevices" 
+searchDevices = AWS.request serviceName "searchDevices" 
 
 
 -- | <p>Searches room profiles and lists the ones that meet a set of filter criteria.</p>
 searchProfiles :: forall eff. SearchProfilesRequest -> Aff (err :: AWS.RequestError | eff) SearchProfilesResponse
-searchProfiles = AWS.request serviceName "SearchProfiles" 
+searchProfiles = AWS.request serviceName "searchProfiles" 
 
 
 -- | <p>Searches rooms and lists the ones that meet a set of filter and sort criteria.</p>
 searchRooms :: forall eff. SearchRoomsRequest -> Aff (err :: AWS.RequestError | eff) SearchRoomsResponse
-searchRooms = AWS.request serviceName "SearchRooms" 
+searchRooms = AWS.request serviceName "searchRooms" 
 
 
 -- | <p>Searches skill groups and lists the ones that meet a set of filter and sort criteria.</p>
 searchSkillGroups :: forall eff. SearchSkillGroupsRequest -> Aff (err :: AWS.RequestError | eff) SearchSkillGroupsResponse
-searchSkillGroups = AWS.request serviceName "SearchSkillGroups" 
+searchSkillGroups = AWS.request serviceName "searchSkillGroups" 
 
 
 -- | <p>Searches users and lists the ones that meet a set of filter and sort criteria.</p>
 searchUsers :: forall eff. SearchUsersRequest -> Aff (err :: AWS.RequestError | eff) SearchUsersResponse
-searchUsers = AWS.request serviceName "SearchUsers" 
+searchUsers = AWS.request serviceName "searchUsers" 
 
 
 -- | <p>Sends an enrollment invitation email with a URL to a user. The URL is valid for 72 hours or until you call this operation again, whichever comes first. </p>
 sendInvitation :: forall eff. SendInvitationRequest -> Aff (err :: AWS.RequestError | eff) SendInvitationResponse
-sendInvitation = AWS.request serviceName "SendInvitation" 
+sendInvitation = AWS.request serviceName "sendInvitation" 
 
 
 -- | <p>Resets a device and its account to the known default settings by clearing all information and settings set by previous users.</p>
 startDeviceSync :: forall eff. StartDeviceSyncRequest -> Aff (err :: AWS.RequestError | eff) StartDeviceSyncResponse
-startDeviceSync = AWS.request serviceName "StartDeviceSync" 
+startDeviceSync = AWS.request serviceName "startDeviceSync" 
 
 
 -- | <p>Adds metadata tags to a specified resource.</p>
 tagResource :: forall eff. TagResourceRequest -> Aff (err :: AWS.RequestError | eff) TagResourceResponse
-tagResource = AWS.request serviceName "TagResource" 
+tagResource = AWS.request serviceName "tagResource" 
 
 
 -- | <p>Removes metadata tags from a specified resource.</p>
 untagResource :: forall eff. UntagResourceRequest -> Aff (err :: AWS.RequestError | eff) UntagResourceResponse
-untagResource = AWS.request serviceName "UntagResource" 
+untagResource = AWS.request serviceName "untagResource" 
 
 
 -- | <p>Updates the device name by device ARN.</p>
 updateDevice :: forall eff. UpdateDeviceRequest -> Aff (err :: AWS.RequestError | eff) UpdateDeviceResponse
-updateDevice = AWS.request serviceName "UpdateDevice" 
+updateDevice = AWS.request serviceName "updateDevice" 
 
 
 -- | <p>Updates an existing room profile by room profile ARN.</p>
 updateProfile :: forall eff. UpdateProfileRequest -> Aff (err :: AWS.RequestError | eff) UpdateProfileResponse
-updateProfile = AWS.request serviceName "UpdateProfile" 
+updateProfile = AWS.request serviceName "updateProfile" 
 
 
 -- | <p>Updates room details by room ARN.</p>
 updateRoom :: forall eff. UpdateRoomRequest -> Aff (err :: AWS.RequestError | eff) UpdateRoomResponse
-updateRoom = AWS.request serviceName "UpdateRoom" 
+updateRoom = AWS.request serviceName "updateRoom" 
 
 
 -- | <p>Updates skill group details by skill group ARN.</p>
 updateSkillGroup :: forall eff. UpdateSkillGroupRequest -> Aff (err :: AWS.RequestError | eff) UpdateSkillGroupResponse
-updateSkillGroup = AWS.request serviceName "UpdateSkillGroup" 
+updateSkillGroup = AWS.request serviceName "updateSkillGroup" 
 
 
 newtype Address = Address String

@@ -16,142 +16,142 @@ serviceName = "WorkMail" :: String
 
 -- | <p>Adds a member to the resource's set of delegates.</p>
 associateDelegateToResource :: forall eff. AssociateDelegateToResourceRequest -> Aff (err :: AWS.RequestError | eff) AssociateDelegateToResourceResponse
-associateDelegateToResource = AWS.request serviceName "AssociateDelegateToResource" 
+associateDelegateToResource = AWS.request serviceName "associateDelegateToResource" 
 
 
 -- | <p>Adds a member to the group's set.</p>
 associateMemberToGroup :: forall eff. AssociateMemberToGroupRequest -> Aff (err :: AWS.RequestError | eff) AssociateMemberToGroupResponse
-associateMemberToGroup = AWS.request serviceName "AssociateMemberToGroup" 
+associateMemberToGroup = AWS.request serviceName "associateMemberToGroup" 
 
 
 -- | <p>Adds an alias to the set of a given member of Amazon WorkMail.</p>
 createAlias :: forall eff. CreateAliasRequest -> Aff (err :: AWS.RequestError | eff) CreateAliasResponse
-createAlias = AWS.request serviceName "CreateAlias" 
+createAlias = AWS.request serviceName "createAlias" 
 
 
 -- | <p>Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.</p>
 createGroup :: forall eff. CreateGroupRequest -> Aff (err :: AWS.RequestError | eff) CreateGroupResponse
-createGroup = AWS.request serviceName "CreateGroup" 
+createGroup = AWS.request serviceName "createGroup" 
 
 
 -- | <p>Creates a new Amazon WorkMail resource. The available types are equipment and room.</p>
 createResource :: forall eff. CreateResourceRequest -> Aff (err :: AWS.RequestError | eff) CreateResourceResponse
-createResource = AWS.request serviceName "CreateResource" 
+createResource = AWS.request serviceName "createResource" 
 
 
 -- | <p>Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.</p>
 createUser :: forall eff. CreateUserRequest -> Aff (err :: AWS.RequestError | eff) CreateUserResponse
-createUser = AWS.request serviceName "CreateUser" 
+createUser = AWS.request serviceName "createUser" 
 
 
 -- | <p>Remove the alias from a set of aliases for a given user.</p>
 deleteAlias :: forall eff. DeleteAliasRequest -> Aff (err :: AWS.RequestError | eff) DeleteAliasResponse
-deleteAlias = AWS.request serviceName "DeleteAlias" 
+deleteAlias = AWS.request serviceName "deleteAlias" 
 
 
 -- | <p>Deletes a group from Amazon WorkMail.</p>
 deleteGroup :: forall eff. DeleteGroupRequest -> Aff (err :: AWS.RequestError | eff) DeleteGroupResponse
-deleteGroup = AWS.request serviceName "DeleteGroup" 
+deleteGroup = AWS.request serviceName "deleteGroup" 
 
 
 -- | <p>Deletes the specified resource. </p>
 deleteResource :: forall eff. DeleteResourceRequest -> Aff (err :: AWS.RequestError | eff) DeleteResourceResponse
-deleteResource = AWS.request serviceName "DeleteResource" 
+deleteResource = AWS.request serviceName "deleteResource" 
 
 
 -- | <p>Deletes a user from Amazon WorkMail and all subsequent systems. The action can't be undone. The mailbox is kept as-is for a minimum of 30 days, without any means to restore it. </p>
 deleteUser :: forall eff. DeleteUserRequest -> Aff (err :: AWS.RequestError | eff) DeleteUserResponse
-deleteUser = AWS.request serviceName "DeleteUser" 
+deleteUser = AWS.request serviceName "deleteUser" 
 
 
 -- | <p>Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. Amazon WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is <i>Disable</i>.</p>
 deregisterFromWorkMail :: forall eff. DeregisterFromWorkMailRequest -> Aff (err :: AWS.RequestError | eff) DeregisterFromWorkMailResponse
-deregisterFromWorkMail = AWS.request serviceName "DeregisterFromWorkMail" 
+deregisterFromWorkMail = AWS.request serviceName "deregisterFromWorkMail" 
 
 
 -- | <p>Returns the data available for the group.</p>
 describeGroup :: forall eff. DescribeGroupRequest -> Aff (err :: AWS.RequestError | eff) DescribeGroupResponse
-describeGroup = AWS.request serviceName "DescribeGroup" 
+describeGroup = AWS.request serviceName "describeGroup" 
 
 
 -- | <p>Provides more information regarding a given organization based on its identifier.</p>
 describeOrganization :: forall eff. DescribeOrganizationRequest -> Aff (err :: AWS.RequestError | eff) DescribeOrganizationResponse
-describeOrganization = AWS.request serviceName "DescribeOrganization" 
+describeOrganization = AWS.request serviceName "describeOrganization" 
 
 
 -- | <p>Returns the data available for the resource.</p>
 describeResource :: forall eff. DescribeResourceRequest -> Aff (err :: AWS.RequestError | eff) DescribeResourceResponse
-describeResource = AWS.request serviceName "DescribeResource" 
+describeResource = AWS.request serviceName "describeResource" 
 
 
 -- | <p>Provides information regarding the user.</p>
 describeUser :: forall eff. DescribeUserRequest -> Aff (err :: AWS.RequestError | eff) DescribeUserResponse
-describeUser = AWS.request serviceName "DescribeUser" 
+describeUser = AWS.request serviceName "describeUser" 
 
 
 -- | <p>Removes a member from the resource's set of delegates.</p>
 disassociateDelegateFromResource :: forall eff. DisassociateDelegateFromResourceRequest -> Aff (err :: AWS.RequestError | eff) DisassociateDelegateFromResourceResponse
-disassociateDelegateFromResource = AWS.request serviceName "DisassociateDelegateFromResource" 
+disassociateDelegateFromResource = AWS.request serviceName "disassociateDelegateFromResource" 
 
 
 -- | <p>Removes a member from a group.</p>
 disassociateMemberFromGroup :: forall eff. DisassociateMemberFromGroupRequest -> Aff (err :: AWS.RequestError | eff) DisassociateMemberFromGroupResponse
-disassociateMemberFromGroup = AWS.request serviceName "DisassociateMemberFromGroup" 
+disassociateMemberFromGroup = AWS.request serviceName "disassociateMemberFromGroup" 
 
 
 -- | <p>Creates a paginated call to list the aliases associated with a given entity.</p>
 listAliases :: forall eff. ListAliasesRequest -> Aff (err :: AWS.RequestError | eff) ListAliasesResponse
-listAliases = AWS.request serviceName "ListAliases" 
+listAliases = AWS.request serviceName "listAliases" 
 
 
 -- | <p>Returns an overview of the members of a group.</p>
 listGroupMembers :: forall eff. ListGroupMembersRequest -> Aff (err :: AWS.RequestError | eff) ListGroupMembersResponse
-listGroupMembers = AWS.request serviceName "ListGroupMembers" 
+listGroupMembers = AWS.request serviceName "listGroupMembers" 
 
 
 -- | <p>Returns summaries of the organization's groups.</p>
 listGroups :: forall eff. ListGroupsRequest -> Aff (err :: AWS.RequestError | eff) ListGroupsResponse
-listGroups = AWS.request serviceName "ListGroups" 
+listGroups = AWS.request serviceName "listGroups" 
 
 
 -- | <p>Returns summaries of the customer's non-deleted organizations.</p>
 listOrganizations :: forall eff. ListOrganizationsRequest -> Aff (err :: AWS.RequestError | eff) ListOrganizationsResponse
-listOrganizations = AWS.request serviceName "ListOrganizations" 
+listOrganizations = AWS.request serviceName "listOrganizations" 
 
 
 -- | <p>Lists the delegates associated with a resource. Users and groups can be resource delegates and answer requests on behalf of the resource.</p>
 listResourceDelegates :: forall eff. ListResourceDelegatesRequest -> Aff (err :: AWS.RequestError | eff) ListResourceDelegatesResponse
-listResourceDelegates = AWS.request serviceName "ListResourceDelegates" 
+listResourceDelegates = AWS.request serviceName "listResourceDelegates" 
 
 
 -- | <p>Returns summaries of the organization's resources.</p>
 listResources :: forall eff. ListResourcesRequest -> Aff (err :: AWS.RequestError | eff) ListResourcesResponse
-listResources = AWS.request serviceName "ListResources" 
+listResources = AWS.request serviceName "listResources" 
 
 
 -- | <p>Returns summaries of the organization's users.</p>
 listUsers :: forall eff. ListUsersRequest -> Aff (err :: AWS.RequestError | eff) ListUsersResponse
-listUsers = AWS.request serviceName "ListUsers" 
+listUsers = AWS.request serviceName "listUsers" 
 
 
 -- | <p>Registers an existing and disabled user, group, or resource/entity for Amazon WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the entity is enabled and fails if the entity is deleted. This operation results in the accumulation of costs. For more information, see <a href="http://aws.amazon.com/workmail/pricing">Pricing</a>. The equivalent console functionality for this operation is <i>Enable</i>. Users can either be created by calling the CreateUser API or they can be synchronized from your directory. For more information, see DeregisterFromWorkMail.</p>
 registerToWorkMail :: forall eff. RegisterToWorkMailRequest -> Aff (err :: AWS.RequestError | eff) RegisterToWorkMailResponse
-registerToWorkMail = AWS.request serviceName "RegisterToWorkMail" 
+registerToWorkMail = AWS.request serviceName "registerToWorkMail" 
 
 
 -- | <p>Allows the administrator to reset the password for a user.</p>
 resetPassword :: forall eff. ResetPasswordRequest -> Aff (err :: AWS.RequestError | eff) ResetPasswordResponse
-resetPassword = AWS.request serviceName "ResetPassword" 
+resetPassword = AWS.request serviceName "resetPassword" 
 
 
 -- | <p>Updates the primary email for an entity. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email) and the email provided in the input is promoted as the primary.</p>
 updatePrimaryEmailAddress :: forall eff. UpdatePrimaryEmailAddressRequest -> Aff (err :: AWS.RequestError | eff) UpdatePrimaryEmailAddressResponse
-updatePrimaryEmailAddress = AWS.request serviceName "UpdatePrimaryEmailAddress" 
+updatePrimaryEmailAddress = AWS.request serviceName "updatePrimaryEmailAddress" 
 
 
 -- | <p>Updates data for the resource. It must be preceded by a describe call in order to have the latest information. The dataset in the request should be the one expected when performing another describe call.</p>
 updateResource :: forall eff. UpdateResourceRequest -> Aff (err :: AWS.RequestError | eff) UpdateResourceResponse
-updateResource = AWS.request serviceName "UpdateResource" 
+updateResource = AWS.request serviceName "updateResource" 
 
 
 newtype Aliases = Aliases (Array EmailAddress)

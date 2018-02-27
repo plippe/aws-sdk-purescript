@@ -16,187 +16,187 @@ serviceName = "GuardDuty" :: String
 
 -- | Accepts the invitation to be monitored by a master GuardDuty account.
 acceptInvitation :: forall eff. AcceptInvitationRequest -> Aff (err :: AWS.RequestError | eff) AcceptInvitationResponse
-acceptInvitation = AWS.request serviceName "AcceptInvitation" 
+acceptInvitation = AWS.request serviceName "acceptInvitation" 
 
 
 -- | Archives Amazon GuardDuty findings specified by the list of finding IDs.
 archiveFindings :: forall eff. ArchiveFindingsRequest -> Aff (err :: AWS.RequestError | eff) ArchiveFindingsResponse
-archiveFindings = AWS.request serviceName "ArchiveFindings" 
+archiveFindings = AWS.request serviceName "archiveFindings" 
 
 
 -- | Creates a single Amazon GuardDuty detector. A detector is an object that represents the GuardDuty service. A detector must be created in order for GuardDuty to become operational.
 createDetector :: forall eff. CreateDetectorRequest -> Aff (err :: AWS.RequestError | eff) CreateDetectorResponse
-createDetector = AWS.request serviceName "CreateDetector" 
+createDetector = AWS.request serviceName "createDetector" 
 
 
 -- | Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure communication with AWS infrastructure and applications.
 createIPSet :: forall eff. CreateIPSetRequest -> Aff (err :: AWS.RequestError | eff) CreateIPSetResponse
-createIPSet = AWS.request serviceName "CreateIPSet" 
+createIPSet = AWS.request serviceName "createIPSet" 
 
 
 -- | Creates member accounts of the current AWS account by specifying a list of AWS account IDs. The current AWS account can then invite these members to manage GuardDuty in their accounts.
 createMembers :: forall eff. CreateMembersRequest -> Aff (err :: AWS.RequestError | eff) CreateMembersResponse
-createMembers = AWS.request serviceName "CreateMembers" 
+createMembers = AWS.request serviceName "createMembers" 
 
 
 -- | Generates example findings of types specified by the list of finding types. If 'NULL' is specified for findingTypes, the API generates example findings of all supported finding types.
 createSampleFindings :: forall eff. CreateSampleFindingsRequest -> Aff (err :: AWS.RequestError | eff) CreateSampleFindingsResponse
-createSampleFindings = AWS.request serviceName "CreateSampleFindings" 
+createSampleFindings = AWS.request serviceName "createSampleFindings" 
 
 
 -- | Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets.
 createThreatIntelSet :: forall eff. CreateThreatIntelSetRequest -> Aff (err :: AWS.RequestError | eff) CreateThreatIntelSetResponse
-createThreatIntelSet = AWS.request serviceName "CreateThreatIntelSet" 
+createThreatIntelSet = AWS.request serviceName "createThreatIntelSet" 
 
 
 -- | Declines invitations sent to the current member account by AWS account specified by their account IDs.
 declineInvitations :: forall eff. DeclineInvitationsRequest -> Aff (err :: AWS.RequestError | eff) DeclineInvitationsResponse
-declineInvitations = AWS.request serviceName "DeclineInvitations" 
+declineInvitations = AWS.request serviceName "declineInvitations" 
 
 
 -- | Deletes a Amazon GuardDuty detector specified by the detector ID.
 deleteDetector :: forall eff. DeleteDetectorRequest -> Aff (err :: AWS.RequestError | eff) DeleteDetectorResponse
-deleteDetector = AWS.request serviceName "DeleteDetector" 
+deleteDetector = AWS.request serviceName "deleteDetector" 
 
 
 -- | Deletes the IPSet specified by the IPSet ID.
 deleteIPSet :: forall eff. DeleteIPSetRequest -> Aff (err :: AWS.RequestError | eff) DeleteIPSetResponse
-deleteIPSet = AWS.request serviceName "DeleteIPSet" 
+deleteIPSet = AWS.request serviceName "deleteIPSet" 
 
 
 -- | Deletes invitations sent to the current member account by AWS accounts specified by their account IDs.
 deleteInvitations :: forall eff. DeleteInvitationsRequest -> Aff (err :: AWS.RequestError | eff) DeleteInvitationsResponse
-deleteInvitations = AWS.request serviceName "DeleteInvitations" 
+deleteInvitations = AWS.request serviceName "deleteInvitations" 
 
 
 -- | Deletes GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
 deleteMembers :: forall eff. DeleteMembersRequest -> Aff (err :: AWS.RequestError | eff) DeleteMembersResponse
-deleteMembers = AWS.request serviceName "DeleteMembers" 
+deleteMembers = AWS.request serviceName "deleteMembers" 
 
 
 -- | Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
 deleteThreatIntelSet :: forall eff. DeleteThreatIntelSetRequest -> Aff (err :: AWS.RequestError | eff) DeleteThreatIntelSetResponse
-deleteThreatIntelSet = AWS.request serviceName "DeleteThreatIntelSet" 
+deleteThreatIntelSet = AWS.request serviceName "deleteThreatIntelSet" 
 
 
 -- | Disassociates the current GuardDuty member account from its master account.
 disassociateFromMasterAccount :: forall eff. DisassociateFromMasterAccountRequest -> Aff (err :: AWS.RequestError | eff) DisassociateFromMasterAccountResponse
-disassociateFromMasterAccount = AWS.request serviceName "DisassociateFromMasterAccount" 
+disassociateFromMasterAccount = AWS.request serviceName "disassociateFromMasterAccount" 
 
 
 -- | Disassociates GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
 disassociateMembers :: forall eff. DisassociateMembersRequest -> Aff (err :: AWS.RequestError | eff) DisassociateMembersResponse
-disassociateMembers = AWS.request serviceName "DisassociateMembers" 
+disassociateMembers = AWS.request serviceName "disassociateMembers" 
 
 
 -- | Retrieves an Amazon GuardDuty detector specified by the detectorId.
 getDetector :: forall eff. GetDetectorRequest -> Aff (err :: AWS.RequestError | eff) GetDetectorResponse
-getDetector = AWS.request serviceName "GetDetector" 
+getDetector = AWS.request serviceName "getDetector" 
 
 
 -- | Describes Amazon GuardDuty findings specified by finding IDs.
 getFindings :: forall eff. GetFindingsRequest -> Aff (err :: AWS.RequestError | eff) GetFindingsResponse
-getFindings = AWS.request serviceName "GetFindings" 
+getFindings = AWS.request serviceName "getFindings" 
 
 
 -- | Lists Amazon GuardDuty findings' statistics for the specified detector ID.
 getFindingsStatistics :: forall eff. GetFindingsStatisticsRequest -> Aff (err :: AWS.RequestError | eff) GetFindingsStatisticsResponse
-getFindingsStatistics = AWS.request serviceName "GetFindingsStatistics" 
+getFindingsStatistics = AWS.request serviceName "getFindingsStatistics" 
 
 
 -- | Retrieves the IPSet specified by the IPSet ID.
 getIPSet :: forall eff. GetIPSetRequest -> Aff (err :: AWS.RequestError | eff) GetIPSetResponse
-getIPSet = AWS.request serviceName "GetIPSet" 
+getIPSet = AWS.request serviceName "getIPSet" 
 
 
 -- | Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
 getInvitationsCount :: forall eff. GetInvitationsCountRequest -> Aff (err :: AWS.RequestError | eff) GetInvitationsCountResponse
-getInvitationsCount = AWS.request serviceName "GetInvitationsCount" 
+getInvitationsCount = AWS.request serviceName "getInvitationsCount" 
 
 
 -- | Provides the details for the GuardDuty master account to the current GuardDuty member account.
 getMasterAccount :: forall eff. GetMasterAccountRequest -> Aff (err :: AWS.RequestError | eff) GetMasterAccountResponse
-getMasterAccount = AWS.request serviceName "GetMasterAccount" 
+getMasterAccount = AWS.request serviceName "getMasterAccount" 
 
 
 -- | Retrieves GuardDuty member accounts (to the current GuardDuty master account) specified by the account IDs.
 getMembers :: forall eff. GetMembersRequest -> Aff (err :: AWS.RequestError | eff) GetMembersResponse
-getMembers = AWS.request serviceName "GetMembers" 
+getMembers = AWS.request serviceName "getMembers" 
 
 
 -- | Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
 getThreatIntelSet :: forall eff. GetThreatIntelSetRequest -> Aff (err :: AWS.RequestError | eff) GetThreatIntelSetResponse
-getThreatIntelSet = AWS.request serviceName "GetThreatIntelSet" 
+getThreatIntelSet = AWS.request serviceName "getThreatIntelSet" 
 
 
 -- | Invites other AWS accounts (created as members of the current AWS account by CreateMembers) to enable GuardDuty and allow the current AWS account to view and manage these accounts' GuardDuty findings on their behalf as the master account.
 inviteMembers :: forall eff. InviteMembersRequest -> Aff (err :: AWS.RequestError | eff) InviteMembersResponse
-inviteMembers = AWS.request serviceName "InviteMembers" 
+inviteMembers = AWS.request serviceName "inviteMembers" 
 
 
 -- | Lists detectorIds of all the existing Amazon GuardDuty detector resources.
 listDetectors :: forall eff. ListDetectorsRequest -> Aff (err :: AWS.RequestError | eff) ListDetectorsResponse
-listDetectors = AWS.request serviceName "ListDetectors" 
+listDetectors = AWS.request serviceName "listDetectors" 
 
 
 -- | Lists Amazon GuardDuty findings for the specified detector ID.
 listFindings :: forall eff. ListFindingsRequest -> Aff (err :: AWS.RequestError | eff) ListFindingsResponse
-listFindings = AWS.request serviceName "ListFindings" 
+listFindings = AWS.request serviceName "listFindings" 
 
 
 -- | Lists the IPSets of the GuardDuty service specified by the detector ID.
 listIPSets :: forall eff. ListIPSetsRequest -> Aff (err :: AWS.RequestError | eff) ListIPSetsResponse
-listIPSets = AWS.request serviceName "ListIPSets" 
+listIPSets = AWS.request serviceName "listIPSets" 
 
 
 -- | Lists all GuardDuty membership invitations that were sent to the current AWS account.
 listInvitations :: forall eff. ListInvitationsRequest -> Aff (err :: AWS.RequestError | eff) ListInvitationsResponse
-listInvitations = AWS.request serviceName "ListInvitations" 
+listInvitations = AWS.request serviceName "listInvitations" 
 
 
 -- | Lists details about all member accounts for the current GuardDuty master account.
 listMembers :: forall eff. ListMembersRequest -> Aff (err :: AWS.RequestError | eff) ListMembersResponse
-listMembers = AWS.request serviceName "ListMembers" 
+listMembers = AWS.request serviceName "listMembers" 
 
 
 -- | Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID.
 listThreatIntelSets :: forall eff. ListThreatIntelSetsRequest -> Aff (err :: AWS.RequestError | eff) ListThreatIntelSetsResponse
-listThreatIntelSets = AWS.request serviceName "ListThreatIntelSets" 
+listThreatIntelSets = AWS.request serviceName "listThreatIntelSets" 
 
 
 -- | Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs. A master GuardDuty account can run this command after disabling GuardDuty from monitoring these members' findings by running StopMonitoringMembers.
 startMonitoringMembers :: forall eff. StartMonitoringMembersRequest -> Aff (err :: AWS.RequestError | eff) StartMonitoringMembersResponse
-startMonitoringMembers = AWS.request serviceName "StartMonitoringMembers" 
+startMonitoringMembers = AWS.request serviceName "startMonitoringMembers" 
 
 
 -- | Disables GuardDuty from monitoring findings of the member accounts specified by the account IDs. After running this command, a master GuardDuty account can run StartMonitoringMembers to re-enable GuardDuty to monitor these members' findings.
 stopMonitoringMembers :: forall eff. StopMonitoringMembersRequest -> Aff (err :: AWS.RequestError | eff) StopMonitoringMembersResponse
-stopMonitoringMembers = AWS.request serviceName "StopMonitoringMembers" 
+stopMonitoringMembers = AWS.request serviceName "stopMonitoringMembers" 
 
 
 -- | Unarchives Amazon GuardDuty findings specified by the list of finding IDs.
 unarchiveFindings :: forall eff. UnarchiveFindingsRequest -> Aff (err :: AWS.RequestError | eff) UnarchiveFindingsResponse
-unarchiveFindings = AWS.request serviceName "UnarchiveFindings" 
+unarchiveFindings = AWS.request serviceName "unarchiveFindings" 
 
 
 -- | Updates an Amazon GuardDuty detector specified by the detectorId.
 updateDetector :: forall eff. UpdateDetectorRequest -> Aff (err :: AWS.RequestError | eff) UpdateDetectorResponse
-updateDetector = AWS.request serviceName "UpdateDetector" 
+updateDetector = AWS.request serviceName "updateDetector" 
 
 
 -- | Marks specified Amazon GuardDuty findings as useful or not useful.
 updateFindingsFeedback :: forall eff. UpdateFindingsFeedbackRequest -> Aff (err :: AWS.RequestError | eff) UpdateFindingsFeedbackResponse
-updateFindingsFeedback = AWS.request serviceName "UpdateFindingsFeedback" 
+updateFindingsFeedback = AWS.request serviceName "updateFindingsFeedback" 
 
 
 -- | Updates the IPSet specified by the IPSet ID.
 updateIPSet :: forall eff. UpdateIPSetRequest -> Aff (err :: AWS.RequestError | eff) UpdateIPSetResponse
-updateIPSet = AWS.request serviceName "UpdateIPSet" 
+updateIPSet = AWS.request serviceName "updateIPSet" 
 
 
 -- | Updates the ThreatIntelSet specified by ThreatIntelSet ID.
 updateThreatIntelSet :: forall eff. UpdateThreatIntelSetRequest -> Aff (err :: AWS.RequestError | eff) UpdateThreatIntelSetResponse
-updateThreatIntelSet = AWS.request serviceName "UpdateThreatIntelSet" 
+updateThreatIntelSet = AWS.request serviceName "updateThreatIntelSet" 
 
 
 -- | AcceptInvitation request body.

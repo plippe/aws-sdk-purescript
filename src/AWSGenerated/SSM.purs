@@ -16,487 +16,487 @@ serviceName = "SSM" :: String
 
 -- | <p>Adds or overwrites one or more tags for the specified resource. Tags are metadata that you can assign to your documents, managed instances, Maintenance Windows, Parameter Store parameters, and patch baselines. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account's managed instances that helps you track each instance's owner and stack level. For example: Key=Owner and Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production, Pre-Production, or Test.</p> <p>Each resource can have a maximum of 50 tags. </p> <p>We recommend that you devise a set of tag keys that meets your needs for each resource type. Using a consistent set of tag keys makes it easier for you to manage your resources. You can search and filter the resources based on the tags you add. Tags don't have any semantic meaning to Amazon EC2 and are interpreted strictly as a string of characters. </p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging Your Amazon EC2 Resources</a> in the <i>Amazon EC2 User Guide</i>.</p>
 addTagsToResource :: forall eff. AddTagsToResourceRequest -> Aff (err :: AWS.RequestError | eff) AddTagsToResourceResult
-addTagsToResource = AWS.request serviceName "AddTagsToResource" 
+addTagsToResource = AWS.request serviceName "addTagsToResource" 
 
 
 -- | <p>Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.</p>
 cancelCommand :: forall eff. CancelCommandRequest -> Aff (err :: AWS.RequestError | eff) CancelCommandResult
-cancelCommand = AWS.request serviceName "CancelCommand" 
+cancelCommand = AWS.request serviceName "cancelCommand" 
 
 
 -- | <p>Registers your on-premises server or virtual machine with Amazon EC2 so that you can manage these resources using Run Command. An on-premises server or virtual machine that has been registered with EC2 is called a managed instance. For more information about activations, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html">Setting Up Systems Manager in Hybrid Environments</a>.</p>
 createActivation :: forall eff. CreateActivationRequest -> Aff (err :: AWS.RequestError | eff) CreateActivationResult
-createActivation = AWS.request serviceName "CreateActivation" 
+createActivation = AWS.request serviceName "createActivation" 
 
 
 -- | <p>Associates the specified Systems Manager document with the specified instances or targets.</p> <p>When you associate a document with one or more instances using instance IDs or tags, the SSM Agent running on the instance processes the document and configures the instance as specified.</p> <p>If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.</p>
 createAssociation :: forall eff. CreateAssociationRequest -> Aff (err :: AWS.RequestError | eff) CreateAssociationResult
-createAssociation = AWS.request serviceName "CreateAssociation" 
+createAssociation = AWS.request serviceName "createAssociation" 
 
 
 -- | <p>Associates the specified Systems Manager document with the specified instances or targets.</p> <p>When you associate a document with one or more instances using instance IDs or tags, the SSM Agent running on the instance processes the document and configures the instance as specified.</p> <p>If you associate a document with an instance that already has an associated document, the system throws the AssociationAlreadyExists exception.</p>
 createAssociationBatch :: forall eff. CreateAssociationBatchRequest -> Aff (err :: AWS.RequestError | eff) CreateAssociationBatchResult
-createAssociationBatch = AWS.request serviceName "CreateAssociationBatch" 
+createAssociationBatch = AWS.request serviceName "createAssociationBatch" 
 
 
 -- | <p>Creates a Systems Manager document.</p> <p>After you create a document, you can use CreateAssociation to associate it with one or more running instances.</p>
 createDocument :: forall eff. CreateDocumentRequest -> Aff (err :: AWS.RequestError | eff) CreateDocumentResult
-createDocument = AWS.request serviceName "CreateDocument" 
+createDocument = AWS.request serviceName "createDocument" 
 
 
 -- | <p>Creates a new Maintenance Window.</p>
 createMaintenanceWindow :: forall eff. CreateMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) CreateMaintenanceWindowResult
-createMaintenanceWindow = AWS.request serviceName "CreateMaintenanceWindow" 
+createMaintenanceWindow = AWS.request serviceName "createMaintenanceWindow" 
 
 
 -- | <p>Creates a patch baseline.</p> <note> <p>For information about valid key and value pairs in <code>PatchFilters</code> for each supported operating system type, see <a href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.</p> </note>
 createPatchBaseline :: forall eff. CreatePatchBaselineRequest -> Aff (err :: AWS.RequestError | eff) CreatePatchBaselineResult
-createPatchBaseline = AWS.request serviceName "CreatePatchBaseline" 
+createPatchBaseline = AWS.request serviceName "createPatchBaseline" 
 
 
 -- | <p>Creates a resource data sync configuration to a single bucket in Amazon S3. This is an asynchronous operation that returns immediately. After a successful initial sync is completed, the system continuously syncs data to the Amazon S3 bucket. To check the status of the sync, use the <a>ListResourceDataSync</a>.</p> <p>By default, data is not encrypted in Amazon S3. We strongly recommend that you enable encryption in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3 bucket by creating a restrictive bucket policy. To view an example of a restrictive Amazon S3 bucket policy for Resource Data Sync, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-configuring.html#sysman-inventory-datasync">Configuring Resource Data Sync for Inventory</a>.</p>
 createResourceDataSync :: forall eff. CreateResourceDataSyncRequest -> Aff (err :: AWS.RequestError | eff) CreateResourceDataSyncResult
-createResourceDataSync = AWS.request serviceName "CreateResourceDataSync" 
+createResourceDataSync = AWS.request serviceName "createResourceDataSync" 
 
 
 -- | <p>Deletes an activation. You are not required to delete an activation. If you delete an activation, you can no longer use it to register additional managed instances. Deleting an activation does not de-register managed instances. You must manually de-register managed instances.</p>
 deleteActivation :: forall eff. DeleteActivationRequest -> Aff (err :: AWS.RequestError | eff) DeleteActivationResult
-deleteActivation = AWS.request serviceName "DeleteActivation" 
+deleteActivation = AWS.request serviceName "deleteActivation" 
 
 
 -- | <p>Disassociates the specified Systems Manager document from the specified instance.</p> <p>When you disassociate a document from an instance, it does not change the configuration of the instance. To change the configuration state of an instance after you disassociate a document, you must create a new document with the desired configuration and associate it with the instance.</p>
 deleteAssociation :: forall eff. DeleteAssociationRequest -> Aff (err :: AWS.RequestError | eff) DeleteAssociationResult
-deleteAssociation = AWS.request serviceName "DeleteAssociation" 
+deleteAssociation = AWS.request serviceName "deleteAssociation" 
 
 
 -- | <p>Deletes the Systems Manager document and all instance associations to the document.</p> <p>Before you delete the document, we recommend that you use <a>DeleteAssociation</a> to disassociate all instances that are associated with the document.</p>
 deleteDocument :: forall eff. DeleteDocumentRequest -> Aff (err :: AWS.RequestError | eff) DeleteDocumentResult
-deleteDocument = AWS.request serviceName "DeleteDocument" 
+deleteDocument = AWS.request serviceName "deleteDocument" 
 
 
 -- | <p>Deletes a Maintenance Window.</p>
 deleteMaintenanceWindow :: forall eff. DeleteMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) DeleteMaintenanceWindowResult
-deleteMaintenanceWindow = AWS.request serviceName "DeleteMaintenanceWindow" 
+deleteMaintenanceWindow = AWS.request serviceName "deleteMaintenanceWindow" 
 
 
 -- | <p>Delete a parameter from the system.</p>
 deleteParameter :: forall eff. DeleteParameterRequest -> Aff (err :: AWS.RequestError | eff) DeleteParameterResult
-deleteParameter = AWS.request serviceName "DeleteParameter" 
+deleteParameter = AWS.request serviceName "deleteParameter" 
 
 
 -- | <p>Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.</p>
 deleteParameters :: forall eff. DeleteParametersRequest -> Aff (err :: AWS.RequestError | eff) DeleteParametersResult
-deleteParameters = AWS.request serviceName "DeleteParameters" 
+deleteParameters = AWS.request serviceName "deleteParameters" 
 
 
 -- | <p>Deletes a patch baseline.</p>
 deletePatchBaseline :: forall eff. DeletePatchBaselineRequest -> Aff (err :: AWS.RequestError | eff) DeletePatchBaselineResult
-deletePatchBaseline = AWS.request serviceName "DeletePatchBaseline" 
+deletePatchBaseline = AWS.request serviceName "deletePatchBaseline" 
 
 
 -- | <p>Deletes a Resource Data Sync configuration. After the configuration is deleted, changes to inventory data on managed instances are no longer synced with the target Amazon S3 bucket. Deleting a sync configuration does not delete data in the target Amazon S3 bucket.</p>
 deleteResourceDataSync :: forall eff. DeleteResourceDataSyncRequest -> Aff (err :: AWS.RequestError | eff) DeleteResourceDataSyncResult
-deleteResourceDataSync = AWS.request serviceName "DeleteResourceDataSync" 
+deleteResourceDataSync = AWS.request serviceName "deleteResourceDataSync" 
 
 
 -- | <p>Removes the server or virtual machine from the list of registered servers. You can reregister the instance again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling the SSM Agent first.</p>
 deregisterManagedInstance :: forall eff. DeregisterManagedInstanceRequest -> Aff (err :: AWS.RequestError | eff) DeregisterManagedInstanceResult
-deregisterManagedInstance = AWS.request serviceName "DeregisterManagedInstance" 
+deregisterManagedInstance = AWS.request serviceName "deregisterManagedInstance" 
 
 
 -- | <p>Removes a patch group from a patch baseline.</p>
 deregisterPatchBaselineForPatchGroup :: forall eff. DeregisterPatchBaselineForPatchGroupRequest -> Aff (err :: AWS.RequestError | eff) DeregisterPatchBaselineForPatchGroupResult
-deregisterPatchBaselineForPatchGroup = AWS.request serviceName "DeregisterPatchBaselineForPatchGroup" 
+deregisterPatchBaselineForPatchGroup = AWS.request serviceName "deregisterPatchBaselineForPatchGroup" 
 
 
 -- | <p>Removes a target from a Maintenance Window.</p>
 deregisterTargetFromMaintenanceWindow :: forall eff. DeregisterTargetFromMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) DeregisterTargetFromMaintenanceWindowResult
-deregisterTargetFromMaintenanceWindow = AWS.request serviceName "DeregisterTargetFromMaintenanceWindow" 
+deregisterTargetFromMaintenanceWindow = AWS.request serviceName "deregisterTargetFromMaintenanceWindow" 
 
 
 -- | <p>Removes a task from a Maintenance Window.</p>
 deregisterTaskFromMaintenanceWindow :: forall eff. DeregisterTaskFromMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) DeregisterTaskFromMaintenanceWindowResult
-deregisterTaskFromMaintenanceWindow = AWS.request serviceName "DeregisterTaskFromMaintenanceWindow" 
+deregisterTaskFromMaintenanceWindow = AWS.request serviceName "deregisterTaskFromMaintenanceWindow" 
 
 
 -- | <p>Details about the activation, including: the date and time the activation was created, the expiration date, the IAM role assigned to the instances in the activation, and the number of instances activated by this registration.</p>
 describeActivations :: forall eff. DescribeActivationsRequest -> Aff (err :: AWS.RequestError | eff) DescribeActivationsResult
-describeActivations = AWS.request serviceName "DescribeActivations" 
+describeActivations = AWS.request serviceName "describeActivations" 
 
 
 -- | <p>Describes the association for the specified target or instance. If you created the association by using the <code>Targets</code> parameter, then you must retrieve the association by using the association ID. If you created the association by specifying an instance ID and a Systems Manager document, then you retrieve the association by specifying the document name and the instance ID. </p>
 describeAssociation :: forall eff. DescribeAssociationRequest -> Aff (err :: AWS.RequestError | eff) DescribeAssociationResult
-describeAssociation = AWS.request serviceName "DescribeAssociation" 
+describeAssociation = AWS.request serviceName "describeAssociation" 
 
 
 -- | <p>Provides details about all active and terminated Automation executions.</p>
 describeAutomationExecutions :: forall eff. DescribeAutomationExecutionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeAutomationExecutionsResult
-describeAutomationExecutions = AWS.request serviceName "DescribeAutomationExecutions" 
+describeAutomationExecutions = AWS.request serviceName "describeAutomationExecutions" 
 
 
 -- | <p>Information about all active and terminated step executions in an Automation workflow.</p>
 describeAutomationStepExecutions :: forall eff. DescribeAutomationStepExecutionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeAutomationStepExecutionsResult
-describeAutomationStepExecutions = AWS.request serviceName "DescribeAutomationStepExecutions" 
+describeAutomationStepExecutions = AWS.request serviceName "describeAutomationStepExecutions" 
 
 
 -- | <p>Lists all patches that could possibly be included in a patch baseline.</p>
 describeAvailablePatches :: forall eff. DescribeAvailablePatchesRequest -> Aff (err :: AWS.RequestError | eff) DescribeAvailablePatchesResult
-describeAvailablePatches = AWS.request serviceName "DescribeAvailablePatches" 
+describeAvailablePatches = AWS.request serviceName "describeAvailablePatches" 
 
 
 -- | <p>Describes the specified Systems Manager document.</p>
 describeDocument :: forall eff. DescribeDocumentRequest -> Aff (err :: AWS.RequestError | eff) DescribeDocumentResult
-describeDocument = AWS.request serviceName "DescribeDocument" 
+describeDocument = AWS.request serviceName "describeDocument" 
 
 
 -- | <p>Describes the permissions for a Systems Manager document. If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user's AWS account ID) or publicly (<i>All</i>). </p>
 describeDocumentPermission :: forall eff. DescribeDocumentPermissionRequest -> Aff (err :: AWS.RequestError | eff) DescribeDocumentPermissionResponse
-describeDocumentPermission = AWS.request serviceName "DescribeDocumentPermission" 
+describeDocumentPermission = AWS.request serviceName "describeDocumentPermission" 
 
 
 -- | <p>All associations for the instance(s).</p>
 describeEffectiveInstanceAssociations :: forall eff. DescribeEffectiveInstanceAssociationsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEffectiveInstanceAssociationsResult
-describeEffectiveInstanceAssociations = AWS.request serviceName "DescribeEffectiveInstanceAssociations" 
+describeEffectiveInstanceAssociations = AWS.request serviceName "describeEffectiveInstanceAssociations" 
 
 
 -- | <p>Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Note that this API applies only to Windows patch baselines.</p>
 describeEffectivePatchesForPatchBaseline :: forall eff. DescribeEffectivePatchesForPatchBaselineRequest -> Aff (err :: AWS.RequestError | eff) DescribeEffectivePatchesForPatchBaselineResult
-describeEffectivePatchesForPatchBaseline = AWS.request serviceName "DescribeEffectivePatchesForPatchBaseline" 
+describeEffectivePatchesForPatchBaseline = AWS.request serviceName "describeEffectivePatchesForPatchBaseline" 
 
 
 -- | <p>The status of the associations for the instance(s).</p>
 describeInstanceAssociationsStatus :: forall eff. DescribeInstanceAssociationsStatusRequest -> Aff (err :: AWS.RequestError | eff) DescribeInstanceAssociationsStatusResult
-describeInstanceAssociationsStatus = AWS.request serviceName "DescribeInstanceAssociationsStatus" 
+describeInstanceAssociationsStatus = AWS.request serviceName "describeInstanceAssociationsStatus" 
 
 
 -- | <p>Describes one or more of your instances. You can use this to get information about instances like the operating system platform, the SSM Agent version (Linux), status etc. If you specify one or more instance IDs, it returns information for those instances. If you do not specify instance IDs, it returns information for all your instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an error. </p>
 describeInstanceInformation :: forall eff. DescribeInstanceInformationRequest -> Aff (err :: AWS.RequestError | eff) DescribeInstanceInformationResult
-describeInstanceInformation = AWS.request serviceName "DescribeInstanceInformation" 
+describeInstanceInformation = AWS.request serviceName "describeInstanceInformation" 
 
 
 -- | <p>Retrieves the high-level patch state of one or more instances.</p>
 describeInstancePatchStates :: forall eff. DescribeInstancePatchStatesRequest -> Aff (err :: AWS.RequestError | eff) DescribeInstancePatchStatesResult
-describeInstancePatchStates = AWS.request serviceName "DescribeInstancePatchStates" 
+describeInstancePatchStates = AWS.request serviceName "describeInstancePatchStates" 
 
 
 -- | <p>Retrieves the high-level patch state for the instances in the specified patch group.</p>
 describeInstancePatchStatesForPatchGroup :: forall eff. DescribeInstancePatchStatesForPatchGroupRequest -> Aff (err :: AWS.RequestError | eff) DescribeInstancePatchStatesForPatchGroupResult
-describeInstancePatchStatesForPatchGroup = AWS.request serviceName "DescribeInstancePatchStatesForPatchGroup" 
+describeInstancePatchStatesForPatchGroup = AWS.request serviceName "describeInstancePatchStatesForPatchGroup" 
 
 
 -- | <p>Retrieves information about the patches on the specified instance and their state relative to the patch baseline being used for the instance.</p>
 describeInstancePatches :: forall eff. DescribeInstancePatchesRequest -> Aff (err :: AWS.RequestError | eff) DescribeInstancePatchesResult
-describeInstancePatches = AWS.request serviceName "DescribeInstancePatches" 
+describeInstancePatches = AWS.request serviceName "describeInstancePatches" 
 
 
 -- | <p>Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution.</p>
 describeMaintenanceWindowExecutionTaskInvocations :: forall eff. DescribeMaintenanceWindowExecutionTaskInvocationsRequest -> Aff (err :: AWS.RequestError | eff) DescribeMaintenanceWindowExecutionTaskInvocationsResult
-describeMaintenanceWindowExecutionTaskInvocations = AWS.request serviceName "DescribeMaintenanceWindowExecutionTaskInvocations" 
+describeMaintenanceWindowExecutionTaskInvocations = AWS.request serviceName "describeMaintenanceWindowExecutionTaskInvocations" 
 
 
 -- | <p>For a given Maintenance Window execution, lists the tasks that were executed.</p>
 describeMaintenanceWindowExecutionTasks :: forall eff. DescribeMaintenanceWindowExecutionTasksRequest -> Aff (err :: AWS.RequestError | eff) DescribeMaintenanceWindowExecutionTasksResult
-describeMaintenanceWindowExecutionTasks = AWS.request serviceName "DescribeMaintenanceWindowExecutionTasks" 
+describeMaintenanceWindowExecutionTasks = AWS.request serviceName "describeMaintenanceWindowExecutionTasks" 
 
 
 -- | <p>Lists the executions of a Maintenance Window. This includes information about when the Maintenance Window was scheduled to be active, and information about tasks registered and run with the Maintenance Window.</p>
 describeMaintenanceWindowExecutions :: forall eff. DescribeMaintenanceWindowExecutionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeMaintenanceWindowExecutionsResult
-describeMaintenanceWindowExecutions = AWS.request serviceName "DescribeMaintenanceWindowExecutions" 
+describeMaintenanceWindowExecutions = AWS.request serviceName "describeMaintenanceWindowExecutions" 
 
 
 -- | <p>Lists the targets registered with the Maintenance Window.</p>
 describeMaintenanceWindowTargets :: forall eff. DescribeMaintenanceWindowTargetsRequest -> Aff (err :: AWS.RequestError | eff) DescribeMaintenanceWindowTargetsResult
-describeMaintenanceWindowTargets = AWS.request serviceName "DescribeMaintenanceWindowTargets" 
+describeMaintenanceWindowTargets = AWS.request serviceName "describeMaintenanceWindowTargets" 
 
 
 -- | <p>Lists the tasks in a Maintenance Window.</p>
 describeMaintenanceWindowTasks :: forall eff. DescribeMaintenanceWindowTasksRequest -> Aff (err :: AWS.RequestError | eff) DescribeMaintenanceWindowTasksResult
-describeMaintenanceWindowTasks = AWS.request serviceName "DescribeMaintenanceWindowTasks" 
+describeMaintenanceWindowTasks = AWS.request serviceName "describeMaintenanceWindowTasks" 
 
 
 -- | <p>Retrieves the Maintenance Windows in an AWS account.</p>
 describeMaintenanceWindows :: forall eff. DescribeMaintenanceWindowsRequest -> Aff (err :: AWS.RequestError | eff) DescribeMaintenanceWindowsResult
-describeMaintenanceWindows = AWS.request serviceName "DescribeMaintenanceWindows" 
+describeMaintenanceWindows = AWS.request serviceName "describeMaintenanceWindows" 
 
 
 -- | <p>Get information about a parameter.</p> <p>Request results are returned on a best-effort basis. If you specify <code>MaxResults</code> in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of <code>MaxResults</code>. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a <code>NextToken</code>. You can specify the <code>NextToken</code> in a subsequent call to get the next set of results.</p>
 describeParameters :: forall eff. DescribeParametersRequest -> Aff (err :: AWS.RequestError | eff) DescribeParametersResult
-describeParameters = AWS.request serviceName "DescribeParameters" 
+describeParameters = AWS.request serviceName "describeParameters" 
 
 
 -- | <p>Lists the patch baselines in your AWS account.</p>
 describePatchBaselines :: forall eff. DescribePatchBaselinesRequest -> Aff (err :: AWS.RequestError | eff) DescribePatchBaselinesResult
-describePatchBaselines = AWS.request serviceName "DescribePatchBaselines" 
+describePatchBaselines = AWS.request serviceName "describePatchBaselines" 
 
 
 -- | <p>Returns high-level aggregated patch compliance state for a patch group.</p>
 describePatchGroupState :: forall eff. DescribePatchGroupStateRequest -> Aff (err :: AWS.RequestError | eff) DescribePatchGroupStateResult
-describePatchGroupState = AWS.request serviceName "DescribePatchGroupState" 
+describePatchGroupState = AWS.request serviceName "describePatchGroupState" 
 
 
 -- | <p>Lists all patch groups that have been registered with patch baselines.</p>
 describePatchGroups :: forall eff. DescribePatchGroupsRequest -> Aff (err :: AWS.RequestError | eff) DescribePatchGroupsResult
-describePatchGroups = AWS.request serviceName "DescribePatchGroups" 
+describePatchGroups = AWS.request serviceName "describePatchGroups" 
 
 
 -- | <p>Get detailed information about a particular Automation execution.</p>
 getAutomationExecution :: forall eff. GetAutomationExecutionRequest -> Aff (err :: AWS.RequestError | eff) GetAutomationExecutionResult
-getAutomationExecution = AWS.request serviceName "GetAutomationExecution" 
+getAutomationExecution = AWS.request serviceName "getAutomationExecution" 
 
 
 -- | <p>Returns detailed information about command execution for an invocation or plugin. </p>
 getCommandInvocation :: forall eff. GetCommandInvocationRequest -> Aff (err :: AWS.RequestError | eff) GetCommandInvocationResult
-getCommandInvocation = AWS.request serviceName "GetCommandInvocation" 
+getCommandInvocation = AWS.request serviceName "getCommandInvocation" 
 
 
 -- | <p>Retrieves the default patch baseline. Note that Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.</p>
 getDefaultPatchBaseline :: forall eff. GetDefaultPatchBaselineRequest -> Aff (err :: AWS.RequestError | eff) GetDefaultPatchBaselineResult
-getDefaultPatchBaseline = AWS.request serviceName "GetDefaultPatchBaseline" 
+getDefaultPatchBaseline = AWS.request serviceName "getDefaultPatchBaseline" 
 
 
 -- | <p>Retrieves the current snapshot for the patch baseline the instance uses. This API is primarily used by the AWS-RunPatchBaseline Systems Manager document. </p>
 getDeployablePatchSnapshotForInstance :: forall eff. GetDeployablePatchSnapshotForInstanceRequest -> Aff (err :: AWS.RequestError | eff) GetDeployablePatchSnapshotForInstanceResult
-getDeployablePatchSnapshotForInstance = AWS.request serviceName "GetDeployablePatchSnapshotForInstance" 
+getDeployablePatchSnapshotForInstance = AWS.request serviceName "getDeployablePatchSnapshotForInstance" 
 
 
 -- | <p>Gets the contents of the specified Systems Manager document.</p>
 getDocument :: forall eff. GetDocumentRequest -> Aff (err :: AWS.RequestError | eff) GetDocumentResult
-getDocument = AWS.request serviceName "GetDocument" 
+getDocument = AWS.request serviceName "getDocument" 
 
 
 -- | <p>Query inventory information.</p>
 getInventory :: forall eff. GetInventoryRequest -> Aff (err :: AWS.RequestError | eff) GetInventoryResult
-getInventory = AWS.request serviceName "GetInventory" 
+getInventory = AWS.request serviceName "getInventory" 
 
 
 -- | <p>Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type. </p>
 getInventorySchema :: forall eff. GetInventorySchemaRequest -> Aff (err :: AWS.RequestError | eff) GetInventorySchemaResult
-getInventorySchema = AWS.request serviceName "GetInventorySchema" 
+getInventorySchema = AWS.request serviceName "getInventorySchema" 
 
 
 -- | <p>Retrieves a Maintenance Window.</p>
 getMaintenanceWindow :: forall eff. GetMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) GetMaintenanceWindowResult
-getMaintenanceWindow = AWS.request serviceName "GetMaintenanceWindow" 
+getMaintenanceWindow = AWS.request serviceName "getMaintenanceWindow" 
 
 
 -- | <p>Retrieves details about a specific task executed as part of a Maintenance Window execution.</p>
 getMaintenanceWindowExecution :: forall eff. GetMaintenanceWindowExecutionRequest -> Aff (err :: AWS.RequestError | eff) GetMaintenanceWindowExecutionResult
-getMaintenanceWindowExecution = AWS.request serviceName "GetMaintenanceWindowExecution" 
+getMaintenanceWindowExecution = AWS.request serviceName "getMaintenanceWindowExecution" 
 
 
 -- | <p>Retrieves the details about a specific task executed as part of a Maintenance Window execution.</p>
 getMaintenanceWindowExecutionTask :: forall eff. GetMaintenanceWindowExecutionTaskRequest -> Aff (err :: AWS.RequestError | eff) GetMaintenanceWindowExecutionTaskResult
-getMaintenanceWindowExecutionTask = AWS.request serviceName "GetMaintenanceWindowExecutionTask" 
+getMaintenanceWindowExecutionTask = AWS.request serviceName "getMaintenanceWindowExecutionTask" 
 
 
 -- | <p>Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance Windows report status for all invocations. </p>
 getMaintenanceWindowExecutionTaskInvocation :: forall eff. GetMaintenanceWindowExecutionTaskInvocationRequest -> Aff (err :: AWS.RequestError | eff) GetMaintenanceWindowExecutionTaskInvocationResult
-getMaintenanceWindowExecutionTaskInvocation = AWS.request serviceName "GetMaintenanceWindowExecutionTaskInvocation" 
+getMaintenanceWindowExecutionTaskInvocation = AWS.request serviceName "getMaintenanceWindowExecutionTaskInvocation" 
 
 
 -- | <p>Lists the tasks in a Maintenance Window.</p>
 getMaintenanceWindowTask :: forall eff. GetMaintenanceWindowTaskRequest -> Aff (err :: AWS.RequestError | eff) GetMaintenanceWindowTaskResult
-getMaintenanceWindowTask = AWS.request serviceName "GetMaintenanceWindowTask" 
+getMaintenanceWindowTask = AWS.request serviceName "getMaintenanceWindowTask" 
 
 
 -- | <p>Get information about a parameter by using the parameter name. </p>
 getParameter :: forall eff. GetParameterRequest -> Aff (err :: AWS.RequestError | eff) GetParameterResult
-getParameter = AWS.request serviceName "GetParameter" 
+getParameter = AWS.request serviceName "getParameter" 
 
 
 -- | <p>Query a list of all parameters used by the AWS account.</p>
 getParameterHistory :: forall eff. GetParameterHistoryRequest -> Aff (err :: AWS.RequestError | eff) GetParameterHistoryResult
-getParameterHistory = AWS.request serviceName "GetParameterHistory" 
+getParameterHistory = AWS.request serviceName "getParameterHistory" 
 
 
 -- | <p>Get details of a parameter.</p>
 getParameters :: forall eff. GetParametersRequest -> Aff (err :: AWS.RequestError | eff) GetParametersResult
-getParameters = AWS.request serviceName "GetParameters" 
+getParameters = AWS.request serviceName "getParameters" 
 
 
 -- | <p>Retrieve parameters in a specific hierarchy. For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html">Working with Systems Manager Parameters</a>. </p> <p>Request results are returned on a best-effort basis. If you specify <code>MaxResults</code> in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of <code>MaxResults</code>. If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a <code>NextToken</code>. You can specify the <code>NextToken</code> in a subsequent call to get the next set of results.</p> <note> <p>This API action doesn't support filtering by tags. </p> </note>
 getParametersByPath :: forall eff. GetParametersByPathRequest -> Aff (err :: AWS.RequestError | eff) GetParametersByPathResult
-getParametersByPath = AWS.request serviceName "GetParametersByPath" 
+getParametersByPath = AWS.request serviceName "getParametersByPath" 
 
 
 -- | <p>Retrieves information about a patch baseline.</p>
 getPatchBaseline :: forall eff. GetPatchBaselineRequest -> Aff (err :: AWS.RequestError | eff) GetPatchBaselineResult
-getPatchBaseline = AWS.request serviceName "GetPatchBaseline" 
+getPatchBaseline = AWS.request serviceName "getPatchBaseline" 
 
 
 -- | <p>Retrieves the patch baseline that should be used for the specified patch group.</p>
 getPatchBaselineForPatchGroup :: forall eff. GetPatchBaselineForPatchGroupRequest -> Aff (err :: AWS.RequestError | eff) GetPatchBaselineForPatchGroupResult
-getPatchBaselineForPatchGroup = AWS.request serviceName "GetPatchBaselineForPatchGroup" 
+getPatchBaselineForPatchGroup = AWS.request serviceName "getPatchBaselineForPatchGroup" 
 
 
 -- | <p>Retrieves all versions of an association for a specific association ID.</p>
 listAssociationVersions :: forall eff. ListAssociationVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListAssociationVersionsResult
-listAssociationVersions = AWS.request serviceName "ListAssociationVersions" 
+listAssociationVersions = AWS.request serviceName "listAssociationVersions" 
 
 
 -- | <p>Lists the associations for the specified Systems Manager document or instance.</p>
 listAssociations :: forall eff. ListAssociationsRequest -> Aff (err :: AWS.RequestError | eff) ListAssociationsResult
-listAssociations = AWS.request serviceName "ListAssociations" 
+listAssociations = AWS.request serviceName "listAssociations" 
 
 
 -- | <p>An invocation is copy of a command sent to a specific instance. A command can apply to one or more instances. A command invocation applies to one instance. For example, if a user executes SendCommand against three instances, then a command invocation is created for each requested instance ID. ListCommandInvocations provide status about command execution.</p>
 listCommandInvocations :: forall eff. ListCommandInvocationsRequest -> Aff (err :: AWS.RequestError | eff) ListCommandInvocationsResult
-listCommandInvocations = AWS.request serviceName "ListCommandInvocations" 
+listCommandInvocations = AWS.request serviceName "listCommandInvocations" 
 
 
 -- | <p>Lists the commands requested by users of the AWS account.</p>
 listCommands :: forall eff. ListCommandsRequest -> Aff (err :: AWS.RequestError | eff) ListCommandsResult
-listCommands = AWS.request serviceName "ListCommands" 
+listCommands = AWS.request serviceName "listCommands" 
 
 
 -- | <p>For a specified resource ID, this API action returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter. </p>
 listComplianceItems :: forall eff. ListComplianceItemsRequest -> Aff (err :: AWS.RequestError | eff) ListComplianceItemsResult
-listComplianceItems = AWS.request serviceName "ListComplianceItems" 
+listComplianceItems = AWS.request serviceName "listComplianceItems" 
 
 
 -- | <p>Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify. </p>
 listComplianceSummaries :: forall eff. ListComplianceSummariesRequest -> Aff (err :: AWS.RequestError | eff) ListComplianceSummariesResult
-listComplianceSummaries = AWS.request serviceName "ListComplianceSummaries" 
+listComplianceSummaries = AWS.request serviceName "listComplianceSummaries" 
 
 
 -- | <p>List all versions for a document.</p>
 listDocumentVersions :: forall eff. ListDocumentVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListDocumentVersionsResult
-listDocumentVersions = AWS.request serviceName "ListDocumentVersions" 
+listDocumentVersions = AWS.request serviceName "listDocumentVersions" 
 
 
 -- | <p>Describes one or more of your Systems Manager documents.</p>
 listDocuments :: forall eff. ListDocumentsRequest -> Aff (err :: AWS.RequestError | eff) ListDocumentsResult
-listDocuments = AWS.request serviceName "ListDocuments" 
+listDocuments = AWS.request serviceName "listDocuments" 
 
 
 -- | <p>A list of inventory items returned by the request.</p>
 listInventoryEntries :: forall eff. ListInventoryEntriesRequest -> Aff (err :: AWS.RequestError | eff) ListInventoryEntriesResult
-listInventoryEntries = AWS.request serviceName "ListInventoryEntries" 
+listInventoryEntries = AWS.request serviceName "listInventoryEntries" 
 
 
 -- | <p>Returns a resource-level summary count. The summary includes information about compliant and non-compliant statuses and detailed compliance-item severity counts, according to the filter criteria you specify.</p>
 listResourceComplianceSummaries :: forall eff. ListResourceComplianceSummariesRequest -> Aff (err :: AWS.RequestError | eff) ListResourceComplianceSummariesResult
-listResourceComplianceSummaries = AWS.request serviceName "ListResourceComplianceSummaries" 
+listResourceComplianceSummaries = AWS.request serviceName "listResourceComplianceSummaries" 
 
 
 -- | <p>Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.</p> <p>The number of sync configurations might be too large to return using a single call to <code>ListResourceDataSync</code>. You can limit the number of sync configurations returned by using the <code>MaxResults</code> parameter. To determine whether there are more sync configurations to list, check the value of <code>NextToken</code> in the output. If there are more sync configurations to list, you can request them by specifying the <code>NextToken</code> returned in the call to the parameter of a subsequent call. </p>
 listResourceDataSync :: forall eff. ListResourceDataSyncRequest -> Aff (err :: AWS.RequestError | eff) ListResourceDataSyncResult
-listResourceDataSync = AWS.request serviceName "ListResourceDataSync" 
+listResourceDataSync = AWS.request serviceName "listResourceDataSync" 
 
 
 -- | <p>Returns a list of the tags assigned to the specified resource.</p>
 listTagsForResource :: forall eff. ListTagsForResourceRequest -> Aff (err :: AWS.RequestError | eff) ListTagsForResourceResult
-listTagsForResource = AWS.request serviceName "ListTagsForResource" 
+listTagsForResource = AWS.request serviceName "listTagsForResource" 
 
 
 -- | <p>Shares a Systems Manager document publicly or privately. If you share a document privately, you must specify the AWS user account IDs for those people who can use the document. If you share a document publicly, you must specify <i>All</i> as the account ID.</p>
 modifyDocumentPermission :: forall eff. ModifyDocumentPermissionRequest -> Aff (err :: AWS.RequestError | eff) ModifyDocumentPermissionResponse
-modifyDocumentPermission = AWS.request serviceName "ModifyDocumentPermission" 
+modifyDocumentPermission = AWS.request serviceName "modifyDocumentPermission" 
 
 
 -- | <p>Registers a compliance type and other compliance details on a designated resource. This action lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.</p> <p>ComplianceType can be one of the following:</p> <ul> <li> <p>ExecutionId: The execution ID when the patch, association, or custom compliance item was applied.</p> </li> <li> <p>ExecutionType: Specify patch, association, or Custom:<code>string</code>.</p> </li> <li> <p>ExecutionTime. The time the patch, association, or custom compliance item was applied to the instance.</p> </li> <li> <p>Id: The patch, association, or custom compliance ID.</p> </li> <li> <p>Title: A title.</p> </li> <li> <p>Status: The status of the compliance item. For example, <code>approved</code> for patches, or <code>Failed</code> for associations.</p> </li> <li> <p>Severity: A patch severity. For example, <code>critical</code>.</p> </li> <li> <p>DocumentName: A SSM document name. For example, AWS-RunPatchBaseline.</p> </li> <li> <p>DocumentVersion: An SSM document version number. For example, 4.</p> </li> <li> <p>Classification: A patch classification. For example, <code>security updates</code>.</p> </li> <li> <p>PatchBaselineId: A patch baseline ID.</p> </li> <li> <p>PatchSeverity: A patch severity. For example, <code>Critical</code>.</p> </li> <li> <p>PatchState: A patch state. For example, <code>InstancesWithFailedPatches</code>.</p> </li> <li> <p>PatchGroup: The name of a patch group.</p> </li> <li> <p>InstalledTime: The time the association, patch, or custom compliance item was applied to the resource. Specify the time by using the following format: yyyy-MM-dd'T'HH:mm:ss'Z'</p> </li> </ul>
 putComplianceItems :: forall eff. PutComplianceItemsRequest -> Aff (err :: AWS.RequestError | eff) PutComplianceItemsResult
-putComplianceItems = AWS.request serviceName "PutComplianceItems" 
+putComplianceItems = AWS.request serviceName "putComplianceItems" 
 
 
 -- | <p>Bulk update custom inventory items on one more instance. The request adds an inventory item, if it doesn't already exist, or updates an inventory item, if it does exist.</p>
 putInventory :: forall eff. PutInventoryRequest -> Aff (err :: AWS.RequestError | eff) PutInventoryResult
-putInventory = AWS.request serviceName "PutInventory" 
+putInventory = AWS.request serviceName "putInventory" 
 
 
 -- | <p>Add one or more parameters to the system.</p>
 putParameter :: forall eff. PutParameterRequest -> Aff (err :: AWS.RequestError | eff) PutParameterResult
-putParameter = AWS.request serviceName "PutParameter" 
+putParameter = AWS.request serviceName "putParameter" 
 
 
 -- | <p>Defines the default patch baseline.</p>
 registerDefaultPatchBaseline :: forall eff. RegisterDefaultPatchBaselineRequest -> Aff (err :: AWS.RequestError | eff) RegisterDefaultPatchBaselineResult
-registerDefaultPatchBaseline = AWS.request serviceName "RegisterDefaultPatchBaseline" 
+registerDefaultPatchBaseline = AWS.request serviceName "registerDefaultPatchBaseline" 
 
 
 -- | <p>Registers a patch baseline for a patch group.</p>
 registerPatchBaselineForPatchGroup :: forall eff. RegisterPatchBaselineForPatchGroupRequest -> Aff (err :: AWS.RequestError | eff) RegisterPatchBaselineForPatchGroupResult
-registerPatchBaselineForPatchGroup = AWS.request serviceName "RegisterPatchBaselineForPatchGroup" 
+registerPatchBaselineForPatchGroup = AWS.request serviceName "registerPatchBaselineForPatchGroup" 
 
 
 -- | <p>Registers a target with a Maintenance Window.</p>
 registerTargetWithMaintenanceWindow :: forall eff. RegisterTargetWithMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) RegisterTargetWithMaintenanceWindowResult
-registerTargetWithMaintenanceWindow = AWS.request serviceName "RegisterTargetWithMaintenanceWindow" 
+registerTargetWithMaintenanceWindow = AWS.request serviceName "registerTargetWithMaintenanceWindow" 
 
 
 -- | <p>Adds a new task to a Maintenance Window.</p>
 registerTaskWithMaintenanceWindow :: forall eff. RegisterTaskWithMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) RegisterTaskWithMaintenanceWindowResult
-registerTaskWithMaintenanceWindow = AWS.request serviceName "RegisterTaskWithMaintenanceWindow" 
+registerTaskWithMaintenanceWindow = AWS.request serviceName "registerTaskWithMaintenanceWindow" 
 
 
 -- | <p>Removes all tags from the specified resource.</p>
 removeTagsFromResource :: forall eff. RemoveTagsFromResourceRequest -> Aff (err :: AWS.RequestError | eff) RemoveTagsFromResourceResult
-removeTagsFromResource = AWS.request serviceName "RemoveTagsFromResource" 
+removeTagsFromResource = AWS.request serviceName "removeTagsFromResource" 
 
 
 -- | <p>Sends a signal to an Automation execution to change the current behavior or status of the execution. </p>
 sendAutomationSignal :: forall eff. SendAutomationSignalRequest -> Aff (err :: AWS.RequestError | eff) SendAutomationSignalResult
-sendAutomationSignal = AWS.request serviceName "SendAutomationSignal" 
+sendAutomationSignal = AWS.request serviceName "sendAutomationSignal" 
 
 
 -- | <p>Executes commands on one or more managed instances.</p>
 sendCommand :: forall eff. SendCommandRequest -> Aff (err :: AWS.RequestError | eff) SendCommandResult
-sendCommand = AWS.request serviceName "SendCommand" 
+sendCommand = AWS.request serviceName "sendCommand" 
 
 
 -- | <p>Initiates execution of an Automation document.</p>
 startAutomationExecution :: forall eff. StartAutomationExecutionRequest -> Aff (err :: AWS.RequestError | eff) StartAutomationExecutionResult
-startAutomationExecution = AWS.request serviceName "StartAutomationExecution" 
+startAutomationExecution = AWS.request serviceName "startAutomationExecution" 
 
 
 -- | <p>Stop an Automation that is currently executing.</p>
 stopAutomationExecution :: forall eff. StopAutomationExecutionRequest -> Aff (err :: AWS.RequestError | eff) StopAutomationExecutionResult
-stopAutomationExecution = AWS.request serviceName "StopAutomationExecution" 
+stopAutomationExecution = AWS.request serviceName "stopAutomationExecution" 
 
 
 -- | <p>Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon S3 output.</p>
 updateAssociation :: forall eff. UpdateAssociationRequest -> Aff (err :: AWS.RequestError | eff) UpdateAssociationResult
-updateAssociation = AWS.request serviceName "UpdateAssociation" 
+updateAssociation = AWS.request serviceName "updateAssociation" 
 
 
 -- | <p>Updates the status of the Systems Manager document associated with the specified instance.</p>
 updateAssociationStatus :: forall eff. UpdateAssociationStatusRequest -> Aff (err :: AWS.RequestError | eff) UpdateAssociationStatusResult
-updateAssociationStatus = AWS.request serviceName "UpdateAssociationStatus" 
+updateAssociationStatus = AWS.request serviceName "updateAssociationStatus" 
 
 
 -- | <p>The document you want to update.</p>
 updateDocument :: forall eff. UpdateDocumentRequest -> Aff (err :: AWS.RequestError | eff) UpdateDocumentResult
-updateDocument = AWS.request serviceName "UpdateDocument" 
+updateDocument = AWS.request serviceName "updateDocument" 
 
 
 -- | <p>Set the default version of a document. </p>
 updateDocumentDefaultVersion :: forall eff. UpdateDocumentDefaultVersionRequest -> Aff (err :: AWS.RequestError | eff) UpdateDocumentDefaultVersionResult
-updateDocumentDefaultVersion = AWS.request serviceName "UpdateDocumentDefaultVersion" 
+updateDocumentDefaultVersion = AWS.request serviceName "updateDocumentDefaultVersion" 
 
 
 -- | <p>Updates an existing Maintenance Window. Only specified parameters are modified.</p>
 updateMaintenanceWindow :: forall eff. UpdateMaintenanceWindowRequest -> Aff (err :: AWS.RequestError | eff) UpdateMaintenanceWindowResult
-updateMaintenanceWindow = AWS.request serviceName "UpdateMaintenanceWindow" 
+updateMaintenanceWindow = AWS.request serviceName "updateMaintenanceWindow" 
 
 
 -- | <p>Modifies the target of an existing Maintenance Window. You can't change the target type, but you can change the following:</p> <p>The target from being an ID target to a Tag target, or a Tag target to an ID target.</p> <p>IDs for an ID target.</p> <p>Tags for a Tag target.</p> <p>Owner.</p> <p>Name.</p> <p>Description.</p> <p>If a parameter is null, then the corresponding field is not modified.</p>
 updateMaintenanceWindowTarget :: forall eff. UpdateMaintenanceWindowTargetRequest -> Aff (err :: AWS.RequestError | eff) UpdateMaintenanceWindowTargetResult
-updateMaintenanceWindowTarget = AWS.request serviceName "UpdateMaintenanceWindowTarget" 
+updateMaintenanceWindowTarget = AWS.request serviceName "updateMaintenanceWindowTarget" 
 
 
 -- | <p>Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the following values:</p> <p>Task ARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.</p> <p>Service role ARN.</p> <p>Task parameters.</p> <p>Task priority.</p> <p>Task MaxConcurrency and MaxErrors.</p> <p>Log location.</p> <p>If a parameter is null, then the corresponding field is not modified. Also, if you set Replace to true, then all fields required by the RegisterTaskWithMaintenanceWindow action are required for this request. Optional fields that aren't specified are set to null.</p>
 updateMaintenanceWindowTask :: forall eff. UpdateMaintenanceWindowTaskRequest -> Aff (err :: AWS.RequestError | eff) UpdateMaintenanceWindowTaskResult
-updateMaintenanceWindowTask = AWS.request serviceName "UpdateMaintenanceWindowTask" 
+updateMaintenanceWindowTask = AWS.request serviceName "updateMaintenanceWindowTask" 
 
 
 -- | <p>Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance.</p>
 updateManagedInstanceRole :: forall eff. UpdateManagedInstanceRoleRequest -> Aff (err :: AWS.RequestError | eff) UpdateManagedInstanceRoleResult
-updateManagedInstanceRole = AWS.request serviceName "UpdateManagedInstanceRole" 
+updateManagedInstanceRole = AWS.request serviceName "updateManagedInstanceRole" 
 
 
 -- | <p>Modifies an existing patch baseline. Fields not specified in the request are left unchanged.</p> <note> <p>For information about valid key and value pairs in <code>PatchFilters</code> for each supported operating system type, see <a href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.</p> </note>
 updatePatchBaseline :: forall eff. UpdatePatchBaselineRequest -> Aff (err :: AWS.RequestError | eff) UpdatePatchBaselineResult
-updatePatchBaseline = AWS.request serviceName "UpdatePatchBaseline" 
+updatePatchBaseline = AWS.request serviceName "updatePatchBaseline" 
 
 
 newtype AccountId = AccountId String

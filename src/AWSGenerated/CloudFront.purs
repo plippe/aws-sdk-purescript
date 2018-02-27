@@ -16,137 +16,137 @@ serviceName = "CloudFront" :: String
 
 -- | <p>Creates a new origin access identity. If you're using Amazon S3 for your origin, you can use an origin access identity to require users to access your content using a CloudFront URL instead of the Amazon S3 URL. For more information about how to use origin access identities, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html">Serving Private Content through CloudFront</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 createCloudFrontOriginAccessIdentity :: forall eff. CreateCloudFrontOriginAccessIdentityRequest -> Aff (err :: AWS.RequestError | eff) CreateCloudFrontOriginAccessIdentityResult
-createCloudFrontOriginAccessIdentity = AWS.request serviceName "CreateCloudFrontOriginAccessIdentity" 
+createCloudFrontOriginAccessIdentity = AWS.request serviceName "createCloudFrontOriginAccessIdentity" 
 
 
 -- | <p>Creates a new web distribution. Send a <code>GET</code> request to the <code>/<i>CloudFront API version</i>/distribution</code>/<code>distribution ID</code> resource.</p>
 createDistribution :: forall eff. CreateDistributionRequest -> Aff (err :: AWS.RequestError | eff) CreateDistributionResult
-createDistribution = AWS.request serviceName "CreateDistribution" 
+createDistribution = AWS.request serviceName "createDistribution" 
 
 
 -- | <p>Create a new distribution with tags.</p>
 createDistributionWithTags :: forall eff. CreateDistributionWithTagsRequest -> Aff (err :: AWS.RequestError | eff) CreateDistributionWithTagsResult
-createDistributionWithTags = AWS.request serviceName "CreateDistributionWithTags" 
+createDistributionWithTags = AWS.request serviceName "createDistributionWithTags" 
 
 
 -- | <p>Create a new invalidation. </p>
 createInvalidation :: forall eff. CreateInvalidationRequest -> Aff (err :: AWS.RequestError | eff) CreateInvalidationResult
-createInvalidation = AWS.request serviceName "CreateInvalidation" 
+createInvalidation = AWS.request serviceName "createInvalidation" 
 
 
 -- | <p>Creates a new RMTP distribution. An RTMP distribution is similar to a web distribution, but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using HTTP. </p> <p>To create a new web distribution, submit a <code>POST</code> request to the <i>CloudFront API version</i>/distribution resource. The request body must include a document with a <i>StreamingDistributionConfig</i> element. The response echoes the <code>StreamingDistributionConfig</code> element and returns other information about the RTMP distribution.</p> <p>To get the status of your request, use the <i>GET StreamingDistribution</i> API action. When the value of <code>Enabled</code> is <code>true</code> and the value of <code>Status</code> is <code>Deployed</code>, your distribution is ready. A distribution usually deploys in less than 15 minutes.</p> <p>For more information about web distributions, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html">Working with RTMP Distributions</a> in the <i>Amazon CloudFront Developer Guide</i>.</p> <important> <p>Beginning with the 2012-05-05 version of the CloudFront API, we made substantial changes to the format of the XML document that you include in the request body when you create or update a web distribution or an RTMP distribution, and when you invalidate objects. With previous versions of the API, we discovered that it was too easy to accidentally delete one or more values for an element that accepts multiple values, for example, CNAMEs and trusted signers. Our changes for the 2012-05-05 release are intended to prevent these accidental deletions and to notify you when there's a mismatch between the number of values you say you're specifying in the <code>Quantity</code> element and the number of values specified.</p> </important>
 createStreamingDistribution :: forall eff. CreateStreamingDistributionRequest -> Aff (err :: AWS.RequestError | eff) CreateStreamingDistributionResult
-createStreamingDistribution = AWS.request serviceName "CreateStreamingDistribution" 
+createStreamingDistribution = AWS.request serviceName "createStreamingDistribution" 
 
 
 -- | <p>Create a new streaming distribution with tags.</p>
 createStreamingDistributionWithTags :: forall eff. CreateStreamingDistributionWithTagsRequest -> Aff (err :: AWS.RequestError | eff) CreateStreamingDistributionWithTagsResult
-createStreamingDistributionWithTags = AWS.request serviceName "CreateStreamingDistributionWithTags" 
+createStreamingDistributionWithTags = AWS.request serviceName "createStreamingDistributionWithTags" 
 
 
 -- | <p>Delete an origin access identity. </p>
 deleteCloudFrontOriginAccessIdentity :: forall eff. DeleteCloudFrontOriginAccessIdentityRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteCloudFrontOriginAccessIdentity = AWS.request serviceName "DeleteCloudFrontOriginAccessIdentity" 
+deleteCloudFrontOriginAccessIdentity = AWS.request serviceName "deleteCloudFrontOriginAccessIdentity" 
 
 
 -- | <p>Delete a distribution. </p>
 deleteDistribution :: forall eff. DeleteDistributionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteDistribution = AWS.request serviceName "DeleteDistribution" 
+deleteDistribution = AWS.request serviceName "deleteDistribution" 
 
 
 -- | <p>Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API, perform the following steps.</p> <p> <b>To delete an RTMP distribution using the CloudFront API</b>:</p> <ol> <li> <p>Disable the RTMP distribution.</p> </li> <li> <p>Submit a <code>GET Streaming Distribution Config</code> request to get the current configuration and the <code>Etag</code> header for the distribution. </p> </li> <li> <p>Update the XML document that was returned in the response to your <code>GET Streaming Distribution Config</code> request to change the value of <code>Enabled</code> to <code>false</code>.</p> </li> <li> <p>Submit a <code>PUT Streaming Distribution Config</code> request to update the configuration for your distribution. In the request body, include the XML document that you updated in Step 3. Then set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Streaming Distribution Config</code> request in Step 2.</p> </li> <li> <p>Review the response to the <code>PUT Streaming Distribution Config</code> request to confirm that the distribution was successfully disabled.</p> </li> <li> <p>Submit a <code>GET Streaming Distribution Config</code> request to confirm that your changes have propagated. When propagation is complete, the value of <code>Status</code> is <code>Deployed</code>.</p> </li> <li> <p>Submit a <code>DELETE Streaming Distribution</code> request. Set the value of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront returned when you submitted the <code>GET Streaming Distribution Config</code> request in Step 2.</p> </li> <li> <p>Review the response to your <code>DELETE Streaming Distribution</code> request to confirm that the distribution was successfully deleted.</p> </li> </ol> <p>For information about deleting a distribution using the CloudFront console, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowToDeleteDistribution.html">Deleting a Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
 deleteStreamingDistribution :: forall eff. DeleteStreamingDistributionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteStreamingDistribution = AWS.request serviceName "DeleteStreamingDistribution" 
+deleteStreamingDistribution = AWS.request serviceName "deleteStreamingDistribution" 
 
 
 -- | <p>Get the information about an origin access identity. </p>
 getCloudFrontOriginAccessIdentity :: forall eff. GetCloudFrontOriginAccessIdentityRequest -> Aff (err :: AWS.RequestError | eff) GetCloudFrontOriginAccessIdentityResult
-getCloudFrontOriginAccessIdentity = AWS.request serviceName "GetCloudFrontOriginAccessIdentity" 
+getCloudFrontOriginAccessIdentity = AWS.request serviceName "getCloudFrontOriginAccessIdentity" 
 
 
 -- | <p>Get the configuration information about an origin access identity. </p>
 getCloudFrontOriginAccessIdentityConfig :: forall eff. GetCloudFrontOriginAccessIdentityConfigRequest -> Aff (err :: AWS.RequestError | eff) GetCloudFrontOriginAccessIdentityConfigResult
-getCloudFrontOriginAccessIdentityConfig = AWS.request serviceName "GetCloudFrontOriginAccessIdentityConfig" 
+getCloudFrontOriginAccessIdentityConfig = AWS.request serviceName "getCloudFrontOriginAccessIdentityConfig" 
 
 
 -- | <p>Get the information about a distribution. </p>
 getDistribution :: forall eff. GetDistributionRequest -> Aff (err :: AWS.RequestError | eff) GetDistributionResult
-getDistribution = AWS.request serviceName "GetDistribution" 
+getDistribution = AWS.request serviceName "getDistribution" 
 
 
 -- | <p>Get the configuration information about a distribution. </p>
 getDistributionConfig :: forall eff. GetDistributionConfigRequest -> Aff (err :: AWS.RequestError | eff) GetDistributionConfigResult
-getDistributionConfig = AWS.request serviceName "GetDistributionConfig" 
+getDistributionConfig = AWS.request serviceName "getDistributionConfig" 
 
 
 -- | <p>Get the information about an invalidation. </p>
 getInvalidation :: forall eff. GetInvalidationRequest -> Aff (err :: AWS.RequestError | eff) GetInvalidationResult
-getInvalidation = AWS.request serviceName "GetInvalidation" 
+getInvalidation = AWS.request serviceName "getInvalidation" 
 
 
 -- | <p>Gets information about a specified RTMP distribution, including the distribution configuration.</p>
 getStreamingDistribution :: forall eff. GetStreamingDistributionRequest -> Aff (err :: AWS.RequestError | eff) GetStreamingDistributionResult
-getStreamingDistribution = AWS.request serviceName "GetStreamingDistribution" 
+getStreamingDistribution = AWS.request serviceName "getStreamingDistribution" 
 
 
 -- | <p>Get the configuration information about a streaming distribution. </p>
 getStreamingDistributionConfig :: forall eff. GetStreamingDistributionConfigRequest -> Aff (err :: AWS.RequestError | eff) GetStreamingDistributionConfigResult
-getStreamingDistributionConfig = AWS.request serviceName "GetStreamingDistributionConfig" 
+getStreamingDistributionConfig = AWS.request serviceName "getStreamingDistributionConfig" 
 
 
 -- | <p>Lists origin access identities.</p>
 listCloudFrontOriginAccessIdentities :: forall eff. ListCloudFrontOriginAccessIdentitiesRequest -> Aff (err :: AWS.RequestError | eff) ListCloudFrontOriginAccessIdentitiesResult
-listCloudFrontOriginAccessIdentities = AWS.request serviceName "ListCloudFrontOriginAccessIdentities" 
+listCloudFrontOriginAccessIdentities = AWS.request serviceName "listCloudFrontOriginAccessIdentities" 
 
 
 -- | <p>List distributions. </p>
 listDistributions :: forall eff. ListDistributionsRequest -> Aff (err :: AWS.RequestError | eff) ListDistributionsResult
-listDistributions = AWS.request serviceName "ListDistributions" 
+listDistributions = AWS.request serviceName "listDistributions" 
 
 
 -- | <p>List the distributions that are associated with a specified AWS WAF web ACL. </p>
 listDistributionsByWebACLId :: forall eff. ListDistributionsByWebACLIdRequest -> Aff (err :: AWS.RequestError | eff) ListDistributionsByWebACLIdResult
-listDistributionsByWebACLId = AWS.request serviceName "ListDistributionsByWebACLId" 
+listDistributionsByWebACLId = AWS.request serviceName "listDistributionsByWebACLId" 
 
 
 -- | <p>Lists invalidation batches. </p>
 listInvalidations :: forall eff. ListInvalidationsRequest -> Aff (err :: AWS.RequestError | eff) ListInvalidationsResult
-listInvalidations = AWS.request serviceName "ListInvalidations" 
+listInvalidations = AWS.request serviceName "listInvalidations" 
 
 
 -- | <p>List streaming distributions. </p>
 listStreamingDistributions :: forall eff. ListStreamingDistributionsRequest -> Aff (err :: AWS.RequestError | eff) ListStreamingDistributionsResult
-listStreamingDistributions = AWS.request serviceName "ListStreamingDistributions" 
+listStreamingDistributions = AWS.request serviceName "listStreamingDistributions" 
 
 
 -- | <p>List tags for a CloudFront resource.</p>
 listTagsForResource :: forall eff. ListTagsForResourceRequest -> Aff (err :: AWS.RequestError | eff) ListTagsForResourceResult
-listTagsForResource = AWS.request serviceName "ListTagsForResource" 
+listTagsForResource = AWS.request serviceName "listTagsForResource" 
 
 
 -- | <p>Add tags to a CloudFront resource.</p>
 tagResource :: forall eff. TagResourceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-tagResource = AWS.request serviceName "TagResource" 
+tagResource = AWS.request serviceName "tagResource" 
 
 
 -- | <p>Remove tags from a CloudFront resource.</p>
 untagResource :: forall eff. UntagResourceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-untagResource = AWS.request serviceName "UntagResource" 
+untagResource = AWS.request serviceName "untagResource" 
 
 
 -- | <p>Update an origin access identity. </p>
 updateCloudFrontOriginAccessIdentity :: forall eff. UpdateCloudFrontOriginAccessIdentityRequest -> Aff (err :: AWS.RequestError | eff) UpdateCloudFrontOriginAccessIdentityResult
-updateCloudFrontOriginAccessIdentity = AWS.request serviceName "UpdateCloudFrontOriginAccessIdentity" 
+updateCloudFrontOriginAccessIdentity = AWS.request serviceName "updateCloudFrontOriginAccessIdentity" 
 
 
 -- | <p>Update a distribution. </p>
 updateDistribution :: forall eff. UpdateDistributionRequest -> Aff (err :: AWS.RequestError | eff) UpdateDistributionResult
-updateDistribution = AWS.request serviceName "UpdateDistribution" 
+updateDistribution = AWS.request serviceName "updateDistribution" 
 
 
 -- | <p>Update a streaming distribution. </p>
 updateStreamingDistribution :: forall eff. UpdateStreamingDistributionRequest -> Aff (err :: AWS.RequestError | eff) UpdateStreamingDistributionResult
-updateStreamingDistribution = AWS.request serviceName "UpdateStreamingDistribution" 
+updateStreamingDistribution = AWS.request serviceName "updateStreamingDistribution" 
 
 
 -- | <p>Access denied.</p>

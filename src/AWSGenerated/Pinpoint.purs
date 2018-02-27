@@ -15,302 +15,302 @@ serviceName = "Pinpoint" :: String
 
 -- | Creates or updates an app.
 createApp :: forall eff. CreateAppRequest -> Aff (err :: AWS.RequestError | eff) CreateAppResponse
-createApp = AWS.request serviceName "CreateApp" 
+createApp = AWS.request serviceName "createApp" 
 
 
 -- | Creates or updates a campaign.
 createCampaign :: forall eff. CreateCampaignRequest -> Aff (err :: AWS.RequestError | eff) CreateCampaignResponse
-createCampaign = AWS.request serviceName "CreateCampaign" 
+createCampaign = AWS.request serviceName "createCampaign" 
 
 
 -- | Creates or updates an import job.
 createImportJob :: forall eff. CreateImportJobRequest -> Aff (err :: AWS.RequestError | eff) CreateImportJobResponse
-createImportJob = AWS.request serviceName "CreateImportJob" 
+createImportJob = AWS.request serviceName "createImportJob" 
 
 
 -- | Used to create or update a segment.
 createSegment :: forall eff. CreateSegmentRequest -> Aff (err :: AWS.RequestError | eff) CreateSegmentResponse
-createSegment = AWS.request serviceName "CreateSegment" 
+createSegment = AWS.request serviceName "createSegment" 
 
 
 -- | Delete an ADM channel
 deleteAdmChannel :: forall eff. DeleteAdmChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteAdmChannelResponse
-deleteAdmChannel = AWS.request serviceName "DeleteAdmChannel" 
+deleteAdmChannel = AWS.request serviceName "deleteAdmChannel" 
 
 
 -- | Deletes the APNs channel for an app.
 deleteApnsChannel :: forall eff. DeleteApnsChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteApnsChannelResponse
-deleteApnsChannel = AWS.request serviceName "DeleteApnsChannel" 
+deleteApnsChannel = AWS.request serviceName "deleteApnsChannel" 
 
 
 -- | Delete an APNS sandbox channel
 deleteApnsSandboxChannel :: forall eff. DeleteApnsSandboxChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteApnsSandboxChannelResponse
-deleteApnsSandboxChannel = AWS.request serviceName "DeleteApnsSandboxChannel" 
+deleteApnsSandboxChannel = AWS.request serviceName "deleteApnsSandboxChannel" 
 
 
 -- | Delete an APNS VoIP channel
 deleteApnsVoipChannel :: forall eff. DeleteApnsVoipChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteApnsVoipChannelResponse
-deleteApnsVoipChannel = AWS.request serviceName "DeleteApnsVoipChannel" 
+deleteApnsVoipChannel = AWS.request serviceName "deleteApnsVoipChannel" 
 
 
 -- | Delete an APNS VoIP sandbox channel
 deleteApnsVoipSandboxChannel :: forall eff. DeleteApnsVoipSandboxChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteApnsVoipSandboxChannelResponse
-deleteApnsVoipSandboxChannel = AWS.request serviceName "DeleteApnsVoipSandboxChannel" 
+deleteApnsVoipSandboxChannel = AWS.request serviceName "deleteApnsVoipSandboxChannel" 
 
 
 -- | Deletes an app.
 deleteApp :: forall eff. DeleteAppRequest -> Aff (err :: AWS.RequestError | eff) DeleteAppResponse
-deleteApp = AWS.request serviceName "DeleteApp" 
+deleteApp = AWS.request serviceName "deleteApp" 
 
 
 -- | Delete a BAIDU GCM channel
 deleteBaiduChannel :: forall eff. DeleteBaiduChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteBaiduChannelResponse
-deleteBaiduChannel = AWS.request serviceName "DeleteBaiduChannel" 
+deleteBaiduChannel = AWS.request serviceName "deleteBaiduChannel" 
 
 
 -- | Deletes a campaign.
 deleteCampaign :: forall eff. DeleteCampaignRequest -> Aff (err :: AWS.RequestError | eff) DeleteCampaignResponse
-deleteCampaign = AWS.request serviceName "DeleteCampaign" 
+deleteCampaign = AWS.request serviceName "deleteCampaign" 
 
 
 -- | Delete an email channel
 deleteEmailChannel :: forall eff. DeleteEmailChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteEmailChannelResponse
-deleteEmailChannel = AWS.request serviceName "DeleteEmailChannel" 
+deleteEmailChannel = AWS.request serviceName "deleteEmailChannel" 
 
 
 -- | Deletes the event stream for an app.
 deleteEventStream :: forall eff. DeleteEventStreamRequest -> Aff (err :: AWS.RequestError | eff) DeleteEventStreamResponse
-deleteEventStream = AWS.request serviceName "DeleteEventStream" 
+deleteEventStream = AWS.request serviceName "deleteEventStream" 
 
 
 -- | Deletes the GCM channel for an app.
 deleteGcmChannel :: forall eff. DeleteGcmChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteGcmChannelResponse
-deleteGcmChannel = AWS.request serviceName "DeleteGcmChannel" 
+deleteGcmChannel = AWS.request serviceName "deleteGcmChannel" 
 
 
 -- | Deletes a segment.
 deleteSegment :: forall eff. DeleteSegmentRequest -> Aff (err :: AWS.RequestError | eff) DeleteSegmentResponse
-deleteSegment = AWS.request serviceName "DeleteSegment" 
+deleteSegment = AWS.request serviceName "deleteSegment" 
 
 
 -- | Delete an SMS channel
 deleteSmsChannel :: forall eff. DeleteSmsChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteSmsChannelResponse
-deleteSmsChannel = AWS.request serviceName "DeleteSmsChannel" 
+deleteSmsChannel = AWS.request serviceName "deleteSmsChannel" 
 
 
 -- | Get an ADM channel
 getAdmChannel :: forall eff. GetAdmChannelRequest -> Aff (err :: AWS.RequestError | eff) GetAdmChannelResponse
-getAdmChannel = AWS.request serviceName "GetAdmChannel" 
+getAdmChannel = AWS.request serviceName "getAdmChannel" 
 
 
 -- | Returns information about the APNs channel for an app.
 getApnsChannel :: forall eff. GetApnsChannelRequest -> Aff (err :: AWS.RequestError | eff) GetApnsChannelResponse
-getApnsChannel = AWS.request serviceName "GetApnsChannel" 
+getApnsChannel = AWS.request serviceName "getApnsChannel" 
 
 
 -- | Get an APNS sandbox channel
 getApnsSandboxChannel :: forall eff. GetApnsSandboxChannelRequest -> Aff (err :: AWS.RequestError | eff) GetApnsSandboxChannelResponse
-getApnsSandboxChannel = AWS.request serviceName "GetApnsSandboxChannel" 
+getApnsSandboxChannel = AWS.request serviceName "getApnsSandboxChannel" 
 
 
 -- | Get an APNS VoIP channel
 getApnsVoipChannel :: forall eff. GetApnsVoipChannelRequest -> Aff (err :: AWS.RequestError | eff) GetApnsVoipChannelResponse
-getApnsVoipChannel = AWS.request serviceName "GetApnsVoipChannel" 
+getApnsVoipChannel = AWS.request serviceName "getApnsVoipChannel" 
 
 
 -- | Get an APNS VoipSandbox channel
 getApnsVoipSandboxChannel :: forall eff. GetApnsVoipSandboxChannelRequest -> Aff (err :: AWS.RequestError | eff) GetApnsVoipSandboxChannelResponse
-getApnsVoipSandboxChannel = AWS.request serviceName "GetApnsVoipSandboxChannel" 
+getApnsVoipSandboxChannel = AWS.request serviceName "getApnsVoipSandboxChannel" 
 
 
 -- | Returns information about an app.
 getApp :: forall eff. GetAppRequest -> Aff (err :: AWS.RequestError | eff) GetAppResponse
-getApp = AWS.request serviceName "GetApp" 
+getApp = AWS.request serviceName "getApp" 
 
 
 -- | Used to request the settings for an app.
 getApplicationSettings :: forall eff. GetApplicationSettingsRequest -> Aff (err :: AWS.RequestError | eff) GetApplicationSettingsResponse
-getApplicationSettings = AWS.request serviceName "GetApplicationSettings" 
+getApplicationSettings = AWS.request serviceName "getApplicationSettings" 
 
 
 -- | Returns information about your apps.
 getApps :: forall eff. GetAppsRequest -> Aff (err :: AWS.RequestError | eff) GetAppsResponse
-getApps = AWS.request serviceName "GetApps" 
+getApps = AWS.request serviceName "getApps" 
 
 
 -- | Get a BAIDU GCM channel
 getBaiduChannel :: forall eff. GetBaiduChannelRequest -> Aff (err :: AWS.RequestError | eff) GetBaiduChannelResponse
-getBaiduChannel = AWS.request serviceName "GetBaiduChannel" 
+getBaiduChannel = AWS.request serviceName "getBaiduChannel" 
 
 
 -- | Returns information about a campaign.
 getCampaign :: forall eff. GetCampaignRequest -> Aff (err :: AWS.RequestError | eff) GetCampaignResponse
-getCampaign = AWS.request serviceName "GetCampaign" 
+getCampaign = AWS.request serviceName "getCampaign" 
 
 
 -- | Returns information about the activity performed by a campaign.
 getCampaignActivities :: forall eff. GetCampaignActivitiesRequest -> Aff (err :: AWS.RequestError | eff) GetCampaignActivitiesResponse
-getCampaignActivities = AWS.request serviceName "GetCampaignActivities" 
+getCampaignActivities = AWS.request serviceName "getCampaignActivities" 
 
 
 -- | Returns information about a specific version of a campaign.
 getCampaignVersion :: forall eff. GetCampaignVersionRequest -> Aff (err :: AWS.RequestError | eff) GetCampaignVersionResponse
-getCampaignVersion = AWS.request serviceName "GetCampaignVersion" 
+getCampaignVersion = AWS.request serviceName "getCampaignVersion" 
 
 
 -- | Returns information about your campaign versions.
 getCampaignVersions :: forall eff. GetCampaignVersionsRequest -> Aff (err :: AWS.RequestError | eff) GetCampaignVersionsResponse
-getCampaignVersions = AWS.request serviceName "GetCampaignVersions" 
+getCampaignVersions = AWS.request serviceName "getCampaignVersions" 
 
 
 -- | Returns information about your campaigns.
 getCampaigns :: forall eff. GetCampaignsRequest -> Aff (err :: AWS.RequestError | eff) GetCampaignsResponse
-getCampaigns = AWS.request serviceName "GetCampaigns" 
+getCampaigns = AWS.request serviceName "getCampaigns" 
 
 
 -- | Get an email channel
 getEmailChannel :: forall eff. GetEmailChannelRequest -> Aff (err :: AWS.RequestError | eff) GetEmailChannelResponse
-getEmailChannel = AWS.request serviceName "GetEmailChannel" 
+getEmailChannel = AWS.request serviceName "getEmailChannel" 
 
 
 -- | Returns information about an endpoint.
 getEndpoint :: forall eff. GetEndpointRequest -> Aff (err :: AWS.RequestError | eff) GetEndpointResponse
-getEndpoint = AWS.request serviceName "GetEndpoint" 
+getEndpoint = AWS.request serviceName "getEndpoint" 
 
 
 -- | Returns the event stream for an app.
 getEventStream :: forall eff. GetEventStreamRequest -> Aff (err :: AWS.RequestError | eff) GetEventStreamResponse
-getEventStream = AWS.request serviceName "GetEventStream" 
+getEventStream = AWS.request serviceName "getEventStream" 
 
 
 -- | Returns information about the GCM channel for an app.
 getGcmChannel :: forall eff. GetGcmChannelRequest -> Aff (err :: AWS.RequestError | eff) GetGcmChannelResponse
-getGcmChannel = AWS.request serviceName "GetGcmChannel" 
+getGcmChannel = AWS.request serviceName "getGcmChannel" 
 
 
 -- | Returns information about an import job.
 getImportJob :: forall eff. GetImportJobRequest -> Aff (err :: AWS.RequestError | eff) GetImportJobResponse
-getImportJob = AWS.request serviceName "GetImportJob" 
+getImportJob = AWS.request serviceName "getImportJob" 
 
 
 -- | Returns information about your import jobs.
 getImportJobs :: forall eff. GetImportJobsRequest -> Aff (err :: AWS.RequestError | eff) GetImportJobsResponse
-getImportJobs = AWS.request serviceName "GetImportJobs" 
+getImportJobs = AWS.request serviceName "getImportJobs" 
 
 
 -- | Returns information about a segment.
 getSegment :: forall eff. GetSegmentRequest -> Aff (err :: AWS.RequestError | eff) GetSegmentResponse
-getSegment = AWS.request serviceName "GetSegment" 
+getSegment = AWS.request serviceName "getSegment" 
 
 
 -- | Returns a list of import jobs for a specific segment.
 getSegmentImportJobs :: forall eff. GetSegmentImportJobsRequest -> Aff (err :: AWS.RequestError | eff) GetSegmentImportJobsResponse
-getSegmentImportJobs = AWS.request serviceName "GetSegmentImportJobs" 
+getSegmentImportJobs = AWS.request serviceName "getSegmentImportJobs" 
 
 
 -- | Returns information about a segment version.
 getSegmentVersion :: forall eff. GetSegmentVersionRequest -> Aff (err :: AWS.RequestError | eff) GetSegmentVersionResponse
-getSegmentVersion = AWS.request serviceName "GetSegmentVersion" 
+getSegmentVersion = AWS.request serviceName "getSegmentVersion" 
 
 
 -- | Returns information about your segment versions.
 getSegmentVersions :: forall eff. GetSegmentVersionsRequest -> Aff (err :: AWS.RequestError | eff) GetSegmentVersionsResponse
-getSegmentVersions = AWS.request serviceName "GetSegmentVersions" 
+getSegmentVersions = AWS.request serviceName "getSegmentVersions" 
 
 
 -- | Used to get information about your segments.
 getSegments :: forall eff. GetSegmentsRequest -> Aff (err :: AWS.RequestError | eff) GetSegmentsResponse
-getSegments = AWS.request serviceName "GetSegments" 
+getSegments = AWS.request serviceName "getSegments" 
 
 
 -- | Get an SMS channel
 getSmsChannel :: forall eff. GetSmsChannelRequest -> Aff (err :: AWS.RequestError | eff) GetSmsChannelResponse
-getSmsChannel = AWS.request serviceName "GetSmsChannel" 
+getSmsChannel = AWS.request serviceName "getSmsChannel" 
 
 
 -- | Use to create or update the event stream for an app.
 putEventStream :: forall eff. PutEventStreamRequest -> Aff (err :: AWS.RequestError | eff) PutEventStreamResponse
-putEventStream = AWS.request serviceName "PutEventStream" 
+putEventStream = AWS.request serviceName "putEventStream" 
 
 
 -- | Send a batch of messages
 sendMessages :: forall eff. SendMessagesRequest -> Aff (err :: AWS.RequestError | eff) SendMessagesResponse
-sendMessages = AWS.request serviceName "SendMessages" 
+sendMessages = AWS.request serviceName "sendMessages" 
 
 
 -- | Send a batch of messages to users
 sendUsersMessages :: forall eff. SendUsersMessagesRequest -> Aff (err :: AWS.RequestError | eff) SendUsersMessagesResponse
-sendUsersMessages = AWS.request serviceName "SendUsersMessages" 
+sendUsersMessages = AWS.request serviceName "sendUsersMessages" 
 
 
 -- | Update an ADM channel
 updateAdmChannel :: forall eff. UpdateAdmChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateAdmChannelResponse
-updateAdmChannel = AWS.request serviceName "UpdateAdmChannel" 
+updateAdmChannel = AWS.request serviceName "updateAdmChannel" 
 
 
 -- | Use to update the APNs channel for an app.
 updateApnsChannel :: forall eff. UpdateApnsChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateApnsChannelResponse
-updateApnsChannel = AWS.request serviceName "UpdateApnsChannel" 
+updateApnsChannel = AWS.request serviceName "updateApnsChannel" 
 
 
 -- | Update an APNS sandbox channel
 updateApnsSandboxChannel :: forall eff. UpdateApnsSandboxChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateApnsSandboxChannelResponse
-updateApnsSandboxChannel = AWS.request serviceName "UpdateApnsSandboxChannel" 
+updateApnsSandboxChannel = AWS.request serviceName "updateApnsSandboxChannel" 
 
 
 -- | Update an APNS VoIP channel
 updateApnsVoipChannel :: forall eff. UpdateApnsVoipChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateApnsVoipChannelResponse
-updateApnsVoipChannel = AWS.request serviceName "UpdateApnsVoipChannel" 
+updateApnsVoipChannel = AWS.request serviceName "updateApnsVoipChannel" 
 
 
 -- | Update an APNS VoIP sandbox channel
 updateApnsVoipSandboxChannel :: forall eff. UpdateApnsVoipSandboxChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateApnsVoipSandboxChannelResponse
-updateApnsVoipSandboxChannel = AWS.request serviceName "UpdateApnsVoipSandboxChannel" 
+updateApnsVoipSandboxChannel = AWS.request serviceName "updateApnsVoipSandboxChannel" 
 
 
 -- | Used to update the settings for an app.
 updateApplicationSettings :: forall eff. UpdateApplicationSettingsRequest -> Aff (err :: AWS.RequestError | eff) UpdateApplicationSettingsResponse
-updateApplicationSettings = AWS.request serviceName "UpdateApplicationSettings" 
+updateApplicationSettings = AWS.request serviceName "updateApplicationSettings" 
 
 
 -- | Update a BAIDU GCM channel
 updateBaiduChannel :: forall eff. UpdateBaiduChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateBaiduChannelResponse
-updateBaiduChannel = AWS.request serviceName "UpdateBaiduChannel" 
+updateBaiduChannel = AWS.request serviceName "updateBaiduChannel" 
 
 
 -- | Use to update a campaign.
 updateCampaign :: forall eff. UpdateCampaignRequest -> Aff (err :: AWS.RequestError | eff) UpdateCampaignResponse
-updateCampaign = AWS.request serviceName "UpdateCampaign" 
+updateCampaign = AWS.request serviceName "updateCampaign" 
 
 
 -- | Update an email channel
 updateEmailChannel :: forall eff. UpdateEmailChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateEmailChannelResponse
-updateEmailChannel = AWS.request serviceName "UpdateEmailChannel" 
+updateEmailChannel = AWS.request serviceName "updateEmailChannel" 
 
 
 -- | Use to update an endpoint.
 updateEndpoint :: forall eff. UpdateEndpointRequest -> Aff (err :: AWS.RequestError | eff) UpdateEndpointResponse
-updateEndpoint = AWS.request serviceName "UpdateEndpoint" 
+updateEndpoint = AWS.request serviceName "updateEndpoint" 
 
 
 -- | Use to update a batch of endpoints.
 updateEndpointsBatch :: forall eff. UpdateEndpointsBatchRequest -> Aff (err :: AWS.RequestError | eff) UpdateEndpointsBatchResponse
-updateEndpointsBatch = AWS.request serviceName "UpdateEndpointsBatch" 
+updateEndpointsBatch = AWS.request serviceName "updateEndpointsBatch" 
 
 
 -- | Use to update the GCM channel for an app.
 updateGcmChannel :: forall eff. UpdateGcmChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateGcmChannelResponse
-updateGcmChannel = AWS.request serviceName "UpdateGcmChannel" 
+updateGcmChannel = AWS.request serviceName "updateGcmChannel" 
 
 
 -- | Use to update a segment.
 updateSegment :: forall eff. UpdateSegmentRequest -> Aff (err :: AWS.RequestError | eff) UpdateSegmentResponse
-updateSegment = AWS.request serviceName "UpdateSegment" 
+updateSegment = AWS.request serviceName "updateSegment" 
 
 
 -- | Update an SMS channel
 updateSmsChannel :: forall eff. UpdateSmsChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateSmsChannelResponse
-updateSmsChannel = AWS.request serviceName "UpdateSmsChannel" 
+updateSmsChannel = AWS.request serviceName "updateSmsChannel" 
 
 
 -- | Amazon Device Messaging channel definition.

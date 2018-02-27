@@ -16,77 +16,77 @@ serviceName = "CodeBuild" :: String
 
 -- | <p>Deletes one or more builds.</p>
 batchDeleteBuilds :: forall eff. BatchDeleteBuildsInput -> Aff (err :: AWS.RequestError | eff) BatchDeleteBuildsOutput
-batchDeleteBuilds = AWS.request serviceName "BatchDeleteBuilds" 
+batchDeleteBuilds = AWS.request serviceName "batchDeleteBuilds" 
 
 
 -- | <p>Gets information about builds.</p>
 batchGetBuilds :: forall eff. BatchGetBuildsInput -> Aff (err :: AWS.RequestError | eff) BatchGetBuildsOutput
-batchGetBuilds = AWS.request serviceName "BatchGetBuilds" 
+batchGetBuilds = AWS.request serviceName "batchGetBuilds" 
 
 
 -- | <p>Gets information about build projects.</p>
 batchGetProjects :: forall eff. BatchGetProjectsInput -> Aff (err :: AWS.RequestError | eff) BatchGetProjectsOutput
-batchGetProjects = AWS.request serviceName "BatchGetProjects" 
+batchGetProjects = AWS.request serviceName "batchGetProjects" 
 
 
 -- | <p>Creates a build project.</p>
 createProject :: forall eff. CreateProjectInput -> Aff (err :: AWS.RequestError | eff) CreateProjectOutput
-createProject = AWS.request serviceName "CreateProject" 
+createProject = AWS.request serviceName "createProject" 
 
 
 -- | <p>For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, enables AWS CodeBuild to begin automatically rebuilding the source code every time a code change is pushed to the repository.</p> <important> <p>If you enable webhooks for an AWS CodeBuild project, and the project is used as a build step in AWS CodePipeline, then two identical builds will be created for each commit. One build is triggered through webhooks, and one through AWS CodePipeline. Because billing is on a per-build basis, you will be billed for both builds. Therefore, if you are using AWS CodePipeline, we recommend that you disable webhooks in CodeBuild. In the AWS CodeBuild console, clear the Webhook box. For more information, see step 9 in <a href="http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console">Change a Build Project's Settings</a>.</p> </important>
 createWebhook :: forall eff. CreateWebhookInput -> Aff (err :: AWS.RequestError | eff) CreateWebhookOutput
-createWebhook = AWS.request serviceName "CreateWebhook" 
+createWebhook = AWS.request serviceName "createWebhook" 
 
 
 -- | <p>Deletes a build project.</p>
 deleteProject :: forall eff. DeleteProjectInput -> Aff (err :: AWS.RequestError | eff) DeleteProjectOutput
-deleteProject = AWS.request serviceName "DeleteProject" 
+deleteProject = AWS.request serviceName "deleteProject" 
 
 
 -- | <p>For an existing AWS CodeBuild build project that has its source code stored in a GitHub repository, stops AWS CodeBuild from automatically rebuilding the source code every time a code change is pushed to the repository.</p>
 deleteWebhook :: forall eff. DeleteWebhookInput -> Aff (err :: AWS.RequestError | eff) DeleteWebhookOutput
-deleteWebhook = AWS.request serviceName "DeleteWebhook" 
+deleteWebhook = AWS.request serviceName "deleteWebhook" 
 
 
 -- | <p>Resets the cache for a project.</p>
 invalidateProjectCache :: forall eff. InvalidateProjectCacheInput -> Aff (err :: AWS.RequestError | eff) InvalidateProjectCacheOutput
-invalidateProjectCache = AWS.request serviceName "InvalidateProjectCache" 
+invalidateProjectCache = AWS.request serviceName "invalidateProjectCache" 
 
 
 -- | <p>Gets a list of build IDs, with each build ID representing a single build.</p>
 listBuilds :: forall eff. ListBuildsInput -> Aff (err :: AWS.RequestError | eff) ListBuildsOutput
-listBuilds = AWS.request serviceName "ListBuilds" 
+listBuilds = AWS.request serviceName "listBuilds" 
 
 
 -- | <p>Gets a list of build IDs for the specified build project, with each build ID representing a single build.</p>
 listBuildsForProject :: forall eff. ListBuildsForProjectInput -> Aff (err :: AWS.RequestError | eff) ListBuildsForProjectOutput
-listBuildsForProject = AWS.request serviceName "ListBuildsForProject" 
+listBuildsForProject = AWS.request serviceName "listBuildsForProject" 
 
 
 -- | <p>Gets information about Docker images that are managed by AWS CodeBuild.</p>
 listCuratedEnvironmentImages :: forall eff. ListCuratedEnvironmentImagesInput -> Aff (err :: AWS.RequestError | eff) ListCuratedEnvironmentImagesOutput
-listCuratedEnvironmentImages = AWS.request serviceName "ListCuratedEnvironmentImages" 
+listCuratedEnvironmentImages = AWS.request serviceName "listCuratedEnvironmentImages" 
 
 
 -- | <p>Gets a list of build project names, with each build project name representing a single build project.</p>
 listProjects :: forall eff. ListProjectsInput -> Aff (err :: AWS.RequestError | eff) ListProjectsOutput
-listProjects = AWS.request serviceName "ListProjects" 
+listProjects = AWS.request serviceName "listProjects" 
 
 
 -- | <p>Starts running a build.</p>
 startBuild :: forall eff. StartBuildInput -> Aff (err :: AWS.RequestError | eff) StartBuildOutput
-startBuild = AWS.request serviceName "StartBuild" 
+startBuild = AWS.request serviceName "startBuild" 
 
 
 -- | <p>Attempts to stop running a build.</p>
 stopBuild :: forall eff. StopBuildInput -> Aff (err :: AWS.RequestError | eff) StopBuildOutput
-stopBuild = AWS.request serviceName "StopBuild" 
+stopBuild = AWS.request serviceName "stopBuild" 
 
 
 -- | <p>Changes the settings of a build project.</p>
 updateProject :: forall eff. UpdateProjectInput -> Aff (err :: AWS.RequestError | eff) UpdateProjectOutput
-updateProject = AWS.request serviceName "UpdateProject" 
+updateProject = AWS.request serviceName "updateProject" 
 
 
 -- | <p>An AWS service limit was exceeded for the calling AWS account.</p>

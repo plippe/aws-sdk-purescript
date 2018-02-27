@@ -16,247 +16,247 @@ serviceName = "DeviceFarm" :: String
 
 -- | <p>Creates a device pool.</p>
 createDevicePool :: forall eff. CreateDevicePoolRequest -> Aff (err :: AWS.RequestError | eff) CreateDevicePoolResult
-createDevicePool = AWS.request serviceName "CreateDevicePool" 
+createDevicePool = AWS.request serviceName "createDevicePool" 
 
 
 -- | <p>Creates a network profile.</p>
 createNetworkProfile :: forall eff. CreateNetworkProfileRequest -> Aff (err :: AWS.RequestError | eff) CreateNetworkProfileResult
-createNetworkProfile = AWS.request serviceName "CreateNetworkProfile" 
+createNetworkProfile = AWS.request serviceName "createNetworkProfile" 
 
 
 -- | <p>Creates a new project.</p>
 createProject :: forall eff. CreateProjectRequest -> Aff (err :: AWS.RequestError | eff) CreateProjectResult
-createProject = AWS.request serviceName "CreateProject" 
+createProject = AWS.request serviceName "createProject" 
 
 
 -- | <p>Specifies and starts a remote access session.</p>
 createRemoteAccessSession :: forall eff. CreateRemoteAccessSessionRequest -> Aff (err :: AWS.RequestError | eff) CreateRemoteAccessSessionResult
-createRemoteAccessSession = AWS.request serviceName "CreateRemoteAccessSession" 
+createRemoteAccessSession = AWS.request serviceName "createRemoteAccessSession" 
 
 
 -- | <p>Uploads an app or test scripts.</p>
 createUpload :: forall eff. CreateUploadRequest -> Aff (err :: AWS.RequestError | eff) CreateUploadResult
-createUpload = AWS.request serviceName "CreateUpload" 
+createUpload = AWS.request serviceName "createUpload" 
 
 
 -- | <p>Deletes a device pool given the pool ARN. Does not allow deletion of curated pools owned by the system.</p>
 deleteDevicePool :: forall eff. DeleteDevicePoolRequest -> Aff (err :: AWS.RequestError | eff) DeleteDevicePoolResult
-deleteDevicePool = AWS.request serviceName "DeleteDevicePool" 
+deleteDevicePool = AWS.request serviceName "deleteDevicePool" 
 
 
 -- | <p>Deletes a network profile.</p>
 deleteNetworkProfile :: forall eff. DeleteNetworkProfileRequest -> Aff (err :: AWS.RequestError | eff) DeleteNetworkProfileResult
-deleteNetworkProfile = AWS.request serviceName "DeleteNetworkProfile" 
+deleteNetworkProfile = AWS.request serviceName "deleteNetworkProfile" 
 
 
 -- | <p>Deletes an AWS Device Farm project, given the project ARN.</p> <p> <b>Note</b> Deleting this resource does not stop an in-progress run.</p>
 deleteProject :: forall eff. DeleteProjectRequest -> Aff (err :: AWS.RequestError | eff) DeleteProjectResult
-deleteProject = AWS.request serviceName "DeleteProject" 
+deleteProject = AWS.request serviceName "deleteProject" 
 
 
 -- | <p>Deletes a completed remote access session and its results.</p>
 deleteRemoteAccessSession :: forall eff. DeleteRemoteAccessSessionRequest -> Aff (err :: AWS.RequestError | eff) DeleteRemoteAccessSessionResult
-deleteRemoteAccessSession = AWS.request serviceName "DeleteRemoteAccessSession" 
+deleteRemoteAccessSession = AWS.request serviceName "deleteRemoteAccessSession" 
 
 
 -- | <p>Deletes the run, given the run ARN.</p> <p> <b>Note</b> Deleting this resource does not stop an in-progress run.</p>
 deleteRun :: forall eff. DeleteRunRequest -> Aff (err :: AWS.RequestError | eff) DeleteRunResult
-deleteRun = AWS.request serviceName "DeleteRun" 
+deleteRun = AWS.request serviceName "deleteRun" 
 
 
 -- | <p>Deletes an upload given the upload ARN.</p>
 deleteUpload :: forall eff. DeleteUploadRequest -> Aff (err :: AWS.RequestError | eff) DeleteUploadResult
-deleteUpload = AWS.request serviceName "DeleteUpload" 
+deleteUpload = AWS.request serviceName "deleteUpload" 
 
 
 -- | <p>Returns the number of unmetered iOS and/or unmetered Android devices that have been purchased by the account.</p>
 getAccountSettings :: forall eff. GetAccountSettingsRequest -> Aff (err :: AWS.RequestError | eff) GetAccountSettingsResult
-getAccountSettings = AWS.request serviceName "GetAccountSettings" 
+getAccountSettings = AWS.request serviceName "getAccountSettings" 
 
 
 -- | <p>Gets information about a unique device type.</p>
 getDevice :: forall eff. GetDeviceRequest -> Aff (err :: AWS.RequestError | eff) GetDeviceResult
-getDevice = AWS.request serviceName "GetDevice" 
+getDevice = AWS.request serviceName "getDevice" 
 
 
 -- | <p>Gets information about a device pool.</p>
 getDevicePool :: forall eff. GetDevicePoolRequest -> Aff (err :: AWS.RequestError | eff) GetDevicePoolResult
-getDevicePool = AWS.request serviceName "GetDevicePool" 
+getDevicePool = AWS.request serviceName "getDevicePool" 
 
 
 -- | <p>Gets information about compatibility with a device pool.</p>
 getDevicePoolCompatibility :: forall eff. GetDevicePoolCompatibilityRequest -> Aff (err :: AWS.RequestError | eff) GetDevicePoolCompatibilityResult
-getDevicePoolCompatibility = AWS.request serviceName "GetDevicePoolCompatibility" 
+getDevicePoolCompatibility = AWS.request serviceName "getDevicePoolCompatibility" 
 
 
 -- | <p>Gets information about a job.</p>
 getJob :: forall eff. GetJobRequest -> Aff (err :: AWS.RequestError | eff) GetJobResult
-getJob = AWS.request serviceName "GetJob" 
+getJob = AWS.request serviceName "getJob" 
 
 
 -- | <p>Returns information about a network profile.</p>
 getNetworkProfile :: forall eff. GetNetworkProfileRequest -> Aff (err :: AWS.RequestError | eff) GetNetworkProfileResult
-getNetworkProfile = AWS.request serviceName "GetNetworkProfile" 
+getNetworkProfile = AWS.request serviceName "getNetworkProfile" 
 
 
 -- | <p>Gets the current status and future status of all offerings purchased by an AWS account. The response indicates how many offerings are currently available and the offerings that will be available in the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.</p>
 getOfferingStatus :: forall eff. GetOfferingStatusRequest -> Aff (err :: AWS.RequestError | eff) GetOfferingStatusResult
-getOfferingStatus = AWS.request serviceName "GetOfferingStatus" 
+getOfferingStatus = AWS.request serviceName "getOfferingStatus" 
 
 
 -- | <p>Gets information about a project.</p>
 getProject :: forall eff. GetProjectRequest -> Aff (err :: AWS.RequestError | eff) GetProjectResult
-getProject = AWS.request serviceName "GetProject" 
+getProject = AWS.request serviceName "getProject" 
 
 
 -- | <p>Returns a link to a currently running remote access session.</p>
 getRemoteAccessSession :: forall eff. GetRemoteAccessSessionRequest -> Aff (err :: AWS.RequestError | eff) GetRemoteAccessSessionResult
-getRemoteAccessSession = AWS.request serviceName "GetRemoteAccessSession" 
+getRemoteAccessSession = AWS.request serviceName "getRemoteAccessSession" 
 
 
 -- | <p>Gets information about a run.</p>
 getRun :: forall eff. GetRunRequest -> Aff (err :: AWS.RequestError | eff) GetRunResult
-getRun = AWS.request serviceName "GetRun" 
+getRun = AWS.request serviceName "getRun" 
 
 
 -- | <p>Gets information about a suite.</p>
 getSuite :: forall eff. GetSuiteRequest -> Aff (err :: AWS.RequestError | eff) GetSuiteResult
-getSuite = AWS.request serviceName "GetSuite" 
+getSuite = AWS.request serviceName "getSuite" 
 
 
 -- | <p>Gets information about a test.</p>
 getTest :: forall eff. GetTestRequest -> Aff (err :: AWS.RequestError | eff) GetTestResult
-getTest = AWS.request serviceName "GetTest" 
+getTest = AWS.request serviceName "getTest" 
 
 
 -- | <p>Gets information about an upload.</p>
 getUpload :: forall eff. GetUploadRequest -> Aff (err :: AWS.RequestError | eff) GetUploadResult
-getUpload = AWS.request serviceName "GetUpload" 
+getUpload = AWS.request serviceName "getUpload" 
 
 
 -- | <p>Installs an application to the device in a remote access session. For Android applications, the file must be in .apk format. For iOS applications, the file must be in .ipa format.</p>
 installToRemoteAccessSession :: forall eff. InstallToRemoteAccessSessionRequest -> Aff (err :: AWS.RequestError | eff) InstallToRemoteAccessSessionResult
-installToRemoteAccessSession = AWS.request serviceName "InstallToRemoteAccessSession" 
+installToRemoteAccessSession = AWS.request serviceName "installToRemoteAccessSession" 
 
 
 -- | <p>Gets information about artifacts.</p>
 listArtifacts :: forall eff. ListArtifactsRequest -> Aff (err :: AWS.RequestError | eff) ListArtifactsResult
-listArtifacts = AWS.request serviceName "ListArtifacts" 
+listArtifacts = AWS.request serviceName "listArtifacts" 
 
 
 -- | <p>Gets information about device pools.</p>
 listDevicePools :: forall eff. ListDevicePoolsRequest -> Aff (err :: AWS.RequestError | eff) ListDevicePoolsResult
-listDevicePools = AWS.request serviceName "ListDevicePools" 
+listDevicePools = AWS.request serviceName "listDevicePools" 
 
 
 -- | <p>Gets information about unique device types.</p>
 listDevices :: forall eff. ListDevicesRequest -> Aff (err :: AWS.RequestError | eff) ListDevicesResult
-listDevices = AWS.request serviceName "ListDevices" 
+listDevices = AWS.request serviceName "listDevices" 
 
 
 -- | <p>Gets information about jobs for a given test run.</p>
 listJobs :: forall eff. ListJobsRequest -> Aff (err :: AWS.RequestError | eff) ListJobsResult
-listJobs = AWS.request serviceName "ListJobs" 
+listJobs = AWS.request serviceName "listJobs" 
 
 
 -- | <p>Returns the list of available network profiles.</p>
 listNetworkProfiles :: forall eff. ListNetworkProfilesRequest -> Aff (err :: AWS.RequestError | eff) ListNetworkProfilesResult
-listNetworkProfiles = AWS.request serviceName "ListNetworkProfiles" 
+listNetworkProfiles = AWS.request serviceName "listNetworkProfiles" 
 
 
 -- | <p>Returns a list of offering promotions. Each offering promotion record contains the ID and description of the promotion. The API returns a <code>NotEligible</code> error if the caller is not permitted to invoke the operation. Contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.</p>
 listOfferingPromotions :: forall eff. ListOfferingPromotionsRequest -> Aff (err :: AWS.RequestError | eff) ListOfferingPromotionsResult
-listOfferingPromotions = AWS.request serviceName "ListOfferingPromotions" 
+listOfferingPromotions = AWS.request serviceName "listOfferingPromotions" 
 
 
 -- | <p>Returns a list of all historical purchases, renewals, and system renewal transactions for an AWS account. The list is paginated and ordered by a descending timestamp (most recent transactions are first). The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.</p>
 listOfferingTransactions :: forall eff. ListOfferingTransactionsRequest -> Aff (err :: AWS.RequestError | eff) ListOfferingTransactionsResult
-listOfferingTransactions = AWS.request serviceName "ListOfferingTransactions" 
+listOfferingTransactions = AWS.request serviceName "listOfferingTransactions" 
 
 
 -- | <p>Returns a list of products or offerings that the user can manage through the API. Each offering record indicates the recurring price per unit and the frequency for that offering. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.</p>
 listOfferings :: forall eff. ListOfferingsRequest -> Aff (err :: AWS.RequestError | eff) ListOfferingsResult
-listOfferings = AWS.request serviceName "ListOfferings" 
+listOfferings = AWS.request serviceName "listOfferings" 
 
 
 -- | <p>Gets information about projects.</p>
 listProjects :: forall eff. ListProjectsRequest -> Aff (err :: AWS.RequestError | eff) ListProjectsResult
-listProjects = AWS.request serviceName "ListProjects" 
+listProjects = AWS.request serviceName "listProjects" 
 
 
 -- | <p>Returns a list of all currently running remote access sessions.</p>
 listRemoteAccessSessions :: forall eff. ListRemoteAccessSessionsRequest -> Aff (err :: AWS.RequestError | eff) ListRemoteAccessSessionsResult
-listRemoteAccessSessions = AWS.request serviceName "ListRemoteAccessSessions" 
+listRemoteAccessSessions = AWS.request serviceName "listRemoteAccessSessions" 
 
 
 -- | <p>Gets information about runs, given an AWS Device Farm project ARN.</p>
 listRuns :: forall eff. ListRunsRequest -> Aff (err :: AWS.RequestError | eff) ListRunsResult
-listRuns = AWS.request serviceName "ListRuns" 
+listRuns = AWS.request serviceName "listRuns" 
 
 
 -- | <p>Gets information about samples, given an AWS Device Farm project ARN</p>
 listSamples :: forall eff. ListSamplesRequest -> Aff (err :: AWS.RequestError | eff) ListSamplesResult
-listSamples = AWS.request serviceName "ListSamples" 
+listSamples = AWS.request serviceName "listSamples" 
 
 
 -- | <p>Gets information about test suites for a given job.</p>
 listSuites :: forall eff. ListSuitesRequest -> Aff (err :: AWS.RequestError | eff) ListSuitesResult
-listSuites = AWS.request serviceName "ListSuites" 
+listSuites = AWS.request serviceName "listSuites" 
 
 
 -- | <p>Gets information about tests in a given test suite.</p>
 listTests :: forall eff. ListTestsRequest -> Aff (err :: AWS.RequestError | eff) ListTestsResult
-listTests = AWS.request serviceName "ListTests" 
+listTests = AWS.request serviceName "listTests" 
 
 
 -- | <p>Gets information about unique problems.</p>
 listUniqueProblems :: forall eff. ListUniqueProblemsRequest -> Aff (err :: AWS.RequestError | eff) ListUniqueProblemsResult
-listUniqueProblems = AWS.request serviceName "ListUniqueProblems" 
+listUniqueProblems = AWS.request serviceName "listUniqueProblems" 
 
 
 -- | <p>Gets information about uploads, given an AWS Device Farm project ARN.</p>
 listUploads :: forall eff. ListUploadsRequest -> Aff (err :: AWS.RequestError | eff) ListUploadsResult
-listUploads = AWS.request serviceName "ListUploads" 
+listUploads = AWS.request serviceName "listUploads" 
 
 
 -- | <p>Immediately purchases offerings for an AWS account. Offerings renew with the latest total purchased quantity for an offering, unless the renewal was overridden. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.</p>
 purchaseOffering :: forall eff. PurchaseOfferingRequest -> Aff (err :: AWS.RequestError | eff) PurchaseOfferingResult
-purchaseOffering = AWS.request serviceName "PurchaseOffering" 
+purchaseOffering = AWS.request serviceName "purchaseOffering" 
 
 
 -- | <p>Explicitly sets the quantity of devices to renew for an offering, starting from the <code>effectiveDate</code> of the next period. The API returns a <code>NotEligible</code> error if the user is not permitted to invoke the operation. Please contact <a href="mailto:aws-devicefarm-support@amazon.com">aws-devicefarm-support@amazon.com</a> if you believe that you should be able to invoke this operation.</p>
 renewOffering :: forall eff. RenewOfferingRequest -> Aff (err :: AWS.RequestError | eff) RenewOfferingResult
-renewOffering = AWS.request serviceName "RenewOffering" 
+renewOffering = AWS.request serviceName "renewOffering" 
 
 
 -- | <p>Schedules a run.</p>
 scheduleRun :: forall eff. ScheduleRunRequest -> Aff (err :: AWS.RequestError | eff) ScheduleRunResult
-scheduleRun = AWS.request serviceName "ScheduleRun" 
+scheduleRun = AWS.request serviceName "scheduleRun" 
 
 
 -- | <p>Ends a specified remote access session.</p>
 stopRemoteAccessSession :: forall eff. StopRemoteAccessSessionRequest -> Aff (err :: AWS.RequestError | eff) StopRemoteAccessSessionResult
-stopRemoteAccessSession = AWS.request serviceName "StopRemoteAccessSession" 
+stopRemoteAccessSession = AWS.request serviceName "stopRemoteAccessSession" 
 
 
 -- | <p>Initiates a stop request for the current test run. AWS Device Farm will immediately stop the run on devices where tests have not started executing, and you will not be billed for these devices. On devices where tests have started executing, Setup Suite and Teardown Suite tests will run to completion before stopping execution on those devices. You will be billed for Setup, Teardown, and any tests that were in progress or already completed.</p>
 stopRun :: forall eff. StopRunRequest -> Aff (err :: AWS.RequestError | eff) StopRunResult
-stopRun = AWS.request serviceName "StopRun" 
+stopRun = AWS.request serviceName "stopRun" 
 
 
 -- | <p>Modifies the name, description, and rules in a device pool given the attributes and the pool ARN. Rule updates are all-or-nothing, meaning they can only be updated as a whole (or not at all).</p>
 updateDevicePool :: forall eff. UpdateDevicePoolRequest -> Aff (err :: AWS.RequestError | eff) UpdateDevicePoolResult
-updateDevicePool = AWS.request serviceName "UpdateDevicePool" 
+updateDevicePool = AWS.request serviceName "updateDevicePool" 
 
 
 -- | <p>Updates the network profile with specific settings.</p>
 updateNetworkProfile :: forall eff. UpdateNetworkProfileRequest -> Aff (err :: AWS.RequestError | eff) UpdateNetworkProfileResult
-updateNetworkProfile = AWS.request serviceName "UpdateNetworkProfile" 
+updateNetworkProfile = AWS.request serviceName "updateNetworkProfile" 
 
 
 -- | <p>Modifies the specified project name, given the project ARN and a new name.</p>
 updateProject :: forall eff. UpdateProjectRequest -> Aff (err :: AWS.RequestError | eff) UpdateProjectResult
-updateProject = AWS.request serviceName "UpdateProject" 
+updateProject = AWS.request serviceName "updateProject" 
 
 
 newtype AWSAccountNumber = AWSAccountNumber String

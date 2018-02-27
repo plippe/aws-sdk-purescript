@@ -16,97 +16,97 @@ serviceName = "StepFunctions" :: String
 
 -- | <p>Creates an activity. An activity is a task which you write in any programming language and host on any machine which has access to AWS Step Functions. Activities must poll Step Functions using the <code>GetActivityTask</code> API action and respond using <code>SendTask*</code> API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.</p>
 createActivity :: forall eff. CreateActivityInput -> Aff (err :: AWS.RequestError | eff) CreateActivityOutput
-createActivity = AWS.request serviceName "CreateActivity" 
+createActivity = AWS.request serviceName "createActivity" 
 
 
 -- | <p>Creates a state machine. A state machine consists of a collection of states that can do work (<code>Task</code> states), determine to which states to transition next (<code>Choice</code> states), stop an execution with an error (<code>Fail</code> states), and so on. State machines are specified using a JSON-based, structured language.</p>
 createStateMachine :: forall eff. CreateStateMachineInput -> Aff (err :: AWS.RequestError | eff) CreateStateMachineOutput
-createStateMachine = AWS.request serviceName "CreateStateMachine" 
+createStateMachine = AWS.request serviceName "createStateMachine" 
 
 
 -- | <p>Deletes an activity.</p>
 deleteActivity :: forall eff. DeleteActivityInput -> Aff (err :: AWS.RequestError | eff) DeleteActivityOutput
-deleteActivity = AWS.request serviceName "DeleteActivity" 
+deleteActivity = AWS.request serviceName "deleteActivity" 
 
 
 -- | <p>Deletes a state machine. This is an asynchronous operation: It sets the state machine's status to <code>DELETING</code> and begins the deletion process. Each state machine execution is deleted the next time it makes a state transition.</p> <note> <p>The state machine itself is deleted after all executions are completed or deleted.</p> </note>
 deleteStateMachine :: forall eff. DeleteStateMachineInput -> Aff (err :: AWS.RequestError | eff) DeleteStateMachineOutput
-deleteStateMachine = AWS.request serviceName "DeleteStateMachine" 
+deleteStateMachine = AWS.request serviceName "deleteStateMachine" 
 
 
 -- | <p>Describes an activity.</p>
 describeActivity :: forall eff. DescribeActivityInput -> Aff (err :: AWS.RequestError | eff) DescribeActivityOutput
-describeActivity = AWS.request serviceName "DescribeActivity" 
+describeActivity = AWS.request serviceName "describeActivity" 
 
 
 -- | <p>Describes an execution.</p>
 describeExecution :: forall eff. DescribeExecutionInput -> Aff (err :: AWS.RequestError | eff) DescribeExecutionOutput
-describeExecution = AWS.request serviceName "DescribeExecution" 
+describeExecution = AWS.request serviceName "describeExecution" 
 
 
 -- | <p>Describes a state machine.</p>
 describeStateMachine :: forall eff. DescribeStateMachineInput -> Aff (err :: AWS.RequestError | eff) DescribeStateMachineOutput
-describeStateMachine = AWS.request serviceName "DescribeStateMachine" 
+describeStateMachine = AWS.request serviceName "describeStateMachine" 
 
 
 -- | <p>Describes the state machine associated with a specific execution.</p>
 describeStateMachineForExecution :: forall eff. DescribeStateMachineForExecutionInput -> Aff (err :: AWS.RequestError | eff) DescribeStateMachineForExecutionOutput
-describeStateMachineForExecution = AWS.request serviceName "DescribeStateMachineForExecution" 
+describeStateMachineForExecution = AWS.request serviceName "describeStateMachineForExecution" 
 
 
 -- | <p>Used by workers to retrieve a task (with the specified activity ARN) which has been scheduled for execution by a running state machine. This initiates a long poll, where the service holds the HTTP connection open and responds as soon as a task becomes available (i.e. an execution of a task of this type is needed.) The maximum time the service holds on to the request before responding is 60 seconds. If no task is available within 60 seconds, the poll returns a <code>taskToken</code> with a null string.</p> <important> <p>Workers should set their client side socket timeout to at least 65 seconds (5 seconds higher than the maximum time the service may hold the poll request).</p> </important>
 getActivityTask :: forall eff. GetActivityTaskInput -> Aff (err :: AWS.RequestError | eff) GetActivityTaskOutput
-getActivityTask = AWS.request serviceName "GetActivityTask" 
+getActivityTask = AWS.request serviceName "getActivityTask" 
 
 
 -- | <p>Returns the history of the specified execution as a list of events. By default, the results are returned in ascending order of the <code>timeStamp</code> of the events. Use the <code>reverseOrder</code> parameter to get the latest events first.</p> <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p>
 getExecutionHistory :: forall eff. GetExecutionHistoryInput -> Aff (err :: AWS.RequestError | eff) GetExecutionHistoryOutput
-getExecutionHistory = AWS.request serviceName "GetExecutionHistory" 
+getExecutionHistory = AWS.request serviceName "getExecutionHistory" 
 
 
 -- | <p>Lists the existing activities.</p> <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p>
 listActivities :: forall eff. ListActivitiesInput -> Aff (err :: AWS.RequestError | eff) ListActivitiesOutput
-listActivities = AWS.request serviceName "ListActivities" 
+listActivities = AWS.request serviceName "listActivities" 
 
 
 -- | <p>Lists the executions of a state machine that meet the filtering criteria.</p> <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p>
 listExecutions :: forall eff. ListExecutionsInput -> Aff (err :: AWS.RequestError | eff) ListExecutionsOutput
-listExecutions = AWS.request serviceName "ListExecutions" 
+listExecutions = AWS.request serviceName "listExecutions" 
 
 
 -- | <p>Lists the existing state machines.</p> <p>If a <code>nextToken</code> is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in <code>nextToken</code>. Keep all other arguments unchanged.</p>
 listStateMachines :: forall eff. ListStateMachinesInput -> Aff (err :: AWS.RequestError | eff) ListStateMachinesOutput
-listStateMachines = AWS.request serviceName "ListStateMachines" 
+listStateMachines = AWS.request serviceName "listStateMachines" 
 
 
 -- | <p>Used by workers to report that the task identified by the <code>taskToken</code> failed.</p>
 sendTaskFailure :: forall eff. SendTaskFailureInput -> Aff (err :: AWS.RequestError | eff) SendTaskFailureOutput
-sendTaskFailure = AWS.request serviceName "SendTaskFailure" 
+sendTaskFailure = AWS.request serviceName "sendTaskFailure" 
 
 
 -- | <p>Used by workers to report to the service that the task represented by the specified <code>taskToken</code> is still making progress. This action resets the <code>Heartbeat</code> clock. The <code>Heartbeat</code> threshold is specified in the state machine's Amazon States Language definition. This action does not in itself create an event in the execution history. However, if the task times out, the execution history contains an <code>ActivityTimedOut</code> event.</p> <note> <p>The <code>Timeout</code> of a task, defined in the state machine's Amazon States Language definition, is its maximum allowed duration, regardless of the number of <a>SendTaskHeartbeat</a> requests received.</p> </note> <note> <p>This operation is only useful for long-lived tasks to report the liveliness of the task.</p> </note>
 sendTaskHeartbeat :: forall eff. SendTaskHeartbeatInput -> Aff (err :: AWS.RequestError | eff) SendTaskHeartbeatOutput
-sendTaskHeartbeat = AWS.request serviceName "SendTaskHeartbeat" 
+sendTaskHeartbeat = AWS.request serviceName "sendTaskHeartbeat" 
 
 
 -- | <p>Used by workers to report that the task identified by the <code>taskToken</code> completed successfully.</p>
 sendTaskSuccess :: forall eff. SendTaskSuccessInput -> Aff (err :: AWS.RequestError | eff) SendTaskSuccessOutput
-sendTaskSuccess = AWS.request serviceName "SendTaskSuccess" 
+sendTaskSuccess = AWS.request serviceName "sendTaskSuccess" 
 
 
 -- | <p>Starts a state machine execution.</p>
 startExecution :: forall eff. StartExecutionInput -> Aff (err :: AWS.RequestError | eff) StartExecutionOutput
-startExecution = AWS.request serviceName "StartExecution" 
+startExecution = AWS.request serviceName "startExecution" 
 
 
 -- | <p>Stops an execution.</p>
 stopExecution :: forall eff. StopExecutionInput -> Aff (err :: AWS.RequestError | eff) StopExecutionOutput
-stopExecution = AWS.request serviceName "StopExecution" 
+stopExecution = AWS.request serviceName "stopExecution" 
 
 
 -- | <p>Updates an existing state machine by modifying its <code>definition</code> and/or <code>roleArn</code>. Running executions will continue to use the previous <code>definition</code> and <code>roleArn</code>.</p> <note> <p>All <code>StartExecution</code> calls within a few seconds will use the updated <code>definition</code> and <code>roleArn</code>. Executions started immediately after calling <code>UpdateStateMachine</code> may use the previous state machine <code>definition</code> and <code>roleArn</code>. You must include at least one of <code>definition</code> or <code>roleArn</code> or you will receive a <code>MissingRequiredParameter</code> error.</p> </note>
 updateStateMachine :: forall eff. UpdateStateMachineInput -> Aff (err :: AWS.RequestError | eff) UpdateStateMachineOutput
-updateStateMachine = AWS.request serviceName "UpdateStateMachine" 
+updateStateMachine = AWS.request serviceName "updateStateMachine" 
 
 
 -- | <p>The specified activity does not exist.</p>

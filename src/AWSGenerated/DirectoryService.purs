@@ -16,202 +16,202 @@ serviceName = "DirectoryService" :: String
 
 -- | <p>If the DNS server for your on-premises domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services. <i>AddIpRoutes</i> adds this address block. You can also use <i>AddIpRoutes</i> to facilitate routing traffic that uses public IP ranges from your Microsoft AD on AWS to a peer VPC. </p> <p>Before you call <i>AddIpRoutes</i>, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the <i>AddIpRoutes</i> operation, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.</p>
 addIpRoutes :: forall eff. AddIpRoutesRequest -> Aff (err :: AWS.RequestError | eff) AddIpRoutesResult
-addIpRoutes = AWS.request serviceName "AddIpRoutes" 
+addIpRoutes = AWS.request serviceName "addIpRoutes" 
 
 
 -- | <p>Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique to each resource.</p>
 addTagsToResource :: forall eff. AddTagsToResourceRequest -> Aff (err :: AWS.RequestError | eff) AddTagsToResourceResult
-addTagsToResource = AWS.request serviceName "AddTagsToResource" 
+addTagsToResource = AWS.request serviceName "addTagsToResource" 
 
 
 -- | <p>Cancels an in-progress schema extension to a Microsoft AD directory. Once a schema extension has started replicating to all domain controllers, the task can no longer be canceled. A schema extension can be canceled during any of the following states; <code>Initializing</code>, <code>CreatingSnapshot</code>, and <code>UpdatingSchema</code>.</p>
 cancelSchemaExtension :: forall eff. CancelSchemaExtensionRequest -> Aff (err :: AWS.RequestError | eff) CancelSchemaExtensionResult
-cancelSchemaExtension = AWS.request serviceName "CancelSchemaExtension" 
+cancelSchemaExtension = AWS.request serviceName "cancelSchemaExtension" 
 
 
 -- | <p>Creates an AD Connector to connect to an on-premises directory.</p> <p>Before you call <i>ConnectDirectory</i>, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the <i>ConnectDirectory</i> operation, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.</p>
 connectDirectory :: forall eff. ConnectDirectoryRequest -> Aff (err :: AWS.RequestError | eff) ConnectDirectoryResult
-connectDirectory = AWS.request serviceName "ConnectDirectory" 
+connectDirectory = AWS.request serviceName "connectDirectory" 
 
 
 -- | <p>Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as <code>http://&lt;alias&gt;.awsapps.com</code>.</p> <important> <p>After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary.</p> </important>
 createAlias :: forall eff. CreateAliasRequest -> Aff (err :: AWS.RequestError | eff) CreateAliasResult
-createAlias = AWS.request serviceName "CreateAlias" 
+createAlias = AWS.request serviceName "createAlias" 
 
 
 -- | <p>Creates a computer account in the specified directory, and joins the computer to the directory.</p>
 createComputer :: forall eff. CreateComputerRequest -> Aff (err :: AWS.RequestError | eff) CreateComputerResult
-createComputer = AWS.request serviceName "CreateComputer" 
+createComputer = AWS.request serviceName "createComputer" 
 
 
 -- | <p>Creates a conditional forwarder associated with your AWS directory. Conditional forwarders are required in order to set up a trust relationship with another domain. The conditional forwarder points to the trusted domain.</p>
 createConditionalForwarder :: forall eff. CreateConditionalForwarderRequest -> Aff (err :: AWS.RequestError | eff) CreateConditionalForwarderResult
-createConditionalForwarder = AWS.request serviceName "CreateConditionalForwarder" 
+createConditionalForwarder = AWS.request serviceName "createConditionalForwarder" 
 
 
 -- | <p>Creates a Simple AD directory.</p> <p>Before you call <i>CreateDirectory</i>, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the <i>CreateDirectory</i> operation, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.</p>
 createDirectory :: forall eff. CreateDirectoryRequest -> Aff (err :: AWS.RequestError | eff) CreateDirectoryResult
-createDirectory = AWS.request serviceName "CreateDirectory" 
+createDirectory = AWS.request serviceName "createDirectory" 
 
 
 -- | <p>Creates a Microsoft AD in the AWS cloud.</p> <p>Before you call <i>CreateMicrosoftAD</i>, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the <i>CreateMicrosoftAD</i> operation, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.</p>
 createMicrosoftAD :: forall eff. CreateMicrosoftADRequest -> Aff (err :: AWS.RequestError | eff) CreateMicrosoftADResult
-createMicrosoftAD = AWS.request serviceName "CreateMicrosoftAD" 
+createMicrosoftAD = AWS.request serviceName "createMicrosoftAD" 
 
 
 -- | <p>Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS cloud.</p> <note> <p>You cannot take snapshots of AD Connector directories.</p> </note>
 createSnapshot :: forall eff. CreateSnapshotRequest -> Aff (err :: AWS.RequestError | eff) CreateSnapshotResult
-createSnapshot = AWS.request serviceName "CreateSnapshot" 
+createSnapshot = AWS.request serviceName "createSnapshot" 
 
 
 -- | <p>AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Microsoft AD in the AWS cloud, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.</p> <p>This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>
 createTrust :: forall eff. CreateTrustRequest -> Aff (err :: AWS.RequestError | eff) CreateTrustResult
-createTrust = AWS.request serviceName "CreateTrust" 
+createTrust = AWS.request serviceName "createTrust" 
 
 
 -- | <p>Deletes a conditional forwarder that has been set up for your AWS directory.</p>
 deleteConditionalForwarder :: forall eff. DeleteConditionalForwarderRequest -> Aff (err :: AWS.RequestError | eff) DeleteConditionalForwarderResult
-deleteConditionalForwarder = AWS.request serviceName "DeleteConditionalForwarder" 
+deleteConditionalForwarder = AWS.request serviceName "deleteConditionalForwarder" 
 
 
 -- | <p>Deletes an AWS Directory Service directory.</p> <p>Before you call <i>DeleteDirectory</i>, ensure that all of the required permissions have been explicitly granted through a policy. For details about what permissions are required to run the <i>DeleteDirectory</i> operation, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html">AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference</a>.</p>
 deleteDirectory :: forall eff. DeleteDirectoryRequest -> Aff (err :: AWS.RequestError | eff) DeleteDirectoryResult
-deleteDirectory = AWS.request serviceName "DeleteDirectory" 
+deleteDirectory = AWS.request serviceName "deleteDirectory" 
 
 
 -- | <p>Deletes a directory snapshot.</p>
 deleteSnapshot :: forall eff. DeleteSnapshotRequest -> Aff (err :: AWS.RequestError | eff) DeleteSnapshotResult
-deleteSnapshot = AWS.request serviceName "DeleteSnapshot" 
+deleteSnapshot = AWS.request serviceName "deleteSnapshot" 
 
 
 -- | <p>Deletes an existing trust relationship between your Microsoft AD in the AWS cloud and an external domain.</p>
 deleteTrust :: forall eff. DeleteTrustRequest -> Aff (err :: AWS.RequestError | eff) DeleteTrustResult
-deleteTrust = AWS.request serviceName "DeleteTrust" 
+deleteTrust = AWS.request serviceName "deleteTrust" 
 
 
 -- | <p>Removes the specified directory as a publisher to the specified SNS topic.</p>
 deregisterEventTopic :: forall eff. DeregisterEventTopicRequest -> Aff (err :: AWS.RequestError | eff) DeregisterEventTopicResult
-deregisterEventTopic = AWS.request serviceName "DeregisterEventTopic" 
+deregisterEventTopic = AWS.request serviceName "deregisterEventTopic" 
 
 
 -- | <p>Obtains information about the conditional forwarders for this account.</p> <p>If no input parameters are provided for RemoteDomainNames, this request describes all conditional forwarders for the specified directory ID.</p>
 describeConditionalForwarders :: forall eff. DescribeConditionalForwardersRequest -> Aff (err :: AWS.RequestError | eff) DescribeConditionalForwardersResult
-describeConditionalForwarders = AWS.request serviceName "DescribeConditionalForwarders" 
+describeConditionalForwarders = AWS.request serviceName "describeConditionalForwarders" 
 
 
 -- | <p>Obtains information about the directories that belong to this account.</p> <p>You can retrieve information about specific directories by passing the directory identifiers in the <i>DirectoryIds</i> parameter. Otherwise, all directories that belong to the current account are returned.</p> <p>This operation supports pagination with the use of the <i>NextToken</i> request and response parameters. If more results are available, the <i>DescribeDirectoriesResult.NextToken</i> member contains a token that you pass in the next call to <a>DescribeDirectories</a> to retrieve the next set of items.</p> <p>You can also specify a maximum number of return results with the <i>Limit</i> parameter.</p>
 describeDirectories :: forall eff. DescribeDirectoriesRequest -> Aff (err :: AWS.RequestError | eff) DescribeDirectoriesResult
-describeDirectories = AWS.request serviceName "DescribeDirectories" 
+describeDirectories = AWS.request serviceName "describeDirectories" 
 
 
 -- | <p>Provides information about any domain controllers in your directory.</p>
 describeDomainControllers :: forall eff. DescribeDomainControllersRequest -> Aff (err :: AWS.RequestError | eff) DescribeDomainControllersResult
-describeDomainControllers = AWS.request serviceName "DescribeDomainControllers" 
+describeDomainControllers = AWS.request serviceName "describeDomainControllers" 
 
 
 -- | <p>Obtains information about which SNS topics receive status messages from the specified directory.</p> <p>If no input parameters are provided, such as DirectoryId or TopicName, this request describes all of the associations in the account.</p>
 describeEventTopics :: forall eff. DescribeEventTopicsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEventTopicsResult
-describeEventTopics = AWS.request serviceName "DescribeEventTopics" 
+describeEventTopics = AWS.request serviceName "describeEventTopics" 
 
 
 -- | <p>Obtains information about the directory snapshots that belong to this account.</p> <p>This operation supports pagination with the use of the <i>NextToken</i> request and response parameters. If more results are available, the <i>DescribeSnapshots.NextToken</i> member contains a token that you pass in the next call to <a>DescribeSnapshots</a> to retrieve the next set of items.</p> <p>You can also specify a maximum number of return results with the <i>Limit</i> parameter.</p>
 describeSnapshots :: forall eff. DescribeSnapshotsRequest -> Aff (err :: AWS.RequestError | eff) DescribeSnapshotsResult
-describeSnapshots = AWS.request serviceName "DescribeSnapshots" 
+describeSnapshots = AWS.request serviceName "describeSnapshots" 
 
 
 -- | <p>Obtains information about the trust relationships for this account.</p> <p>If no input parameters are provided, such as DirectoryId or TrustIds, this request describes all the trust relationships belonging to the account.</p>
 describeTrusts :: forall eff. DescribeTrustsRequest -> Aff (err :: AWS.RequestError | eff) DescribeTrustsResult
-describeTrusts = AWS.request serviceName "DescribeTrusts" 
+describeTrusts = AWS.request serviceName "describeTrusts" 
 
 
 -- | <p>Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector directory.</p>
 disableRadius :: forall eff. DisableRadiusRequest -> Aff (err :: AWS.RequestError | eff) DisableRadiusResult
-disableRadius = AWS.request serviceName "DisableRadius" 
+disableRadius = AWS.request serviceName "disableRadius" 
 
 
 -- | <p>Disables single-sign on for a directory.</p>
 disableSso :: forall eff. DisableSsoRequest -> Aff (err :: AWS.RequestError | eff) DisableSsoResult
-disableSso = AWS.request serviceName "DisableSso" 
+disableSso = AWS.request serviceName "disableSso" 
 
 
 -- | <p>Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector directory.</p>
 enableRadius :: forall eff. EnableRadiusRequest -> Aff (err :: AWS.RequestError | eff) EnableRadiusResult
-enableRadius = AWS.request serviceName "EnableRadius" 
+enableRadius = AWS.request serviceName "enableRadius" 
 
 
 -- | <p>Enables single sign-on for a directory.</p>
 enableSso :: forall eff. EnableSsoRequest -> Aff (err :: AWS.RequestError | eff) EnableSsoResult
-enableSso = AWS.request serviceName "EnableSso" 
+enableSso = AWS.request serviceName "enableSso" 
 
 
 -- | <p>Obtains directory limit information for the current region.</p>
 getDirectoryLimits :: forall eff. GetDirectoryLimitsRequest -> Aff (err :: AWS.RequestError | eff) GetDirectoryLimitsResult
-getDirectoryLimits = AWS.request serviceName "GetDirectoryLimits" 
+getDirectoryLimits = AWS.request serviceName "getDirectoryLimits" 
 
 
 -- | <p>Obtains the manual snapshot limits for a directory.</p>
 getSnapshotLimits :: forall eff. GetSnapshotLimitsRequest -> Aff (err :: AWS.RequestError | eff) GetSnapshotLimitsResult
-getSnapshotLimits = AWS.request serviceName "GetSnapshotLimits" 
+getSnapshotLimits = AWS.request serviceName "getSnapshotLimits" 
 
 
 -- | <p>Lists the address blocks that you have added to a directory.</p>
 listIpRoutes :: forall eff. ListIpRoutesRequest -> Aff (err :: AWS.RequestError | eff) ListIpRoutesResult
-listIpRoutes = AWS.request serviceName "ListIpRoutes" 
+listIpRoutes = AWS.request serviceName "listIpRoutes" 
 
 
 -- | <p>Lists all schema extensions applied to a Microsoft AD Directory.</p>
 listSchemaExtensions :: forall eff. ListSchemaExtensionsRequest -> Aff (err :: AWS.RequestError | eff) ListSchemaExtensionsResult
-listSchemaExtensions = AWS.request serviceName "ListSchemaExtensions" 
+listSchemaExtensions = AWS.request serviceName "listSchemaExtensions" 
 
 
 -- | <p>Lists all tags on a directory.</p>
 listTagsForResource :: forall eff. ListTagsForResourceRequest -> Aff (err :: AWS.RequestError | eff) ListTagsForResourceResult
-listTagsForResource = AWS.request serviceName "ListTagsForResource" 
+listTagsForResource = AWS.request serviceName "listTagsForResource" 
 
 
 -- | <p>Associates a directory with an SNS topic. This establishes the directory as a publisher to the specified SNS topic. You can then receive email or text (SMS) messages when the status of your directory changes. You get notified if your directory goes from an Active status to an Impaired or Inoperable status. You also receive a notification when the directory returns to an Active status.</p>
 registerEventTopic :: forall eff. RegisterEventTopicRequest -> Aff (err :: AWS.RequestError | eff) RegisterEventTopicResult
-registerEventTopic = AWS.request serviceName "RegisterEventTopic" 
+registerEventTopic = AWS.request serviceName "registerEventTopic" 
 
 
 -- | <p>Removes IP address blocks from a directory.</p>
 removeIpRoutes :: forall eff. RemoveIpRoutesRequest -> Aff (err :: AWS.RequestError | eff) RemoveIpRoutesResult
-removeIpRoutes = AWS.request serviceName "RemoveIpRoutes" 
+removeIpRoutes = AWS.request serviceName "removeIpRoutes" 
 
 
 -- | <p>Removes tags from a directory.</p>
 removeTagsFromResource :: forall eff. RemoveTagsFromResourceRequest -> Aff (err :: AWS.RequestError | eff) RemoveTagsFromResourceResult
-removeTagsFromResource = AWS.request serviceName "RemoveTagsFromResource" 
+removeTagsFromResource = AWS.request serviceName "removeTagsFromResource" 
 
 
 -- | <p>Restores a directory using an existing directory snapshot.</p> <p>When you restore a directory from a snapshot, any changes made to the directory after the snapshot date are overwritten.</p> <p>This action returns as soon as the restore operation is initiated. You can monitor the progress of the restore operation by calling the <a>DescribeDirectories</a> operation with the directory identifier. When the <b>DirectoryDescription.Stage</b> value changes to <code>Active</code>, the restore operation is complete.</p>
 restoreFromSnapshot :: forall eff. RestoreFromSnapshotRequest -> Aff (err :: AWS.RequestError | eff) RestoreFromSnapshotResult
-restoreFromSnapshot = AWS.request serviceName "RestoreFromSnapshot" 
+restoreFromSnapshot = AWS.request serviceName "restoreFromSnapshot" 
 
 
 -- | <p>Applies a schema extension to a Microsoft AD directory.</p>
 startSchemaExtension :: forall eff. StartSchemaExtensionRequest -> Aff (err :: AWS.RequestError | eff) StartSchemaExtensionResult
-startSchemaExtension = AWS.request serviceName "StartSchemaExtension" 
+startSchemaExtension = AWS.request serviceName "startSchemaExtension" 
 
 
 -- | <p>Updates a conditional forwarder that has been set up for your AWS directory.</p>
 updateConditionalForwarder :: forall eff. UpdateConditionalForwarderRequest -> Aff (err :: AWS.RequestError | eff) UpdateConditionalForwarderResult
-updateConditionalForwarder = AWS.request serviceName "UpdateConditionalForwarder" 
+updateConditionalForwarder = AWS.request serviceName "updateConditionalForwarder" 
 
 
 -- | <p>Adds or removes domain controllers to or from the directory. Based on the difference between current value and new value (provided through this API call), domain controllers will be added or removed. It may take up to 45 minutes for any new domain controllers to become fully active once the requested number of domain controllers is updated. During this time, you cannot make another update request.</p>
 updateNumberOfDomainControllers :: forall eff. UpdateNumberOfDomainControllersRequest -> Aff (err :: AWS.RequestError | eff) UpdateNumberOfDomainControllersResult
-updateNumberOfDomainControllers = AWS.request serviceName "UpdateNumberOfDomainControllers" 
+updateNumberOfDomainControllers = AWS.request serviceName "updateNumberOfDomainControllers" 
 
 
 -- | <p>Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector directory.</p>
 updateRadius :: forall eff. UpdateRadiusRequest -> Aff (err :: AWS.RequestError | eff) UpdateRadiusResult
-updateRadius = AWS.request serviceName "UpdateRadius" 
+updateRadius = AWS.request serviceName "updateRadius" 
 
 
 -- | <p>AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships.</p> <p>This action verifies a trust relationship between your Microsoft AD in the AWS cloud and an external domain.</p>
 verifyTrust :: forall eff. VerifyTrustRequest -> Aff (err :: AWS.RequestError | eff) VerifyTrustResult
-verifyTrust = AWS.request serviceName "VerifyTrust" 
+verifyTrust = AWS.request serviceName "verifyTrust" 
 
 
 newtype AccessUrl = AccessUrl String

@@ -16,112 +16,112 @@ serviceName = "CloudSearch" :: String
 
 -- | <p>Creates a new search domain.</p>
 createDomain :: forall eff. CreateDomainRequest -> Aff (err :: AWS.RequestError | eff) CreateDomainResponse
-createDomain = AWS.request serviceName "CreateDomain" 
+createDomain = AWS.request serviceName "createDomain" 
 
 
 -- | <p>Configures an <code>IndexField</code> for the search domain. Used to create new fields and modify existing ones. If the field exists, the new configuration replaces the old one. You can configure a maximum of 200 index fields.</p>
 defineIndexField :: forall eff. DefineIndexFieldRequest -> Aff (err :: AWS.RequestError | eff) DefineIndexFieldResponse
-defineIndexField = AWS.request serviceName "DefineIndexField" 
+defineIndexField = AWS.request serviceName "defineIndexField" 
 
 
 -- | <p>Configures a <code>RankExpression</code> for the search domain. Used to create new rank expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. You can configure a maximum of 50 rank expressions.</p>
 defineRankExpression :: forall eff. DefineRankExpressionRequest -> Aff (err :: AWS.RequestError | eff) DefineRankExpressionResponse
-defineRankExpression = AWS.request serviceName "DefineRankExpression" 
+defineRankExpression = AWS.request serviceName "defineRankExpression" 
 
 
 -- | <p>Permanently deletes a search domain and all of its data.</p>
 deleteDomain :: forall eff. DeleteDomainRequest -> Aff (err :: AWS.RequestError | eff) DeleteDomainResponse
-deleteDomain = AWS.request serviceName "DeleteDomain" 
+deleteDomain = AWS.request serviceName "deleteDomain" 
 
 
 -- | <p>Removes an <code>IndexField</code> from the search domain.</p>
 deleteIndexField :: forall eff. DeleteIndexFieldRequest -> Aff (err :: AWS.RequestError | eff) DeleteIndexFieldResponse
-deleteIndexField = AWS.request serviceName "DeleteIndexField" 
+deleteIndexField = AWS.request serviceName "deleteIndexField" 
 
 
 -- | <p>Removes a <code>RankExpression</code> from the search domain.</p>
 deleteRankExpression :: forall eff. DeleteRankExpressionRequest -> Aff (err :: AWS.RequestError | eff) DeleteRankExpressionResponse
-deleteRankExpression = AWS.request serviceName "DeleteRankExpression" 
+deleteRankExpression = AWS.request serviceName "deleteRankExpression" 
 
 
 -- | <p>Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude pending changes. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
 describeAvailabilityOptions :: forall eff. DescribeAvailabilityOptionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeAvailabilityOptionsResponse
-describeAvailabilityOptions = AWS.request serviceName "DescribeAvailabilityOptions" 
+describeAvailabilityOptions = AWS.request serviceName "describeAvailabilityOptions" 
 
 
 -- | <p>Gets the default search field configured for the search domain.</p>
 describeDefaultSearchField :: forall eff. DescribeDefaultSearchFieldRequest -> Aff (err :: AWS.RequestError | eff) DescribeDefaultSearchFieldResponse
-describeDefaultSearchField = AWS.request serviceName "DescribeDefaultSearchField" 
+describeDefaultSearchField = AWS.request serviceName "describeDefaultSearchField" 
 
 
 -- | <p>Gets information about the search domains owned by this account. Can be limited to specific domains. Shows all domains by default.</p>
 describeDomains :: forall eff. DescribeDomainsRequest -> Aff (err :: AWS.RequestError | eff) DescribeDomainsResponse
-describeDomains = AWS.request serviceName "DescribeDomains" 
+describeDomains = AWS.request serviceName "describeDomains" 
 
 
 -- | <p>Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. Shows all fields by default.</p>
 describeIndexFields :: forall eff. DescribeIndexFieldsRequest -> Aff (err :: AWS.RequestError | eff) DescribeIndexFieldsResponse
-describeIndexFields = AWS.request serviceName "DescribeIndexFields" 
+describeIndexFields = AWS.request serviceName "describeIndexFields" 
 
 
 -- | <p>Gets the rank expressions configured for the search domain. Can be limited to specific rank expressions by name. Shows all rank expressions by default. </p>
 describeRankExpressions :: forall eff. DescribeRankExpressionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeRankExpressionsResponse
-describeRankExpressions = AWS.request serviceName "DescribeRankExpressions" 
+describeRankExpressions = AWS.request serviceName "describeRankExpressions" 
 
 
 -- | <p>Gets information about the resource-based policies that control access to the domain's document and search services.</p>
 describeServiceAccessPolicies :: forall eff. DescribeServiceAccessPoliciesRequest -> Aff (err :: AWS.RequestError | eff) DescribeServiceAccessPoliciesResponse
-describeServiceAccessPolicies = AWS.request serviceName "DescribeServiceAccessPolicies" 
+describeServiceAccessPolicies = AWS.request serviceName "describeServiceAccessPolicies" 
 
 
 -- | <p>Gets the stemming dictionary configured for the search domain.</p>
 describeStemmingOptions :: forall eff. DescribeStemmingOptionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeStemmingOptionsResponse
-describeStemmingOptions = AWS.request serviceName "DescribeStemmingOptions" 
+describeStemmingOptions = AWS.request serviceName "describeStemmingOptions" 
 
 
 -- | <p>Gets the stopwords configured for the search domain.</p>
 describeStopwordOptions :: forall eff. DescribeStopwordOptionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeStopwordOptionsResponse
-describeStopwordOptions = AWS.request serviceName "DescribeStopwordOptions" 
+describeStopwordOptions = AWS.request serviceName "describeStopwordOptions" 
 
 
 -- | <p>Gets the synonym dictionary configured for the search domain.</p>
 describeSynonymOptions :: forall eff. DescribeSynonymOptionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeSynonymOptionsResponse
-describeSynonymOptions = AWS.request serviceName "DescribeSynonymOptions" 
+describeSynonymOptions = AWS.request serviceName "describeSynonymOptions" 
 
 
 -- | <p>Tells the search domain to start indexing its documents using the latest text processing options and <code>IndexFields</code>. This operation must be invoked to make options whose <a>OptionStatus</a> has <code>OptionState</code> of <code>RequiresIndexDocuments</code> visible in search results.</p>
 indexDocuments :: forall eff. IndexDocumentsRequest -> Aff (err :: AWS.RequestError | eff) IndexDocumentsResponse
-indexDocuments = AWS.request serviceName "IndexDocuments" 
+indexDocuments = AWS.request serviceName "indexDocuments" 
 
 
 -- | <p>Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
 updateAvailabilityOptions :: forall eff. UpdateAvailabilityOptionsRequest -> Aff (err :: AWS.RequestError | eff) UpdateAvailabilityOptionsResponse
-updateAvailabilityOptions = AWS.request serviceName "UpdateAvailabilityOptions" 
+updateAvailabilityOptions = AWS.request serviceName "updateAvailabilityOptions" 
 
 
 -- | <p>Configures the default search field for the search domain. The default search field is the text field that is searched when a search request does not specify which fields to search. By default, it is configured to include the contents of all of the domain's text fields. </p>
 updateDefaultSearchField :: forall eff. UpdateDefaultSearchFieldRequest -> Aff (err :: AWS.RequestError | eff) UpdateDefaultSearchFieldResponse
-updateDefaultSearchField = AWS.request serviceName "UpdateDefaultSearchField" 
+updateDefaultSearchField = AWS.request serviceName "updateDefaultSearchField" 
 
 
 -- | <p>Configures the policies that control access to the domain's document and search services. The maximum size of an access policy document is 100 KB.</p>
 updateServiceAccessPolicies :: forall eff. UpdateServiceAccessPoliciesRequest -> Aff (err :: AWS.RequestError | eff) UpdateServiceAccessPoliciesResponse
-updateServiceAccessPolicies = AWS.request serviceName "UpdateServiceAccessPolicies" 
+updateServiceAccessPolicies = AWS.request serviceName "updateServiceAccessPolicies" 
 
 
 -- | <p>Configures a stemming dictionary for the search domain. The stemming dictionary is used during indexing and when processing search requests. The maximum size of the stemming dictionary is 500 KB.</p>
 updateStemmingOptions :: forall eff. UpdateStemmingOptionsRequest -> Aff (err :: AWS.RequestError | eff) UpdateStemmingOptionsResponse
-updateStemmingOptions = AWS.request serviceName "UpdateStemmingOptions" 
+updateStemmingOptions = AWS.request serviceName "updateStemmingOptions" 
 
 
 -- | <p>Configures stopwords for the search domain. Stopwords are used during indexing and when processing search requests. The maximum size of the stopwords dictionary is 10 KB.</p>
 updateStopwordOptions :: forall eff. UpdateStopwordOptionsRequest -> Aff (err :: AWS.RequestError | eff) UpdateStopwordOptionsResponse
-updateStopwordOptions = AWS.request serviceName "UpdateStopwordOptions" 
+updateStopwordOptions = AWS.request serviceName "updateStopwordOptions" 
 
 
 -- | <p>Configures a synonym dictionary for the search domain. The synonym dictionary is used during indexing to configure mappings for terms that occur in text fields. The maximum size of the synonym dictionary is 100 KB. </p>
 updateSynonymOptions :: forall eff. UpdateSynonymOptionsRequest -> Aff (err :: AWS.RequestError | eff) UpdateSynonymOptionsResponse
-updateSynonymOptions = AWS.request serviceName "UpdateSynonymOptions" 
+updateSynonymOptions = AWS.request serviceName "updateSynonymOptions" 
 
 
 -- | <p>A <code>PolicyDocument</code> that specifies access policies for the search domain's services, and the current status of those policies.</p>

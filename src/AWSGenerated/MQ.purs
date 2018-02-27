@@ -16,87 +16,87 @@ serviceName = "MQ" :: String
 
 -- | Creates a broker. Note: This API is asynchronous.
 createBroker :: forall eff. CreateBrokerRequest -> Aff (err :: AWS.RequestError | eff) CreateBrokerResponse
-createBroker = AWS.request serviceName "CreateBroker" 
+createBroker = AWS.request serviceName "createBroker" 
 
 
 -- | Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version). Note: If the configuration name already exists, Amazon MQ doesn't create a configuration.
 createConfiguration :: forall eff. CreateConfigurationRequest -> Aff (err :: AWS.RequestError | eff) CreateConfigurationResponse
-createConfiguration = AWS.request serviceName "CreateConfiguration" 
+createConfiguration = AWS.request serviceName "createConfiguration" 
 
 
 -- | Creates an ActiveMQ user.
 createUser :: forall eff. CreateUserRequest -> Aff (err :: AWS.RequestError | eff) CreateUserResponse
-createUser = AWS.request serviceName "CreateUser" 
+createUser = AWS.request serviceName "createUser" 
 
 
 -- | Deletes a broker. Note: This API is asynchronous.
 deleteBroker :: forall eff. DeleteBrokerRequest -> Aff (err :: AWS.RequestError | eff) DeleteBrokerResponse
-deleteBroker = AWS.request serviceName "DeleteBroker" 
+deleteBroker = AWS.request serviceName "deleteBroker" 
 
 
 -- | Deletes an ActiveMQ user.
 deleteUser :: forall eff. DeleteUserRequest -> Aff (err :: AWS.RequestError | eff) DeleteUserResponse
-deleteUser = AWS.request serviceName "DeleteUser" 
+deleteUser = AWS.request serviceName "deleteUser" 
 
 
 -- | Returns information about the specified broker.
 describeBroker :: forall eff. DescribeBrokerRequest -> Aff (err :: AWS.RequestError | eff) DescribeBrokerResponse
-describeBroker = AWS.request serviceName "DescribeBroker" 
+describeBroker = AWS.request serviceName "describeBroker" 
 
 
 -- | Returns information about the specified configuration.
 describeConfiguration :: forall eff. DescribeConfigurationRequest -> Aff (err :: AWS.RequestError | eff) DescribeConfigurationResponse
-describeConfiguration = AWS.request serviceName "DescribeConfiguration" 
+describeConfiguration = AWS.request serviceName "describeConfiguration" 
 
 
 -- | Returns the specified configuration revision for the specified configuration.
 describeConfigurationRevision :: forall eff. DescribeConfigurationRevisionRequest -> Aff (err :: AWS.RequestError | eff) DescribeConfigurationRevisionResponse
-describeConfigurationRevision = AWS.request serviceName "DescribeConfigurationRevision" 
+describeConfigurationRevision = AWS.request serviceName "describeConfigurationRevision" 
 
 
 -- | Returns information about an ActiveMQ user.
 describeUser :: forall eff. DescribeUserRequest -> Aff (err :: AWS.RequestError | eff) DescribeUserResponse
-describeUser = AWS.request serviceName "DescribeUser" 
+describeUser = AWS.request serviceName "describeUser" 
 
 
 -- | Returns a list of all brokers.
 listBrokers :: forall eff. ListBrokersRequest -> Aff (err :: AWS.RequestError | eff) ListBrokersResponse
-listBrokers = AWS.request serviceName "ListBrokers" 
+listBrokers = AWS.request serviceName "listBrokers" 
 
 
 -- | Returns a list of all revisions for the specified configuration.
 listConfigurationRevisions :: forall eff. ListConfigurationRevisionsRequest -> Aff (err :: AWS.RequestError | eff) ListConfigurationRevisionsResponse
-listConfigurationRevisions = AWS.request serviceName "ListConfigurationRevisions" 
+listConfigurationRevisions = AWS.request serviceName "listConfigurationRevisions" 
 
 
 -- | Returns a list of all configurations.
 listConfigurations :: forall eff. ListConfigurationsRequest -> Aff (err :: AWS.RequestError | eff) ListConfigurationsResponse
-listConfigurations = AWS.request serviceName "ListConfigurations" 
+listConfigurations = AWS.request serviceName "listConfigurations" 
 
 
 -- | Returns a list of all ActiveMQ users.
 listUsers :: forall eff. ListUsersRequest -> Aff (err :: AWS.RequestError | eff) ListUsersResponse
-listUsers = AWS.request serviceName "ListUsers" 
+listUsers = AWS.request serviceName "listUsers" 
 
 
 -- | Reboots a broker. Note: This API is asynchronous.
 rebootBroker :: forall eff. RebootBrokerRequest -> Aff (err :: AWS.RequestError | eff) RebootBrokerResponse
-rebootBroker = AWS.request serviceName "RebootBroker" 
+rebootBroker = AWS.request serviceName "rebootBroker" 
 
 
 -- | Adds a pending configuration change to a broker.
 updateBroker :: forall eff. UpdateBrokerRequest -> Aff (err :: AWS.RequestError | eff) UpdateBrokerResponse
-updateBroker = AWS.request serviceName "UpdateBroker" 
+updateBroker = AWS.request serviceName "updateBroker" 
 
 
 -- | Updates the specified configuration.
 updateConfiguration :: forall eff. UpdateConfigurationRequest -> Aff (err :: AWS.RequestError | eff) UpdateConfigurationResponse
-updateConfiguration = AWS.request serviceName "UpdateConfiguration" 
+updateConfiguration = AWS.request serviceName "updateConfiguration" 
 
 
 -- | Updates the information for an ActiveMQ user.
 updateUser :: forall eff. UpdateUserRequest -> Aff (err :: AWS.RequestError | eff) UpdateUserResponse
-updateUser = AWS.request serviceName "UpdateUser" 
+updateUser = AWS.request serviceName "updateUser" 
 
 
 -- | Returns information about an error.

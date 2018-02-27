@@ -16,62 +16,62 @@ serviceName = "ResourceGroups" :: String
 
 -- | <p>Creates a group with a specified name, description, and resource query.</p>
 createGroup :: forall eff. CreateGroupInput -> Aff (err :: AWS.RequestError | eff) CreateGroupOutput
-createGroup = AWS.request serviceName "CreateGroup" 
+createGroup = AWS.request serviceName "createGroup" 
 
 
 -- | <p>Deletes a specified resource group. Deleting a resource group does not delete resources that are members of the group; it only deletes the group structure.</p>
 deleteGroup :: forall eff. DeleteGroupInput -> Aff (err :: AWS.RequestError | eff) DeleteGroupOutput
-deleteGroup = AWS.request serviceName "DeleteGroup" 
+deleteGroup = AWS.request serviceName "deleteGroup" 
 
 
 -- | <p>Returns information about a specified resource group.</p>
 getGroup :: forall eff. GetGroupInput -> Aff (err :: AWS.RequestError | eff) GetGroupOutput
-getGroup = AWS.request serviceName "GetGroup" 
+getGroup = AWS.request serviceName "getGroup" 
 
 
 -- | <p>Returns the resource query associated with the specified resource group.</p>
 getGroupQuery :: forall eff. GetGroupQueryInput -> Aff (err :: AWS.RequestError | eff) GetGroupQueryOutput
-getGroupQuery = AWS.request serviceName "GetGroupQuery" 
+getGroupQuery = AWS.request serviceName "getGroupQuery" 
 
 
 -- | <p>Returns a list of tags that are associated with a resource, specified by an ARN.</p>
 getTags :: forall eff. GetTagsInput -> Aff (err :: AWS.RequestError | eff) GetTagsOutput
-getTags = AWS.request serviceName "GetTags" 
+getTags = AWS.request serviceName "getTags" 
 
 
 -- | <p>Returns a list of ARNs of resources that are members of a specified resource group.</p>
 listGroupResources :: forall eff. ListGroupResourcesInput -> Aff (err :: AWS.RequestError | eff) ListGroupResourcesOutput
-listGroupResources = AWS.request serviceName "ListGroupResources" 
+listGroupResources = AWS.request serviceName "listGroupResources" 
 
 
 -- | <p>Returns a list of existing resource groups in your account.</p>
 listGroups :: forall eff. ListGroupsInput -> Aff (err :: AWS.RequestError | eff) ListGroupsOutput
-listGroups = AWS.request serviceName "ListGroups" 
+listGroups = AWS.request serviceName "listGroups" 
 
 
 -- | <p>Returns a list of AWS resource identifiers that matches a specified query. The query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery operation.</p>
 searchResources :: forall eff. SearchResourcesInput -> Aff (err :: AWS.RequestError | eff) SearchResourcesOutput
-searchResources = AWS.request serviceName "SearchResources" 
+searchResources = AWS.request serviceName "searchResources" 
 
 
 -- | <p>Adds specified tags to a resource with the specified ARN. Existing tags on a resource are not changed if they are not specified in the request parameters.</p>
 tag :: forall eff. TagInput -> Aff (err :: AWS.RequestError | eff) TagOutput
-tag = AWS.request serviceName "Tag" 
+tag = AWS.request serviceName "tag" 
 
 
 -- | <p>Deletes specified tags from a specified resource.</p>
 untag :: forall eff. UntagInput -> Aff (err :: AWS.RequestError | eff) UntagOutput
-untag = AWS.request serviceName "Untag" 
+untag = AWS.request serviceName "untag" 
 
 
 -- | <p>Updates an existing group with a new or changed description. You cannot update the name of a resource group.</p>
 updateGroup :: forall eff. UpdateGroupInput -> Aff (err :: AWS.RequestError | eff) UpdateGroupOutput
-updateGroup = AWS.request serviceName "UpdateGroup" 
+updateGroup = AWS.request serviceName "updateGroup" 
 
 
 -- | <p>Updates the resource query of a group.</p>
 updateGroupQuery :: forall eff. UpdateGroupQueryInput -> Aff (err :: AWS.RequestError | eff) UpdateGroupQueryOutput
-updateGroupQuery = AWS.request serviceName "UpdateGroupQuery" 
+updateGroupQuery = AWS.request serviceName "updateGroupQuery" 
 
 
 -- | <p>The request does not comply with validation rules that are defined for the request parameters.</p>

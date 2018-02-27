@@ -16,32 +16,32 @@ serviceName = "Health" :: String
 
 -- | <p>Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the AWS service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.</p> <p>At least one event ARN is required. Results are sorted by the <code>lastUpdatedTime</code> of the entity, starting with the most recent.</p>
 describeAffectedEntities :: forall eff. DescribeAffectedEntitiesRequest -> Aff (err :: AWS.RequestError | eff) DescribeAffectedEntitiesResponse
-describeAffectedEntities = AWS.request serviceName "DescribeAffectedEntities" 
+describeAffectedEntities = AWS.request serviceName "describeAffectedEntities" 
 
 
 -- | <p>Returns the number of entities that are affected by each of the specified events. If no events are specified, the counts of all affected entities are returned.</p>
 describeEntityAggregates :: forall eff. DescribeEntityAggregatesRequest -> Aff (err :: AWS.RequestError | eff) DescribeEntityAggregatesResponse
-describeEntityAggregates = AWS.request serviceName "DescribeEntityAggregates" 
+describeEntityAggregates = AWS.request serviceName "describeEntityAggregates" 
 
 
 -- | <p>Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.</p>
 describeEventAggregates :: forall eff. DescribeEventAggregatesRequest -> Aff (err :: AWS.RequestError | eff) DescribeEventAggregatesResponse
-describeEventAggregates = AWS.request serviceName "DescribeEventAggregates" 
+describeEventAggregates = AWS.request serviceName "describeEventAggregates" 
 
 
 -- | <p>Returns detailed information about one or more specified events. Information includes standard event data (region, service, etc., as returned by <a>DescribeEvents</a>), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included; to retrieve those, use the <a>DescribeAffectedEntities</a> operation.</p> <p>If a specified event cannot be retrieved, an error message is returned for that event.</p>
 describeEventDetails :: forall eff. DescribeEventDetailsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEventDetailsResponse
-describeEventDetails = AWS.request serviceName "DescribeEventDetails" 
+describeEventDetails = AWS.request serviceName "describeEventDetails" 
 
 
 -- | <p>Returns the event types that meet the specified filter criteria. If no filter criteria are specified, all event types are returned, in no particular order.</p>
 describeEventTypes :: forall eff. DescribeEventTypesRequest -> Aff (err :: AWS.RequestError | eff) DescribeEventTypesResponse
-describeEventTypes = AWS.request serviceName "DescribeEventTypes" 
+describeEventTypes = AWS.request serviceName "describeEventTypes" 
 
 
 -- | <p>Returns information about events that meet the specified filter criteria. Events are returned in a summary form and do not include the detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the <a>DescribeEventDetails</a> and <a>DescribeAffectedEntities</a> operations.</p> <p>If no filter criteria are specified, all events are returned. Results are sorted by <code>lastModifiedTime</code>, starting with the most recent.</p>
 describeEvents :: forall eff. DescribeEventsRequest -> Aff (err :: AWS.RequestError | eff) DescribeEventsResponse
-describeEvents = AWS.request serviceName "DescribeEvents" 
+describeEvents = AWS.request serviceName "describeEvents" 
 
 
 -- | <p>Information about an entity that is affected by a Health event.</p>

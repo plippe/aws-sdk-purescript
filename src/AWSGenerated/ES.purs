@@ -16,72 +16,72 @@ serviceName = "ES" :: String
 
 -- | <p>Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-awsresorcetagging" target="_blank"> Tagging Amazon Elasticsearch Service Domains for more information.</a></p>
 addTags :: forall eff. AddTagsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-addTags = AWS.request serviceName "AddTags" 
+addTags = AWS.request serviceName "addTags" 
 
 
 -- | <p>Creates a new Elasticsearch domain. For more information, see <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the <i>Amazon Elasticsearch Service Developer Guide</i>.</p>
 createElasticsearchDomain :: forall eff. CreateElasticsearchDomainRequest -> Aff (err :: AWS.RequestError | eff) CreateElasticsearchDomainResponse
-createElasticsearchDomain = AWS.request serviceName "CreateElasticsearchDomain" 
+createElasticsearchDomain = AWS.request serviceName "createElasticsearchDomain" 
 
 
 -- | <p>Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.</p>
 deleteElasticsearchDomain :: forall eff. DeleteElasticsearchDomainRequest -> Aff (err :: AWS.RequestError | eff) DeleteElasticsearchDomainResponse
-deleteElasticsearchDomain = AWS.request serviceName "DeleteElasticsearchDomain" 
+deleteElasticsearchDomain = AWS.request serviceName "deleteElasticsearchDomain" 
 
 
 -- | <p>Deletes the service-linked role that Elasticsearch Service uses to manage and maintain VPC domains. Role deletion will fail if any existing VPC domains use the role. You must delete any such Elasticsearch domains before deleting the role. See <a href="http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-enabling-slr" target="_blank">Deleting Elasticsearch Service Role</a> in <i>VPC Endpoints for Amazon Elasticsearch Service Domains</i>.</p>
 deleteElasticsearchServiceRole :: forall eff.  Aff (err :: AWS.RequestError | eff) Unit
-deleteElasticsearchServiceRole = AWS.request serviceName "DeleteElasticsearchServiceRole" unit
+deleteElasticsearchServiceRole = AWS.request serviceName "deleteElasticsearchServiceRole" unit
 
 
 -- | <p>Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.</p>
 describeElasticsearchDomain :: forall eff. DescribeElasticsearchDomainRequest -> Aff (err :: AWS.RequestError | eff) DescribeElasticsearchDomainResponse
-describeElasticsearchDomain = AWS.request serviceName "DescribeElasticsearchDomain" 
+describeElasticsearchDomain = AWS.request serviceName "describeElasticsearchDomain" 
 
 
 -- | <p>Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.</p>
 describeElasticsearchDomainConfig :: forall eff. DescribeElasticsearchDomainConfigRequest -> Aff (err :: AWS.RequestError | eff) DescribeElasticsearchDomainConfigResponse
-describeElasticsearchDomainConfig = AWS.request serviceName "DescribeElasticsearchDomainConfig" 
+describeElasticsearchDomainConfig = AWS.request serviceName "describeElasticsearchDomainConfig" 
 
 
 -- | <p>Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.</p>
 describeElasticsearchDomains :: forall eff. DescribeElasticsearchDomainsRequest -> Aff (err :: AWS.RequestError | eff) DescribeElasticsearchDomainsResponse
-describeElasticsearchDomains = AWS.request serviceName "DescribeElasticsearchDomains" 
+describeElasticsearchDomains = AWS.request serviceName "describeElasticsearchDomains" 
 
 
 -- | <p> Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion. When modifying existing Domain, specify the <code> <a>DomainName</a> </code> to know what Limits are supported for modifying. </p>
 describeElasticsearchInstanceTypeLimits :: forall eff. DescribeElasticsearchInstanceTypeLimitsRequest -> Aff (err :: AWS.RequestError | eff) DescribeElasticsearchInstanceTypeLimitsResponse
-describeElasticsearchInstanceTypeLimits = AWS.request serviceName "DescribeElasticsearchInstanceTypeLimits" 
+describeElasticsearchInstanceTypeLimits = AWS.request serviceName "describeElasticsearchInstanceTypeLimits" 
 
 
 -- | <p>Returns the name of all Elasticsearch domains owned by the current user's account. </p>
 listDomainNames :: forall eff.  Aff (err :: AWS.RequestError | eff) ListDomainNamesResponse
-listDomainNames = AWS.request serviceName "ListDomainNames" unit
+listDomainNames = AWS.request serviceName "listDomainNames" unit
 
 
 -- | <p>List all Elasticsearch instance types that are supported for given ElasticsearchVersion</p>
 listElasticsearchInstanceTypes :: forall eff. ListElasticsearchInstanceTypesRequest -> Aff (err :: AWS.RequestError | eff) ListElasticsearchInstanceTypesResponse
-listElasticsearchInstanceTypes = AWS.request serviceName "ListElasticsearchInstanceTypes" 
+listElasticsearchInstanceTypes = AWS.request serviceName "listElasticsearchInstanceTypes" 
 
 
 -- | <p>List all supported Elasticsearch versions</p>
 listElasticsearchVersions :: forall eff. ListElasticsearchVersionsRequest -> Aff (err :: AWS.RequestError | eff) ListElasticsearchVersionsResponse
-listElasticsearchVersions = AWS.request serviceName "ListElasticsearchVersions" 
+listElasticsearchVersions = AWS.request serviceName "listElasticsearchVersions" 
 
 
 -- | <p>Returns all tags for the given Elasticsearch domain.</p>
 listTags :: forall eff. ListTagsRequest -> Aff (err :: AWS.RequestError | eff) ListTagsResponse
-listTags = AWS.request serviceName "ListTags" 
+listTags = AWS.request serviceName "listTags" 
 
 
 -- | <p>Removes the specified set of tags from the specified Elasticsearch domain.</p>
 removeTags :: forall eff. RemoveTagsRequest -> Aff (err :: AWS.RequestError | eff) Unit
-removeTags = AWS.request serviceName "RemoveTags" 
+removeTags = AWS.request serviceName "removeTags" 
 
 
 -- | <p>Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances. </p>
 updateElasticsearchDomainConfig :: forall eff. UpdateElasticsearchDomainConfigRequest -> Aff (err :: AWS.RequestError | eff) UpdateElasticsearchDomainConfigResponse
-updateElasticsearchDomainConfig = AWS.request serviceName "UpdateElasticsearchDomainConfig" 
+updateElasticsearchDomainConfig = AWS.request serviceName "updateElasticsearchDomainConfig" 
 
 
 -- | <p>The Amazon Resource Name (ARN) of the Elasticsearch domain. See <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/index.html?Using_Identifiers.html" target="_blank">Identifiers for IAM Entities</a> in <i>Using AWS Identity and Access Management</i> for more information.</p>

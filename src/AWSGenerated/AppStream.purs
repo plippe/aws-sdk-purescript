@@ -16,167 +16,167 @@ serviceName = "AppStream" :: String
 
 -- | <p>Associates the specified fleet with the specified stack.</p>
 associateFleet :: forall eff. AssociateFleetRequest -> Aff (err :: AWS.RequestError | eff) AssociateFleetResult
-associateFleet = AWS.request serviceName "AssociateFleet" 
+associateFleet = AWS.request serviceName "associateFleet" 
 
 
 -- | <p>Copies the image within the same region or to a new region within the same AWS account. Note that any tags you added to the image will not be copied.</p>
 copyImage :: forall eff. CopyImageRequest -> Aff (err :: AWS.RequestError | eff) CopyImageResponse
-copyImage = AWS.request serviceName "CopyImage" 
+copyImage = AWS.request serviceName "copyImage" 
 
 
 -- | <p>Creates a directory configuration.</p>
 createDirectoryConfig :: forall eff. CreateDirectoryConfigRequest -> Aff (err :: AWS.RequestError | eff) CreateDirectoryConfigResult
-createDirectoryConfig = AWS.request serviceName "CreateDirectoryConfig" 
+createDirectoryConfig = AWS.request serviceName "createDirectoryConfig" 
 
 
 -- | <p>Creates a fleet.</p>
 createFleet :: forall eff. CreateFleetRequest -> Aff (err :: AWS.RequestError | eff) CreateFleetResult
-createFleet = AWS.request serviceName "CreateFleet" 
+createFleet = AWS.request serviceName "createFleet" 
 
 
 -- | <p>Creates an image builder.</p> <p>The initial state of the builder is <code>PENDING</code>. When it is ready, the state is <code>RUNNING</code>.</p>
 createImageBuilder :: forall eff. CreateImageBuilderRequest -> Aff (err :: AWS.RequestError | eff) CreateImageBuilderResult
-createImageBuilder = AWS.request serviceName "CreateImageBuilder" 
+createImageBuilder = AWS.request serviceName "createImageBuilder" 
 
 
 -- | <p>Creates a URL to start an image builder streaming session.</p>
 createImageBuilderStreamingURL :: forall eff. CreateImageBuilderStreamingURLRequest -> Aff (err :: AWS.RequestError | eff) CreateImageBuilderStreamingURLResult
-createImageBuilderStreamingURL = AWS.request serviceName "CreateImageBuilderStreamingURL" 
+createImageBuilderStreamingURL = AWS.request serviceName "createImageBuilderStreamingURL" 
 
 
 -- | <p>Creates a stack.</p>
 createStack :: forall eff. CreateStackRequest -> Aff (err :: AWS.RequestError | eff) CreateStackResult
-createStack = AWS.request serviceName "CreateStack" 
+createStack = AWS.request serviceName "createStack" 
 
 
 -- | <p>Creates a URL to start a streaming session for the specified user.</p>
 createStreamingURL :: forall eff. CreateStreamingURLRequest -> Aff (err :: AWS.RequestError | eff) CreateStreamingURLResult
-createStreamingURL = AWS.request serviceName "CreateStreamingURL" 
+createStreamingURL = AWS.request serviceName "createStreamingURL" 
 
 
 -- | <p>Deletes the specified directory configuration.</p>
 deleteDirectoryConfig :: forall eff. DeleteDirectoryConfigRequest -> Aff (err :: AWS.RequestError | eff) DeleteDirectoryConfigResult
-deleteDirectoryConfig = AWS.request serviceName "DeleteDirectoryConfig" 
+deleteDirectoryConfig = AWS.request serviceName "deleteDirectoryConfig" 
 
 
 -- | <p>Deletes the specified fleet.</p>
 deleteFleet :: forall eff. DeleteFleetRequest -> Aff (err :: AWS.RequestError | eff) DeleteFleetResult
-deleteFleet = AWS.request serviceName "DeleteFleet" 
+deleteFleet = AWS.request serviceName "deleteFleet" 
 
 
 -- | <p>Deletes the specified image. You cannot delete an image that is currently in use. After you delete an image, you cannot provision new capacity using the image.</p>
 deleteImage :: forall eff. DeleteImageRequest -> Aff (err :: AWS.RequestError | eff) DeleteImageResult
-deleteImage = AWS.request serviceName "DeleteImage" 
+deleteImage = AWS.request serviceName "deleteImage" 
 
 
 -- | <p>Deletes the specified image builder and releases the capacity.</p>
 deleteImageBuilder :: forall eff. DeleteImageBuilderRequest -> Aff (err :: AWS.RequestError | eff) DeleteImageBuilderResult
-deleteImageBuilder = AWS.request serviceName "DeleteImageBuilder" 
+deleteImageBuilder = AWS.request serviceName "deleteImageBuilder" 
 
 
 -- | <p>Deletes the specified stack. After this operation completes, the environment can no longer be activated and any reservations made for the stack are released.</p>
 deleteStack :: forall eff. DeleteStackRequest -> Aff (err :: AWS.RequestError | eff) DeleteStackResult
-deleteStack = AWS.request serviceName "DeleteStack" 
+deleteStack = AWS.request serviceName "deleteStack" 
 
 
 -- | <p>Describes the specified directory configurations. Note that although the response syntax in this topic includes the account password, this password is not returned in the actual response. </p>
 describeDirectoryConfigs :: forall eff. DescribeDirectoryConfigsRequest -> Aff (err :: AWS.RequestError | eff) DescribeDirectoryConfigsResult
-describeDirectoryConfigs = AWS.request serviceName "DescribeDirectoryConfigs" 
+describeDirectoryConfigs = AWS.request serviceName "describeDirectoryConfigs" 
 
 
 -- | <p>Describes the specified fleets or all fleets in the account.</p>
 describeFleets :: forall eff. DescribeFleetsRequest -> Aff (err :: AWS.RequestError | eff) DescribeFleetsResult
-describeFleets = AWS.request serviceName "DescribeFleets" 
+describeFleets = AWS.request serviceName "describeFleets" 
 
 
 -- | <p>Describes the specified image builders or all image builders in the account.</p>
 describeImageBuilders :: forall eff. DescribeImageBuildersRequest -> Aff (err :: AWS.RequestError | eff) DescribeImageBuildersResult
-describeImageBuilders = AWS.request serviceName "DescribeImageBuilders" 
+describeImageBuilders = AWS.request serviceName "describeImageBuilders" 
 
 
 -- | <p>Describes the specified images or all images in the account.</p>
 describeImages :: forall eff. DescribeImagesRequest -> Aff (err :: AWS.RequestError | eff) DescribeImagesResult
-describeImages = AWS.request serviceName "DescribeImages" 
+describeImages = AWS.request serviceName "describeImages" 
 
 
 -- | <p>Describes the streaming sessions for the specified stack and fleet. If a user ID is provided, only the streaming sessions for only that user are returned. If an authentication type is not provided, the default is to authenticate users using a streaming URL.</p>
 describeSessions :: forall eff. DescribeSessionsRequest -> Aff (err :: AWS.RequestError | eff) DescribeSessionsResult
-describeSessions = AWS.request serviceName "DescribeSessions" 
+describeSessions = AWS.request serviceName "describeSessions" 
 
 
 -- | <p>Describes the specified stacks or all stacks in the account.</p>
 describeStacks :: forall eff. DescribeStacksRequest -> Aff (err :: AWS.RequestError | eff) DescribeStacksResult
-describeStacks = AWS.request serviceName "DescribeStacks" 
+describeStacks = AWS.request serviceName "describeStacks" 
 
 
 -- | <p>Disassociates the specified fleet from the specified stack.</p>
 disassociateFleet :: forall eff. DisassociateFleetRequest -> Aff (err :: AWS.RequestError | eff) DisassociateFleetResult
-disassociateFleet = AWS.request serviceName "DisassociateFleet" 
+disassociateFleet = AWS.request serviceName "disassociateFleet" 
 
 
 -- | <p>Stops the specified streaming session.</p>
 expireSession :: forall eff. ExpireSessionRequest -> Aff (err :: AWS.RequestError | eff) ExpireSessionResult
-expireSession = AWS.request serviceName "ExpireSession" 
+expireSession = AWS.request serviceName "expireSession" 
 
 
 -- | <p>Lists the fleets associated with the specified stack.</p>
 listAssociatedFleets :: forall eff. ListAssociatedFleetsRequest -> Aff (err :: AWS.RequestError | eff) ListAssociatedFleetsResult
-listAssociatedFleets = AWS.request serviceName "ListAssociatedFleets" 
+listAssociatedFleets = AWS.request serviceName "listAssociatedFleets" 
 
 
 -- | <p>Lists the stacks associated with the specified fleet.</p>
 listAssociatedStacks :: forall eff. ListAssociatedStacksRequest -> Aff (err :: AWS.RequestError | eff) ListAssociatedStacksResult
-listAssociatedStacks = AWS.request serviceName "ListAssociatedStacks" 
+listAssociatedStacks = AWS.request serviceName "listAssociatedStacks" 
 
 
 -- | <p>Lists the tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>
 listTagsForResource :: forall eff. ListTagsForResourceRequest -> Aff (err :: AWS.RequestError | eff) ListTagsForResourceResponse
-listTagsForResource = AWS.request serviceName "ListTagsForResource" 
+listTagsForResource = AWS.request serviceName "listTagsForResource" 
 
 
 -- | <p>Starts the specified fleet.</p>
 startFleet :: forall eff. StartFleetRequest -> Aff (err :: AWS.RequestError | eff) StartFleetResult
-startFleet = AWS.request serviceName "StartFleet" 
+startFleet = AWS.request serviceName "startFleet" 
 
 
 -- | <p>Starts the specified image builder.</p>
 startImageBuilder :: forall eff. StartImageBuilderRequest -> Aff (err :: AWS.RequestError | eff) StartImageBuilderResult
-startImageBuilder = AWS.request serviceName "StartImageBuilder" 
+startImageBuilder = AWS.request serviceName "startImageBuilder" 
 
 
 -- | <p>Stops the specified fleet.</p>
 stopFleet :: forall eff. StopFleetRequest -> Aff (err :: AWS.RequestError | eff) StopFleetResult
-stopFleet = AWS.request serviceName "StopFleet" 
+stopFleet = AWS.request serviceName "stopFleet" 
 
 
 -- | <p>Stops the specified image builder.</p>
 stopImageBuilder :: forall eff. StopImageBuilderRequest -> Aff (err :: AWS.RequestError | eff) StopImageBuilderResult
-stopImageBuilder = AWS.request serviceName "StopImageBuilder" 
+stopImageBuilder = AWS.request serviceName "stopImageBuilder" 
 
 
 -- | <p>Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p> <p>Each tag consists of a key and an optional value. If a resource already has a tag with the same key, this operation updates its value.</p> <p>To list the current tags for your resources, use <a>ListTagsForResource</a>. To disassociate tags from your resources, use <a>UntagResource</a>.</p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>
 tagResource :: forall eff. TagResourceRequest -> Aff (err :: AWS.RequestError | eff) TagResourceResponse
-tagResource = AWS.request serviceName "TagResource" 
+tagResource = AWS.request serviceName "tagResource" 
 
 
 -- | <p>Disassociates the specified tags from the specified AppStream 2.0 resource.</p> <p>To list the current tags for your resources, use <a>ListTagsForResource</a>.</p> <p>For more information about tags, see <a href="http://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html">Tagging Your Resources</a> in the <i>Amazon AppStream 2.0 Developer Guide</i>.</p>
 untagResource :: forall eff. UntagResourceRequest -> Aff (err :: AWS.RequestError | eff) UntagResourceResponse
-untagResource = AWS.request serviceName "UntagResource" 
+untagResource = AWS.request serviceName "untagResource" 
 
 
 -- | <p>Updates the specified directory configuration.</p>
 updateDirectoryConfig :: forall eff. UpdateDirectoryConfigRequest -> Aff (err :: AWS.RequestError | eff) UpdateDirectoryConfigResult
-updateDirectoryConfig = AWS.request serviceName "UpdateDirectoryConfig" 
+updateDirectoryConfig = AWS.request serviceName "updateDirectoryConfig" 
 
 
 -- | <p>Updates the specified fleet.</p> <p>If the fleet is in the <code>STOPPED</code> state, you can update any attribute except the fleet name. If the fleet is in the <code>RUNNING</code> state, you can update the <code>DisplayName</code> and <code>ComputeCapacity</code> attributes. If the fleet is in the <code>STARTING</code> or <code>STOPPING</code> state, you can't update it.</p>
 updateFleet :: forall eff. UpdateFleetRequest -> Aff (err :: AWS.RequestError | eff) UpdateFleetResult
-updateFleet = AWS.request serviceName "UpdateFleet" 
+updateFleet = AWS.request serviceName "updateFleet" 
 
 
 -- | <p>Updates the specified stack.</p>
 updateStack :: forall eff. UpdateStackRequest -> Aff (err :: AWS.RequestError | eff) UpdateStackResult
-updateStack = AWS.request serviceName "UpdateStack" 
+updateStack = AWS.request serviceName "updateStack" 
 
 
 newtype AccountName = AccountName String

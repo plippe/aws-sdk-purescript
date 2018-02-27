@@ -16,77 +16,77 @@ serviceName = "MediaLive" :: String
 
 -- | Creates a new channel
 createChannel :: forall eff. CreateChannelRequest -> Aff (err :: AWS.RequestError | eff) CreateChannelResponse
-createChannel = AWS.request serviceName "CreateChannel" 
+createChannel = AWS.request serviceName "createChannel" 
 
 
 -- | Create an input
 createInput :: forall eff. CreateInputRequest -> Aff (err :: AWS.RequestError | eff) CreateInputResponse
-createInput = AWS.request serviceName "CreateInput" 
+createInput = AWS.request serviceName "createInput" 
 
 
 -- | Creates a Input Security Group
 createInputSecurityGroup :: forall eff. CreateInputSecurityGroupRequest -> Aff (err :: AWS.RequestError | eff) CreateInputSecurityGroupResponse
-createInputSecurityGroup = AWS.request serviceName "CreateInputSecurityGroup" 
+createInputSecurityGroup = AWS.request serviceName "createInputSecurityGroup" 
 
 
 -- | Starts deletion of channel. The associated outputs are also deleted.
 deleteChannel :: forall eff. DeleteChannelRequest -> Aff (err :: AWS.RequestError | eff) DeleteChannelResponse
-deleteChannel = AWS.request serviceName "DeleteChannel" 
+deleteChannel = AWS.request serviceName "deleteChannel" 
 
 
 -- | Deletes the input end point
 deleteInput :: forall eff. DeleteInputRequest -> Aff (err :: AWS.RequestError | eff) DeleteInputResponse
-deleteInput = AWS.request serviceName "DeleteInput" 
+deleteInput = AWS.request serviceName "deleteInput" 
 
 
 -- | Deletes an Input Security Group
 deleteInputSecurityGroup :: forall eff. DeleteInputSecurityGroupRequest -> Aff (err :: AWS.RequestError | eff) DeleteInputSecurityGroupResponse
-deleteInputSecurityGroup = AWS.request serviceName "DeleteInputSecurityGroup" 
+deleteInputSecurityGroup = AWS.request serviceName "deleteInputSecurityGroup" 
 
 
 -- | Gets details about a channel
 describeChannel :: forall eff. DescribeChannelRequest -> Aff (err :: AWS.RequestError | eff) DescribeChannelResponse
-describeChannel = AWS.request serviceName "DescribeChannel" 
+describeChannel = AWS.request serviceName "describeChannel" 
 
 
 -- | Produces details about an input
 describeInput :: forall eff. DescribeInputRequest -> Aff (err :: AWS.RequestError | eff) DescribeInputResponse
-describeInput = AWS.request serviceName "DescribeInput" 
+describeInput = AWS.request serviceName "describeInput" 
 
 
 -- | Produces a summary of an Input Security Group
 describeInputSecurityGroup :: forall eff. DescribeInputSecurityGroupRequest -> Aff (err :: AWS.RequestError | eff) DescribeInputSecurityGroupResponse
-describeInputSecurityGroup = AWS.request serviceName "DescribeInputSecurityGroup" 
+describeInputSecurityGroup = AWS.request serviceName "describeInputSecurityGroup" 
 
 
 -- | Produces list of channels that have been created
 listChannels :: forall eff. ListChannelsRequest -> Aff (err :: AWS.RequestError | eff) ListChannelsResponse
-listChannels = AWS.request serviceName "ListChannels" 
+listChannels = AWS.request serviceName "listChannels" 
 
 
 -- | Produces a list of Input Security Groups for an account
 listInputSecurityGroups :: forall eff. ListInputSecurityGroupsRequest -> Aff (err :: AWS.RequestError | eff) ListInputSecurityGroupsResponse
-listInputSecurityGroups = AWS.request serviceName "ListInputSecurityGroups" 
+listInputSecurityGroups = AWS.request serviceName "listInputSecurityGroups" 
 
 
 -- | Produces list of inputs that have been created
 listInputs :: forall eff. ListInputsRequest -> Aff (err :: AWS.RequestError | eff) ListInputsResponse
-listInputs = AWS.request serviceName "ListInputs" 
+listInputs = AWS.request serviceName "listInputs" 
 
 
 -- | Starts an existing channel
 startChannel :: forall eff. StartChannelRequest -> Aff (err :: AWS.RequestError | eff) StartChannelResponse
-startChannel = AWS.request serviceName "StartChannel" 
+startChannel = AWS.request serviceName "startChannel" 
 
 
 -- | Stops a running channel
 stopChannel :: forall eff. StopChannelRequest -> Aff (err :: AWS.RequestError | eff) StopChannelResponse
-stopChannel = AWS.request serviceName "StopChannel" 
+stopChannel = AWS.request serviceName "stopChannel" 
 
 
 -- | Updates a channel.
 updateChannel :: forall eff. UpdateChannelRequest -> Aff (err :: AWS.RequestError | eff) UpdateChannelResponse
-updateChannel = AWS.request serviceName "UpdateChannel" 
+updateChannel = AWS.request serviceName "updateChannel" 
 
 
 -- | Placeholder documentation for AacCodingMode

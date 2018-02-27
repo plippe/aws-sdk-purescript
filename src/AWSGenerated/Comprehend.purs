@@ -16,57 +16,57 @@ serviceName = "Comprehend" :: String
 
 -- | <p>Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon Comprehend can detect, see <a href="http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html">Amazon Comprehend Supported Languages</a>. </p>
 batchDetectDominantLanguage :: forall eff. BatchDetectDominantLanguageRequest -> Aff (err :: AWS.RequestError | eff) BatchDetectDominantLanguageResponse
-batchDetectDominantLanguage = AWS.request serviceName "BatchDetectDominantLanguage" 
+batchDetectDominantLanguage = AWS.request serviceName "batchDetectDominantLanguage" 
 
 
 -- | <p>Inspects the text of a batch of documents and returns information about them. For more information about entities, see <a>how-entities</a> </p>
 batchDetectEntities :: forall eff. BatchDetectEntitiesRequest -> Aff (err :: AWS.RequestError | eff) BatchDetectEntitiesResponse
-batchDetectEntities = AWS.request serviceName "BatchDetectEntities" 
+batchDetectEntities = AWS.request serviceName "batchDetectEntities" 
 
 
 -- | <p>Detects the key noun phrases found in a batch of documents.</p>
 batchDetectKeyPhrases :: forall eff. BatchDetectKeyPhrasesRequest -> Aff (err :: AWS.RequestError | eff) BatchDetectKeyPhrasesResponse
-batchDetectKeyPhrases = AWS.request serviceName "BatchDetectKeyPhrases" 
+batchDetectKeyPhrases = AWS.request serviceName "batchDetectKeyPhrases" 
 
 
 -- | <p>Inspects a batch of documents and returns an inference of the prevailing sentiment, <code>POSITIVE</code>, <code>NEUTRAL</code>, <code>MIXED</code>, or <code>NEGATIVE</code>, in each one.</p>
 batchDetectSentiment :: forall eff. BatchDetectSentimentRequest -> Aff (err :: AWS.RequestError | eff) BatchDetectSentimentResponse
-batchDetectSentiment = AWS.request serviceName "BatchDetectSentiment" 
+batchDetectSentiment = AWS.request serviceName "batchDetectSentiment" 
 
 
 -- | <p>Gets the properties associated with a topic detection job. Use this operation to get the status of a detection job.</p>
 describeTopicsDetectionJob :: forall eff. DescribeTopicsDetectionJobRequest -> Aff (err :: AWS.RequestError | eff) DescribeTopicsDetectionJobResponse
-describeTopicsDetectionJob = AWS.request serviceName "DescribeTopicsDetectionJob" 
+describeTopicsDetectionJob = AWS.request serviceName "describeTopicsDetectionJob" 
 
 
 -- | <p>Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect, see <a href="http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html">Amazon Comprehend Supported Languages</a>. </p>
 detectDominantLanguage :: forall eff. DetectDominantLanguageRequest -> Aff (err :: AWS.RequestError | eff) DetectDominantLanguageResponse
-detectDominantLanguage = AWS.request serviceName "DetectDominantLanguage" 
+detectDominantLanguage = AWS.request serviceName "detectDominantLanguage" 
 
 
 -- | <p>Inspects text for entities, and returns information about them. For more information, about entities, see <a>how-entities</a>. </p>
 detectEntities :: forall eff. DetectEntitiesRequest -> Aff (err :: AWS.RequestError | eff) DetectEntitiesResponse
-detectEntities = AWS.request serviceName "DetectEntities" 
+detectEntities = AWS.request serviceName "detectEntities" 
 
 
 -- | <p>Detects the key noun phrases found in the text. </p>
 detectKeyPhrases :: forall eff. DetectKeyPhrasesRequest -> Aff (err :: AWS.RequestError | eff) DetectKeyPhrasesResponse
-detectKeyPhrases = AWS.request serviceName "DetectKeyPhrases" 
+detectKeyPhrases = AWS.request serviceName "detectKeyPhrases" 
 
 
 -- | <p>Inspects text and returns an inference of the prevailing sentiment (<code>POSITIVE</code>, <code>NEUTRAL</code>, <code>MIXED</code>, or <code>NEGATIVE</code>). </p>
 detectSentiment :: forall eff. DetectSentimentRequest -> Aff (err :: AWS.RequestError | eff) DetectSentimentResponse
-detectSentiment = AWS.request serviceName "DetectSentiment" 
+detectSentiment = AWS.request serviceName "detectSentiment" 
 
 
 -- | <p>Gets a list of the topic detection jobs that you have submitted.</p>
 listTopicsDetectionJobs :: forall eff. ListTopicsDetectionJobsRequest -> Aff (err :: AWS.RequestError | eff) ListTopicsDetectionJobsResponse
-listTopicsDetectionJobs = AWS.request serviceName "ListTopicsDetectionJobs" 
+listTopicsDetectionJobs = AWS.request serviceName "listTopicsDetectionJobs" 
 
 
 -- | <p>Starts an asynchronous topic detection job. Use the <code>DescribeTopicDetectionJob</code> operation to track the status of a job.</p>
 startTopicsDetectionJob :: forall eff. StartTopicsDetectionJobRequest -> Aff (err :: AWS.RequestError | eff) StartTopicsDetectionJobResponse
-startTopicsDetectionJob = AWS.request serviceName "StartTopicsDetectionJob" 
+startTopicsDetectionJob = AWS.request serviceName "startTopicsDetectionJob" 
 
 
 newtype AnyLengthString = AnyLengthString String

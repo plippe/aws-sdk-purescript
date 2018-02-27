@@ -16,17 +16,17 @@ serviceName = "Pricing" :: String
 
 -- | <p>Returns the metadata for one service or a list of the metadata for all services. Use this without a service code to get the service codes for all services. Use it with a service code, such as <code>AmazonEC2</code>, to get information specific to that service, such as the attribute names available for that service. For example, some of the attribute names available for EC2 are <code>volumeType</code>, <code>maxIopsVolume</code>, <code>operation</code>, <code>locationType</code>, and <code>instanceCapacity10xlarge</code>.</p>
 describeServices :: forall eff. DescribeServicesRequest -> Aff (err :: AWS.RequestError | eff) DescribeServicesResponse
-describeServices = AWS.request serviceName "DescribeServices" 
+describeServices = AWS.request serviceName "describeServices" 
 
 
 -- | <p>Returns a list of attribute values. Attibutes are similar to the details in a Price List API offer file. For a list of available attributes, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs">Offer File Definitions</a> in the <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html">AWS Billing and Cost Management User Guide</a>.</p>
 getAttributeValues :: forall eff. GetAttributeValuesRequest -> Aff (err :: AWS.RequestError | eff) GetAttributeValuesResponse
-getAttributeValues = AWS.request serviceName "GetAttributeValues" 
+getAttributeValues = AWS.request serviceName "getAttributeValues" 
 
 
 -- | <p>Returns a list of all products that match the filter criteria.</p>
 getProducts :: forall eff. GetProductsRequest -> Aff (err :: AWS.RequestError | eff) GetProductsResponse
-getProducts = AWS.request serviceName "GetProducts" 
+getProducts = AWS.request serviceName "getProducts" 
 
 
 newtype AttributeNameList = AttributeNameList (Array String)

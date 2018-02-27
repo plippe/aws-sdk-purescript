@@ -16,7 +16,7 @@ serviceName = "MobileAnalytics" :: String
 
 -- | <p>The PutEvents operation records one or more events. You can have up to 1,500 unique custom events per app, any combination of up to 40 attributes and metrics per custom event, and any number of attribute or metric values.</p>
 putEvents :: forall eff. PutEventsInput -> Aff (err :: AWS.RequestError | eff) Unit
-putEvents = AWS.request serviceName "PutEvents" 
+putEvents = AWS.request serviceName "putEvents" 
 
 
 -- | <p>An exception object returned when a request fails.</p>

@@ -16,27 +16,27 @@ serviceName = "MediaStoreData" :: String
 
 -- | <p>Deletes an object at the specified path.</p>
 deleteObject :: forall eff. DeleteObjectRequest -> Aff (err :: AWS.RequestError | eff) DeleteObjectResponse
-deleteObject = AWS.request serviceName "DeleteObject" 
+deleteObject = AWS.request serviceName "deleteObject" 
 
 
 -- | <p>Gets the headers for an object at the specified path.</p>
 describeObject :: forall eff. DescribeObjectRequest -> Aff (err :: AWS.RequestError | eff) DescribeObjectResponse
-describeObject = AWS.request serviceName "DescribeObject" 
+describeObject = AWS.request serviceName "describeObject" 
 
 
 -- | <p>Downloads the object at the specified path.</p>
 getObject :: forall eff. GetObjectRequest -> Aff (err :: AWS.RequestError | eff) GetObjectResponse
-getObject = AWS.request serviceName "GetObject" 
+getObject = AWS.request serviceName "getObject" 
 
 
 -- | <p>Provides a list of metadata entries about folders and objects in the specified folder.</p>
 listItems :: forall eff. ListItemsRequest -> Aff (err :: AWS.RequestError | eff) ListItemsResponse
-listItems = AWS.request serviceName "ListItems" 
+listItems = AWS.request serviceName "listItems" 
 
 
 -- | <p>Uploads an object to the specified path. Object sizes are limited to 10 MB.</p>
 putObject :: forall eff. PutObjectRequest -> Aff (err :: AWS.RequestError | eff) PutObjectResponse
-putObject = AWS.request serviceName "PutObject" 
+putObject = AWS.request serviceName "putObject" 
 
 
 -- | <p>The specified container was not found for the specified account.</p>
