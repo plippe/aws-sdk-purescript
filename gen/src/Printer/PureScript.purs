@@ -33,6 +33,7 @@ module AWS.{{serviceName}} where
 import Control.Monad.Aff (Aff)
 import Data.Foreign.NullOrUndefined (NullOrUndefined)
 import Data.Map (Map)
+import Data.Newtype (class Newtype)
 import Data.Unit (Unit, unit)
 
 import AWS.Request as AWS
@@ -98,6 +99,7 @@ record' :: String -> ServiceShape -> String
 record' name serviceShape@(ServiceShape { documentation }) = """
 {{documentation}}
 newtype {{name}} = {{name}} {{type}}
+derive instance newtype{{name}} :: Newtype {{name}} _
 """ # replaceAll (Pattern "{{name}}") (Replacement $ name)
     # replace (Pattern "{{type}}") (Replacement $ recordType serviceShape)
     # replace (Pattern "{{documentation}}") (Replacement $ maybe "" comment $ unNullOrUndefined documentation)
