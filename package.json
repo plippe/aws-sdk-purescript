@@ -1,4 +1,5 @@
 {
+    "name": "purescript-aws-sdk",
     "dependencies": {
         "aws-sdk": "^2.203.0"
     }

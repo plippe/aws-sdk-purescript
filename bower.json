@@ -1,6 +1,10 @@
 {
   "name": "purescript-aws-sdk",
   "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/plippe/purescript-aws-sdk.git"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
