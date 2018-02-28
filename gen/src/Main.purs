@@ -27,6 +27,8 @@ apisPath = "./aws-sdk-js/apis/" :: FilePath
 
 clientsPath = "../src/AWSGenerated" :: FilePath
 
+cycleInDeclaration = [ "CostExplorer", "DynamoDBStreams", "EMR", "Organizations", "SSM" ] :: Array String
+
 metadataWithApiFileRegex :: MetadataElement -> Either String (Tuple MetadataElement Regex)
 metadataWithApiFileRegex metadata = metadataFileRegex metadata
   # map (\pattern -> Tuple metadata pattern)
@@ -57,7 +59,7 @@ main :: forall eff. Eff (fs :: FS, exception :: EXCEPTION, console :: CONSOLE | 
 main = launchAff do
   apiMetadataFileContent <- readTextFile UTF8 apisMetadataFilePath
   Metadata metadata <- decodeJSON apiMetadataFileContent # liftExcept # liftEff
-  let metadataElements = values metadata
+  let metadataElements = values metadata # filter (\(MetadataElement { name }) -> notElem name cycleInDeclaration)
 
   metadataElementsWithApiFileRegex <- map metadataWithApiFileRegex metadataElements
     # parTraverse (liftEither >>> liftEff)
