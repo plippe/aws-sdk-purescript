@@ -1,12 +1,13 @@
 module Main where
 
 import Prelude
-import Control.Monad.Aff (Aff, apathize, launchAff)
+import Control.Monad.Aff (Aff, Fiber, apathize, launchAff)
+import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Class (liftEff)
-import Control.Monad.Eff.Console (log)
+import Control.Monad.Eff.Console (CONSOLE, log)
 import Control.Monad.Eff.Exception (EXCEPTION)
 import Control.Parallel (parTraverse)
-import Data.Array (find)
+import Data.Array (filter, find, notElem)
 import Data.Either (Either)
 import Data.Foreign.Generic (decodeJSON)
 import Data.Maybe (Maybe)
@@ -52,7 +53,7 @@ metadataWithClientFile path (Tuple metadata@(MetadataElement { name }) service) 
   _ <- writeTextFile UTF8 filePath file
   pure $ Tuple metadata filePath
 
-
+main :: forall eff. Eff (fs :: FS, exception :: EXCEPTION, console :: CONSOLE | eff) (Fiber (fs :: FS, exception :: EXCEPTION , console :: CONSOLE | eff) Unit)
 main = launchAff do
   apiMetadataFileContent <- readTextFile UTF8 apisMetadataFilePath
   Metadata metadata <- decodeJSON apiMetadataFileContent # liftExcept # liftEff
