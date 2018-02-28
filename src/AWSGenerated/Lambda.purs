@@ -3,197 +3,330 @@
 -- | <fullname>AWS Lambda</fullname> <p><b>Overview</b></p> <p>This is the AWS Lambda API Reference. The AWS Lambda Developer Guide provides additional information. For the service overview, go to <a href="http://docs.aws.amazon.com/lambda/latest/dg/welcome.html">What is AWS Lambda</a>, and for information about how the service works, go to <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS LambdaL How it Works</a> in the AWS Lambda Developer Guide.</p>
 module AWS.Lambda where
 
+import Prelude
 import Control.Monad.Aff (Aff)
-import Data.Foreign.NullOrUndefined (NullOrUndefined)
-import Data.Map (Map)
+import Control.Monad.Eff.Exception (EXCEPTION)
+import Data.Foreign as Foreign
+import Data.Foreign.Class (class Decode, class Encode)
+import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
+import Data.Foreign.NullOrUndefined as NullOrUndefined
+import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Show (genericShow)
 import Data.Newtype (class Newtype)
-import Data.Unit (Unit, unit)
+import Data.StrMap as StrMap
 
-import AWS.Request as AWS
+import AWS.Request as Request
+import AWS.Request.Types as Types
 
 serviceName = "Lambda" :: String
 
 
 -- | <p>Identifies a stream as an event source for an AWS Lambda function. It can be either an Amazon Kinesis stream or a Amazon DynamoDB stream. AWS Lambda invokes the specified function when records are posted to the stream.</p> <p>This is the pull model, where AWS Lambda invokes the function. For more information, go to <a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html">AWS Lambda: How it Works</a> in the AWS Lambda Developer Guide.</p> <p>This association between an Amazon Kinesis stream and an AWS Lambda function is called the event source mapping. You provide the configuration information (for example, which stream to read from and which AWS Lambda function to invoke) for the event source mapping in the request body.</p> <p> Each event source, such as a Kinesis stream, can only be associated with one AWS Lambda function. If you call <a>AddEventSource</a> for an event source that is already mapped to another AWS Lambda function, the existing mapping is updated to call the new function instead of the old one. </p> <p>This operation requires permission for the <code>iam:PassRole</code> action for the IAM role. It also requires permission for the <code>lambda:AddEventSource</code> action.</p>
-addEventSource :: forall eff. AddEventSourceRequest -> Aff (err :: AWS.RequestError | eff) EventSourceConfiguration
-addEventSource = AWS.request serviceName "addEventSource" 
+addEventSource :: forall eff. AddEventSourceRequest -> Aff (exception :: EXCEPTION | eff) EventSourceConfiguration
+addEventSource = Request.request serviceName "addEventSource" 
 
 
 -- | <p>Deletes the specified Lambda function code and configuration.</p> <p>This operation requires permission for the <code>lambda:DeleteFunction</code> action.</p>
-deleteFunction :: forall eff. DeleteFunctionRequest -> Aff (err :: AWS.RequestError | eff) Unit
-deleteFunction = AWS.request serviceName "deleteFunction" 
+deleteFunction :: forall eff. DeleteFunctionRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteFunction = Request.request serviceName "deleteFunction" 
 
 
 -- | <p>Returns configuration information for the specified event source mapping (see <a>AddEventSource</a>).</p> <p>This operation requires permission for the <code>lambda:GetEventSource</code> action.</p>
-getEventSource :: forall eff. GetEventSourceRequest -> Aff (err :: AWS.RequestError | eff) EventSourceConfiguration
-getEventSource = AWS.request serviceName "getEventSource" 
+getEventSource :: forall eff. GetEventSourceRequest -> Aff (exception :: EXCEPTION | eff) EventSourceConfiguration
+getEventSource = Request.request serviceName "getEventSource" 
 
 
 -- | <p>Returns the configuration information of the Lambda function and a presigned URL link to the .zip file you uploaded with <a>UploadFunction</a> so you can download the .zip file. Note that the URL is valid for up to 10 minutes. The configuration information is the same information you provided as parameters when uploading the function.</p> <p>This operation requires permission for the <code>lambda:GetFunction</code> action.</p>
-getFunction :: forall eff. GetFunctionRequest -> Aff (err :: AWS.RequestError | eff) GetFunctionResponse
-getFunction = AWS.request serviceName "getFunction" 
+getFunction :: forall eff. GetFunctionRequest -> Aff (exception :: EXCEPTION | eff) GetFunctionResponse
+getFunction = Request.request serviceName "getFunction" 
 
 
 -- | <p>Returns the configuration information of the Lambda function. This the same information you provided as parameters when uploading the function by using <a>UploadFunction</a>.</p> <p>This operation requires permission for the <code>lambda:GetFunctionConfiguration</code> operation.</p>
-getFunctionConfiguration :: forall eff. GetFunctionConfigurationRequest -> Aff (err :: AWS.RequestError | eff) FunctionConfiguration
-getFunctionConfiguration = AWS.request serviceName "getFunctionConfiguration" 
+getFunctionConfiguration :: forall eff. GetFunctionConfigurationRequest -> Aff (exception :: EXCEPTION | eff) FunctionConfiguration
+getFunctionConfiguration = Request.request serviceName "getFunctionConfiguration" 
 
 
 -- | <p>Submits an invocation request to AWS Lambda. Upon receiving the request, Lambda executes the specified function asynchronously. To see the logs generated by the Lambda function execution, see the CloudWatch logs console.</p> <p>This operation requires permission for the <code>lambda:InvokeAsync</code> action.</p>
-invokeAsync :: forall eff. InvokeAsyncRequest -> Aff (err :: AWS.RequestError | eff) InvokeAsyncResponse
-invokeAsync = AWS.request serviceName "invokeAsync" 
+invokeAsync :: forall eff. InvokeAsyncRequest -> Aff (exception :: EXCEPTION | eff) InvokeAsyncResponse
+invokeAsync = Request.request serviceName "invokeAsync" 
 
 
 -- | <p>Returns a list of event source mappings you created using the <code>AddEventSource</code> (see <a>AddEventSource</a>), where you identify a stream as event source. This list does not include Amazon S3 event sources. </p> <p>For each mapping, the API returns configuration information. You can optionally specify filters to retrieve specific event source mappings.</p> <p>This operation requires permission for the <code>lambda:ListEventSources</code> action.</p>
-listEventSources :: forall eff. ListEventSourcesRequest -> Aff (err :: AWS.RequestError | eff) ListEventSourcesResponse
-listEventSources = AWS.request serviceName "listEventSources" 
+listEventSources :: forall eff. ListEventSourcesRequest -> Aff (exception :: EXCEPTION | eff) ListEventSourcesResponse
+listEventSources = Request.request serviceName "listEventSources" 
 
 
 -- | <p>Returns a list of your Lambda functions. For each function, the response includes the function configuration information. You must use <a>GetFunction</a> to retrieve the code for your function.</p> <p>This operation requires permission for the <code>lambda:ListFunctions</code> action.</p>
-listFunctions :: forall eff. ListFunctionsRequest -> Aff (err :: AWS.RequestError | eff) ListFunctionsResponse
-listFunctions = AWS.request serviceName "listFunctions" 
+listFunctions :: forall eff. ListFunctionsRequest -> Aff (exception :: EXCEPTION | eff) ListFunctionsResponse
+listFunctions = Request.request serviceName "listFunctions" 
 
 
 -- | <p>Removes an event source mapping. This means AWS Lambda will no longer invoke the function for events in the associated source.</p> <p>This operation requires permission for the <code>lambda:RemoveEventSource</code> action.</p>
-removeEventSource :: forall eff. RemoveEventSourceRequest -> Aff (err :: AWS.RequestError | eff) Unit
-removeEventSource = AWS.request serviceName "removeEventSource" 
+removeEventSource :: forall eff. RemoveEventSourceRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+removeEventSource = Request.request serviceName "removeEventSource" 
 
 
 -- | <p>Updates the configuration parameters for the specified Lambda function by using the values provided in the request. You provide only the parameters you want to change. This operation must only be used on an existing Lambda function and cannot be used to update the function's code. </p> <p>This operation requires permission for the <code>lambda:UpdateFunctionConfiguration</code> action.</p>
-updateFunctionConfiguration :: forall eff. UpdateFunctionConfigurationRequest -> Aff (err :: AWS.RequestError | eff) FunctionConfiguration
-updateFunctionConfiguration = AWS.request serviceName "updateFunctionConfiguration" 
+updateFunctionConfiguration :: forall eff. UpdateFunctionConfigurationRequest -> Aff (exception :: EXCEPTION | eff) FunctionConfiguration
+updateFunctionConfiguration = Request.request serviceName "updateFunctionConfiguration" 
 
 
 -- | <p>Creates a new Lambda function or updates an existing function. The function metadata is created from the request parameters, and the code for the function is provided by a .zip file in the request body. If the function name already exists, the existing Lambda function is updated with the new code and metadata. </p> <p>This operation requires permission for the <code>lambda:UploadFunction</code> action.</p>
-uploadFunction :: forall eff. UploadFunctionRequest -> Aff (err :: AWS.RequestError | eff) FunctionConfiguration
-uploadFunction = AWS.request serviceName "uploadFunction" 
+uploadFunction :: forall eff. UploadFunctionRequest -> Aff (exception :: EXCEPTION | eff) FunctionConfiguration
+uploadFunction = Request.request serviceName "uploadFunction" 
 
 
 newtype AddEventSourceRequest = AddEventSourceRequest 
   { "EventSource" :: (String)
   , "FunctionName" :: (FunctionName)
   , "Role" :: (RoleArn)
-  , "BatchSize" :: NullOrUndefined (Int)
-  , "Parameters" :: NullOrUndefined (Map'')
+  , "BatchSize" :: NullOrUndefined.NullOrUndefined (Int)
+  , "Parameters" :: NullOrUndefined.NullOrUndefined (Map'')
   }
 derive instance newtypeAddEventSourceRequest :: Newtype AddEventSourceRequest _
+derive instance repGenericAddEventSourceRequest :: Generic AddEventSourceRequest _
+instance showAddEventSourceRequest :: Show AddEventSourceRequest where
+  show = genericShow
+instance decodeAddEventSourceRequest :: Decode AddEventSourceRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeAddEventSourceRequest :: Encode AddEventSourceRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype DeleteFunctionRequest = DeleteFunctionRequest 
   { "FunctionName" :: (FunctionName)
   }
 derive instance newtypeDeleteFunctionRequest :: Newtype DeleteFunctionRequest _
+derive instance repGenericDeleteFunctionRequest :: Generic DeleteFunctionRequest _
+instance showDeleteFunctionRequest :: Show DeleteFunctionRequest where
+  show = genericShow
+instance decodeDeleteFunctionRequest :: Decode DeleteFunctionRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeDeleteFunctionRequest :: Encode DeleteFunctionRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype Description = Description String
 derive instance newtypeDescription :: Newtype Description _
+derive instance repGenericDescription :: Generic Description _
+instance showDescription :: Show Description where
+  show = genericShow
+instance decodeDescription :: Decode Description where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeDescription :: Encode Description where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>Describes mapping between an Amazon Kinesis stream and a Lambda function.</p>
 newtype EventSourceConfiguration = EventSourceConfiguration 
-  { "UUID" :: NullOrUndefined (String)
-  , "BatchSize" :: NullOrUndefined (Int)
-  , "EventSource" :: NullOrUndefined (String)
-  , "FunctionName" :: NullOrUndefined (FunctionName)
-  , "Parameters" :: NullOrUndefined (Map'')
-  , "Role" :: NullOrUndefined (RoleArn)
-  , "LastModified" :: NullOrUndefined (Number)
-  , "IsActive" :: NullOrUndefined (Boolean)
-  , "Status" :: NullOrUndefined (String)
+  { "UUID" :: NullOrUndefined.NullOrUndefined (String)
+  , "BatchSize" :: NullOrUndefined.NullOrUndefined (Int)
+  , "EventSource" :: NullOrUndefined.NullOrUndefined (String)
+  , "FunctionName" :: NullOrUndefined.NullOrUndefined (FunctionName)
+  , "Parameters" :: NullOrUndefined.NullOrUndefined (Map'')
+  , "Role" :: NullOrUndefined.NullOrUndefined (RoleArn)
+  , "LastModified" :: NullOrUndefined.NullOrUndefined (Number)
+  , "IsActive" :: NullOrUndefined.NullOrUndefined (Boolean)
+  , "Status" :: NullOrUndefined.NullOrUndefined (String)
   }
 derive instance newtypeEventSourceConfiguration :: Newtype EventSourceConfiguration _
+derive instance repGenericEventSourceConfiguration :: Generic EventSourceConfiguration _
+instance showEventSourceConfiguration :: Show EventSourceConfiguration where
+  show = genericShow
+instance decodeEventSourceConfiguration :: Decode EventSourceConfiguration where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeEventSourceConfiguration :: Encode EventSourceConfiguration where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype EventSourceList = EventSourceList (Array EventSourceConfiguration)
 derive instance newtypeEventSourceList :: Newtype EventSourceList _
+derive instance repGenericEventSourceList :: Generic EventSourceList _
+instance showEventSourceList :: Show EventSourceList where
+  show = genericShow
+instance decodeEventSourceList :: Decode EventSourceList where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeEventSourceList :: Encode EventSourceList where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype FunctionArn = FunctionArn String
 derive instance newtypeFunctionArn :: Newtype FunctionArn _
+derive instance repGenericFunctionArn :: Generic FunctionArn _
+instance showFunctionArn :: Show FunctionArn where
+  show = genericShow
+instance decodeFunctionArn :: Decode FunctionArn where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeFunctionArn :: Encode FunctionArn where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>The object for the Lambda function location.</p>
 newtype FunctionCodeLocation = FunctionCodeLocation 
-  { "RepositoryType" :: NullOrUndefined (String)
-  , "Location" :: NullOrUndefined (String)
+  { "RepositoryType" :: NullOrUndefined.NullOrUndefined (String)
+  , "Location" :: NullOrUndefined.NullOrUndefined (String)
   }
 derive instance newtypeFunctionCodeLocation :: Newtype FunctionCodeLocation _
+derive instance repGenericFunctionCodeLocation :: Generic FunctionCodeLocation _
+instance showFunctionCodeLocation :: Show FunctionCodeLocation where
+  show = genericShow
+instance decodeFunctionCodeLocation :: Decode FunctionCodeLocation where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeFunctionCodeLocation :: Encode FunctionCodeLocation where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>A complex type that describes function metadata.</p>
 newtype FunctionConfiguration = FunctionConfiguration 
-  { "FunctionName" :: NullOrUndefined (FunctionName)
-  , "FunctionARN" :: NullOrUndefined (FunctionArn)
-  , "ConfigurationId" :: NullOrUndefined (String)
-  , "Runtime" :: NullOrUndefined (Runtime)
-  , "Role" :: NullOrUndefined (RoleArn)
-  , "Handler" :: NullOrUndefined (Handler)
-  , "Mode" :: NullOrUndefined (Mode)
-  , "CodeSize" :: NullOrUndefined (Number)
-  , "Description" :: NullOrUndefined (Description)
-  , "Timeout" :: NullOrUndefined (Timeout)
-  , "MemorySize" :: NullOrUndefined (MemorySize)
-  , "LastModified" :: NullOrUndefined (Number)
+  { "FunctionName" :: NullOrUndefined.NullOrUndefined (FunctionName)
+  , "FunctionARN" :: NullOrUndefined.NullOrUndefined (FunctionArn)
+  , "ConfigurationId" :: NullOrUndefined.NullOrUndefined (String)
+  , "Runtime" :: NullOrUndefined.NullOrUndefined (Runtime)
+  , "Role" :: NullOrUndefined.NullOrUndefined (RoleArn)
+  , "Handler" :: NullOrUndefined.NullOrUndefined (Handler)
+  , "Mode" :: NullOrUndefined.NullOrUndefined (Mode)
+  , "CodeSize" :: NullOrUndefined.NullOrUndefined (Number)
+  , "Description" :: NullOrUndefined.NullOrUndefined (Description)
+  , "Timeout" :: NullOrUndefined.NullOrUndefined (Timeout)
+  , "MemorySize" :: NullOrUndefined.NullOrUndefined (MemorySize)
+  , "LastModified" :: NullOrUndefined.NullOrUndefined (Number)
   }
 derive instance newtypeFunctionConfiguration :: Newtype FunctionConfiguration _
+derive instance repGenericFunctionConfiguration :: Generic FunctionConfiguration _
+instance showFunctionConfiguration :: Show FunctionConfiguration where
+  show = genericShow
+instance decodeFunctionConfiguration :: Decode FunctionConfiguration where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeFunctionConfiguration :: Encode FunctionConfiguration where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype FunctionList = FunctionList (Array FunctionConfiguration)
 derive instance newtypeFunctionList :: Newtype FunctionList _
+derive instance repGenericFunctionList :: Generic FunctionList _
+instance showFunctionList :: Show FunctionList where
+  show = genericShow
+instance decodeFunctionList :: Decode FunctionList where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeFunctionList :: Encode FunctionList where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype FunctionName = FunctionName String
 derive instance newtypeFunctionName :: Newtype FunctionName _
+derive instance repGenericFunctionName :: Generic FunctionName _
+instance showFunctionName :: Show FunctionName where
+  show = genericShow
+instance decodeFunctionName :: Decode FunctionName where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeFunctionName :: Encode FunctionName where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype GetEventSourceRequest = GetEventSourceRequest 
   { "UUID" :: (String)
   }
 derive instance newtypeGetEventSourceRequest :: Newtype GetEventSourceRequest _
+derive instance repGenericGetEventSourceRequest :: Generic GetEventSourceRequest _
+instance showGetEventSourceRequest :: Show GetEventSourceRequest where
+  show = genericShow
+instance decodeGetEventSourceRequest :: Decode GetEventSourceRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeGetEventSourceRequest :: Encode GetEventSourceRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype GetFunctionConfigurationRequest = GetFunctionConfigurationRequest 
   { "FunctionName" :: (FunctionName)
   }
 derive instance newtypeGetFunctionConfigurationRequest :: Newtype GetFunctionConfigurationRequest _
+derive instance repGenericGetFunctionConfigurationRequest :: Generic GetFunctionConfigurationRequest _
+instance showGetFunctionConfigurationRequest :: Show GetFunctionConfigurationRequest where
+  show = genericShow
+instance decodeGetFunctionConfigurationRequest :: Decode GetFunctionConfigurationRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeGetFunctionConfigurationRequest :: Encode GetFunctionConfigurationRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype GetFunctionRequest = GetFunctionRequest 
   { "FunctionName" :: (FunctionName)
   }
 derive instance newtypeGetFunctionRequest :: Newtype GetFunctionRequest _
+derive instance repGenericGetFunctionRequest :: Generic GetFunctionRequest _
+instance showGetFunctionRequest :: Show GetFunctionRequest where
+  show = genericShow
+instance decodeGetFunctionRequest :: Decode GetFunctionRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeGetFunctionRequest :: Encode GetFunctionRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>This response contains the object for AWS Lambda function location (see <a>API_FunctionCodeLocation</a></p>
 newtype GetFunctionResponse = GetFunctionResponse 
-  { "Configuration" :: NullOrUndefined (FunctionConfiguration)
-  , "Code" :: NullOrUndefined (FunctionCodeLocation)
+  { "Configuration" :: NullOrUndefined.NullOrUndefined (FunctionConfiguration)
+  , "Code" :: NullOrUndefined.NullOrUndefined (FunctionCodeLocation)
   }
 derive instance newtypeGetFunctionResponse :: Newtype GetFunctionResponse _
+derive instance repGenericGetFunctionResponse :: Generic GetFunctionResponse _
+instance showGetFunctionResponse :: Show GetFunctionResponse where
+  show = genericShow
+instance decodeGetFunctionResponse :: Decode GetFunctionResponse where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeGetFunctionResponse :: Encode GetFunctionResponse where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype Handler = Handler String
 derive instance newtypeHandler :: Newtype Handler _
+derive instance repGenericHandler :: Generic Handler _
+instance showHandler :: Show Handler where
+  show = genericShow
+instance decodeHandler :: Decode Handler where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeHandler :: Encode Handler where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype HttpStatus = HttpStatus Int
 derive instance newtypeHttpStatus :: Newtype HttpStatus _
+derive instance repGenericHttpStatus :: Generic HttpStatus _
+instance showHttpStatus :: Show HttpStatus where
+  show = genericShow
+instance decodeHttpStatus :: Decode HttpStatus where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeHttpStatus :: Encode HttpStatus where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the <code>UploadFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to assume you will get this exception. </p>
 newtype InvalidParameterValueException = InvalidParameterValueException 
-  { "Type" :: NullOrUndefined (String)
-  , "Message'" :: NullOrUndefined (String)
+  { "Type" :: NullOrUndefined.NullOrUndefined (String)
+  , "Message'" :: NullOrUndefined.NullOrUndefined (String)
   }
 derive instance newtypeInvalidParameterValueException :: Newtype InvalidParameterValueException _
+derive instance repGenericInvalidParameterValueException :: Generic InvalidParameterValueException _
+instance showInvalidParameterValueException :: Show InvalidParameterValueException where
+  show = genericShow
+instance decodeInvalidParameterValueException :: Decode InvalidParameterValueException where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeInvalidParameterValueException :: Encode InvalidParameterValueException where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>The request body could not be parsed as JSON.</p>
 newtype InvalidRequestContentException = InvalidRequestContentException 
-  { "Type" :: NullOrUndefined (String)
-  , "Message'" :: NullOrUndefined (String)
+  { "Type" :: NullOrUndefined.NullOrUndefined (String)
+  , "Message'" :: NullOrUndefined.NullOrUndefined (String)
   }
 derive instance newtypeInvalidRequestContentException :: Newtype InvalidRequestContentException _
+derive instance repGenericInvalidRequestContentException :: Generic InvalidRequestContentException _
+instance showInvalidRequestContentException :: Show InvalidRequestContentException where
+  show = genericShow
+instance decodeInvalidRequestContentException :: Decode InvalidRequestContentException where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeInvalidRequestContentException :: Encode InvalidRequestContentException where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype InvokeAsyncRequest = InvokeAsyncRequest 
@@ -201,106 +334,225 @@ newtype InvokeAsyncRequest = InvokeAsyncRequest
   , "InvokeArgs" :: (String)
   }
 derive instance newtypeInvokeAsyncRequest :: Newtype InvokeAsyncRequest _
+derive instance repGenericInvokeAsyncRequest :: Generic InvokeAsyncRequest _
+instance showInvokeAsyncRequest :: Show InvokeAsyncRequest where
+  show = genericShow
+instance decodeInvokeAsyncRequest :: Decode InvokeAsyncRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeInvokeAsyncRequest :: Encode InvokeAsyncRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>Upon success, it returns empty response. Otherwise, throws an exception.</p>
 newtype InvokeAsyncResponse = InvokeAsyncResponse 
-  { "Status" :: NullOrUndefined (HttpStatus)
+  { "Status" :: NullOrUndefined.NullOrUndefined (HttpStatus)
   }
 derive instance newtypeInvokeAsyncResponse :: Newtype InvokeAsyncResponse _
+derive instance repGenericInvokeAsyncResponse :: Generic InvokeAsyncResponse _
+instance showInvokeAsyncResponse :: Show InvokeAsyncResponse where
+  show = genericShow
+instance decodeInvokeAsyncResponse :: Decode InvokeAsyncResponse where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeInvokeAsyncResponse :: Encode InvokeAsyncResponse where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype ListEventSourcesRequest = ListEventSourcesRequest 
-  { "EventSourceArn" :: NullOrUndefined (String)
-  , "FunctionName" :: NullOrUndefined (FunctionName)
-  , "Marker" :: NullOrUndefined (String)
-  , "MaxItems" :: NullOrUndefined (MaxListItems)
+  { "EventSourceArn" :: NullOrUndefined.NullOrUndefined (String)
+  , "FunctionName" :: NullOrUndefined.NullOrUndefined (FunctionName)
+  , "Marker" :: NullOrUndefined.NullOrUndefined (String)
+  , "MaxItems" :: NullOrUndefined.NullOrUndefined (MaxListItems)
   }
 derive instance newtypeListEventSourcesRequest :: Newtype ListEventSourcesRequest _
+derive instance repGenericListEventSourcesRequest :: Generic ListEventSourcesRequest _
+instance showListEventSourcesRequest :: Show ListEventSourcesRequest where
+  show = genericShow
+instance decodeListEventSourcesRequest :: Decode ListEventSourcesRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeListEventSourcesRequest :: Encode ListEventSourcesRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>Contains a list of event sources (see <a>API_EventSourceConfiguration</a>)</p>
 newtype ListEventSourcesResponse = ListEventSourcesResponse 
-  { "NextMarker" :: NullOrUndefined (String)
-  , "EventSources" :: NullOrUndefined (EventSourceList)
+  { "NextMarker" :: NullOrUndefined.NullOrUndefined (String)
+  , "EventSources" :: NullOrUndefined.NullOrUndefined (EventSourceList)
   }
 derive instance newtypeListEventSourcesResponse :: Newtype ListEventSourcesResponse _
+derive instance repGenericListEventSourcesResponse :: Generic ListEventSourcesResponse _
+instance showListEventSourcesResponse :: Show ListEventSourcesResponse where
+  show = genericShow
+instance decodeListEventSourcesResponse :: Decode ListEventSourcesResponse where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeListEventSourcesResponse :: Encode ListEventSourcesResponse where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype ListFunctionsRequest = ListFunctionsRequest 
-  { "Marker" :: NullOrUndefined (String)
-  , "MaxItems" :: NullOrUndefined (MaxListItems)
+  { "Marker" :: NullOrUndefined.NullOrUndefined (String)
+  , "MaxItems" :: NullOrUndefined.NullOrUndefined (MaxListItems)
   }
 derive instance newtypeListFunctionsRequest :: Newtype ListFunctionsRequest _
+derive instance repGenericListFunctionsRequest :: Generic ListFunctionsRequest _
+instance showListFunctionsRequest :: Show ListFunctionsRequest where
+  show = genericShow
+instance decodeListFunctionsRequest :: Decode ListFunctionsRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeListFunctionsRequest :: Encode ListFunctionsRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>Contains a list of AWS Lambda function configurations (see <a>API_FunctionConfiguration</a>.</p>
 newtype ListFunctionsResponse = ListFunctionsResponse 
-  { "NextMarker" :: NullOrUndefined (String)
-  , "Functions" :: NullOrUndefined (FunctionList)
+  { "NextMarker" :: NullOrUndefined.NullOrUndefined (String)
+  , "Functions" :: NullOrUndefined.NullOrUndefined (FunctionList)
   }
 derive instance newtypeListFunctionsResponse :: Newtype ListFunctionsResponse _
+derive instance repGenericListFunctionsResponse :: Generic ListFunctionsResponse _
+instance showListFunctionsResponse :: Show ListFunctionsResponse where
+  show = genericShow
+instance decodeListFunctionsResponse :: Decode ListFunctionsResponse where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeListFunctionsResponse :: Encode ListFunctionsResponse where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
-newtype Map'' = Map'' (Map String String)
+newtype Map'' = Map'' (StrMap.StrMap String)
 derive instance newtypeMap'' :: Newtype Map'' _
+derive instance repGenericMap'' :: Generic Map'' _
+instance showMap'' :: Show Map'' where
+  show = genericShow
+instance decodeMap'' :: Decode Map'' where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeMap'' :: Encode Map'' where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype MaxListItems = MaxListItems Int
 derive instance newtypeMaxListItems :: Newtype MaxListItems _
+derive instance repGenericMaxListItems :: Generic MaxListItems _
+instance showMaxListItems :: Show MaxListItems where
+  show = genericShow
+instance decodeMaxListItems :: Decode MaxListItems where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeMaxListItems :: Encode MaxListItems where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype MemorySize = MemorySize Int
 derive instance newtypeMemorySize :: Newtype MemorySize _
+derive instance repGenericMemorySize :: Generic MemorySize _
+instance showMemorySize :: Show MemorySize where
+  show = genericShow
+instance decodeMemorySize :: Decode MemorySize where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeMemorySize :: Encode MemorySize where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype Mode = Mode String
 derive instance newtypeMode :: Newtype Mode _
+derive instance repGenericMode :: Generic Mode _
+instance showMode :: Show Mode where
+  show = genericShow
+instance decodeMode :: Decode Mode where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeMode :: Encode Mode where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype RemoveEventSourceRequest = RemoveEventSourceRequest 
   { "UUID" :: (String)
   }
 derive instance newtypeRemoveEventSourceRequest :: Newtype RemoveEventSourceRequest _
+derive instance repGenericRemoveEventSourceRequest :: Generic RemoveEventSourceRequest _
+instance showRemoveEventSourceRequest :: Show RemoveEventSourceRequest where
+  show = genericShow
+instance decodeRemoveEventSourceRequest :: Decode RemoveEventSourceRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeRemoveEventSourceRequest :: Encode RemoveEventSourceRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>The function or the event source specified in the request does not exist.</p>
 newtype ResourceNotFoundException = ResourceNotFoundException 
-  { "Type" :: NullOrUndefined (String)
-  , "Message" :: NullOrUndefined (String)
+  { "Type" :: NullOrUndefined.NullOrUndefined (String)
+  , "Message" :: NullOrUndefined.NullOrUndefined (String)
   }
 derive instance newtypeResourceNotFoundException :: Newtype ResourceNotFoundException _
+derive instance repGenericResourceNotFoundException :: Generic ResourceNotFoundException _
+instance showResourceNotFoundException :: Show ResourceNotFoundException where
+  show = genericShow
+instance decodeResourceNotFoundException :: Decode ResourceNotFoundException where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeResourceNotFoundException :: Encode ResourceNotFoundException where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype RoleArn = RoleArn String
 derive instance newtypeRoleArn :: Newtype RoleArn _
+derive instance repGenericRoleArn :: Generic RoleArn _
+instance showRoleArn :: Show RoleArn where
+  show = genericShow
+instance decodeRoleArn :: Decode RoleArn where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeRoleArn :: Encode RoleArn where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype Runtime = Runtime String
 derive instance newtypeRuntime :: Newtype Runtime _
+derive instance repGenericRuntime :: Generic Runtime _
+instance showRuntime :: Show Runtime where
+  show = genericShow
+instance decodeRuntime :: Decode Runtime where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeRuntime :: Encode Runtime where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 -- | <p>The AWS Lambda service encountered an internal error.</p>
 newtype ServiceException = ServiceException 
-  { "Type" :: NullOrUndefined (String)
-  , "Message" :: NullOrUndefined (String)
+  { "Type" :: NullOrUndefined.NullOrUndefined (String)
+  , "Message" :: NullOrUndefined.NullOrUndefined (String)
   }
 derive instance newtypeServiceException :: Newtype ServiceException _
+derive instance repGenericServiceException :: Generic ServiceException _
+instance showServiceException :: Show ServiceException where
+  show = genericShow
+instance decodeServiceException :: Decode ServiceException where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeServiceException :: Encode ServiceException where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype Timeout = Timeout Int
 derive instance newtypeTimeout :: Newtype Timeout _
+derive instance repGenericTimeout :: Generic Timeout _
+instance showTimeout :: Show Timeout where
+  show = genericShow
+instance decodeTimeout :: Decode Timeout where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeTimeout :: Encode Timeout where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype UpdateFunctionConfigurationRequest = UpdateFunctionConfigurationRequest 
   { "FunctionName" :: (FunctionName)
-  , "Role" :: NullOrUndefined (RoleArn)
-  , "Handler" :: NullOrUndefined (Handler)
-  , "Description" :: NullOrUndefined (Description)
-  , "Timeout" :: NullOrUndefined (Timeout)
-  , "MemorySize" :: NullOrUndefined (MemorySize)
+  , "Role" :: NullOrUndefined.NullOrUndefined (RoleArn)
+  , "Handler" :: NullOrUndefined.NullOrUndefined (Handler)
+  , "Description" :: NullOrUndefined.NullOrUndefined (Description)
+  , "Timeout" :: NullOrUndefined.NullOrUndefined (Timeout)
+  , "MemorySize" :: NullOrUndefined.NullOrUndefined (MemorySize)
   }
 derive instance newtypeUpdateFunctionConfigurationRequest :: Newtype UpdateFunctionConfigurationRequest _
+derive instance repGenericUpdateFunctionConfigurationRequest :: Generic UpdateFunctionConfigurationRequest _
+instance showUpdateFunctionConfigurationRequest :: Show UpdateFunctionConfigurationRequest where
+  show = genericShow
+instance decodeUpdateFunctionConfigurationRequest :: Decode UpdateFunctionConfigurationRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeUpdateFunctionConfigurationRequest :: Encode UpdateFunctionConfigurationRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 
 
 newtype UploadFunctionRequest = UploadFunctionRequest 
@@ -310,8 +562,15 @@ newtype UploadFunctionRequest = UploadFunctionRequest
   , "Role" :: (RoleArn)
   , "Handler" :: (Handler)
   , "Mode" :: (Mode)
-  , "Description" :: NullOrUndefined (Description)
-  , "Timeout" :: NullOrUndefined (Timeout)
-  , "MemorySize" :: NullOrUndefined (MemorySize)
+  , "Description" :: NullOrUndefined.NullOrUndefined (Description)
+  , "Timeout" :: NullOrUndefined.NullOrUndefined (Timeout)
+  , "MemorySize" :: NullOrUndefined.NullOrUndefined (MemorySize)
   }
 derive instance newtypeUploadFunctionRequest :: Newtype UploadFunctionRequest _
+derive instance repGenericUploadFunctionRequest :: Generic UploadFunctionRequest _
+instance showUploadFunctionRequest :: Show UploadFunctionRequest where
+  show = genericShow
+instance decodeUploadFunctionRequest :: Decode UploadFunctionRequest where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encodeUploadFunctionRequest :: Encode UploadFunctionRequest where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
