@@ -5,7 +5,7 @@ import Data.Array (elem)
 import Data.Foreign.NullOrUndefined (NullOrUndefined(..), unNullOrUndefined)
 import Data.Maybe (Maybe(..), fromMaybe, maybe)
 import Data.String (Pattern(Pattern), Replacement(Replacement), drop, dropWhile, joinWith, replace, replaceAll, take, toLower, toUpper)
-import Data.StrMap (StrMap, toArrayWithKey)
+import Data.StrMap (StrMap, toArrayWithKey, isEmpty)
 import Node.Path (FilePath, concat)
 
 import Aws (Service(..), MetadataElement(..), ServiceOperation(..), ServiceShape(..), ServiceShapeName(..))
@@ -30,13 +30,20 @@ header (MetadataElement { name }) documentation = """
 {{documentation}}
 module AWS.{{serviceName}} where
 
+import Prelude
 import Control.Monad.Aff (Aff)
-import Data.Foreign.NullOrUndefined (NullOrUndefined)
-import Data.Map (Map)
+import Control.Monad.Eff.Exception (EXCEPTION)
+import Data.Foreign as Foreign
+import Data.Foreign.Class (class Decode, class Encode)
+import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
+import Data.Foreign.NullOrUndefined as NullOrUndefined
+import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Show (genericShow)
 import Data.Newtype (class Newtype)
-import Data.Unit (Unit, unit)
+import Data.StrMap as StrMap
 
-import AWS.Request as AWS
+import AWS.Request as Request
+import AWS.Request.Types as Types
 
 serviceName = "{{serviceName}}" :: String
 """ # replaceAll (Pattern "{{serviceName}}") (Replacement name)
@@ -45,18 +52,18 @@ serviceName = "{{serviceName}}" :: String
 function :: String -> ServiceOperation -> String
 function name (ServiceOperation serviceOperation) = """
 {{documentation}}
-{{camelCaseName}} :: forall eff. {{input}} Aff (err :: AWS.RequestError | eff) {{output}}
-{{camelCaseName}} = AWS.request serviceName "{{camelCaseName}}" {{fallback}}
+{{camelCaseName}} :: forall eff. {{inputType}} Aff (exception :: EXCEPTION | eff) {{outputType}}
+{{camelCaseName}} = Request.request serviceName "{{camelCaseName}}" {{inputFallback}}
 """ # replaceAll (Pattern "{{camelCaseName}}") (Replacement camelCaseName)
-    # replace (Pattern "{{input}}") (Replacement input)
-    # replace (Pattern "{{output}}") (Replacement output)
-    # replace (Pattern "{{fallback}}") (Replacement fallback)
+    # replace (Pattern "{{inputType}}") (Replacement inputType)
+    # replace (Pattern "{{inputFallback}}") (Replacement inputFallback)
+    # replace (Pattern "{{outputType}}") (Replacement outputType)
     # replace (Pattern "{{documentation}}") (Replacement documentation)
         where
             camelCaseName = (take 1 name # toLower) <> (drop 1 name)
-            input = unNullOrUndefined serviceOperation.input # maybe "" (\(ServiceShapeName { shape }) -> shape <> " ->")
-            output =  unNullOrUndefined serviceOperation.output # maybe "Unit" (\(ServiceShapeName { shape }) -> shape)
-            fallback = unNullOrUndefined serviceOperation.input # maybe "unit" (\_ -> "")
+            inputType = unNullOrUndefined serviceOperation.input # maybe "" (\(ServiceShapeName { shape }) -> shape <> " ->")
+            inputFallback = unNullOrUndefined serviceOperation.input # maybe "(Types.NoInput unit)" (\_ -> "")
+            outputType =  unNullOrUndefined serviceOperation.output # maybe "Types.NoOutput" (\(ServiceShapeName { shape }) -> shape)
             documentation = unNullOrUndefined serviceOperation.documentation # maybe "" comment
 
 purescriptTypes = ["String", "Int", "Number", "Boolean"] :: Array String
@@ -77,6 +84,7 @@ compatibleType type' = safeType
             "Function" -> "Function'"
             "Map" -> "Map'"
             "Record" -> "Record'"
+            "Partial" -> "Partial'"
             "Unit" -> "Unit'"
 
             validType -> validType
@@ -98,6 +106,13 @@ record' name serviceShape@(ServiceShape { documentation }) = """
 {{documentation}}
 newtype {{name}} = {{name}} {{type}}
 derive instance newtype{{name}} :: Newtype {{name}} _
+derive instance repGeneric{{name}} :: Generic {{name}} _
+instance show{{name}} :: Show {{name}} where
+  show = genericShow
+instance decode{{name}} :: Decode {{name}} where
+  decode = genericDecode $ defaultOptions { unwrapSingleConstructors = true }
+instance encode{{name}} :: Encode {{name}} where
+  encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 """ # replaceAll (Pattern "{{name}}") (Replacement $ name)
     # replace (Pattern "{{type}}") (Replacement $ recordType serviceShape)
     # replace (Pattern "{{documentation}}") (Replacement $ maybe "" comment $ unNullOrUndefined documentation)
@@ -105,7 +120,7 @@ derive instance newtype{{name}} :: Newtype {{name}} _
 recordType :: ServiceShape -> String
 recordType (ServiceShape serviceShape) = case serviceShape of
     { "type": "list", member: NullOrUndefined (Just (shape)) } -> recordArray shape
-    { "type": "map", key: NullOrUndefined (Just key), value: NullOrUndefined (Just value) } -> recordMap key value
+    { "type": "map", value: NullOrUndefined (Just value) } -> recordMap value
     { "type": "structure", members: NullOrUndefined (Just members), required: NullOrUndefined required } -> recordRecord members $ fromMaybe [] required
     { "type": type' } -> compatibleType type'
 
@@ -113,19 +128,20 @@ recordArray :: ServiceShapeName -> String
 recordArray (ServiceShapeName { shape }) = "(Array {{type}})"
     # replace (Pattern "{{type}}") (Replacement $ compatibleType shape)
 
-recordMap :: ServiceShapeName -> ServiceShapeName -> String
-recordMap (ServiceShapeName key) (ServiceShapeName value) = "(Map {{key}} {{value}})"
-    # replace (Pattern "{{key}}") (Replacement $ compatibleType key.shape)
+recordMap :: ServiceShapeName -> String
+recordMap (ServiceShapeName value) = "(StrMap.StrMap {{value}})"
     # replace (Pattern "{{value}}") (Replacement $ compatibleType value.shape)
 
 recordRecord :: StrMap ServiceShapeName -> Array String -> String
-recordRecord keyValue required = "\n  { {{properties}}\n  }"
-    # replace (Pattern "{{properties}}") (Replacement properties)
-        where
-            property key (ServiceShapeName { shape }) = "\"{{name}}\" :: {{required}} ({{type}})"
-                # replace (Pattern "{{name}}") (Replacement $ compatibleType key)
-                # replace (Pattern "{{type}}") (Replacement $ compatibleType shape)
-                # replace (Pattern "{{required}}") (Replacement $ if elem key required then "" else "NullOrUndefined")
-                # replace (Pattern "  ") (Replacement " ")
+recordRecord keyValue required = if isEmpty keyValue
+    then "Types.NoArguments"
+    else "\n  { {{properties}}\n  }"
+        # replace (Pattern "{{properties}}") (Replacement properties)
+            where
+                property key (ServiceShapeName { shape }) = "\"{{name}}\" :: {{required}} ({{type}})"
+                    # replace (Pattern "{{name}}") (Replacement $ compatibleType key)
+                    # replace (Pattern "{{type}}") (Replacement $ compatibleType shape)
+                    # replace (Pattern "{{required}}") (Replacement $ if elem key required then "" else "NullOrUndefined.NullOrUndefined")
+                    # replace (Pattern "  ") (Replacement " ")
 
-            properties = toArrayWithKey property keyValue # joinWith "\n  , "
+                properties = toArrayWithKey property keyValue # joinWith "\n  , "
