@@ -7,7 +7,7 @@ import Control.Monad.Eff.Class (liftEff)
 import Control.Monad.Eff.Console (CONSOLE, log)
 import Control.Monad.Eff.Exception (EXCEPTION)
 import Control.Parallel (parTraverse)
-import Data.Array (filter, find, notElem)
+import Data.Array (find)
 import Data.Either (Either)
 import Data.Foreign.Generic (decodeJSON)
 import Data.Maybe (Maybe)
@@ -26,8 +26,6 @@ apisMetadataFilePath = "./aws-sdk-js/apis/metadata.json" :: FilePath
 apisPath = "./aws-sdk-js/apis/" :: FilePath
 
 clientsPath = "../src/AWSGenerated" :: FilePath
-
-cycleInDeclaration = [ "CostExplorer", "DynamoDBStreams", "EMR", "Organizations", "SSM" ] :: Array String
 
 metadataWithApiFileRegex :: MetadataElement -> Either String (Tuple MetadataElement Regex)
 metadataWithApiFileRegex metadata = metadataFileRegex metadata
@@ -59,7 +57,7 @@ main :: forall eff. Eff (fs :: FS, exception :: EXCEPTION, console :: CONSOLE | 
 main = launchAff do
   apiMetadataFileContent <- readTextFile UTF8 apisMetadataFilePath
   Metadata metadata <- decodeJSON apiMetadataFileContent # liftExcept # liftEff
-  let metadataElements = values metadata # filter (\(MetadataElement { name }) -> notElem name cycleInDeclaration)
+  let metadataElements = values metadata
 
   metadataElementsWithApiFileRegex <- map metadataWithApiFileRegex metadataElements
     # parTraverse (liftEither >>> liftEff)

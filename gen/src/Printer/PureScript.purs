@@ -5,10 +5,11 @@ import Data.Array (elem)
 import Data.Foreign.NullOrUndefined (NullOrUndefined(..), unNullOrUndefined)
 import Data.Maybe (Maybe(..), fromMaybe, maybe)
 import Data.String (Pattern(Pattern), Replacement(Replacement), drop, dropWhile, joinWith, replace, replaceAll, take, toLower, toUpper)
-import Data.StrMap (StrMap, toArrayWithKey, isEmpty)
+import Data.StrMap (StrMap, isEmpty, filterKeys, toArrayWithKey)
 import Node.Path (FilePath, concat)
 
 import Aws (Service(..), MetadataElement(..), ServiceOperation(..), ServiceShape(..), ServiceShapeName(..))
+import Printer.CycledInDeclaration (ServiceName(..), NewTypeName(..), AttributeName(..), notElem)
 
 clientFilePath :: FilePath -> MetadataElement -> Service -> FilePath
 clientFilePath path (MetadataElement { name }) _ = concat [path, name <> ".purs"]
@@ -17,7 +18,7 @@ client :: MetadataElement -> Service -> String
 client metadata (Service { operations, shapes, documentation }) =
     (header metadata documentation) <>
     (toArrayWithKey (\name -> \serviceOperation -> function name serviceOperation) operations # joinWith "") <>
-    (toArrayWithKey (\name -> \serviceShape -> record name serviceShape) shapes # joinWith "")
+    (toArrayWithKey (\name -> \serviceShape -> record metadata name serviceShape) shapes # joinWith "")
 
 comment :: String -> String
 comment str = commentPrefix <> commentedSrt
@@ -93,16 +94,16 @@ compatibleType type' = safeType
             then typeNotJs
             else typeNotJs <> "'"
 
-record :: String -> ServiceShape -> String
-record name serviceShape = output
+record :: MetadataElement -> String -> ServiceShape -> String
+record metadata name serviceShape = output
     where
         type' = compatibleType name
         output = if (elem type' purescriptTypes)
             then ""
-            else record' type' serviceShape
+            else record' metadata type' serviceShape
 
-record' :: String -> ServiceShape -> String
-record' name serviceShape@(ServiceShape { documentation }) = """
+record' :: MetadataElement -> String -> ServiceShape -> String
+record' metadata name serviceShape@(ServiceShape { documentation }) = """
 {{documentation}}
 newtype {{name}} = {{name}} {{type}}
 derive instance newtype{{name}} :: Newtype {{name}} _
@@ -114,14 +115,14 @@ instance decode{{name}} :: Decode {{name}} where
 instance encode{{name}} :: Encode {{name}} where
   encode = genericEncode $ defaultOptions { unwrapSingleConstructors = true }
 """ # replaceAll (Pattern "{{name}}") (Replacement $ name)
-    # replace (Pattern "{{type}}") (Replacement $ recordType serviceShape)
+    # replace (Pattern "{{type}}") (Replacement $ recordType metadata name serviceShape)
     # replace (Pattern "{{documentation}}") (Replacement $ maybe "" comment $ unNullOrUndefined documentation)
 
-recordType :: ServiceShape -> String
-recordType (ServiceShape serviceShape) = case serviceShape of
+recordType :: MetadataElement -> String -> ServiceShape -> String
+recordType metadata newTypeName (ServiceShape serviceShape) = case serviceShape of
     { "type": "list", member: NullOrUndefined (Just (shape)) } -> recordArray shape
     { "type": "map", value: NullOrUndefined (Just value) } -> recordMap value
-    { "type": "structure", members: NullOrUndefined (Just members), required: NullOrUndefined required } -> recordRecord members $ fromMaybe [] required
+    { "type": "structure", members: NullOrUndefined (Just members), required: NullOrUndefined required } -> recordRecord metadata newTypeName members $ fromMaybe [] required
     { "type": type' } -> compatibleType type'
 
 recordArray :: ServiceShapeName -> String
@@ -132,16 +133,23 @@ recordMap :: ServiceShapeName -> String
 recordMap (ServiceShapeName value) = "(StrMap.StrMap {{value}})"
     # replace (Pattern "{{value}}") (Replacement $ compatibleType value.shape)
 
-recordRecord :: StrMap ServiceShapeName -> Array String -> String
-recordRecord keyValue required = if isEmpty keyValue
+recordRecord :: MetadataElement -> String -> StrMap ServiceShapeName -> Array String -> String
+recordRecord (MetadataElement { name: serviceName }) newTypeName keyValue required = if isEmpty keyValue
     then "Types.NoArguments"
     else "\n  { {{properties}}\n  }"
         # replace (Pattern "{{properties}}") (Replacement properties)
             where
+                notCycledInDeclaration attributeName = notElem
+                    (ServiceName serviceName)
+                    (NewTypeName newTypeName)
+                    (AttributeName attributeName)
+
                 property key (ServiceShapeName { shape }) = "\"{{name}}\" :: {{required}} ({{type}})"
                     # replace (Pattern "{{name}}") (Replacement $ compatibleType key)
                     # replace (Pattern "{{type}}") (Replacement $ compatibleType shape)
                     # replace (Pattern "{{required}}") (Replacement $ if elem key required then "" else "NullOrUndefined.NullOrUndefined")
                     # replace (Pattern "  ") (Replacement " ")
 
-                properties = toArrayWithKey property keyValue # joinWith "\n  , "
+                properties = filterKeys notCycledInDeclaration keyValue
+                    # toArrayWithKey property
+                    # joinWith "\n  , "
