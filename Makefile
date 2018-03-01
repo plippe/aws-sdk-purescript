@@ -21,5 +21,8 @@ endif
 	cd gen && make clean init build test run
 	make build test
 
-	pulp version ${VERSION}
-	pulp publish
+ifneq ($(shell git status --porcelain),)
+	$(error Cannot release: You have unstaged changes)
+endif
+	git tag -a ${VERSION} -m "v${VERSION}"
+	git push origin ${VERSION}
